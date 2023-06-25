@@ -1,0 +1,1173 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+model EFMigrationsHistory {
+  MigrationId    String @id(map: "PK___EFMigrationsHistory") @db.NVarChar(150)
+  ProductVersion String @db.NVarChar(32)
+
+  @@map("__EFMigrationsHistory")
+}
+
+model AspNetRoleClaims {
+  Id          Int         @id(map: "PK_AspNetRoleClaims") @default(autoincrement())
+  RoleId      String      @db.NVarChar(450)
+  ClaimType   String?     @db.NVarChar(Max)
+  ClaimValue  String?     @db.NVarChar(Max)
+  AspNetRoles AspNetRoles @relation(fields: [RoleId], references: [Id], onDelete: Cascade, onUpdate: NoAction, map: "FK_AspNetRoleClaims_AspNetRoles_RoleId")
+}
+
+model AspNetRoles {
+  Id               String             @id(map: "PK_AspNetRoles") @db.NVarChar(450)
+  Name             String?            @db.NVarChar(256)
+  NormalizedName   String?            @db.NVarChar(256)
+  ConcurrencyStamp String?            @db.NVarChar(Max)
+  AspNetRoleClaims AspNetRoleClaims[]
+  AspNetUserRoles  AspNetUserRoles[]
+}
+
+model AspNetUserClaims {
+  Id          Int         @id(map: "PK_AspNetUserClaims") @default(autoincrement())
+  UserId      String      @db.NVarChar(450)
+  ClaimType   String?     @db.NVarChar(Max)
+  ClaimValue  String?     @db.NVarChar(Max)
+  AspNetUsers AspNetUsers @relation(fields: [UserId], references: [Id], onDelete: Cascade, onUpdate: NoAction, map: "FK_AspNetUserClaims_AspNetUsers_UserId")
+}
+
+model AspNetUserLogins {
+  LoginProvider       String      @db.NVarChar(450)
+  ProviderKey         String      @db.NVarChar(450)
+  ProviderDisplayName String?     @db.NVarChar(Max)
+  UserId              String      @db.NVarChar(450)
+  AspNetUsers         AspNetUsers @relation(fields: [UserId], references: [Id], onDelete: Cascade, onUpdate: NoAction, map: "FK_AspNetUserLogins_AspNetUsers_UserId")
+
+  @@id([LoginProvider, ProviderKey], map: "PK_AspNetUserLogins")
+}
+
+model AspNetUserRoles {
+  UserId      String      @db.NVarChar(450)
+  RoleId      String      @db.NVarChar(450)
+  AspNetRoles AspNetRoles @relation(fields: [RoleId], references: [Id], onDelete: Cascade, onUpdate: NoAction, map: "FK_AspNetUserRoles_AspNetRoles_RoleId")
+  AspNetUsers AspNetUsers @relation(fields: [UserId], references: [Id], onDelete: Cascade, onUpdate: NoAction, map: "FK_AspNetUserRoles_AspNetUsers_UserId")
+
+  @@id([UserId, RoleId], map: "PK_AspNetUserRoles")
+}
+
+model AspNetUsers {
+  Id                   String             @id(map: "PK_AspNetUsers") @db.NVarChar(450)
+  UserName             String?            @db.NVarChar(256)
+  NormalizedUserName   String?            @db.NVarChar(256)
+  Email                String?            @db.NVarChar(256)
+  NormalizedEmail      String?            @db.NVarChar(256)
+  EmailConfirmed       Boolean
+  PasswordHash         String?            @db.NVarChar(Max)
+  SecurityStamp        String?            @db.NVarChar(Max)
+  ConcurrencyStamp     String?            @db.NVarChar(Max)
+  PhoneNumber          String?            @db.NVarChar(Max)
+  PhoneNumberConfirmed Boolean
+  TwoFactorEnabled     Boolean
+  LockoutEnd           DateTime?          @db.DateTimeOffset
+  LockoutEnabled       Boolean
+  AccessFailedCount    Int
+  AspNetUserClaims     AspNetUserClaims[]
+  AspNetUserLogins     AspNetUserLogins[]
+  AspNetUserRoles      AspNetUserRoles[]
+  AspNetUserTokens     AspNetUserTokens[]
+}
+
+model AspNetUserTokens {
+  UserId        String      @db.NVarChar(450)
+  LoginProvider String      @db.NVarChar(450)
+  Name          String      @db.NVarChar(450)
+  Value         String?     @db.NVarChar(Max)
+  AspNetUsers   AspNetUsers @relation(fields: [UserId], references: [Id], onDelete: Cascade, onUpdate: NoAction, map: "FK_AspNetUserTokens_AspNetUsers_UserId")
+
+  @@id([UserId, LoginProvider, Name], map: "PK_AspNetUserTokens")
+}
+
+model tblAgentMessages {
+  id          Int      @id(map: "PK_tblAgentMessages") @default(autoincrement())
+  AgentID     Int?
+  Information String?  @db.VarChar(250)
+  IsActive    Boolean? @default(true, map: "DF_tblAgentMessages_IsActive")
+  CreatedOn   DateTime @default(now(), map: "DF_tblAgentMessages_CreatedOn") @db.DateTime
+}
+
+model tblApplicationMessages {
+  MessageID          Int       @id(map: "PK_tblApplicationMessages") @default(autoincrement()) @db.SmallInt
+  MessageText        String?   @db.NVarChar(300)
+  MessageHeading     String?   @db.VarChar(100)
+  IsActive           Boolean
+  CreatedBy          Int?
+  CreatedOn          DateTime? @db.DateTime
+  UpdatedBy          Int?
+  UpdatedOn          DateTime? @db.DateTime
+  InsertedTerminal   String?   @db.VarChar(50)
+  UpdatedTerminal    String?   @db.VarChar(50)
+  InsertedTerminalIP String?   @db.VarChar(50)
+  UpdatedTerminalIP  String?   @db.VarChar(25)
+  BranchId           Int?      @db.SmallInt
+}
+
+model tblAxleMaster {
+  AxleId             Int       @id(map: "PK_AxleMaster") @default(autoincrement())
+  Axle               String    @db.NVarChar(50)
+  Slug               String    @db.NVarChar(50)
+  isActive           Boolean
+  CreatedOn          DateTime  @db.DateTime
+  CreatedBy          Int?
+  InsertedTerminal   String?   @default("SERVER", map: "DF_tblAxleMaster_InsertedTerminal") @db.VarChar(50)
+  InsertedTerminalIP String?   @default("198.168.1.105", map: "DF_tblAxleMaster_InsertedTerminalIP") @db.VarChar(50)
+  UpdatedBy          Int?
+  UpdatedTerminal    String?   @db.VarChar(50)
+  UpdatedTerminalIP  String?   @db.VarChar(50)
+  UpdatedOn          DateTime? @db.DateTime
+}
+
+model tblBodyTypes {
+  BodyTypeId         Int       @id(map: "PK_BodyTypes") @default(autoincrement())
+  TypeOfBody         String    @db.NVarChar(25)
+  Slug               String    @db.NVarChar(25)
+  isActive           Boolean
+  CreatedOn          DateTime  @db.DateTime
+  CreatedBy          Int?
+  InsertedTerminal   String?   @default("SERVER", map: "DF_tblBodyTypes_InsertedTerminal") @db.VarChar(50)
+  InsertedTerminalIP String?   @default("198.168.1.105", map: "DF_tblBodyTypes_InsertedTerminalIP") @db.VarChar(50)
+  UpdatedBy          Int?
+  UpdatedTerminal    String?   @db.VarChar(50)
+  UpdatedTerminalIP  String?   @db.VarChar(50)
+  UpdatedOn          DateTime? @db.DateTime
+  tblCars            tblCars[]
+}
+
+model tblCarModels {
+  ModelId            Int       @id(map: "PK_CarModels") @default(autoincrement())
+  ModelName          String    @db.NVarChar(25)
+  MakeId             Int
+  Slug               String    @db.NVarChar(25)
+  isActive           Boolean
+  CreatedOn          DateTime  @db.DateTime
+  CreatedBy          Int?
+  InsertedTerminal   String?   @default("SERVER", map: "DF_tblCarModels_InsertedTerminal") @db.VarChar(50)
+  InsertedTerminalIP String?   @default("198.168.1.105", map: "DF_tblCarModels_InsertedTerminalIP") @db.VarChar(50)
+  UpdatedBy          Int?
+  UpdatedTerminal    String?   @db.VarChar(50)
+  UpdatedTerminalIP  String?   @db.VarChar(50)
+  UpdatedOn          DateTime? @db.DateTime
+  tblCars            tblCars[]
+}
+
+model tblCarOptions {
+  OptionId           Int       @id(map: "PK_tblCarOptions") @default(autoincrement())
+  OptionName         String?   @db.NVarChar(50)
+  isActive           Boolean
+  CreatedOn          DateTime  @default(now(), map: "DF_tblCarOptions_CreatedOn") @db.DateTime
+  CreatedBy          Int?
+  InsertedTerminal   String?   @default("SERVER", map: "DF_tblCarOptions_InsertedTerminal") @db.VarChar(50)
+  InsertedTerminalIP String?   @default("198.168.1.105", map: "DF_tblCarOptions_InsertedTerminalIP") @db.VarChar(50)
+  UpdatedBy          Int?
+  UpdatedTerminal    String?   @db.VarChar(50)
+  UpdatedTerminalIP  String?   @db.VarChar(50)
+  UpdatedOn          DateTime? @db.DateTime
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model tblCarOptionsMapping {
+  id           Int  @default(autoincrement())
+  StockID      Int?
+  CarOptionsID Int?
+
+  @@index([StockID], map: "idx_Mapping_StockId", clustered: true)
+  @@ignore
+}
+
+model tblCars {
+  StockId            Int               @id(map: "PK_Cars") @default(autoincrement())
+  StockCode          String?           @db.VarChar(10)
+  ListingTitle       String            @db.NVarChar(100)
+  ModelId            Int?
+  MakeId             Int?
+  ConditionId        Int?
+  BodyTypeId         Int?              @default(0, map: "DF_tblCars_BodyTypeId")
+  TransmissionId     Int?              @default(0, map: "DF_tblCars_TransmissionId")
+  DrivetrainId       Int?              @default(0, map: "DF_tblCars_DrivetrainId")
+  FuelTypeId         Int?
+  SteeringTypeId     Int?              @default(0, map: "DF_tblCars_SteeringTypeId")
+  ColorId            Int?              @default(0, map: "DF_tblCars_ColorId")
+  LocationId         Int?
+  HotLocationId      Int?
+  EngineSize         Int?              @default(dbgenerated(), map: "DF_tblCars_EngineSize")
+  Year               Int?              @db.SmallInt
+  NoOfDoors          String?           @default("", map: "DF_tblCars_NoOfDoors") @db.NVarChar(5)
+  NoOfSeats          Int?              @default(0, map: "DF_tblCars_NoOfSeats")
+  ModelCode          String?           @default("", map: "DF_tblCars_ModelCode") @db.NVarChar(25)
+  Price              Decimal?          @db.Decimal(18, 2)
+  AuctionGrade       String?           @db.NVarChar(10)
+  LoadingCapacity    String?           @default("", map: "DF_tblCars_LoadingCapacity") @db.NVarChar(10)
+  EngineNumber       String?           @default("", map: "DF_tblCars_EngineNumber") @db.NVarChar(25)
+  ChasisNumber       String?           @default("", map: "DF_tblCars_ChasisNumber") @db.NVarChar(25)
+  Mileage            Int?              @default(0, map: "DF_tblCars_Mileage")
+  Slug               String?           @db.NVarChar(80)
+  AdminNote          String?           @db.NVarChar(150)
+  Description        String?           @db.NVarChar(500)
+  ImageUrl           String?           @db.NVarChar(120)
+  LengthOfCar        Decimal?          @default(0, map: "DF_tblCars_LengthOfCar") @db.Decimal(4, 2)
+  HeightOfCar        Decimal?          @default(0, map: "DF_tblCars_HeightOfCar") @db.Decimal(4, 2)
+  WidthOfCar         Decimal?          @default(0, map: "DF_tblCars_WidthOfCar") @db.Decimal(4, 2)
+  M3                 Decimal?          @default(0, map: "DF_tblCars_M3") @db.Decimal(9, 2)
+  VehicleTypeID      Int?              @default(1, map: "DF_tblCars_VehicleTypeID") @db.TinyInt
+  AxleTypeID         Int?              @default(0, map: "DF_tblCars_AxleTypeID") @db.TinyInt
+  OperationHours     Int?              @default(0, map: "DF_tblCars_OperationHours")
+  CategoryID         Int?              @default(0, map: "DF_tblCars_CategoryID")
+  IsReserved         Boolean?          @default(false, map: "DF_tblCars_IsReserved")
+  PurchasedBy        Int?
+  PurchasedOn        DateTime?         @db.DateTime
+  ReservedBy         Int?
+  CreatedOn          DateTime          @db.DateTime
+  CreatedBy          Int?
+  InsertedTerminal   String?           @default("SERVER", map: "DF_tblCars_InsertedTerminal") @db.VarChar(50)
+  InsertedTerminalIP String?           @default("198.168.1.105", map: "DF_tblCars_InsertedTerminalIP") @db.VarChar(50)
+  UpdatedBy          Int?
+  UpdatedTerminal    String?           @db.VarChar(50)
+  UpdatedTerminalIP  String?           @db.VarChar(50)
+  UpdatedOn          DateTime?         @db.DateTime
+  IsActive           Boolean           @default(true, map: "DF_tblCars_IsActive")
+  tblBodyTypes       tblBodyTypes?     @relation(fields: [BodyTypeId], references: [BodyTypeId], onDelete: Cascade, onUpdate: NoAction, map: "FK_Cars_BodyTypes_BodyTypeId")
+  tblCarModels       tblCarModels?     @relation(fields: [ModelId], references: [ModelId], onDelete: Cascade, onUpdate: NoAction, map: "FK_Cars_CarModels_ModelId")
+  tblColors          tblColors?        @relation(fields: [ColorId], references: [ColorId], onDelete: Cascade, onUpdate: NoAction, map: "FK_Cars_Colors_ColorId")
+  tblConditions      tblConditions?    @relation(fields: [ConditionId], references: [ConditionId], onDelete: Cascade, onUpdate: NoAction, map: "FK_Cars_Conditions_ConditionId")
+  tblDrivetrains     tblDrivetrains?   @relation(fields: [DrivetrainId], references: [DrivetrainId], onDelete: Cascade, onUpdate: NoAction, map: "FK_Cars_Drivetrains_DrivetrainId")
+  tblFuelTypes       tblFuelTypes?     @relation(fields: [FuelTypeId], references: [FuelTypeId], onDelete: Cascade, onUpdate: NoAction, map: "FK_Cars_FuelTypes_FuelTypeId")
+  tblMasterCountry   tblMasterCountry? @relation(fields: [LocationId], references: [CountryId], onDelete: NoAction, onUpdate: NoAction, map: "FK_Cars_LocationID")
+  tblMakes           tblMakes?         @relation(fields: [MakeId], references: [MakeId], onDelete: Cascade, onUpdate: NoAction, map: "FK_Cars_Makes_MakeId")
+  tblSteeringTypes   tblSteeringTypes? @relation(fields: [SteeringTypeId], references: [SteeringTypeId], onDelete: Cascade, onUpdate: NoAction, map: "FK_Cars_SteeringTypes_SteeringTypeId")
+  tblTransmissions   tblTransmissions? @relation(fields: [TransmissionId], references: [TransmissionId], onDelete: Cascade, onUpdate: NoAction, map: "FK_Cars_Transmissions_TransmissionId")
+
+  @@index([LocationId], map: "IX_Cars_LocationId")
+  @@index([MakeId], map: "IX_Cars_MakeId")
+}
+
+model tblCategoryMaster {
+  CategoryId         Int       @id(map: "PK_CategoryMaster") @default(autoincrement())
+  Category           String    @db.NVarChar(50)
+  Slug               String    @db.NVarChar(50)
+  isActive           Boolean
+  CreatedOn          DateTime  @db.DateTime
+  CreatedBy          Int?
+  InsertedTerminal   String?   @default("SERVER", map: "DF_tblCategoryMaster_InsertedTerminal") @db.VarChar(50)
+  InsertedTerminalIP String?   @default("198.168.1.105", map: "DF_tblCategoryMaster_InsertedTerminalIP") @db.VarChar(50)
+  UpdatedBy          Int?
+  UpdatedTerminal    String?   @db.VarChar(50)
+  UpdatedTerminalIP  String?   @db.VarChar(50)
+  UpdatedOn          DateTime? @db.DateTime
+}
+
+model tblColors {
+  ColorId            Int       @id(map: "PK_Colors") @default(autoincrement())
+  ColorName          String    @db.NVarChar(25)
+  Slug               String    @db.NVarChar(25)
+  isActive           Boolean
+  CreatedOn          DateTime  @db.DateTime
+  CreatedBy          Int?
+  InsertedTerminal   String?   @default("SERVER", map: "DF_tblColors_InsertedTerminal") @db.VarChar(50)
+  InsertedTerminalIP String?   @default("198.168.1.105", map: "DF_tblColors_InsertedTerminalIP") @db.VarChar(50)
+  UpdatedBy          Int?
+  UpdatedTerminal    String?   @db.VarChar(50)
+  UpdatedTerminalIP  String?   @db.VarChar(50)
+  UpdatedOn          DateTime? @db.DateTime
+  tblCars            tblCars[]
+}
+
+model tblConditions {
+  ConditionId        Int       @id(map: "PK_Conditions") @default(autoincrement())
+  ConditionType      String    @db.NVarChar(50)
+  Slug               String    @db.NVarChar(50)
+  isActive           Boolean
+  CreatedOn          DateTime  @db.DateTime
+  CreatedBy          Int?
+  InsertedTerminal   String?   @default("SERVER", map: "DF_tblConditions_InsertedTerminal") @db.VarChar(50)
+  InsertedTerminalIP String?   @default("198.168.1.105", map: "DF_tblConditions_InsertedTerminalIP") @db.VarChar(50)
+  UpdatedBy          Int?
+  UpdatedTerminal    String?   @db.VarChar(50)
+  UpdatedTerminalIP  String?   @db.VarChar(50)
+  UpdatedOn          DateTime? @db.DateTime
+  tblCars            tblCars[]
+}
+
+model tblConsigneeCourier {
+  ID                   Int       @id(map: "PK_tblConsigneeCourier") @default(autoincrement())
+  CustomerID           Int
+  ConsigneeName        String?   @db.VarChar(30)
+  ConsigneeCity        String?   @db.NVarChar(25)
+  ConsigneeAddress     String?   @db.NVarChar(120)
+  ConsigneeCountryID   Int?
+  ConsigneeEmail       String    @db.NVarChar(50)
+  ConsigneePhone       String    @db.NVarChar(20)
+  NotifyPartyName      String?   @db.VarChar(30)
+  NotifyPartyCity      String?   @db.NVarChar(25)
+  NotifyPartyAddress   String?   @db.NVarChar(120)
+  NotifyPartyCountryID Int?
+  NotifyPartyEmail     String    @db.NVarChar(50)
+  NotifyPartyPhone     String    @db.NVarChar(20)
+  CreatedOn            DateTime  @default(now(), map: "DF_tblConsigneeCourier_CreatedOn") @db.DateTime
+  CreatedBy            Int?
+  InsertedTerminal     String?   @default("SERVER", map: "DF_tblConsigneeCourier_InsertedTerminal") @db.VarChar(50)
+  InsertedTerminalIP   String?   @default("198.168.1.105", map: "DF_tblConsigneeCourier_InsertedTerminalIP") @db.VarChar(50)
+  UpdatedBy            Int?
+  UpdatedTerminal      String?   @db.VarChar(50)
+  UpdatedTerminalIP    String?   @db.VarChar(50)
+  UpdatedOn            DateTime? @db.DateTime
+  isActive             Boolean   @default(true, map: "DF_tblConsigneeCourier_isActive")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model tblCountryInspectionCostMapping {
+  ID                   Int       @default(autoincrement())
+  SourceCountryID      Int?
+  DestinationCountryID Int?
+  InspectionCost       String?   @db.NVarChar(10)
+  isActive             Boolean?  @default(true, map: "DF_tblCountryInspectionCostMapping_isActive")
+  CreatedOn            DateTime  @default(now(), map: "DF_tblCountryInspectionCostMapping_CreatedOn") @db.DateTime
+  CreatedBy            Int?
+  InsertedTerminal     String?   @db.VarChar(50)
+  InsertedTerminalIP   String?   @db.VarChar(50)
+  UpdatedBy            Int?
+  UpdatedTerminal      String?   @db.VarChar(50)
+  UpdatedTerminalIP    String?   @db.VarChar(50)
+  UpdatedOn            DateTime? @db.DateTime
+
+  @@unique([SourceCountryID, DestinationCountryID], map: "idx_Mapping_SourceDestinationCountries", clustered: true)
+  @@ignore
+}
+
+model tblCountryPortMapping {
+  ID        Int      @id(map: "PK_tblCountryPortMapping") @default(autoincrement())
+  PortID    Int?
+  CountryID Int?
+  isActive  Boolean? @default(true, map: "DF_tblCountryPortMapping_isActive")
+}
+
+model tblCourierDispatch {
+  ID                     Int       @id(map: "PK_tblCourierDispatch") @default(autoincrement())
+  CustomerID             Int
+  PersonName             String?   @db.VarChar(30)
+  CourierPersonCity      String?   @db.NVarChar(25)
+  CourierPersonAddress   String?   @db.NVarChar(120)
+  CourierPersonCountryID Int?
+  CourierPersonEmail     String?   @db.NVarChar(50)
+  CourierPersonPhone     String?   @db.NVarChar(20)
+  ShippingNote           String?   @db.NVarChar(20)
+  CreatedOn              DateTime  @default(now(), map: "DF_tblCourierDispatch_CreatedOn") @db.DateTime
+  CreatedBy              Int?
+  InsertedTerminal       String?   @default("SERVER", map: "DF_tblCourierDispatch_InsertedTerminal") @db.VarChar(50)
+  InsertedTerminalIP     String?   @default("198.168.1.105", map: "DF_tblCourierDispatch_InsertedTerminalIP") @db.VarChar(50)
+  UpdatedBy              Int?
+  UpdatedTerminal        String?   @db.VarChar(50)
+  UpdatedTerminalIP      String?   @db.VarChar(50)
+  UpdatedOn              DateTime? @db.DateTime
+  isActive               Boolean   @default(true, map: "DF_tblCourierDispatch_isActive")
+}
+
+model tblCustomerAccount {
+  Id                 Int      @id(map: "PK_tblCustomerAccount") @default(autoincrement())
+  CustomerID         Int
+  Amount             Decimal? @db.Decimal(10, 2)
+  Reference          String?  @db.VarChar(50)
+  BankID             Int?
+  DepositerCountry   Int?
+  SenderDetail       String?  @db.VarChar(250)
+  isActive           Boolean
+  CreatedOn          DateTime @db.DateTime
+  CreatedBy          Int?
+  InsertedTerminal   String?  @db.VarChar(50)
+  InsertedTerminalIP String?  @db.VarChar(50)
+}
+
+model tblCustomerMoneyAllocation {
+  id                 Int       @id(map: "PK_tblCustomerMoneyAllocation") @default(autoincrement())
+  CustomerID         Int?
+  StockID            Int?
+  DepositAmount      Decimal?  @db.Decimal(10, 2)
+  ShipOk             Boolean?
+  ShipOkDate         DateTime? @db.Date
+  InvoiceDate        DateTime? @db.Date
+  Priority           Int?      @db.TinyInt
+  PaidPercent        Int?      @db.TinyInt
+  DuePercent         Int?      @db.TinyInt
+  BalanceAmount      Decimal?  @db.Decimal(10, 2)
+  ConfirmFrom        DateTime? @db.Date
+  ConfirmTo          DateTime? @db.Date
+  ReleaseOkDate      DateTime? @db.Date
+  ReleaseDate        DateTime? @db.Date
+  isActive           Boolean
+  CreatedOn          DateTime  @db.DateTime
+  CreatedBy          Int?      @db.TinyInt
+  InsertedTerminal   String?   @db.VarChar(50)
+  InsertedTerminalIP String?   @db.VarChar(50)
+}
+
+model tblCustomers {
+  CustomerID         Int       @default(autoincrement())
+  CustomerCode       String?   @db.VarChar(10)
+  TitleID            Int?
+  Name               String?   @db.NVarChar(25)
+  LastName           String?   @db.NVarChar(25)
+  CompnayName        String?   @db.NVarChar(60)
+  Address            String?   @db.NVarChar(120)
+  CountryID          Int?
+  PreferedPortID     Int?
+  Email              String    @db.NVarChar(50)
+  Email2             String?   @db.NVarChar(50)
+  Email3             String?   @db.NVarChar(50)
+  Phone              String    @db.NVarChar(20)
+  Phone2             String?   @db.NVarChar(20)
+  Phone3             String?   @db.NVarChar(20)
+  IsAssigned         Boolean?  @default(false, map: "DF_tblCustomers_IsAssigned")
+  AssignedAgentID    Int?      @default(0, map: "DF_tblCustomers_AssignedAgentID")
+  IsTrxAccActive     Boolean   @default(false, map: "DF_tblCustomers_IsTrxAccActive")
+  isActive           Boolean   @default(true, map: "DF_tblCustomers_isActive")
+  CreatedOn          DateTime  @default(now(), map: "DF_tblCustomers_CreatedOn") @db.DateTime
+  CreatedBy          Int?
+  InsertedTerminal   String?   @default("SERVER", map: "DF_tblCustomers_InsertedTerminal") @db.VarChar(50)
+  InsertedTerminalIP String?   @default("198.168.1.105", map: "DF_tblCustomers_InsertedTerminalIP") @db.VarChar(50)
+  UpdatedBy          Int?
+  UpdatedTerminal    String?   @db.VarChar(50)
+  UpdatedTerminalIP  String?   @db.VarChar(50)
+  UpdatedOn          DateTime? @db.DateTime
+  Password           String?   @db.NVarChar(15)
+  IsUpdated          Boolean?
+
+  @@id([CustomerID, Email, Phone], map: "PK_tblCustomers")
+}
+
+model tblCustomersEditHistory {
+  ID                 Int       @default(autoincrement())
+  CustomerID         Int
+  CustomerCode       String?   @db.VarChar(10)
+  TitleID            Int?
+  Name               String?   @db.NVarChar(25)
+  LastName           String?   @db.NVarChar(25)
+  CompnayName        String?   @db.NVarChar(60)
+  Address            String?   @db.NVarChar(120)
+  CountryID          Int?
+  PreferedPortID     Int?
+  Email              String    @db.NVarChar(50)
+  Phone              String    @db.NVarChar(20)
+  IsAssigned         Boolean?  @default(false, map: "DF_tblCustomersEditHistory_IsAssigned")
+  AssignedAgentID    Int?      @default(0, map: "DF_tblCustomersEditHistory_AssignedAgentID")
+  IsTrxAccActive     Boolean   @default(false, map: "DF_tblCustomersEditHistory_IsTrxAccActive")
+  isActive           Boolean   @default(true, map: "DF_tblCustomersEditHistory_isActive")
+  CreatedOn          DateTime  @default(now(), map: "DF_tblCustomersEditHistory_CreatedOn") @db.DateTime
+  CreatedBy          Int?
+  InsertedTerminal   String?   @default("SERVER", map: "DF_tblCustomersEditHistory_InsertedTerminal") @db.VarChar(50)
+  InsertedTerminalIP String?   @default("198.168.1.105", map: "DF_tblCustomersEditHistory_InsertedTerminalIP") @db.VarChar(50)
+  UpdatedBy          Int?
+  UpdatedTerminal    String?   @db.VarChar(50)
+  UpdatedTerminalIP  String?   @db.VarChar(50)
+  UpdatedOn          DateTime? @db.DateTime
+  Password           String?   @db.NVarChar(15)
+
+  @@id([CustomerID, Email, Phone], map: "PK_tblCustomersEditHistory")
+}
+
+model tblDepartment {
+  DepartmentID       Int       @id(map: "PK_tblDepartment") @default(autoincrement())
+  DepartmentName     String?   @db.NVarChar(50)
+  Code               String?   @db.NVarChar(3)
+  CreatedBy          Int?
+  CreatedOn          DateTime? @db.DateTime
+  InsertedTerminal   String?   @db.VarChar(50)
+  InsertedTerminalIP String?   @db.VarChar(50)
+  UpdatedBy          Int?
+  UpdatedOn          DateTime? @db.DateTime
+  UpdatedTerminal    String?   @db.VarChar(50)
+  UpdatedTerminalIP  String?   @db.VarChar(25)
+  IsActive           Boolean?
+}
+
+model tblDesignation {
+  DesignationID Int       @id(map: "PK_tblDesignation") @default(autoincrement())
+  Designation   String?   @db.NVarChar(50)
+  DepartmentID  Int?
+  isActive      Boolean?  @default(true, map: "DF_tblDesignation_isActive")
+  CreatedOn     DateTime? @default(now(), map: "DF_tblDesignation_CreatedOn") @db.DateTime
+}
+
+model tblDrivetrains {
+  DrivetrainId       Int       @id(map: "PK_Drivetrains") @default(autoincrement())
+  DrivetrainType     String    @db.NVarChar(50)
+  Slug               String    @db.NVarChar(50)
+  isActive           Boolean
+  CreatedOn          DateTime  @db.DateTime
+  CreatedBy          Int?
+  InsertedTerminal   String?   @default("SERVER", map: "DF_tblDrivetrains_InsertedTerminal") @db.VarChar(50)
+  InsertedTerminalIP String?   @default("198.168.1.105", map: "DF_tblDrivetrains_InsertedTerminalIP") @db.VarChar(50)
+  UpdatedBy          Int?
+  UpdatedTerminal    String?   @db.VarChar(50)
+  UpdatedTerminalIP  String?   @db.VarChar(50)
+  UpdatedOn          DateTime? @db.DateTime
+  tblCars            tblCars[]
+}
+
+model tblEmployee {
+  EmployeeID        Int       @id(map: "PK_tblEmployee") @default(autoincrement())
+  EmployeeCode      String?   @db.VarChar(10)
+  EmployeeName      String?   @db.VarChar(50)
+  NICNo             String?   @db.VarChar(20)
+  DepartmentID      Int?      @db.SmallInt
+  DesignationID     Int?      @db.SmallInt
+  ComputerID        Int?
+  isUserMapped      Boolean?  @default(false, map: "DF_tblEmployee_isUserMapped")
+  CreatedBy         Int?
+  CreatedOn         DateTime? @default(now(), map: "DF_tblEmployee_CreatedOn") @db.DateTime
+  Terminal          String?   @db.NVarChar(50)
+  TerminalIP        String?   @db.NVarChar(50)
+  UpdatedTerminal   String?   @db.NVarChar(50)
+  UpdatedTerminalIP String?   @db.NVarChar(50)
+  UpdatedBy         Int?
+  UpdatedOn         DateTime? @db.DateTime
+  IsActive          Boolean   @default(true, map: "DF_tblEmployee_IsActive")
+}
+
+model tblFuelTypes {
+  FuelTypeId         Int       @id(map: "PK_FuelTypes") @default(autoincrement())
+  TypeOfFuel         String    @db.NVarChar(80)
+  Slug               String    @db.NVarChar(80)
+  isActive           Boolean
+  CreatedOn          DateTime  @db.DateTime
+  InsertedTerminal   String?   @default("SERVER", map: "DF_tblFuelTypes_InsertedTerminal") @db.VarChar(50)
+  InsertedTerminalIP String?   @default("198.168.1.105", map: "DF_tblFuelTypes_InsertedTerminalIP") @db.VarChar(50)
+  UpdatedBy          Int?
+  UpdatedTerminal    String?   @db.VarChar(50)
+  UpdatedTerminalIP  String?   @db.VarChar(50)
+  UpdatedOn          DateTime? @db.DateTime
+  tblCars            tblCars[]
+}
+
+model tblLocations {
+  LocationId          Int       @id(map: "PK_Locations") @default(autoincrement())
+  LocationName        String    @db.NVarChar(80)
+  IsInventoryLocation Boolean
+  Slug                String    @db.NVarChar(80)
+  isActive            Boolean
+  CreatedOn           DateTime  @db.DateTime
+  InsertedTerminal    String?   @default("SERVER", map: "DF_tblLocations_InsertedTerminal") @db.VarChar(50)
+  InsertedTerminalIP  String?   @default("198.168.1.105", map: "DF_tblLocations_InsertedTerminalIP") @db.VarChar(50)
+  UpdatedBy           Int?
+  UpdatedTerminal     String?   @db.VarChar(50)
+  UpdatedTerminalIP   String?   @db.VarChar(50)
+  UpdatedOn           DateTime? @db.DateTime
+}
+
+model tblLov {
+  LovID           Int       @id(map: "PK_tblLov")
+  TagName         String?   @db.VarChar(50)
+  Title           String?   @db.VarChar(50)
+  SelectStatement String?   @db.VarChar(Max)
+  FilterCondition String?   @db.VarChar(300)
+  GroupBy         String?   @db.VarChar(100)
+  OrderBy         String?   @db.VarChar(100)
+  ReturnColumn    String?   @db.VarChar(50)
+  ReturnColumn1   String?   @db.VarChar(50)
+  ReturnColumn2   String?   @db.VarChar(50)
+  ReturnColumn3   String?   @db.VarChar(50)
+  GridProperty    String?   @db.VarChar(50)
+  GridMethod      String?   @db.VarChar(50)
+  Remarks         String?   @db.VarChar(500)
+  Deleted         Boolean?
+  InsertedBy      Int?
+  InsertedOn      DateTime? @db.DateTime
+  EditedBy        Int?
+  EditedOn        DateTime? @db.DateTime
+  IsActive        Boolean?
+}
+
+model tblLovDetail {
+  ID                 Int       @id(map: "PK_tblLovDetail") @default(autoincrement())
+  LovID              Int
+  ColumnOrder        Int?
+  HeaderCaption      String?   @db.VarChar(50)
+  FieldName          String?   @db.VarChar(50)
+  ColumnWidth        String?   @db.VarChar(50)
+  ColumnAlignment    String?   @db.VarChar(50)
+  ColumnMask         String?   @db.VarChar(50)
+  IsActive           Boolean
+  CreatedBy          Int?
+  CreatedOn          DateTime? @db.DateTime
+  UpdatedBy          Int?
+  UpdatedOn          DateTime? @db.DateTime
+  InsertedTerminal   String?   @db.VarChar(50)
+  UpdatedTerminal    String?   @db.VarChar(50)
+  InsertedTerminalIP String?   @db.VarChar(50)
+  UpdatedTerminalIP  String?   @db.VarChar(25)
+  BranchId           Int?      @db.SmallInt
+}
+
+model tblMakes {
+  MakeId             Int       @id(map: "PK_Makes") @default(autoincrement())
+  MakeName           String    @db.NVarChar(80)
+  VehicleTypeID      Int?
+  ImageUrl           String?   @db.VarChar(150)
+  Slug               String    @db.NVarChar(80)
+  isActive           Boolean
+  CreatedBy          Int?
+  CreatedOn          DateTime  @db.DateTime
+  InsertedTerminal   String?   @default("SERVER", map: "DF_tblMakes_InsertedTerminal") @db.VarChar(50)
+  InsertedTerminalIP String?   @default("198.168.1.105", map: "DF_tblMakes_InsertedTerminalIP") @db.VarChar(50)
+  UpdatedBy          Int?
+  UpdatedTerminal    String?   @db.VarChar(50)
+  UpdatedTerminalIP  String?   @db.VarChar(50)
+  UpdatedOn          DateTime? @db.DateTime
+  tblCars            tblCars[]
+}
+
+model tblMasterAccCategory {
+  Id              Int      @id(map: "PK_tblMasterAccCategory") @default(autoincrement())
+  AccountCategory String?  @db.VarChar(50)
+  IsActive        Boolean? @default(true, map: "DF_tblMasterAccCategory_IsActive")
+}
+
+model tblMasterAccountNature {
+  Id            Int      @id(map: "PK_tblMasterAccountNature") @default(autoincrement())
+  AccountNature String?  @db.VarChar(50)
+  IsActive      Boolean?
+}
+
+model tblMasterAccountType {
+  Id          Int      @id(map: "PK_tblMasterAccountType") @default(autoincrement())
+  AccountType String?  @db.VarChar(50)
+  IsActive    Boolean? @default(true, map: "DF_tblMasterAccountType_IsActive")
+}
+
+model tblMasterBank {
+  BankID             Int       @id(map: "PK_tblMasterBank") @default(autoincrement())
+  BankName           String    @db.NVarChar(50)
+  BankSlug           String    @db.NVarChar(30)
+  AccountName        String?   @db.NVarChar(50)
+  AccountNumber      String?   @db.NVarChar(35)
+  SwiftCode          String?   @db.NVarChar(25)
+  BranchName         String?   @db.NVarChar(100)
+  CountryID          Int?
+  isActive           Boolean
+  CreatedOn          DateTime  @db.DateTime
+  CreatedBy          Int?
+  InsertedTerminal   String?   @default("SERVER", map: "DF_tblMasterBank_InsertedTerminal") @db.VarChar(50)
+  InsertedTerminalIP String?   @default("198.168.1.105", map: "DF_tblMasterBank_InsertedTerminalIP") @db.VarChar(50)
+  UpdatedBy          Int?
+  UpdatedTerminal    String?   @db.VarChar(50)
+  UpdatedTerminalIP  String?   @db.VarChar(50)
+  UpdatedOn          DateTime? @db.DateTime
+}
+
+model tblMasterBLType {
+  BLId     Int     @id(map: "PK_tblMasterBLType") @default(autoincrement())
+  BLType   String  @db.NVarChar(15)
+  isActive Boolean @default(true, map: "DF_tblMasterBLType_isActive")
+}
+
+model tblMasterChartOfAccounts {
+  Id                 Int       @id(map: "PK_tblMasterChartOfAccounts") @default(autoincrement())
+  CompanyID          Int?      @default(1, map: "DF_tblMasterChartOfAccounts_CompanyID") @db.TinyInt
+  AccountCode        String    @db.NVarChar(100)
+  AccountDescription String    @db.NVarChar(100)
+  ParentId           Int
+  IsTransaction      Boolean?
+  AccountTypeID      Int?      @db.TinyInt
+  AccountNumber      String?   @db.VarChar(50)
+  AccountNatureID    Int?      @db.TinyInt
+  CurrencyID         Int?      @db.TinyInt
+  AccountCategoryID  Int?      @db.TinyInt
+  AmountLimit        Decimal?  @db.Decimal(18, 2)
+  CreatedBy          Int
+  CreatedOn          DateTime  @default(now(), map: "DF_tblMasterChartOfAccounts_CreatedOn") @db.DateTime
+  InsertedTerminal   String    @db.VarChar(50)
+  InsertedTerminalIP String    @db.VarChar(50)
+  UpdatedBy          Int?
+  UpdatedOn          DateTime? @db.DateTime
+  UpdatedTerminal    String?   @db.VarChar(50)
+  UpdatedTerminalIP  String?   @db.VarChar(25)
+  IsActive           Boolean   @default(true, map: "DF_tblMasterChartOfAccounts_IsActive")
+  BranchId           Int
+}
+
+model tblMasterCountry {
+  CountryId           Int       @id(map: "PK_Countries") @default(autoincrement())
+  RegionId            Int?
+  CountryName         String?   @db.VarChar(100)
+  CountryCode         String?   @db.VarChar(5)
+  Slug                String?   @db.VarChar(3)
+  IsActive            Boolean
+  IsInventoryLocation Boolean
+  IsHotLocation       Boolean
+  Terminal            String?   @db.NVarChar(50)
+  UpdatedTerminal     String?   @db.NVarChar(50)
+  TerminalIP          String?   @db.NVarChar(50)
+  UpdatedTerminalIP   String?   @db.NVarChar(50)
+  CreatedBy           Int?
+  CreatedOn           DateTime? @db.DateTime
+  UpdatedBy           Int?
+  UpdatedOn           DateTime? @db.DateTime
+  tblCars             tblCars[]
+}
+
+model tblMasterCurrency {
+  CurrencyID Int     @id(map: "PK_tblMasterCurrency") @default(autoincrement())
+  Currency   String  @db.NVarChar(25)
+  isActive   Boolean
+}
+
+model tblMasterDepositRatio {
+  Id           Int     @id(map: "PK_tblMasterDepositRatio") @default(autoincrement())
+  DepositRatio String  @db.VarChar(4)
+  isActive     Boolean @default(true, map: "DF_tblMasterDepositRatio_isActive")
+}
+
+model tblMasterFreightCharges {
+  Id                   Int       @id(map: "PK_tblMasterFreightCharges") @default(autoincrement())
+  SourceCountryID      Int?
+  DestinationCountryID Int?
+  PortID               Int?
+  VehicleTypeID        Int?      @default(0, map: "DF_tblMasterFreightCharges_VehicleTypeID") @db.TinyInt
+  FreigthAmount        Int?
+  isActive             Boolean
+  CreatedOn            DateTime  @db.DateTime
+  CreatedBy            Int?
+  InsertedTerminal     String?   @default("SERVER", map: "DF_tblMasterFreightCharges_InsertedTerminal") @db.VarChar(50)
+  InsertedTerminalIP   String?   @default("198.168.1.105", map: "DF_tblMasterFreightCharges_InsertedTerminalIP") @db.VarChar(50)
+  UpdatedBy            Int?
+  UpdatedTerminal      String?   @db.VarChar(50)
+  UpdatedTerminalIP    String?   @db.VarChar(50)
+  UpdatedOn            DateTime? @db.DateTime
+}
+
+model tblMasterFreightOptions {
+  Id             Int     @id(map: "PK_tblMasterFreightOptions") @default(autoincrement())
+  FreightOptions String  @db.NVarChar(15)
+  isActive       Boolean @default(true, map: "DF_tblMasterFreightOptions_isActive")
+}
+
+model tblMasterIncoterm {
+  IncoID   Int     @id(map: "PK_tblMasterIncoterm") @default(autoincrement())
+  IncoTerm String  @db.NVarChar(3)
+  isActive Boolean @default(true, map: "DF_tblMasterIncoterm_isActive")
+}
+
+model tblMasterPaymentMode {
+  Id          Int     @id(map: "PK_tblMasterPaymentMode") @default(autoincrement())
+  PaymentMode String  @db.VarChar(14)
+  isActive    Boolean @default(true, map: "DF_tblMasterPaymentMode_isActive")
+}
+
+model tblMasterPorts {
+  PortId             Int       @id(map: "PK_tblMasterPorts") @default(autoincrement())
+  PortName           String?   @db.NVarChar(50)
+  isActive           Boolean
+  CreatedOn          DateTime  @default(now(), map: "DF_tblPortMaster_CreatedOn") @db.DateTime
+  CreatedBy          Int?      @db.SmallInt
+  InsertedTerminal   String?   @default("SERVER", map: "DF_tblPortMaster_InsertedTerminal") @db.VarChar(50)
+  InsertedTerminalIP String?   @default("198.168.1.105", map: "DF_tblPortMaster_InsertedTerminalIP") @db.VarChar(50)
+  UpdatedBy          Int?      @db.SmallInt
+  UpdatedTerminal    String?   @db.VarChar(50)
+  UpdatedTerminalIP  String?   @db.VarChar(50)
+  UpdatedOn          DateTime? @db.DateTime
+  InsuranceCost      Int?      @db.SmallInt
+}
+
+model tblMasterRegion {
+  RegionId Int     @id(map: "PK_tblMasterRegion") @default(autoincrement())
+  Region   String  @db.NVarChar(25)
+  isActive Boolean
+}
+
+model tblMasterShipmentType {
+  ShipTypeID       Int     @id(map: "PK_tblMasterShipmentType") @default(autoincrement())
+  ShipmentTermType String  @db.NVarChar(15)
+  isActive         Boolean
+}
+
+model tblMasterTitle {
+  TitleId  Int     @id(map: "PK_tblMasterTitle") @default(autoincrement())
+  Title    String? @db.VarChar(200)
+  IsActive Boolean
+}
+
+model tblMasterUserCreation {
+  UserID               Int      @id(map: "PK_tblMasterUserCreation_1") @default(autoincrement())
+  LoginName            String   @db.NVarChar(50)
+  EmployeeId           Int
+  EmployeeName         String?  @db.VarChar(50)
+  Password             String?  @db.NVarChar(100)
+  DepartmentID         Int?     @db.SmallInt
+  IsManagedBy          Int?     @db.TinyInt
+  DefaultApplicationID Int?     @default(1, map: "DF_tblMasterUserCreation_DefaultApplicationID") @db.SmallInt
+  UserTypeID           Int?     @db.SmallInt
+  CreatedBy            Int?
+  CreatedOn            DateTime @default(now(), map: "DF_tblMasterUserCreation_CreatedOn") @db.DateTime
+  Terminal             String?  @db.NVarChar(50)
+  TerminalIP           String?  @db.NVarChar(50)
+  UpdatedBy            Int?
+  UpdatedOn            DateTime @default(dbgenerated("1980-01-01 00:00:00"), map: "DF_tblMasterUserCreation_UpdatedOn") @db.DateTime
+  UpdatedTerminal      String?  @db.NVarChar(50)
+  UpdatedTerminalIP    String?  @db.NVarChar(50)
+  IsActive             Boolean  @default(true, map: "DF_tblMasterUserCreation_IsActive")
+}
+
+model tblMasterVehicleType {
+  id          Int      @id(map: "PK_tblMasterVehicleType") @default(autoincrement())
+  VehicleType String?  @db.VarChar(20)
+  IsActive    Boolean? @default(true, map: "DF_tblMasterVehicleType_IsActive")
+}
+
+model tblMenu {
+  MenuID             BigInt    @id(map: "PK_tblMenuNew_1")
+  ApplicationID      Int?
+  Assembly           String?   @db.VarChar(50)
+  FormName           String?   @db.VarChar(50)
+  Caption            String?   @db.VarChar(50)
+  ParentID           Int?
+  IsScreen           Boolean?
+  OrderNo            Int?
+  Deleted            Boolean?
+  HelpFilePath       String?   @db.NVarChar(100)
+  BranchId           Int?      @db.SmallInt
+  CreatedBy          Int?
+  CreatedOn          DateTime? @db.DateTime
+  UpdatedBy          Int?
+  UpdatedOn          DateTime? @db.DateTime
+  InsertedTerminal   String?   @db.VarChar(50)
+  UpdatedTerminal    String?   @db.VarChar(50)
+  InsertedTerminalIP String?   @db.VarChar(50)
+  UpdatedTerminalIP  String?   @db.VarChar(25)
+  IsActive           Boolean
+}
+
+model tblMenuInRole {
+  ID               Int       @id(map: "PK_tblMenuRole_1") @default(autoincrement())
+  RoleID           Int
+  MenuId           Int
+  ComputerRightsID Int?
+  RghtView         Boolean?
+  RghtInsert       Boolean
+  RghtUpdate       Boolean
+  RghtDelete       Boolean
+  RghtPrint        Boolean
+  RghtPreview      Boolean?
+  RghtQuery        Boolean?
+  RghtExport       Boolean?
+  RghtSuperUser    Boolean?
+  RghtUser         Boolean?
+  RghtAdmin        Boolean?
+  RghtSpecial      Boolean?
+  IsDragDrop       Boolean
+  ControlLocation  String?   @db.VarChar(50)
+  InsertedBy       Int?
+  InsertedOn       DateTime  @default(now(), map: "DF_tblMenuRole_InsertedOn") @db.DateTime
+  EditedBy         Int?
+  EditedOn         DateTime? @db.DateTime
+  IsActive         Boolean
+  ApplicationID    Int?
+  InsertedTerminal String?   @db.NVarChar(50)
+  UpdatedTerminal  String?   @db.NVarChar(50)
+  BranchID         Int?      @db.SmallInt
+}
+
+model tblMenuRights {
+  RightsID          Int       @id(map: "PK_tblMenuRights") @default(autoincrement())
+  EmployeeID        Int
+  RoleID            Int?
+  MenuItemId        Int
+  ComputerRightsID  Int?
+  RghtView          Boolean?
+  RghtInsert        Boolean
+  RghtUpdate        Boolean
+  RghtDelete        Boolean
+  RghtPrint         Boolean
+  RghtPreview       Boolean?
+  RghtQuery         Boolean?
+  RghtExport        Boolean?
+  RghtSuperUser     Boolean?
+  RghtUser          Boolean?
+  RghtAdmin         Boolean?
+  RghtSpecial       Boolean?
+  IsDragDrop        Boolean
+  ControlLocation   String?   @db.VarChar(50)
+  InsertedBy        Int?
+  InsertedOn        DateTime  @default(now(), map: "DF_tblMenuRights_InsertedOn") @db.DateTime
+  UpdatedBy         Int?
+  UpdatedOn         DateTime? @db.DateTime
+  IsActive          Boolean   @default(true, map: "DF_tblMenuRights_IsActive")
+  ApplicationID     Int?
+  Terminal          String?   @db.NVarChar(50)
+  TerminalIP        String?   @db.NVarChar(50)
+  UpdatedTerminal   String?   @db.NVarChar(50)
+  UpdatedTerminalIP String?   @db.NVarChar(50)
+  BranchID          Int?      @db.SmallInt
+}
+
+model tblMenuRoleAssignment {
+  ID                Int      @id(map: "PK_tblMenuRoleAssignment") @default(autoincrement())
+  UserID            Int
+  RoleID            Int
+  IsActive          Boolean
+  Terminal          String?  @db.NVarChar(50)
+  UpdatedTerminal   String?  @db.NVarChar(50)
+  TerminalIP        String?  @db.NVarChar(50)
+  UpdatedTerminalIP String?  @db.NVarChar(50)
+  CreatedBy         Int?
+  CreatedOn         DateTime @default(now(), map: "DF_tblMenuRoleAssignment_CreatedOn") @db.DateTime
+  UpdatedBy         Int?
+  UpdatedOn         DateTime @default(dbgenerated("1980-01-01 00:00:00"), map: "DF_tblMenuRoleAssignment_UpdatedOn") @db.DateTime
+  BranchID          Int?     @db.SmallInt
+}
+
+model tblMoneyAllocationSO {
+  Id                 Int       @id(map: "PK_tblMoneyAllocationSO") @default(autoincrement())
+  StockID            Int?
+  CustomerID         Int?
+  ReserveDays        Int?      @default(0, map: "DF_tblMoneyAllocationSO_ReserveDays") @db.TinyInt
+  PaidPercent        Int?      @default(0, map: "DF_tblMoneyAllocationSO_PaidPercent") @db.TinyInt
+  BalancePercent     Int?      @default(0, map: "DF_tblMoneyAllocationSO_BalancePercent") @db.TinyInt
+  AssignedRatio      Int?      @default(0, map: "DF_tblMoneyAllocationSO_AssignedRatio") @db.TinyInt
+  AllocatedAmount    Int?      @default(0, map: "DF_tblMoneyAllocationSO_AllocatedAmount")
+  BalanceAmount      Int?      @default(0, map: "DF_tblMoneyAllocationSO_BalanceAmount")
+  TotalCNF           Int?      @default(0, map: "DF_tblMoneyAllocationSO_TotalCNF")
+  AfterDue           Int?      @default(0, map: "DF_tblMoneyAllocationSO_AfterDue")
+  ReleaseDate        DateTime? @db.DateTime
+  ReleaseOk          Boolean?  @default(false, map: "DF_tblMoneyAllocationSO_ReleaseOk")
+  Release            Boolean?  @default(false, map: "DF_tblMoneyAllocationSO_Release")
+  SureCheck          Boolean?  @default(false, map: "DF_tblMoneyAllocationSO_SureCheck")
+  ShipHold           Boolean?  @default(false, map: "DF_tblMoneyAllocationSO_ShipHold")
+  ConsigneeID        Int?
+  CourierID          Int?
+  CourierAddress     String?   @db.VarChar(250)
+  ShipName           String?   @db.VarChar(50)
+  VoyageNumber       String?   @db.NChar(20)
+  ETD                DateTime? @db.DateTime
+  ETA                DateTime? @db.DateTime
+  BuyingCost         Int?
+  DomesticCharge     Int?
+  ExtraTransport     Int?
+  Inspection         Int?
+  Repairs            Int?
+  Insurance          Int?
+  PortStorage        Int?
+  PhotoCharges       Int?
+  ExtraJobs          Int?
+  Vanning            Int?
+  Freight            Int?
+  CourierCharge      Int?
+  TotalCost          Int?
+  Profit             Int?
+  CreatedOn          DateTime  @default(now(), map: "DF_tblMoneyAllocationSO_CreatedOn") @db.DateTime
+  CreatedBy          Int?
+  InsertedTerminal   String?   @default("SERVER", map: "DF_tblMoneyAllocationSO_InsertedTerminal") @db.VarChar(50)
+  InsertedTerminalIP String?   @default("198.168.1.105", map: "DF_tblMoneyAllocationSO_InsertedTerminalIP") @db.VarChar(50)
+  UpdatedBy          Int?
+  UpdatedTerminal    String?   @db.VarChar(50)
+  UpdatedTerminalIP  String?   @db.VarChar(50)
+  UpdatedOn          DateTime? @db.DateTime
+  isActive           Boolean   @default(true, map: "DF_tblMoneyAllocationSO_isActive")
+}
+
+model tblRole {
+  RoleID             Int       @id(map: "PK_tblRole") @default(autoincrement())
+  RoleName           String?   @db.VarChar(50)
+  Deleted            Boolean?
+  BranchId           Int?      @db.SmallInt
+  CreatedBy          Int?
+  CreatedOn          DateTime? @default(now(), map: "DF_tblRole_CreatedOn") @db.DateTime
+  UpdatedBy          Int?
+  UpdatedOn          DateTime? @db.DateTime
+  InsertedTerminal   String?   @db.VarChar(50)
+  UpdatedTerminal    String?   @db.VarChar(50)
+  InsertedTerminalIP String?   @db.VarChar(50)
+  UpdatedTerminalIP  String?   @db.VarChar(25)
+  IsActive           Boolean   @default(true, map: "DF_tblRole_IsActive")
+}
+
+model tblSalesOrder {
+  id                 Int       @id(map: "PK_tblSalesOrder") @default(autoincrement())
+  SONumber           String?   @db.VarChar(15)
+  IsDummySO          Boolean?
+  CustomerID         Int?
+  CountryID          Int?      @db.TinyInt
+  FinalCountryID     Int?      @db.TinyInt
+  PortID             Int?      @db.TinyInt
+  BLTypeID           Int?      @db.TinyInt
+  ShipmentID         Int?      @db.TinyInt
+  CurrencyID         Int?      @db.TinyInt
+  IcoTermID          Int?      @db.TinyInt
+  Remarks            String?   @db.VarChar(150)
+  ConsigneeID        Int?
+  CourierID          Int?
+  PaymentModeID      Int?      @default(0, map: "DF_tblSalesOrder_PaymentModeID") @db.TinyInt
+  DepositRatioID     Int?      @default(0, map: "DF_tblSalesOrder_DepositRatioID") @db.TinyInt
+  BankID             Int?      @default(0, map: "DF_tblSalesOrder_BankID") @db.TinyInt
+  FreightID          Int?      @default(0, map: "DF_tblSalesOrder_FreightID") @db.TinyInt
+  NotifyParty        String?   @db.VarChar(350)
+  InsuranceCost      String?   @db.VarChar(20)
+  FreightCost        String?   @db.VarChar(20)
+  FOB                String?   @db.VarChar(20)
+  SoldPrice          String?   @db.VarChar(20)
+  SODate             DateTime? @db.DateTime
+  IsApproved         Boolean?
+  IsRejected         Boolean?  @default(false, map: "DF_tblSalesOrder_IsRejects")
+  ApprovedBy         Int?
+  ApprovedOn         DateTime? @db.DateTime
+  ApprovedTerminal   String?   @db.VarChar(50)
+  ApprovedTerminalIP String?   @db.VarChar(50)
+  IsMoneyAllocated   Boolean?
+  MoneyAllocationID  Int?
+  isActive           Boolean
+  CreatedBy          Int?
+  CreatedOn          DateTime  @default(now(), map: "DF_tblSalesOrder_CreatedOn") @db.DateTime
+  InsertedTerminal   String?   @db.VarChar(50)
+  InsertedTerminalIP String?   @db.VarChar(50)
+  UpdatedBy          Int?
+  UpdatedTerminal    String?   @db.VarChar(50)
+  UpdatedTerminalIP  String?   @db.VarChar(50)
+  UpdatedOn          DateTime? @db.DateTime
+}
+
+model tblSalesOrderDetail {
+  id        Int  @id(map: "PK_tblSalesOrderDetail") @default(autoincrement())
+  SOID      Int?
+  StockID   Int?
+  SalePrice Int?
+}
+
+model tblSteeringTypes {
+  SteeringTypeId     Int       @id(map: "PK_SteeringTypes") @default(autoincrement())
+  TypeOfSteering     String    @db.NVarChar(80)
+  Slug               String    @db.NVarChar(80)
+  isActive           Boolean
+  CreatedOn          DateTime  @db.DateTime
+  InsertedTerminal   String?   @default("SERVER", map: "DF_tblSteeringTypes_InsertedTerminal") @db.VarChar(50)
+  InsertedTerminalIP String?   @default("198.168.1.105", map: "DF_tblSteeringTypes_InsertedTerminalIP") @db.VarChar(50)
+  UpdatedBy          Int?
+  UpdatedTerminal    String?   @db.VarChar(50)
+  UpdatedTerminalIP  String?   @db.VarChar(50)
+  UpdatedOn          DateTime? @db.DateTime
+  tblCars            tblCars[]
+}
+
+model tblStockImages {
+  id                 Int       @id(map: "PK_tblStockImages") @default(autoincrement())
+  StockID            Int?
+  OrderID            Int?      @db.TinyInt
+  ImageURL           String?   @db.NVarChar(150)
+  IsActive           Boolean
+  CreatedOn          DateTime  @db.DateTime
+  CreatedBy          Int?      @db.TinyInt
+  InsertedTerminal   String?   @db.VarChar(50)
+  InsertedTerminalIP String?   @db.VarChar(50)
+  UpdatedBy          Int?      @db.TinyInt
+  UpdatedTerminal    String?   @db.VarChar(50)
+  UpdatedTerminalIP  String?   @db.VarChar(50)
+  UpdatedOn          DateTime? @db.DateTime
+}
+
+model tblTransmissions {
+  TransmissionId     Int       @id(map: "PK_Transmissions") @default(autoincrement())
+  TransmissionName   String    @db.NVarChar(Max)
+  Slug               String    @db.NVarChar(Max)
+  isActive           Boolean
+  CreatedOn          DateTime  @db.DateTime
+  InsertedTerminal   String?   @default("SERVER", map: "DF_tblTransmissions_InsertedTerminal") @db.VarChar(50)
+  InsertedTerminalIP String?   @default("198.168.1.105", map: "DF_tblTransmissions_InsertedTerminalIP") @db.VarChar(50)
+  UpdatedBy          Int?
+  UpdatedTerminal    String?   @db.VarChar(50)
+  UpdatedTerminalIP  String?   @db.VarChar(50)
+  UpdatedOn          DateTime? @db.DateTime
+  tblCars            tblCars[]
+}
+
+model tblTruckSizes {
+  TruckSizeId        Int       @id(map: "PK_TruckSizes") @default(autoincrement())
+  SizeOfTruck        String    @db.NVarChar(Max)
+  Slug               String    @db.NVarChar(Max)
+  isActive           Boolean
+  CreatedOn          DateTime  @db.DateTime
+  InsertedTerminal   String?   @default("SERVER", map: "DF_tblTruckSizes_InsertedTerminal") @db.VarChar(50)
+  InsertedTerminalIP String?   @default("198.168.1.105", map: "DF_tblTruckSizes_InsertedTerminalIP") @db.VarChar(50)
+  UpdatedBy          Int?
+  UpdatedTerminal    String?   @db.VarChar(50)
+  UpdatedTerminalIP  String?   @db.VarChar(50)
+  UpdatedOn          DateTime? @db.DateTime
+}
+
+model tblUserRoles {
+  UserRoleID        Int       @id(map: "PK_tblUserRoles") @default(autoincrement())
+  UserId            Int?
+  ChargeMasterID    Int?
+  IsActive          Boolean
+  Terminal          String?   @db.NVarChar(50)
+  UpdatedTerminal   String?   @db.NVarChar(50)
+  TerminalIP        String?   @db.NVarChar(50)
+  UpdatedTerminalIP String?   @db.NVarChar(50)
+  CreatedBy         Int?
+  CreatedOn         DateTime? @db.DateTime
+  UpdatedBy         Int?
+  UpdatedOn         DateTime? @db.DateTime
+  BranchId          Int?
+}
+
+model tblUserType {
+  UserTypeID        Int       @id(map: "PK_tblUserType") @default(autoincrement())
+  Description       String?   @db.VarChar(50)
+  IsActive          Boolean
+  CreatedBy         Int?
+  CreatedOn         DateTime? @db.DateTime
+  UpdatedBy         Int?
+  UpdatedOn         DateTime? @db.DateTime
+  Terminal          String?   @db.NVarChar(50)
+  UpdatedTerminal   String?   @db.NVarChar(50)
+  TerminalIP        String?   @db.NVarChar(50)
+  UpdatedTerminalIP String?   @db.NVarChar(50)
+  BranchId          Int?      @db.SmallInt
+}
+
+model tblVoucher {
+  VoucherID          Int       @id(map: "PK_tblVoucher") @default(autoincrement())
+  VoucherCode        String?   @db.VarChar(15)
+  VoucherTypeID      Int?
+  VoucherAmount      Decimal?  @db.Decimal(18, 2)
+  ChequeNo           String?   @db.VarChar(15)
+  ChequeDate         DateTime? @db.DateTime
+  VoucherDate        DateTime? @db.DateTime
+  Payee              String?   @db.VarChar(80)
+  NarrationMain      String?   @db.VarChar(150)
+  IsActive           Boolean   @default(true, map: "DF_tblVoucher_IsActive")
+  CreatedBy          Int?      @default(70, map: "DF_tblVoucher_CreatedBy")
+  CreatedOn          DateTime? @default(now(), map: "DF_tblVoucher_CreatedOn") @db.DateTime
+  InsertedTerminal   String?   @db.VarChar(50)
+  InsertedTerminalIP String?   @db.VarChar(50)
+  UpdatedBy          Int?
+  UpdatedOn          DateTime? @db.DateTime
+  UpdatedTerminal    String?   @db.VarChar(50)
+  UpdatedTerminalIP  String?   @db.VarChar(25)
+  BranchId           Int?      @db.SmallInt
+}
+
+model tblVoucherDetailed {
+  ID                    Int      @id(map: "PK_tblVoucherDetailed") @default(autoincrement())
+  VoucherID             Int?
+  NatureOfTransactionID Int?
+  GLCode                String?  @db.VarChar(20)
+  Amount                Decimal? @db.Decimal(18, 2)
+  ReferenceNumbers      String?  @db.VarChar(50)
+  NarrationDetail       String?  @db.VarChar(150)
+}
+
+model tblWebUsers {
+  id        Int       @id(map: "PK_tblWebUsers") @default(autoincrement())
+  Email     String?   @db.NVarChar(55)
+  Password  String?   @db.NVarChar(20)
+  Role      String?   @db.VarChar(15)
+  CreatedOn DateTime? @default(now(), map: "DF_tblWebUsers_CreatedOn") @db.DateTime
+}
