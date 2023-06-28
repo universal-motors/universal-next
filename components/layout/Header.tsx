@@ -1,5 +1,13 @@
 
-function Header() {
+import {tblBodyTypes, tblMakes, tblMasterCountry} from ".prisma/client";
+
+interface Props{
+    locations : tblMasterCountry[]
+    bodyTypes : tblBodyTypes[]
+    makes : tblMakes[]
+}
+
+async function Header({locations, bodyTypes,makes}:Props) {
 
    return (
         <>
@@ -9,11 +17,11 @@ function Header() {
                     <div className="row">
                         <div className="firstsection col-lg-4 col-md-6 col-12 text-center">
                             <div className="new">
-                                <p><img src="/assets/images/flags/uae_flag.jpg" height="15px" /> <img src="/assets/images/Clock.svg" height="20px" /> : <span id="uae-time" /></p>
+                                <p><img alt="UAE Flag" src="/assets/images/flags/uae_flag.jpg" height="15px" /> <img alt="UAE Time" src="/assets/images/Clock.svg" height="20px" /> : <span id="uae-time" /></p>
                             </div>
                         </div>
                         <div className="secondsection col-lg-4 col-md-6 col-12 text-center">
-                            <p><img src="/assets/images/flags/JP.svg" height="15px" /> <img src="/assets/images/Clock.svg" height="20px" /> : <span id="japan-time" /></p>
+                            <p><img alt="Japan Flag" src="/assets/images/flags/JP.svg" height="15px" /> <img alt="Japan Time" src="/assets/images/Clock.svg" height="20px" /> : <span id="japan-time" /></p>
                         </div>
                         <div className="col-lg-2 col-md-6 col-12 text-center">
                             <div className="currencydropdown">
@@ -33,23 +41,23 @@ function Header() {
                                 <div className="currencydropdown-content">
                                     <ul className="countdrop">
                                     {
-                                        // masterDataStore.locations
-                                        //     .filter(location=> location.isHotLocation)
-                                        //     .map(location=> (
-                                        //         <li key={location.countryId}>
-                                        //             <a href="/Cars/?id=@(obj.CountryId)&type=Country">
-                                        //                 <img
-                                        //                     src={"/assets/images/flags/"+location.slug+".svg"}
-                                        //                     className="flagimg-fluid"
-                                        //                     alt={location.slug}
-                                        //
-                                        //                 />
-                                        //                 <span>{location.countryName}</span>
-                                        //             </a>
-                                        //         </li>
-                                        //     ))
+                                        locations
+                                            .filter(location=> location.IsHotLocation)
+                                            .map(location=> (
+                                                <li key={location.CountryId}>
+                                                    <a href="/Cars/?id=@(obj.CountryId)&type=Country">
+                                                        <img
+                                                            src={"/assets/images/flags/"+location.Slug+".svg"}
+                                                            className="flagimg-fluid"
+                                                            alt={location.Slug}
+
+                                                        />
+                                                        <span>{location.CountryName}</span>
+                                                    </a>
+                                                </li>
+                                            ))
                                     }
-                                    </ul>
+                                    </ul>`
                                 </div>
                             </div>
                         </div>
@@ -168,21 +176,21 @@ function Header() {
                                                             <p><strong>Seach By Make</strong></p>
                                                             <ul className="countdrop">
                                                                 {
-                                                                    // masterDataStore.makes
-                                                                    //     .slice(0, 15) // Get the first 10 records
-                                                                    //     .map(make=> (
-                                                                    //         <li key={make.makeId}>
-                                                                    //             <a href="/Cars/?id=@(obj.CountryId)&type=Country">
-                                                                    //                 <img
-                                                                    //                     src={make.imageURL}
-                                                                    //                     className="flagimg-fluid"
-                                                                    //                     alt={make.slug}
-                                                                    //
-                                                                    //                 />
-                                                                    //                 <span> {make.makeName}</span>
-                                                                    //             </a>
-                                                                    //         </li>
-                                                                    //     ))
+                                                                    makes
+                                                                        .slice(0, 15) // Get the first 10 records
+                                                                        .map(make=> (
+                                                                            <li key={make.MakeId}>
+                                                                                <a href="/Cars/?id=@(obj.CountryId)&type=Country">
+                                                                                    <img
+                                                                                        src={make.ImageUrl}
+                                                                                        className="flagimg-fluid"
+                                                                                        alt={make.Slug}
+
+                                                                                    />
+                                                                                    <span> {make.MakeName}</span>
+                                                                                </a>
+                                                                            </li>
+                                                                        ))
                                                                 }
                                                             </ul>
                                                         </div>
@@ -190,13 +198,13 @@ function Header() {
                                                             <p><strong>Seach By Type</strong></p>
                                                             <ul className="countdrop">
                                                                 {
-                                                                    // masterDataStore.bodyTypes.map(bodytype=> (
-                                                                    //     <li key={bodytype.bodyTypeId}>
-                                                                    //         <a href="/Cars/?id=@(obj.CountryId)&type=Country">
-                                                                    //             <span>{bodytype.typeOfBody}</span>
-                                                                    //         </a>
-                                                                    //     </li>
-                                                                    // ))
+                                                                    bodyTypes.map(bodytype=> (
+                                                                        <li key={bodytype.BodyTypeId}>
+                                                                            <a href="/Cars/?id=@(obj.CountryId)&type=Country">
+                                                                                <span>{bodytype.TypeOfBody}</span>
+                                                                            </a>
+                                                                        </li>
+                                                                    ))
                                                                 }
                                                             </ul>
                                                         </div>

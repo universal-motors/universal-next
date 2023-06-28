@@ -190,23 +190,23 @@ model tblCars {
   StockId            Int               @id(map: "PK_Cars") @default(autoincrement())
   StockCode          String?           @db.VarChar(10)
   ListingTitle       String            @db.NVarChar(100)
-  ModelId            Int?
-  MakeId             Int?
-  ConditionId        Int?
-  BodyTypeId         Int?              @default(0, map: "DF_tblCars_BodyTypeId")
-  TransmissionId     Int?              @default(0, map: "DF_tblCars_TransmissionId")
-  DrivetrainId       Int?              @default(0, map: "DF_tblCars_DrivetrainId")
-  FuelTypeId         Int?
-  SteeringTypeId     Int?              @default(0, map: "DF_tblCars_SteeringTypeId")
-  ColorId            Int?              @default(0, map: "DF_tblCars_ColorId")
-  LocationId         Int?
+  ModelId            Int
+  MakeId             Int
+  ConditionId        Int
+  BodyTypeId         Int               @default(0, map: "DF_tblCars_BodyTypeId")
+  TransmissionId     Int               @default(0, map: "DF_tblCars_TransmissionId")
+  DrivetrainId       Int               @default(0, map: "DF_tblCars_DrivetrainId")
+  FuelTypeId         Int
+  SteeringTypeId     Int               @default(0, map: "DF_tblCars_SteeringTypeId")
+  ColorId            Int               @default(0, map: "DF_tblCars_ColorId")
+  LocationId         Int
   HotLocationId      Int?
   EngineSize         Int?              @default(dbgenerated(), map: "DF_tblCars_EngineSize")
-  Year               Int?              @db.SmallInt
+  Year               Int               @db.SmallInt
   NoOfDoors          String?           @default("", map: "DF_tblCars_NoOfDoors") @db.NVarChar(5)
   NoOfSeats          Int?              @default(0, map: "DF_tblCars_NoOfSeats")
   ModelCode          String?           @default("", map: "DF_tblCars_ModelCode") @db.NVarChar(25)
-  Price              Decimal?          @db.Decimal(18, 2)
+  Price              Int
   AuctionGrade       String?           @db.NVarChar(10)
   LoadingCapacity    String?           @default("", map: "DF_tblCars_LoadingCapacity") @db.NVarChar(10)
   EngineNumber       String?           @default("", map: "DF_tblCars_EngineNumber") @db.NVarChar(25)

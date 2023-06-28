@@ -1,5 +1,11 @@
+import {tblBodyTypes, tblMakes, tblMasterCountry} from ".prisma/client";
 
-function Sidebar(){
+interface Props{
+    locations : tblMasterCountry[]
+    makes : tblMakes[]
+}
+
+function Sidebar({locations, makes}:Props){
 
     return (
         <>
@@ -8,21 +14,21 @@ function Sidebar(){
                     <h5 style={{ fontSize: 18, color: "black" }}>Search By Make</h5>
                         <ul className="countdrop">
                             {
-                                // masterDataStore.makes
-                                //     .slice(0, 10) // Get the first 10 records
-                                //     .map(make=> (
-                                //         <li key={make.makeId}>
-                                //             <a href="/Cars/?id=@(obj.CountryId)&type=Country">
-                                //                 <img
-                                //                     src={make.imageURL}
-                                //                     className="flagimg-fluid"
-                                //                     alt={make.slug}
-                                //
-                                //                 />
-                                //                 <span>{make.makeName}</span>
-                                //             </a>
-                                //         </li>
-                                //     ))
+                                makes
+                                    .slice(0, 10) // Get the first 10 records
+                                    .map(make=> (
+                                        <li key={make.MakeId}>
+                                            <a href="/Cars/?id=@(obj.CountryId)&type=Country">
+                                                <img
+                                                    src={make.ImageUrl}
+                                                    className="flagimg-fluid"
+                                                    alt={make.Slug}
+
+                                                />
+                                                <span>{make.MakeName}</span>
+                                            </a>
+                                        </li>
+                                    ))
                             }
                         </ul>
                     <h5>Search By Steering</h5>
@@ -34,21 +40,21 @@ function Sidebar(){
                     <h5 style={{ fontSize: 18, color: "black" }}>Inventory Location</h5>
                         <ul className="countdrop">
                             {
-                                // masterDataStore.locations
-                                //     .filter(location=> location.isInventoryLocation)
-                                //     .map(location=> (
-                                //         <li key={location.countryId}>
-                                //             <a href="/Cars/?id=@(obj.CountryId)&type=Country">
-                                //                 <img
-                                //                     src={"/assets/images/flags/"+location.slug+".svg"}
-                                //                     className="flagimg-fluid"
-                                //                     alt={location.slug}
-                                //
-                                //                 />
-                                //                 <span>{location.countryName}</span>
-                                //             </a>
-                                //         </li>
-                                //     ))
+                                locations
+                                    .filter(location=> location.IsInventoryLocation)
+                                    .map(location=> (
+                                        <li key={location.CountryId}>
+                                            <a href="/Cars/?id=@(obj.CountryId)&type=Country">
+                                                <img
+                                                    src={"/assets/images/flags/"+location.Slug+".svg"}
+                                                    className="flagimg-fluid"
+                                                    alt={location.Slug}
+
+                                                />
+                                                <span>{location.CountryName}</span>
+                                            </a>
+                                        </li>
+                                    ))
                             }
                         </ul>
                 </div>

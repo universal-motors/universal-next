@@ -1,5 +1,12 @@
+import {tblBodyTypes, tblMakes, tblMasterCountry} from ".prisma/client";
 
-function Footer(){
+interface Props{
+    locations : tblMasterCountry[]
+    bodyTypes : tblBodyTypes[]
+    makes : tblMakes[]
+}
+
+function Footer({locations, bodyTypes,makes}:Props){
     const flagLocation = "/assets/images/flags/";
 
 
@@ -100,21 +107,21 @@ function Footer(){
                             <h4>By Make</h4>
                             <ul className="countdrop">
                                 {
-                                    // masterDataStore.makes
-                                    //     .slice(0, 10) // Get the first 10 records
-                                    //     .map(make=> (
-                                    //         <li key={make.makeId}>
-                                    //             <a href="/Cars/?id=@(obj.CountryId)&type=Country">
-                                    //                 <img
-                                    //                     src={make.imageURL}
-                                    //                     className="flagimg-fluid"
-                                    //                     alt={make.slug}
-                                    //
-                                    //                 />
-                                    //                 <span>{make.makeName}</span>
-                                    //             </a>
-                                    //         </li>
-                                    //     ))
+                                    makes
+                                        .slice(0, 10) // Get the first 10 records
+                                        .map(make=> (
+                                            <li key={make.MakeId}>
+                                                <a href="/Cars/?id=@(obj.CountryId)&type=Country">
+                                                    <img
+                                                        src={make.ImageUrl}
+                                                        className="flagimg-fluid"
+                                                        alt={make.Slug}
+
+                                                    />
+                                                    <span>{make.MakeName}</span>
+                                                </a>
+                                            </li>
+                                        ))
                                 }
                             </ul>
                         </div>
@@ -122,13 +129,13 @@ function Footer(){
                             <h4>By Type</h4>
                             <ul className="countdrop">
                                 {
-                                //     masterDataStore.bodyTypes.map(bodytype=> (
-                                //         <li key={bodytype.bodyTypeId}>
-                                //             <a href="/Cars/?id=@(obj.CountryId)&type=Country">
-                                //                <span>{bodytype.typeOfBody}</span>
-                                //             </a>
-                                //         </li>
-                                // ))
+                                    bodyTypes.map(bodytype=> (
+                                        <li key={bodytype.BodyTypeId}>
+                                            <a href="/Cars/?id=@(obj.CountryId)&type=Country">
+                                               <span>{bodytype.TypeOfBody}</span>
+                                            </a>
+                                        </li>
+                                ))
                                 }
                             </ul>
                         </div>
@@ -167,21 +174,21 @@ function Footer(){
                             <h4>By Location</h4>
                             <ul className="countdrop">
                             {
-                            //     masterDataStore.locations
-                            //         .filter(location=> location.isInventoryLocation)
-                            //         .map(location=> (
-                            //         <li key={location.countryId}>
-                            //         <a href="/Cars/?id=@(obj.CountryId)&type=Country">
-                            //             <img
-                            //                 src={flagLocation+location.slug+".svg"}
-                            //                 className="flagimg-fluid"
-                            //                 alt={location.slug}
-                            //
-                            //             />
-                            //             <span>{location.countryName}</span>
-                            //         </a>
-                            //         </li>
-                            // ))
+                                locations
+                                    .filter(location=> location.IsInventoryLocation)
+                                    .map(location=> (
+                                    <li key={location.CountryId}>
+                                    <a href="/Cars/?id=@(obj.CountryId)&type=Country">
+                                        <img
+                                            src={flagLocation+location.Slug+".svg"}
+                                            className="flagimg-fluid"
+                                            alt={location.Slug}
+
+                                        />
+                                        <span>{location.CountryName}</span>
+                                    </a>
+                                    </li>
+                            ))
                             }
 
                             </ul>
