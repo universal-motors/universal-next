@@ -1,6 +1,9 @@
+'use client'
 import Link from "next/link";
 import {tblMasterCountry} from ".prisma/client";
-import prisma from "@/utils/db";
+//import prisma from "@/utils/db";
+import {FormSelect} from "react-bootstrap";
+import {ChangeEvent, useState} from "react";
 
 interface Props{
     resultCount:number,
@@ -9,6 +12,13 @@ interface Props{
 
 export default async function SearchingCriteria({resultCount,locations}:Props){
 
+    const [sortFilter, setSortFilter] = useState("");
+    function handleSortingChange(event:ChangeEvent<HTMLSelectElement>){
+        event.preventDefault()
+        const value = event.target.value;
+        setSortFilter( value)
+        console.log(value);
+    }
 
     return(
         <>
@@ -25,17 +35,16 @@ export default async function SearchingCriteria({resultCount,locations}:Props){
                         locations.map(country=>(
                             <li key={country.CountryId} className="nav-item">
                                 <Link className="nav-link2 " data-toggle="tab" href={`/global/results?countryID=${country.CountryId}`} role="tab">
-                                    <span className="inline-flex"><img src={`/assets/images/flags/${country.Slug}.svg`} className="img-fluid mr-2" alt={country.Slug} /> {country.CountryName}</span>
+                                    <span className="inline-flex"><img src={`/assets/images/flags/${country.Slug}.svg`} className="img-fluid mr-2" alt={country.Slug??""} /> {country.CountryName}</span>
                                 </Link>
                             </li>
                         ))
                     }
-
-
-                    <div className="filt">
+                </ul>
+                   <div className="filt">
                         <p>Sort By: &nbsp;</p>
-                        <select name="sort-by" className="sort-by-select">
-                            <option>Select</option>
+                        <FormSelect name="sort-by" className="sort-by-select" onChange={handleSortingChange}  >
+                            <option value="">Select</option>
                             <option value="priceLowToHigh">Price Low to high</option>
                             <option value="priceHighToLow">Price high to low</option>
                             <option value="yearOldToNew">Year old to new</option>
@@ -46,9 +55,10 @@ export default async function SearchingCriteria({resultCount,locations}:Props){
                             <option value="engineLowToHigh">Engine low to high</option>
                             <option value="mileageHighToLow">Mileage high to low</option>
                             <option value="mileageLowToHigh">Mileage low to high</option>
-                        </select>
+                        </FormSelect>
                     </div>
-                </ul>
+
+
             </div>
 
         </>

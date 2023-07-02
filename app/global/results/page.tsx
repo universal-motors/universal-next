@@ -5,9 +5,16 @@ import prisma from "@/utils/db";
 import {tblCars, tblMasterCountry} from ".prisma/client";
 
 interface Props {
+    // searchParams: {
+    //     searchKey:"string",
+    //     type:"string",
     searchParams: {
-        searchKey:"string",
-        type:"string",
+        makeID: number,
+        countryID:number,
+        steeringID:number,
+        bodyTypeID:number,
+        price:number,
+        searchKey:string
 
     }
 }
@@ -22,7 +29,15 @@ const fetchLocations = async () => {
     return result;
 }
 
-const fetchQueryResult = async (searchParameter:{}) => {
+const fetchQueryResult = async (searchParameter:
+    {
+        makeID: number,
+        countryID:number,
+        steeringID:number,
+        bodyTypeID:number,
+        price:number,
+        searchKey:string
+    }) => {
     //const result = await prisma.$queryRaw<tblCars[]>`SELECT * FROM tblCars WHERE ListingTitle LIKE '%${searchKey}%'`;
     let result:tblCars[] = [];
 
@@ -135,17 +150,7 @@ const fetchQueryResult = async (searchParameter:{}) => {
     return result;
 }
 
-export default async function ResultPage({
-                                            searchParams,
-                                         }: {
-                                                searchParams: {
-                                                    makeID: number,
-                                                    countryID:number,
-                                                    steeringID:number,
-                                                    bodyTypeID:number,
-                                                    price:number,
-                                                    searchKey:string
-                                                }}) {
+export default async function ResultPage({searchParams}:Props) {
 
     const locations = await fetchLocations();
     const cars = await fetchQueryResult(searchParams);

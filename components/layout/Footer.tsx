@@ -1,5 +1,6 @@
 import {tblBodyTypes, tblMakes, tblMasterCountry} from ".prisma/client";
 import Link from "next/link";
+import Image from 'next/image'
 
 interface Props{
     locations : tblMasterCountry[]
@@ -19,26 +20,28 @@ function Footer({locations, bodyTypes,makes}:Props){
                         <div className="col-md-3 col-12 f1">
                             <h5>Headquarters</h5>
                             <p>
-                                <img
+                                <Image
                                     src="/assets/images/flags/AE.svg"
                                     className="img-fluid"
                                     alt="AE"
-                                    width="25px"
+                                    height={25}
+                                    width={25}
                                 />
                                 <br /> RM 405, 4th Floor Al Wahda Building Opp, Day to day Market Near
                                 City Center Deira
-                                <strong>DUBAI, UAE</strong>
+                                <strong> DUBAI, UAE</strong>
                             </p>
                             <p>
-                                <img
+                                <Image
                                     src="/assets/images/flags/JP.svg"
                                     className="img-fluid"
                                     alt="JP"
-                                    width="25px"
+                                    height={25}
+                                    width={25}
                                 />
                                 <br />
                                 7103 Kaburagi Mansion, Nishi Nakanobu, 3-2-17, Shinagawa Ku,
-                                <strong>Tokyo 142-0054, Japan </strong>
+                                <strong> Tokyo 142-0054, Japan </strong>
                             </p>
                             <br />
                             <ul style={{ listStyle: "none", padding: 0 }}>
@@ -58,7 +61,7 @@ function Footer({locations, bodyTypes,makes}:Props){
                                 <br />
                                 <li>
                                     <h6>E-mail: </h6>
-                                    <a href="%20csd@universalmotorsltd.com">
+                                    <a href="mailto:csd@universalmotorsltd.com">
                                         csd@universalmotorsltd.com
                                     </a>
                                 </li>
@@ -122,11 +125,12 @@ function Footer({locations, bodyTypes,makes}:Props){
                                                     }}
                                                 >
                                                      <span className=" inline-flex items-center rounded-md">
-                                                    <img
-                                                        src={make.ImageUrl}
-                                                        className="flagimg-fluid"
+                                                    <Image
+                                                        src={make.ImageUrl??""}
+                                                        className="flagimg-fluid ml-5"
                                                         alt={make.Slug}
-                                                        className="ml-5"
+                                                        width={16}
+                                                        height={16}
                                                     />
                                                     {make.MakeName}</span>
                                                 </Link>
@@ -238,11 +242,12 @@ function Footer({locations, bodyTypes,makes}:Props){
                                         }}>
 
                                            <span className=" inline-flex items-center rounded-md">
-                                        <img
+                                        <Image
                                             src={flagLocation+location.Slug+".svg"}
-                                            className="flagimg-fluid"
-                                            alt={location.Slug}
-                                            className="ml-5"
+                                            className="flagimg-fluid ml-5"
+                                            alt={location.Slug??""}
+                                            width={16}
+                                            height={16}
                                         />
                                         {location.CountryName}</span>
                                         </Link>
@@ -255,7 +260,8 @@ function Footer({locations, bodyTypes,makes}:Props){
                     </div>
                     <div className="copyright row">
                         <div className="col-md-3 col-3">
-                            <img src="/assets/images/um.svg" alt="logo" className="header-logo" />
+                            <Image src="/assets/images/um.svg" alt="logo" className="header-logo"   width={16}
+                                   height={16} />
                         </div>
                         <div className="col-md-6 col-9 text-center">
                             <p>
@@ -263,9 +269,10 @@ function Footer({locations, bodyTypes,makes}:Props){
                                 Motors.
                             </p>
                         </div>
-                        <div className="col-md-3 col-3 d-flex justify-content-end">
-                            <img src="/assets/images/visa.png" alt="logo" height="24px" className="px-1"/>
-                            <img src="/assets/images/mastercard.png" alt="logo" height="24px" className="px-1"/>
+                        <div className="col-md-3 col-3 d-flex justify-content-end h-7 mt-2">
+                            <Image src="/assets/images/visa.png" alt="logo" height={20}  width={50} className="px-1"/>
+                            <Image src="/assets/images/mastercard.png" alt="logo" height={20} width={50} />
+
                         </div>
                     </div>
                 </div>
