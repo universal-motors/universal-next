@@ -1,4 +1,5 @@
 import {tblBodyTypes, tblMakes, tblMasterCountry} from ".prisma/client";
+import Link from "next/link";
 
 interface Props{
     locations : tblMasterCountry[]
@@ -61,9 +62,9 @@ function Footer({locations, bodyTypes,makes}:Props){
                                         csd@universalmotorsltd.com
                                     </a>
                                 </li>
-                                <li>
+                                <li className="flex mt-2">
                                     <br />
-                                    <h6>Follow Us:</h6>
+                                    <h6 className="mr-2">Follow Us:</h6>
                                     <a href="https://www.facebook.com/Universal-Motors-LTD-101574801831062">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
@@ -111,15 +112,24 @@ function Footer({locations, bodyTypes,makes}:Props){
                                         .slice(0, 10) // Get the first 10 records
                                         .map(make=> (
                                             <li key={make.MakeId}>
-                                                <a href="/Cars/?id=@(obj.CountryId)&type=Country">
+
+                                                <Link
+                                                    href={{
+                                                        pathname : "/global/results",
+                                                        query: {
+                                                            makeID: make.MakeId
+                                                        }
+                                                    }}
+                                                >
+                                                     <span className=" inline-flex items-center rounded-md">
                                                     <img
                                                         src={make.ImageUrl}
                                                         className="flagimg-fluid"
                                                         alt={make.Slug}
-
+                                                        className="ml-5"
                                                     />
-                                                    <span>{make.MakeName}</span>
-                                                </a>
+                                                    {make.MakeName}</span>
+                                                </Link>
                                             </li>
                                         ))
                                 }
@@ -131,9 +141,16 @@ function Footer({locations, bodyTypes,makes}:Props){
                                 {
                                     bodyTypes.map(bodytype=> (
                                         <li key={bodytype.BodyTypeId}>
-                                            <a href="/Cars/?id=@(obj.CountryId)&type=Country">
-                                               <span>{bodytype.TypeOfBody}</span>
-                                            </a>
+                                               <span className=" inline-flex items-center rounded-md ml-5">
+                                          <Link    href={{
+                                              pathname : "/global/results",
+                                              query: {
+                                                  bodyTypeID: bodytype.BodyTypeId
+                                              }
+                                          }}>
+
+                                              {bodytype.TypeOfBody}
+                                            </Link></span>
                                         </li>
                                 ))
                                 }
@@ -141,33 +158,68 @@ function Footer({locations, bodyTypes,makes}:Props){
                         </div>
                         <div className="col-md-2 d-md-block d-none f1">
                             <h4>By Price</h4>
-                            <ul className="countdrop">
-                                <a href="#">
+                            <ul className="countdrop mkl-5">
+                                <Link
+                                    href={{
+                                        pathname : "/global/results",
+                                        query: {
+                                            price: 5000
+                                        }
+                                    }}
+                                >
                                     <span>Under $5000</span>
-                                </a>
-                                <a href="#">
-                                    {" "}
+                                </Link>
+                                <Link
+                                    href={{
+                                        pathname : "/global/results",
+                                        query: {
+                                            price: 10000
+                                        }
+                                    }}
+                                >
                                     <span>$5000 - $10,000</span>
-                                </a>
-                                <a href="#">
-                                    {" "}
+                                </Link>
+                                <Link
+                                    href={{
+                                        pathname : "/global/results",
+                                        query: {
+                                            price: 15000
+                                        }
+                                    }}
+                                >
                                     <span>$10,000 - $15,000</span>
-                                </a>
-                                <a href="#">
+                                </Link>
+                                <Link
+                                    href={{
+                                        pathname : "/global/results",
+                                        query: {
+                                            price: 25000
+                                        }
+                                    }}
+                                >
                                     <span>$20,000 - $25,000</span>
-                                </a>
-                                <a href="#">
-                                    {" "}
+                                </Link>
+                                <Link
+                                    href={{
+                                        pathname : "/global/results",
+                                        query: {
+                                            price: 40000
+                                        }
+                                    }}
+                                >
                                     <span>$25,000 - $40,000</span>
-                                </a>
-                                <a href="#">
-                                    {" "}
-                                    <span>$25,000 - $40,000</span>
-                                </a>
-                                <a href="#">
-                                    {" "}
+                                </Link>
+
+                                <Link
+                                    href={{
+                                        pathname : "/global/results",
+                                        query: {
+                                            price: 40001
+                                        }
+                                    }}
+                                >
                                     <span>$40,000 Over</span>
-                                </a>
+                                </Link>
                             </ul>
                         </div>
                         <div className="col-md-2 d-md-block d-none">
@@ -178,15 +230,22 @@ function Footer({locations, bodyTypes,makes}:Props){
                                     .filter(location=> location.IsInventoryLocation)
                                     .map(location=> (
                                     <li key={location.CountryId}>
-                                    <a href="/Cars/?id=@(obj.CountryId)&type=Country">
+                                        <Link href={{
+                                            pathname : "/global/results",
+                                            query: {
+                                                countryID: location.CountryId
+                                            }
+                                        }}>
+
+                                           <span className=" inline-flex items-center rounded-md">
                                         <img
                                             src={flagLocation+location.Slug+".svg"}
                                             className="flagimg-fluid"
                                             alt={location.Slug}
-
+                                            className="ml-5"
                                         />
-                                        <span>{location.CountryName}</span>
-                                    </a>
+                                        {location.CountryName}</span>
+                                        </Link>
                                     </li>
                             ))
                             }

@@ -3,6 +3,10 @@ import {Accordion, Tab, Tabs} from "react-bootstrap";
 import {tblCars} from ".prisma/client";
 import Link from "next/link";
 import {StockCars} from "@/models/StockCars";
+import classNames from "classnames";
+import {Menu, Transition} from "@headlessui/react";
+import {EllipsisHorizontalIcon} from "@heroicons/react/20/solid";
+import {Fragment} from "react";
 // import db from "@/utils/db";
 // const GetStock = async () => {
 //     return await db.tblCars.findMany({where: {IsActive:true}});
@@ -11,15 +15,16 @@ interface Props {
     stocks : StockCars[]
 }
 
+
 export default async function ListingHomePageCars ({stocks}:Props) {
   //  const stocks = await GetStock();
     return (
         <>
             <div className="row">
-
                 <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
                     <div>
-                        <h2>Most Popular in <span> @Helpers.CustomerCountry</span></h2>
+                        <h2 className="text-blue-800">Most Popular in <span> @Helpers.CustomerCountry</span></h2>
                         <div className="carsrow row py-5">
                             {
 
@@ -28,7 +33,7 @@ export default async function ListingHomePageCars ({stocks}:Props) {
                                     .sort((a, b) => b.stockId - a.stockId)
                                     .slice(0,10)
                                     .map(car=> (
-                                        <Link key={car.stockId} href={`/results/${encodeURIComponent(car.stockId)}`}>
+                                        <Link key={car.stockId} href={`/global/results/${encodeURIComponent(car.stockId)}`}>
                                             <div className="col-sm"  >
                                                 <div className="cardimage">
                                                     <img src={car.imageUrl} alt={car.slug} title={car.slug} />
@@ -56,7 +61,7 @@ export default async function ListingHomePageCars ({stocks}:Props) {
                                             .sort((a, b) => b.stockId - a.stockId)
                                             .slice(0,10)
                                             .map(car=> (
-                                                <Link key={car.stockId} href={`/results/${encodeURIComponent(car.stockId)}`}>
+                                                <Link key={car.stockId} href={`/global/results/${encodeURIComponent(car.stockId)}`}>
                                                     <div className="col-sm"  >
                                                         <div className="cardimage">
                                                             <img src={car.imageUrl} alt={car.slug} title={car.slug} />
@@ -88,7 +93,7 @@ export default async function ListingHomePageCars ({stocks}:Props) {
                                             .sort((a, b) => b.stockId - a.stockId)
                                             .slice(0,10)
                                             .map(car=> (
-                                                <Link key={car.stockId} href={`/results/${encodeURIComponent(car.stockId)}`}>
+                                                <Link key={car.stockId} href={`/global/results/${encodeURIComponent(car.stockId)}`}>
                                                     <div className="col-sm"  >
                                                         <div className="cardimage">
                                                             <img src={car.imageUrl} alt={car.slug} title={car.slug} />
@@ -393,9 +398,9 @@ export default async function ListingHomePageCars ({stocks}:Props) {
                                 <div className="cta-heading">
                                     <h3>Universal Cars Export</h3>
                                     <p>
-                                        For any queries, Call our support team at &nbsp; &nbsp; <a href="tel:+49 471 9731 9003" className="text-white"> +49 471 9731 9003</a>
+                                        For any queries, Call our support team at &nbsp; &nbsp; <Link href="tel:+49 471 9731 9003" className="text-white"> +49 471 9731 9003</Link>
                                     </p>
-                                    <h6><a href="/inquiry-form/ContactUS">Contact us</a></h6>
+                                    <h6><Link href="/inquiry-form/ContactUS">Contact us</Link></h6>
                                 </div>
                             </div>
                         </div>

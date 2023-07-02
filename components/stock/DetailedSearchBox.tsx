@@ -1,7 +1,6 @@
+'use client'
 import {ChangeEvent, FormEvent, useState} from "react";
 import {Col, Form} from "react-bootstrap";
-import {useStore} from "../stores/store.ts";
-
 
 export default function DetailedSearchBox(){
 
@@ -29,20 +28,18 @@ const initialState = {
     for (let i = currentYear-15; i <= currentYear; i++) {
         yearsList.push(i);
     }
-    const {stockStore} = useStore();
 
-const [filter, setFilter] = useState(initialState);
-
-function handleSubmit(event:FormEvent){
-    event.preventDefault()
-    console.log(filter);
-}
-
-    function handleInputChange(event:ChangeEvent<HTMLSelectElement>){
-        const {name,value} = event.target;
-        setFilter({...filter, [name]:value})
-        console.log(value);
-    }
+//
+// function handleSubmit(event:FormEvent){
+//     event.preventDefault()
+//     console.log(filter);
+// }
+//
+//     function handleInputChange(event:ChangeEvent<HTMLSelectElement>){
+//         const {name,value} = event.target;
+//         setFilter({...filter, [name]:value})
+//         console.log(value);
+//     }
 
 
     return(

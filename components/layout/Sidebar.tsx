@@ -1,4 +1,5 @@
 import {tblBodyTypes, tblMakes, tblMasterCountry} from ".prisma/client";
+import Link from "next/link";
 
 interface Props{
     locations : tblMasterCountry[]
@@ -18,23 +19,50 @@ function Sidebar({locations, makes}:Props){
                                     .slice(0, 10) // Get the first 10 records
                                     .map(make=> (
                                         <li key={make.MakeId}>
-                                            <a href="/Cars/?id=@(obj.CountryId)&type=Country">
-                                                <img
-                                                    src={make.ImageUrl}
-                                                    className="flagimg-fluid"
-                                                    alt={make.Slug}
+                                            <Link
+                                                href={{
+                                                    pathname : "/global/results",
+                                                    query: {
+                                                        makeID: make.MakeId
+                                                    }
+                                                }}
+                                            >
+                                                <span className=" inline-flex items-center rounded-md">
+                                                    <img
+                                                        src={make.ImageUrl}
+                                                        className="img-fluid mr-3"
+                                                        alt={make.Slug}
 
-                                                />
-                                                <span>{make.MakeName}</span>
-                                            </a>
+                                                    />
+                                                {make.MakeName}</span>
+                                            </Link>
                                         </li>
                                     ))
                             }
                         </ul>
                     <h5>Search By Steering</h5>
                         <ul className="countdrop">
-                            <a className="nav-link" href="1"> <img src="/assets/images/default/Right.png" className="img-fluid" alt="Right Hand" /> <span>Right Hand</span></a>
-                            <a className="nav-link" href="2"> <img src="/assets/images/default/Left.png" className="img-fluid" alt="Left Hand" /> <span>Left Hand</span></a>
+                            <Link className="nav-link"
+                                  href={{
+                                      pathname : "/global/results",
+                                      query: {
+                                          steeringID: 1
+                                      }
+                                  }}>
+                                    <span className=" inline-flex items-center rounded-md">
+                                <img src="/assets/images/default/Right.png" className="img-fluid mr-3" alt="Right Hand" />
+                                Right Hand</span>
+                            </Link>
+                            <Link className="nav-link"  href={{
+                                pathname : "/global/results",
+                                query: {
+                                    steeringID: 2
+                                }
+                            }}>
+                                <span className=" inline-flex items-center rounded-md">
+                                    <img src="/assets/images/default/Left.png" className="img-fluid mr-3" alt="Left Hand" />
+                                Left Hand</span>
+                            </Link>
 
                 </ul>
                     <h5 style={{ fontSize: 18, color: "black" }}>Inventory Location</h5>
@@ -44,15 +72,22 @@ function Sidebar({locations, makes}:Props){
                                     .filter(location=> location.IsInventoryLocation)
                                     .map(location=> (
                                         <li key={location.CountryId}>
-                                            <a href="/Cars/?id=@(obj.CountryId)&type=Country">
+                                            <Link    href={{
+                                                pathname : "/global/results",
+                                                query: {
+                                                    countryID: location.CountryId
+                                                }
+                                            }}>
+
+                                                <span className=" inline-flex items-center rounded-md">
                                                 <img
                                                     src={"/assets/images/flags/"+location.Slug+".svg"}
-                                                    className="flagimg-fluid"
+                                                    className="flag img-fluid mr-3"
                                                     alt={location.Slug}
 
                                                 />
-                                                <span>{location.CountryName}</span>
-                                            </a>
+                                                {location.CountryName}</span>
+                                            </Link>
                                         </li>
                                     ))
                             }

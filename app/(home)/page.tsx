@@ -2,199 +2,46 @@
 import ListingHomePageCars from "@/components/stock/ListingHomePageCars";
 
 import agent from "@/api/agent";
+import Link from "next/link";
+import db from "@/utils/db";
+import {Col, Form} from "react-bootstrap";
+import SimpleSearchBox from "@/components/stock/SimpleSearchBox";
 
 //import db from "@/utils/db";
 const GetStock = async () => {
   return await agent.LoadData.stockList();//db.tblCars.findMany({where: {IsActive:true}});
 }
 
+const GetBodyTypes = async () => {
+
+  return await db.tblBodyTypes.findMany({where: {isActive:true}});
+}
+const GetLocations = async () => {
+  return await db.tblMasterCountry.findMany({where: {IsActive:true}} );
+}
+
+const GetCarMakes = async () => {
+  return await db.tblMakes.findMany({where: {isActive:true}} );
+}
+
+const GetCarModels = async () => {
+  return await db.tblCarModels.findMany({where: {isActive:true}} );
+}
+
+
 
 export default async function Home() {
   const stocks = await GetStock();
+  const bodyTypes = await GetBodyTypes();
+  const locations = await GetLocations();
+  const makes = await GetCarMakes();
+  const models = await GetCarModels();
+
   return (
    <>
      <div className="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 carboxes">
 
-       <div className="formrow row">
-         <div className="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 formvariation">
-           <div className="container">
-             <div className="row">
-               <div className="col-md-2 col-sm-2 text-right vehicleicon">
-                 <span className="fa fa-car" id="caric"  />
-               </div>
-               <div className="col-md-2 col-sm-2 vehicleicon">
-                 <span className="fa fa-truck" id="truckic"  />
-               </div>
-               <div className="col-md-8 col-sm-8" />
-             </div>
-           </div>
-         </div>
-         <div className="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 p-0 formss">
-           <div className="container">
-             <div className="row">
-               {/*@if (Helpers.MasterData.CarModels != null)*/}
-
-               <div className="showcase-Box carform">
-                 <form>
-                   <div className="row">
-                     <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6">
-                       <div className="showcase-Boxselect">
-                         <label>Make:</label>
-                         <select className="custom-select">
-                           <option  value={0}>Select Make</option>
-                           {/*@foreach (var make in Helpers.MasterData.Makes)*/}
-                           {/*{'{'}*/}
-                           {/*<option slug="@make.Slug" value="@make.MakeId">@make.MakeName</option>*/}
-                           {/*{'}'}*/}
-                         </select>
-                       </div>
-                     </div>
-                     <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6">
-                       <div className="showcase-Boxselect">
-                         <label>Model:</label>
-                         <select className="custom-select">
-                           <option  value={0}>Select Model</option>
-                           {/*@foreach (var model in Helpers.MasterData.CarModels.Where(x =&gt; x.MakeId == search.MakeID))*/}
-                           {/*{'{'}*/}
-                           {/*<option slug="@model.ModelName" value="@model.ModelId">@model.ModelName</option>*/}
-                           {/*{'}'}*/}
-                         </select>
-                       </div>
-                     </div>
-                     <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6">
-                       <div className="showcase-Boxselect">
-                         <label>Body Type:</label>
-                         <select className="custom-select" >
-                           <option value={0}>Select Body Type</option>
-                           {/*{*/}
-                           {/*  masterDataStore.bodyTypes.map(bodytype=> (*/}
-                           {/*      <option  value={bodytype.bodyTypeId}> body.TypeOfBody</option>*/}
-                           {/*  ))*/}
-                           {/*}*/}
-
-                         </select>
-                       </div>
-                     </div>
-                     <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6">
-                       <div className="showcase-Boxselect">
-                         <label>Steering:</label>
-                         <select className="custom-select" >
-                           <option  value={0}>Select Steering</option>
-                           {/*@foreach (var make in Helpers.MasterData.SteeringTypes)*/}
-                           {/*{'{'}*/}
-                           {/*<option slug="@make.Slug" value="@make.SteeringTypeId">@make.TypeOfSteering</option>*/}
-                           {/*{'}'}*/}
-                         </select>
-                       </div>
-                     </div>
-                     <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6">
-                       <div className="showcase-Boxselect">
-                         <label>Manufacturing Year:</label>
-                         <div className="row">
-                           <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 pr-1">
-                             <select className="custom-select">
-                               <option  value={0}>From Year</option>
-                               {/*@for (int i = DateTime.Now.Year; i &gt; DateTime.Now.Year - 20; i--)*/}
-                               {/*{'{'}*/}
-                               {/*<option value="@i">@i</option>*/}
-                               {/*{'}'}*/}
-                             </select>
-                           </div>
-                           <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 pl-1">
-                             <select className="custom-select">
-                               <option>To Year</option>
-                               {/*@for (int i = DateTime.Now.Year; i &gt; DateTime.Now.Year - 20; i--)*/}
-                               {/*{'{'}*/}
-                               {/*<option value="@i">@i</option>*/}
-                               {/*{'}'}*/}
-                             </select>
-                           </div>
-                         </div>
-                       </div>
-                     </div>
-                     <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6">
-                       <div className="showcase-Boxbtn">
-                         <button type="submit" >Search</button>
-                       </div>
-                     </div>
-                   </div>
-                 </form>
-               </div>
-               <div className="showcase-Box truckform">
-                 <form>
-                   <div className="row">
-                     <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6">
-                       <div className="showcase-Boxselect">
-                         <label>Make:</label>
-                         <select className="custom-select">
-                           <option >Select Make</option>
-                           {/*@foreach (var make in Helpers.MasterData.Makes)*/}
-                           {/*{'{'}*/}
-                           {/*<option slug="@make.Slug" value="@make.MakeId">@make.MakeName</option>*/}
-                           {/*{'}'}*/}
-                         </select>
-                       </div>
-                     </div>
-                     <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6">
-                       <div className="showcase-Boxselect">
-                         <label>Model:</label>
-                         <select className="custom-select">
-                           <option>Select Model</option>
-                           {/*@foreach (var model in Helpers.MasterData.CarModels.Where(x =&gt; x.MakeId == search.MakeID))*/}
-                           {/*{'{'}*/}
-                           {/*<option slug="@model.ModelName" value="@model.ModelId">@model.ModelName</option>*/}
-                           {/*{'}'}*/}
-                         </select>
-                       </div>
-                     </div>
-                     <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6">
-                       <div className="showcase-Boxselect">
-                         <label>Reg. Date from</label>
-                         <select className="custom-select " name="bodytype" id="body-type-select">
-                           <option>Any</option>
-                           <option value="sedan">2022</option>
-                           <option value="coupe">2021</option>
-                           <option value="hatchback">2020</option>
-                         </select>
-                       </div>
-                     </div>
-                     <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6">
-                       <div className="showcase-Boxselect">
-                         <label>Miles to</label>
-                         <select className="custom-select " name="bodytype" id="body-type-select">
-                           <option>Any</option>
-                           <option value="sedan">10,000</option>
-                           <option value="coupe">20,000</option>
-                           <option value="hatchback">30,0000</option>
-                         </select>
-                       </div>
-                     </div>
-
-                     <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6">
-                       <div className="showcase-Boxselect">
-                         <label>Price Until:</label>
-                         <select className="custom-select " name="steering" id="steering-select">
-                           <option>Any</option>
-                           <option value="sedan">$10,000</option>
-                           <option value="coupe">$20,000</option>
-                           <option value="hatchback">430,000</option>
-                         </select>
-                       </div>
-                     </div>
-
-                     <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6">
-                       <div className="showcase-Boxbtn">
-                         <button type="submit">Search</button>
-                       </div>
-                     </div>
-                   </div>
-                 </form>
-               </div>
-
-             </div>
-           </div>
-         </div>
-       </div>
+       <SimpleSearchBox makes={makes} models={models} locations={locations} bodyTypes={bodyTypes}/>
 
        <ListingHomePageCars stocks={stocks} />
 
@@ -205,25 +52,58 @@ export default async function Home() {
        <div className="showcase-Make rightsidebar">
          <h5 className="pt-3"><b>UM in Your Country</b></h5>
          <ul className="countdrop">
-           <a className="mt-0" href="/import-protocols-in-bahamas" >
-             <img src="/assets/images/flags/BS.svg" height="15px" alt="Bahamas flag" />
-             <span>Bahamas</span>
-           </a>
-           <a href="/import-protocols-in-chile" > <img src="/assets/images/flags/CL.svg" height="15px" alt="Chile flag" /> <span>Chile</span></a>
-           <a className="nav-link" href="/import-protocols-in-dr-congo" ><img src="/assets/images/flags/CD.svg" height="15px" alt="Congo flag" /> <span>Dr Congo</span></a>
-           <a href="/import-protocols-in-guyana" ><img src="/assets/images/flags/GY.svg" height="15px" alt="Guyana flag" /> <span>Guyana</span></a>
-           <a href="/import-protocols-in-jamaica" > <img src="/assets/images/flags/JM.svg" height="15px" alt="Jamaica flag" /> <span>Jamaica</span></a>
-           <a href="/import-protocols-in-kenya" > <img src="/assets/images/flags/KE.svg" height="15px" alt="Kenya flag" /> <span>Kenya</span></a>
-           <a href="/import-protocols-in-malawi" ><img src="/assets/images/flags/MW.svg" height="15px" alt="Malawi flag" /><span> Malawi</span></a>
-           <a href="/import-protocols-in-pakistan" ><img src="/assets/images/flags/PK.svg" height="15px" alt="Pakistan flag" /> <span>Pakistan</span></a>
-           <a href="/import-protocols-in-paraguay" > <img src="/assets/images/flags/PY.svg" height="15px" alt="Paraguay flag" /> <span>Paraguay</span></a>
-           <a href="/import-protocols-in-russia" ><img src="/assets/images/flags/RU.svg" height="15px" alt="Russia flag" /> <span>Russia</span></a>
-           <a href="/import-protocols-in-south-All"><img src="/assets/images/flags/SS.svg" height="15px" alt="Sudan flag" /> <span>South Sudan</span></a>
-           <a href="/import-protocols-in-tanzania" > <img src="/assets/images/flags/TZ.svg" height="15px" alt="Tanzania flag" /> <span>Tanzania</span></a>
-           <a href="/import-protocols-in-uganda" > <img src="/assets/images/flags/UG.svg" height="15px" alt="Uganda flag" /><span> Uganda</span></a>
-           <a href="/import-protocols-in-zambia" > <img src="/assets/images/flags/ZM.svg" height="15px" alt="Zambia flag" /> <span>Zambia</span></a>
-           <a href="/import-protocols-in-zimbabwe" > <img src="/assets/images/flags/ZW.svg" height="15px" alt="Zimbabwe flag" /> <span>Zimbabwe</span></a>
-           <a href="/import-protocols-in-ghana" > <img src="/assets/images/flags/gh.svg" height="15px" alt="Ghana flag" /> <span>Ghana</span></a>
+           <Link className="mt-0" href="/import-protocols-in-bahamas" >
+             <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
+             <img src="/assets/images/flags/BS.svg"   className="img-fluid mr-3" height="15px" alt="Bahamas flag" />
+             Bahamas</span>
+           </Link>
+           <Link href="/import-protocols-in-chile" >
+                 <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
+             <img src="/assets/images/flags/CL.svg"  className="img-fluid mr-3" height="15px" alt="Chile flag" />
+            Chile</span>
+           </Link>
+           <Link className="nav-link" href="/import-protocols-in-dr-congo" >
+                 <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
+             <img src="/assets/images/flags/CD.svg" className="img-fluid mr-3" height="15px" alt="Congo flag" />Dr Congo</span></Link>
+           <Link href="/import-protocols-in-guyana" >
+                 <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
+             <img src="/assets/images/flags/GY.svg"  className="img-fluid mr-3" height="15px" alt="Guyana flag" /> Guyana</span></Link>
+           <Link href="/import-protocols-in-jamaica" >
+                 <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
+             <img src="/assets/images/flags/JM.svg"  className="img-fluid mr-3" height="15px" alt="Jamaica flag" /> Jamaica</span></Link>
+           <Link href="/import-protocols-in-kenya" >
+                 <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
+             <img src="/assets/images/flags/KE.svg"  className="img-fluid mr-3" height="15px" alt="Kenya flag" /> Kenya</span></Link>
+           <Link href="/import-protocols-in-malawi" >
+                 <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
+             <img src="/assets/images/flags/MW.svg"  className="img-fluid mr-3" height="15px" alt="Malawi flag" /> Malawi</span></Link>
+           <Link href="/import-protocols-in-pakistan" >
+                 <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
+             <img src="/assets/images/flags/PK.svg"  className="img-fluid mr-3" height="15px" alt="Pakistan flag" /> Pakistan</span></Link>
+           <Link href="/import-protocols-in-paraguay" >
+                 <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
+             <img src="/assets/images/flags/PY.svg"  className="img-fluid mr-3" height="15px" alt="Paraguay flag" /> Paraguay</span></Link>
+           <Link href="/import-protocols-in-russia" >
+                 <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
+             <img src="/assets/images/flags/RU.svg"  className="img-fluid mr-3" height="15px" alt="Russia flag" /> Russia</span></Link>
+           <Link href="/import-protocols-in-south-All">
+                 <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
+             <img src="/assets/images/flags/SS.svg"  className="img-fluid mr-3" height="15px" alt="Sudan flag" /> South Sudan</span></Link>
+           <Link href="/import-protocols-in-tanzania" >
+                 <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
+             <img src="/assets/images/flags/TZ.svg"  className="img-fluid mr-3" height="15px" alt="Tanzania flag" /> Tanzania</span></Link>
+           <Link href="/import-protocols-in-uganda" >
+                 <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
+             <img src="/assets/images/flags/UG.svg"  className="img-fluid mr-3" height="15px" alt="Uganda flag" /> Uganda</span></Link>
+           <Link href="/import-protocols-in-zambia" >
+                 <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
+             <img src="/assets/images/flags/ZM.svg"  className="img-fluid mr-3" height="15px" alt="Zambia flag" /> Zambia</span></Link>
+           <Link href="/import-protocols-in-zimbabwe" >
+                 <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
+             <img src="/assets/images/flags/ZW.svg"  className="img-fluid mr-3" height="15px" alt="Zimbabwe flag" /> Zimbabwe</span></Link>
+           <Link href="/import-protocols-in-ghana" >
+                 <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
+             <img src="/assets/images/flags/gh.svg"  className="img-fluid mr-3" height="15px" alt="Ghana flag" /> Ghana</span></Link>
          </ul>
        </div>
        <div className="followme py-3">

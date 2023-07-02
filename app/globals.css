@@ -1,8 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri&display=swap');
 body {
   font-family: 'Hind Siliguri', sans-serif;
-  background-color: #337AB7;
 }
 
 
@@ -1271,7 +1273,7 @@ ul.nav.nav-tabs a.nav-link.active, ul.nav.nav-tabs a.nav-link:hover {
 }
 
 .cardcontent {
-  padding: 10px;
+  padding: 5px;
 }
 
 p.modelno, p.car-price {
@@ -1433,6 +1435,8 @@ h1.mobicar.carname {
     padding-top: 10px !important;
     padding-bottom: 10px !important;
     margin-bottom: 30px;
+    --bs-gutter-x:0rem !important;
+    transition: transform .3s ease-in-out;
   }
 
   .formrow.row {

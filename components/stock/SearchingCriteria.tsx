@@ -1,23 +1,37 @@
-export default function SearchingCriteria(){
+import Link from "next/link";
+import {tblMasterCountry} from ".prisma/client";
+import prisma from "@/utils/db";
+
+interface Props{
+    resultCount:number,
+    locations:tblMasterCountry[]
+}
+
+export default async function SearchingCriteria({resultCount,locations}:Props){
+
+
     return(
         <>
             <div className="results">
-                <h4>Search Page Result  - <span>@Cars.Count()</span> Matches Found</h4>
+                <h4>Search Page Result  - <span>{resultCount}</span> Matches Found</h4>
                 <h5>
                     View vehicles <strong>shipping from</strong>:
                 </h5>
-                <ul className="nav nav-tab mt-5" role="tablist">
+                <ul className="nav nav-tab mt-2" role="tablist">
                     <li className="nav-item all">
-                        <a className="nav-link2 active" data-toggle="tab" href="#tabs-all" role="tab">ALL</a>
+                        <Link className="nav-link2 active" data-toggle="tab" href="#tabs-all" role="tab">ALL</Link>
                     </li>
-                    @foreach (var loc in Helpers.MasterData.Locations.Where(x =&gt; x is {'{'} IsInventoryLocation: true {'}'}))
-                    {'{'}
-                    <li className="nav-item">
-                        <a className="nav-link2 " data-toggle="tab" href="/Cars/@loc.CountryId/Country" role="tab">
-                            <img src="images/flags/@(loc.Slug).svg" className="img-fluid" alt="@loc.Slug" /> <span>@loc.CountryName</span>
-                        </a>
-                    </li>
-                    {'}'}
+                    {
+                        locations.map(country=>(
+                            <li key={country.CountryId} className="nav-item">
+                                <Link className="nav-link2 " data-toggle="tab" href={`/global/results?countryID=${country.CountryId}`} role="tab">
+                                    <span className="inline-flex"><img src={`/assets/images/flags/${country.Slug}.svg`} className="img-fluid mr-2" alt={country.Slug} /> {country.CountryName}</span>
+                                </Link>
+                            </li>
+                        ))
+                    }
+
+
                     <div className="filt">
                         <p>Sort By: &nbsp;</p>
                         <select name="sort-by" className="sort-by-select">
