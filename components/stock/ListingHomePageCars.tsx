@@ -24,7 +24,7 @@ export default async function ListingHomePageCars ({stocks}:Props) {
                 <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
                     <div>
-                        <h2 className="text-blue-800">Most Popular in <span> @Helpers.CustomerCountry</span></h2>
+                        <h2 className="text-blue-800">Most Popular in <span>your Country</span></h2>
                         <div className="carsrow row py-5">
                             {
 
