@@ -3,6 +3,7 @@ import Header from "@/components/layout/Header";
 import Sidebar from "@/components/layout/Sidebar";
 import Footer from "@/components/layout/Footer";
 import db from "@/utils/db";
+import {ClerkProvider} from "@clerk/nextjs";
 
 export const metadata = {
   title: 'Universal Motors - Japanese Used Cars For Sale. Shipping Globally! ',
@@ -32,6 +33,7 @@ export default async function RootLayout({
   return (
 
       <body>
+      <ClerkProvider>
       <Header bodyTypes={bodyTypes} locations={locations} makes={makes}/>
         <section className="sidebar-menu">
           <div className="container-fluid">
@@ -42,7 +44,7 @@ export default async function RootLayout({
           </div>
         </section>
       <Footer bodyTypes={bodyTypes} locations={locations} makes={makes}/>
-
+      </ClerkProvider>
       </body>
 
   )

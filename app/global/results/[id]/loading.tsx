@@ -16,7 +16,7 @@ export default function Loading(){
                             <div id="productslider" className="carousel slide">
                                 <div className="row">
 
-                                    <div className="col-lg-12 items-center">
+                                    <div className="fixed inset-0 flex items-center justify-center">
                                         <img src="/assets/images/animatedcarloading.gif" width="200px"/>
 
                                         <hr/>

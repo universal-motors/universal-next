@@ -5,6 +5,7 @@ import Link from "next/link";
 import SearchBar from "@/components/stock/SearchBar";
 import {FcBusinessman, FcCurrencyExchange, FcCustomerSupport, FcGlobe, FcLike, FcOnlineSupport} from "react-icons/fc";
 import TopCountryTimeBar from "@/components/layout/TopCountryTimeBar";
+import LoginModal from "@/components/LoginModal";
 
 interface Props{
     locations : tblMasterCountry[]
@@ -17,7 +18,7 @@ const currentYear = new Date().getFullYear()
 
 async function Header({locations, bodyTypes,makes}:Props) {
 
-   return (
+      return (
         <>
          <header className="headerbg">
                 <div className="container-fluid">
@@ -142,17 +143,17 @@ async function Header({locations, bodyTypes,makes}:Props) {
                                             <button className="currencydropbtn supportbtn">
                                                 Hello, Sign in<br />My Account
                                             </button>
+
                                             <div className="currencydropdown-content regiscontent">
                                                 <div className="row">
                                                     <div className="col-md-12">
                                                         <p className="m-0" style={{fontSize: '14px'}}><strong>My Account</strong></p>
-                                                        <button className="regisbtn" style={{fontSize: '14px'}}>SIGN IN</button>
+                                                       {/*<LoginModal/>*/}
                                                         <div className="regisfooter">
                                                             <p style={{fontSize: '14px'}} className="m-0">New Customer?</p>
                                                             <p>
                                                                 <Link className="p-0 m-0" href="#" style={{color: 'blue', fontSize: '14px'}}>
-                                                                    <span>&nbsp;</span>Sign
-                                                                    Up
+                                                                    <span>&nbsp;</span>Sign Up
                                                                 </Link>
                                                             </p>
                                                         </div>
