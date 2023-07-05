@@ -1,7 +1,7 @@
 'use client';
 import {Col, Form} from "react-bootstrap";
 import {tblBodyTypes, tblCarModels, tblMakes, tblMasterCountry} from ".prisma/client";
-import {ChangeEvent, FormEvent, useState} from "react";
+import {ChangeEvent, FormEvent, useEffect, useState} from "react";
 
 interface Props{
     bodyTypes: tblBodyTypes[],
@@ -14,20 +14,20 @@ const initialState = {
     modelId: 0,
     makeId: 0,
     bodyTypeId:0,
-    conditionId:0,
+   // conditionId:0,
     steeringTypeId:0,
-    drivetrainId:0,
+    //drivetrainId:0,
     fromYear:0,
     toYear: 0,
-    minPrice:0,
-    maxPrice:0,
-    minMileage:0,
-    maxMileage:0,
-    minEngineSize: 0,
-    maxEngineSize: 0,
-    fuelTypeId:0,
-    transmissionId:0,
-    colorId:0
+    // minPrice:0,
+    // maxPrice:0,
+    // minMileage:0,
+    // maxMileage:0,
+    // minEngineSize: 0,
+    // maxEngineSize: 0,
+    // fuelTypeId:0,
+    // transmissionId:0,
+    // colorId:0
 }
 
 const currentYear = new Date().getFullYear()
@@ -36,6 +36,15 @@ const currentYear = new Date().getFullYear()
 export default function SimpleSearchBox({bodyTypes,locations,makes, models}:Props){
 
     const [filter, setFilter] = useState(initialState);
+    const [makeId, setMakeId] = useState(0);
+    const [modelId, setModelId] = useState(0);
+    const [bodyTypeId, setBodyTypeId] = useState(0);
+    const [fromYear, setFromYear] = useState(0);
+    const [toYear, setToYear] = useState(0);
+    const [steeringTypeId, setSteeringTypeId] = useState(1);
+    const [url, setUrl] = useState('/search?');
+    const queryParams = [];
+    
     const yearsList = [];
     for (let i = currentYear-15; i <= currentYear; i++) {
         yearsList.push(i);
@@ -43,14 +52,74 @@ export default function SimpleSearchBox({bodyTypes,locations,makes, models}:Prop
 
     function handleSubmit(event:FormEvent){
     event.preventDefault()
-    console.log(filter);
-}
+
+    }
+
 
     function handleInputChange(event:ChangeEvent<HTMLSelectElement>){
-        const {name,value} = event.target;
-        setFilter({...filter, [name]:value})
-        console.log(value);
+        const fieldName = event.target.name;
+        const fieldValue = parseInt(event.target.value);
+
+
+        switch (fieldName) {
+            case 'makeId':
+                setMakeId(fieldValue);
+                if (makeId !== 0) {
+                    queryParams.push(`makeId=${makeId}`);
+                    const queryString = queryParams.join('&');
+                    setUrl( `/search?${queryString}`);
+                }
+                break;
+            case 'modelId':
+                setModelId(fieldValue);
+                if (modelId !== 0) {
+                    queryParams.push(`modelId=${modelId}`)
+                    const queryString = queryParams.join('&');
+                    setUrl( `/search?${queryString}`);
+                }
+                break;
+            case 'bodyTypeId':
+                setBodyTypeId(fieldValue);
+                if (bodyTypeId != 0) {
+                    queryParams.push(`bodyTypeId=${bodyTypeId}`);
+                    const queryString = queryParams.join('&');
+                    setUrl( `/search?${queryString}`);
+                }
+                break;
+            case 'steeringTypeId':
+                setSteeringTypeId(fieldValue);
+                if (steeringTypeId != 0) {
+                    queryParams.push(`steeringTypeId=${steeringTypeId}`);
+                    const queryString = queryParams.join('&');
+                    setUrl( `/search?${queryString}`);
+                }
+                break;
+            case 'fromYear':
+                setFromYear(fieldValue);
+                console.log(fromYear)
+                if (fromYear != 0) {
+                    queryParams.push(`fromYear=${fromYear}`);
+                    const queryString = queryParams.join('&');
+                    setUrl( `/search?${queryString}`);
+                }
+                break;
+            case 'toYear':
+                setToYear(fieldValue);
+                console.log(toYear)
+                if (toYear != 0) {
+                    queryParams.push(`toYear=${toYear}`);
+                    const queryString = queryParams.join('&');
+                    setUrl( `/search?${queryString}`);
+                }
+                break;
+            default:
+                break;
+        }
+
+
+        console.log(url);
     }
+
 
     return(
         <>

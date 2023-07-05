@@ -1,45 +1,139 @@
 'use client'
-import {ChangeEvent, FormEvent, useState} from "react";
+import {ChangeEvent, FormEvent, useEffect, useState} from "react";
 import {Col, Form} from "react-bootstrap";
+import {useRouter} from "next/navigation";
+
 
 export default function DetailedSearchBox(){
 
-const initialState = {
-    modelId: 0,
-    makeId: 0,
-    bodyTypeId:0,
-    conditionId:0,
-    steeringTypeId:0,
-    drivetrainId:0,
-    fromYear:0,
-    toYear: 0,
-    minPrice:0,
-    maxPrice:0,
-    minMileage:0,
-    maxMileage:0,
-    minEngineSize: 0,
-    maxEngineSize: 0,
-    fuelTypeId:0,
-    transmissionId:0,
-    colorId:0
-}
     const currentYear = new Date().getFullYear()
     const yearsList = [];
     for (let i = currentYear-15; i <= currentYear; i++) {
         yearsList.push(i);
     }
 
-//
-// function handleSubmit(event:FormEvent){
-//     event.preventDefault()
-//     console.log(filter);
-// }
-//
-//     function handleInputChange(event:ChangeEvent<HTMLSelectElement>){
-//         const {name,value} = event.target;
-//         setFilter({...filter, [name]:value})
-//         console.log(value);
-//     }
+    const router = useRouter();
+    const [makeId, setMakeId] = useState(0);
+    const [modelId, setModelId] = useState(0);
+    const [bodyTypeId, setBodyTypeId] = useState(0);
+    const [conditionId, setConditionId] = useState(2);
+    const [steeringTypeId, setSteeringTypeId] = useState(1);
+    const [drivetrainId, setDrivetrainId] = useState(0);
+    const [colorId, setColorId] = useState(0);
+    const [transmissionId, setTransmissionId] = useState(0);
+    const [fuelTypeId, setFuelTypeId] = useState(0);
+    const [fromYear, setFromYear] = useState(0);
+    const [toYear, setToYear] = useState(0);
+    const [minMileage, setMinMileage] = useState(0);
+    const [maxMileage, setMaxMileage] = useState(0);
+    const [minPrice, setMinPrice] = useState(0);
+    const [maxPrice, setMaxPrice] = useState(0);
+    const [minEngineSize, setMinEngineSize] = useState(0);
+    const [maxEngineSize, setMaxEngineSize] = useState(0);
+
+    // Function to generate the URL query string based on the non-zero state values
+    const generateQueryString = () => {
+        const queryParams = [];
+
+        // Add parameters to the query string only if their state values are non-zero
+        if (makeId !== 0) {
+            queryParams.push(`makeId=${makeId}`);
+        }
+
+        if (modelId !== 0) {
+            queryParams.push(`modelId=${modelId}`);
+        }
+
+        if (colorId !== 0) {
+            queryParams.push(`colorId=${colorId}`);
+        }
+
+        if (bodyTypeId !== 0) {
+            queryParams.push(`bodyTypeId=${bodyTypeId}`);
+        }
+
+        if (conditionId !== 0) {
+            queryParams.push(`conditionId=${conditionId}`);
+        }
+
+        if (steeringTypeId !== 0) {
+            queryParams.push(`steeringTypeId=${steeringTypeId}`);
+        }
+
+        if (drivetrainId !== 0) {
+            queryParams.push(`drivetrainId=${drivetrainId}`);
+        }
+
+        if (transmissionId !== 0) {
+            queryParams.push(`transmissionId=${transmissionId}`);
+        }
+
+        if (fuelTypeId !== 0) {
+            queryParams.push(`fuelTypeId=${fuelTypeId}`);
+        }
+
+        if (fromYear !== 0) {
+            queryParams.push(`fromYear=${fromYear}`);
+        }
+
+        if (toYear !== 0) {
+            queryParams.push(`toYear=${toYear}`);
+        }
+
+        if (minMileage !== 0) {
+            queryParams.push(`minMileage=${minMileage}`);
+        }
+
+        if (maxMileage !== 0) {
+            queryParams.push(`maxMileage=${maxMileage}`);
+        }
+
+
+        if (minPrice !== 0) {
+            queryParams.push(`minPrice=${minPrice}`);
+        }
+
+
+        if (maxPrice !== 0) {
+            queryParams.push(`maxPrice=${maxPrice}`);
+        }
+
+
+        if (minEngineSize !== 0) {
+            queryParams.push(`minEngineSize=${minEngineSize}`);
+        }
+
+
+        if (maxEngineSize !== 0) {
+            queryParams.push(`maxEngineSize=${maxEngineSize}`);
+        }
+
+        // Join the query parameters using '&' and return the final query string
+        return queryParams.join('&');
+    };
+
+    // Watch for changes in the state values and update the URL when necessary
+    useEffect(() => {
+        // Generate the URL query string
+        const queryString = generateQueryString();
+
+        // Construct the full URL with the query string
+        const url = `/search?${queryString}`;
+
+        // Update the URL using router.push()
+        router.push(url);
+    }, [makeId, modelId, colorId] )//* Add more
+
+    function handleSubmit(event:FormEvent){
+        event.preventDefault()
+        console.log(filter);
+    }
+
+    function handleInputChange(event:ChangeEvent<HTMLSelectElement>){
+        const {name,value} = event.target;
+        setFilter({...filter, [name]:value})
+        console.log(value);
+    }
 
 
     return(

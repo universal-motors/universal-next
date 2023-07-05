@@ -96,6 +96,7 @@ async function Header({locations, bodyTypes,makes}:Props) {
                                         <div className="currencydropdown">
                                             <button className="currencydropbtn supportbtn">
                                                 Support<br />+49 471 9731 9003
+
                                             </button>
                                             <div className="currencydropdown-content supportcontent">
                                                 <div className="row bg-white">
@@ -103,6 +104,8 @@ async function Header({locations, bodyTypes,makes}:Props) {
                                                         <p className="m-0" style={{fontSize: '12px'}}><strong>Call Us</strong></p>
                                                         <p className="m-0" style={{fontSize: '12px'}}>Call our award-winning sales &amp; support team</p>
                                                         <i className="fa fa-phone mb-1" style={{fontSize: '12px'}}>+49 471 9731 9003</i>
+                                                        <i className="fa fa-phone mb-1" style={{fontSize: '12px'}}>+81 50 5050 8550</i>
+
                                                         <p className="m-0" style={{fontSize: '12px'}}><strong>Email</strong></p>
                                                         <p>
                                                             <Link className="p-0" href="mailto:info@universalmotorsltd.com" style={{color: 'blue', fontSize: '12px'}}>info@universalmotorsltd.com</Link>
@@ -174,9 +177,9 @@ async function Header({locations, bodyTypes,makes}:Props) {
                         </div>
                     </div>
                 </div>
-                <Navigation/>
-                <div className="container-fluid">
 
+                <div className="container-fluid">
+                    <Navigation/>
 
 </div>
 </section>

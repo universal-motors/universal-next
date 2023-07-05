@@ -31,7 +31,6 @@ const GetCarModels = async () => {
 }
 
 
-
 export default async function Home() {
   const stocks = await GetStock();
   const bodyTypes = await GetBodyTypes();

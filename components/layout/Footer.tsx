@@ -50,6 +50,8 @@ function Footer({locations, bodyTypes,makes}:Props){
                                     <a href="tel:+49 471 9731 9003">+49 471 9731 9003</a>
                                     <br />
                                     <a href="tel:+971 52 796 7035">+971 52 796 7035</a>
+                                    <br />
+                                    <a href="tel:+81 50 5050 8550">+81 50 5050 8550</a>
                                 </li>
                                 <br />
                                 <li>

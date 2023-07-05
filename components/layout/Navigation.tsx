@@ -132,7 +132,7 @@ export default function Navigation(){
                                                                 </Menu.Item>
                                                                 <Menu.Item>
                                                                     {({ active }) => (
-                                                                        <Link href="/how-to-buy" className={classNames(
+                                                                        <Link href="/global/about-universal-motors?page=sustainability-fundamental-policy" className={classNames(
                                                                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                             'block px-4 py-2 text-sm'
                                                                         )} ><span>Sustainability Fundamental Policy</span></Link>
@@ -142,7 +142,7 @@ export default function Navigation(){
                                                             <div className="py-1">
                                                                 <Menu.Item>
                                                                     {({ active }) => (
-                                                                        <Link href="/bank-information" className={classNames(
+                                                                        <Link href="/global/about-universal-motors?page=company-profile" className={classNames(
                                                                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                             'block px-4 py-2 text-sm'
                                                                         )} ><span>Company Profile</span></Link>
@@ -150,7 +150,7 @@ export default function Navigation(){
                                                                 </Menu.Item>
                                                                 <Menu.Item>
                                                                     {({ active }) => (
-                                                                        <Link href="/export-information" className={classNames(
+                                                                        <Link href="/global/about-universal-motors?page=global-offices" className={classNames(
                                                                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                             'block px-4 py-2 text-sm'
                                                                         )} ><span>Global Offices</span></Link>
@@ -160,7 +160,7 @@ export default function Navigation(){
                                                             <div className="py-1">
                                                                 <Menu.Item>
                                                                     {({ active }) => (
-                                                                        <Link href="/vehicle-shipment-condition" className={classNames(
+                                                                        <Link href="/global/about-universal-motors?page=terms-of-service" className={classNames(
                                                                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                             'block px-4 py-2 text-sm'
                                                                         )} ><span>Terms of Services</span></Link>
@@ -168,7 +168,7 @@ export default function Navigation(){
                                                                 </Menu.Item>
                                                                 <Menu.Item>
                                                                     {({ active }) => (
-                                                                        <Link href="/export-import-services" className={classNames(
+                                                                        <Link href="/global/about-universal-motors?page=privacy-policy" className={classNames(
                                                                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                             'block px-4 py-2 text-sm'
                                                                         )} ><span>Privacy Policy</span></Link>
@@ -176,7 +176,7 @@ export default function Navigation(){
                                                                 </Menu.Item>
                                                                 <Menu.Item>
                                                                     {({ active }) => (
-                                                                        <Link href="/export-import-services" className={classNames(
+                                                                        <Link href="/global/about-universal-motors?page=security-export-control" className={classNames(
                                                                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                             'block px-4 py-2 text-sm'
                                                                         )} ><span>Security Export Control</span></Link>
@@ -184,7 +184,7 @@ export default function Navigation(){
                                                                 </Menu.Item>
                                                                 <Menu.Item>
                                                                     {({ active }) => (
-                                                                        <Link href="/export-import-services" className={classNames(
+                                                                        <Link href="/global/about-universal-motors?page=policy-against-anti-social" className={classNames(
                                                                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                             'block px-4 py-2 text-sm'
                                                                         )} ><span>Basic Policy Against Anti-Social Forces</span></Link>
@@ -192,7 +192,7 @@ export default function Navigation(){
                                                                 </Menu.Item>
                                                                 <Menu.Item>
                                                                     {({ active }) => (
-                                                                        <Link href="/export-import-services" className={classNames(
+                                                                        <Link href="/global/about-universal-motors?page=disclaimer-policy" className={classNames(
                                                                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                             'block px-4 py-2 text-sm'
                                                                         )} ><span>Disclaimer Policy</span></Link>
@@ -483,21 +483,21 @@ export default function Navigation(){
            {/*                                             <img src="/assets/images/flags/BS.svg" alt="Bahamas flag" height={15} />*/}
            {/*                                             <span>Bahamas</span>*/}
            {/*                                         </Link>*/}
-                                                    <Link href="/import-protocols-in-chile" className="inline-block py-2 px-4 no-underline" ><img src="/assets/images/flags/CL.svg" alt="Chile flag" height={15} /> <span>Chile</span></Link>
-                                                    <Link className="inline-block py-2 px-4 no-underline" href="/import-protocols-in-dr-congo"><img src="/assets/images/flags/CD.svg" alt="Congo flag" height={15} /> <span>Dr Congo</span></Link>
-                                                    <Link href="/import-protocols-in-guyana" className="inline-block py-2 px-4 no-underline" ><img src="/assets/images/flags/GY.svg" alt="Guyana flag" height={15} /> <span>Guyana</span></Link>
-                                                    <Link href="/import-protocols-in-jamaica" className="inline-block py-2 px-4 no-underline" ><img src="/assets/images/flags/JM.svg" alt="Jamaica flag" height={15} /> <span>Jamaica</span></Link>
-                                                    <Link href="/import-protocols-in-kenya" className="inline-block py-2 px-4 no-underline" ><img src="/assets/images/flags/KE.svg" alt="Kenya flag" height={15} /> <span>Kenya</span></Link>
-                                                    <Link href="/import-protocols-in-malawi" className="inline-block py-2 px-4 no-underline" ><img src="/assets/images/flags/MW.svg" alt="Malawi flag" height={15} /><span> Malawi</span></Link>
-                                                    <Link href="/import-protocols-in-pakistan" className="inline-block py-2 px-4 no-underline" ><img src="/assets/images/flags/PK.svg" alt="Pakistan flag" height={15} /> <span>Pakistan</span></Link>
-                                                    <Link href="/import-protocols-in-paraguay" className="inline-block py-2 px-4 no-underline" ><img src="/assets/images/flags/PY.svg" alt="Paraguay flag" height={15} /> <span>Paraguay</span></Link>
-                                                    <Link href="/import-protocols-in-russia" className="inline-block py-2 px-4 no-underline" ><img src="/assets/images/flags/RU.svg" alt="Russia flag" height={15} /> <span>Russia</span></Link>
-                                                    <Link href="/import-protocols-in-south-sudan" className="inline-block py-2 px-4 no-underline" ><img src="/assets/images/flags/SS.svg" alt="Sudan flag" height={15} /> <span>South Sudan</span></Link>
-                                                    <Link href="/import-protocols-in-tanzania" className="inline-block py-2 px-4 no-underline" ><img src="/assets/images/flags/TZ.svg" alt="Tanzania flag" height={15} /> <span>Tanzania</span></Link>
-                                                    <Link href="/import-protocols-in-uganda" className="inline-block py-2 px-4 no-underline" ><img src="/assets/images/flags/UG.svg" alt="Uganda flag" height={15} /><span> Uganda</span></Link>
-                                                    <Link href="/import-protocols-in-zambia" className="inline-block py-2 px-4 no-underline" ><img src="/assets/images/flags/ZM.svg" alt="Zambia flag" height={15} /> <span>Zambia</span></Link>
-                                                    <Link href="/import-protocols-in-zimbabwe" className="inline-block py-2 px-4 no-underline" ><img src="/assets/images/flags/ZW.svg" alt="Zimbabwe flag" height={15} /> <span>Zimbabwe</span></Link>
-                                                    <Link href="/import-protocols-in-ghana" className="inline-block py-2 px-4 no-underline" ><img src="/assets/images/flags/gh.svg" alt="Ghana flag" height={15} /> <span>Ghana</span></Link>
+           {/*                                         <Link href="/import-protocols-in-chile" className="inline-block py-2 px-4 no-underline" ><img src="/assets/images/flags/CL.svg" alt="Chile flag" height={15} /> <span>Chile</span></Link>*/}
+           {/*                                         <Link className="inline-block py-2 px-4 no-underline" href="/import-protocols-in-dr-congo"><img src="/assets/images/flags/CD.svg" alt="Congo flag" height={15} /> <span>Dr Congo</span></Link>*/}
+           {/*                                         <Link href="/import-protocols-in-guyana" className="inline-block py-2 px-4 no-underline" ><img src="/assets/images/flags/GY.svg" alt="Guyana flag" height={15} /> <span>Guyana</span></Link>*/}
+           {/*                                         <Link href="/import-protocols-in-jamaica" className="inline-block py-2 px-4 no-underline" ><img src="/assets/images/flags/JM.svg" alt="Jamaica flag" height={15} /> <span>Jamaica</span></Link>*/}
+           {/*                                         <Link href="/import-protocols-in-kenya" className="inline-block py-2 px-4 no-underline" ><img src="/assets/images/flags/KE.svg" alt="Kenya flag" height={15} /> <span>Kenya</span></Link>*/}
+           {/*                                         <Link href="/import-protocols-in-malawi" className="inline-block py-2 px-4 no-underline" ><img src="/assets/images/flags/MW.svg" alt="Malawi flag" height={15} /><span> Malawi</span></Link>*/}
+           {/*                                         <Link href="/import-protocols-in-pakistan" className="inline-block py-2 px-4 no-underline" ><img src="/assets/images/flags/PK.svg" alt="Pakistan flag" height={15} /> <span>Pakistan</span></Link>*/}
+           {/*                                         <Link href="/import-protocols-in-paraguay" className="inline-block py-2 px-4 no-underline" ><img src="/assets/images/flags/PY.svg" alt="Paraguay flag" height={15} /> <span>Paraguay</span></Link>*/}
+           {/*                                         <Link href="/import-protocols-in-russia" className="inline-block py-2 px-4 no-underline" ><img src="/assets/images/flags/RU.svg" alt="Russia flag" height={15} /> <span>Russia</span></Link>*/}
+           {/*                                         <Link href="/import-protocols-in-south-sudan" className="inline-block py-2 px-4 no-underline" ><img src="/assets/images/flags/SS.svg" alt="Sudan flag" height={15} /> <span>South Sudan</span></Link>*/}
+           {/*                                         <Link href="/import-protocols-in-tanzania" className="inline-block py-2 px-4 no-underline" ><img src="/assets/images/flags/TZ.svg" alt="Tanzania flag" height={15} /> <span>Tanzania</span></Link>*/}
+           {/*                                         <Link href="/import-protocols-in-uganda" className="inline-block py-2 px-4 no-underline" ><img src="/assets/images/flags/UG.svg" alt="Uganda flag" height={15} /><span> Uganda</span></Link>*/}
+           {/*                                         <Link href="/import-protocols-in-zambia" className="inline-block py-2 px-4 no-underline" ><img src="/assets/images/flags/ZM.svg" alt="Zambia flag" height={15} /> <span>Zambia</span></Link>*/}
+           {/*                                         <Link href="/import-protocols-in-zimbabwe" className="inline-block py-2 px-4 no-underline" ><img src="/assets/images/flags/ZW.svg" alt="Zimbabwe flag" height={15} /> <span>Zimbabwe</span></Link>*/}
+           {/*                                         <Link href="/import-protocols-in-ghana" className="inline-block py-2 px-4 no-underline" ><img src="/assets/images/flags/gh.svg" alt="Ghana flag" height={15} /> <span>Ghana</span></Link>*/}
            {/*                                     </div>*/}
            {/*                                 </div>*/}
            {/*                             </div>*/}
