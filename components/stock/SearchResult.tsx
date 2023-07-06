@@ -4,10 +4,18 @@ import Image from 'next/image'
 import {tblCars, tblMasterCountry} from ".prisma/client";
 import LikeComponent from "@/components/stock/LikeComponent";
 import PriceFormat from "@/components/stock/PriceFormat";
-import StockPopupDetails from "@/components/stock/StockPopupDetails";
+
 import {useState} from "react";
+import {StockCars} from "@/models/StockCars";
+import {FaGasPump} from "react-icons/fa";
+import {PiEngineFill, PiGearFineBold, PiSteeringWheelDuotone} from "react-icons/pi";
+import {GiCarDoor} from "react-icons/gi";
+import {AiOutlineBarcode} from "react-icons/ai";
+import {BiSolidColorFill} from "react-icons/bi";
+import {MdAirlineSeatReclineExtra} from "react-icons/md";
 interface Props{
-    cars: tblCars[]
+//    cars: tblCars[]
+    cars: StockCars[]
     locations: tblMasterCountry[]
 }
 
@@ -15,99 +23,134 @@ export default function SearchResult({cars,locations}:Props){
     const isOpen=false;
     return(
         <>
+
+
             {
+
                 cars.map(car=>(
-                    <div key={car.StockId} className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div key={car.stockId} className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div className="row my-5">
                             <div className="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-5">
                                 <div className="searched-carimage">
-                                    <Link href={`/global/results/${car.StockId}`}>
-                                        <Image src={car.ImageUrl??""} className="mb-4" alt=""  height={150}
+                                    <Link href={`/global/results/${car.stockId}`}>
+                                        <Image src={car.imageUrl??""} className="mb-4" alt=""  height={150}
                                                width={150} /></Link>
                                     {/*<p>In Stock</p>*/}
-                                    <h4 className="ml-5">STOCK ID : <span className="inline-flex items-center gap-x-1.5 rounded-full bg-yellow-400 px-2 py-1 text-l font-medium text-blue-950">{car.StockCode}</span></h4>
+                                    <h4 className="ml-5">STOCK ID : <span className="inline-flex items-center gap-x-1.5 rounded-full bg-yellow-400 px-2 py-1 text-l font-medium text-blue-950">{car.stockCode}</span></h4>
                                     {/*<h5 className="inline-flex font-bold fav-text">Auction grade: <span>{car.AuctionGrade}</span></h5>*/}
                                 </div>
                             </div>
+
                             <div className="col-xl-6 col-lg-6 col-md-6 d-md-block d-none">
                                 <div className="car-details">
                                     <div className="row">
                                         <div className="col-lg-6 col-md-6 col-sm-6">
-                                            <Link href={`/global/results/${car.StockId}`}><h6 className="listname font-bold uppercase">{car.ListingTitle}</h6></Link>
+                                            <Link href={`/global/results/${car.stockId}`}><h6 className="listname font-bold uppercase">{car.listingTitle}</h6></Link>
                                         </div>
                                         <div className="col-lg-6 col-md-6 col-sm-6">
                                             <div className="car-country">
                                                 <h6 className="text-right">
                                                     <span className="font-bold inline-flex">
                                                         <Image
-                                                            src={`/assets/images/flags/${locations.find(x=>x.CountryId==car.LocationId)?.Slug}.svg`}
+                                                            src={`/assets/images/flags/${locations.find(x=>x.CountryId==car.locationId)?.Slug}.svg`}
                                                             className="img-fluid mr-2"
                                                             height={20}
                                                             width={20}
-                                                            alt={`${locations.find(x=>x.CountryId==car.LocationId)?.CountryName} flag`} />
-                                                        {locations.find(x=>x.CountryId==car.LocationId)?.CountryName}
+                                                            alt={`${car.locationName} flag`} />
+                                                        {car.locationName}
                                                     </span>
                                                 </h6>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="tabrow row pt-2">
-                                        <div className="col-md-5 rcolumn">
-                                            <div className="row">
-                                                <div className="col-6">
-                                                    <h6>{car.Mileage}</h6>
-                                                    <p>Mileage</p>
-                                                </div>
-                                                <div className="col-6">
-                                                    <h6>{car.EngineSize} CC</h6>
-                                                    <p>Engine</p>
-                                                </div>
-                                                <div className="col-6">
-                                                    <h6>{car.TransmissionId}</h6>
-                                                    <p>Transmission</p>
-                                                </div>
-                                                <div className="col-6">
-                                                    <h6>{car.Year}</h6>
-                                                    <p>Year</p>
-                                                </div>
+                                        <div className="row specsrow ">
+                                            <div className="col-sm specs">
+                                                <h4>Mileage</h4>
+                                                <span className="label-text  p-1  flex items-center rounded-md ml-5">
+                                                     <img decoding="async" src="/assets/images/kmsDriven.svg" loading="eager"className="h-6 mr-2"/>
+                                                    {car.mileage}
+                                                 </span>
                                             </div>
-                                        </div>
-                                        <div className="col-md-7 scolumn">
-                                            <div className="row">
-                                                <div className="col-3">
-                                                    <h6>Fuel</h6>
-                                                    <p>@obj.TypeOfFuel</p>
-                                                </div>
-                                                <div className="col-3">
-                                                    <h6>Steering</h6>
-                                                    <p>@obj.TypeOfSteering</p>
-                                                </div>
-                                                <div className="col-3">
-                                                    <h6>Drivetrain</h6>
-                                                    <p>@obj.DrivetrainType</p>
-                                                </div>
-                                                <div className="col-3">
-                                                    <h6>Doors</h6>
-                                                    <p>{car.NoOfDoors}</p>
-                                                </div>
-                                                <div className="col-3">
-                                                    <h6>Seats</h6>
-                                                    <p>{car.NoOfSeats}</p>
-                                                </div>
-                                                <div className="col-3">
-                                                    <h6>Color</h6>
-                                                    <p>@obj.ColorName</p>
-                                                </div>
-                                                <div className="col-3">
-                                                    <h6>Model Code</h6>
-                                                    <p>{car.ModelCode}</p>
-                                                </div>
-                                                <div className="col-3">
-                                                    <h6>Engine Number</h6>
-                                                    <p>{car.EngineNumber}</p>
-                                                </div>
+                                            <div className="col-sm specs">
+                                                <h4>YEAR</h4>
+                                                <span className="label-text  p-1  flex items-center rounded-md ml-5">
+                                                    <img decoding="async" src="/assets/images/registrationYear.svg" loading="eager" className="h-6 mr-2"/>
+                                                    {car.year} </span>
                                             </div>
+                                            <div className="col-sm specs">
+                                                <h4>Engine</h4>
+                                                <span className="label-text  p-1 flex items-center rounded-md ml-5">
+                                                     {/*<img decoding="async" src="/assets/images/engineDisplacement.svg" loading="eager"className="h-6 mr-2"/>*/}
+                                                    <span className="h-6 mr-2"><PiEngineFill /></span>
+                                                    {car.engineSize}</span>
+                                            </div>
+                                            <div className="col-sm specs">
+                                                <h4>Transmision</h4>
+                                                <span className="label-text  p-1 flex items-center rounded-md ml-5">
+                                                    <img decoding="async" src="/assets/images/transmission.svg" loading="eager"className="h-6"/>
+                                                    {car.transmissionName} </span>
+                                            </div>
+                                            {/*<div className="col-sm specs">*/}
+                                            {/*    <h4>Country</h4>*/}
+                                            {/*    <span className="label-text p-1 flex items-center rounded-md ml-5">*/}
+                                            {/*    /!*<img decoding="async" src={`/assets/images/flags/${location.slug}.svg`} loading="eager"className="h-4 mr-2"/>*!/*/}
+                                            {/*        {car.locationName} </span>*/}
+                                            {/*</div>*/}
+                                            <div className="col-sm specs">
+                                                <h4>Fuel</h4>
+                                                <span className="label-text  p-1 flex items-center rounded-md ml-5">
+                                                    <span className="h-6 mr-2"><FaGasPump /></span>
+                                                    {car.typeOfFuel}
+                                                 </span>
+                                            </div>
+
                                         </div>
+                                        <div className="row specsrow ">
+
+                                            <div className="col-sm specs">
+                                                <h4>Drivetrain</h4>
+                                                <span className="label-text  p-1 flex items-center rounded-md ml-5">
+                                                      <span className="h-6 mr-2"><PiGearFineBold /></span>
+                                                    {car.drivetrainType}
+                                                 </span>
+                                            </div>
+                                            <div className="col-sm specs">
+                                                <h4>Doors</h4>
+                                                <span className="label-text  p-1 flex items-center rounded-md ml-5">
+                                                  <span className="h-6 mr-2"><GiCarDoor /></span>
+                                                    {car.noOfDoors}</span>
+                                            </div>
+                                            <div className="col-sm specs">
+                                                <h4>Seats</h4>
+                                                <span className="label-text  p-1 flex items-center rounded-md ml-5">
+                                                     <span className="h-6 mr-2"><MdAirlineSeatReclineExtra /></span>
+                                                    {car.noOfSeats} </span>
+                                            </div>
+                                            <div className="col-sm specs">
+                                                <h4>Color</h4>
+                                                <span className="label-text  p-1 flex items-center rounded-md ml-5">
+                                                  <span className="h-6 mr-2"><BiSolidColorFill /></span>
+                                                    {car.colorName}</span>
+
+                                            </div>
+                                            <div className="col-sm specs">
+                                                <h4>Model Code</h4>
+                                                <span className="label-text p-1 flex items-center rounded-md ml-5">
+                                                  {/*<span className="h-6 mr-2"><AiOutlineBarcode /></span>*/}
+                                                    {car.modelCode}</span>
+
+                                            </div>
+                                            {/*<div className="col-sm specs">*/}
+                                            {/*    <h4>Engine Number</h4>*/}
+                                            {/*    <span className="label-text  p-1 flex items-center rounded-md ml-5">*/}
+                                            {/*      /!*<span className="h-6 mr-2"><PiEngineFill /></span>*!/*/}
+                                            {/*        {car.engineNumber}</span>*/}
+
+                                            {/*</div>*/}
+                                        </div>
+
+
                                     </div>
                                     <div className="carlistfeatures row pt-2">
                                         <div className="col-md-8 flist">
@@ -136,12 +179,12 @@ export default function SearchResult({cars,locations}:Props){
                             </div>
                             <div className="col-xl-3 col-lg-3 col-md-3 col-sm-8 col-7">
                                 <div className="car-inquiry">
-                                    {/*<Link href={`/global/results/${car.StockId}`}><h6 className="listname">{car.ListingTitle}</h6></Link>*/}
+                                    {/*<Link href={`/global/results/${car.stockId}`}><h6 className="listname">{car.ListingTitle}</h6></Link>*/}
                                     <div className="fprice">
                                         <h6 className="font-bold">
                                             FOB Price:
                                             <span className="mb-5 text-[20px] ">
-                                                <PriceFormat carPrice={car.Price} />
+                                                <PriceFormat carPrice={car.price} />
                                             </span>
                                         </h6>
                                     </div>
@@ -176,7 +219,7 @@ export default function SearchResult({cars,locations}:Props){
                                     </div>
                                     <h4 />
 
-                                    <Link href={`/global/results/${car.StockId}`}>
+                                    <Link href={`/global/results/${car.stockId}`}>
                                         <button className="offerbtn">
                                         <span className="font-bold">    Send Offer</span>
                                         </button>

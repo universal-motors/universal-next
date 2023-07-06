@@ -39,7 +39,7 @@ export default function StockSpecification({car, location}:Props){
                 <div className="col-sm specs">
                     <h4>Country</h4>
                     <span className="label-text  flex items-center rounded-md ml-5">
-                    <img decoding="async" src={`/assets/images/flags/${location.slug}.svg`} loading="eager"className="h-4 mr-2"/>
+                    <img decoding="async" src={`/assets/images/flags/${location?.slug}.svg`} loading="eager"className="h-4 mr-2"/>
 
                        {car.locationName} </span>
 

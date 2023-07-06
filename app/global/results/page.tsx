@@ -3,6 +3,8 @@ import SearchingCriteria from "@/components/stock/SearchingCriteria";
 import SearchResult from "@/components/stock/SearchResult";
 import prisma from "@/utils/db";
 import {tblCars, tblMasterCountry} from ".prisma/client";
+import {StockCars} from "@/models/StockCars";
+import agent from "@/api/agent";
 
 interface Props {
     // searchParams: {
@@ -18,7 +20,6 @@ interface Props {
 
     }
 }
-
 const fetchLocations = async () => {
     const result:tblMasterCountry[] = await prisma.tblMasterCountry.findMany({
         where: {
@@ -37,114 +38,63 @@ const fetchQueryResult = async (searchParameter:
         bodyTypeID:number,
         price:number,
         searchKey:string
-    }) => {
-    //const result = await prisma.$queryRaw<tblCars[]>`SELECT * FROM tblCars WHERE ListingTitle LIKE '%${searchKey}%'`;
-    let result:tblCars[] = [];
+    }, carList:StockCars[]) => {
 
+    //let result:tblCars[] = [];
+    let result:StockCars[] = [];
     if (searchParameter.countryID!= undefined){
 
-        result = await prisma.tblCars.findMany({
-            where: {
-                LocationId :  parseInt(searchParameter.countryID)
-            },
-        })
+        result = carList.filter(x=> x.locationId == searchParameter.countryID)
     }
+
     else if (searchParameter.steeringID!= undefined){
 
-        result = await prisma.tblCars.findMany({
-            where: {
-                MakeId :  parseInt(searchParameter.steeringID)
-            },
-        })
+        result = carList.filter(x=> x.steeringTypeId == searchParameter.steeringID)
     }
     else if (searchParameter.bodyTypeID!= undefined){
 
-        result = await prisma.tblCars.findMany({
-            where: {
-                BodyTypeId :  parseInt(searchParameter.bodyTypeID)
-            },
-        })
+        result = carList.filter(x=> x.bodyTypeId == searchParameter.bodyTypeID)
     }
-    else if (searchParameter.price!= undefined){
-        if (searchParameter.price == 5000){
-            result = await prisma.tblCars.findMany({
-                where: {
-                    AND: [
-                        { Price: { gte: 0 } },  // Greater than or equal to 0
-                        { Price: { lte: 5000 } } // Less than or equal to 400
-                    ]
-                },
-            })
-        }
-        else if (searchParameter.price == 10000){
-            result = await prisma.tblCars.findMany({
-                where: {
-                    AND: [
-                        { Price: { gte: 5001 } },  // Greater than or equal to 0
-                        { Price: { lte: 10000 } } // Less than or equal to 400
-                    ]
-                },
-            })
-        }
-        else if (searchParameter.price == 15000){
-            result = await prisma.tblCars.findMany({
-                where: {
-                    AND: [
-                        { Price: { gte: 10001 } },  // Greater than or equal to 0
-                        { Price: { lte: 15000 } } // Less than or equal to 400
-                    ]
-                },
-            })
-        }
-        else if (searchParameter.price == 25000){
-            result = await prisma.tblCars.findMany({
-                where: {
-                    AND: [
-                        { Price: { gte: 15001 } },  // Greater than or equal to 0
-                        { Price: { lte: 25000 } } // Less than or equal to 400
-                    ]
-                },
-            })
-        }
-        else if (searchParameter.price == 40000){
-            result = await prisma.tblCars.findMany({
-                where: {
-                    AND: [
-                        { Price: { gte: 25001 } },  // Greater than or equal to 0
-                        { Price: { lte: 40000 } } // Less than or equal to 400
-                    ]
-                },
-            })
-        }
-        else if (searchParameter.price == 40001){
-            result = await prisma.tblCars.findMany({
-                where: {
-                    Price :   { gte: 40001 }
-                },
-                // orderBy: {
-                //     Price: 'desc',
-                // },
-            })
-        }
+    else if (searchParameter.price!= undefined) {
+        if (searchParameter.price == 5000) {
 
+            result = carList.filter(car => car.price >= 0 && car.price <= 5000)
 
+        } else if (searchParameter.price == 10000) {
+
+            result = carList.filter(car => car.price >= 5001 && car.price <= 10000)
+        } else if (searchParameter.price == 15000) {
+
+            result = carList.filter(car => car.price >= 10001 && car.price <= 15000)
+
+        } else if (searchParameter.price == 25000) {
+
+            result = carList.filter(car => car.price >= 15001 && car.price <= 25000)
+
+        } else if (searchParameter.price == 40000) {
+
+            result = carList.filter(car => car.price >= 25001 && car.price <= 40000)
+
+        } else if (searchParameter.price == 40001) {
+
+            result = carList.filter(car => car.price >= 40001)
+
+        }
     }
     else if (searchParameter.makeID!= undefined){
 
-        result = await prisma.tblCars.findMany({
-            where: {
-                MakeId :  parseInt(searchParameter.makeID)
-            },
-        })
+        result = carList.filter(car => car.makeId == searchParameter.makeID)
     }
     else{
-        result = await prisma.tblCars.findMany({
-            where: {
-                ListingTitle : {
-                    contains: searchParameter.searchKey
-                },
-            },
-        })
+        const arrayResult = carList.filter(car => car.listingTitle.toLowerCase().includes(searchParameter.searchKey.toLowerCase()));
+        arrayResult.push(...carList.filter(car => car.modelCode.toLowerCase().includes(searchParameter.searchKey.toLowerCase())),
+            ...carList.filter(car => car.stockCode.toLowerCase().includes(searchParameter.searchKey.toLowerCase()))
+        )
+
+        result= arrayResult.filter((obj, index, self) =>
+            index === self.findIndex(item => item.stockId === obj.stockId)
+        );
+
     }
 
     return result;
@@ -152,8 +102,10 @@ const fetchQueryResult = async (searchParameter:
 
 export default async function ResultPage({searchParams}:Props) {
 
+    const result:StockCars[] = await agent.LoadData.stockList()
+
     const locations = await fetchLocations();
-    const cars = await fetchQueryResult(searchParams);
+    const cars = await fetchQueryResult(searchParams, result);
 
   return (
 
