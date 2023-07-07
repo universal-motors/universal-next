@@ -2,6 +2,8 @@
 import {Col, Form} from "react-bootstrap";
 import {tblBodyTypes, tblCarModels, tblMakes, tblMasterCountry} from ".prisma/client";
 import {ChangeEvent, FormEvent, useEffect, useState} from "react";
+import {SearchSelect, SearchSelectItem, Select, SelectItem} from "@tremor/react";
+import {useRouter} from "next/navigation";
 
 interface Props{
     bodyTypes: tblBodyTypes[],
@@ -36,89 +38,134 @@ const currentYear = new Date().getFullYear()
 export default function SimpleSearchBox({bodyTypes,locations,makes, models}:Props){
 
     const [filter, setFilter] = useState(initialState);
-    const [makeId, setMakeId] = useState(0);
-    const [modelId, setModelId] = useState(0);
-    const [bodyTypeId, setBodyTypeId] = useState(0);
-    const [fromYear, setFromYear] = useState(0);
-    const [toYear, setToYear] = useState(0);
-    const [steeringTypeId, setSteeringTypeId] = useState(1);
+    const [makeId, setMakeId] = useState("0");
+    const [modelId, setModelId] = useState("0");
+    const [bodyTypeId, setBodyTypeId] = useState("0");
+    const [fromYear, setFromYear] = useState("0");
+    const [toYear, setToYear] = useState("0");
+    const [steeringTypeId, setSteeringTypeId] = useState("0");
     const [url, setUrl] = useState('/search?');
-    const queryParams = [];
-    
+    const queryParams:string[] = [];
+    const router = useRouter();
     const yearsList = [];
     for (let i = currentYear-15; i <= currentYear; i++) {
         yearsList.push(i);
     }
 
     function handleSubmit(event:FormEvent){
-    event.preventDefault()
+        event.preventDefault()
+        console.log(makeId,"MakeID, ", modelId, "ModelID, ", bodyTypeId, "BodyTypeID")
 
+        const params = new URLSearchParams();
+        if (makeId !== "0") params.set("makeID", makeId)
+        if (modelId !== "0") params.set("makeID", makeId)
+        if (bodyTypeId != "0") params.set("bodyTypeID", makeId)
+        if (steeringTypeId != "0") params.set("steeringID", makeId)
+        if (fromYear != "0") params.set("makeID", makeId)
+        if (toYear != "0") params.set("makeID", makeId)
+
+                    // if (makeId !== "0") {
+        //     queryParams.push(`makeId=${makeId}`);
+        //     const queryString = queryParams.join('&');
+        //     setUrl( `/search?${queryString}`);
+        // }
+        // if (modelId !== "0") {
+        //     queryParams.push(`modelId=${modelId}`)
+        //     const queryString = queryParams.join('&');
+        //     setUrl( `/search?${queryString}`);
+        // }
+        // if (bodyTypeId != "0") {
+        //     queryParams.push(`bodyTypeId=${bodyTypeId}`);
+        //     const queryString = queryParams.join('&');
+        //     setUrl( `/search?${queryString}`);
+        // }
+        // if (steeringTypeId != "0") {
+        //     queryParams.push(`steeringTypeId=${steeringTypeId}`);
+        //     const queryString = queryParams.join('&');
+        //     setUrl( `/search?${queryString}`);
+        // }
+        // if (fromYear != "0") {
+        //     queryParams.push(`fromYear=${fromYear}`);
+        //     const queryString = queryParams.join('&');
+        //     setUrl( `/search?${queryString}`);
+        // }
+        // if (toYear != "0") {
+        //     queryParams.push(`toYear=${toYear}`);
+        //     const queryString = queryParams.join('&');
+        //     setUrl( `/search?${queryString}`);
+        // }
+
+        // if (url!= "/search?"){
+        //     console.log(url);
+        // }
+        console.log(params)
+        router.push(`/global/results?${params.toString()}`)
     }
 
 
-    function handleInputChange(event:ChangeEvent<HTMLSelectElement>){
-        const fieldName = event.target.name;
-        const fieldValue = parseInt(event.target.value);
-
-
-        switch (fieldName) {
-            case 'makeId':
-                setMakeId(fieldValue);
-                if (makeId !== 0) {
-                    queryParams.push(`makeId=${makeId}`);
-                    const queryString = queryParams.join('&');
-                    setUrl( `/search?${queryString}`);
-                }
-                break;
-            case 'modelId':
-                setModelId(fieldValue);
-                if (modelId !== 0) {
-                    queryParams.push(`modelId=${modelId}`)
-                    const queryString = queryParams.join('&');
-                    setUrl( `/search?${queryString}`);
-                }
-                break;
-            case 'bodyTypeId':
-                setBodyTypeId(fieldValue);
-                if (bodyTypeId != 0) {
-                    queryParams.push(`bodyTypeId=${bodyTypeId}`);
-                    const queryString = queryParams.join('&');
-                    setUrl( `/search?${queryString}`);
-                }
-                break;
-            case 'steeringTypeId':
-                setSteeringTypeId(fieldValue);
-                if (steeringTypeId != 0) {
-                    queryParams.push(`steeringTypeId=${steeringTypeId}`);
-                    const queryString = queryParams.join('&');
-                    setUrl( `/search?${queryString}`);
-                }
-                break;
-            case 'fromYear':
-                setFromYear(fieldValue);
-                console.log(fromYear)
-                if (fromYear != 0) {
-                    queryParams.push(`fromYear=${fromYear}`);
-                    const queryString = queryParams.join('&');
-                    setUrl( `/search?${queryString}`);
-                }
-                break;
-            case 'toYear':
-                setToYear(fieldValue);
-                console.log(toYear)
-                if (toYear != 0) {
-                    queryParams.push(`toYear=${toYear}`);
-                    const queryString = queryParams.join('&');
-                    setUrl( `/search?${queryString}`);
-                }
-                break;
-            default:
-                break;
-        }
-
-
-        console.log(url);
-    }
+    // function handleInputChange(event:ChangeEvent<HTMLSelectElement>){
+    //     const fieldName = event.target.name;
+    //     const fieldValue = parseInt(event.target.value);
+    //
+    //
+    //     switch (fieldName) {
+    //         case 'makeId':
+    //             setMakeId(fieldValue);
+    //             if (makeId !== 0) {
+    //                 queryParams.push(`makeId=${makeId}`);
+    //                 const queryString = queryParams.join('&');
+    //                 setUrl( `/search?${queryString}`);
+    //             }
+    //             break;
+    //         case 'modelId':
+    //             setModelId(fieldValue);
+    //             if (modelId !== 0) {
+    //                 queryParams.push(`modelId=${modelId}`)
+    //                 const queryString = queryParams.join('&');
+    //                 setUrl( `/search?${queryString}`);
+    //             }
+    //             break;
+    //         case 'bodyTypeId':
+    //             setBodyTypeId(fieldValue);
+    //             if (bodyTypeId != 0) {
+    //                 queryParams.push(`bodyTypeId=${bodyTypeId}`);
+    //                 const queryString = queryParams.join('&');
+    //                 setUrl( `/search?${queryString}`);
+    //             }
+    //             break;
+    //         case 'steeringTypeId':
+    //             setSteeringTypeId(fieldValue);
+    //             if (steeringTypeId != 0) {
+    //                 queryParams.push(`steeringTypeId=${steeringTypeId}`);
+    //                 const queryString = queryParams.join('&');
+    //                 setUrl( `/search?${queryString}`);
+    //             }
+    //             break;
+    //         case 'fromYear':
+    //             setFromYear(fieldValue);
+    //             console.log(fromYear)
+    //             if (fromYear != 0) {
+    //                 queryParams.push(`fromYear=${fromYear}`);
+    //                 const queryString = queryParams.join('&');
+    //                 setUrl( `/search?${queryString}`);
+    //             }
+    //             break;
+    //         case 'toYear':
+    //             setToYear(fieldValue);
+    //             console.log(toYear)
+    //             if (toYear != 0) {
+    //                 queryParams.push(`toYear=${toYear}`);
+    //                 const queryString = queryParams.join('&');
+    //                 setUrl( `/search?${queryString}`);
+    //             }
+    //             break;
+    //         default:
+    //             break;
+    //     }
+    //
+    //
+    //     console.log(url);
+    // }
 
 
     return(
@@ -147,85 +194,85 @@ export default function SimpleSearchBox({bodyTypes,locations,makes, models}:Prop
                                     <div className="row">
                                         <div className="col-lg-4 col-md-6 col-sm-6 col-6">
                                             <label>Make: </label>
-                                            <Form.Group as={Col} controlId="formGridMakeID">
-                                                <Form.Select onChange={handleInputChange}  name='makeId'>
-                                                    <option value={0}>Select Make</option>
-                                                    {
-                                                        makes.map(make=> (
-                                                            <option key={make.MakeId} value={make.MakeId}>{make.MakeName}</option>
-                                                        ))
-                                                    }
-                                                </Form.Select>
-                                            </Form.Group>
+                                            <SearchSelect value={makeId} onValueChange={setMakeId}>
+                                            {
+                                                makes.map(make=> (
+                                                    <SearchSelectItem key={make.MakeId} value={make.MakeId.toString()} >
+                                                        {make.MakeName}
+                                                    </SearchSelectItem>
+                                                ))
+                                            }
+                                            </SearchSelect>
                                         </div>
 
                                         <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6">
                                             <label>Model:</label>
-                                            <Form.Group as={Col} controlId="formGridModelID">
-                                                <Form.Select onChange={handleInputChange}  name='modelId'>
-                                                    <option value={0}>Select Model</option>
-                                                    {
-                                                        models.map(model=> (
-                                                            <option key={model.ModelId} value={model.ModelId}>{model.ModelName}</option>
-                                                        ))
-                                                    }
-                                                </Form.Select>
-                                            </Form.Group>
+                                            <SearchSelect value={modelId} onValueChange={setModelId}>
+                                                {
+                                                    models.map(model=> (
+                                                        <SearchSelectItem key={model.ModelId} value={model.ModelId.toString()} >
+                                                            {model.ModelName}
+                                                        </SearchSelectItem>
+                                                    ))
+                                                }
+                                            </SearchSelect>
+
                                         </div>
                                         <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6">
                                             <label>Body Type: </label>
-                                            <Form.Group as={Col} controlId="formGridBodyType">
-                                                <Form.Select onChange={handleInputChange}   name='bodyTypeId'>
-                                                    <option value={0}>Select Body Type</option>
-                                                    {
-                                                        bodyTypes.map(bodytype=> (
-                                                            <option key={bodytype.BodyTypeId} value={bodytype.BodyTypeId}>{bodytype.TypeOfBody}</option>
-                                                        ))
-                                                    }
-                                                </Form.Select>
-                                            </Form.Group>
+                                            <SearchSelect value={bodyTypeId} onValueChange={setBodyTypeId}>
+                                                {/*<SelectItem key={0} value={"0"} >*/}
+                                                {/*  Select Body Type*/}
+                                                {/*</SelectItem>*/}
+                                                {
+                                                    bodyTypes.map(bodytype=> (
+                                                        <SearchSelectItem key={bodytype.BodyTypeId} value={bodytype.BodyTypeId.toString()} >
+                                                            {bodytype.TypeOfBody}
+                                                        </SearchSelectItem>
+                                                    ))
+                                                }
+                                            </SearchSelect>
                                         </div>
                                         <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6">
                                             <label>Steering: </label>
-                                            <Form.Group as={Col} controlId="formGridSteeringType">
-                                                <Form.Select onChange={handleInputChange}  name='steeringTypeId'>
-                                                    <option  value={0}>Select Steering</option>
-                                                    <option value={1}>Right Hand</option>
-                                                    <option value={2}>Left Hand</option>
-                                                </Form.Select>
-                                            </Form.Group>
+                                            <SearchSelect value={steeringTypeId} onValueChange={setSteeringTypeId}>
+                                                <SearchSelectItem value="1" >
+                                                    Right Hand
+                                                </SearchSelectItem>
+                                                <SearchSelectItem value="2" >
+                                                    Left Hand
+                                                </SearchSelectItem>
+                                            </SearchSelect>
+
 
                                         </div>
                                         <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6">
                                             <div className="showcase-Boxselect">
                                                 <label>Manufacturing Year:</label>
                                                 <div className="row">
-                                                    <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 pr-1">
-                                                        <Form.Group as={Col} controlId="formGridFromYear">
-                                                            <Form.Select onChange={handleInputChange} name='fromYear'>
-                                                                <option value={0}>From</option>
-                                                                {
-                                                                    yearsList.map(year=> (
-                                                                        <option key={year} value={year}>{year}</option>
-                                                                    ))
-                                                                }
-                                                            </Form.Select>
-                                                        </Form.Group>
-                                                    </div>
-                                                    <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 pl-1">
-                                                        <Form.Group as={Col} controlId="formGridToYear">
-                                                            <Form.Select onChange={handleInputChange} name='toYear'>
-                                                                <option  value={0}>To</option>
-                                                                {
-                                                                    yearsList
-                                                                        .sort((a,b)=> b-a)
-                                                                        .map(year=> (
-                                                                            <option key={year} value={year}>{year}</option>
-                                                                        ))
-                                                                }
-                                                            </Form.Select>
-                                                        </Form.Group>
-                                                    </div>
+                                                    {/*<div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 pr-1">*/}
+                                                    {/*    <SearchSelect value={fromYear} onValueChange={setFromYear}>*/}
+                                                    {/*    {*/}
+                                                    {/*        yearsList.map(year=> (*/}
+                                                    {/*            <SearchSelectItem key={year} value={year.toString()} >*/}
+                                                    {/*                {year}*/}
+                                                    {/*            </SearchSelectItem>*/}
+                                                    {/*        ))*/}
+                                                    {/*    }*/}
+                                                    {/*    </SearchSelect>*/}
+                                                    {/*</div>*/}
+                                                    {/*<div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 pl-1">*/}
+                                                    {/*    <SearchSelect value={toYear} onValueChange={setToYear}>*/}
+                                                    {/*        {*/}
+                                                    {/*            yearsList.map(year=> (*/}
+                                                    {/*                <SearchSelectItem key={year} value={year.toString()} >*/}
+                                                    {/*                    {year}*/}
+                                                    {/*                </SearchSelectItem>*/}
+                                                    {/*            ))*/}
+                                                    {/*        }*/}
+                                                    {/*    </SearchSelect>*/}
+
+                                                    {/*</div>*/}
                                                 </div>
                                             </div>
                                         </div>

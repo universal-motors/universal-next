@@ -120,7 +120,7 @@ function Footer({locations, bodyTypes,makes}:Props){
 
                                                 <Link
                                                     href={{
-                                                        pathname : "/global/results",
+                                                        pathname : "/global/results/cars",
                                                         query: {
                                                             makeID: make.MakeId
                                                         }
@@ -149,7 +149,7 @@ function Footer({locations, bodyTypes,makes}:Props){
                                         <li key={bodytype.BodyTypeId}>
                                                <span className=" inline-flex items-center rounded-md ml-5">
                                           <Link    href={{
-                                              pathname : "/global/results",
+                                              pathname : "/global/results/cars",
                                               query: {
                                                   bodyTypeID: bodytype.BodyTypeId
                                               }
@@ -167,7 +167,7 @@ function Footer({locations, bodyTypes,makes}:Props){
                             <ul className="countdrop mkl-5">
                                 <Link
                                     href={{
-                                        pathname : "/global/results",
+                                        pathname : "/global/results/cars",
                                         query: {
                                             price: 5000
                                         }
@@ -177,7 +177,7 @@ function Footer({locations, bodyTypes,makes}:Props){
                                 </Link>
                                 <Link
                                     href={{
-                                        pathname : "/global/results",
+                                        pathname : "/global/results/cars",
                                         query: {
                                             price: 10000
                                         }
@@ -187,7 +187,7 @@ function Footer({locations, bodyTypes,makes}:Props){
                                 </Link>
                                 <Link
                                     href={{
-                                        pathname : "/global/results",
+                                        pathname : "/global/results/cars",
                                         query: {
                                             price: 15000
                                         }
@@ -197,7 +197,7 @@ function Footer({locations, bodyTypes,makes}:Props){
                                 </Link>
                                 <Link
                                     href={{
-                                        pathname : "/global/results",
+                                        pathname : "/global/results/cars",
                                         query: {
                                             price: 25000
                                         }
@@ -207,7 +207,7 @@ function Footer({locations, bodyTypes,makes}:Props){
                                 </Link>
                                 <Link
                                     href={{
-                                        pathname : "/global/results",
+                                        pathname : "/global/results/cars",
                                         query: {
                                             price: 40000
                                         }
@@ -218,7 +218,7 @@ function Footer({locations, bodyTypes,makes}:Props){
 
                                 <Link
                                     href={{
-                                        pathname : "/global/results",
+                                        pathname : "/global/results/cars",
                                         query: {
                                             price: 40001
                                         }
@@ -237,7 +237,7 @@ function Footer({locations, bodyTypes,makes}:Props){
                                     .map(location=> (
                                     <li key={location.CountryId}>
                                         <Link href={{
-                                            pathname : "/global/results",
+                                            pathname : "/global/results/cars",
                                             query: {
                                                 countryID: location.CountryId
                                             }

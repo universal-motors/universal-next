@@ -21,7 +21,7 @@ function Sidebar({locations, makes}:Props){
                                         <li key={make.MakeId}>
                                             <Link
                                                 href={{
-                                                    pathname : "/global/results",
+                                                    pathname : "/global/results/cars",
                                                     query: {
                                                         makeID: make.MakeId
                                                     }
@@ -44,7 +44,7 @@ function Sidebar({locations, makes}:Props){
                         <ul className="countdrop">
                             <Link className="nav-link"
                                   href={{
-                                      pathname : "/global/results",
+                                      pathname : "/global/results/cars",
                                       query: {
                                           steeringID: 1
                                       }
@@ -54,7 +54,7 @@ function Sidebar({locations, makes}:Props){
                                 Right Hand</span>
                             </Link>
                             <Link className="nav-link"  href={{
-                                pathname : "/global/results",
+                                pathname : "/global/results/cars",
                                 query: {
                                     steeringID: 2
                                 }
@@ -73,7 +73,7 @@ function Sidebar({locations, makes}:Props){
                                     .map(location=> (
                                         <li key={location.CountryId}>
                                             <Link    href={{
-                                                pathname : "/global/results",
+                                                pathname : "/global/results/cars",
                                                 query: {
                                                     countryID: location.CountryId
                                                 }

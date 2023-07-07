@@ -43,7 +43,6 @@ export default async function Home() {
      <div className="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 carboxes">
 
        <SimpleSearchBox makes={makes} models={models} locations={locations} bodyTypes={bodyTypes}/>
-
        <ListingHomePageCars stocks={stocks} />
 
      </div>
