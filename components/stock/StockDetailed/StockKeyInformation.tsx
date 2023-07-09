@@ -1,8 +1,7 @@
-import {tblCars} from ".prisma/client";
 import {StockCars} from "@/models/StockCars";
 import agent from "@/api/agent";
-import Link from "next/link";
-import db from "@/utils/db";
+
+
 
 interface Props {
     car : StockCars
@@ -10,7 +9,7 @@ interface Props {
 export default async function StockKeyInformation({car}:Props){
 
     const stockOptions = await agent.LoadData.caroptionMappingList(car.stockId);
-    const optionsMaster = await db.tblCarOptions.findMany({where: {isActive:true}});
+    const optionsMaster = await agent.LoadData.caroptionsList()//db.tblCarOptions.findMany({where: {isActive:true}});
 
     return(
         <>
@@ -114,7 +113,7 @@ export default async function StockKeyInformation({car}:Props){
         <svg className="h-1.5 w-1.5 fill-green-400" viewBox="0 0 6 6" aria-hidden="true">
           <circle cx={3} cy={3} r={3} />
         </svg>
-                                            {optionsMaster.find(x=> x.OptionId==op.carOptionsId)?.OptionName}
+                                            {optionsMaster.find(x=> x.optionId==op.carOptionsId)?.optionName}
       </span>
                                     }
                                 </h5>

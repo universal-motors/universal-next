@@ -1,11 +1,14 @@
 import {tblBodyTypes, tblMakes, tblMasterCountry} from ".prisma/client";
 import Link from "next/link";
 import Image from 'next/image'
+import {Country} from "@/models/Master/Country";
+import {BodyType} from "@/models/Master/BodyType";
+import {Make} from "@/models/Master/Make";
 
 interface Props{
-    locations : tblMasterCountry[]
-    bodyTypes : tblBodyTypes[]
-    makes : tblMakes[]
+    locations : Country[]
+    bodyTypes : BodyType[]
+    makes : Make[]
 }
 
 function Footer({locations, bodyTypes,makes}:Props){
@@ -116,25 +119,25 @@ function Footer({locations, bodyTypes,makes}:Props){
                                     makes
                                         .slice(0, 10) // Get the first 10 records
                                         .map(make=> (
-                                            <li key={make.MakeId}>
+                                            <li key={make.makeId}>
 
                                                 <Link
                                                     href={{
                                                         pathname : "/global/results/cars",
                                                         query: {
-                                                            makeID: make.MakeId
+                                                            makeID: make.makeId
                                                         }
                                                     }}
                                                 >
                                                      <span className=" inline-flex items-center rounded-md">
                                                     <Image
-                                                        src={make.ImageUrl??""}
+                                                        src={make.imageURL??""}
                                                         className="flagimg-fluid ml-5"
-                                                        alt={make.Slug}
+                                                        alt={make.slug}
                                                         width={16}
                                                         height={16}
                                                     />
-                                                    {make.MakeName}</span>
+                                                    {make.makeName}</span>
                                                 </Link>
                                             </li>
                                         ))
@@ -146,16 +149,16 @@ function Footer({locations, bodyTypes,makes}:Props){
                             <ul className="countdrop">
                                 {
                                     bodyTypes.map(bodytype=> (
-                                        <li key={bodytype.BodyTypeId}>
+                                        <li key={bodytype.bodyTypeId}>
                                                <span className=" inline-flex items-center rounded-md ml-5">
                                           <Link    href={{
                                               pathname : "/global/results/cars",
                                               query: {
-                                                  bodyTypeID: bodytype.BodyTypeId
+                                                  bodyTypeID: bodytype.bodyTypeId
                                               }
                                           }}>
 
-                                              {bodytype.TypeOfBody}
+                                              {bodytype.typeOfBody}
                                             </Link></span>
                                         </li>
                                 ))
@@ -233,25 +236,25 @@ function Footer({locations, bodyTypes,makes}:Props){
                             <ul className="countdrop">
                             {
                                 locations
-                                    .filter(location=> location.IsInventoryLocation)
+                                    .filter(location=> location.isInventoryLocation)
                                     .map(location=> (
-                                    <li key={location.CountryId}>
+                                    <li key={location.countryId}>
                                         <Link href={{
                                             pathname : "/global/results/cars",
                                             query: {
-                                                countryID: location.CountryId
+                                                countryID: location.countryId
                                             }
                                         }}>
 
                                            <span className=" inline-flex items-center rounded-md">
                                         <Image
-                                            src={flagLocation+location.Slug+".svg"}
+                                            src={flagLocation+location.slug+".svg"}
                                             className="flagimg-fluid ml-5"
-                                            alt={location.Slug??""}
+                                            alt={location.slug??""}
                                             width={16}
                                             height={16}
                                         />
-                                        {location.CountryName}</span>
+                                        {location.countryName}</span>
                                         </Link>
                                     </li>
                             ))

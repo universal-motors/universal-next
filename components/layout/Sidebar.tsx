@@ -1,9 +1,11 @@
 import {tblBodyTypes, tblMakes, tblMasterCountry} from ".prisma/client";
 import Link from "next/link";
+import {Country} from "@/models/Master/Country";
+import {Make} from "@/models/Master/Make";
 
 interface Props{
-    locations : tblMasterCountry[]
-    makes : tblMakes[]
+    locations : Country[]
+    makes : Make[]
 }
 
 function Sidebar({locations, makes}:Props){
@@ -18,23 +20,23 @@ function Sidebar({locations, makes}:Props){
                                 makes
                                     .slice(0, 10) // Get the first 10 records
                                     .map(make=> (
-                                        <li key={make.MakeId}>
+                                        <li key={make.makeId}>
                                             <Link
                                                 href={{
                                                     pathname : "/global/results/cars",
                                                     query: {
-                                                        makeID: make.MakeId
+                                                        makeID: make.makeId
                                                     }
                                                 }}
                                             >
                                                 <span className=" inline-flex items-center rounded-md">
                                                     <img
-                                                        src={make.ImageUrl??""}
+                                                        src={make.imageURL??""}
                                                         className="img-fluid mr-3"
-                                                        alt={make.Slug}
+                                                        alt={make.slug}
 
                                                     />
-                                                {make.MakeName}</span>
+                                                {make.makeName}</span>
                                             </Link>
                                         </li>
                                     ))
@@ -69,24 +71,24 @@ function Sidebar({locations, makes}:Props){
                         <ul className="countdrop">
                             {
                                 locations
-                                    .filter(location=> location.IsInventoryLocation)
+                                    .filter(location=> location.isInventoryLocation)
                                     .map(location=> (
-                                        <li key={location.CountryId}>
+                                        <li key={location.countryId}>
                                             <Link    href={{
                                                 pathname : "/global/results/cars",
                                                 query: {
-                                                    countryID: location.CountryId
+                                                    countryID: location.countryId
                                                 }
                                             }}>
 
                                                 <span className=" inline-flex items-center rounded-md">
                                                 <img
-                                                    src={"/assets/images/flags/"+location.Slug+".svg"}
+                                                    src={"/assets/images/flags/"+location.slug+".svg"}
                                                     className="flag img-fluid mr-3"
-                                                    alt={location.Slug??""}
+                                                    alt={location.slug??""}
 
                                                 />
-                                                {location.CountryName}</span>
+                                                {location.countryName}</span>
                                             </Link>
                                         </li>
                                     ))

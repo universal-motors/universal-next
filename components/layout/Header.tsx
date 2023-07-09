@@ -5,14 +5,17 @@ import Link from "next/link";
 import SearchBar from "@/components/stock/SearchBar";
 import {FcBusinessman, FcCurrencyExchange, FcCustomerSupport, FcGlobe, FcLike, FcOnlineSupport} from "react-icons/fc";
 import TopCountryTimeBar from "@/components/layout/TopCountryTimeBar";
-import LoginModal from "@/components/LoginModal";
 import Navigation from "@/components/layout/Navigation";
 import Image from "next/image";
 
+import {Country} from "@/models/Master/Country";
+import {BodyType} from "@/models/Master/BodyType";
+import {Make} from "@/models/Master/Make";
+
 interface Props{
-    locations : tblMasterCountry[]
-    bodyTypes : tblBodyTypes[]
-    makes : tblMakes[]
+    locations : Country[]
+    bodyTypes : BodyType[]
+    makes : Make[]
 }
 
 const currentYear = new Date().getFullYear()
@@ -54,21 +57,21 @@ async function Header({locations, bodyTypes,makes}:Props) {
                                     <ul className="countdrop ">
                                     {
                                         locations
-                                            .filter(location=> location.IsHotLocation)
+                                            .filter(location=> location.isHotLocation)
                                             .map(location=> (
-                                                <li key={location.CountryId}>
+                                                <li key={location.countryId}>
                                                     <Link    href={{
                                                         pathname : "/global/results/cars",
                                                         query: {
-                                                            countryID: location.CountryId
+                                                            countryID: location.countryId
                                                         }
                                                     }}>
                                                       <span className=" inline-flex items-center rounded-md">
                                                            <img
-                                                               src={"/assets/images/flags/"+location.Slug+".svg"}
+                                                               src={"/assets/images/flags/"+location.slug+".svg"}
                                                                className="flagimg-fluid mr-3"
-                                                               alt={location.Slug??""}
-                                                           />{location.CountryName}
+                                                               alt={location.slug??""}
+                                                           />{location.countryName}
                                                       </span>
 
                                                     </Link>
@@ -216,25 +219,25 @@ async function Header({locations, bodyTypes,makes}:Props) {
 
 
                                                 locations
-                                                    .filter(location=> location.IsInventoryLocation)
+                                                    .filter(location=> location.isInventoryLocation)
                                                     .map(location=> (
-                                                        <li key={location.CountryId}>
+                                                        <li key={location.countryId}>
                                                             <Link href={{
                                                                 pathname : "/global/results/cars",
                                                                 query: {
-                                                                    countryID: location.CountryId
+                                                                    countryID: location.countryId
                                                                 }
                                                             }}>
 
                                            <span className=" inline-flex items-center rounded-md">
                                         <Image
-                                            src={`/assets/images/flags/${location.Slug}.svg`}
+                                            src={`/assets/images/flags/${location.slug}.svg`}
                                             className="flagimg-fluid mr-5"
-                                            alt={location.Slug??""}
+                                            alt={location.slug??""}
                                             width={16}
                                             height={16}
                                         />
-                                               {location.CountryName}</span>
+                                               {location.countryName}</span>
                                                             </Link>
                                                         </li>
                                                     ))

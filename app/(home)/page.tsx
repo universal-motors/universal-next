@@ -1,15 +1,9 @@
 //'use client';
 import ListingHomePageCars from "@/components/stock/ListingHomePageCars";
-
 import agent from "@/api/agent";
 import Link from "next/link";
-import db from "@/utils/db";
-import {Col, Form} from "react-bootstrap";
 import SimpleSearchBox from "@/components/stock/SimpleSearchBox";
-import {Suspense} from "react";
-import LoadingComponent from "@/components/layout/LoadingComponent";
 
-//import db from "@/utils/db";
 const GetStock = async () => {
   return await agent.LoadData.stockList();//db.tblCars.findMany({where: {IsActive:true}});
 }

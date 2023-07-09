@@ -4,7 +4,7 @@ import Header from "@/components/layout/Header";
 import FrontSlider from "@/components/layout/FrontSlider";
 import Sidebar from "@/components/layout/Sidebar";
 import Footer from "@/components/layout/Footer";
-import db from "@/utils/db";
+import agent from "@/api/agent";
 
 
 export const metadata = {
@@ -13,14 +13,13 @@ export const metadata = {
 }
 
 const GetBodyTypes = async () => {
-
-  return await db.tblBodyTypes.findMany({where: {isActive:true}});
+    return await agent.LoadData.bodyTypeList();// db.tblBodyTypes.findMany({where: {isActive:true}});
 }
 const GetLocations = async () => {
-  return await db.tblMasterCountry.findMany({where: {IsActive:true}} );
+    return await agent.LoadData.countryList();//return await prisma.tblMasterCountry.findMany({where: {IsActive:true}} );
 }
 const GetCarMakes = async () => {
-  return await db.tblMakes.findMany({where: {isActive:true}} );
+    return await  agent.LoadData.carMakeList();//return await prisma.tblMakes.findMany({where: {isActive:true}} );
 }
 
 

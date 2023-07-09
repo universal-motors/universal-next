@@ -20,19 +20,7 @@ interface Props {
 export default function PriceCalculator({car,countries, ports,portMapping}:Props){
     const [enabled, setEnabled] = useState(false)
 
-    const people = [
-        { id: 1, name: 'Wade Cooper' },
-        { id: 2, name: 'Arlene Mccoy' },
-        { id: 3, name: 'Devon Webb' },
-        { id: 4, name: 'Tom Cook' },
-        { id: 5, name: 'Tanya Fox' },
-        { id: 6, name: 'Hellen Schmidt' },
-        { id: 7, name: 'Caroline Schultz' },
-        { id: 8, name: 'Mason Heaney' },
-        { id: 9, name: 'Claudie Smitham' },
-        { id: 10, name: 'Emil Schaefer' },
-    ]
-    const [selected, setSelected] = useState(people[3])
+
     return(
         <>
         <div className="detail">
@@ -108,7 +96,7 @@ export default function PriceCalculator({car,countries, ports,portMapping}:Props
                 <div className="flex flex-row">
                     <div className="text-center basis-1/3 m-2">
                         <span className="m-2 text-sm">Freight Charges </span>
-                        <dd className="mt-1 text-lg font-semibold leading-6 text-indigo-900">${car.price}</dd>
+                        {/*<dd className="mt-1 text-lg font-semibold leading-6 text-indigo-900">${car.price}</dd>*/}
 
                     </div>
                     <div className="text-center basis-1/3">
@@ -130,7 +118,7 @@ export default function PriceCalculator({car,countries, ports,portMapping}:Props
                                 </button>
                             )}
                         </Switch>
-                        <dd className="mt-1 text-lg font-semibold leading-6 text-indigo-900">${car.price}</dd>
+                        {/*<dd className="mt-1 text-lg font-semibold leading-6 text-indigo-900">${car.price}</dd>*/}
                     </div>
                     <div className="text-center basis-1/3">
                         <span className="m-2 text-sm">Inspection Cost</span><br/>
@@ -151,7 +139,7 @@ export default function PriceCalculator({car,countries, ports,portMapping}:Props
                                 </button>
                             )}
                         </Switch>
-                        <dd className="mt-1 text-lg font-semibold leading-6 text-indigo-900">${car.price}</dd>
+                        {/*<dd className="mt-1 text-lg font-semibold leading-6 text-indigo-900">${car.price}</dd>*/}
                     </div>
                 </div>
 

@@ -1,14 +1,10 @@
-
 import CarDetailedSlideshow from "@/components/stock/StockDetailed/CarDetailedSlideshow";
 import StockSpecification from "@/components/stock/StockDetailed/StockSpecification";
 import StockKeyInformation from "@/components/stock/StockDetailed/StockKeyInformation";
 import LikeComponent from "@/components/stock/LikeComponent";
 import PriceCalculator from "@/components/stock/StockDetailed/PriceCalculator";
 import InquiryForm from "@/components/stock/StockDetailed/InquiryForm";
-import db from "@/utils/db";
-import {StockCars} from "@/models/StockCars";
 import agent from "@/api/agent";
-import {tblMasterCountry} from ".prisma/client";
 
 interface Props {
     params: {

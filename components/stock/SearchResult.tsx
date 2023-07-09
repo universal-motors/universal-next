@@ -13,14 +13,17 @@ import {GiCarDoor} from "react-icons/gi";
 import {BiSolidColorFill} from "react-icons/bi";
 import {MdAirlineSeatReclineExtra} from "react-icons/md";
 import {Country} from "@/models/Master/Country";
+import agent from "@/api/agent";
+import CarOptionList from "@/components/stock/StockDetailed/CarOptionsList";
 interface Props{
 //    cars: tblCars[]
     cars: StockCars[]
     locations: Country[]//tblMasterCountry[]
 }
 
-export default function SearchResult({cars,locations}:Props){
+export default async function SearchResult({cars,locations}:Props){
     const isOpen=false;
+
     return(
         <>
 
@@ -154,16 +157,20 @@ export default function SearchResult({cars,locations}:Props){
                                     </div>
                                     <div className="carlistfeatures row pt-2">
                                         <div className="col-md-8 flist">
-                                            <ul>
-                                                <li>Navigation System</li>
-                                                <li>Rear Camera</li>
-                                                <li>Power Steering</li>
-                                                <li>Air Bags</li>
-                                                <li>Power Windows</li>
-                                                <li>
-                                                    <Link href="#">more...</Link>
-                                                </li>
-                                            </ul>
+                                            <CarOptionList stockID={car.stockId}  />
+                                            {/*<ul>*/}
+                                            {/*    {*/}
+
+                                            {/*    }*/}
+                                            {/*    <li>Navigation System</li>*/}
+                                            {/*    <li>Rear Camera</li>*/}
+                                            {/*    <li>Power Steering</li>*/}
+                                            {/*    <li>Air Bags</li>*/}
+                                            {/*    <li>Power Windows</li>*/}
+                                            {/*    <li>*/}
+                                            {/*        <Link href="#">more...</Link>*/}
+                                            {/*    </li>*/}
+                                            {/*</ul>*/}
                                         </div>
                                         <div className="col-md-4 atf">
                                             <div className="addfav">
