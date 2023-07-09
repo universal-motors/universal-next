@@ -5,18 +5,18 @@ import {tblCars, tblMasterCountry} from ".prisma/client";
 import LikeComponent from "@/components/stock/LikeComponent";
 import PriceFormat from "@/components/stock/PriceFormat";
 
-import {useState} from "react";
+
 import {StockCars} from "@/models/StockCars";
 import {FaGasPump} from "react-icons/fa";
-import {PiEngineFill, PiGearFineBold, PiSteeringWheelDuotone} from "react-icons/pi";
+import {PiEngineFill, PiGearFineBold } from "react-icons/pi";
 import {GiCarDoor} from "react-icons/gi";
-import {AiOutlineBarcode} from "react-icons/ai";
 import {BiSolidColorFill} from "react-icons/bi";
 import {MdAirlineSeatReclineExtra} from "react-icons/md";
+import {Country} from "@/models/Master/Country";
 interface Props{
 //    cars: tblCars[]
     cars: StockCars[]
-    locations: tblMasterCountry[]
+    locations: Country[]//tblMasterCountry[]
 }
 
 export default function SearchResult({cars,locations}:Props){
@@ -52,7 +52,7 @@ export default function SearchResult({cars,locations}:Props){
                                                 <h6 className="text-right">
                                                     <span className="font-bold inline-flex">
                                                         <Image
-                                                            src={`/assets/images/flags/${locations.find(x=>x.CountryId==car.locationId)?.Slug}.svg`}
+                                                            src={`/assets/images/flags/${locations.find(x=>x.countryId==car.locationId)?.slug}.svg`}
                                                             className="img-fluid mr-2"
                                                             height={20}
                                                             width={20}

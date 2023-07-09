@@ -7,6 +7,7 @@ import {FcBusinessman, FcCurrencyExchange, FcCustomerSupport, FcGlobe, FcLike, F
 import TopCountryTimeBar from "@/components/layout/TopCountryTimeBar";
 import LoginModal from "@/components/LoginModal";
 import Navigation from "@/components/layout/Navigation";
+import Image from "next/image";
 
 interface Props{
     locations : tblMasterCountry[]
@@ -56,12 +57,17 @@ async function Header({locations, bodyTypes,makes}:Props) {
                                             .filter(location=> location.IsHotLocation)
                                             .map(location=> (
                                                 <li key={location.CountryId}>
-                                                    <Link href="/Cars/?id=@(obj.CountryId)&type=Country">
+                                                    <Link    href={{
+                                                        pathname : "/global/results/cars",
+                                                        query: {
+                                                            countryID: location.CountryId
+                                                        }
+                                                    }}>
                                                       <span className=" inline-flex items-center rounded-md">
                                                            <img
                                                                src={"/assets/images/flags/"+location.Slug+".svg"}
                                                                className="flagimg-fluid mr-3"
-                                                               alt={location.Slug}
+                                                               alt={location.Slug??""}
                                                            />{location.CountryName}
                                                       </span>
 
@@ -179,7 +185,7 @@ async function Header({locations, bodyTypes,makes}:Props) {
                 </div>
 
                 <div className="container-fluid">
-                    <Navigation/>
+                <Navigation/>
 
 </div>
 </section>
@@ -200,40 +206,60 @@ async function Header({locations, bodyTypes,makes}:Props) {
                                         <li className="highlighted"><i className="fa fa-gear" />Site Setting</li>
                                         <li className="last">Currency</li>
                                         <li className="highlighted"><i className="fa fa-search" />Search</li>
-                                        <li><Link href="Cars/1/Make">Seach by Make</Link></li>
-                                        <li><Link href="Cars/1/Bodytype">Seach by Type</Link></li>
-                                        <li><Link href="Cars/10000/Price">Seach by Price</Link></li>
-                                        <li><Link href="Cars/@(DateTime.Now.Year-3)/Year">Seach by Year</Link></li>
+                                        <li> <Link href="/global/results/cars?makeID=5"> Seach by Make</Link></li>
+                                        <li><Link href="/global/results/cars?bodyTypeID=3">Seach by Type</Link></li>
+                                        <li><Link href="/global/results/cars?price=25000">Seach by Price</Link></li>
+                                        <li><Link href={`/global/results/cars?year=${new Date().getFullYear()}`}>Seach by Year</Link></li>
                                         <li className="last">Seach by Inventory Location</li>
                                         <li className="highlighted"><i className="fa fa-globe" />Local Service</li>
-                                        @if (MasterData.Locations != null)
-                                        {'{'}
-                                        @foreach (var obj in MasterData.Locations.Where(x=&gt;x.IsHotLocation))
-                                        {'{'}
-                                        <li>
-                                            <Link href="/Cars/@obj.CountryId/Country">
-                                               <img src="/assets/images/flags/@(obj.Slug).svg" className="flagimg-fluid" alt="@obj.CountryName flag" /> <span>@obj.CountryName </span>
-                                            </Link>
-                                        </li>
-                                        {'}'}
-                                        {'}'}
+                                        {
+
+
+                                                locations
+                                                    .filter(location=> location.IsInventoryLocation)
+                                                    .map(location=> (
+                                                        <li key={location.CountryId}>
+                                                            <Link href={{
+                                                                pathname : "/global/results/cars",
+                                                                query: {
+                                                                    countryID: location.CountryId
+                                                                }
+                                                            }}>
+
+                                           <span className=" inline-flex items-center rounded-md">
+                                        <Image
+                                            src={`/assets/images/flags/${location.Slug}.svg`}
+                                            className="flagimg-fluid mr-5"
+                                            alt={location.Slug??""}
+                                            width={16}
+                                            height={16}
+                                        />
+                                               {location.CountryName}</span>
+                                                            </Link>
+                                                        </li>
+                                                    ))
+
+
+
+                                            }
                                         <li className="highlighted"><i className="fa fa-phone" />Contact Us</li>
                                         <li>+49 471 9731 9003</li>
+                                        <li className="last">+81 50 5050 8550</li>
                                         <li>info@universalmotorsltd.com</li>
-                                        <li className="last">+49 471 9731 9003</li>
+
                                         <li className="highlighted"><i className="fa fa-question" />Need Help</li>
-                                        <li><Link href="/why-choose-universal-motors">Why Choose UM?</Link></li>
-                                        <li><Link href="/how-to-buy">How To Buy</Link></li>
-                                        <li><Link href="/how-to-pay">How to Pay?</Link></li>
-                                        <li><Link href="/faqs">FAQs</Link></li>
-                                        <li className="last"><Link href="/export-information">Exports Information</Link></li>
-                                        <li className="highlighted"><i className="fa fa-info" /><Link href="/about-us">About UM</Link></li>
-                                        <li><Link href="/company-profile">Company Profile</Link></li>
-                                        <li><Link href="/global-offices">Global Offices</Link></li>
-                                        <li><Link href="/terms-of-service">Terms Of Services</Link></li>
-                                        <li><Link href="/privacy-policy">Privacy Policy</Link></li>
-                                        <li><Link href="/security-export-control">Secutiy Export Control</Link></li>
-                                        <li className="last"><Link href="/basic-policy-against">Basic Policy Against Anti-Social Forces</Link></li>
+                                        <li><Link href="/global/information?page=why-choose-universal-motors">Why Choose UM?</Link></li>
+                                        <li><Link href="/global/information?page=how-to-buy">How To Buy</Link></li>
+                                        <li><Link href="/global/information?page=how-to-pay">How to Pay?</Link></li>
+                                        <li><Link href="/global/information?page=faqs">FAQs</Link></li>
+                                        <li className="last"><Link href="/global/information?page=export-information">Exports Information</Link></li>
+                                        <li className="highlighted"><i className="fa fa-info" /><Link href="/global/information?page=about-universal-motors">About UM</Link></li>
+                                        <li><Link href="/global/about-universal-motors?page=company-profile">Company Profile</Link></li>
+                                        <li><Link href="/global/about-universal-motors?page=global-offices">Global Offices</Link></li>
+                                        <li><Link href="/global/about-universal-motors?page=terms-of-service">Terms Of Services</Link></li>
+                                        <li><Link href="/global/about-universal-motors?page=privacy-policy">Privacy Policy</Link></li>
+                                        <li><Link href="/global/about-universal-motors?page=security-export-control">Secutiy Export Control</Link></li>
+                                        <li className="last"><Link href="/global/about-universal-motors?page=policy-against-anti-social">Basic Policy Against Anti-Social Forces</Link></li>
                                     </ul>
                                 </div>
                             </div>
@@ -242,9 +268,9 @@ async function Header({locations, bodyTypes,makes}:Props) {
                             <Link href="/"><img src="/assets/images/um.svg" alt="logo" className="mobile-logo" width={50}/></Link>
                         </div>
                         <div className="col-7">
-                            <div className="featuresection">
+                            <div className="featuresection flex inline-flex">
 
-                                <Link href="#search"><img src="https://img.icons8.com/ios-glyphs/2x/search.png" alt="" width={25} /></Link>
+                                {/*<Link href="#search"><img src="https://img.icons8.com/ios-glyphs/2x/search.png" alt="" width={25} /></Link>*/}
                                 <Link href="#support">
                                    <img src="https://img.icons8.com/external-icongeek26-outline-icongeek26/2x/external-headphone-music-icongeek26-outline-icongeek26.png" alt="" width={25} />
                                 </Link>

@@ -29,7 +29,7 @@ function Sidebar({locations, makes}:Props){
                                             >
                                                 <span className=" inline-flex items-center rounded-md">
                                                     <img
-                                                        src={make.ImageUrl}
+                                                        src={make.ImageUrl??""}
                                                         className="img-fluid mr-3"
                                                         alt={make.Slug}
 
@@ -83,7 +83,7 @@ function Sidebar({locations, makes}:Props){
                                                 <img
                                                     src={"/assets/images/flags/"+location.Slug+".svg"}
                                                     className="flag img-fluid mr-3"
-                                                    alt={location.Slug}
+                                                    alt={location.Slug??""}
 
                                                 />
                                                 {location.CountryName}</span>

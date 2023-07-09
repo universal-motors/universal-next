@@ -16,18 +16,19 @@ const GetStock = async () => {
 
 const GetBodyTypes = async () => {
 
-  return await db.tblBodyTypes.findMany({where: {isActive:true}});
+  return await agent.LoadData.bodyTypeList();// db.tblBodyTypes.findMany({where: {isActive:true}});
 }
 const GetLocations = async () => {
-  return await db.tblMasterCountry.findMany({where: {IsActive:true}} );
+    return await agent.LoadData.countryList();
+    //db.tblMasterCountry.findMany({where: {IsActive:true}} );
 }
 
 const GetCarMakes = async () => {
-  return await db.tblMakes.findMany({where: {isActive:true}} );
+  return await  agent.LoadData.carMakeList();//db.tblMakes.findMany({where: {isActive:true}} );
 }
 
 const GetCarModels = async () => {
-  return await db.tblCarModels.findMany({where: {isActive:true}} );
+  return await  agent.LoadData.carModelList();//db.tblCarModels.findMany({where: {isActive:true}} );
 }
 
 
@@ -35,6 +36,7 @@ export default async function Home() {
   const stocks = await GetStock();
   const bodyTypes = await GetBodyTypes();
   const locations = await GetLocations();
+
   const makes = await GetCarMakes();
   const models = await GetCarModels();
 
@@ -42,7 +44,7 @@ export default async function Home() {
    <>
      <div className="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 carboxes">
 
-       <SimpleSearchBox makes={makes} models={models} locations={locations} bodyTypes={bodyTypes}/>
+       <SimpleSearchBox makes={makes} models={models}  bodyTypes={bodyTypes}/>
        <ListingHomePageCars stocks={stocks} />
 
      </div>
@@ -52,56 +54,56 @@ export default async function Home() {
        <div className="showcase-Make rightsidebar">
          <h5 className="pt-3"><b>UM in Your Country</b></h5>
          <ul className="countdrop">
-           <Link className="mt-0" href="/import-protocols-in-bahamas" >
+           <Link className="mt-0" href="/global/information/import-protocols?page=bahamas" >
              <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
              <img src="/assets/images/flags/BS.svg"   className="img-fluid mr-3" height="15px" alt="Bahamas flag" />
              Bahamas</span>
            </Link>
-           <Link href="/import-protocols-in-chile" >
+           <Link href="/global/information/import-protocols?page=chile" >
                  <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
              <img src="/assets/images/flags/CL.svg"  className="img-fluid mr-3" height="15px" alt="Chile flag" />
             Chile</span>
            </Link>
-           <Link className="nav-link" href="/import-protocols-in-dr-congo" >
+           <Link className="nav-link" href="/global/information/import-protocols?page=congo" >
                  <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
              <img src="/assets/images/flags/CD.svg" className="img-fluid mr-3" height="15px" alt="Congo flag" />Dr Congo</span></Link>
-           <Link href="/import-protocols-in-guyana" >
+           <Link href="/global/information/import-protocols?page=guyana" >
                  <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
              <img src="/assets/images/flags/GY.svg"  className="img-fluid mr-3" height="15px" alt="Guyana flag" /> Guyana</span></Link>
-           <Link href="/import-protocols-in-jamaica" >
+           <Link href="/global/information/import-protocols?page=jamaica" >
                  <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
              <img src="/assets/images/flags/JM.svg"  className="img-fluid mr-3" height="15px" alt="Jamaica flag" /> Jamaica</span></Link>
-           <Link href="/import-protocols-in-kenya" >
+           <Link href="/global/information/import-protocols?page=kenya" >
                  <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
              <img src="/assets/images/flags/KE.svg"  className="img-fluid mr-3" height="15px" alt="Kenya flag" /> Kenya</span></Link>
-           <Link href="/import-protocols-in-malawi" >
+           <Link href="/global/information/import-protocols?page=malawi" >
                  <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
              <img src="/assets/images/flags/MW.svg"  className="img-fluid mr-3" height="15px" alt="Malawi flag" /> Malawi</span></Link>
-           <Link href="/import-protocols-in-pakistan" >
+           <Link href="/global/information/import-protocols?page=pakistan" >
                  <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
              <img src="/assets/images/flags/PK.svg"  className="img-fluid mr-3" height="15px" alt="Pakistan flag" /> Pakistan</span></Link>
-           <Link href="/import-protocols-in-paraguay" >
+           <Link href="/global/information/import-protocols?page=paraguay" >
                  <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
              <img src="/assets/images/flags/PY.svg"  className="img-fluid mr-3" height="15px" alt="Paraguay flag" /> Paraguay</span></Link>
-           <Link href="/import-protocols-in-russia" >
+           <Link href="/global/information/import-protocols?page=russia" >
                  <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
              <img src="/assets/images/flags/RU.svg"  className="img-fluid mr-3" height="15px" alt="Russia flag" /> Russia</span></Link>
-           <Link href="/import-protocols-in-south-All">
+           <Link href="/global/information/import-protocols?page=sudan">
                  <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
              <img src="/assets/images/flags/SS.svg"  className="img-fluid mr-3" height="15px" alt="Sudan flag" /> South Sudan</span></Link>
-           <Link href="/import-protocols-in-tanzania" >
+           <Link href="/global/information/import-protocols?page=tanzania" >
                  <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
              <img src="/assets/images/flags/TZ.svg"  className="img-fluid mr-3" height="15px" alt="Tanzania flag" /> Tanzania</span></Link>
-           <Link href="/import-protocols-in-uganda" >
+           <Link href="/global/information/import-protocols?page=uganda" >
                  <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
              <img src="/assets/images/flags/UG.svg"  className="img-fluid mr-3" height="15px" alt="Uganda flag" /> Uganda</span></Link>
-           <Link href="/import-protocols-in-zambia" >
+           <Link href="/global/information/import-protocols?page=zambia" >
                  <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
              <img src="/assets/images/flags/ZM.svg"  className="img-fluid mr-3" height="15px" alt="Zambia flag" /> Zambia</span></Link>
-           <Link href="/import-protocols-in-zimbabwe" >
+           <Link href="/global/information/import-protocols?page=zimbabwe" >
                  <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
              <img src="/assets/images/flags/ZW.svg"  className="img-fluid mr-3" height="15px" alt="Zimbabwe flag" /> Zimbabwe</span></Link>
-           <Link href="/import-protocols-in-ghana" >
+           <Link href="/global/information/import-protocols?page=ghana" >
                  <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
              <img src="/assets/images/flags/gh.svg"  className="img-fluid mr-3" height="15px" alt="Ghana flag" /> Ghana</span></Link>
          </ul>

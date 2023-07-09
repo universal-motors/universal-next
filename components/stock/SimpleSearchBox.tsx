@@ -4,12 +4,16 @@ import {tblBodyTypes, tblCarModels, tblMakes, tblMasterCountry} from ".prisma/cl
 import {ChangeEvent, FormEvent, useEffect, useState} from "react";
 import {SearchSelect, SearchSelectItem, Select, SelectItem} from "@tremor/react";
 import {useRouter} from "next/navigation";
+import {param} from "ts-interface-checker";
+import {BodyType} from "@/models/Master/BodyType";
+import {Make} from "@/models/Master/Make";
+import {CarModel} from "@/models/Master/CarModel";
 
 interface Props{
-    bodyTypes: tblBodyTypes[],
-    locations: tblMasterCountry[],
-    makes: tblMakes[],
-    models: tblCarModels[]
+    bodyTypes: BodyType[], //tblBodyTypes[],
+    // locations: tblMasterCountry[],
+    makes: Make[]//tblMakes[],
+    models: CarModel[]//tblCarModels[]
 }
 
 const initialState = {
@@ -32,11 +36,11 @@ const initialState = {
     // colorId:0
 }
 
-const currentYear = new Date().getFullYear()
 
 
-export default function SimpleSearchBox({bodyTypes,locations,makes, models}:Props){
+export default function SimpleSearchBox({bodyTypes,makes, models}:Props){
 
+    const currentYear = new Date().getFullYear()
     const [filter, setFilter] = useState(initialState);
     const [makeId, setMakeId] = useState("0");
     const [modelId, setModelId] = useState("0");
@@ -47,22 +51,26 @@ export default function SimpleSearchBox({bodyTypes,locations,makes, models}:Prop
     const [url, setUrl] = useState('/search?');
     const queryParams:string[] = [];
     const router = useRouter();
-    const yearsList = [];
-    for (let i = currentYear-15; i <= currentYear; i++) {
-        yearsList.push(i);
-    }
+    // const yearsList = [];
+    // for (let i = currentYear-15; i <= currentYear; i++) {
+    //     yearsList.push(i);
+    // }
+    const yearList = Array.from({ length: 16 }, (_, index) => (currentYear - index).toString());
+
 
     function handleSubmit(event:FormEvent){
         event.preventDefault()
         console.log(makeId,"MakeID, ", modelId, "ModelID, ", bodyTypeId, "BodyTypeID")
 
         const params = new URLSearchParams();
+
+        params.set("searchFromBox", "true")
         if (makeId !== "0") params.set("makeID", makeId)
-        if (modelId !== "0") params.set("makeID", makeId)
-        if (bodyTypeId != "0") params.set("bodyTypeID", makeId)
-        if (steeringTypeId != "0") params.set("steeringID", makeId)
-        if (fromYear != "0") params.set("makeID", makeId)
-        if (toYear != "0") params.set("makeID", makeId)
+        if (modelId !== "0") params.set("modelID", modelId)
+        if (bodyTypeId != "0") params.set("bodyTypeID", bodyTypeId)
+        if (steeringTypeId != "0") params.set("steeringID", steeringTypeId)
+        if (fromYear != "0") params.set("fromYear", fromYear)
+        if (toYear != "0") params.set("toYear", toYear)
 
                     // if (makeId !== "0") {
         //     queryParams.push(`makeId=${makeId}`);
@@ -98,8 +106,8 @@ export default function SimpleSearchBox({bodyTypes,locations,makes, models}:Prop
         // if (url!= "/search?"){
         //     console.log(url);
         // }
-        console.log(params)
-        router.push(`/global/results?${params.toString()}`)
+        //console.log(`/global/results/cars?${params.toString()}`)
+        router.push(`/global/results/cars?${params.toString()}`)
     }
 
 
@@ -173,15 +181,15 @@ export default function SimpleSearchBox({bodyTypes,locations,makes, models}:Prop
             <div className="formrow row">
                 <div className="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 formvariation">
                     <div className="container">
-                        <div className="row">
-                            <div className="col-md-2 col-sm-2 text-right vehicleicon">
-                                <span className="fa fa-car" id="caric"  />
-                            </div>
-                            <div className="col-md-2 col-sm-2 vehicleicon">
-                                <span className="fa fa-truck" id="truckic"  />
-                            </div>
-                            <div className="col-md-8 col-sm-8" />
-                        </div>
+                        {/*<div className="row">*/}
+                        {/*    <div className="col-md-2 col-sm-2 text-right vehicleicon">*/}
+                        {/*        <span className="fa fa-car" id="caric"  />*/}
+                        {/*    </div>*/}
+                        {/*    <div className="col-md-2 col-sm-2 vehicleicon">*/}
+                        {/*        <span className="fa fa-truck" id="truckic"  />*/}
+                        {/*    </div>*/}
+                        {/*    <div className="col-md-8 col-sm-8" />*/}
+                        {/*</div>*/}
                     </div>
                 </div>
                 <div className="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 p-0 formss">
@@ -197,8 +205,8 @@ export default function SimpleSearchBox({bodyTypes,locations,makes, models}:Prop
                                             <SearchSelect value={makeId} onValueChange={setMakeId}>
                                             {
                                                 makes.map(make=> (
-                                                    <SearchSelectItem key={make.MakeId} value={make.MakeId.toString()} >
-                                                        {make.MakeName}
+                                                    <SearchSelectItem key={make.makeId} value={make.makeId.toString()} >
+                                                        {make.makeName}
                                                     </SearchSelectItem>
                                                 ))
                                             }
@@ -210,8 +218,8 @@ export default function SimpleSearchBox({bodyTypes,locations,makes, models}:Prop
                                             <SearchSelect value={modelId} onValueChange={setModelId}>
                                                 {
                                                     models.map(model=> (
-                                                        <SearchSelectItem key={model.ModelId} value={model.ModelId.toString()} >
-                                                            {model.ModelName}
+                                                        <SearchSelectItem key={model.modelId} value={model.modelId.toString()} >
+                                                            {model.modelName}
                                                         </SearchSelectItem>
                                                     ))
                                                 }
@@ -226,8 +234,8 @@ export default function SimpleSearchBox({bodyTypes,locations,makes, models}:Prop
                                                 {/*</SelectItem>*/}
                                                 {
                                                     bodyTypes.map(bodytype=> (
-                                                        <SearchSelectItem key={bodytype.BodyTypeId} value={bodytype.BodyTypeId.toString()} >
-                                                            {bodytype.TypeOfBody}
+                                                        <SearchSelectItem key={bodytype.bodyTypeId} value={bodytype.bodyTypeId.toString()} >
+                                                            {bodytype.typeOfBody}
                                                         </SearchSelectItem>
                                                     ))
                                                 }
@@ -249,30 +257,31 @@ export default function SimpleSearchBox({bodyTypes,locations,makes, models}:Prop
                                         <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6">
                                             <div className="showcase-Boxselect">
                                                 <label>Manufacturing Year:</label>
-                                                <div className="row">
-                                                    {/*<div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 pr-1">*/}
-                                                    {/*    <SearchSelect value={fromYear} onValueChange={setFromYear}>*/}
-                                                    {/*    {*/}
-                                                    {/*        yearsList.map(year=> (*/}
-                                                    {/*            <SearchSelectItem key={year} value={year.toString()} >*/}
-                                                    {/*                {year}*/}
-                                                    {/*            </SearchSelectItem>*/}
-                                                    {/*        ))*/}
-                                                    {/*    }*/}
-                                                    {/*    </SearchSelect>*/}
-                                                    {/*</div>*/}
-                                                    {/*<div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 pl-1">*/}
-                                                    {/*    <SearchSelect value={toYear} onValueChange={setToYear}>*/}
-                                                    {/*        {*/}
-                                                    {/*            yearsList.map(year=> (*/}
-                                                    {/*                <SearchSelectItem key={year} value={year.toString()} >*/}
-                                                    {/*                    {year}*/}
-                                                    {/*                </SearchSelectItem>*/}
-                                                    {/*            ))*/}
-                                                    {/*        }*/}
-                                                    {/*    </SearchSelect>*/}
+                                                <div className="flex flex-row">
+                                                    <div className="flex-none w-20 h-14 ">
+                                                        <SearchSelect value={fromYear} onValueChange={setFromYear}>
+                                                        {
+                                                            yearList.map(year=> (
+                                                                <SearchSelectItem key={year} value={year.toString()} >
+                                                                    {year}
+                                                                </SearchSelectItem>
+                                                            ))
+                                                        }
+                                                        </SearchSelect>
+                                                    </div>
+                                                    <div className="flex-auto w-10  ">
+                                                        <SearchSelect value={toYear} onValueChange={setToYear}>
+                                                            {
+                                                                yearList.map(year=> (
+                                                                    <SearchSelectItem key={year} value={year.toString()} >
+                                                                        {year}
+                                                                    </SearchSelectItem>
+                                                                ))
+                                                            }
+                                                        </SearchSelect>
 
-                                                    {/*</div>*/}
+                                                    </div>
+
                                                 </div>
                                             </div>
                                         </div>

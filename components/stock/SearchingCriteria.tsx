@@ -4,21 +4,22 @@ import {tblMasterCountry} from ".prisma/client";
 //import prisma from "@/utils/db";
 import {FormSelect} from "react-bootstrap";
 import {ChangeEvent, useState} from "react";
+import {Country} from "@/models/Master/Country";
 
 interface Props{
     resultCount:number,
-    locations:tblMasterCountry[]
+    locations:Country[]// tblMasterCountry[]
 }
 
 export default async function SearchingCriteria({resultCount,locations}:Props){
 
-    const [sortFilter, setSortFilter] = useState("");
-    function handleSortingChange(event:ChangeEvent<HTMLSelectElement>){
-        event.preventDefault()
-        const value = event.target.value;
-        setSortFilter( value)
-        console.log(value);
-    }
+   // const [sortFilter, setSortFilter] = useState("");
+   //  function handleSortingChange(event:ChangeEvent<HTMLSelectElement>){
+   //      event.preventDefault()
+   //      const value = event.target.value;
+   //      setSortFilter( value)
+   //      console.log(value);
+   //  }
 
     return(
         <>
@@ -32,10 +33,12 @@ export default async function SearchingCriteria({resultCount,locations}:Props){
                         <Link className="nav-link2 active" data-toggle="tab" href="#tabs-all" role="tab">ALL</Link>
                     </li>
                     {
-                        locations.map(country=>(
-                            <li key={country.CountryId} className="nav-item">
-                                <Link className="nav-link2 " data-toggle="tab" href={`/global/results?countryID=${country.CountryId}`} role="tab">
-                                    <span className="inline-flex"><img src={`/assets/images/flags/${country.Slug}.svg`} className="img-fluid mr-2" alt={country.Slug??""} /> {country.CountryName}</span>
+                        locations
+                            .filter(country=>country.isInventoryLocation)
+                            .map(country=>(
+                            <li key={country.countryId} className="nav-item">
+                                <Link className="nav-link2 " data-toggle="tab" href={`/global/results?countryID=${country.countryId}`} role="tab">
+                                    <span className="inline-flex"><img src={`/assets/images/flags/${country.slug}.svg`} className="img-fluid mr-2" alt={country.slug??""} /> {country.countryName}</span>
                                 </Link>
                             </li>
                         ))
@@ -43,7 +46,8 @@ export default async function SearchingCriteria({resultCount,locations}:Props){
                 </ul>
                    <div className="filt">
                         <p>Sort By: &nbsp;</p>
-                        <FormSelect name="sort-by" className="sort-by-select" onChange={handleSortingChange}  >
+                        <FormSelect name="sort-by" className="sort-by-select" >
+                            {/*onChange={handleSortingChange}  >*/}
                             <option value="">Select</option>
                             <option value="priceLowToHigh">Price Low to high</option>
                             <option value="priceHighToLow">Price high to low</option>

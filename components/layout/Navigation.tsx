@@ -10,6 +10,8 @@ import Link from "next/link";
 import classNames from "classnames";
 import {Fragment} from "react";
 import {ChevronDownIcon} from "@heroicons/react/20/solid";
+import {Button} from "@tremor/react";
+import {MdOutlinePayment} from "react-icons/md";
 
 export default function Navigation(){
     return(
@@ -46,7 +48,7 @@ export default function Navigation(){
                                                             <div className="py-1">
                                                                 <Menu.Item>
                                                                     {({ active }) => (
-                                                                        <Link href="/why-choose-universal-motors" className={classNames(
+                                                                        <Link href="/global/information?page=why-choose-universal-motors" className={classNames(
                                                                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                             'block px-4 py-2 text-sm'
                                                                         )} ><span>Why Choose Universal Motor?</span></Link>
@@ -54,7 +56,7 @@ export default function Navigation(){
                                                                 </Menu.Item>
                                                                 <Menu.Item>
                                                                     {({ active }) => (
-                                                                        <Link href="/how-to-buy" className={classNames(
+                                                                        <Link href="/global/information?page=how-to-buy" className={classNames(
                                                                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                             'block px-4 py-2 text-sm'
                                                                         )} ><span>How to Buy</span></Link>
@@ -64,7 +66,7 @@ export default function Navigation(){
                                                             <div className="py-1">
                                                                 <Menu.Item>
                                                                     {({ active }) => (
-                                                                        <Link href="/bank-information" className={classNames(
+                                                                        <Link href="/global/information?page=bank-information" className={classNames(
                                                                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                             'block px-4 py-2 text-sm'
                                                                         )} ><span>Bank Information</span></Link>
@@ -72,7 +74,7 @@ export default function Navigation(){
                                                                 </Menu.Item>
                                                                 <Menu.Item>
                                                                     {({ active }) => (
-                                                                        <Link href="/export-information" className={classNames(
+                                                                        <Link href="/global/information?page=export-information" className={classNames(
                                                                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                             'block px-4 py-2 text-sm'
                                                                         )} ><span>Export Information</span></Link>
@@ -82,7 +84,7 @@ export default function Navigation(){
                                                             <div className="py-1">
                                                                 <Menu.Item>
                                                                     {({ active }) => (
-                                                                        <Link href="/vehicle-shipment-condition" className={classNames(
+                                                                        <Link href="/global/information?page=vehicle-shipment-condition" className={classNames(
                                                                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                             'block px-4 py-2 text-sm'
                                                                         )} ><span>Condition of Shipment</span></Link>
@@ -90,7 +92,7 @@ export default function Navigation(){
                                                                 </Menu.Item>
                                                                 <Menu.Item>
                                                                     {({ active }) => (
-                                                                        <Link href="/export-import-services" className={classNames(
+                                                                        <Link href="/global/information?page=export-import-services" className={classNames(
                                                                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                             'block px-4 py-2 text-sm'
                                                                         )} ><span>Export &amp; Import Services</span></Link>
@@ -226,7 +228,7 @@ export default function Navigation(){
 
                                                                 <Menu.Item>
                                                                     {({ active }) => (
-                                                                        <Link href="/global/about-universal-motors/" className={classNames(
+                                                                        <Link href="/global/information/import-protocols?page=chile" className={classNames(
                                                                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                             'block px-4 py-2 text-sm'
                                                                         )} >
@@ -237,7 +239,7 @@ export default function Navigation(){
                                                                 </Menu.Item>
                                                                 <Menu.Item>
                                                                     {({ active }) => (
-                                                                        <Link href="/global/about-universal-motors/" className={classNames(
+                                                                        <Link href="/global/information/import-protocols?page=congo" className={classNames(
                                                                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                             'block px-4 py-2 text-sm'
                                                                         )} >
@@ -249,7 +251,7 @@ export default function Navigation(){
 
                                                                 <Menu.Item>
                                                                     {({ active }) => (
-                                                                        <Link href="/global/about-universal-motors/" className={classNames(
+                                                                        <Link href="/global/information/import-protocols?page=guyana" className={classNames(
                                                                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                             'block px-4 py-2 text-sm'
                                                                         )} >
@@ -260,7 +262,7 @@ export default function Navigation(){
                                                                 </Menu.Item>
                                                                 <Menu.Item>
                                                                     {({ active }) => (
-                                                                        <Link href="/global/about-universal-motors/" className={classNames(
+                                                                        <Link href="/global/information/import-protocols?page=jamaica" className={classNames(
                                                                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                             'block px-4 py-2 text-sm'
                                                                         )} >
@@ -272,7 +274,7 @@ export default function Navigation(){
 
                                                                 <Menu.Item>
                                                                     {({ active }) => (
-                                                                        <Link href="/global/about-universal-motors/" className={classNames(
+                                                                        <Link href="/global/information/import-protocols?page=kenya" className={classNames(
                                                                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                             'block px-4 py-2 text-sm'
                                                                         )} >
@@ -283,7 +285,7 @@ export default function Navigation(){
                                                                 </Menu.Item>
                                                                 <Menu.Item>
                                                                     {({ active }) => (
-                                                                        <Link href="/global/about-universal-motors/" className={classNames(
+                                                                        <Link href="/global/information/import-protocols?page=malawi" className={classNames(
                                                                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                             'block px-4 py-2 text-sm'
                                                                         )} >
@@ -294,7 +296,7 @@ export default function Navigation(){
                                                                 </Menu.Item>
                                                                 <Menu.Item>
                                                                     {({ active }) => (
-                                                                        <Link href="/global/about-universal-motors/" className={classNames(
+                                                                        <Link href="/global/information/import-protocols?page=pakistan" className={classNames(
                                                                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                             'block px-4 py-2 text-sm'
                                                                         )} >
@@ -305,7 +307,7 @@ export default function Navigation(){
                                                                 </Menu.Item>
                                                                 <Menu.Item>
                                                                     {({ active }) => (
-                                                                        <Link href="/global/about-universal-motors/" className={classNames(
+                                                                        <Link href="/global/information/import-protocols?page=paraguay" className={classNames(
                                                                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                             'block px-4 py-2 text-sm'
                                                                         )} >
@@ -316,7 +318,7 @@ export default function Navigation(){
                                                                 </Menu.Item>
                                                                 <Menu.Item>
                                                                     {({ active }) => (
-                                                                        <Link href="/global/about-universal-motors/" className={classNames(
+                                                                        <Link href="/global/information/import-protocols?page=russia" className={classNames(
                                                                             active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                             'block px-4 py-2 text-sm'
                                                                         )} >
@@ -328,7 +330,7 @@ export default function Navigation(){
 
                                                             <Menu.Item>
                                                                 {({ active }) => (
-                                                                    <Link href="/global/about-universal-motors/" className={classNames(
+                                                                    <Link href="/global/information/import-protocols?page=sudan" className={classNames(
                                                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                         'block px-4 py-2 text-sm'
                                                                     )} >
@@ -340,7 +342,7 @@ export default function Navigation(){
 
                                                             <Menu.Item>
                                                                 {({ active }) => (
-                                                                    <Link href="/global/about-universal-motors/" className={classNames(
+                                                                    <Link href="/global/information/import-protocols?page=tanzania" className={classNames(
                                                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                         'block px-4 py-2 text-sm'
                                                                     )} >
@@ -351,7 +353,7 @@ export default function Navigation(){
                                                             </Menu.Item>
                                                             <Menu.Item>
                                                                 {({ active }) => (
-                                                                    <Link href="/global/about-universal-motors/" className={classNames(
+                                                                    <Link href="/global/information/import-protocols?page=uganda" className={classNames(
                                                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                         'block px-4 py-2 text-sm'
                                                                     )} >
@@ -362,7 +364,7 @@ export default function Navigation(){
                                                             </Menu.Item>
                                                            <Menu.Item>
                                                                 {({ active }) => (
-                                                                    <Link href="/global/about-universal-motors/" className={classNames(
+                                                                    <Link href="/global/information/import-protocols?page=zambia" className={classNames(
                                                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                         'block px-4 py-2 text-sm'
                                                                     )} >
@@ -373,7 +375,7 @@ export default function Navigation(){
                                                             </Menu.Item>
                                                             <Menu.Item>
                                                                 {({ active }) => (
-                                                                    <Link href="/global/about-universal-motors/" className={classNames(
+                                                                    <Link href="/global/information/import-protocols?page=zimbabwe" className={classNames(
                                                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                         'block px-4 py-2 text-sm'
                                                                     )} >
@@ -384,7 +386,7 @@ export default function Navigation(){
                                                             </Menu.Item>
                                                             <Menu.Item>
                                                                 {({ active }) => (
-                                                                    <Link href="/global/about-universal-motors/" className={classNames(
+                                                                    <Link href="/global/information/import-protocols?page=ghana" className={classNames(
                                                                         active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                         'block px-4 py-2 text-sm'
                                                                     )} >
@@ -395,11 +397,29 @@ export default function Navigation(){
                                                             </Menu.Item>
 
                                                         </Menu.Items>
+
                                                     </Transition>
+
+
                                                 </Menu>
+
                                             </li>
-
-
+                                            <li className="p-4">
+                                                <Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                                                <Link href="/global/information?page=how-to-pay" className='bg-gray-100 text-gray-900' >
+                                                                            <span className="flex inline">
+                                                                                How to Pay
+                                                                            </span></Link>
+                                                </Button>
+                                            </li>
+                                            <li className="p-4">
+                                                <Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                                                    <Link href="/global/information?page=faqs" className='bg-gray-100 text-gray-900' >
+                                                                            <span className="flex inline">
+                                                                            F.A.Q.s
+                                                                            </span></Link>
+                                                </Button>
+                                            </li>
 
 
                                          </ul>

@@ -76,7 +76,7 @@ export default function DisclaimerPolicy (){
                                 Depending on your country, destination or port regulations and requirements, Universal Motors can also
                                 provide additional documents if needed. It is customer responsibility to identify all the additional
                                 documents needed before departure of vehicle. If there is additional cost involved to prepare these
-                                additional documents will be added on to customer's account.
+                                additional documents will be added on to customers account.
                             </p>
                             <h4><i className="fa fa-caret-right" aria-hidden="true" />
                                 IMPORT RESTRICTIONS
@@ -96,7 +96,7 @@ export default function DisclaimerPolicy (){
                                 notify Universal Motors in advance if you require inspection to be
                                 done and/or vehicle will be used, registered or sold in the countries mentioned. Universal Motors, provides full guarantee
                                 that these inspections will be carried out and vehicle will
-                                meet standards of these inspections. For Mozambique inspection, we will require MOZ number, providing MOZ number is customer's
+                                meet standards of these inspections. For Mozambique inspection, we will require MOZ number, providing MOZ number is customers
                                 responsibility.
                             </p>
                             <h4><i className="fa fa-caret-right" aria-hidden="true" />

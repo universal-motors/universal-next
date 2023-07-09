@@ -24,7 +24,7 @@ export default function SustainabilityPolicy (){
                                 Customers
                             </h4>
                             <p>
-        <span className="boldp">Based on our philosophy that "Customer is King", we provide
+        <span className="boldp">Based on our philosophy that &quot;Customer is King&quot;, we provide
           innovative, safe, and outstanding high-quality cars that meet a
           wide variety of customer<br /> demands to enrich the lives of people around the world.
         </span>
@@ -34,7 +34,7 @@ export default function SustainabilityPolicy (){
                             </h4>
                             <p>
         <span className="boldp">We respect our employees and believe that the success of our business is
-          led by each individual's creativity and solid teamwork. We support personalgrowth for
+          led by each individual&apos;s creativity and solid teamwork. We support personalgrowth for
           our employees.
           <br />
           We support equal employment opportunities and diversity and inclusion for our employees.
@@ -52,7 +52,7 @@ export default function SustainabilityPolicy (){
           <br />
           Whenever we seek a new business partner, we are open to any and all candidates, regardless of nationality
           or scale of the company, and evaluate them based on their overall strengths.We maintain fair and free competition
-          in accordance with the spirit of each country and region's competition laws.
+          in accordance with the spirit of each country and region&apos;s competition laws.
         </span>
                             </p>
                             <h4><i className="fa fa-caret-right" aria-hidden="true" />

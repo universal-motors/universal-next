@@ -38,7 +38,7 @@ export default async function CarDetailed({params}:Props){
                                         <div className="row">
                                             <div id="wrap" className="container-fluid">
                                                 <div className="row">
-                                                    <CarDetailedSlideshow stocks={Stock} />
+                                                    <CarDetailedSlideshow mainPic={Stock.imageUrl} stocks={Stock} />
                                                 </div>
                                             </div>
                                         </div>
@@ -54,7 +54,7 @@ export default async function CarDetailed({params}:Props){
                                             <div className="stock">
                                                <span className="flex items-center gap-x-1 bg-red-100 px-2 py-1 font-medium text-red-700">
                                                         Stock ID :
-                                                        <img className='h-6 m-2' src={`/assets/images/flags/${InventoryLocation.slug}.svg`} alt={InventoryLocation.slug} />
+                                                        <img className='h-6 m-2' src={`/assets/images/flags/${InventoryLocation?.slug}.svg`} alt={InventoryLocation?.slug} />
                                                         {Stock.stockCode}
                                                 </span>
 

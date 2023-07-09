@@ -9,7 +9,7 @@ export default function BankInformation (){
                     <div className="breadcrumbs">
                         <ul>
                             <li><Link href="/">Home</Link></li>
-                            <li><Link href="/global/help/"> Why Universal Motors </Link></li>
+                            <li><Link href="/global/information?page=why-choose-universal-motors"> Why Universal Motors </Link></li>
                             <li><Link href="#">Payment Method</Link></li>
                         </ul>
                     </div>
@@ -77,7 +77,7 @@ export default function BankInformation (){
                                 BLUE RHINE OVER SEASEAS USD ACCOUNT
                             </h4>
                             <p style={{marginBottom: '0rem !important'}}>
-                                <span className>Bank Name : <span className="color-span"><b> National Bank of Ras Al Khaima</b></span></span>
+                                <span>Bank Name : <span className="color-span"><b> National Bank of Ras Al Khaima</b></span></span>
                             </p>
                             <p style={{marginBottom: '0rem !important'}}>
                                 <span>Account Name :<span className="color-span"><b> Blue Rhine Overseas FZE LLC</b> </span></span>

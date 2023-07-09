@@ -41,7 +41,7 @@ export default function InquiryForm(){
                         </ul>
                         <hr />
                         <input type="textarea" placeholder="Type Your Message here.." style={{width: '100%', height: '50px', fontSize: '12px'}} />
-                        <p className="inquire-text">Please note that It is the buyer's responsibility to confirm that the vehicle satisfies all import regulations at your destination.</p>
+                        <p className="inquire-text">Please note that It is the buyer&apos;s responsibility to confirm that the vehicle satisfies all import regulations at your destination.</p>
                         <div className="row">
                             <div className="col-md-6 col-sm-6 col-6 pr-2">
                                 <div className="carneg-forminput">
