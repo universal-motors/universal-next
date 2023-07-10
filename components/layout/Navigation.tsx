@@ -391,7 +391,7 @@ export default function Navigation(){
                                                                         'block px-4 py-2 text-sm'
                                                                     )} >
                                                                             <span className="flex inline">
-                                                                             <img src="/assets/images/flags/gh.svg" alt="Ghana flag" className='h-5 mr-3'  /> Ghana
+                                                                             <img src="/assets/images/flags/GH.svg" alt="Ghana flag" className='h-5 mr-3'  /> Ghana
                                                                             </span></Link>
                                                                 )}
                                                             </Menu.Item>

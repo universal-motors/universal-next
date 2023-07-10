@@ -134,8 +134,8 @@ function Footer({locations, bodyTypes,makes}:Props){
                                                         src={make.imageURL??""}
                                                         className="flagimg-fluid ml-5"
                                                         alt={make.slug}
-                                                        width={16}
-                                                        height={16}
+                                                        width={32}
+                                                        height={32}
                                                     />
                                                     {make.makeName}</span>
                                                 </Link>

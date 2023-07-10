@@ -1,6 +1,6 @@
 import './globals.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {ClerkProvider} from "@clerk/nextjs";
+import { Analytics } from '@vercel/analytics/react';
 
 export default async function RootLayout({ children,
                                          }: {
@@ -19,6 +19,7 @@ export default async function RootLayout({ children,
             </head>
             <body>
                 {children}
+                <Analytics />
             </body>
             </html>
         //</ClerkProvider>

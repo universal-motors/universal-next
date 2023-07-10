@@ -99,7 +99,7 @@ export default async function Home() {
              <img src="/assets/images/flags/ZW.svg"  className="img-fluid mr-3" height="15px" alt="Zimbabwe flag" /> Zimbabwe</span></Link>
            <Link href="/global/information/import-protocols?page=ghana" >
                  <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
-             <img src="/assets/images/flags/gh.svg"  className="img-fluid mr-3" height="15px" alt="Ghana flag" /> Ghana</span></Link>
+             <img src="/assets/images/flags/GH.svg"  className="img-fluid mr-3" height="15px" alt="Ghana flag" /> Ghana</span></Link>
          </ul>
        </div>
        <div className="followme py-3">
