@@ -247,7 +247,7 @@ export default async function SearchResult({cars,locations}:Props){
                     </div>
                 ))
             }
-            <PaginationComponent currentPage={currentPage} totalPost={cars.length} setCurrentPage={setCurrentPage} />
+            <PaginationComponent currentPage={currentPage} totalPost={cars.length} postPerPage={postsPerPage} setCurrentPage={setCurrentPage} />
         </>
     )
 }
