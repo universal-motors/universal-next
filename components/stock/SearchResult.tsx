@@ -24,7 +24,7 @@ interface Props{
 }
 
 export default async function SearchResult({cars,locations}:Props){
-    const [searchData , setSearchData] = useState(cars);
+    const searchData:StockCars[] = cars;
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage,setPostsPerPage] = useState(20);
     const lastPostIndex = currentPage * postsPerPage;
