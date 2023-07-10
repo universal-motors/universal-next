@@ -7,11 +7,11 @@ import {ChangeEvent, useState} from "react";
 import {Country} from "@/models/Master/Country";
 
 interface Props{
-    resultCount:number,
+   // resultCount:number,
     locations:Country[]// tblMasterCountry[]
 }
 
-export default async function SearchingCriteria({resultCount,locations}:Props){
+export default async function SearchingCriteria({locations}:Props){
 
    // const [sortFilter, setSortFilter] = useState("");
    //  function handleSortingChange(event:ChangeEvent<HTMLSelectElement>){
@@ -24,7 +24,7 @@ export default async function SearchingCriteria({resultCount,locations}:Props){
     return(
         <>
             <div className="results">
-                <h4>Search Page Result  - <span>{resultCount}</span> Matches Found</h4>
+                {/*<h4>Search Page Result  - <span>{resultCount}</span> Matches Found</h4>*/}
                 <h5>
                     View vehicles <strong>shipping from</strong>:
                 </h5>

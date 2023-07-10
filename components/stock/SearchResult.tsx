@@ -1,4 +1,4 @@
-
+'use client'
 import Link from "next/link";
 import Image from 'next/image'
 import {tblCars, tblMasterCountry} from ".prisma/client";
@@ -15,6 +15,8 @@ import {MdAirlineSeatReclineExtra} from "react-icons/md";
 import {Country} from "@/models/Master/Country";
 import agent from "@/api/agent";
 import CarOptionList from "@/components/stock/StockDetailed/CarOptionsList";
+import {useState} from "react";
+import PaginationComponent from "@/components/stock/PaginationComponent";
 interface Props{
 //    cars: tblCars[]
     cars: StockCars[]
@@ -22,15 +24,20 @@ interface Props{
 }
 
 export default async function SearchResult({cars,locations}:Props){
-    const isOpen=false;
+    const [searchData , setSearchData] = useState(cars);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postsPerPage,setPostsPerPage] = useState(20);
+    const lastPostIndex = currentPage * postsPerPage;
+    const firstPostIndex = lastPostIndex - postsPerPage;
+    const currentPosts = searchData.slice(firstPostIndex,lastPostIndex);
+    //const optionsMaster = await agent.LoadData.caroptionsList()//db.tblCarOptions.findMany({where: {isActive:true}});
 
     return(
         <>
+            <PaginationComponent currentPage={currentPage} totalPost={cars.length} postPerPage={postsPerPage} setCurrentPage={setCurrentPage} />
+          {
 
-
-            {
-
-                cars.map(car=>(
+                currentPosts.map(car=>(
                     <div key={car.stockId} className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div className="row my-5">
                             <div className="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-5">
@@ -157,7 +164,7 @@ export default async function SearchResult({cars,locations}:Props){
                                     </div>
                                     <div className="carlistfeatures row pt-2">
                                         <div className="col-md-8 flist">
-                                            <CarOptionList stockID={car.stockId}  />
+                                            {/*<CarOptionList optionsMaster={optionsMaster} stockID={car.stockId}  />*/}
                                             {/*<ul>*/}
                                             {/*    {*/}
 
@@ -240,7 +247,7 @@ export default async function SearchResult({cars,locations}:Props){
                     </div>
                 ))
             }
-
+            <PaginationComponent currentPage={currentPage} totalPost={cars.length} setCurrentPage={setCurrentPage} />
         </>
     )
 }

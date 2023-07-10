@@ -1,10 +1,12 @@
 import agent from "@/api/agent";
+import {CarOptions} from "@/models/Master/CarOptions";
 interface Props {
     stockID : number
+    optionsMaster : CarOptions[]
 }
-export default async function CarOptionList({stockID}:Props){
+export default async function CarOptionList({stockID, optionsMaster}:Props){
     const stockOptions = await agent.LoadData.caroptionMappingList(stockID);
-    const optionsMaster = await agent.LoadData.caroptionsList()//db.tblCarOptions.findMany({where: {isActive:true}});
+
     return(
         <>
             <ul>
