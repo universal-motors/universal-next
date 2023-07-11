@@ -3,11 +3,10 @@ import {StockCars} from "@/models/StockCars";
 import {Country} from "@/models/Master/Country";
 import {Ports} from "@/models/Master/Ports";
 import {PortMapping} from "@/models/Master/PortMapping";
-import Form from 'react-bootstrap/Form';
 import {Listbox, Switch, Transition} from "@headlessui/react";
-import {Fragment, useState} from "react";
-import {CheckIcon} from "@heroicons/react/20/solid";
-import classNames from "classnames";
+import {ChangeEvent, Fragment, useState} from "react";
+import {Select, SelectItem} from "@tremor/react";
+
 
 
 interface Props {
@@ -17,19 +16,90 @@ interface Props {
     portMapping: PortMapping[]
 
 }
+
 export default function PriceCalculator({car,countries, ports,portMapping}:Props){
     const [enabled, setEnabled] = useState(false)
 
+    const [countryID, setCountryID] = useState('0');
+    const [Ports, setPorts] = useState([]);
+    // const firstDropdownOptions: Option[] = [
+    //     { value: 'option1', label: 'Option 1' },
+    //     { value: 'option2', label: 'Option 2' },
+    //     { value: 'option3', label: 'Option 3' },
+    // ];
+    //
+    //
+    const handleDestinationChange = () => {
+
+        console.log(countryID)
+
+    };
+
+    const getOptionsForSecondDropdown = (selectedValue: string): Option[] => {
+        if (selectedValue === 'option1') {
+            return [
+                { value: 'suboption1', label: 'Suboption 1' },
+                { value: 'suboption2', label: 'Suboption 2' },
+                { value: 'suboption3', label: 'Suboption 3' },
+            ];
+        } else if (selectedValue === 'option2') {
+            return [
+                { value: 'suboption4', label: 'Suboption 4' },
+                { value: 'suboption5', label: 'Suboption 5' },
+            ];
+        } else {
+            return [];
+        }
+    };
+
+
+    // const handleSecondDropdownChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    //     const selectedValue = event.target.value;
+    //     setSecondDropdownValue(selectedValue);
+    // };
 
     return(
         <>
+
+            {/*    <select value={firstDropdownValue} onChange={handleFirstDropdownChange}>*/}
+            {/*        <option value="">Select an option</option>*/}
+            {/*        {firstDropdownOptions.map((option) => (*/}
+            {/*            <option key={option.value} value={option.value}>*/}
+            {/*                {option.label}*/}
+            {/*            </option>*/}
+            {/*        ))}*/}
+            {/*    </select>*/}
+
+            {/*    <select value={secondDropdownValue} onChange={handleSecondDropdownChange}>*/}
+            {/*        <option value="">Select an option</option>*/}
+            {/*        {optionsForSecondDropdown.map((option) => (*/}
+            {/*            <option key={option.value} value={option.value}>*/}
+            {/*                {option.label}*/}
+            {/*            </option>*/}
+            {/*        ))}*/}
+            {/*    </select>*/}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <div className="detail">
             <div className="detaildark">
                 <div className="row">
                     {/*<Example car={car} countries={countries}/>*/}
                     <div className="col-md-5 col-sm-5 col-5 fob-price">
                        <span style={{ marginRight: '10px' }}>FOB Price:</span>
-                        <select className="w-1/3 gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-blue-900 hover:bg-blue-100" aria-expanded="true" aria-haspopup="true">
+                        <select  className="w-1/3 gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-blue-900 hover:bg-blue-100" aria-expanded="true" aria-haspopup="true">
                             <option value={0} selected>$ USD</option>
                             <option value={1}>¥ JPY</option>
                             <option value={2}>€ EUR</option>
@@ -64,15 +134,15 @@ export default function PriceCalculator({car,countries, ports,portMapping}:Props
                     <div className="inline-flex basis-1/2 m-2">
                         <span className="m-2 text-sm">Freight To : </span>
 
-                        <select className="inline-flex w-2/3 justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-blue-900 hover:bg-blue-100" aria-expanded="true" aria-haspopup="true">
-                            <option value={0}>Select Destination</option>
+                        <Select  value={countryID} onValueChange={setCountryID} className="justify-center rounded-md bg-white  text-sm font-semibold text-blue-900 hover:bg-blue-100" aria-expanded="true" aria-haspopup="true">
+                            {/*<option value={0}>Select Destination</option>*/}
                             {
                                 countries
                                     .map(country=> (
-                                        <option key={country.countryId} value={country.countryId}>{country.countryName}</option>
+                                        <SelectItem key={country.countryId} value={country.countryId.toString()}>{country.countryName}</SelectItem>
                                     ))
                             }
-                        </select>
+                        </Select>
                     </div>
                     <div className="inline-flex  basis-1/2 m-2">
                         <span className="m-2 text-sm">Port/City  :</span>

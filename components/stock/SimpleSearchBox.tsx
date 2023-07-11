@@ -1,7 +1,7 @@
 'use client';
 import {Col, Form} from "react-bootstrap";
 import {tblBodyTypes, tblCarModels, tblMakes, tblMasterCountry} from ".prisma/client";
-import {ChangeEvent, FormEvent, useEffect, useState} from "react";
+import {ChangeEvent, FormEvent, FormEventHandler, useEffect, useState} from "react";
 import {SearchSelect, SearchSelectItem, Select, SelectItem} from "@tremor/react";
 import {useRouter} from "next/navigation";
 import {param} from "ts-interface-checker";
@@ -51,11 +51,7 @@ export default function SimpleSearchBox({bodyTypes,makes, models}:Props){
     const [url, setUrl] = useState('/search?');
     const queryParams:string[] = [];
     const router = useRouter();
-    // const yearsList = [];
-    // for (let i = currentYear-15; i <= currentYear; i++) {
-    //     yearsList.push(i);
-    // }
-    const yearList = Array.from({ length: 16 }, (_, index) => (currentYear - index).toString());
+   const yearList = Array.from({ length: 16 }, (_, index) => (currentYear - index).toString());
 
 
     function handleSubmit(event:FormEvent){
@@ -215,7 +211,7 @@ export default function SimpleSearchBox({bodyTypes,makes, models}:Props){
 
                                         <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6">
                                             <label>Model:</label>
-                                            <SearchSelect value={modelId} onValueChange={setModelId}>
+                                            <SearchSelect value={modelId} onValueChange={setModelId }>
                                                 {
                                                     models.map(model=> (
                                                         <SearchSelectItem key={model.modelId} value={model.modelId.toString()} >

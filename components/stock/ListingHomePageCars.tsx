@@ -35,9 +35,9 @@ export default async function ListingHomePageCars ({stocks}:Props) {
                                     .slice(0,10)
                                     .map(car=> (
                                         <Link key={car.stockId} href={`/global/results/${encodeURIComponent(car.stockId)}`}>
-                                            <div className="col-sm"  >
+                                            <div className="col-sm transition duration-300 ease-in-out hover:scale-110"  >
                                                 <div className="cardimage">
-                                                    <img src={car.imageUrl} alt={car.slug} title={car.slug} />
+                                                    <img  src={car.imageUrl} alt={car.slug} title={car.slug} />
                                                 </div>
                                                 <div className="cardcontent">
                                                     <h4>{car.listingTitle}</h4>
@@ -63,7 +63,7 @@ export default async function ListingHomePageCars ({stocks}:Props) {
                                             .slice(0,10)
                                             .map(car=> (
                                                 <Link key={car.stockId} href={`/global/results/${encodeURIComponent(car.stockId)}`}>
-                                                    <div className="col-sm"  >
+                                                    <div className="col-sm transition duration-300 ease-in-out hover:scale-110"  >
                                                         <div className="cardimage">
                                                             <img src={car.imageUrl} alt={car.slug} title={car.slug} />
                                                         </div>
@@ -95,7 +95,7 @@ export default async function ListingHomePageCars ({stocks}:Props) {
                                             .slice(0,10)
                                             .map(car=> (
                                                 <Link key={car.stockId} href={`/global/results/${encodeURIComponent(car.stockId)}`}>
-                                                    <div className="col-sm"  >
+                                                    <div className="col-sm transition duration-300 ease-in-out hover:scale-110"  >
                                                         <div className="cardimage">
                                                             <img src={car.imageUrl} alt={car.slug} title={car.slug} />
                                                         </div>
@@ -113,7 +113,7 @@ export default async function ListingHomePageCars ({stocks}:Props) {
                         </div>
                     </div>
                     <FaqComponent/>
-                    <div className="cta-homeSec">
+                    <div className="bg-[url('/assets/images/cta-bg.png')] cta-homeSec">
                         <div className="row">
                             <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div className="cta-heading">
@@ -129,5 +129,6 @@ export default async function ListingHomePageCars ({stocks}:Props) {
                 </div>
             </div>
         </>
+
     )
 }

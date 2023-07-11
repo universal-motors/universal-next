@@ -43,8 +43,25 @@ export default async function Home() {
 
      </div>
      <div className="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ">
-       <a href="https://wa.link/5g81p6"><div className="whatsappbg" /></a>
-       <a href="https://www.facebook.com/people/Universal-Motors-LTD/100064181618215/?wtsid=rdr_0KEZcfREX6pES4I4W"><div className="fbpbg" /></a>
+         <figure
+             className="h-auto max-w-lg transition-all duration-300 rounded-lg ">
+             <a href="https://wa.link/5g81p6">
+                 <img className="rounded-lg"
+                      src="/assets/images/what-share.jpg"
+                      alt="Whatsapp Description"/>
+             </a>
+         </figure>
+         <figure
+             className="h-auto max-w-lg transition-all duration-300 rounded-lg ">
+             <a href="https://www.facebook.com/people/Universal-Motors-LTD/100064181618215/?wtsid=rdr_0KEZcfREX6pES4I4W">
+                 <img className="rounded-lg"
+                      src="/assets/images/faceboook-share.jpg"
+                      alt="Facebook Description"/>
+             </a>
+         </figure>
+
+
+
        <div className="showcase-Make rightsidebar">
          <h5 className="pt-3"><b>UM in Your Country</b></h5>
          <ul className="countdrop">
