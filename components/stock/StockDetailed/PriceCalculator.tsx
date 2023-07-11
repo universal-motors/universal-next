@@ -35,22 +35,22 @@ export default function PriceCalculator({car,countries, ports,portMapping}:Props
 
     };
 
-    const getOptionsForSecondDropdown = (selectedValue: string): Option[] => {
-        if (selectedValue === 'option1') {
-            return [
-                { value: 'suboption1', label: 'Suboption 1' },
-                { value: 'suboption2', label: 'Suboption 2' },
-                { value: 'suboption3', label: 'Suboption 3' },
-            ];
-        } else if (selectedValue === 'option2') {
-            return [
-                { value: 'suboption4', label: 'Suboption 4' },
-                { value: 'suboption5', label: 'Suboption 5' },
-            ];
-        } else {
-            return [];
-        }
-    };
+    // const getOptionsForSecondDropdown = (selectedValue: string): Option[] => {
+    //     if (selectedValue === 'option1') {
+    //         return [
+    //             { value: 'suboption1', label: 'Suboption 1' },
+    //             { value: 'suboption2', label: 'Suboption 2' },
+    //             { value: 'suboption3', label: 'Suboption 3' },
+    //         ];
+    //     } else if (selectedValue === 'option2') {
+    //         return [
+    //             { value: 'suboption4', label: 'Suboption 4' },
+    //             { value: 'suboption5', label: 'Suboption 5' },
+    //         ];
+    //     } else {
+    //         return [];
+    //     }
+    // };
 
 
     // const handleSecondDropdownChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
