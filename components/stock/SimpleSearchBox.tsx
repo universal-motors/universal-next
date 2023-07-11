@@ -8,6 +8,7 @@ import {param} from "ts-interface-checker";
 import {BodyType} from "@/models/Master/BodyType";
 import {Make} from "@/models/Master/Make";
 import {CarModel} from "@/models/Master/CarModel";
+import {PortMapping} from "@/models/Master/PortMapping";
 
 interface Props{
     bodyTypes: BodyType[], //tblBodyTypes[],
@@ -43,6 +44,7 @@ export default function SimpleSearchBox({bodyTypes,makes, models}:Props){
     const currentYear = new Date().getFullYear()
     const [filter, setFilter] = useState(initialState);
     const [makeId, setMakeId] = useState("0");
+    const [mappedModels, setMappedModels] = useState<CarModel[]>([]);
     const [modelId, setModelId] = useState("0");
     const [bodyTypeId, setBodyTypeId] = useState("0");
     const [fromYear, setFromYear] = useState("0");
@@ -68,109 +70,41 @@ export default function SimpleSearchBox({bodyTypes,makes, models}:Props){
         if (fromYear != "0") params.set("fromYear", fromYear)
         if (toYear != "0") params.set("toYear", toYear)
 
-                    // if (makeId !== "0") {
-        //     queryParams.push(`makeId=${makeId}`);
-        //     const queryString = queryParams.join('&');
-        //     setUrl( `/search?${queryString}`);
-        // }
-        // if (modelId !== "0") {
-        //     queryParams.push(`modelId=${modelId}`)
-        //     const queryString = queryParams.join('&');
-        //     setUrl( `/search?${queryString}`);
-        // }
-        // if (bodyTypeId != "0") {
-        //     queryParams.push(`bodyTypeId=${bodyTypeId}`);
-        //     const queryString = queryParams.join('&');
-        //     setUrl( `/search?${queryString}`);
-        // }
-        // if (steeringTypeId != "0") {
-        //     queryParams.push(`steeringTypeId=${steeringTypeId}`);
-        //     const queryString = queryParams.join('&');
-        //     setUrl( `/search?${queryString}`);
-        // }
-        // if (fromYear != "0") {
-        //     queryParams.push(`fromYear=${fromYear}`);
-        //     const queryString = queryParams.join('&');
-        //     setUrl( `/search?${queryString}`);
-        // }
-        // if (toYear != "0") {
-        //     queryParams.push(`toYear=${toYear}`);
-        //     const queryString = queryParams.join('&');
-        //     setUrl( `/search?${queryString}`);
-        // }
-
-        // if (url!= "/search?"){
-        //     console.log(url);
-        // }
-        //console.log(`/global/results/cars?${params.toString()}`)
         router.push(`/global/results/cars?${params.toString()}`)
     }
 
+    const handleValueChange = (selectedValue:string) => {
+        const selectedMakeID =selectedValue;
+        setMakeId(selectedMakeID)
+        const modelbymake = models.filter(x=>x.makeId == parseInt(selectedValue));
+        setMappedModels(modelbymake)
+    };
 
-    // function handleInputChange(event:ChangeEvent<HTMLSelectElement>){
-    //     const fieldName = event.target.name;
-    //     const fieldValue = parseInt(event.target.value);
-    //
-    //
-    //     switch (fieldName) {
-    //         case 'makeId':
-    //             setMakeId(fieldValue);
-    //             if (makeId !== 0) {
-    //                 queryParams.push(`makeId=${makeId}`);
-    //                 const queryString = queryParams.join('&');
-    //                 setUrl( `/search?${queryString}`);
-    //             }
-    //             break;
-    //         case 'modelId':
-    //             setModelId(fieldValue);
-    //             if (modelId !== 0) {
-    //                 queryParams.push(`modelId=${modelId}`)
-    //                 const queryString = queryParams.join('&');
-    //                 setUrl( `/search?${queryString}`);
-    //             }
-    //             break;
-    //         case 'bodyTypeId':
-    //             setBodyTypeId(fieldValue);
-    //             if (bodyTypeId != 0) {
-    //                 queryParams.push(`bodyTypeId=${bodyTypeId}`);
-    //                 const queryString = queryParams.join('&');
-    //                 setUrl( `/search?${queryString}`);
-    //             }
-    //             break;
-    //         case 'steeringTypeId':
-    //             setSteeringTypeId(fieldValue);
-    //             if (steeringTypeId != 0) {
-    //                 queryParams.push(`steeringTypeId=${steeringTypeId}`);
-    //                 const queryString = queryParams.join('&');
-    //                 setUrl( `/search?${queryString}`);
-    //             }
-    //             break;
-    //         case 'fromYear':
-    //             setFromYear(fieldValue);
-    //             console.log(fromYear)
-    //             if (fromYear != 0) {
-    //                 queryParams.push(`fromYear=${fromYear}`);
-    //                 const queryString = queryParams.join('&');
-    //                 setUrl( `/search?${queryString}`);
-    //             }
-    //             break;
-    //         case 'toYear':
-    //             setToYear(fieldValue);
-    //             console.log(toYear)
-    //             if (toYear != 0) {
-    //                 queryParams.push(`toYear=${toYear}`);
-    //                 const queryString = queryParams.join('&');
-    //                 setUrl( `/search?${queryString}`);
-    //             }
-    //             break;
-    //         default:
-    //             break;
-    //     }
-    //
-    //
-    //     console.log(url);
-    // }
+    const renderMappedModels = () => {
 
+        if (mappedModels.length>0){
+            return(
+                <SearchSelect value={modelId} onValueChange={setModelId}>
+                    {
+                        mappedModels.map((model) => (
+                            <SearchSelectItem key={model.modelId} value={model.modelId.toString()}>
+                                {model.modelName}
+                            </SearchSelectItem>
+                        ))
+                    }
+                </SearchSelect>
+            )
+        }
+
+        return(
+        <SearchSelect value={makeId} onValueChange={handleValueChange}>
+
+        <SearchSelectItem value="0" >
+            No Models Found!
+        </SearchSelectItem>
+        </SearchSelect>
+            )
+    }
 
     return(
         <>
@@ -198,7 +132,8 @@ export default function SimpleSearchBox({bodyTypes,makes, models}:Props){
                                     <div className="row">
                                         <div className="col-lg-4 col-md-6 col-sm-6 col-6">
                                             <label>Make: </label>
-                                            <SearchSelect value={makeId} onValueChange={setMakeId}>
+                                            {/*<SearchSelect value={makeId} onValueChange={setMakeId}>*/}
+                                            <SearchSelect value={makeId} onValueChange={handleValueChange}>
                                             {
                                                 makes.map(make=> (
                                                     <SearchSelectItem key={make.makeId} value={make.makeId.toString()} >
@@ -211,16 +146,9 @@ export default function SimpleSearchBox({bodyTypes,makes, models}:Props){
 
                                         <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6">
                                             <label>Model:</label>
-                                            <SearchSelect value={modelId} onValueChange={setModelId }>
-                                                {
-                                                    models.map(model=> (
-                                                        <SearchSelectItem key={model.modelId} value={model.modelId.toString()} >
-                                                            {model.modelName}
-                                                        </SearchSelectItem>
-                                                    ))
-                                                }
-                                            </SearchSelect>
-
+                                            {
+                                                renderMappedModels()
+                                            }
                                         </div>
                                         <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6">
                                             <label>Body Type: </label>

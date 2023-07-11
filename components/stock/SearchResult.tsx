@@ -198,7 +198,7 @@ export default async function SearchResult({cars,locations}:Props){
                                         <h6 className="font-bold">
                                             FOB Price:
                                             <span className="mb-5 text-[20px] ">
-                                                <PriceFormat carPrice={car.price} />
+                                               <PriceFormat carPrice={car.price} />
                                             </span>
                                         </h6>
                                     </div>

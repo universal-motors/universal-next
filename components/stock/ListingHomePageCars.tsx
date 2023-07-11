@@ -8,6 +8,7 @@ import {Menu, Transition} from "@headlessui/react";
 import {EllipsisHorizontalIcon} from "@heroicons/react/20/solid";
 import {Fragment} from "react";
 import FaqComponent from "@/components/layout/FaqComponent";
+import PriceFormat from "@/components/stock/PriceFormat";
 // import db from "@/utils/db";
 // const GetStock = async () => {
 //     return await db.tblCars.findMany({where: {IsActive:true}});
@@ -42,7 +43,7 @@ export default async function ListingHomePageCars ({stocks}:Props) {
                                                 <div className="cardcontent">
                                                     <h4>{car.listingTitle}</h4>
                                                     <p className="modelno">{car.modelCode}</p>
-                                                    <p className="car-price">Price: <span> {car.price}</span></p>
+                                                    <p className="car-price">Price:  <span><PriceFormat carPrice={car.price} /></span></p>
                                                 </div>
                                             </div>
                                         </Link>
@@ -70,7 +71,7 @@ export default async function ListingHomePageCars ({stocks}:Props) {
                                                         <div className="cardcontent">
                                                             <h4>{car.listingTitle}</h4>
                                                             <p className="modelno">{car.modelCode}</p>
-                                                            <p className="car-price">Price: <span> {car.price}</span></p>
+                                                            <p className="car-price">Price: <span><PriceFormat carPrice={car.price} /></span></p>
                                                         </div>
                                                     </div>
                                                 </Link>
@@ -102,7 +103,7 @@ export default async function ListingHomePageCars ({stocks}:Props) {
                                                         <div className="cardcontent">
                                                             <h4>{car.listingTitle}</h4>
                                                             <p className="modelno">{car.modelCode}</p>
-                                                            <p className="car-price">Price: <span> {car.price}</span></p>
+                                                            <p className="car-price">Price:  <span><PriceFormat carPrice={car.price} /></span></p>
                                                         </div>
                                                     </div>
                                                 </Link>
