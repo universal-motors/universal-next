@@ -63,58 +63,58 @@ export default async function Home() {
 
 
        <div className="showcase-Make rightsidebar">
-         <h5 className="pt-3"><b>UM in Your Country</b></h5>
+         <h5 className="pt-3 text-center justify-items-center"><b>UM in Your Country</b></h5>
          <ul className="countdrop">
-           <Link className="mt-0" href="/global/information/import-protocols?page=bahamas" >
+           <Link className="transition duration-300 ease-in-out hover:scale-110" href="/global/information/import-protocols?page=bahamas" >
              <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
              <img src="/assets/images/flags/BS.svg"   className="img-fluid mr-3" height="15px" alt="Bahamas flag" />
              Bahamas</span>
            </Link>
-           <Link href="/global/information/import-protocols?page=chile" >
+           <Link className="transition duration-300 ease-in-out hover:scale-110" href="/global/information/import-protocols?page=chile" >
                  <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
              <img src="/assets/images/flags/CL.svg"  className="img-fluid mr-3" height="15px" alt="Chile flag" />
             Chile</span>
            </Link>
-           <Link className="nav-link" href="/global/information/import-protocols?page=congo" >
+           <Link className="transition duration-300 ease-in-out hover:scale-110 nav-link" href="/global/information/import-protocols?page=congo" >
                  <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
              <img src="/assets/images/flags/CD.svg" className="img-fluid mr-3" height="15px" alt="Congo flag" />Dr Congo</span></Link>
-           <Link href="/global/information/import-protocols?page=guyana" >
+           <Link  className="transition duration-300 ease-in-out hover:scale-110" href="/global/information/import-protocols?page=guyana" >
                  <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
              <img src="/assets/images/flags/GY.svg"  className="img-fluid mr-3" height="15px" alt="Guyana flag" /> Guyana</span></Link>
-           <Link href="/global/information/import-protocols?page=jamaica" >
+           <Link className="transition duration-300 ease-in-out hover:scale-110" href="/global/information/import-protocols?page=jamaica" >
                  <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
              <img src="/assets/images/flags/JM.svg"  className="img-fluid mr-3" height="15px" alt="Jamaica flag" /> Jamaica</span></Link>
-           <Link href="/global/information/import-protocols?page=kenya" >
+           <Link className="transition duration-300 ease-in-out hover:scale-110" href="/global/information/import-protocols?page=kenya" >
                  <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
              <img src="/assets/images/flags/KE.svg"  className="img-fluid mr-3" height="15px" alt="Kenya flag" /> Kenya</span></Link>
-           <Link href="/global/information/import-protocols?page=malawi" >
+           <Link className="transition duration-300 ease-in-out hover:scale-110" href="/global/information/import-protocols?page=malawi" >
                  <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
              <img src="/assets/images/flags/MW.svg"  className="img-fluid mr-3" height="15px" alt="Malawi flag" /> Malawi</span></Link>
-           <Link href="/global/information/import-protocols?page=pakistan" >
+           <Link className="transition duration-300 ease-in-out hover:scale-110" href="/global/information/import-protocols?page=pakistan" >
                  <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
              <img src="/assets/images/flags/PK.svg"  className="img-fluid mr-3" height="15px" alt="Pakistan flag" /> Pakistan</span></Link>
-           <Link href="/global/information/import-protocols?page=paraguay" >
+           <Link className="transition duration-300 ease-in-out hover:scale-110" href="/global/information/import-protocols?page=paraguay" >
                  <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
              <img src="/assets/images/flags/PY.svg"  className="img-fluid mr-3" height="15px" alt="Paraguay flag" /> Paraguay</span></Link>
-           <Link href="/global/information/import-protocols?page=russia" >
+           <Link className="transition duration-300 ease-in-out hover:scale-110" href="/global/information/import-protocols?page=russia" >
                  <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
              <img src="/assets/images/flags/RU.svg"  className="img-fluid mr-3" height="15px" alt="Russia flag" /> Russia</span></Link>
-           <Link href="/global/information/import-protocols?page=sudan">
+           <Link className="transition duration-300 ease-in-out hover:scale-110" href="/global/information/import-protocols?page=sudan">
                  <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
              <img src="/assets/images/flags/SS.svg"  className="img-fluid mr-3" height="15px" alt="Sudan flag" /> South Sudan</span></Link>
-           <Link href="/global/information/import-protocols?page=tanzania" >
+           <Link className="transition duration-300 ease-in-out hover:scale-110" href="/global/information/import-protocols?page=tanzania" >
                  <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
              <img src="/assets/images/flags/TZ.svg"  className="img-fluid mr-3" height="15px" alt="Tanzania flag" /> Tanzania</span></Link>
-           <Link href="/global/information/import-protocols?page=uganda" >
+           <Link className="transition duration-300 ease-in-out hover:scale-110" href="/global/information/import-protocols?page=uganda" >
                  <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
              <img src="/assets/images/flags/UG.svg"  className="img-fluid mr-3" height="15px" alt="Uganda flag" /> Uganda</span></Link>
-           <Link href="/global/information/import-protocols?page=zambia" >
+           <Link className="transition duration-300 ease-in-out hover:scale-110" href="/global/information/import-protocols?page=zambia" >
                  <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
              <img src="/assets/images/flags/ZM.svg"  className="img-fluid mr-3" height="15px" alt="Zambia flag" /> Zambia</span></Link>
-           <Link href="/global/information/import-protocols?page=zimbabwe" >
+           <Link className="transition duration-300 ease-in-out hover:scale-110" href="/global/information/import-protocols?page=zimbabwe" >
                  <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
              <img src="/assets/images/flags/ZW.svg"  className="img-fluid mr-3" height="15px" alt="Zimbabwe flag" /> Zimbabwe</span></Link>
-           <Link href="/global/information/import-protocols?page=ghana" >
+           <Link className="transition duration-300 ease-in-out hover:scale-110" href="/global/information/import-protocols?page=ghana" >
                  <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
              <img src="/assets/images/flags/GH.svg"  className="img-fluid mr-3" height="15px" alt="Ghana flag" /> Ghana</span></Link>
          </ul>

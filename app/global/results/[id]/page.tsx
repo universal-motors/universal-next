@@ -5,6 +5,7 @@ import LikeComponent from "@/components/stock/LikeComponent";
 import PriceCalculator from "@/components/stock/StockDetailed/PriceCalculator";
 import InquiryForm from "@/components/stock/StockDetailed/InquiryForm";
 import agent from "@/api/agent";
+import ContactUs from "@/components/pages/contact/ContactUs";
 
 interface Props {
     params: {
@@ -103,8 +104,8 @@ export default async function CarDetailed({params}:Props){
                                             ports={Ports}
                                             portMapping={PortMapping}
                                         />
-                                        <InquiryForm/>
-
+                                        {/*<InquiryForm/>*/}
+                                        <ContactUs/>
                                     </div>
 
 

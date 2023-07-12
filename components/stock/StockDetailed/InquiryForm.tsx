@@ -1,5 +1,13 @@
+'use client'
+import {ChevronDownIcon} from "@heroicons/react/20/solid";
+import { Switch } from '@headlessui/react'
+import {useState} from "react";
+
 export default function InquiryForm(){
+    const [agreed, setAgreed] = useState(false)
+
     return(
+
         <>
             <div className="inquiry-section">
                 <div className="row">
@@ -8,6 +16,7 @@ export default function InquiryForm(){
                     </div>
                 </div>
                 <div className="row inquiry-bottom">
+
                     <div className="col-lg-12 col-md-12">
                         <h6>Want To Talk To Us</h6>
                         <ul>

@@ -55,7 +55,8 @@ export default async function SearchResult({cars,locations}:Props){
                                 <div className="car-details">
                                     <div className="row ">
                                         <div className="col-lg-6 col-md-6 col-sm-6">
-                                            <Link href={`/global/results/${car.stockId}`}><h6 className="listname font-bold uppercase">{car.listingTitle}</h6></Link>
+                                            <Link href={`/global/results/${car.stockId}`}>
+                                                <h6 className="listname font-bold uppercase">{car.listingTitle}</h6></Link>
                                         </div>
                                         <div className="col-lg-6 col-md-6 col-sm-6">
                                             <div className="car-country">
@@ -92,7 +93,7 @@ export default async function SearchResult({cars,locations}:Props){
                                                 <h4>Engine</h4>
                                                 <span className="label-text  p-1 flex items-center rounded-md ml-5">
                                                      {/*<img decoding="async" src="/assets/images/engineDisplacement.svg" loading="eager"className="h-6 mr-2"/>*/}
-                                                    <span className="h-6 mr-2"><PiEngineFill /></span>
+                                                    <span className="h-auto mr-2"><PiEngineFill /></span>
                                                     {car.engineSize}</span>
                                             </div>
                                             <div className="col-sm specs">
@@ -110,7 +111,7 @@ export default async function SearchResult({cars,locations}:Props){
                                             <div className="col-sm specs">
                                                 <h4>Fuel</h4>
                                                 <span className="label-text  p-1 flex items-center rounded-md ml-5">
-                                                    <span className="h-6 mr-2"><FaGasPump /></span>
+                                                    <span className="h-auto mr-2"><FaGasPump /></span>
                                                     {car.typeOfFuel}
                                                  </span>
                                             </div>
@@ -121,26 +122,26 @@ export default async function SearchResult({cars,locations}:Props){
                                             <div className="col-sm specs">
                                                 <h4>Drivetrain</h4>
                                                 <span className="label-text  p-1 flex items-center rounded-md ml-5">
-                                                      <span className="h-6 mr-2"><PiGearFineBold /></span>
+                                                      <span className="h-auto mr-2"><PiGearFineBold /></span>
                                                     {car.drivetrainType}
                                                  </span>
                                             </div>
                                             <div className="col-sm specs">
                                                 <h4>Doors</h4>
                                                 <span className="label-text  p-1 flex items-center rounded-md ml-5">
-                                                  <span className="h-6 mr-2"><GiCarDoor /></span>
+                                                  <span className="h-auto mr-2"><GiCarDoor /></span>
                                                     {car.noOfDoors}</span>
                                             </div>
                                             <div className="col-sm specs">
                                                 <h4>Seats</h4>
                                                 <span className="label-text  p-1 flex items-center rounded-md ml-5">
-                                                     <span className="h-6 mr-2"><MdAirlineSeatReclineExtra /></span>
+                                                     <span className="h-auto mr-2"><MdAirlineSeatReclineExtra /></span>
                                                     {car.noOfSeats} </span>
                                             </div>
                                             <div className="col-sm specs">
                                                 <h4>Color</h4>
                                                 <span className="label-text  p-1 flex items-center rounded-md ml-5">
-                                                  <span className="h-6 mr-2"><BiSolidColorFill /></span>
+                                                  <span className="h-auto mr-2"><BiSolidColorFill /></span>
                                                     {car.colorName}</span>
 
                                             </div>
@@ -195,6 +196,7 @@ export default async function SearchResult({cars,locations}:Props){
                                 <div className="car-inquiry">
                                     {/*<Link href={`/global/results/${car.stockId}`}><h6 className="listname">{car.ListingTitle}</h6></Link>*/}
                                     <div className="fprice">
+                                        <h6 className="listname font-bold text-[20px]  uppercase">{car.listingTitle}</h6>
                                         <h6 className="font-bold">
                                             FOB Price:
                                             <span className="mb-5 text-[20px] ">

@@ -7,6 +7,7 @@ export default async function RootLayout({ children,
     children: React.ReactNode
 }) {
 
+
     return (
         //<ClerkProvider>
             <html lang="en">
@@ -20,7 +21,9 @@ export default async function RootLayout({ children,
             <body>
                 {children}
                 <Analytics />
+
             </body>
+
             </html>
         //</ClerkProvider>
 
