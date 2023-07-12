@@ -35,7 +35,7 @@ export default async function ListingHomePageCars ({stocks}:Props) {
                                     .sort((a, b) => b.stockId - a.stockId)
                                     .slice(0,10)
                                     .map(car=> (
-                                        <Link key={car.stockId} href={`/global/results/${encodeURIComponent(car.stockId)}`}>
+                                        <Link key={car.stockId} href={`/global/results/${car.stockId}`}>
                                             <div className="col-sm transition duration-300 ease-in-out hover:scale-110"  >
                                                 <div className="cardimage">
                                                     <img  src={car.imageUrl} alt={car.slug} title={car.slug} />
@@ -63,7 +63,8 @@ export default async function ListingHomePageCars ({stocks}:Props) {
                                             .sort((a, b) => b.stockId - a.stockId)
                                             .slice(0,10)
                                             .map(car=> (
-                                                <Link key={car.stockId} href={`/global/results/${encodeURIComponent(car.stockId)}`}>
+                                                // <Link key={car.stockId} href={`/global/results/${encodeURIComponent(car.stockId)}`}>
+                                                <Link key={car.stockId} href={`/global/results/${car.stockId}`}>
                                                     <div className="col-sm transition duration-300 ease-in-out hover:scale-110"  >
                                                         <div className="cardimage">
                                                             <img src={car.imageUrl} alt={car.slug} title={car.slug} />
@@ -95,7 +96,8 @@ export default async function ListingHomePageCars ({stocks}:Props) {
                                             .sort((a, b) => b.stockId - a.stockId)
                                             .slice(0,10)
                                             .map(car=> (
-                                                <Link key={car.stockId} href={`/global/results/${encodeURIComponent(car.stockId)}`}>
+                                                <Link key={car.stockId} href={`/global/results/${car.stockId}`}>
+                                                {/*<Link key={car.stockId} href={`/global/results/${encodeURIComponent(car.stockId)}`}>*/}
                                                     <div className="col-sm transition duration-300 ease-in-out hover:scale-110"  >
                                                         <div className="cardimage">
                                                             <img src={car.imageUrl} alt={car.slug} title={car.slug} />

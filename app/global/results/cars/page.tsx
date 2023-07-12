@@ -1,11 +1,7 @@
-
 import SearchingCriteria from "@/components/stock/SearchingCriteria";
 import SearchResult from "@/components/stock/SearchResult";
-//import prisma from "@/utils/db";
-import {tblCars, tblMasterCountry} from ".prisma/client";
 import {StockCars} from "@/models/StockCars";
 import agent from "@/api/agent";
-import {useRouter} from "next/navigation";
 import SimpleSearchBox from "@/components/stock/SimpleSearchBox";
 
 interface Props {

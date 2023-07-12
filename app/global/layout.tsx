@@ -33,7 +33,7 @@ export default async function RootLayout({
   return (
 
     <>
-      {/*<ClerkProvider>*/}
+      <ClerkProvider>
 
       <Header bodyTypes={bodyTypes} locations={locations} makes={makes}/>
         <section className="sidebar-menu">
@@ -46,7 +46,7 @@ export default async function RootLayout({
         </section>
         <Footer bodyTypes={bodyTypes} locations={locations} makes={makes}/>
 
-        {/*</ClerkProvider>*/}
+        </ClerkProvider>
     </>
 
 

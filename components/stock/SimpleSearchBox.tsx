@@ -97,10 +97,10 @@ export default function SimpleSearchBox({bodyTypes,makes, models}:Props){
         }
 
         return(
-        <SearchSelect value={makeId} onValueChange={handleValueChange}>
+        <SearchSelect value={makeId} onValueChange={handleValueChange} disabled>
 
         <SearchSelectItem value="0" >
-            No Models Found!
+           Select...
         </SearchSelectItem>
         </SearchSelect>
             )
