@@ -16,12 +16,13 @@ interface Props{
     locations : Country[]
     bodyTypes : BodyType[]
     makes : Make[]
+    stockCount : number
 }
 
 const currentYear = new Date().getFullYear()
 
 
-async function Header({locations, bodyTypes,makes}:Props) {
+async function Header({locations, bodyTypes,makes, stockCount}:Props) {
 
       return (
         <>
@@ -32,54 +33,54 @@ async function Header({locations, bodyTypes,makes}:Props) {
 
                     {/* Stack the columns on mobile by making one full-width and the other half-width */}
                     <div className="row">
-                        <TopCountryTimeBar/>
-                        <div className="col-lg-2 col-md-6 col-12 text-center">
-                            <div className="currencydropdown">
-                                <button className="currencydropbtn">
-                                   <span className="inline-flex mt-1 "><h5><FcCurrencyExchange className='mr-2'/></h5> Select Your Currency</span>
-                                </button>
-                                <div className="currencydropdown-content currencdd">
-                                    <Link href="#"><b>$</b><span>&nbsp;</span>USD</Link>
-                                    <Link href="#"><b>¥</b><span>&nbsp;</span>JPY</Link>
-                                    <Link href="#"><b>د.إ</b><span>&nbsp;</span>AED</Link>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-2 col-md-6 col-12">
-                            <div className="currencydropdown countrydrop">
-                                <button className="currencydropbtn" style={{width: 'inherit'}}>
-                                    {/*<i className="fa fa-globe" style={{position: 'relative', left: '-10px', fontSize: '20px'}} />*/}
-                                    <span className="inline-flex mt-1 "><h5><FcGlobe className='mr-2'/></h5>Select Your Country</span>
-                                </button>
-                                <div className="currencydropdown-content">
-                                    <ul className="countdrop ">
-                                    {
-                                        locations
-                                            .filter(location=> location.isHotLocation)
-                                            .map(location=> (
-                                                <li key={location.countryId}>
-                                                    <Link    href={{
-                                                        pathname : "/global/results/cars",
-                                                        query: {
-                                                            countryID: location.countryId
-                                                        }
-                                                    }}>
-                                                      <span className=" inline-flex items-center rounded-md">
-                                                           <img
-                                                               src={"/assets/images/flags/"+location.slug+".svg"}
-                                                               className="flagimg-fluid mr-3"
-                                                               alt={location.slug??""}
-                                                           />{location.countryName}
-                                                      </span>
+                        <TopCountryTimeBar stockCount={stockCount}/>
+                        {/*<div className="col-lg-2 col-md-6 col-12 text-center">*/}
+                        {/*    <div className="currencydropdown">*/}
+                        {/*        <button className="currencydropbtn">*/}
+                        {/*           <span className="inline-flex mt-1 "><h5><FcCurrencyExchange className='mr-2'/></h5> Select Your Currency</span>*/}
+                        {/*        </button>*/}
+                        {/*        <div className="currencydropdown-content currencdd">*/}
+                        {/*            <Link href="#"><b>$</b><span>&nbsp;</span>USD</Link>*/}
+                        {/*            <Link href="#"><b>¥</b><span>&nbsp;</span>JPY</Link>*/}
+                        {/*            <Link href="#"><b>د.إ</b><span>&nbsp;</span>AED</Link>*/}
+                        {/*        </div>*/}
+                        {/*    </div>*/}
+                        {/*</div>*/}
+                        {/*<div className="col-lg-2 col-md-6 col-12">*/}
+                        {/*    <div className="currencydropdown countrydrop">*/}
+                        {/*        <button className="currencydropbtn" style={{width: 'inherit'}}>*/}
+                        {/*            /!*<i className="fa fa-globe" style={{position: 'relative', left: '-10px', fontSize: '20px'}} />*!/*/}
+                        {/*            <span className="inline-flex mt-1 "><h5><FcGlobe className='mr-2'/></h5>Select Your Country</span>*/}
+                        {/*        </button>*/}
+                        {/*        <div className="currencydropdown-content">*/}
+                        {/*            <ul className="countdrop ">*/}
+                        {/*            {*/}
+                        {/*                locations*/}
+                        {/*                    .filter(location=> location.isHotLocation)*/}
+                        {/*                    .map(location=> (*/}
+                        {/*                        <li key={location.countryId}>*/}
+                        {/*                            <Link    href={{*/}
+                        {/*                                pathname : "/global/results/cars",*/}
+                        {/*                                query: {*/}
+                        {/*                                    countryID: location.countryId*/}
+                        {/*                                }*/}
+                        {/*                            }}>*/}
+                        {/*                              <span className=" inline-flex items-center rounded-md">*/}
+                        {/*                                   <img*/}
+                        {/*                                       src={"/assets/images/flags/"+location.slug+".svg"}*/}
+                        {/*                                       className="flagimg-fluid mr-3"*/}
+                        {/*                                       alt={location.slug??""}*/}
+                        {/*                                   />{location.countryName}*/}
+                        {/*                              </span>*/}
 
-                                                    </Link>
-                                                </li>
-                                            ))
-                                    }
-                                    </ul>`
-                                </div>
-                            </div>
-                        </div>
+                        {/*                            </Link>*/}
+                        {/*                        </li>*/}
+                        {/*                    ))*/}
+                        {/*            }*/}
+                        {/*            </ul>`*/}
+                        {/*        </div>*/}
+                        {/*    </div>*/}
+                        {/*</div>*/}
                     </div>
                 </div>
             </header>

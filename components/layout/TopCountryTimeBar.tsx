@@ -3,8 +3,14 @@
 
 import {useEffect, useState} from "react";
 import Navigation from "@/components/layout/Navigation";
-
-export default function TopCountryTimeBar(){
+import Image from "next/image";
+import agent from "@/api/agent";
+import PriceFormat from "@/components/stock/PriceFormat";
+import NumberFormat from "@/components/stock/NumberFormat";
+interface Props{
+    stockCount : number
+}
+export default  function TopCountryTimeBar({stockCount}:Props){
 
     const [japanDateTime, setJapanDateTime] = useState('');
     const [uaeDateTime, setUAEDateTime] = useState('');
@@ -27,6 +33,7 @@ export default function TopCountryTimeBar(){
         second: 'numeric',
     };
 
+
     useEffect(() => {
         const interval = setInterval(() => {
             const japanDateTime = new Date().toLocaleString('en-US', optionsJap
@@ -40,9 +47,23 @@ export default function TopCountryTimeBar(){
         return () => clearInterval(interval);
     }, []);
 
+
+
     return(
         <>
             <div className="firstsection col-lg-4 col-md-6 col-12 text-center">
+                <div className="flex items-center mt-3 pl-44">
+                    <Image alt="Stock Count" src="/assets/images/sport-car.png" height={26} width={26} className=" mr-2" />
+                    <span className="inline-flex items-center gap-x-1.5 ml-3 rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-900">
+                    <svg className="h-1.5 w-1.5 fill-indigo-500" viewBox="0 0 6 6" aria-hidden="true">
+                      <circle cx={3} cy={3} r={3} />
+                    </svg>
+                        Total Cars: <NumberFormat numbers={stockCount}/>
+                  </span>
+
+                </div>
+            </div>
+            <div className="col-lg-4 col-md-6 col-12 text-center">
                 <div className="flex items-center mt-3 pl-44">
                     <img alt="UAE Flag" src="/assets/images/flags/uae_flag.jpg" className="h-4 mr-2" />
                     <img alt="UAE Time" src="/assets/images/Clock.svg" className="h-5" />

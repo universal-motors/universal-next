@@ -40,6 +40,7 @@ const LoadData = {
 
     //------                                        Main Units
     stockList: ()=> request.get<StockCars[]>('carstock'),
+    stockCount: ()=> request.get<number>('carstock/count'),
     stock: (stockID : number)=> request.get<StockCars>(`carstock/${stockID}`),
     truckList: ()=> request.get('trucks'),
     machineryList: ()=> request.get<Machinery[]>('machinery'),
