@@ -40,7 +40,6 @@ const LoadData = {
 
     //------                                        Main Units
     stockList: ()=> request.get<StockCars[]>('carstock'),
-    stockCount: ()=> request.get<number>('carstock/count'),
     stock: (stockID : number)=> request.get<StockCars>(`carstock/${stockID}`),
     truckList: ()=> request.get('trucks'),
     machineryList: ()=> request.get<Machinery[]>('machinery'),
@@ -73,7 +72,11 @@ const LoadData = {
     freightcost: ()=> request.get<FreightCost[]>('compute/freightcost/'),
     portmapping: ()=> request.get<PortMapping[]>('compute/portmapping/'),
     getClientIP: ()=> request.get<string>('compute/getClientIP/'),
-
+    stockCount: ()=> request.get<number>('compute/stock/count'),
+    carmodelCount: (modelID:number)=> request.get<number>(`compute/carmodel/count/${modelID}`),
+    makeCount: (makeID:number)=> request.get<number>(`compute/make/count/${makeID}`),
+    bodytypeCount: (bodytypeID:number)=> request.get<number>(`compute/bodytype/count/${bodytypeID}`),
+    steeringTypeCount: (steeringID:number)=> request.get<number>(`compute/steeringType/count/${steeringID}`),
 }
 
 const agent = {

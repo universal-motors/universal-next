@@ -19,6 +19,8 @@ export default async function CarDetailed({params}:Props){
     const PortMapping = await agent.LoadData.portmapping();
     const Ports = await agent.LoadData.portsList();
     const InventoryLocation = Countries.find(x=> x.countryId == Stock.locationId)
+    const freightChargeMaster = await agent.LoadData.freightcost();
+    const inspectionCost = await agent.LoadData.inspectioncost();
 
     if (Stock != null)
 
@@ -103,6 +105,8 @@ export default async function CarDetailed({params}:Props){
                                             countries={Countries}
                                             ports={Ports}
                                             portMapping={PortMapping}
+                                            freightCharges={freightChargeMaster}
+                                            inspectionCost={inspectionCost}
                                         />
                                         {/*<InquiryForm/>*/}
                                         <ContactUs/>
