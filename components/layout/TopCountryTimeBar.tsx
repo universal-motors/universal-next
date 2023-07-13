@@ -53,7 +53,7 @@ export default  function TopCountryTimeBar({stockCount}:Props){
         <>
             <div className="firstsection col-lg-4 col-md-6 col-12 text-center">
                 <div className="flex items-center mt-3 pl-44">
-                    <Image alt="Stock Count" src="/assets/images/sport-car.png" height={26} width={26} className=" mr-2" />
+                    <img alt="Stock Count" src="/assets/images/sport-car.png" className="h-7 mr-2" />
                     <span className="inline-flex items-center gap-x-1.5 ml-3 rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-900">
                     <svg className="h-1.5 w-1.5 fill-indigo-500" viewBox="0 0 6 6" aria-hidden="true">
                       <circle cx={3} cy={3} r={3} />
