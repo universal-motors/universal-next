@@ -9,6 +9,7 @@ import {BodyType} from "@/models/Master/BodyType";
 import {Make} from "@/models/Master/Make";
 import {CarModel} from "@/models/Master/CarModel";
 import {PortMapping} from "@/models/Master/PortMapping";
+import agent from "@/api/agent";
 
 interface Props{
     bodyTypes: BodyType[], //tblBodyTypes[],
@@ -37,7 +38,10 @@ const initialState = {
     // colorId:0
 }
 
+const GetBodyTypes = async () => {
 
+    return await agent.LoadData.bodyTypeList();// db.tblBodyTypes.findMany({where: {isActive:true}});
+}
 
 export default function SimpleSearchBox({bodyTypes,makes, models}:Props){
 
@@ -79,6 +83,8 @@ export default function SimpleSearchBox({bodyTypes,makes, models}:Props){
         const modelbymake = models.filter(x=>x.makeId == parseInt(selectedValue));
         setMappedModels(modelbymake)
     };
+
+
 
     const renderMappedModels = () => {
 
@@ -137,7 +143,7 @@ export default function SimpleSearchBox({bodyTypes,makes, models}:Props){
                                             {
                                                 makes.map(make=> (
                                                     <SearchSelectItem key={make.makeId} value={make.makeId.toString()} >
-                                                        {make.makeName}
+                                                        {make.makeName} { }
                                                     </SearchSelectItem>
                                                 ))
                                             }

@@ -4,6 +4,7 @@ import Image from 'next/image'
 import {Country} from "@/models/Master/Country";
 import {BodyType} from "@/models/Master/BodyType";
 import {Make} from "@/models/Master/Make";
+import {BsFillTelephoneFill} from "react-icons/bs";
 
 interface Props{
     locations : Country[]
@@ -20,43 +21,57 @@ function Footer({locations, bodyTypes,makes}:Props){
             <footer>
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-3 col-12 f1">
+                        <div className="col-md-3 col-12 f1 ">
                             <h5>Headquarters</h5>
-                            <p>
+                            <p className="flex-auto inline-flex mt-2">
                                 <Image
                                     src="/assets/images/flags/AE.svg"
-                                    className="img-fluid"
+                                    className="img-fluid mr-3"
                                     alt="AE"
-                                    height={25}
-                                    width={25}
+                                    height={50}
+                                    width={50}
                                 />
                                 <br /> RM 405, 4th Floor Al Wahda Building Opp, Day to day Market Near
                                 City Center Deira
-                                <strong> DUBAI, UAE</strong>
+                                <b>DUBAI, UAE</b>
                             </p>
-                            <p>
+                            <p className="flex-auto inline-flex mt-2">
                                 <Image
                                     src="/assets/images/flags/JP.svg"
-                                    className="img-fluid"
+                                    className="img-fluid mr-3"
                                     alt="JP"
-                                    height={25}
-                                    width={25}
+                                    height={50}
+                                    width={50}
                                 />
                                 <br />
-                                7103 Kaburagi Mansion, Nishi Nakanobu, 3-2-17, Shinagawa Ku,
-                                <strong> Tokyo 142-0054, Japan </strong>
+                                7103 Kaburagi Mansion, Nishi Nakanobu, 3-2-17, Shinagawa Ku, 142-0054
+                               <b>Tokyo, Japan</b>
                             </p>
                             <br />
-                            <ul style={{ listStyle: "none", padding: 0 }}>
+                            <p className="flex-auto inline-flex mt-2">
+                                <Image
+                                    src="/assets/images/svgs/contact2.svg"
+                                    className="img-fluid mr-3"
+                                    alt="Contact Us"
+                                    height={50}
+                                    width={50}
+                                />
+                                <br />
+                                <ul>
                                 <li>
-                                    <h6>TEL:</h6>
+
                                     <a href="tel:+49 471 9731 9003">+49 471 9731 9003</a>
                                     <br />
                                     <a href="tel:+971 52 796 7035">+971 52 796 7035</a>
                                     <br />
                                     <a href="tel:+81 50 5050 8550">+81 50 5050 8550</a>
                                 </li>
-                                <br />
+                                </ul>
+                            </p>
+                            <br />
+
+                            <ul className="mt-3">
+
                                 <li>
                                     <h6>Corporate Site:</h6>
                                     <a href="https://www.universalmotorsltd.com/" target="">
