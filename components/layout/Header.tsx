@@ -11,18 +11,20 @@ import Image from "next/image";
 import {Country} from "@/models/Master/Country";
 import {BodyType} from "@/models/Master/BodyType";
 import {Make} from "@/models/Master/Make";
+import {StockCars} from "@/models/StockCars";
 
 interface Props{
     locations : Country[]
     bodyTypes : BodyType[]
     makes : Make[]
-    stockCount : number
+    stock: StockCars[]
+   // stockCount : number
 }
 
 const currentYear = new Date().getFullYear()
 
 
-async function Header({locations, bodyTypes,makes, stockCount}:Props) {
+async function Header({locations, bodyTypes,makes,  stock}:Props) {
 
       return (
         <>
@@ -33,7 +35,7 @@ async function Header({locations, bodyTypes,makes, stockCount}:Props) {
 
                     {/* Stack the columns on mobile by making one full-width and the other half-width */}
                     <div className="row">
-                        <TopCountryTimeBar stockCount={stockCount}/>
+                        <TopCountryTimeBar stockCount={stock.length}/>
                         {/*<div className="col-lg-2 col-md-6 col-12 text-center">*/}
                         {/*    <div className="currencydropdown">*/}
                         {/*        <button className="currencydropbtn">*/}
