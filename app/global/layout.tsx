@@ -24,6 +24,9 @@ const GetStockCount = async () => {
   return await agent.LoadData.stockCount();
   //db.tblMasterCountry.findMany({where: {IsActive:true}} );
 }
+const GetStock = async () => {
+  return await agent.LoadData.stockList();//db.tblCars.findMany({where: {IsActive:true}});
+}
 
 export default async function RootLayout({
   children,
@@ -34,22 +37,22 @@ export default async function RootLayout({
   const locations = await GetLocations();
   const makes = await GetCarMakes();
   const stockCount:number = await GetStockCount();
-
+  const stock = await GetStock();
   return (
 
     <>
       <ClerkProvider>
 
-        <Header bodyTypes={bodyTypes} stockCount={stockCount} locations={locations} makes={makes}/>
+        <Header bodyTypes={bodyTypes} stock={stock} locations={locations} makes={makes}/>
         <section className="sidebar-menu">
           <div className="container-fluid">
             <div className="row">
-              <Sidebar locations={locations} makes={makes}/>
+              <Sidebar stock={stock} locations={locations} makes={makes}/>
               {children}
             </div>
           </div>
         </section>
-        <Footer bodyTypes={bodyTypes} locations={locations} makes={makes}/>
+        <Footer stock={stock} bodyTypes={bodyTypes} locations={locations} makes={makes}/>
 
         </ClerkProvider>
     </>
