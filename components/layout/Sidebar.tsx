@@ -7,11 +7,19 @@ import {StockCars} from "@/models/StockCars";
 interface Props{
     locations : Country[]
     makes : Make[]
-    stock: StockCars[]
+    stocks: StockCars[]
 }
 
-function Sidebar({locations, makes, stock}:Props){
-
+function Sidebar({locations, makes, stocks}:Props){
+// Calculate the count of stocks for each location
+    const locationCounts = locations.map((location) => {
+        const count = stocks.filter((stock) => stock.locationId === location.countryId).length;
+        return { ...location, count };
+    });
+    const makeCounts = makes.map((make) => {
+        const count = stocks.filter((stock) => stock.makeId === make.makeId).length;
+        return { ...make, count };
+    });
     return (
         <>
             <div className="col-xl-2 col-lg-2 col-md-2 d-md-block d-none">
@@ -19,7 +27,8 @@ function Sidebar({locations, makes, stock}:Props){
                     <h5 style={{ fontSize: 18, color: "black" }}>Search By Make</h5>
                         <ul className="countdrop mt-3 mb-3">
                             {
-                                makes
+                                makeCounts
+                                    .sort((a,b)=> b.count - a.count)
                                     .slice(0, 10) // Get the first 10 records
                                     .map(make=> (
                                         <li key={make.makeId}>
@@ -45,7 +54,8 @@ function Sidebar({locations, makes, stock}:Props){
                                                 <svg className="h-1.5 w-1.5 fill-blue-500" viewBox="0 0 6 6" aria-hidden="true">
                                                   <circle cx={3} cy={3} r={3} />
                                                 </svg>
-                                                 {stock.filter(x=>x.makeId==make.makeId).length}
+                                                    {make.count}
+
                                               </span>
                                                      </span>
                                             </Link>
@@ -68,7 +78,7 @@ function Sidebar({locations, makes, stock}:Props){
                                                 <svg className="h-1.5 w-1.5 fill-yellow-400" viewBox="0 0 6 6" aria-hidden="true">
                                                   <circle cx={3} cy={3} r={3} />
                                                 </svg>
-                                        {stock.filter(x=>x.steeringTypeId==1).length}
+                                        {stocks.filter(x=>x.steeringTypeId==1).length}
                                               </span>
                                 </span>
                             </Link>
@@ -85,7 +95,7 @@ function Sidebar({locations, makes, stock}:Props){
                                                 <svg className="h-1.5 w-1.5 fill-yellow-400" viewBox="0 0 6 6" aria-hidden="true">
                                                   <circle cx={3} cy={3} r={3} />
                                                 </svg>
-                                        {stock.filter(x=>x.steeringTypeId==2).length}
+                                        {stocks.filter(x=>x.steeringTypeId==2).length}
                                               </span>
                                 </span>
                             </Link>
@@ -94,7 +104,8 @@ function Sidebar({locations, makes, stock}:Props){
                     <h5 style={{ fontSize: 18, color: "black" }}>Inventory Location</h5>
                         <ul className="countdrop mt-3">
                             {
-                                locations
+                                locationCounts
+                                    .sort((a,b)=> b.count - a.count)
                                     .filter(location=> location.isInventoryLocation)
                                     .map(location=> (
                                         <li key={location.countryId}>
@@ -117,7 +128,7 @@ function Sidebar({locations, makes, stock}:Props){
                                                 <svg className="h-1.5 w-1.5 fill-green-500" viewBox="0 0 6 6" aria-hidden="true">
                                                   <circle cx={3} cy={3} r={3} />
                                                 </svg>
-                                                    {stock.filter(x=>x.locationId==location.countryId).length}
+                                                    {location.count}
                                               </span>
                                             </span>
                                             </Link>

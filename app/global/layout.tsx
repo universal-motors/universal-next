@@ -47,7 +47,7 @@ export default async function RootLayout({
         <section className="sidebar-menu">
           <div className="container-fluid">
             <div className="row">
-              <Sidebar stock={stock} locations={locations} makes={makes}/>
+              <Sidebar stocks={stock} locations={locations} makes={makes}/>
               {children}
             </div>
           </div>
