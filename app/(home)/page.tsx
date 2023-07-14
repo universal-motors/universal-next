@@ -2,6 +2,7 @@
 import ListingHomePageCars from "@/components/stock/ListingHomePageCars";
 import agent from "@/api/agent";
 import Link from "next/link";
+import {prisma} from "@/utils/db";
 import SimpleSearchBox from "@/components/stock/SimpleSearchBox";
 
 const GetStock = async () => {
@@ -10,7 +11,8 @@ const GetStock = async () => {
 
 const GetBodyTypes = async () => {
 
-  return await agent.LoadData.bodyTypeList();// db.tblBodyTypes.findMany({where: {isActive:true}});
+  return await// agent.LoadData.bodyTypeList();
+   prisma.tblBodyTypes.findMany({where: {isActive:true}});
 }
 const GetLocations = async () => {
     return await agent.LoadData.countryList();
@@ -18,11 +20,13 @@ const GetLocations = async () => {
 }
 
 const GetCarMakes = async () => {
-  return await  agent.LoadData.carMakeList();//db.tblMakes.findMany({where: {isActive:true}} );
+  return await  //agent.LoadData.carMakeList();//
+     prisma.tblMakes.findMany({where: {isActive:true}} );
 }
 
 const GetCarModels = async () => {
-  return await  agent.LoadData.carModelList();//db.tblCarModels.findMany({where: {isActive:true}} );
+  return await  //agent.LoadData.carModelList();
+    prisma.tblCarModels.findMany({where: {isActive:true}} );
 }
 
 

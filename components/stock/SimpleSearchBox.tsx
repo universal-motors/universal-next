@@ -4,18 +4,16 @@ import {tblBodyTypes, tblCarModels, tblMakes, tblMasterCountry} from ".prisma/cl
 import {ChangeEvent, FormEvent, FormEventHandler, useEffect, useState} from "react";
 import {SearchSelect, SearchSelectItem, Select, SelectItem} from "@tremor/react";
 import {useRouter} from "next/navigation";
-import {param} from "ts-interface-checker";
-import {BodyType} from "@/models/Master/BodyType";
-import {Make} from "@/models/Master/Make";
+
 import {CarModel} from "@/models/Master/CarModel";
 import {PortMapping} from "@/models/Master/PortMapping";
 import agent from "@/api/agent";
 
 interface Props{
-    bodyTypes: BodyType[], //tblBodyTypes[],
+    bodyTypes:tblBodyTypes[],
     // locations: tblMasterCountry[],
-    makes: Make[]//tblMakes[],
-    models: CarModel[]//tblCarModels[]
+    makes: tblMakes[],
+    models: tblCarModels[]
 }
 
 const initialState = {
@@ -38,10 +36,6 @@ const initialState = {
     // colorId:0
 }
 
-const GetBodyTypes = async () => {
-
-    return await agent.LoadData.bodyTypeList();// db.tblBodyTypes.findMany({where: {isActive:true}});
-}
 
 export default function SimpleSearchBox({bodyTypes,makes, models}:Props){
 
@@ -80,7 +74,7 @@ export default function SimpleSearchBox({bodyTypes,makes, models}:Props){
     const handleValueChange = (selectedValue:string) => {
         const selectedMakeID =selectedValue;
         setMakeId(selectedMakeID)
-        const modelbymake = models.filter(x=>x.makeId == parseInt(selectedValue));
+        const modelbymake:any = models.filter(x=>x.MakeId == parseInt(selectedValue));
         setMappedModels(modelbymake)
     };
 
@@ -142,8 +136,8 @@ export default function SimpleSearchBox({bodyTypes,makes, models}:Props){
                                             <SearchSelect value={makeId} onValueChange={handleValueChange}>
                                             {
                                                 makes.map(make=> (
-                                                    <SearchSelectItem key={make.makeId} value={make.makeId.toString()} >
-                                                        {make.makeName} { }
+                                                    <SearchSelectItem key={make.MakeId} value={make.MakeId.toString()} >
+                                                        {make.MakeName} { }
                                                     </SearchSelectItem>
                                                 ))
                                             }
@@ -164,8 +158,8 @@ export default function SimpleSearchBox({bodyTypes,makes, models}:Props){
                                                 {/*</SelectItem>*/}
                                                 {
                                                     bodyTypes.map(bodytype=> (
-                                                        <SearchSelectItem key={bodytype.bodyTypeId} value={bodytype.bodyTypeId.toString()} >
-                                                            {bodytype.typeOfBody}
+                                                        <SearchSelectItem key={bodytype.BodyTypeId} value={bodytype.BodyTypeId.toString()} >
+                                                            {bodytype.TypeOfBody}
                                                         </SearchSelectItem>
                                                     ))
                                                 }

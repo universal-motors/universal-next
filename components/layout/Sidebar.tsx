@@ -1,23 +1,23 @@
-import {tblBodyTypes, tblMakes, tblMasterCountry} from ".prisma/client";
+import {tblBodyTypes, tblCars, tblMakes, tblMasterCountry} from ".prisma/client";
 import Link from "next/link";
 import {Country} from "@/models/Master/Country";
 import {Make} from "@/models/Master/Make";
 import {StockCars} from "@/models/StockCars";
 
 interface Props{
-    locations : Country[]
-    makes : Make[]
-    stocks: StockCars[]
+    locations : tblMasterCountry[]// Country[]
+    makes : tblMakes[]//Make[]
+    stocks: tblCars[]//StockCars[]
 }
 
 function Sidebar({locations, makes, stocks}:Props){
 // Calculate the count of stocks for each location
     const locationCounts = locations.map((location) => {
-        const count = stocks.filter((stock) => stock.locationId === location.countryId).length;
+        const count = stocks.filter((stock) => stock.LocationId === location.CountryId).length;
         return { ...location, count };
     });
     const makeCounts = makes.map((make) => {
-        const count = stocks.filter((stock) => stock.makeId === make.makeId).length;
+        const count = stocks.filter((stock) => stock.MakeId === make.MakeId).length;
         return { ...make, count };
     });
     return (
@@ -31,23 +31,23 @@ function Sidebar({locations, makes, stocks}:Props){
                                     .sort((a,b)=> b.count - a.count)
                                     .slice(0, 10) // Get the first 10 records
                                     .map(make=> (
-                                        <li key={make.makeId}>
+                                        <li key={make.MakeId}>
                                             <Link
                                                 href={{
                                                     pathname : "/global/results/cars",
                                                     query: {
-                                                        makeID: make.makeId
+                                                        makeID: make.MakeId
                                                     }
                                                 }}
                                             >
                                                 <span className=" inline-flex items-center rounded-md">
                                                     <img
-                                                        src={make.imageURL??""}
+                                                        src={make.ImageUrl??""}
                                                         className="img-fluid mr-3"
-                                                        alt={make.slug}
+                                                        alt={make.Slug}
 
                                                     />
-                                                    {make.makeName}
+                                                    {make.MakeName}
 
 
                                                 <span className="ml-3  inline-flex items-center gap-x-1.5 rounded-full px-2 py-1 text-xs font-medium text-gray-900 ring-1 ring-inset ring-gray-200">
@@ -78,7 +78,7 @@ function Sidebar({locations, makes, stocks}:Props){
                                                 <svg className="h-1.5 w-1.5 fill-yellow-400" viewBox="0 0 6 6" aria-hidden="true">
                                                   <circle cx={3} cy={3} r={3} />
                                                 </svg>
-                                        {stocks.filter(x=>x.steeringTypeId==1).length}
+                                        {stocks.filter(x=>x.SteeringTypeId==1).length}
                                               </span>
                                 </span>
                             </Link>
@@ -95,7 +95,7 @@ function Sidebar({locations, makes, stocks}:Props){
                                                 <svg className="h-1.5 w-1.5 fill-yellow-400" viewBox="0 0 6 6" aria-hidden="true">
                                                   <circle cx={3} cy={3} r={3} />
                                                 </svg>
-                                        {stocks.filter(x=>x.steeringTypeId==2).length}
+                                        {stocks.filter(x=>x.SteeringTypeId==2).length}
                                               </span>
                                 </span>
                             </Link>
@@ -106,24 +106,24 @@ function Sidebar({locations, makes, stocks}:Props){
                             {
                                 locationCounts
                                     .sort((a,b)=> b.count - a.count)
-                                    .filter(location=> location.isInventoryLocation)
+                                    .filter(location=> location.IsInventoryLocation)
                                     .map(location=> (
-                                        <li key={location.countryId}>
+                                        <li key={location.CountryId}>
                                             <Link    href={{
                                                 pathname : "/global/results/cars",
                                                 query: {
-                                                    countryID: location.countryId
+                                                    countryID: location.CountryId
                                                 }
                                             }}>
 
                                                 <span className=" inline-flex items-center rounded-md">
                                                 <img
-                                                    src={"/assets/images/flags/"+location.slug+".svg"}
+                                                    src={"/assets/images/flags/"+location.Slug+".svg"}
                                                     className="flag img-fluid mr-3"
-                                                    alt={location.slug??""}
+                                                    alt={location.Slug??""}
 
                                                 />
-                                                {location.countryName}
+                                                {location.CountryName}
                                                 <span className="ml-3  inline-flex items-center gap-x-1.5 rounded-full px-2 py-1 text-xs font-medium text-gray-900 ring-1 ring-inset ring-gray-200">
                                                 <svg className="h-1.5 w-1.5 fill-green-500" viewBox="0 0 6 6" aria-hidden="true">
                                                   <circle cx={3} cy={3} r={3} />

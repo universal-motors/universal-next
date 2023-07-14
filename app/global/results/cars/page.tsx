@@ -1,8 +1,9 @@
 import SearchingCriteria from "@/components/stock/SearchingCriteria";
 import SearchResult from "@/components/stock/SearchResult";
 import {StockCars} from "@/models/StockCars";
-import agent from "@/api/agent";
+import {prisma} from "@/utils/db";
 import SimpleSearchBox from "@/components/stock/SimpleSearchBox";
+import agent from "@/api/agent";
 
 interface Props {
     searchParams: {
@@ -20,19 +21,19 @@ interface Props {
 }
 const GetBodyTypes = async () => {
 
-    return await agent.LoadData.bodyTypeList();// db.tblBodyTypes.findMany({where: {isActive:true}});
+    return await prisma.tblBodyTypes.findMany({where: {isActive:true}});
 }
 const GetLocations = async () => {
-    return await agent.LoadData.countryList();
-    //db.tblMasterCountry.findMany({where: {IsActive:true}} );
+    return await //agent.LoadData.countryList();
+    prisma.tblMasterCountry.findMany({where: {IsActive:true}} );
 }
 
 const GetCarMakes = async () => {
-    return await  agent.LoadData.carMakeList();//db.tblMakes.findMany({where: {isActive:true}} );
+    return await  prisma.tblMakes.findMany({where: {isActive:true}} );
 }
 
 const GetCarModels = async () => {
-    return await  agent.LoadData.carModelList();//db.tblCarModels.findMany({where: {isActive:true}} );
+    return await  prisma.tblCarModels.findMany({where: {isActive:true}} );
 }
 
 export default async function ResultPage({searchParams}:Props) {

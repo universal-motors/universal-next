@@ -18,9 +18,9 @@ import CarOptionList from "@/components/stock/StockDetailed/CarOptionsList";
 import {useState} from "react";
 import PaginationComponent from "@/components/stock/PaginationComponent";
 interface Props{
-//    cars: tblCars[]
-    cars: StockCars[]
-    locations: Country[]//tblMasterCountry[]
+ //   cars: tblCars[]
+   cars: StockCars[]
+    locations:tblMasterCountry[]
 }
 
 export default async function SearchResult({cars,locations}:Props){
@@ -63,7 +63,7 @@ export default async function SearchResult({cars,locations}:Props){
                                                 <h6 className="text-right">
                                                     <span className="font-bold inline-flex">
                                                         <Image
-                                                            src={`/assets/images/flags/${locations.find(x=>x.countryId==car.locationId)?.slug}.svg`}
+                                                            src={`/assets/images/flags/${locations.find(x=>x.CountryId==car.locationId)?.Slug}.svg`}
                                                             className="img-fluid mr-2"
                                                             height={20}
                                                             width={20}

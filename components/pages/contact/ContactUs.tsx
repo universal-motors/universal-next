@@ -1,13 +1,26 @@
 'use client'
 import {Switch} from "@headlessui/react";
-import {useState} from "react";
-
+import React, {FormEvent , MutableRefObject, useRef, useState} from 'react';
+import emailjs from '@emailjs/browser';
 
 function classNames(...classes:string[]) {
     return classes.filter(Boolean).join(' ')
 }
 export default function ContactUs (){
     const [agreed, setAgreed] = useState(false)
+    const form: MutableRefObject<HTMLFormElement | null> = useRef(null);
+
+
+    const sendEmail = (e:FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        emailjs.sendForm('service_7e9top8', 'template_nfu924e', form.current??'', 'sFnMuHjMgPi29ux01')
+            .then((result) => {
+                console.log(result.text);
+            }, (error) => {
+                console.log(error.text);
+            });
+    };
+
     return(
         <>
             <div className="inquiry-section">
@@ -21,7 +34,7 @@ export default function ContactUs (){
                         <h3 className="text-lg font-bold tracking-tight text-gray-900 sm:text-4xl">Want To Talk To Us</h3>
 
                     </div>
-                    <form action="#" method="POST" className="mx-auto mt-16 max-w-xl sm:mt-20">
+                    <form ref={form} onSubmit={sendEmail} className="mx-auto mt-16 max-w-xl sm:mt-20">
                         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                             <div>
                                 <label htmlFor="first-name" className="block text-sm font-semibold leading-6 text-gray-900">

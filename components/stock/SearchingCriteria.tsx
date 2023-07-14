@@ -8,7 +8,7 @@ import {Country} from "@/models/Master/Country";
 
 interface Props{
    // resultCount:number,
-    locations:Country[]// tblMasterCountry[]
+    locations:tblMasterCountry[]
 }
 
 export default async function SearchingCriteria({locations}:Props){
@@ -34,11 +34,11 @@ export default async function SearchingCriteria({locations}:Props){
                     </li>
                     {
                         locations
-                            .filter(country=>country.isInventoryLocation)
+                            .filter(country=>country.IsInventoryLocation)
                             .map(country=>(
-                            <li key={country.countryId} className="nav-item">
-                                <Link className="nav-link2 " data-toggle="tab" href={`/global/results?countryID=${country.countryId}`} role="tab">
-                                    <span className="inline-flex"><img src={`/assets/images/flags/${country.slug}.svg`} className="img-fluid mr-2" alt={country.slug??""} /> {country.countryName}</span>
+                            <li key={country.CountryId} className="nav-item">
+                                <Link className="nav-link2 " data-toggle="tab" href={`/global/results?countryID=${country.CountryId}`} role="tab">
+                                    <span className="inline-flex"><img src={`/assets/images/flags/${country.Slug}.svg`} className="img-fluid mr-2" alt={country.Slug??""} /> {country.CountryName}</span>
                                 </Link>
                             </li>
                         ))

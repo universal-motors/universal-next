@@ -1,10 +1,4 @@
-import SearchingCriteria from "@/components/stock/SearchingCriteria";
-import SearchResult from "@/components/stock/SearchResult";
-import CarDetailedSlideshow from "@/components/stock/StockDetailed/CarDetailedSlideshow";
-import StockSpecification from "@/components/stock/StockDetailed/StockSpecification";
-import StockKeyInformation from "@/components/stock/StockDetailed/StockKeyInformation";
-import PriceCalculator from "@/components/stock/StockDetailed/PriceCalculator";
-import InquiryForm from "@/components/stock/StockDetailed/InquiryForm";
+
 
 export default function Loading(){
     return (

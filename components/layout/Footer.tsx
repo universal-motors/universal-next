@@ -1,20 +1,15 @@
-import {tblBodyTypes, tblMakes, tblMasterCountry} from ".prisma/client";
+import {tblBodyTypes, tblCars, tblMakes, tblMasterCountry} from ".prisma/client";
 import Link from "next/link";
 import Image from 'next/image'
-import {Country} from "@/models/Master/Country";
-import {BodyType} from "@/models/Master/BodyType";
-import {Make} from "@/models/Master/Make";
-import {BsFillTelephoneFill} from "react-icons/bs";
-import {StockCars} from "@/models/StockCars";
 
 interface Props{
-    locations : Country[]
-    bodyTypes : BodyType[]
-    makes : Make[]
-    stock: StockCars[]
+    locations : tblMasterCountry[]//Country[]
+    bodyTypes :tblBodyTypes[]
+    makes : tblMakes[]
+  //  stocks: tblCars[]
 }
 
-function Footer({locations, bodyTypes,makes, stock}:Props){
+function Footer({locations, bodyTypes,makes}:Props){
     const flagLocation = "/assets/images/flags/";
 
 
@@ -52,11 +47,11 @@ function Footer({locations, bodyTypes,makes, stock}:Props){
                             <br />
                             <p className="flex-auto inline-flex mt-2">
                                 <Image
-                                    src="/assets/images/svgs/contact2.svg"
+                                    src="/assets/images/contact.png"
                                     className="img-fluid mr-3"
                                     alt="Contact Us"
                                     height={50}
-                                    width={50}
+                                    width={80}
                                 />
                                 <br />
                                 <ul>
@@ -136,25 +131,25 @@ function Footer({locations, bodyTypes,makes, stock}:Props){
                                     makes
                                         .slice(0, 10) // Get the first 10 records
                                         .map(make=> (
-                                            <li key={make.makeId}>
+                                            <li key={make.MakeId}>
 
                                                 <Link
                                                     href={{
                                                         pathname : "/global/results/cars",
                                                         query: {
-                                                            makeID: make.makeId
+                                                            makeID: make.MakeId
                                                         }
                                                     }}
                                                 >
                                                      <span className=" inline-flex items-center rounded-md">
                                                     <Image
-                                                        src={make.imageURL??""}
+                                                        src={make.ImageUrl??""}
                                                         className="flagimg-fluid ml-5"
-                                                        alt={make.slug}
+                                                        alt={make.Slug}
                                                         width={32}
                                                         height={32}
                                                     />
-                                                    {make.makeName}</span>
+                                                    {make.MakeName}</span>
                                                 </Link>
                                             </li>
                                         ))
@@ -166,16 +161,16 @@ function Footer({locations, bodyTypes,makes, stock}:Props){
                             <ul className="countdrop">
                                 {
                                     bodyTypes.map(bodytype=> (
-                                        <li key={bodytype.bodyTypeId}>
+                                        <li key={bodytype.BodyTypeId}>
                                                <span className=" inline-flex items-center rounded-md ml-5">
                                           <Link    href={{
                                               pathname : "/global/results/cars",
                                               query: {
-                                                  bodyTypeID: bodytype.bodyTypeId
+                                                  bodyTypeID: bodytype.BodyTypeId
                                               }
                                           }}>
 
-                                              {bodytype.typeOfBody}
+                                              {bodytype.TypeOfBody}
                                             </Link></span>
                                         </li>
                                 ))
@@ -253,25 +248,25 @@ function Footer({locations, bodyTypes,makes, stock}:Props){
                             <ul className="countdrop">
                             {
                                 locations
-                                    .filter(location=> location.isInventoryLocation)
+                                    .filter(location=> location.IsInventoryLocation)
                                     .map(location=> (
-                                    <li key={location.countryId}>
+                                    <li key={location.CountryId}>
                                         <Link href={{
                                             pathname : "/global/results/cars",
                                             query: {
-                                                countryID: location.countryId
+                                                countryID: location.CountryId
                                             }
                                         }}>
 
                                            <span className=" inline-flex items-center rounded-md">
                                         <Image
-                                            src={flagLocation+location.slug+".svg"}
+                                            src={flagLocation+location.Slug+".svg"}
                                             className="flagimg-fluid ml-5"
-                                            alt={location.slug??""}
+                                            alt={location.Slug??""}
                                             width={16}
                                             height={16}
                                         />
-                                        {location.countryName}</span>
+                                        {location.CountryName}</span>
                                         </Link>
                                     </li>
                             ))

@@ -1,30 +1,23 @@
 
-import {tblBodyTypes, tblMakes, tblMasterCountry} from ".prisma/client";
+import {tblBodyTypes, tblCars, tblMakes, tblMasterCountry} from ".prisma/client";
 import Link from "next/link";
 
 import SearchBar from "@/components/stock/SearchBar";
-import {FcBusinessman, FcCurrencyExchange, FcCustomerSupport, FcGlobe, FcLike, FcOnlineSupport} from "react-icons/fc";
+import {FcBusinessman,  FcCustomerSupport,  FcLike} from "react-icons/fc";
 import TopCountryTimeBar from "@/components/layout/TopCountryTimeBar";
 import Navigation from "@/components/layout/Navigation";
 import Image from "next/image";
 
-import {Country} from "@/models/Master/Country";
-import {BodyType} from "@/models/Master/BodyType";
-import {Make} from "@/models/Master/Make";
-import {StockCars} from "@/models/StockCars";
-
 interface Props{
-    locations : Country[]
-    bodyTypes : BodyType[]
-    makes : Make[]
-    stock: StockCars[]
+    locations : tblMasterCountry[]//Country[]
+   // bodyTypes :tblBodyTypes[]// BodyType[]
+    //makes : tblMakes[]// Make[]
+    stock: tblCars[]//StockCars[]
    // stockCount : number
 }
 
-const currentYear = new Date().getFullYear()
 
-
-async function Header({locations, bodyTypes,makes,  stock}:Props) {
+async function Header({locations, stock}:Props) {
 
       return (
         <>
@@ -220,25 +213,25 @@ async function Header({locations, bodyTypes,makes,  stock}:Props) {
 
 
                                                 locations
-                                                    .filter(location=> location.isInventoryLocation)
+                                                    .filter(location=> location.IsInventoryLocation)
                                                     .map(location=> (
-                                                        <li key={location.countryId}>
+                                                        <li key={location.CountryId}>
                                                             <Link href={{
                                                                 pathname : "/global/results/cars",
                                                                 query: {
-                                                                    countryID: location.countryId
+                                                                    countryID: location.CountryId
                                                                 }
                                                             }}>
 
                                            <span className=" inline-flex items-center rounded-md">
                                         <Image
-                                            src={`/assets/images/flags/${location.slug}.svg`}
+                                            src={`/assets/images/flags/${location.Slug}.svg`}
                                             className="flagimg-fluid mr-5"
-                                            alt={location.slug??""}
+                                            alt={location.Slug??""}
                                             width={16}
                                             height={16}
                                         />
-                                               {location.countryName}</span>
+                                               {location.CountryName}</span>
                                                             </Link>
                                                         </li>
                                                     ))
