@@ -2,12 +2,13 @@
 import {StockCars} from "@/models/StockCars";
 import {Country} from "@/models/Master/Country";
 import {Ports} from "@/models/Master/Ports";
-import { Switch} from "@headlessui/react";
-import {ChangeEvent, ChangeEventHandler, Fragment, useState} from "react";
+import {Switch} from "@headlessui/react";
+import {ChangeEvent, useState} from "react";
 import {PortMapping} from "@/models/Master/PortMapping";
 import {FreightCost} from "@/models/Master/FreightCost";
 import {InspectionCost} from "@/models/Master/InspectionCost";
 import classNames from "classnames";
+import PriceFormat from "@/components/stock/PriceFormat";
 
 
 interface Props {
@@ -23,14 +24,14 @@ interface Props {
 export default function PriceCalculator({car,countries, ports,portMapping, freightCharges,inspectionCost}:Props){
     const [countryID, setCountryID] = useState(0);
     const [portID, setPortID] = useState(0);
-    const [freightCharge, setFreightCharge] = useState(0);
 
     const [mappedPorts, setMappedPorts] = useState<PortMapping[]>([]);
-    const [totalPrice, setTotalPrice] = useState<number>(0);
     const [onInsuranceCost, setEnableInsurance] = useState(false)
-    const [insurance, setinsurance] = useState<number>(0)
     const [onInspectionCost, setEnablInspection] = useState(false)
-    const [inspection, setinspection] = useState<number>(0)
+    const [freightCharge, setFreightCharge] = useState(0);
+    const [insurance, setinsurance] = useState(0)
+     const [inspection, setinspection] = useState(0)
+    const [totalPrice, setTotalPrice] = useState(car.price);
 
     const handleCountryChange = (event:ChangeEvent<HTMLSelectElement>) => {
         const destinationID =parseInt(event.target.value)
@@ -51,7 +52,7 @@ export default function PriceCalculator({car,countries, ports,portMapping, freig
         setEnableInsurance(false)
         setinsurance(0)
         const freight=freightCharges.find(x=>x.portId == changedPortID && x.destinationCountryId==countryID && x.sourceCountryId==car.locationId)?.freigthAmount?? 0 as number
-        setFreightCharge(freight);
+        setFreightCharge(freight*car.m3);
 
 
     };
@@ -85,11 +86,9 @@ export default function PriceCalculator({car,countries, ports,portMapping, freig
     }
 
     const getTotalPrice = () => {
-       const  x = car.price;
-       const y = inspection;
-       const z = insurance;
+        //setTotalPrice(car.price+inspection+insurance+freightCharge)
+        setTotalPrice(car.price + parseFloat(String(inspection)) + parseFloat(String(insurance)) + parseFloat(String(freightCharge)));
 
-       setTotalPrice(x+y+z+freightCharge)
     }
 
 
@@ -167,7 +166,7 @@ export default function PriceCalculator({car,countries, ports,portMapping, freig
                     <div className="flex flex-row">
                         <div className="text-center basis-1/3 m-2">
                             <span className="m-2 text-sm">Freight Charges </span>
-                            <dd className="mt-1 text-lg font-semibold leading-6 text-indigo-900">${freightCharge}</dd>
+                            <dd className="mt-1 text-lg font-semibold leading-6 text-indigo-900"><PriceFormat carPrice={freightCharge}/></dd>
 
                         </div>
                         <div className="text-center basis-1/3">
@@ -194,7 +193,7 @@ export default function PriceCalculator({car,countries, ports,portMapping, freig
                                 </Switch.Label>
                             </Switch.Group>
                             {
-                                (onInsuranceCost && <dd className="mt-1 text-lg font-semibold leading-6 text-indigo-900">${insurance}</dd>)
+                                (onInsuranceCost && <dd className="mt-1 text-lg font-semibold leading-6 text-indigo-900"><PriceFormat carPrice={insurance}/></dd>)
                             }
 
                         </div>
@@ -259,9 +258,11 @@ export default function PriceCalculator({car,countries, ports,portMapping, freig
                 </div>
             </div>
             <div className="col-lg-6 col-md-6">
+                <div className="p-2  bg-gradient-to-r from-cyan-500 to-blue-500 shadow-lg rounded-2xl">
                 {
-                    ((totalPrice!=0) && <dd className="mt-1 underline shadow-2xl text-2xl font-semibold leading-6 text-indigo-900">${totalPrice}</dd>)
+                    ((totalPrice!=0) && <dd className="mt-1 shadow-2xl text-2xl font-semibold leading-6 text-cyan-50"><PriceFormat carPrice={totalPrice}/></dd>)
                 }
+                </div>
             </div>
         </div>
 

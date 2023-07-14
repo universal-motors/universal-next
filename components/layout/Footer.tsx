@@ -5,14 +5,16 @@ import {Country} from "@/models/Master/Country";
 import {BodyType} from "@/models/Master/BodyType";
 import {Make} from "@/models/Master/Make";
 import {BsFillTelephoneFill} from "react-icons/bs";
+import {StockCars} from "@/models/StockCars";
 
 interface Props{
     locations : Country[]
     bodyTypes : BodyType[]
     makes : Make[]
+    stock: StockCars[]
 }
 
-function Footer({locations, bodyTypes,makes}:Props){
+function Footer({locations, bodyTypes,makes, stock}:Props){
     const flagLocation = "/assets/images/flags/";
 
 
