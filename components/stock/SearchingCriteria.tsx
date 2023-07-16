@@ -41,13 +41,12 @@ export default async function SearchingCriteria({locations}:Props){
                             .map(country=>(
 
                                <Link key={country.countryId}  href={`/global/results?countryID=${country.countryId}`} role="tab">
-                                   <li className="inline-flex ml-2 items-center text-center rounded-2xl px-2 py-1 font-medium text-gray-900 ring-1 ring-inset ring-gray-200" key={country.countryId}>
-                                    <Image
+                                   <li className="w-10 ml-2 items-center text-center rounded-md px-2 py-1 font-medium text-gray-900 ring-1 ring-inset ring-gray-200" key={country.countryId}>
+                                    <img
                                         src={`/assets/images/flags/${country.slug}.svg`}
-                                        className="img-fluid mr-2 h-20"
+                                        className="img-fluid mr-2 "
                                         alt={country.slug??""}
-                                        width={10}
-                                        height={25}
+
                                     />
                                        {/*{country.countryName}*/}
                                    </li>

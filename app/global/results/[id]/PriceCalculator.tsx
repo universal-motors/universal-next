@@ -101,7 +101,7 @@ export default function PriceCalculator({car,countries, ports,portMapping, freig
                         <div className="col-md-5 col-sm-5 col-5 fob-price flex ">
                            <span className="mr-2" >FOB Price:</span>
                             <select  className="w-auto rounded-md bg-white px-3 py-2 text-sm font-semibold text-blue-900 hover:bg-blue-100" aria-expanded="true" aria-haspopup="true">
-                                <option value={0} selected>$ USD</option>
+                                <option value={0}>$ USD</option>
                                 <option value={1}>¥ JPY</option>
                                 <option value={2}>€ EUR</option>
                                 <option value={3}>£ GBP</option>
@@ -141,7 +141,7 @@ export default function PriceCalculator({car,countries, ports,portMapping, freig
                                     countries
                                         .map(country=> (
                                             // <SelectItem key={country.countryId} value={country.countryId.toString()}>{country.countryName}</SelectItem>
-                                            <option key={country.countryId} value={country.countryId}>{country.countryName}</option>
+                                            <option key={country.countryId}  value={country.countryId}>{country.countryName}</option>
                                         ))
                                 }
                             </select>
