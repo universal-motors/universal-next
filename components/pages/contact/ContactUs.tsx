@@ -1,6 +1,7 @@
 'use client'
 import {Switch} from "@headlessui/react";
-import {useState} from "react";
+import {FormEvent, FormEventHandler, useRef, useState} from "react";
+import emailjs from '@emailjs/browser';
 
 
 function classNames(...classes:string[]) {
@@ -8,6 +9,27 @@ function classNames(...classes:string[]) {
 }
 export default function ContactUs (){
     const [agreed, setAgreed] = useState(false)
+    const form = useRef<HTMLFormElement>(null);
+
+    const sendEmail = (e:FormEvent) => {
+        e.preventDefault();
+        if (!agreed){
+            console.log('no message sent')
+        }else{
+            emailjs.sendForm('service_7e9top8', 'template_nfu924e', form.current??"", 'sFnMuHjMgPi29ux01')
+                .then((result) => {
+                    console.log(result.text);
+                }, (error) => {
+                    console.log(error.text);
+                });
+
+            setAgreed(false)
+        }
+
+
+    };
+
+
     return(
         <>
             <div className="inquiry-section">
@@ -21,7 +43,7 @@ export default function ContactUs (){
                         <h3 className="text-lg font-bold tracking-tight text-gray-900 sm:text-4xl">Want To Talk To Us</h3>
 
                     </div>
-                    <form action="#" method="POST" className="mx-auto mt-16 max-w-xl sm:mt-20">
+                    <form ref={form} onSubmit={sendEmail} className="mx-auto mt-16 max-w-xl sm:mt-20">
                         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                             <div>
                                 <label htmlFor="first-name" className="block text-sm font-semibold leading-6 text-gray-900">
@@ -32,7 +54,7 @@ export default function ContactUs (){
                                         type="text"
                                         name="first-name"
                                         id="first-name"
-                                        autoComplete="given-name"
+                                        autoComplete="first-name"
                                         className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     />
                                 </div>
@@ -46,7 +68,7 @@ export default function ContactUs (){
                                         type="text"
                                         name="last-name"
                                         id="last-name"
-                                        autoComplete="family-name"
+                                        autoComplete="last-name"
                                         className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     />
                                 </div>
@@ -58,9 +80,9 @@ export default function ContactUs (){
                                 <div className="mt-2.5">
                                     <input
                                         type="text"
-                                        name="last-name"
-                                        id="last-name"
-                                        autoComplete="family-name"
+                                        name="phone-number"
+                                        id="phone-number"
+                                        autoComplete="phone-number"
                                         className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     />
                                 </div>
@@ -71,10 +93,10 @@ export default function ContactUs (){
                                 </label>
                                 <div className="mt-2.5">
                                     <input
-                                        type="text"
-                                        name="last-name"
-                                        id="last-name"
-                                        autoComplete="family-name"
+                                        type="email"
+                                        name="email"
+                                        id="email"
+                                        autoComplete="email"
                                         className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     />
                                 </div>

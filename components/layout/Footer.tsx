@@ -54,25 +54,25 @@ function Footer({locations, bodyTypes,makes, stock}:Props){
                             <br />
                             <div className="flex-auto inline-flex mt-2">
                                 <Image
-                                    src="/assets/images/svgs/contact2.svg"
+
+                                    src="https://universalmotorstorage.blob.core.windows.net/umimages/pngwing.com.png"
                                     className="img-fluid mr-3"
                                     alt="Contact Us"
-                                    height={50}
+                                    height={20}
                                     width={50}
                                 />
                                 <br />
-                                <ul>
-                                <li>
+                               <ul className='slashed-zero lining-nums'>
                                     <a href="tel:+49 471 9731 9003">+49 471 9731 9003</a>
-                                </li>
+
                                     <br />
-                                <li>
+
                                     <a href="tel:+971 52 796 7035">+971 52 796 7035</a>
-                                </li>
+
                                     <br />
-                                <li>
+
                                     <a href="tel:+81 50 5050 8550">+81 50 5050 8550</a>
-                                </li>
+
                                 </ul>
                             </div>
                             <br />

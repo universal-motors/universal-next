@@ -110,7 +110,7 @@ export default function PriceCalculator({car,countries, ports,portMapping, freig
                         </div>
 
                         <div className="col-md-7 col-sm-7 col-7 carprice">
-                            <dd className="mt-1  mr-10 text-3xl font-semibold leading-6 text-indigo-900">${car.price}</dd>
+                            <dd className="mt-1  mr-10 text-3xl font-semibold leading-6 text-indigo-900"><PriceFormat carPrice={car.price}/></dd>
                             {/*@if (selectedCurrencyID == 0)*/}
                             {/*{'{'}*/}
                             {/*<span>${car.price} </span>*/}
@@ -221,7 +221,7 @@ export default function PriceCalculator({car,countries, ports,portMapping, freig
                                 </Switch.Label>
                             </Switch.Group>
                             {
-                                 (onInspectionCost && <dd className="mt-1 text-lg font-semibold leading-6 text-indigo-900">${inspection}</dd>)
+                                 (onInspectionCost && <dd className="mt-1 text-lg font-semibold leading-6 text-indigo-900"><PriceFormat carPrice={inspection}/></dd>)
                             }
 
                         </div>
