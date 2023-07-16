@@ -5,10 +5,9 @@ import Link from "next/link";
 import {StockCars} from "@/models/StockCars";
 import classNames from "classnames";
 import {Menu, Transition} from "@headlessui/react";
-import {EllipsisHorizontalIcon} from "@heroicons/react/20/solid";
 import {Fragment} from "react";
 import FaqComponent from "@/components/layout/FaqComponent";
-import PriceFormat from "@/components/stock/PriceFormat";
+import PriceFormat from "@/utils/PriceFormat";
 // import db from "@/utils/db";
 // const GetStock = async () => {
 //     return await db.tblCars.findMany({where: {IsActive:true}});

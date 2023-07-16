@@ -1,9 +1,9 @@
-import CarDetailedSlideshow from "@/components/stock/StockDetailed/CarDetailedSlideshow";
-import StockSpecification from "@/components/stock/StockDetailed/StockSpecification";
-import StockKeyInformation from "@/components/stock/StockDetailed/StockKeyInformation";
+import CarDetailedSlideshow from "@/app/global/results/[id]/CarDetailedSlideshow";
+import StockSpecification from "@/app/global/results/[id]/StockSpecification";
+import StockKeyInformation from "@/app/global/results/[id]/StockKeyInformation";
 import LikeComponent from "@/components/stock/LikeComponent";
-import PriceCalculator from "@/components/stock/StockDetailed/PriceCalculator";
-import InquiryForm from "@/components/stock/StockDetailed/InquiryForm";
+import PriceCalculator from "@/app/global/results/[id]/PriceCalculator";
+import InquiryForm from "@/app/global/results/[id]/InquiryForm";
 import agent from "@/api/agent";
 import ContactUs from "@/components/pages/contact/ContactUs";
 

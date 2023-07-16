@@ -1,6 +1,5 @@
 'use client'
-import {ChevronDownIcon} from "@heroicons/react/20/solid";
-import { Switch } from '@headlessui/react'
+
 import {useState} from "react";
 
 export default function InquiryForm(){

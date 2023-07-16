@@ -8,7 +8,7 @@ import {PortMapping} from "@/models/Master/PortMapping";
 import {FreightCost} from "@/models/Master/FreightCost";
 import {InspectionCost} from "@/models/Master/InspectionCost";
 import classNames from "classnames";
-import PriceFormat from "@/components/stock/PriceFormat";
+import PriceFormat from "@/utils/PriceFormat";
 
 
 interface Props {
