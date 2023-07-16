@@ -1,5 +1,6 @@
 'use client'
 import Link from "next/link";
+import Image from "next/image";
 import {tblMasterCountry} from ".prisma/client";
 //import prisma from "@/utils/db";
 import {FormSelect} from "react-bootstrap";
@@ -23,47 +24,57 @@ export default async function SearchingCriteria({locations}:Props){
 
     return(
         <>
-            <div className="results">
+            <div className="columns-3">
                 {/*<h4>Search Page Result  - <span>{resultCount}</span> Matches Found</h4>*/}
                 <h5>
                     View vehicles <strong>shipping from</strong>:
                 </h5>
-                <ul className="nav nav-tab mt-2" role="tablist">
-                    <li className="nav-item all">
-                        <Link className="nav-link2 active" data-toggle="tab" href="#tabs-all" role="tab">ALL</Link>
+                <ul className="inline-flex items-center">
+                    <li className="inline-flex items-center rounded-2xl px-2 py-1 font-medium text-gray-900 ring-1 ring-inset ring-gray-200" >
+
+                            <Link data-toggle="tab" href="#tabs-all" role="tab">ALL</Link>
+
                     </li>
                     {
                         locations
                             .filter(country=>country.isInventoryLocation)
                             .map(country=>(
-                            <li key={country.countryId} className="nav-item">
-                                <Link className="nav-link2 " data-toggle="tab" href={`/global/results?countryID=${country.countryId}`} role="tab">
-                                    <span className="inline-flex"><img src={`/assets/images/flags/${country.slug}.svg`} className="img-fluid mr-2" alt={country.slug??""} /> {country.countryName}</span>
+
+                               <Link key={country.countryId}  href={`/global/results?countryID=${country.countryId}`} role="tab">
+                                   <li className="w-10 ml-2 items-center text-center rounded-md px-2 py-1 font-medium text-gray-900 ring-1 ring-inset ring-gray-200" key={country.countryId}>
+                                    <img
+                                        src={`/assets/images/flags/${country.slug}.svg`}
+                                        className="img-fluid mr-2 "
+                                        alt={country.slug??""}
+
+                                    />
+                                       {/*{country.countryName}*/}
+                                   </li>
                                 </Link>
-                            </li>
+
                         ))
                     }
                 </ul>
-                   <div className="filt">
-                        <p>Sort By: &nbsp;</p>
-                        <FormSelect name="sort-by" className="sort-by-select" >
-                            {/*onChange={handleSortingChange}  >*/}
-                            <option value="">Select</option>
-                            <option value="priceLowToHigh">Price Low to high</option>
-                            <option value="priceHighToLow">Price high to low</option>
-                            <option value="yearOldToNew">Year old to new</option>
-                            <option value="yearNewToOld">Year new to old</option>
-                            <option value="discountHighToLow">Discount high to low</option>
-                            <option value="discountLowToHigh">Discount low to high</option>
-                            <option value="engineHighToLow">Engine high to low</option>
-                            <option value="engineLowToHigh">Engine low to high</option>
-                            <option value="mileageHighToLow">Mileage high to low</option>
-                            <option value="mileageLowToHigh">Mileage low to high</option>
-                        </FormSelect>
-                    </div>
-
-
             </div>
+
+            <div className="columns-auto">
+                    <p>Sort By: &nbsp;</p>
+                    <FormSelect name="sort-by" className="w-250" >
+                        {/*onChange={handleSortingChange}  >*/}
+                        <option value="">Select</option>
+                        <option value="priceLowToHigh">Price Low to high</option>
+                        <option value="priceHighToLow">Price high to low</option>
+                        <option value="yearOldToNew">Year old to new</option>
+                        <option value="yearNewToOld">Year new to old</option>
+                        <option value="discountHighToLow">Discount high to low</option>
+                        <option value="discountLowToHigh">Discount low to high</option>
+                        <option value="engineHighToLow">Engine high to low</option>
+                        <option value="engineLowToHigh">Engine low to high</option>
+                        <option value="mileageHighToLow">Mileage high to low</option>
+                        <option value="mileageLowToHigh">Mileage low to high</option>
+                    </FormSelect>
+                </div>
+
 
         </>
     )

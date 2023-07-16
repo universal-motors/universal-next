@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from 'next/image'
 import {tblCars, tblMasterCountry} from ".prisma/client";
 import LikeComponent from "@/components/stock/LikeComponent";
-import PriceFormat from "@/components/stock/PriceFormat";
+import PriceFormat from "@/utils/PriceFormat";
 
 
 import {StockCars} from "@/models/StockCars";
@@ -14,9 +14,9 @@ import {BiSolidColorFill} from "react-icons/bi";
 import {MdAirlineSeatReclineExtra} from "react-icons/md";
 import {Country} from "@/models/Master/Country";
 import agent from "@/api/agent";
-import CarOptionList from "@/components/stock/StockDetailed/CarOptionsList";
+import CarOptionList from "@/app/global/results/[id]/CarOptionsList";
 import {useState} from "react";
-import PaginationComponent from "@/components/stock/PaginationComponent";
+import PaginationComponent from "@/utils/PaginationComponent";
 interface Props{
 //    cars: tblCars[]
     cars: StockCars[]
@@ -205,28 +205,28 @@ export default async function SearchResult({cars,locations}:Props){
                                         </h6>
                                     </div>
                                     <hr />
-                                    <div className="notice">
-                                        <h6>
-                                            <span className="inline-flex items-center">
-                                               <div
-                                                   className="flex p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
-                                                   role="alert">
-                                                <svg aria-hidden="true" className="flex-shrink-0 inline w-5 h-5 mr-3"
-                                                     fill="currentColor" viewBox="0 0 20 20"
-                                                     xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill-rule="evenodd"
-                                                          d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                                                          clip-rule="evenodd"></path>
-                                                </svg>
-                                                <span className="sr-only">Info</span>
-                                                <div className="font-bold">
-                                                    Select your Destination Country and Port
-                                                </div>
-                                            </div>
-                                            </span>
+                                    {/*<div className="notice">*/}
+                                    {/*    <h6>*/}
+                                    {/*        <span className="inline-flex items-center">*/}
+                                    {/*           <div*/}
+                                    {/*               className="flex p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"*/}
+                                    {/*               role="alert">*/}
+                                    {/*            <svg aria-hidden="true" className="flex-shrink-0 inline w-5 h-5 mr-3"*/}
+                                    {/*                 fill="currentColor" viewBox="0 0 20 20"*/}
+                                    {/*                 xmlns="http://www.w3.org/2000/svg">*/}
+                                    {/*                <path fill-rule="evenodd"*/}
+                                    {/*                      d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"*/}
+                                    {/*                      clip-rule="evenodd"></path>*/}
+                                    {/*            </svg>*/}
+                                    {/*            <span className="sr-only">Info</span>*/}
+                                    {/*            <div className="font-bold">*/}
+                                    {/*                Select your Destination Country and Port*/}
+                                    {/*            </div>*/}
+                                    {/*        </div>*/}
+                                    {/*        </span>*/}
 
-                                            </h6>
-                                    </div>
+                                    {/*        </h6>*/}
+                                    {/*</div>*/}
                                     <div className="askprice">
                                         <h6>
                                             TOTAL Price:

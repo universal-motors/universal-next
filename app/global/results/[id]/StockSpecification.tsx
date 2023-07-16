@@ -14,7 +14,7 @@ export default function StockSpecification({car, location}:Props){
                 <div className="col-sm specs">
                     <h4>Mileage</h4>
                     <span className="label-text   items-center rounded-md ml-5">
-                    <img decoding="async" src="/assets/images/kmsDriven.svg" loading="eager"className="mx-auto mr-2"/><br/>
+                    <img decoding="async" src="/assets/images/kmsDriven.svg" loading="eager" className="mx-auto mr-2"/><br/>
                         {car.mileage}
                     </span>
                 </div>
@@ -27,13 +27,13 @@ export default function StockSpecification({car, location}:Props){
                 <div className="col-sm specs">
                     <h4>Engine</h4>
                     <span className="label-text  items-center rounded-md ml-5">
-                    <img decoding="async" src="/assets/images/engineDisplacement.svg" loading="eager"className="mx-auto mr-2"/><br/>
+                    <img decoding="async" src="/assets/images/engineDisplacement.svg" loading="eager" className="mx-auto mr-2"/><br/>
                        {car.engineSize}</span>
                 </div>
                 <div className="col-sm specs">
                     <h4>Transmision</h4>
                     <span className="label-text  items-center rounded-md ml-5">
-                    <img decoding="async" src="/assets/images/transmission.svg" loading="eager"className="mx-auto"/><br/>
+                    <img decoding="async" src="/assets/images/transmission.svg" loading="eager" className="mx-auto"/><br/>
                        {car.transmissionName} </span>
                 </div>
                 <div className="col-sm specs">

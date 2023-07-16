@@ -1,8 +1,8 @@
 import {StockCars} from "@/models/StockCars";
 
 import agent from "@/api/agent";
-import CarouselStock from "@/components/stock/StockDetailed/CarouselStock";
-import ShareDownloadComponent from "@/components/stock/StockDetailed/ShareDownloadComponent";
+import CarouselStock from "@/app/global/results/[id]/CarouselStock";
+import ShareDownloadComponent from "@/app/global/results/[id]/ShareDownloadComponent";
 import {main} from "@popperjs/core";
 
 interface Props {

@@ -1,8 +1,7 @@
-
 import Header from "@/components/layout/Header";
 import Sidebar from "@/components/layout/Sidebar";
 import Footer from "@/components/layout/Footer";
-import {ClerkProvider} from "@clerk/nextjs";
+
 import agent from "@/api/agent";
 
 export const metadata = {
@@ -41,7 +40,6 @@ export default async function RootLayout({
   return (
 
     <>
-      <ClerkProvider>
 
         <Header bodyTypes={bodyTypes} stock={stock} locations={locations} makes={makes}/>
         <section className="sidebar-menu">
@@ -54,7 +52,7 @@ export default async function RootLayout({
         </section>
         <Footer stock={stock} bodyTypes={bodyTypes} locations={locations} makes={makes}/>
 
-        </ClerkProvider>
+
     </>
 
 

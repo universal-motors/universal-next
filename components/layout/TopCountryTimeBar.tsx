@@ -5,8 +5,8 @@ import {useEffect, useState} from "react";
 import Navigation from "@/components/layout/Navigation";
 import Image from "next/image";
 import agent from "@/api/agent";
-import PriceFormat from "@/components/stock/PriceFormat";
-import NumberFormat from "@/components/stock/NumberFormat";
+import PriceFormat from "@/utils/PriceFormat";
+import NumberFormat from "@/utils/NumberFormat";
 interface Props{
     stockCount : number
 }
