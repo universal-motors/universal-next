@@ -1,7 +1,6 @@
 'use client'
 import Link from "next/link";
 import Image from 'next/image'
-import {tblCars, tblMasterCountry} from ".prisma/client";
 import LikeComponent from "@/components/stock/LikeComponent";
 import PriceFormat from "@/utils/PriceFormat";
 
@@ -13,9 +12,7 @@ import {GiCarDoor} from "react-icons/gi";
 import {BiSolidColorFill} from "react-icons/bi";
 import {MdAirlineSeatReclineExtra} from "react-icons/md";
 import {Country} from "@/models/Master/Country";
-import agent from "@/api/agent";
-import CarOptionList from "@/app/global/results/[id]/CarOptionsList";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import PaginationComponent from "@/utils/PaginationComponent";
 interface Props{
 //    cars: tblCars[]
@@ -25,12 +22,31 @@ interface Props{
 
 export default async function SearchResult({cars,locations}:Props){
     const searchData:StockCars[] = cars;
+    const [isLoading, setIsLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage,setPostsPerPage] = useState(20);
     const lastPostIndex = currentPage * postsPerPage;
     const firstPostIndex = lastPostIndex - postsPerPage;
     const currentPosts = searchData.slice(firstPostIndex,lastPostIndex);
-    //const optionsMaster = await agent.LoadData.caroptionsList()//db.tblCarOptions.findMany({where: {isActive:true}});
+
+    const handleClick = () => {
+        setIsLoading(true);
+    };
+
+    // This useEffect will run when the component mounts and after every render
+    useEffect(() => {
+        // Add an event listener to the window's load event
+        const handlePageLoad = () => {
+            // Set isLoading to false when the page has finished loading
+            setIsLoading(false);
+        };
+        window.addEventListener('load', handlePageLoad);
+
+        // Clean up the event listener when the component unmounts
+        return () => {
+            window.removeEventListener('load', handlePageLoad);
+        };
+    }, []); //
 
     return(
         <>
@@ -42,12 +58,12 @@ export default async function SearchResult({cars,locations}:Props){
                         <div className="row my-5 ">
                             <div className="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-5">
                                 <div className="searched-carimage ">
-                                    <Link href={`/global/results/${car.stockId}`}>
+                                    <Link onClick={handleClick} href={`/global/results/${car.stockId}`}>
                                         <Image src={car.imageUrl??""} className="mb-4" alt=""  height={150}
                                                width={150} /></Link>
-                                    {/*<p>In Stock</p>*/}
+
                                     <h4 className="ml-5">STOCK ID : <span className="inline-flex items-center gap-x-1.5 rounded-full bg-yellow-400 px-2 py-1 text-l font-medium text-blue-950">{car.stockCode}</span></h4>
-                                    {/*<h5 className="inline-flex font-bold fav-text">Auction grade: <span>{car.AuctionGrade}</span></h5>*/}
+
                                 </div>
                             </div>
 

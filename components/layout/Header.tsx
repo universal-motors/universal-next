@@ -1,6 +1,6 @@
 
 import {tblBodyTypes, tblMakes, tblMasterCountry} from ".prisma/client";
-import Link from "next/link";
+
 
 import SearchBar from "@/components/stock/SearchBar";
 import {FcBusinessman, FcCurrencyExchange, FcCustomerSupport, FcGlobe, FcLike, FcOnlineSupport} from "react-icons/fc";
@@ -12,6 +12,7 @@ import {Country} from "@/models/Master/Country";
 import {BodyType} from "@/models/Master/BodyType";
 import {Make} from "@/models/Master/Make";
 import {StockCars} from "@/models/StockCars";
+import Link from "next/link";
 
 interface Props{
     locations : Country[]

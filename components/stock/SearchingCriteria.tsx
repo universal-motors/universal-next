@@ -40,7 +40,7 @@ export default async function SearchingCriteria({locations}:Props){
                             .filter(country=>country.isInventoryLocation)
                             .map(country=>(
 
-                               <Link key={country.countryId}  href={`/global/results?countryID=${country.countryId}`} role="tab">
+                               <Link key={country.countryId}  href={`/global/results/cars?countryID=${country.countryId}`} role="tab">
                                    <li className="w-10 ml-2 items-center text-center rounded-md px-2 py-1 font-medium text-gray-900 ring-1 ring-inset ring-gray-200" key={country.countryId}>
                                     <img
                                         src={`/assets/images/flags/${country.slug}.svg`}
