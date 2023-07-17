@@ -1,6 +1,6 @@
 'use client'
-import {Switch} from "@headlessui/react";
-import {FormEvent, FormEventHandler, useRef, useState} from "react";
+import {Dialog, Switch, Transition} from "@headlessui/react";
+import {FormEvent, FormEventHandler, Fragment, useRef, useState} from "react";
 import emailjs from '@emailjs/browser';
 
 
@@ -10,6 +10,12 @@ function classNames(...classes:string[]) {
 export default function ContactUs (){
     const [agreed, setAgreed] = useState(false)
     const form = useRef<HTMLFormElement>(null);
+    let [isOpen, setIsOpen] = useState(false)
+
+    function closeModal() {
+        setIsOpen(false)
+    }
+
 
     const sendEmail = (e:FormEvent) => {
         e.preventDefault();
@@ -19,6 +25,7 @@ export default function ContactUs (){
             emailjs.sendForm('service_7e9top8', 'template_nfu924e', form.current??"", 'sFnMuHjMgPi29ux01')
                 .then((result) => {
                     console.log(result.text);
+                    setIsOpen(true)
                 }, (error) => {
                     console.log(error.text);
                 });
@@ -147,11 +154,66 @@ export default function ContactUs (){
                         </div>
                         <div className="mt-10">
                             <button
+
                                 type="submit"
                                 className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                             >
                                 Lets talk
                             </button>
+                            <Transition appear show={isOpen} as={Fragment}>
+                                <Dialog as="div" className="relative z-10" onClose={closeModal}>
+                                    <Transition.Child
+                                        as={Fragment}
+                                        enter="ease-out duration-300"
+                                        enterFrom="opacity-0"
+                                        enterTo="opacity-100"
+                                        leave="ease-in duration-200"
+                                        leaveFrom="opacity-100"
+                                        leaveTo="opacity-0"
+                                    >
+                                        <div className="fixed inset-0 bg-black bg-opacity-25" />
+                                    </Transition.Child>
+
+                                    <div className="fixed inset-0 overflow-y-auto">
+                                        <div className="flex min-h-full items-center justify-center p-4 text-center">
+                                            <Transition.Child
+                                                as={Fragment}
+                                                enter="ease-out duration-300"
+                                                enterFrom="opacity-0 scale-95"
+                                                enterTo="opacity-100 scale-100"
+                                                leave="ease-in duration-200"
+                                                leaveFrom="opacity-100 scale-100"
+                                                leaveTo="opacity-0 scale-95"
+                                            >
+                                                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                                                    <Dialog.Title
+                                                        as="h3"
+                                                        className="text-lg font-medium leading-6 text-gray-900"
+                                                    >
+                                                        Message Delivered successfully
+                                                    </Dialog.Title>
+                                                    <div className="mt-2">
+                                                        <p className="text-sm text-gray-500">
+                                                            We have recieved your message. Someone will get
+                                                            back to you. And answer your queries in the email you have provided.
+                                                        </p>
+                                                    </div>
+
+                                                    <div className="mt-4">
+                                                        <button
+                                                            type="button"
+                                                            className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                                                            onClick={closeModal}
+                                                        >
+                                                            Got it, thanks!
+                                                        </button>
+                                                    </div>
+                                                </Dialog.Panel>
+                                            </Transition.Child>
+                                        </div>
+                                    </div>
+                                </Dialog>
+                            </Transition>
                         </div>
                     </form>
                 </div>
