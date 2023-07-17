@@ -4,6 +4,8 @@ import agent from "@/api/agent";
 import CarouselStock from "@/app/global/results/[id]/CarouselStock";
 import ShareDownloadComponent from "@/app/global/results/[id]/ShareDownloadComponent";
 import {main} from "@popperjs/core";
+import {ErrorBoundary} from "next/dist/client/components/error-boundary";
+import Error from "@/app/(home)/error";
 
 interface Props {
     stocks : StockCars,
@@ -20,6 +22,7 @@ export default async function CarDetailedSlideshow({stocks, mainPic}: Props){
 
     return(
         <>
+
             <CarouselStock imageURLs={images}/>
             <ShareDownloadComponent imageList={stockPicture}/>
 

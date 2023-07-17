@@ -1,4 +1,4 @@
-//import axios, {AxiosResponse} from 'axios';
+import axios, {AxiosResponse} from 'axios';
 import {StockCars} from "@/models/StockCars";
 import {Country} from "@/models/Master/Country";
 import {Machinery} from "@/models/Machinery";
@@ -28,6 +28,8 @@ const parseResponse = async <T>(response: Response): Promise<T> => {
     }
     return response.json();
 };
+const responseBody = <T> (response: AxiosResponse<T>) => response.data;
+
 
 const request = {
     get: async <T>(url: string) => {
@@ -66,7 +68,8 @@ const request = {
 
 const LoadData = {
     //------ Main Units
-    stockList: () => request.get<StockCars[]>('carstock'),
+    //stockList: () => request.get<StockCars[]>('carstock'),
+    stockList: ()=>   axios.get<StockCars[]>(baseURL+'carstock').then(responseBody),
     stock: (stockID: number) => request.get<StockCars>(`carstock/${stockID}`),
     truckList: () => request.get('trucks'),
     machineryList: () => request.get<Machinery[]>('machinery'),

@@ -44,7 +44,7 @@ function Sidebar({locations, makes, stocks}:Props){
                                                         makeID: make.makeId
                                                     }
                                                 }}
-                                                prefetch={true}
+
                                             >
                                                 <span className=" inline-flex items-center rounded-md">
                                                     <img
@@ -72,7 +72,7 @@ function Sidebar({locations, makes, stocks}:Props){
                         </ul>
                     <h5>Search By Steering</h5>
                         <ul className="countdrop mt-3 mb-3">
-                            <Link className="nav-link"  prefetch={true}
+                            <Link className="nav-link"
                                   href={{
                                       pathname : "/global/results/cars",
                                       query: {
@@ -89,7 +89,7 @@ function Sidebar({locations, makes, stocks}:Props){
                                               </span>
                                 </span>
                             </Link>
-                            <Link className="nav-link"  prefetch={true}  href={{
+                            <Link className="nav-link"   href={{
                                 pathname : "/global/results/cars",
                                 query: {
                                     steeringID: 2
@@ -116,7 +116,7 @@ function Sidebar({locations, makes, stocks}:Props){
                                     .filter(location=> location.isInventoryLocation)
                                     .map(location=> (
                                         <li key={location.countryId}>
-                                            <Link  prefetch={true}   href={{
+                                            <Link     href={{
                                                 pathname : "/global/results/cars",
                                                 query: {
                                                     countryID: location.countryId

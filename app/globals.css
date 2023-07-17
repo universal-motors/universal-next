@@ -1013,12 +1013,12 @@ h6.lsitname {
 .col-md-4.b1 {
   padding: 5px;
 }
-.filt {
-  width: 100%;
-  display: flex;
-  justify-content: end;
-  padding: 10px;
-}
+/*.filt {*/
+/*  width: 100%;*/
+/*  display: flex;*/
+/*  justify-content: end;*/
+/*  padding: 10px;*/
+/*}*/
 
 i.fa.fa-whatsapp,
 i.fa.fa-facebook, i.fa.fa-twitter {
