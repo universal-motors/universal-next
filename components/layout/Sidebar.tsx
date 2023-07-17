@@ -1,4 +1,4 @@
-import {tblBodyTypes, tblMakes, tblMasterCountry} from ".prisma/client";
+'use client'
 import Link from "next/link";
 import {Country} from "@/models/Master/Country";
 import {Make} from "@/models/Master/Make";
@@ -11,7 +11,10 @@ interface Props{
 }
 
 function Sidebar({locations, makes, stocks}:Props){
-// Calculate the count of stocks for each location
+
+
+
+    // Calculate the count of stocks for each location
     const locationCounts = locations.map((location) => {
         const count = stocks.filter((stock) => stock.locationId === location.countryId).length;
         return { ...location, count };
@@ -20,6 +23,8 @@ function Sidebar({locations, makes, stocks}:Props){
         const count = stocks.filter((stock) => stock.makeId === make.makeId).length;
         return { ...make, count };
     });
+
+
     return (
         <>
             <div className="col-xl-2 col-lg-2 col-md-2 d-md-block d-none">
@@ -31,7 +36,7 @@ function Sidebar({locations, makes, stocks}:Props){
                                     .sort((a,b)=> b.count - a.count)
                                     .slice(0, 10) // Get the first 10 records
                                     .map(make=> (
-                                        <li key={make.makeId}>
+                                        <li key={make.makeId} >
                                             <Link
                                                 href={{
                                                     pathname : "/global/results/cars",
@@ -39,6 +44,7 @@ function Sidebar({locations, makes, stocks}:Props){
                                                         makeID: make.makeId
                                                     }
                                                 }}
+                                                prefetch={true}
                                             >
                                                 <span className=" inline-flex items-center rounded-md">
                                                     <img
@@ -47,8 +53,9 @@ function Sidebar({locations, makes, stocks}:Props){
                                                         alt={make.slug}
 
                                                     />
-                                                    {make.makeName}
 
+
+                                                    {make.makeName}
 
                                                 <span className="ml-3  inline-flex items-center gap-x-1.5 rounded-full px-2 py-1 text-xs font-medium text-gray-900 ring-1 ring-inset ring-gray-200">
                                                 <svg className="h-1.5 w-1.5 fill-blue-500" viewBox="0 0 6 6" aria-hidden="true">
@@ -65,7 +72,7 @@ function Sidebar({locations, makes, stocks}:Props){
                         </ul>
                     <h5>Search By Steering</h5>
                         <ul className="countdrop mt-3 mb-3">
-                            <Link className="nav-link"
+                            <Link className="nav-link"  prefetch={true}
                                   href={{
                                       pathname : "/global/results/cars",
                                       query: {
@@ -82,7 +89,7 @@ function Sidebar({locations, makes, stocks}:Props){
                                               </span>
                                 </span>
                             </Link>
-                            <Link className="nav-link"  href={{
+                            <Link className="nav-link"  prefetch={true}  href={{
                                 pathname : "/global/results/cars",
                                 query: {
                                     steeringID: 2
@@ -109,7 +116,7 @@ function Sidebar({locations, makes, stocks}:Props){
                                     .filter(location=> location.isInventoryLocation)
                                     .map(location=> (
                                         <li key={location.countryId}>
-                                            <Link    href={{
+                                            <Link  prefetch={true}   href={{
                                                 pathname : "/global/results/cars",
                                                 query: {
                                                     countryID: location.countryId
