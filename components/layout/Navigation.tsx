@@ -1,17 +1,13 @@
 'use client'
 
 import {Menu, Transition} from "@headlessui/react";
-//import {Container, Nav, Navbar, NavDropdown} from "react-bootstrap";
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import Link from "next/link";
 import classNames from "classnames";
 import {Fragment} from "react";
 import {Button} from "@tremor/react";
-import {MdOutlinePayment} from "react-icons/md";
 import {TbSquareRoundedChevronDownFilled} from "react-icons/tb";
+import {CiBank} from "react-icons/ci";
+import {PiCreditCardBold} from "react-icons/pi";
 
 export default function Navigation(){
     return(
@@ -63,14 +59,7 @@ export default function Navigation(){
                                                                 </Menu.Item>
                                                             </div>
                                                             <div className="py-1">
-                                                                <Menu.Item>
-                                                                    {({ active }) => (
-                                                                        <Link href="/global/information?page=bank-information" className={classNames(
-                                                                            active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                                            'block px-4 py-2 text-sm'
-                                                                        )} ><span>Bank Information</span></Link>
-                                                                    )}
-                                                                </Menu.Item>
+
                                                                 <Menu.Item>
                                                                     {({ active }) => (
                                                                         <Link href="/global/information?page=export-information" className={classNames(
@@ -404,22 +393,31 @@ export default function Navigation(){
 
                                             </li>
                                             <li className="p-4">
-                                                <Button className="transition duration-300 ease-in-out hover:scale-110 inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                                                <Button className="transition duration-300 ease-in-out hover:scale-110 inline-flex w-full justify-center gap-x-1.5 rounded-md bg-green-50 px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-green-300">
                                                 <Link href="/global/information?page=how-to-pay" className='bg-gray-100 text-gray-900' >
                                                                             <span className="flex inline">
-                                                                                How to Pay
+                                                                                How to Pay <PiCreditCardBold className="-mr-2 h-5 w-5 text-gray-800" aria-hidden="true"/>
                                                                             </span></Link>
                                                 </Button>
                                             </li>
+                                            {/*<li className="p-4">*/}
+                                            {/*    <Button className="transition duration-300 ease-in-out hover:scale-110 inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">*/}
+                                            {/*        <Link href="/global/information?page=faqs" className='bg-gray-100 text-gray-900' >*/}
+                                            {/*                                <span className="flex inline">*/}
+                                            {/*                                F.A.Q.s*/}
+                                            {/*                                </span></Link>*/}
+                                            {/*    </Button>*/}
+                                            {/*</li>*/}
                                             <li className="p-4">
-                                                <Button className="transition duration-300 ease-in-out hover:scale-110 inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-                                                    <Link href="/global/information?page=faqs" className='bg-gray-100 text-gray-900' >
-                                                                            <span className="flex inline">
-                                                                            F.A.Q.s
-                                                                            </span></Link>
-                                                </Button>
-                                            </li>
 
+                                                <Button className="transition duration-300 ease-in-out hover:scale-110 inline-flex w-full justify-center gap-x-1.5 rounded-md bg-yellow-50 px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-yellow-300">
+                                                    <Link href="/global/information?page=bank-information" className='bg-gray-100 text-gray-900' >
+                                                        <span className="flex inline">Bank Information  <CiBank className="-mr-2 h-5 w-5 text-gray-800" aria-hidden="true"/></span>
+
+                                                    </Link>
+                                                </Button>
+
+                                            </li>
 
                                          </ul>
 
