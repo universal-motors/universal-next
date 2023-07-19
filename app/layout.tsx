@@ -1,9 +1,8 @@
+'use client'
 import './globals.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Analytics } from '@vercel/analytics/react';
 import Script from "next/script";
-
-
 
 export default async function RootLayout({ children,
                                          }: {
@@ -23,7 +22,8 @@ export default async function RootLayout({ children,
             </head>
             <body>
 
-                {children}
+                    {children}
+
                 <Analytics />
 
             </body>

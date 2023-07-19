@@ -26,12 +26,12 @@ export default async function StockKeyInformation({car}:Props){
                         car.modelCode !== '' ? ( <td> {car.modelCode}</td>) : (<td>Not Available</td>)
                     }
                 </tr>
-                <tr>
-                    <td className="first">Auction Grade</td>
-                    {
-                        car.auctionGrade !== '' ? ( <td> {car.auctionGrade}</td>) : (<td>Not Available</td>)
-                    }
-                </tr>
+                {/*<tr>*/}
+                {/*    <td className="first">Auction Grade</td>*/}
+                {/*    {*/}
+                {/*        car.auctionGrade !== '' ? ( <td> {car.auctionGrade}</td>) : (<td>Not Available</td>)*/}
+                {/*    }*/}
+                {/*</tr>*/}
                 <tr>
                     <td className="first">Engine Size</td>
                     <td>{car.engineSize}</td>
