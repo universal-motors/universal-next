@@ -4,6 +4,7 @@ import {Country} from "@/models/Master/Country";
 import {Make} from "@/models/Master/Make";
 import {StockCars} from "@/models/StockCars";
 
+
 interface Props{
     locations : Country[]
     makes : Make[]
@@ -12,7 +13,7 @@ interface Props{
 
 function Sidebar({locations, makes, stocks}:Props){
 
-
+   // const router = useRouter()
 
     // Calculate the count of stocks for each location
     const locationCounts = locations.map((location) => {
@@ -23,6 +24,9 @@ function Sidebar({locations, makes, stocks}:Props){
         const count = stocks.filter((stock) => stock.makeId === make.makeId).length;
         return { ...make, count };
     });
+
+
+
 
 
     return (
