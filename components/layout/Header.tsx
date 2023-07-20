@@ -92,7 +92,7 @@ async function Header({locations, bodyTypes,makes,  stock}:Props) {
                 <div className="container-fluid">
                     <div className="row" style={{justifyContent: 'end'}}>
                         <div className="col-xl-1 col-lg-2 col-md-2">
-                            <Link href="/"><img src="/assets/images/um.svg"  alt="logo" className="header-logo" /></Link>
+                            <Link href="/"><img src="/assets/images/logo.png"  alt="logo" className="header-logo" /></Link>
                         </div>
                         <div className="col-xl-5 col-lg-5 col-md-5">
                           <SearchBar/>
@@ -207,7 +207,7 @@ async function Header({locations, bodyTypes,makes,  stock}:Props) {
                                     <span className="fa fa-bars" id="bars" />
                                 </label>
                                 <div className="sidemenu">
-                                    <Link href="/"><img src="/assets/images/um.svg" className="side-logo" alt="hamburger icon" /></Link>
+                                    <Link href="/"><img src="/assets/images/logo.png" className="side-logo" alt="hamburger icon" /></Link>
                                     <ul className="sidelist">
                                         <li className="highlighted"><i className="fa fa-gear" />Site Setting</li>
                                         <li className="last">Currency</li>
@@ -271,7 +271,7 @@ async function Header({locations, bodyTypes,makes,  stock}:Props) {
                             </div>
                         </div>
                         <div className="col-3">
-                            <Link href="/"><img src="/assets/images/um.svg" alt="logo" className="mobile-logo" width={50}/></Link>
+                            <Link href="/"><img src="/assets/images/logo.png" alt="logo" className="mobile-logo" width={50}/></Link>
                         </div>
                         <div className="col-7">
                             <div className="featuresection flex inline-flex">
