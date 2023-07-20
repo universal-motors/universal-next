@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\components",
+    "\\components\\layout",
+    "\\public",
+    "\\public\\assets"
   ],
-  "SelectedNode": "\\D:\\universal",
+  "SelectedNode": "\\components\\layout\\Header.tsx",
   "PreviewInSolutionExplorer": false
 }
