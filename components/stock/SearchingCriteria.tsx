@@ -1,7 +1,7 @@
 'use client'
 import Link from "next/link";
 import Image from "next/image";
-import {tblMasterCountry} from ".prisma/client";
+//import {tblMasterCountry} from ".prisma/client";
 //import prisma from "@/utils/db";
 import {FormSelect} from "react-bootstrap";
 import {ChangeEvent, useState} from "react";

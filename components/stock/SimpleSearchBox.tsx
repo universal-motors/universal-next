@@ -1,6 +1,6 @@
 'use client';
 import {Col, Form} from "react-bootstrap";
-import {tblBodyTypes, tblCarModels, tblMakes, tblMasterCountry} from ".prisma/client";
+//import {tblBodyTypes, tblCarModels, tblMakes, tblMasterCountry} from ".prisma/client";
 import {ChangeEvent, FormEvent, FormEventHandler, useEffect, useState} from "react";
 import {SearchSelect, SearchSelectItem, Select, SelectItem} from "@tremor/react";
 import {useRouter} from "next/navigation";

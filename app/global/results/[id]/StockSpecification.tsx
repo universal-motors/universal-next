@@ -1,4 +1,3 @@
-import {tblCars, tblMasterCountry} from ".prisma/client";
 import {StockCars} from "@/models/StockCars";
 import {Country} from "@/models/Master/Country";
 

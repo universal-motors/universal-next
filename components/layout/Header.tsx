@@ -1,5 +1,5 @@
 
-import {tblBodyTypes, tblMakes, tblMasterCountry} from ".prisma/client";
+//import {tblBodyTypes, tblMakes, tblMasterCountry} from ".prisma/client";
 
 
 import SearchBar from "@/components/stock/SearchBar";
