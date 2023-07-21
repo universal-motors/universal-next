@@ -1,6 +1,6 @@
 'use client';
 import {Accordion, Tab, Tabs} from "react-bootstrap";
-import {tblCars} from ".prisma/client";
+//import {tblCars} from ".prisma/client";
 import Link from "next/link";
 import {StockCars} from "@/models/StockCars";
 import classNames from "classnames";

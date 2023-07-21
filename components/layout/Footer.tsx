@@ -1,4 +1,4 @@
-import {tblBodyTypes, tblMakes, tblMasterCountry} from ".prisma/client";
+//import {tblBodyTypes, tblMakes, tblMasterCountry} from ".prisma/client";
 import Link from "next/link";
 import Image from 'next/image'
 import {Country} from "@/models/Master/Country";
