@@ -1,6 +1,6 @@
-'use client'
 import './globals.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { ClerkProvider } from '@clerk/nextjs'
 import { Analytics } from '@vercel/analytics/react';
 import Script from "next/script";
 
@@ -11,7 +11,7 @@ export default async function RootLayout({ children,
 
 
     return (
-
+        <ClerkProvider>
             <html lang="en">
             <head>
                 <meta content="text/html"/>
@@ -29,7 +29,7 @@ export default async function RootLayout({ children,
             </body>
             <Script src="/assets/scripts/extra.js" />
             </html>
-
+        </ClerkProvider>
 
     )
 }
