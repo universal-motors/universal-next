@@ -3,7 +3,7 @@ import Link from "next/link";
 import {Country} from "@/models/Master/Country";
 import {Make} from "@/models/Master/Make";
 import {StockCars} from "@/models/StockCars";
-
+import {useStore} from '@/store/store'
 
 interface Props{
     locations : Country[]
@@ -25,6 +25,7 @@ function Sidebar({locations, makes, stocks}:Props){
         return { ...make, count };
     });
 
+    const bear = useStore((state)=>state.bears)
 
 
 
