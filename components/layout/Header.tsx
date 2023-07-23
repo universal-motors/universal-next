@@ -37,17 +37,7 @@ async function Header({locations, bodyTypes,makes,  stock}:Props) {
         <>
 
          <header className="headerbg">
-                 <h1>My App</h1>
-                 <SignedIn>
-                     {/* Mount the UserButton component */}
-                     <UserButton afterSignOutUrl="/"/>
-                 </SignedIn>
-                 <SignedOut>
-                     {/* Signed out users get sign in button */}
-                     <SignInButton />
-                 </SignedOut>
-
-                <div className="container-fluid">
+                 <div className="container-fluid">
 
                     {/* Stack the columns on mobile by making one full-width and the other half-width */}
                     <div className="row">
@@ -175,27 +165,36 @@ async function Header({locations, bodyTypes,makes,  stock}:Props) {
                                     <div className="registerbox">
                                         {/*<i className="fa fa-user" />*/}
                                         <h2><FcBusinessman className='m-2'/></h2>
-                                        <div className="currencydropdown">
-                                            <button className="currencydropbtn supportbtn">
-                                                Hello, Sign in<br />My Account
-                                            </button>
+                                       <div className="currencydropdown text-white">
 
-                                            <div className="currencydropdown-content regiscontent">
-                                                <div className="row">
-                                                    <div className="col-md-12">
-                                                        <p className="m-0" style={{fontSize: '14px'}}><strong>My Account</strong></p>
-                                                       {/*<LoginModal/>*/}
-                                                        <div className="regisfooter">
-                                                            <p style={{fontSize: '14px'}} className="m-0">New Customer?</p>
-                                                            <p>
-                                                                <Link className="p-0 m-0" href="#" style={{color: 'blue', fontSize: '14px'}}>
-                                                                    <span>&nbsp;</span>Sign Up
-                                                                </Link>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                           <SignedIn>
+                                               {/* Mount the UserButton component */}
+                                               <UserButton afterSignOutUrl="/"/>
+                                           </SignedIn>
+                                           <SignedOut>
+                                               {/* Signed out users get sign in button */}
+                                               <SignInButton />
+                                           </SignedOut>
+                                            {/*<button className="currencydropbtn supportbtn">*/}
+                                            {/*    Hello, Sign in<br />My Account*/}
+                                            {/*</button>*/}
+
+                                            {/*<div className="currencydropdown-content regiscontent">*/}
+                                            {/*    <div className="row">*/}
+                                            {/*        <div className="col-md-12">*/}
+                                            {/*            <p className="m-0" style={{fontSize: '14px'}}><strong>My Account</strong></p>*/}
+                                            {/*           /!*<LoginModal/>*!/*/}
+                                            {/*            <div className="regisfooter">*/}
+                                            {/*                <p style={{fontSize: '14px'}} className="m-0">New Customer?</p>*/}
+                                            {/*                <p>*/}
+                                            {/*                    <Link className="p-0 m-0" href="#" style={{color: 'blue', fontSize: '14px'}}>*/}
+                                            {/*                        <span>&nbsp;</span>Sign Up*/}
+                                            {/*                    </Link>*/}
+                                            {/*                </p>*/}
+                                            {/*            </div>*/}
+                                            {/*        </div>*/}
+                                            {/*    </div>*/}
+                                            {/*</div>*/}
                                         </div>
                                     </div>
                                 </div>
