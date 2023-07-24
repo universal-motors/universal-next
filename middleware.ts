@@ -5,6 +5,7 @@ export default authMiddleware({
 
     publicRoutes: [
         '/',
+        '/contact',
         '/global',
         '/global/information',
         '/global/information/import-protocols',
@@ -13,6 +14,7 @@ export default authMiddleware({
         '/global/results/cars',
         '/global/results/machinery',
         '/global/results/trucks'
+
     ],
 
     afterAuth(auth, req, evt) {

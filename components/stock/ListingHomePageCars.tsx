@@ -25,12 +25,14 @@ export default async function ListingHomePageCars ({stocks}:Props) {
                 <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
                     <div>
-                        <h2 className="text-blue-800">Most Popular in <span>your Country</span></h2>
+                        {/*<h2 className="text-blue-800">Most Popular in <span>your Country</span></h2>*/}
+                        <h2 className="text-blue-800">Most Popular <span> Cars from Japan</span></h2>
                         <div className="carsrow row py-5">
                             {
 
                                 stocks
-                                    .filter(car => (car.price  <= 15000 && car.price >=5000) && car.bodyTypeId==1)
+                                    // .filter(car => (car.price  <= 15000 && car.price >=5000) && car.bodyTypeId==1)
+                                    .filter(car => car.locationId  == 84)
                                     .sort((a, b) => b.stockId - a.stockId)
                                     .slice(0,10)
                                     .map(car=> (
@@ -54,11 +56,12 @@ export default async function ListingHomePageCars ({stocks}:Props) {
                     <div className="row">
                         <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div className="showcase-Recheading">
-                                <h2>New Arrival in <span>Japan</span></h2>
+                                {/*<h2>New Arrival in <span>Japan</span></h2>*/}
+                                <h2 className="text-blue-800">Most Popular <span> Cars from UAE</span></h2>
                                 <div className="carsrow row py-5">
                                     {
                                         stocks
-                                            .filter(car => car.locationId ==84)
+                                            .filter(car => car.locationId ==185)
                                             .sort((a, b) => b.stockId - a.stockId)
                                             .slice(0,10)
                                             .map(car=> (
@@ -86,12 +89,14 @@ export default async function ListingHomePageCars ({stocks}:Props) {
                     </div>
                     <div className="row">
                         <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                            <h2>Most <span>Affordable Cars </span></h2>
+                            {/*<h2>Most <span>Affordable Cars </span></h2>*/}
+                            <h2 className="text-blue-800">Most Popular <span> Cars from Singapore and Thailand</span></h2>
                             <div className="showcase-Recheading">
                                 <div className="carsrow row py-5">
                                     {
                                         stocks
-                                            .filter(car => car.price  <= 5000)
+                                            // .filter(car => car.price  <= 5000)
+                                            .filter(car => car.locationId  == 157 || car.locationId  == 174)
                                             .sort((a, b) => b.stockId - a.stockId)
                                             .slice(0,10)
                                             .map(car=> (
@@ -123,7 +128,7 @@ export default async function ListingHomePageCars ({stocks}:Props) {
                                     <p>
                                         For any queries, Call our support team at &nbsp; &nbsp; <Link href="tel:+49 471 9731 9003" className="text-white"> +49 471 9731 9003</Link>
                                     </p>
-                                    <h6><Link href="/inquiry-form/ContactUS">Contact us</Link></h6>
+                                    <h6><Link href="/contact">Contact us</Link></h6>
                                 </div>
                             </div>
                         </div>
