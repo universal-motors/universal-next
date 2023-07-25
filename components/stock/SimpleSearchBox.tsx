@@ -4,25 +4,23 @@ import {Col, Form} from "react-bootstrap";
 import {ChangeEvent, FormEvent, FormEventHandler, useEffect, useState} from "react";
 import {SearchSelect, SearchSelectItem, Select, SelectItem} from "@tremor/react";
 import {useRouter} from "next/navigation";
-import {param} from "ts-interface-checker";
 import {BodyType} from "@/models/Master/BodyType";
 import {Make} from "@/models/Master/Make";
 import {CarModel} from "@/models/Master/CarModel";
-import {PortMapping} from "@/models/Master/PortMapping";
 import agent from "@/api/agent";
 
 interface Props{
     bodyTypes: BodyType[], //tblBodyTypes[],
     // locations: tblMasterCountry[],
     makes: Make[]//tblMakes[],
-    models: CarModel[]//tblCarModels[]
+  //  models: CarModel[]//tblCarModels[]
 }
 
 const initialState = {
     modelId: 0,
     makeId: 0,
     bodyTypeId:0,
-   // conditionId:0,
+    // conditionId:0,
     steeringTypeId:0,
     //drivetrainId:0,
     fromYear:0,
@@ -43,7 +41,12 @@ const GetBodyTypes = async () => {
     return await agent.LoadData.bodyTypeList();// db.tblBodyTypes.findMany({where: {isActive:true}});
 }
 
-export default function SimpleSearchBox({bodyTypes,makes, models}:Props){
+const GetModelWiseMakeList = async ( modelID:string) => {
+
+    return await agent.LoadData.carModelByMakeList(modelID);// db.tblBodyTypes.findMany({where: {isActive:true}});
+}
+
+export default function SimpleSearchBox({bodyTypes,makes}:Props){
 
     const currentYear = new Date().getFullYear()
     const [filter, setFilter] = useState(initialState);
@@ -57,7 +60,7 @@ export default function SimpleSearchBox({bodyTypes,makes, models}:Props){
     const [url, setUrl] = useState('/search?');
     const queryParams:string[] = [];
     const router = useRouter();
-   const yearList = Array.from({ length: 16 }, (_, index) => (currentYear - index).toString());
+    const yearList = Array.from({ length: 16 }, (_, index) => (currentYear - index).toString());
 
 
     function handleSubmit(event:FormEvent){
@@ -77,11 +80,12 @@ export default function SimpleSearchBox({bodyTypes,makes, models}:Props){
         router.push(`/global/results/cars?${params.toString()}`)
     }
 
-    const handleValueChange = (selectedValue:string) => {
+    const  handleValueChange = async (selectedValue:string) => {
         const selectedMakeID =selectedValue;
         setMakeId(selectedMakeID)
-        const modelbymake = models.filter(x=>x.makeId == parseInt(selectedValue));
+        const modelbymake = await  GetModelWiseMakeList(selectedMakeID);// models.filter(x=>x.makeId == parseInt(selectedValue));
         setMappedModels(modelbymake)
+
     };
 
 
@@ -103,13 +107,13 @@ export default function SimpleSearchBox({bodyTypes,makes, models}:Props){
         }
 
         return(
-        <SearchSelect value={makeId} onValueChange={handleValueChange} disabled>
+            <SearchSelect value={makeId} onValueChange={handleValueChange} disabled>
 
-        <SearchSelectItem value="0" >
-           Select...
-        </SearchSelectItem>
-        </SearchSelect>
-            )
+                <SearchSelectItem value="0" >
+                    Select...
+                </SearchSelectItem>
+            </SearchSelect>
+        )
     }
 
     return(
@@ -140,13 +144,13 @@ export default function SimpleSearchBox({bodyTypes,makes, models}:Props){
                                             <label>Make: </label>
                                             {/*<SearchSelect value={makeId} onValueChange={setMakeId}>*/}
                                             <SearchSelect value={makeId} onValueChange={handleValueChange}>
-                                            {
-                                                makes.map(make=> (
-                                                    <SearchSelectItem key={make.makeId} value={make.makeId.toString()} >
-                                                        {make.makeName} { }
-                                                    </SearchSelectItem>
-                                                ))
-                                            }
+                                                {
+                                                    makes.map(make=> (
+                                                        <SearchSelectItem key={make.makeId} value={make.makeId.toString()} >
+                                                            {make.makeName} { }
+                                                        </SearchSelectItem>
+                                                    ))
+                                                }
                                             </SearchSelect>
                                         </div>
 
@@ -190,13 +194,13 @@ export default function SimpleSearchBox({bodyTypes,makes, models}:Props){
                                                 <div className="flex flex-row">
                                                     <div className="flex-none w-20 h-14 ">
                                                         <SearchSelect value={fromYear} onValueChange={setFromYear}>
-                                                        {
-                                                            yearList.map(year=> (
-                                                                <SearchSelectItem key={year} value={year.toString()} >
-                                                                    {year}
-                                                                </SearchSelectItem>
-                                                            ))
-                                                        }
+                                                            {
+                                                                yearList.map(year=> (
+                                                                    <SearchSelectItem key={year} value={year.toString()} >
+                                                                        {year}
+                                                                    </SearchSelectItem>
+                                                                ))
+                                                            }
                                                         </SearchSelect>
                                                     </div>
                                                     <div className="flex-auto w-10  ">

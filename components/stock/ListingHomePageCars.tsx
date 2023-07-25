@@ -26,7 +26,15 @@ export default async function ListingHomePageCars ({stocks}:Props) {
 
                     <div>
                         {/*<h2 className="text-blue-800">Most Popular in <span>your Country</span></h2>*/}
-                        <h2 className="text-blue-800">Most Popular <span> Cars from Japan</span></h2>
+                        <div className="flex inline">
+                            <h2 className="text-blue-800">
+                                Most Popular <span> Cars from Japan </span>
+                            </h2>
+                            <img src="/assets/images/flags/JP.svg" className="img-fluid ml-2 h-5"  alt="Japan" />
+                        </div>
+
+
+
                         <div className="carsrow row py-5">
                             {
 
@@ -57,7 +65,12 @@ export default async function ListingHomePageCars ({stocks}:Props) {
                         <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div className="showcase-Recheading">
                                 {/*<h2>New Arrival in <span>Japan</span></h2>*/}
-                                <h2 className="text-blue-800">Most Popular <span> Cars from UAE</span></h2>
+
+                                <div className="flex inline">
+                                    <h2 className="text-blue-800">Most Popular <span> Cars from UAE</span></h2>
+                                    <img src="/assets/images/flags/AE.svg" className="img-fluid ml-2  h-5"  alt="UAE" />
+                                </div>
+
                                 <div className="carsrow row py-5">
                                     {
                                         stocks
@@ -90,7 +103,16 @@ export default async function ListingHomePageCars ({stocks}:Props) {
                     <div className="row">
                         <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             {/*<h2>Most <span>Affordable Cars </span></h2>*/}
-                            <h2 className="text-blue-800">Most Popular <span> Cars from Singapore and Thailand</span></h2>
+
+                            <div className="flex inline">
+                                <h2 className="text-blue-800">Most Popular Cars from Singapore </h2>
+                                    <img src="/assets/images/flags/SG.svg" className="img-fluid ml-2 mr-2 h-5"  alt="Singapore" />
+                                <h2 className="text-blue-800">and Thailand </h2>
+                                <img src="/assets/images/flags/TH.svg" className="img-fluid ml-3 h-5"  alt="Thailand" />
+
+
+                            </div>
+
                             <div className="showcase-Recheading">
                                 <div className="carsrow row py-5">
                                     {

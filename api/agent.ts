@@ -83,6 +83,7 @@ const LoadData = {
     bodyTypeList: () => request.get<BodyType[]>('masterdata/bodytype'),
     fuelTypeList: () => request.get<FuelType[]>('masterdata/fueltype'),
     carModelList: () => request.get<CarModel[]>('masterdata/carmodel'),
+    carModelByMakeList: (makeID: string) => request.get<CarModel[]>(`masterdata/carmodel/${makeID}`),
     drtivetrainList: () => request.get<DrivetrainType[]>('masterdata/drivetraintype'),
     steeringList: () => request.get<SteeringType[]>('masterdata/steeringtype'),
     colorsList: () => request.get<Colors[]>('masterdata/colors'),
@@ -94,7 +95,7 @@ const LoadData = {
     caroptionsList: () => request.get<CarOptions[]>('masterdata/caroptions'),
 
     // Required Parameter
-    caroptionMappingList: (stockID: number) => request.get<CarOptionsMapping[]>(`/carstock/caroptions/${stockID}`),
+    caroptionMappingList: (stockID: number) => request.get<CarOptionsMapping[]>(`carstock/caroptions/${stockID}`),
 
     //------ Computational
     inspectioncost: () => request.get<InspectionCost[]>('compute/inspectioncost/'),
@@ -182,6 +183,3 @@ export default agent;
 //     bodytypeCount: (bodytypeID:number)=> request.get<number>(`compute/bodytype/count/${bodytypeID}`),
 //     steeringTypeCount: (steeringID:number)=> request.get<number>(`compute/steeringType/count/${steeringID}`),
 // }
-
-
-
