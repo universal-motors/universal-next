@@ -52,7 +52,7 @@ export default  function TopCountryTimeBar({stockCount}:Props){
     return(
         <>
             <div className="firstsection col-lg-4 col-md-6 col-12 text-center">
-                <div className="flex items-center mt-3 pl-44">
+                <div className="flex items-center my-2">
 
                     <span className=" inline-flex items-center gap-x-1.5 ml-3 rounded-md bg-gray-100 px-2 py-1 text-lg align-middle tracking-tight  font-medium text-gray-900">
                     <svg className="h-1.5 w-1.5 fill-indigo-500" viewBox="0 0 6 6" aria-hidden="true">
@@ -65,7 +65,7 @@ export default  function TopCountryTimeBar({stockCount}:Props){
 
                 </div>
             </div>
-            <div className="col-lg-4 col-md-6 col-12 text-center">
+            <div className="col-lg-4 col-md-6 col-12 text-center mt-1">
                 <div className="flex items-center mt-3 pl-44">
                     <img alt="UAE Flag" src="/assets/images/flags/uae_flag.jpg" className="h-4 mr-2" />
                     <img alt="UAE Time" src="/assets/images/Clock.svg" className="h-5" />
@@ -78,7 +78,7 @@ export default  function TopCountryTimeBar({stockCount}:Props){
 
                 </div>
             </div>
-            <div className="secondsection col-lg-4 col-md-6 col-12 text-center">
+            <div className="secondsection col-lg-4 col-md-6 col-12 text-center mt-1">
                 <div className="flex items-center mt-3">
                     <img alt="Japan Flag" src="/assets/images/flags/JP.svg"  className="h-4 mr-2" />
                     <img alt="Japan Time" src="/assets/images/Clock.svg" className="h-5"/>

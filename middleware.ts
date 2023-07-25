@@ -5,6 +5,7 @@ export default authMiddleware({
 
     publicRoutes: [
         '/',
+        '/contact',
         '/global',
         '/global/information',
         '/global/information/import-protocols',
@@ -13,6 +14,7 @@ export default authMiddleware({
         '/global/results/cars',
         '/global/results/machinery',
         '/global/results/trucks'
+
     ],
 
     afterAuth(auth, req, evt) {
@@ -22,10 +24,10 @@ export default authMiddleware({
         }
 
         // redirect them to organization selection page
-        if(auth.userId && !auth.orgId && req.nextUrl.pathname !== "/org-selection"){
-            const orgSelection = new URL('/org-selection', req.url)
-            return NextResponse.redirect(orgSelection)
-        }
+        // if(auth.userId && !auth.orgId && req.nextUrl.pathname !== "/org-selection"){
+        //     const orgSelection = new URL('/org-selection', req.url)
+        //     return NextResponse.redirect(orgSelection)
+        // }
     }
 });
 
