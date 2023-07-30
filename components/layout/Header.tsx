@@ -2,7 +2,7 @@
 //import {tblBodyTypes, tblMakes, tblMasterCountry} from ".prisma/client";
 
 
-import SearchBar from "@/components/stock/SearchBar";
+import SearchBar from "@/components/ui/SearchBar";
 import {FcBusinessman, FcCurrencyExchange, FcCustomerSupport, FcGlobe, FcLike, FcOnlineSupport} from "react-icons/fc";
 import TopCountryTimeBar from "@/components/layout/TopCountryTimeBar";
 import Navigation from "@/components/layout/Navigation";

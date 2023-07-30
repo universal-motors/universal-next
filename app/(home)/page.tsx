@@ -1,11 +1,11 @@
 //'use client';
-import ListingHomePageCars from "@/components/stock/ListingHomePageCars";
+import HomePageCarListings from "@/components/cars/HomePageCarListings";
 import agent from "@/api/agent";
 import Link from "next/link";
-import SimpleSearchBox from "@/components/stock/SimpleSearchBox";
+import HomeUI from "@/components/ui/HomeUI";
 
 const GetStock = async () => {
-  return await agent.LoadData.stockList();//db.tblCars.findMany({where: {IsActive:true}});
+    return await agent.LoadData.stockList();//db.tblCars.findMany({where: {IsActive:true}});
 }
 
 const GetBodyTypes = async () => {
@@ -21,26 +21,26 @@ const GetCarMakes = async () => {
   return await  agent.LoadData.carMakeList();//db.tblMakes.findMany({where: {isActive:true}} );
 }
 
-const GetCarModels = async () => {
-  return await  agent.LoadData.carModelList();//db.tblCarModels.findMany({where: {isActive:true}} );
-}
-
 
 
 export default async function Home() {
-  const stocks = await GetStock();
-  const bodyTypes = await GetBodyTypes();
-  const locations = await GetLocations();
+
+    const stocks = await GetStock();
+    const bodyTypes = await GetBodyTypes();
+    const locations = await GetLocations();
 
   const makes = await GetCarMakes();
  // const models = await GetCarModels();
 
   return (
       <>
-          <div className="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 carboxes">
+          <div className="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
 
-              <SimpleSearchBox makes={makes}  bodyTypes={bodyTypes}/>
-              <ListingHomePageCars stocks={stocks} />
+              <HomeUI makes={makes} bodyTypes={bodyTypes}/>
+              <div className="carboxes mt-3">
+                  <HomePageCarListings stockcars={stocks} />
+              </div>
+
 
           </div>
           <div className="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ">
@@ -54,11 +54,11 @@ export default async function Home() {
               </figure>
               <figure
                   className="h-auto max-w-lg transition-all duration-300 rounded-lg ">
-                  <a href="https://www.facebook.com/people/Universal-Motors-LTD/100064181618215/?wtsid=rdr_0KEZcfREX6pES4I4W">
+                  <Link href="https://www.facebook.com/people/Universal-Motors-LTD/100064181618215/?wtsid=rdr_0KEZcfREX6pES4I4W">
                       <img className="rounded-lg"
                            src="/assets/images/faceboook-share.jpg"
                            alt="Facebook Description"/>
-                  </a>
+                  </Link>
               </figure>
 
 

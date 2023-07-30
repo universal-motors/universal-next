@@ -1,32 +1,23 @@
 'use client'
 import Link from "next/link";
-import Image from "next/image";
-//import {tblMasterCountry} from ".prisma/client";
-//import prisma from "@/utils/db";
 import {FormSelect} from "react-bootstrap";
-import {ChangeEvent, useState} from "react";
 import {Country} from "@/models/Master/Country";
+import {ChangeEvent} from "react";
 
 interface Props{
-   // resultCount:number,
+    resultCount:number,
     locations:Country[]// tblMasterCountry[]
+    //onFilterChange:(event:React.ChangeEvent<HTMLSelectElement>)=>void
 }
 
-export default async function SearchingCriteria({locations}:Props){
-
-   // const [sortFilter, setSortFilter] = useState("");
-   //  function handleSortingChange(event:ChangeEvent<HTMLSelectElement>){
-   //      event.preventDefault()
-   //      const value = event.target.value;
-   //      setSortFilter( value)
-   //      console.log(value);
-   //  }
+export default async function SearchingCriteria({locations, resultCount}:Props){
 
     return(
         <>
+            <h4 className="ml-4">Search Page Result  - <span>{resultCount}</span> Matches Found</h4>
             <div className="columns-3">
-                {/*<h4>Search Page Result  - <span>{resultCount}</span> Matches Found</h4>*/}
-                <h5>
+
+                <h5  className="ml-4">
                     View vehicles <strong>shipping from</strong>:
                 </h5>
                 <ul className="inline-flex items-center">
@@ -57,10 +48,10 @@ export default async function SearchingCriteria({locations}:Props){
                 </ul>
             </div>
 
-            <div className="columns-auto">
+            <div className="ml-4 columns-auto">
                     <p>Sort By: &nbsp;</p>
-                    <FormSelect name="sort-by" className="w-250" >
-                        {/*onChange={handleSortingChange}  >*/}
+                    <FormSelect name="sort-by" className="w-1/2" >
+                        {/*onChange={onFilterChange}*/}
                         <option value="">Select</option>
                         <option value="priceLowToHigh">Price Low to high</option>
                         <option value="priceHighToLow">Price high to low</option>

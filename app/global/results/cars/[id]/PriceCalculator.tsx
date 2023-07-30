@@ -12,7 +12,7 @@ import PriceFormat from "@/utils/PriceFormat";
 
 
 interface Props {
-    car : StockCars,
+    car : any,
     countries: Country[],
     ports : Ports[],
     portMapping: PortMapping[]

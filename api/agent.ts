@@ -20,6 +20,7 @@ import {FreightCost} from "@/models/Master/FreightCost";
 import {PortMapping} from "@/models/Master/PortMapping";
 import {StockPictures} from "@/models/Master/StockPictures";
 import {CarOptionsMapping} from "@/models/Master/CarOptionsMapping";
+import {Trucks} from "@/models/Trucks";
 
 const baseURL = 'https://universalmotorsapi20230324211515.azurewebsites.net/api/';
 const parseResponse = async <T>(response: Response): Promise<T> => {
@@ -68,16 +69,17 @@ const request = {
 
 const LoadData = {
     //------ Main Units
-    //stockList: () => request.get<StockCars[]>('carstock'),
+   // stockList: () => request.get<StockCars[]>('carstock'),
     stockList: ()=>   axios.get<StockCars[]>(baseURL+'carstock').then(responseBody),
     stock: (stockID: number) => request.get<StockCars>(`carstock/${stockID}`),
-    truckList: () => request.get('trucks'),
+    truck: (stockID: number) => request.get<Trucks>(`trucks/${stockID}`),
+    truckList: () => axios.get<Trucks[]>(baseURL+'trucks').then(responseBody),
     machineryList: () => request.get<Machinery[]>('machinery'),
     stockSliderList: (stockID: number) => request.get<StockPictures[]>(`carstock/imagestock/${stockID}`),
 
     //------ Master Data
     countryList: () => request.get<Country[]>('masterdata/country'),
-    carMakeList: () => request.get<Make[]>('masterdata/make/1'),
+    carMakeList: () => request.get<Make[]>('masterdata/make'),
     truckMakeList: () => request.get<Make[]>('masterdata/make/2'),
     machineryMakeList: () => request.get<Make[]>('masterdata/make/3'),
     bodyTypeList: () => request.get<BodyType[]>('masterdata/bodytype'),

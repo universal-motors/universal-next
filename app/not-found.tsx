@@ -1,6 +1,6 @@
 // app/not-found.tsx
 import Link from 'next/link';
-import SearchBar from "@/components/stock/SearchBar";
+import SearchBar from "@/components/ui/SearchBar";
 
 export default function NotFound() {
     return (

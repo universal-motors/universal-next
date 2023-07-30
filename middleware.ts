@@ -5,15 +5,18 @@ export default authMiddleware({
 
     publicRoutes: [
         '/',
-        '/contact',
+       '/contact',
         '/global',
         '/global/information',
         '/global/information/import-protocols',
         '/global/about-universal-motors',
-        '/global/results/:path',
-        '/global/results/cars',
+        '/global/results/cars/',
         '/global/results/machinery',
-        '/global/results/trucks'
+        '/global/results/:path',
+        '/global/results/trucks/',
+        '/global/results/cars/:path',
+        '/global/results/machinery/:path',
+        '/global/results/trucks/:path',
 
     ],
 
