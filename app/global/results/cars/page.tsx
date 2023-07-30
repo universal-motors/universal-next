@@ -1,8 +1,8 @@
-import SearchingCriteria from "@/components/stock/SearchingCriteria";
-import SearchResult from "@/components/stock/SearchResult";
+import SearchingCriteria from "@/components/ui/SearchingCriteria";
+import CarSearchResult from "@/components/cars/CarSearchResult";
 import {StockCars} from "@/models/StockCars";
 import agent from "@/api/agent";
-import SimpleSearchBox from "@/components/stock/SimpleSearchBox";
+import HomeUI from "@/components/ui/HomeUI";
 
 interface Props {
     searchParams: {
@@ -31,17 +31,13 @@ const GetCarMakes = async () => {
     return await  agent.LoadData.carMakeList();//db.tblMakes.findMany({where: {isActive:true}} );
 }
 
-const GetCarModels = async () => {
-    return await  agent.LoadData.carModelList();//db.tblCarModels.findMany({where: {isActive:true}} );
-}
-
 export default async function ResultPage({searchParams}:Props) {
 
     const result:StockCars[] = await agent.LoadData.stockList()
     const locations = await GetLocations();
     const bodyTypes = await GetBodyTypes();
     const carMake = await GetCarMakes();
-    const carModel = await GetCarModels();
+
     const cars = await fetchQueryResult(searchParams, result);
 
 
@@ -49,9 +45,9 @@ export default async function ResultPage({searchParams}:Props) {
 
         <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 p-0 second-searchform">
             {/*<DetailedSearchBox />*/}
-            <SimpleSearchBox bodyTypes={bodyTypes}  makes={carMake}/>
-            <SearchingCriteria locations={locations} />
-            <SearchResult cars={cars} locations={locations} />
+            <HomeUI bodyTypes={bodyTypes} makes={carMake}/>
+
+            <CarSearchResult cars={cars} locations={locations} />
         </div>
     )
 }

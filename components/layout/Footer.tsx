@@ -55,7 +55,7 @@ function Footer({locations, bodyTypes,makes, stock}:Props){
                                 </div>
                             </div>
                             <br />
-                            <div className="flex-auto inline-flex mt-2" style={{ flexDirection: 'column', position: 'relative', top: '-30px' }}>
+                            <div className="flex-auto inline-flex mt-2" style={{ flexDirection: 'column' }}>
                                 <Image
 
                                     src="https://universalmotorstorage.blob.core.windows.net/umimages/pngwing.com.png"
@@ -64,23 +64,23 @@ function Footer({locations, bodyTypes,makes, stock}:Props){
                                     height={30}
                                     width={30}
                                 />
-                                <br />
-                                <ul className='slashed-zero lining-nums' style={{ position: 'relative', left: '-32px', top: '-12px' }}>
-                                    <a href="tel:+49 471 9731 9003" style={{ textDecoration: 'none' }}>+49 471 9731 9003</a>
+                               <br />
+                                <ul className='slashed-zero lining-nums' >
+                                    <a href="tel:+49 471 9731 9003" >+49 471 9731 9003</a>
 
                                     <br />
 
-                                    <a href="tel:+971 52 796 7035" style={{ textDecoration: 'none' }}>+971 52 796 7035</a>
+                                    <a href="tel:+971 52 796 7035" >+971 52 796 7035</a>
 
                                     <br />
 
-                                    <a href="tel:+81 50 5050 8550" style={{ textDecoration: 'none' }}>+81 50 5050 8550</a>
+                                    <a href="tel:+81 50 5050 8550" >+81 50 5050 8550</a>
 
                                 </ul>
                             </div>
                             <br />
-
-                            <ul className="mt-3" style={{ position: 'relative', left: '-34px', top: '-48px' }}>
+                            <div className="flex-auto inline-flex mt-2" style={{ flexDirection: 'column' }}>
+                            <ul className="mt-3" >
 
                                 <li>
                                     <h6>Corporate Site:</h6>
@@ -140,6 +140,7 @@ function Footer({locations, bodyTypes,makes, stock}:Props){
 
                                 </li>
                             </ul>
+                            </div>
                         </div>
                         <div className="col-md-3 col-12 f1">
                             <h4>By Make</h4>

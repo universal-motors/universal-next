@@ -1,52 +1,30 @@
 'use client'
 import Link from "next/link";
 import Image from 'next/image'
-import LikeComponent from "@/components/stock/LikeComponent";
+import LikeComponent from "@/components/ui/LikeComponent";
 import PriceFormat from "@/utils/PriceFormat";
 
-
-import {StockCars} from "@/models/StockCars";
-import {FaGasPump} from "react-icons/fa";
+import {FaGasPump, FaTruckLoading} from "react-icons/fa";
 import {PiEngineFill, PiGearFineBold } from "react-icons/pi";
-import {GiCarDoor} from "react-icons/gi";
 import {BiSolidColorFill} from "react-icons/bi";
 import {MdAirlineSeatReclineExtra} from "react-icons/md";
 import {Country} from "@/models/Master/Country";
-import {useEffect, useState} from "react";
+import { useState} from "react";
 import PaginationComponent from "@/utils/PaginationComponent";
+import {Trucks} from "@/models/Trucks";
 interface Props{
 //    cars: tblCars[]
-    cars: StockCars[]
+    cars: Trucks[]
     locations: Country[]//tblMasterCountry[]
 }
 
-export default async function SearchResult({cars,locations}:Props){
-    const searchData:StockCars[] = cars;
-    const [isLoading, setIsLoading] = useState(false);
+export default function TruckSearchResult({cars,locations}:Props){
+    const searchData:Trucks[] = cars;
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage,setPostsPerPage] = useState(20);
     const lastPostIndex = currentPage * postsPerPage;
     const firstPostIndex = lastPostIndex - postsPerPage;
     const currentPosts = searchData.slice(firstPostIndex,lastPostIndex);
-
-    const handleClick = () => {
-        setIsLoading(true);
-    };
-
-    // This useEffect will run when the component mounts and after every render
-    useEffect(() => {
-        // Add an event listener to the window's load event
-        const handlePageLoad = () => {
-            // Set isLoading to false when the page has finished loading
-            setIsLoading(false);
-        };
-        window.addEventListener('load', handlePageLoad);
-
-        // Clean up the event listener when the component unmounts
-        return () => {
-            window.removeEventListener('load', handlePageLoad);
-        };
-    }, []); //
 
     return(
         <>
@@ -58,7 +36,7 @@ export default async function SearchResult({cars,locations}:Props){
                         <div className="row my-5 ">
                             <div className="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-5">
                                 <div className="searched-carimage ">
-                                    <Link onClick={handleClick} href={`/global/results/${car.stockId}`}>
+                                    <Link href={`/global/results/${car.stockId}`}>
                                         <Image src={car.imageUrl??""} className="mb-4" alt=""  height={150}
                                                width={150} /></Link>
 
@@ -95,7 +73,7 @@ export default async function SearchResult({cars,locations}:Props){
                                             <div className="col-sm specs">
                                                 <h4>Mileage</h4>
                                                 <span className="label-text  p-1  flex items-center rounded-md ml-5">
-                                                     <img decoding="async" src="/assets/images/kmsDriven.svg" loading="eager"className="h-6 mr-2"/>
+                                                     <img decoding="async" src="/assets/images/kmsDriven.svg" loading="eager" className="h-6 mr-2"/>
                                                     {car.mileage}
                                                  </span>
                                             </div>
@@ -115,7 +93,7 @@ export default async function SearchResult({cars,locations}:Props){
                                             <div className="col-sm specs">
                                                 <h4>Transmision</h4>
                                                 <span className="label-text  p-1 flex items-center rounded-md ml-5">
-                                                    <img decoding="async" src="/assets/images/transmission.svg" loading="eager"className="h-6"/>
+                                                    <img decoding="async" src="/assets/images/transmission.svg" loading="eager" className="h-6"/>
                                                     {car.transmissionName} </span>
                                             </div>
                                             {/*<div className="col-sm specs">*/}
@@ -136,23 +114,23 @@ export default async function SearchResult({cars,locations}:Props){
                                         <div className="row specsrow ">
 
                                             <div className="col-sm specs">
-                                                <h4>Drivetrain</h4>
+                                                <h4>Axle</h4>
                                                 <span className="label-text  p-1 flex items-center rounded-md ml-5">
                                                       <span className="h-auto mr-2"><PiGearFineBold /></span>
-                                                    {car.drivetrainType}
+                                                    {car.axle}
                                                  </span>
                                             </div>
                                             <div className="col-sm specs">
-                                                <h4>Doors</h4>
+                                                <h4>Loading Capacity</h4>
                                                 <span className="label-text  p-1 flex items-center rounded-md ml-5">
-                                                  <span className="h-auto mr-2"><GiCarDoor /></span>
-                                                    {car.noOfDoors}</span>
+                                                  <span className="h-auto mr-2"><FaTruckLoading /></span>
+                                                    {car.loadingCapacity}</span>
                                             </div>
                                             <div className="col-sm specs">
-                                                <h4>Seats</h4>
+                                                <h4>Category</h4>
                                                 <span className="label-text  p-1 flex items-center rounded-md ml-5">
                                                      <span className="h-auto mr-2"><MdAirlineSeatReclineExtra /></span>
-                                                    {car.noOfSeats} </span>
+                                                    {car.vehicleCategory} </span>
                                             </div>
                                             <div className="col-sm specs">
                                                 <h4>Color</h4>

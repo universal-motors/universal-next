@@ -1,5 +1,5 @@
-import SearchingCriteria from "@/components/stock/SearchingCriteria";
-import SearchResult from "@/components/stock/SearchResult";
+import SearchingCriteria from "@/components/ui/SearchingCriteria";
+import CarSearchResult from "@/components/cars/CarSearchResult";
 import CarDetailedSlideshow from "@/app/global/results/[id]/CarDetailedSlideshow";
 import StockSpecification from "@/app/global/results/[id]/StockSpecification";
 import StockKeyInformation from "@/app/global/results/[id]/StockKeyInformation";

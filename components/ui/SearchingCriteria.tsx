@@ -1,18 +1,14 @@
 'use client'
 import Link from "next/link";
-import Image from "next/image";
-//import {tblMasterCountry} from ".prisma/client";
-//import prisma from "@/utils/db";
 import {FormSelect} from "react-bootstrap";
-import {ChangeEvent, useState} from "react";
 import {Country} from "@/models/Master/Country";
 
 interface Props{
-   // resultCount:number,
+   resultCount:number,
     locations:Country[]// tblMasterCountry[]
 }
 
-export default async function SearchingCriteria({locations}:Props){
+export default async function SearchingCriteria({locations, resultCount}:Props){
 
    // const [sortFilter, setSortFilter] = useState("");
    //  function handleSortingChange(event:ChangeEvent<HTMLSelectElement>){
@@ -24,9 +20,10 @@ export default async function SearchingCriteria({locations}:Props){
 
     return(
         <>
+            <h4 className="ml-4">Search Page Result  - <span>{resultCount}</span> Matches Found</h4>
             <div className="columns-3">
-                {/*<h4>Search Page Result  - <span>{resultCount}</span> Matches Found</h4>*/}
-                <h5>
+
+                <h5  className="ml-4">
                     View vehicles <strong>shipping from</strong>:
                 </h5>
                 <ul className="inline-flex items-center">
@@ -57,9 +54,9 @@ export default async function SearchingCriteria({locations}:Props){
                 </ul>
             </div>
 
-            <div className="columns-auto">
+            <div className="ml-4 columns-auto">
                     <p>Sort By: &nbsp;</p>
-                    <FormSelect name="sort-by" className="w-250" >
+                    <FormSelect name="sort-by" className="w-1/2" >
                         {/*onChange={handleSortingChange}  >*/}
                         <option value="">Select</option>
                         <option value="priceLowToHigh">Price Low to high</option>
