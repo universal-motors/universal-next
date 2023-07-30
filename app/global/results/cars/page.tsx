@@ -46,7 +46,6 @@ export default async function ResultPage({searchParams}:Props) {
         <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 p-0 second-searchform">
             {/*<DetailedSearchBox />*/}
             <HomeUI bodyTypes={bodyTypes} makes={carMake}/>
-
             <CarSearchResult cars={cars} locations={locations} />
         </div>
     )

@@ -72,6 +72,7 @@ const LoadData = {
    // stockList: () => request.get<StockCars[]>('carstock'),
     stockList: ()=>   axios.get<StockCars[]>(baseURL+'carstock').then(responseBody),
     stock: (stockID: number) => request.get<StockCars>(`carstock/${stockID}`),
+    truck: (stockID: number) => request.get<Trucks>(`trucks/${stockID}`),
     truckList: () => axios.get<Trucks[]>(baseURL+'trucks').then(responseBody),
     machineryList: () => request.get<Machinery[]>('machinery'),
     stockSliderList: (stockID: number) => request.get<StockPictures[]>(`carstock/imagestock/${stockID}`),

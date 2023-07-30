@@ -43,7 +43,7 @@ export default async function CarSearchResult({cars,locations}:Props){
                         <div className="row my-5 ">
                             <div className="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-5">
                                 <div className="searched-carimage ">
-                                    <Link href={`/global/results/${car.stockId}`}>
+                                    <Link href={`/global/results/cars/${car.stockId}`}>
                                         <Image src={car.imageUrl??""} className="mb-4" alt=""  height={150}
                                                width={150} /></Link>
 
@@ -56,7 +56,7 @@ export default async function CarSearchResult({cars,locations}:Props){
                                 <div className="car-details">
                                     <div className="row ">
                                         <div className="col-lg-6 col-md-6 col-sm-6">
-                                            <Link href={`/global/results/${car.stockId}`}>
+                                            <Link href={`/global/results/cars/${car.stockId}`}>
                                                 <h6 className="listname font-bold uppercase">{car.listingTitle}</h6></Link>
                                         </div>
                                         <div className="col-lg-6 col-md-6 col-sm-6">
@@ -236,7 +236,7 @@ export default async function CarSearchResult({cars,locations}:Props){
                                     </div>
                                     <h4 />
 
-                                    <Link href={`/global/results/${car.stockId}`}>
+                                    <Link href={`/global/results/cars/${car.stockId}`}>
                                         <button className="offerbtn">
                                         <span className="font-bold">    Send Offer</span>
                                         </button>

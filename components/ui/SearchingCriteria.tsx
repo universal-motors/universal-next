@@ -2,21 +2,15 @@
 import Link from "next/link";
 import {FormSelect} from "react-bootstrap";
 import {Country} from "@/models/Master/Country";
+import {ChangeEvent} from "react";
 
 interface Props{
-   resultCount:number,
+    resultCount:number,
     locations:Country[]// tblMasterCountry[]
+    //onFilterChange:(event:React.ChangeEvent<HTMLSelectElement>)=>void
 }
 
 export default async function SearchingCriteria({locations, resultCount}:Props){
-
-   // const [sortFilter, setSortFilter] = useState("");
-   //  function handleSortingChange(event:ChangeEvent<HTMLSelectElement>){
-   //      event.preventDefault()
-   //      const value = event.target.value;
-   //      setSortFilter( value)
-   //      console.log(value);
-   //  }
 
     return(
         <>
@@ -57,7 +51,7 @@ export default async function SearchingCriteria({locations, resultCount}:Props){
             <div className="ml-4 columns-auto">
                     <p>Sort By: &nbsp;</p>
                     <FormSelect name="sort-by" className="w-1/2" >
-                        {/*onChange={handleSortingChange}  >*/}
+                        {/*onChange={onFilterChange}*/}
                         <option value="">Select</option>
                         <option value="priceLowToHigh">Price Low to high</option>
                         <option value="priceHighToLow">Price high to low</option>
