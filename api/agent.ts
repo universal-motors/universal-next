@@ -22,7 +22,8 @@ import {StockPictures} from "@/models/Master/StockPictures";
 import {CarOptionsMapping} from "@/models/Master/CarOptionsMapping";
 import {Trucks} from "@/models/Trucks";
 
-const baseURL = 'https://universalmotorsapi20230324211515.azurewebsites.net/api/';
+//const baseURL = 'https://universalmotorsapi20230324211515.azurewebsites.net/api/';
+const baseURL = 'https://api20230805195433.azurewebsites.net/api/';
 const parseResponse = async <T>(response: Response): Promise<T> => {
     if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -69,16 +70,29 @@ const request = {
 
 const LoadData = {
     //------ Main Units
-   // stockList: () => request.get<StockCars[]>('carstock'),
-    stockList: ()=>   axios.get<StockCars[]>(baseURL+'carstock').then(responseBody),
+   stockList: (filter:string) => request.get<StockCars[]>(`carstock?PageSize=25&pageNumber=1&${filter}`),
+    //stockList: ()=>   axios.get<StockCars[]>(baseURL+'carstock?pageNumber=1&pageSize=50')
+      //  .then(responseBody),
+    //     .catch(error => {
+    //         console.error('There was an error fetching the data:', error);
+    // }),
+    homepageStockList: () => request.get<StockCars[]>('carstock/homepage_cars'),
     stock: (stockID: number) => request.get<StockCars>(`carstock/${stockID}`),
     truck: (stockID: number) => request.get<Trucks>(`trucks/${stockID}`),
-    truckList: () => axios.get<Trucks[]>(baseURL+'trucks').then(responseBody),
-    machineryList: () => request.get<Machinery[]>('machinery'),
+    truckList: () => request.get<Trucks[]>('trucks'),
+
+    // truckList: () => axios.get<Trucks[]>(baseURL+'trucks?pageNumber=1&pageSize=50')
+    //     .then(responseBody)
+    //     .catch(error => {
+    //     console.error('There was an error fetching the data:', error);
+    // }),
+
+    machineryList: () => request.get<Machinery[]>('machinery?pageNumber=1&pageSize=50'),
     stockSliderList: (stockID: number) => request.get<StockPictures[]>(`carstock/imagestock/${stockID}`),
 
     //------ Master Data
     countryList: () => request.get<Country[]>('masterdata/country'),
+    inventoryLocationList: () => request.get<Country[]>('masterdata/inventory'),
     carMakeList: () => request.get<Make[]>('masterdata/make'),
     truckMakeList: () => request.get<Make[]>('masterdata/make/2'),
     machineryMakeList: () => request.get<Make[]>('masterdata/make/3'),
@@ -104,7 +118,7 @@ const LoadData = {
     freightcost: () => request.get<FreightCost[]>('compute/freightcost/'),
     portmapping: () => request.get<PortMapping[]>('compute/portmapping/'),
     getClientIP: () => request.get<string>('compute/getClientIP/'),
-    stockCount: () => request.get<number>('compute/stock/count'),
+    stockCount: () => request.get<number>('carstock/count'),
     carmodelCount: (modelID: number) => request.get<number>(`compute/carmodel/count/${modelID}`),
     makeCount: (makeID: number) => request.get<number>(`compute/make/count/${makeID}`),
     bodytypeCount: (bodytypeID: number) => request.get<number>(`compute/bodytype/count/${bodytypeID}`),

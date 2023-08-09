@@ -24,14 +24,13 @@ interface Props{
     locations : Country[]
     bodyTypes : BodyType[]
     makes : Make[]
-    stock: StockCars[]
-   // stockCount : number
+    stockCount : number
 }
 
 const currentYear = new Date().getFullYear()
 
 
-async function Header({locations, bodyTypes,makes,  stock}:Props) {
+async function Header({locations, bodyTypes,makes,  stockCount}:Props) {
 
       return (
           <>
@@ -42,7 +41,7 @@ async function Header({locations, bodyTypes,makes,  stock}:Props) {
 
                       {/* Stack the columns on mobile by making one full-width and the other half-width */}
                       <div className="row">
-                          <TopCountryTimeBar stockCount={stock.length}/>
+                          <TopCountryTimeBar stockCount={stockCount}/>
                           {/*<div className="col-lg-2 col-md-6 col-12 text-center">*/}
                           {/*    <div className="currencydropdown">*/}
                           {/*        <button className="currencydropbtn">*/}

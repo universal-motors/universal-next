@@ -1,4 +1,3 @@
-'use client';
 import { Tab } from '@headlessui/react'
 import {BodyType} from "@/models/Master/BodyType";
 import {Make} from "@/models/Master/Make";
@@ -13,10 +12,6 @@ function classNames(...classes:any[]) {
 }
 
 
-interface Props{
-    bodyTypes: BodyType[], //tblBodyTypes[],
-    makes: Make[]//tblMakes[],
-  }
 
 interface TabType {
     name: string,
@@ -39,7 +34,9 @@ const GetBodyTypes = async () => {
     return await agent.LoadData.bodyTypeList();// db.tblBodyTypes.findMany({where: {isActive:true}});
 }
 
-
+const GetCarMakes = async () => {
+    return await  agent.LoadData.carMakeList();//db.tblMakes.findMany({where: {isActive:true}} );
+}
 
 const GetTrucks = async () => {
     return await  agent.LoadData.truckList();//db.tblCarModels.findMany({where: {isActive:true}} );
@@ -51,8 +48,9 @@ const GetMachinery = async () => {
 
 
 
-export default async function HomeUI({bodyTypes,makes}:Props){
-
+export default async function HomeUI(){
+    const bodyTypes = await GetBodyTypes();
+    const makes = await GetCarMakes();
     // const trucks = await GetTrucks();
     // const machineries = await GetMachinery();
     const currentYear = new Date().getFullYear()

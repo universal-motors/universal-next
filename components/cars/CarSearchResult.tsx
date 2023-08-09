@@ -16,26 +16,38 @@ import {useEffect, useState} from "react";
 import PaginationComponent from "@/utils/PaginationComponent";
 import {Trucks} from "@/models/Trucks";
 import SearchingCriteria from "@/components/ui/SearchingCriteria";
+import agent from "@/api/agent";
 interface Props{
 //    cars: tblCars[]
-    cars: StockCars[]
+   // cars: StockCars[]
     locations: Country[]//tblMasterCountry[]
+    params: URLSearchParams
 }
 
-export default async function CarSearchResult({cars,locations}:Props){
-    const searchData:StockCars[]|Trucks[] = cars;
-
+export default  function CarSearchResult({locations, params}:Props){
+    //const searchData:StockCars[]|Trucks[] = cars;
+    const[ searchData, setSearchData] = useState<StockCars[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage,setPostsPerPage] = useState(20);
     const lastPostIndex = currentPage * postsPerPage;
     const firstPostIndex = lastPostIndex - postsPerPage;
-    const currentPosts = searchData.slice(firstPostIndex,lastPostIndex);
+    //const currentPosts = searchData.slice(firstPostIndex,lastPostIndex);
 
+    useEffect( () => {
+        params.set("PageNumber", currentPage.toString());
+        const GetFilteredCars = async (filter: string) => {
+            return await agent.LoadData.stockList(filter);
+            //db.tblMasterCountry.findMany({where: {IsActive:true}} );
+        }
+
+        const result = GetFilteredCars(params.toString());
+        setSearchData(await result);
+    },[currentPage])
 
     return(
         <>
-            <SearchingCriteria resultCount={searchData.length} locations={locations} />
-            <PaginationComponent currentPage={currentPage} totalPost={cars.length} postPerPage={postsPerPage} setCurrentPage={setCurrentPage} />
+            {/*<SearchingCriteria resultCount={searchData.length} locations={locations} />*/}
+            {/*<PaginationComponent currentPage={currentPage} totalPost={cars.length} postPerPage={postsPerPage} setCurrentPage={setCurrentPage} />*/}
           {
 
                 currentPosts.map(car=>(

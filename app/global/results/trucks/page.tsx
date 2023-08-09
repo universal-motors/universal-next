@@ -34,7 +34,7 @@ const GetCarMakes = async () => {
 
 export default async function ResultPage({searchParams}:Props) {
 
-    const result:Trucks[] = await agent.LoadData.truckList()
+    const result = await agent.LoadData.truckList()
     const locations = await GetLocations();
     const bodyTypes = await GetBodyTypes();
     const carMake = await GetCarMakes();
