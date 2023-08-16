@@ -10,3 +10,10 @@ export interface Customer {
     prefferedPortID : number
 
 }
+
+export interface UserFormValues {
+    username: string,
+    email: string,
+    password: string,
+
+}

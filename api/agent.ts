@@ -21,6 +21,7 @@ import {PortMapping} from "@/models/Master/PortMapping";
 import {StockPictures} from "@/models/Master/StockPictures";
 import {CarOptionsMapping} from "@/models/Master/CarOptionsMapping";
 import {Trucks} from "@/models/Trucks";
+import {Customer, UserFormValues} from "@/models/Customer";
 
 //const baseURL = 'https://universalmotorsapi20230324211515.azurewebsites.net/api/';
 const baseURL = 'https://api20230805195433.azurewebsites.net/api/';
@@ -123,10 +124,22 @@ const LoadData = {
     makeCount: (makeID: number) => request.get<number>(`compute/make/count/${makeID}`),
     bodytypeCount: (bodytypeID: number) => request.get<number>(`compute/bodytype/count/${bodytypeID}`),
     steeringTypeCount: (steeringID: number) => request.get<number>(`compute/steeringType/count/${steeringID}`),
+
+
+
 };
+
+const Account = {
+    //   -------Accounts
+    currentUser : () => request.get<Customer>('authentication'),
+    register: (user: UserFormValues) => request.post<Customer>('authentication', user),
+    login: (user: UserFormValues) => request.post<Customer>('authentication/login', user),
+
+}
 
 const agent = {
     LoadData,
+    Account
 };
 
 
