@@ -13,7 +13,7 @@ export default async function RootLayout({ children,
 
 
     return (
-        <ClerkProvider>
+        // <ClerkProvider>
             <html lang="en">
             <head>
                 <meta content="text/html"/>
@@ -41,7 +41,7 @@ export default async function RootLayout({ children,
             </body>
             <Script src="/assets/scripts/extra.js" />
             </html>
-        </ClerkProvider>
+        // </ClerkProvider>
 
 
     )

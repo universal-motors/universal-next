@@ -32,17 +32,17 @@ export default  function CarSearchResult({locations, params}:Props){
     const lastPostIndex = currentPage * postsPerPage;
     const firstPostIndex = lastPostIndex - postsPerPage;
     //const currentPosts = searchData.slice(firstPostIndex,lastPostIndex);
-
-    useEffect( () => {
-        params.set("PageNumber", currentPage.toString());
-        const GetFilteredCars = async (filter: string) => {
-            return await agent.LoadData.stockList(filter);
-            //db.tblMasterCountry.findMany({where: {IsActive:true}} );
-        }
-
-        const result = GetFilteredCars(params.toString());
-        setSearchData(await result);
-    },[currentPage])
+    //
+    // useEffect( () => {
+    //     params.set("PageNumber", currentPage.toString());
+    //     const GetFilteredCars = async (filter: string) => {
+    //         return await agent.LoadData.stockList(filter);
+    //         //db.tblMasterCountry.findMany({where: {IsActive:true}} );
+    //     }
+    //
+    //     const result = GetFilteredCars(params.toString());
+    //   //  setSearchData(await result);
+    // },[currentPage])
 
     return(
         <>
@@ -50,7 +50,7 @@ export default  function CarSearchResult({locations, params}:Props){
             {/*<PaginationComponent currentPage={currentPage} totalPost={cars.length} postPerPage={postsPerPage} setCurrentPage={setCurrentPage} />*/}
           {
 
-                currentPosts.map(car=>(
+              searchData.map(car=>(
                     <div key={car.stockId} className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div className="row my-5 ">
                             <div className="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-5">
@@ -262,7 +262,7 @@ export default  function CarSearchResult({locations, params}:Props){
                     </div>
                 ))
             }
-            <PaginationComponent currentPage={currentPage} totalPost={cars.length} postPerPage={postsPerPage} setCurrentPage={setCurrentPage} />
+            <PaginationComponent currentPage={currentPage} totalPost={postsPerPage*lastPostIndex} postPerPage={postsPerPage} setCurrentPage={setCurrentPage} />
         </>
     )
 }

@@ -1,3 +1,5 @@
+'use client'
+
 import { Tab } from '@headlessui/react'
 import {BodyType} from "@/models/Master/BodyType";
 import {Make} from "@/models/Master/Make";
