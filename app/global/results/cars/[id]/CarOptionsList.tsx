@@ -11,7 +11,7 @@ export default async function CarOptionList({stockID, optionsMaster}:Props){
         <>
             <ul>
                 {
-                    stockOptions
+                    stockOptions.data
                         .slice(0,5)
                      .map( op=> (
                         <li key={op.id}>

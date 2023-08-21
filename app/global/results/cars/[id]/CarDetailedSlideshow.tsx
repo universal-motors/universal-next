@@ -15,7 +15,7 @@ interface Props {
 
 export default async function CarDetailedSlideshow({stockID, mainPic}: Props){
     const stockPicture = await agent.LoadData.stockSliderList(stockID);
-    const images =stockPicture.map((pic) => ({
+    const images =stockPicture.data.map((pic) => ({
         src: pic.imageURL
     }));
     images.unshift({ src: mainPic });
@@ -24,7 +24,7 @@ export default async function CarDetailedSlideshow({stockID, mainPic}: Props){
         <>
 
             <CarouselStock imageURLs={images}/>
-            <ShareDownloadComponent imageList={stockPicture}/>
+            <ShareDownloadComponent imageList={stockPicture.data}/>
 
         </>
     )

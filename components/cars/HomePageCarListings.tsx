@@ -40,7 +40,7 @@ export default  async function HomePageCarListings () {
                         <div className="carsrow row py-5">
                             {
 
-                                stockcars
+                                stockcars.data
                                     // .filter(car => (car.price  <= 15000 && car.price >=5000) && car.bodyTypeId==1)
                                     .filter(car => car.locationId  == 84)
                                     .sort((a, b) => b.stockId - a.stockId)
@@ -75,7 +75,7 @@ export default  async function HomePageCarListings () {
 
                                 <div className="carsrow row py-5">
                                     {
-                                        stockcars
+                                        stockcars.data
                                             .filter(car => car.locationId ==185)
                                             .sort((a, b) => b.stockId - a.stockId)
                                            // .slice(0,10)
@@ -118,7 +118,7 @@ export default  async function HomePageCarListings () {
                             <div className="showcase-Recheading">
                                 <div className="carsrow row py-5">
                                     {
-                                        stockcars
+                                        stockcars.data
                                             // .filter(car => car.price  <= 5000)
                                             .filter(car => car.locationId  == 157 || car.locationId  == 174)
                                             .sort((a, b) => b.stockId - a.stockId)

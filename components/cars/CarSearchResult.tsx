@@ -4,7 +4,6 @@ import Image from 'next/image'
 import LikeComponent from "@/components/ui/LikeComponent";
 import PriceFormat from "@/utils/PriceFormat";
 
-
 import {StockCars} from "@/models/StockCars";
 import {FaGasPump} from "react-icons/fa";
 import {PiEngineFill, PiGearFineBold } from "react-icons/pi";
@@ -12,45 +11,88 @@ import {GiCarDoor} from "react-icons/gi";
 import {BiSolidColorFill} from "react-icons/bi";
 import {MdAirlineSeatReclineExtra} from "react-icons/md";
 import {Country} from "@/models/Master/Country";
+import {PaginationHeader} from "@/models/Master/Pagination";
 import {useEffect, useState} from "react";
-import PaginationComponent from "@/utils/PaginationComponent";
-import {Trucks} from "@/models/Trucks";
-import SearchingCriteria from "@/components/ui/SearchingCriteria";
+import PaginationComponent from "@/components/ui/PaginationComponent";
 import agent from "@/api/agent";
 interface Props{
-//    cars: tblCars[]
-   // cars: StockCars[]
-    locations: Country[]//tblMasterCountry[]
+
+    locations: Country[]
     params: URLSearchParams
 }
 
+const GetInitialStock = async (paramURL:string) => {
+    try {
+        const { data, paginationHeader } = await agent.LoadData.stockList(paramURL);
+        return {
+            data,paginationHeader
+        }
+    }catch (error:any){
+        console.log(error);
+    }
+
+}
+
 export default  function CarSearchResult({locations, params}:Props){
-    //const searchData:StockCars[]|Trucks[] = cars;
+
+    const searchParams:URLSearchParams = params;
     const[ searchData, setSearchData] = useState<StockCars[]>([]);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage,setPostsPerPage] = useState(20);
-    const lastPostIndex = currentPage * postsPerPage;
-    const firstPostIndex = lastPostIndex - postsPerPage;
-    //const currentPosts = searchData.slice(firstPostIndex,lastPostIndex);
-    //
-    // useEffect( () => {
-    //     params.set("PageNumber", currentPage.toString());
-    //     const GetFilteredCars = async (filter: string) => {
-    //         return await agent.LoadData.stockList(filter);
-    //         //db.tblMasterCountry.findMany({where: {IsActive:true}} );
-    //     }
-    //
-    //     const result = GetFilteredCars(params.toString());
-    //   //  setSearchData(await result);
-    // },[currentPage])
+    const [currentPage, setCurrentPage] = useState<number>(1);
+    const [paginationData, setPaginationData] = useState<PaginationHeader>({
+        CurrentPage: 1,
+        TotalPages: 0,
+        PageSize: 25,
+        TotalCount: 0,
+        HasPreviousPage: false,
+        HasNextPage: false
+    });
+
+
+
+    useEffect(() => {
+        // Assuming you have an API function called fetchResults
+        const GetStock = async (paramURL:string) => {
+            try {
+                const { data, paginationHeader } = await agent.LoadData.stockList(paramURL);
+
+                if (paginationHeader) {
+                    setPaginationData(paginationHeader);
+                }
+
+                setSearchData(data);
+                console.log(data)
+                console.log({paginationHeader} + "paginationHeader")
+
+
+            }catch (error:any){
+                console.log(error);
+            }
+
+        }
+
+        const paramsArray = searchParams.toString().split(',');
+
+        const queryStringParts = [];
+        for (let i = 0; i < paramsArray.length; i += 2) {
+            queryStringParts.push(`${paramsArray[i]}=${paramsArray[i + 1]}`);
+        }
+        const filterString = `${queryStringParts.join('&')}&pageNumber=${currentPage}`;
+        console.log(currentPage)
+        console.log(filterString)
+        // console.log(queryStringParts.join('&'))
+        GetStock(filterString).then(r => console.log(r));
+
+
+    }, [searchParams, currentPage]);
+
 
     return(
         <>
             {/*<SearchingCriteria resultCount={searchData.length} locations={locations} />*/}
             {/*<PaginationComponent currentPage={currentPage} totalPost={cars.length} postPerPage={postsPerPage} setCurrentPage={setCurrentPage} />*/}
           {
-
-              searchData.map(car=>(
+             // Array.isArray(searchData) && searchData.map(result => (( car:StockCars) =>
+              Array.isArray(searchData) && searchData.map(car=>(
                     <div key={car.stockId} className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div className="row my-5 ">
                             <div className="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-5">
@@ -262,7 +304,8 @@ export default  function CarSearchResult({locations, params}:Props){
                     </div>
                 ))
             }
-            <PaginationComponent currentPage={currentPage} totalPost={postsPerPage*lastPostIndex} postPerPage={postsPerPage} setCurrentPage={setCurrentPage} />
+            <PaginationComponent currentPage={paginationData.CurrentPage} totalPost={paginationData.TotalCount} postPerPage={paginationData.PageSize} setCurrentPage={setCurrentPage} />
         </>
     )
 }
+

@@ -41,25 +41,25 @@ export default async function RootLayout({
     const locations = await GetLocations();
     const makes = await GetCarMakes();
   //  const stock = await GetStock();
-    const stockCount:number = await GetStockCount();
+    const stockCount = await GetStockCount();
 
 
 
     return (
 
     <>
-        <Header bodyTypes={bodyTypes} stockCount={stockCount} locations={locations} makes={makes}/>
+        <Header bodyTypes={bodyTypes.data} stockCount={stockCount.data} locations={locations.data} makes={makes.data}/>
         <FrontSlider />
         <section className="sidebar-menu">
             <div className="container-fluid">
                 <div className="row">
 
-                    <Sidebar  locations={locations} makes={makes}/>
+                    <Sidebar  locations={locations.data} makes={makes.data}/>
                     {children}
                 </div>
             </div>
         </section>
-        <Footer bodyTypes={bodyTypes} locations={locations} makes={makes}/>
+        <Footer bodyTypes={bodyTypes.data} locations={locations.data} makes={makes.data}/>
     </>
 
 

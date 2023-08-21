@@ -10,9 +10,9 @@ import {DrivetrainType} from "@/models/Master/DrivetrainType";
 import {SteeringType} from "@/models/Master/SteeringType";
 import {Colors} from "@/models/Master/Colors";
 import {Transmission} from "@/models/Master/Transmission";
-import {CarCondition} from "@//models/Master/CarCondition";
-import {Axle} from "@//models/Master/Axle";
-import {Ports} from "@//models/Master/Ports";
+import {CarCondition} from "@/models/Master/CarCondition";
+import {Axle} from "@/models/Master/Axle";
+import {Ports} from "@/models/Master/Ports";
 import {VehicleCategory} from "@/models/Master/VehicleCategory";
 import {CarOptions} from "@/models/Master/CarOptions";
 import {InspectionCost} from "@/models/Master/InspectionCost";
@@ -22,14 +22,23 @@ import {StockPictures} from "@/models/Master/StockPictures";
 import {CarOptionsMapping} from "@/models/Master/CarOptionsMapping";
 import {Trucks} from "@/models/Trucks";
 import {Customer, UserFormValues} from "@/models/Customer";
+import {PaginationHeader} from "@/models/Master/Pagination";
 
 //const baseURL = 'https://universalmotorsapi20230324211515.azurewebsites.net/api/';
 const baseURL = 'https://api20230805195433.azurewebsites.net/api/';
-const parseResponse = async <T>(response: Response): Promise<T> => {
+const parseResponse = async <T>(response: Response): Promise<{ data: T, paginationHeader: PaginationHeader }> => {
     if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
     }
-    return response.json();
+
+    const data: T = await response.json();
+    const paginationHeaderRaw = response.headers.get("X-Pagination");
+    const paginationHeader = paginationHeaderRaw ? JSON.parse(paginationHeaderRaw) : null;
+
+    return {
+        data,
+        paginationHeader
+    };
 };
 const responseBody = <T> (response: AxiosResponse<T>) => response.data;
 
@@ -71,7 +80,9 @@ const request = {
 
 const LoadData = {
     //------ Main Units
-   stockList: (filter:string) => request.get<StockCars[]>(`carstock?PageSize=25&pageNumber=1&${filter}`),
+   //stockList: (filter:string) => request.get<{StockList:StockCars[], Header:PaginationHeader}>(`carstock?PageSize=25&pageNumber=1&${filter}`),
+    stockList: (filter:string) => request.get<StockCars[]>(`carstock?PageSize=25&pageNumber=1&${filter}`),
+
     //stockList: ()=>   axios.get<StockCars[]>(baseURL+'carstock?pageNumber=1&pageSize=50')
       //  .then(responseBody),
     //     .catch(error => {

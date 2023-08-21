@@ -18,7 +18,7 @@ export default async function CarDetailed({params}:Props){
     const Countries = await agent.LoadData.countryList();//db.tblMasterCountry.findMany({where: {IsActive:true}});
     const PortMapping = await agent.LoadData.portmapping();
     const Ports = await agent.LoadData.portsList();
-    const InventoryLocation = Countries.find(x=> x.countryId == Stock.locationId)
+    const InventoryLocation = Countries.data.find(x=> x.countryId == Stock.data.locationId)
     const freightChargeMaster = await agent.LoadData.freightcost();
     const inspectionCost = await agent.LoadData.inspectioncost();
 
@@ -32,29 +32,29 @@ export default async function CarDetailed({params}:Props){
                         <div className="container-fluid">
                             <div id="productslider" className="carousel slide">
                                 <div className="row">
-                                 <h1 className="mobicar carname">{Stock.listingTitle}</h1>
+                                 <h1 className="mobicar carname">{Stock.data.listingTitle}</h1>
                                     <div className="col-lg-6 col-md-6 detail-leftsection">
                                         <div className="row">
                                             <div id="wrap" className="container-fluid">
                                                 <div className="row">
-                                                    <CarDetailedSlideshow mainPic={Stock.imageUrl} stockID={Stock.stockId} />
+                                                    <CarDetailedSlideshow mainPic={Stock.data.imageUrl} stockID={Stock.data.stockId} />
                                                 </div>
                                             </div>
                                         </div>
                                         <hr />
                                         <div className="shipping-details">
-                                            <StockSpecification car={Stock} location={InventoryLocation} />
-                                            <StockKeyInformation car={Stock}/>
+                                            <StockSpecification car={Stock.data} location={InventoryLocation} />
+                                            <StockKeyInformation car={Stock.data}/>
                                         </div>
                                     </div>
                                     <div className="col-lg-6 col-md-6">
-                                        <h1 className="pccar carname">{Stock.listingTitle}</h1>
+                                        <h1 className="pccar carname">{Stock.data.listingTitle}</h1>
                                         <div className="col-md-4 col-sm-4 col-4">
                                             <div className="stock">
                                                <span className="flex items-center gap-x-1 bg-red-100 px-2 py-1 font-medium text-red-700">
                                                         Stock ID :
                                                         <img className='h-6 m-2' src={`/assets/images/flags/${InventoryLocation?.slug}.svg`} alt={InventoryLocation?.slug} />
-                                                        {Stock.stockCode}
+                                                        {Stock.data.stockCode}
                                                 </span>
 
                                             </div>
@@ -101,12 +101,12 @@ export default async function CarDetailed({params}:Props){
                                         {/*    </div>*/}
                                         {/*</div>*/}
                                         <PriceCalculator
-                                            car={Stock}
-                                            countries={Countries}
-                                            ports={Ports}
-                                            portMapping={PortMapping}
-                                            freightCharges={freightChargeMaster}
-                                            inspectionCost={inspectionCost}
+                                            car={Stock.data}
+                                            countries={Countries.data}
+                                            ports={Ports.data}
+                                            portMapping={PortMapping.data}
+                                            freightCharges={freightChargeMaster.data}
+                                            inspectionCost={inspectionCost.data}
                                         />
                                         {/*<InquiryForm/>*/}
                                         <ContactUs/>

@@ -105,8 +105,8 @@ export default async function HomeUI(){
                                 )}
                             >
                                 <CarsSimpleSearch
-                                    bodyTypes={bodyTypes}
-                                    makes={makes}
+                                    bodyTypes={bodyTypes.data}
+                                    makes={makes.data}
                                     yearList={yearList}
 
                                 />
@@ -120,8 +120,8 @@ export default async function HomeUI(){
                                 )}
                             >
                                 <TruckSimpleSearch
-                                    bodyTypes={bodyTypes}
-                                    makes={makes}
+                                    bodyTypes={bodyTypes.data}
+                                    makes={makes.data}
                                     yearList={yearList}
 
                                 />
