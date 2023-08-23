@@ -23,7 +23,7 @@ interface Props{
 
 const GetInitialStock = async (paramURL:string) => {
     try {
-        const { data, paginationHeader } = await agent.LoadData.stockList(paramURL);
+        const { data, paginationHeader } = await agent.LoadData.stockList(paramURL,1);
         return {
             data,paginationHeader
         }
@@ -53,7 +53,7 @@ export default  function CarSearchResult({locations, params}:Props){
         // Assuming you have an API function called fetchResults
         const GetStock = async (paramURL:string) => {
             try {
-                const { data, paginationHeader } = await agent.LoadData.stockList(paramURL);
+                const { data, paginationHeader } = await agent.LoadData.stockList(paramURL,currentPage);
 
                 if (paginationHeader) {
                     setPaginationData(paginationHeader);
@@ -76,7 +76,7 @@ export default  function CarSearchResult({locations, params}:Props){
         for (let i = 0; i < paramsArray.length; i += 2) {
             queryStringParts.push(`${paramsArray[i]}=${paramsArray[i + 1]}`);
         }
-        const filterString = `${queryStringParts.join('&')}&pageNumber=${currentPage}`;
+        const filterString = queryStringParts.join('&');
         console.log(currentPage)
         console.log(filterString)
         // console.log(queryStringParts.join('&'))

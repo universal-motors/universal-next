@@ -81,7 +81,7 @@ const request = {
 const LoadData = {
     //------ Main Units
    //stockList: (filter:string) => request.get<{StockList:StockCars[], Header:PaginationHeader}>(`carstock?PageSize=25&pageNumber=1&${filter}`),
-    stockList: (filter:string) => request.get<StockCars[]>(`carstock?PageSize=25&pageNumber=1&${filter}`),
+    stockList: (filter:string, currentPage: number) => request.get<StockCars[]>(`carstock?PageSize=25&pageNumber=${currentPage}&${filter}`),
 
     //stockList: ()=>   axios.get<StockCars[]>(baseURL+'carstock?pageNumber=1&pageSize=50')
       //  .then(responseBody),

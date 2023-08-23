@@ -45,7 +45,7 @@ export default  function TopCountryTimeBar({stockCount}:Props){
         }, 1000);
 
         return () => clearInterval(interval);
-    }, []);
+    }, );
 
 
 
