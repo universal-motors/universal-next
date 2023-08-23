@@ -1,6 +1,4 @@
 
-//import {tblBodyTypes, tblMakes, tblMasterCountry} from ".prisma/client";
-
 
 import SearchBar from "@/components/ui/SearchBar";
 import {FcBusinessman, FcCurrencyExchange, FcCustomerSupport, FcGlobe, FcLike, FcOnlineSupport} from "react-icons/fc";
@@ -13,25 +11,18 @@ import {BodyType} from "@/models/Master/BodyType";
 import {Make} from "@/models/Master/Make";
 import {StockCars} from "@/models/StockCars";
 import Link from "next/link";
-import {
-    SignedIn,
-    SignedOut,
-    SignInButton,
-    UserButton
-} from "@clerk/nextjs";
 
 interface Props{
     locations : Country[]
     bodyTypes : BodyType[]
     makes : Make[]
-    stock: StockCars[]
-   // stockCount : number
+    stockCount : number
 }
 
 const currentYear = new Date().getFullYear()
 
 
-async function Header({locations, bodyTypes,makes,  stock}:Props) {
+async function Header({locations, bodyTypes,makes,  stockCount}:Props) {
 
       return (
           <>
@@ -42,7 +33,8 @@ async function Header({locations, bodyTypes,makes,  stock}:Props) {
 
                       {/* Stack the columns on mobile by making one full-width and the other half-width */}
                       <div className="row">
-                          <TopCountryTimeBar stockCount={stock.length}/>
+                          <TopCountryTimeBar stockCount={stockCount}/>
+                          {/*<SignInForm/>*/}
                           {/*<div className="col-lg-2 col-md-6 col-12 text-center">*/}
                           {/*    <div className="currencydropdown">*/}
                           {/*        <button className="currencydropbtn">*/}

@@ -11,10 +11,10 @@ interface Props{
     locations : Country[]
     bodyTypes : BodyType[]
     makes : Make[]
-    stock: StockCars[]
+   // stock: StockCars[]
 }
 
-function Footer({locations, bodyTypes,makes, stock}:Props){
+function Footer({locations, bodyTypes,makes}:Props){
     const flagLocation = "/assets/images/flags/";
 
 

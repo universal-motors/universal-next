@@ -5,6 +5,8 @@ import FrontSlider from "@/components/layout/FrontSlider";
 import Sidebar from "@/components/layout/Sidebar";
 import Footer from "@/components/layout/Footer";
 import agent from "@/api/agent";
+import {StockCars} from "@/models/StockCars";
+import axios, {AxiosResponse} from 'axios';
 
 
 export const metadata = {
@@ -16,18 +18,17 @@ const GetBodyTypes = async () => {
     return await agent.LoadData.bodyTypeList();// db.tblBodyTypes.findMany({where: {isActive:true}});
 }
 const GetLocations = async () => {
-    return await agent.LoadData.countryList();//return await prisma.tblMasterCountry.findMany({where: {IsActive:true}} );
+    return await agent.LoadData.inventoryLocationList();//return await prisma.tblMasterCountry.findMany({where: {IsActive:true}} );
 }
 const GetCarMakes = async () => {
     return await  agent.LoadData.carMakeList();//return await prisma.tblMakes.findMany({where: {isActive:true}} );
 }
-// const GetStockCount = async () => {
-//     return await agent.LoadData.stockCount();
-//     //db.tblMasterCountry.findMany({where: {IsActive:true}} );
-// }
-const GetStock = async () => {
-    return await agent.LoadData.stockList();//db.tblCars.findMany({where: {IsActive:true}});
+const GetStockCount = async () => {
+    return await agent.LoadData.stockCount();
+    //db.tblMasterCountry.findMany({where: {IsActive:true}} );
 }
+
+
 
 
 export default async function RootLayout({
@@ -36,26 +37,29 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
 
-  const bodyTypes = await GetBodyTypes();
-  const locations = await GetLocations();
-  const makes = await GetCarMakes();
-  const stock = await GetStock();
-  //const stockCount:number = await GetStockCount();
+    const bodyTypes = await GetBodyTypes();
+    const locations = await GetLocations();
+    const makes = await GetCarMakes();
+  //  const stock = await GetStock();
+    const stockCount = await GetStockCount();
 
- return (
+
+
+    return (
 
     <>
-        <Header bodyTypes={bodyTypes} stock={stock} locations={locations} makes={makes}/>
+        <Header bodyTypes={bodyTypes.data} stockCount={stockCount.data} locations={locations.data} makes={makes.data}/>
         <FrontSlider />
         <section className="sidebar-menu">
             <div className="container-fluid">
                 <div className="row">
-                    <Sidebar stocks={stock} locations={locations} makes={makes}/>
+
+                    <Sidebar  locations={locations.data} makes={makes.data}/>
                     {children}
                 </div>
             </div>
         </section>
-        <Footer stock={stock} bodyTypes={bodyTypes} locations={locations} makes={makes}/>
+        <Footer bodyTypes={bodyTypes.data} locations={locations.data} makes={makes.data}/>
     </>
 
 

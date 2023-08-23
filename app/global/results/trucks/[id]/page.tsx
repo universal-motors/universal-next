@@ -16,11 +16,11 @@ interface Props {
 
 export default async function CarDetailed({params}:Props){
     const Stock = await agent.LoadData.truckList();
-    const Truck : Trucks|undefined = Stock.find(x=> x.stockId == params.id);
+    const Truck : Trucks|undefined = Stock.data.find(x=> x.stockId == params.id);
     const Countries = await agent.LoadData.countryList();//db.tblMasterCountry.findMany({where: {IsActive:true}});
     const PortMapping = await agent.LoadData.portmapping();
     const Ports = await agent.LoadData.portsList();
-    const InventoryLocation = Countries.find(x=> x.countryId == Truck?.locationId)
+    const InventoryLocation = Countries.data.find(x=> x.countryId == Truck?.locationId)
     const freightChargeMaster = await agent.LoadData.freightcost();
     const inspectionCost = await agent.LoadData.inspectioncost();
 
@@ -104,11 +104,11 @@ export default async function CarDetailed({params}:Props){
                                         {/*</div>*/}
                                         <PriceCalculator
                                             car={Truck}
-                                            countries={Countries}
-                                            ports={Ports}
-                                            portMapping={PortMapping}
-                                            freightCharges={freightChargeMaster}
-                                            inspectionCost={inspectionCost}
+                                            countries={Countries.data}
+                                            ports={Ports.data}
+                                            portMapping={PortMapping.data}
+                                            freightCharges={freightChargeMaster.data}
+                                            inspectionCost={inspectionCost.data}
                                         />
                                         {/*<InquiryForm/>*/}
                                         <ContactUs/>

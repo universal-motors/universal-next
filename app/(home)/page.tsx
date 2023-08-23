@@ -1,11 +1,10 @@
-//'use client';
 import HomePageCarListings from "@/components/cars/HomePageCarListings";
 import agent from "@/api/agent";
 import Link from "next/link";
 import HomeUI from "@/components/ui/HomeUI";
 
 const GetStock = async () => {
-    return await agent.LoadData.stockList();//db.tblCars.findMany({where: {IsActive:true}});
+    return await agent.LoadData.homepageStockList();//db.tblCars.findMany({where: {IsActive:true}});
 }
 
 const GetBodyTypes = async () => {
@@ -36,9 +35,9 @@ export default async function Home() {
       <>
           <div className="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
 
-              <HomeUI makes={makes} bodyTypes={bodyTypes}/>
+              <HomeUI/>
               <div className="carboxes mt-3">
-                  <HomePageCarListings stockcars={stocks} />
+                  <HomePageCarListings />
               </div>
 
 

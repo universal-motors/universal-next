@@ -103,7 +103,7 @@ export default async function StockKeyInformation({car}:Props){
                     //             </h5>
                     //         </li>
                     //     ))
-                    stockOptions
+                    stockOptions.data
                         .filter(op => op.stockId === car.stockId)
                         .map( op=> (
                             <li className="active" key={op.id}>
@@ -113,7 +113,7 @@ export default async function StockKeyInformation({car}:Props){
         <svg className="h-1.5 w-1.5 fill-green-400" viewBox="0 0 6 6" aria-hidden="true">
           <circle cx={3} cy={3} r={3} />
         </svg>
-                                            {optionsMaster.find(x=> x.optionId==op.carOptionsId)?.optionName}
+                                            {optionsMaster.data.find(x=> x.optionId==op.carOptionsId)?.optionName}
       </span>
                                     }
                                 </h5>

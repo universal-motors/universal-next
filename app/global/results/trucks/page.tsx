@@ -34,20 +34,20 @@ const GetCarMakes = async () => {
 
 export default async function ResultPage({searchParams}:Props) {
 
-    const result:Trucks[] = await agent.LoadData.truckList()
+    const result = await agent.LoadData.truckList()
     const locations = await GetLocations();
     const bodyTypes = await GetBodyTypes();
     const carMake = await GetCarMakes();
-    const cars : Trucks[] = await fetchQueryResult(searchParams, result);
+    const cars : Trucks[] = await fetchQueryResult(searchParams, result.data);
 
 
   return (
 
         <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 p-0 second-searchform">
             {/*<DetailedSearchBox />*/}
-            <HomeUI bodyTypes={bodyTypes} makes={carMake}/>
-            <SearchingCriteria resultCount={cars.length} locations={locations} />
-            <TruckSearchResult cars={cars} locations={locations} />
+            <HomeUI />
+            <SearchingCriteria resultCount={cars.length} locations={locations.data} />
+            <TruckSearchResult cars={cars} locations={locations.data} />
         </div>
     )
 }

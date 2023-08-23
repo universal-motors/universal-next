@@ -10,7 +10,7 @@ import {BiSolidColorFill} from "react-icons/bi";
 import {MdAirlineSeatReclineExtra} from "react-icons/md";
 import {Country} from "@/models/Master/Country";
 import { useState} from "react";
-import PaginationComponent from "@/utils/PaginationComponent";
+import PaginationComponent from "@/components/ui/PaginationComponent";
 import {Trucks} from "@/models/Trucks";
 interface Props{
 //    cars: tblCars[]

@@ -33,7 +33,7 @@ export default function TruckSimpleSearch({bodyTypes, makes,yearList}: Props) {
         const selectedMakeID =selectedValue;
         setMakeId(selectedMakeID)
         const modelbymake = await  GetModelWiseMakeList(selectedMakeID);// models.filter(x=>x.makeId == parseInt(selectedValue));
-        setMappedModels(modelbymake)
+        setMappedModels(modelbymake.data)
 
     };
 

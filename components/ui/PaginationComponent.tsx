@@ -10,7 +10,7 @@ interface Props{
 
 export default function PaginationComponent({totalPost, currentPage, postPerPage, setCurrentPage}:Props) {
     const totalPages = Math.ceil(totalPost/postPerPage)
-
+    console.log(totalPages, currentPage, postPerPage)
     return (
         <>
             <nav

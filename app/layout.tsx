@@ -1,9 +1,10 @@
 import './globals.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { ClerkProvider } from '@clerk/nextjs'
 import { Analytics } from '@vercel/analytics/react';
 import Script from "next/script";
 import NextTopLoader from 'nextjs-toploader';
+import NextAuthSessionProvider from "@/components/user/Auth/NextSessionProvider";
+
 
 
 export default async function RootLayout({ children,
@@ -11,9 +12,8 @@ export default async function RootLayout({ children,
     children: React.ReactNode
 }) {
 
-
     return (
-        <ClerkProvider>
+
             <html lang="en">
             <head>
                 <meta content="text/html"/>
@@ -34,14 +34,14 @@ export default async function RootLayout({ children,
                 speed={200}
                 shadow="0 0 10px #2299DD,0 0 5px #2299DD"
             />
+                   {/*<NextAuthSessionProvider>*/}
                     {children}
-
+                   {/*</NextAuthSessionProvider>*/}
                 <Analytics />
 
             </body>
             <Script src="/assets/scripts/extra.js" />
             </html>
-        </ClerkProvider>
 
 
     )

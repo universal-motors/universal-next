@@ -8,17 +8,19 @@ import {Menu, Transition} from "@headlessui/react";
 import {Fragment} from "react";
 import FaqComponent from "@/components/layout/FaqComponent";
 import PriceFormat from "@/utils/PriceFormat";
+import agent from "@/api/agent";
 // import db from "@/utils/db";
 // const GetStock = async () => {
 //     return await db.tblCars.findMany({where: {IsActive:true}});
 // }
-interface Props {
-    stockcars : StockCars[]
+
+const GetStock = async ()  => {
+    return await agent.LoadData.homepageStockList();//db.tblCars.findMany({where: {IsActive:true}});
 }
 
 
-export default  function HomePageCarListings ({stockcars}:Props) {
-  //  const stockcars = await GetStock();
+export default  async function HomePageCarListings () {
+    const stockcars = await GetStock();
     return (
         <>
             <div className="row ">
@@ -38,11 +40,11 @@ export default  function HomePageCarListings ({stockcars}:Props) {
                         <div className="carsrow row py-5">
                             {
 
-                                stockcars
+                                stockcars.data
                                     // .filter(car => (car.price  <= 15000 && car.price >=5000) && car.bodyTypeId==1)
                                     .filter(car => car.locationId  == 84)
                                     .sort((a, b) => b.stockId - a.stockId)
-                                    .slice(0,10)
+                                   // .slice(0,10)
                                     .map(car=> (
                                         <Link key={car.stockId} href={`/global/results/cars/${car.stockId}`}>
                                             <div className="shadow border col-sm transition duration-300 ease-in-out hover:scale-110 bg-green-50"  >
@@ -73,10 +75,10 @@ export default  function HomePageCarListings ({stockcars}:Props) {
 
                                 <div className="carsrow row py-5">
                                     {
-                                        stockcars
+                                        stockcars.data
                                             .filter(car => car.locationId ==185)
                                             .sort((a, b) => b.stockId - a.stockId)
-                                            .slice(0,10)
+                                           // .slice(0,10)
                                             .map(car=> (
                                                 // <Link key={car.stockId} href={`/global/results/${encodeURIComponent(car.stockId)}`}>
                                                 <Link key={car.stockId} href={`/global/results/cars/${car.stockId}`}>
@@ -116,11 +118,11 @@ export default  function HomePageCarListings ({stockcars}:Props) {
                             <div className="showcase-Recheading">
                                 <div className="carsrow row py-5">
                                     {
-                                        stockcars
+                                        stockcars.data
                                             // .filter(car => car.price  <= 5000)
                                             .filter(car => car.locationId  == 157 || car.locationId  == 174)
                                             .sort((a, b) => b.stockId - a.stockId)
-                                            .slice(0,10)
+                                           // .slice(0,10)
                                             .map(car=> (
                                                 <Link key={car.stockId} href={`/global/results/cars/${car.stockId}`}>
                                                 {/*<Link key={car.stockId} href={`/global/results/${encodeURIComponent(car.stockId)}`}>*/}

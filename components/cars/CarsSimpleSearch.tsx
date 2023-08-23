@@ -21,6 +21,7 @@ const GetModelWiseMakeList = async ( modelID:string) => {
 
     return await agent.LoadData.carModelByMakeList(modelID);// db.tblBodyTypes.findMany({where: {isActive:true}});
 }
+
 export default function CarsSimpleSearch({bodyTypes, makes,yearList}: Props) {
     const router = useRouter();
     const [isLoading,setLoading]=useState(false);
@@ -35,7 +36,7 @@ export default function CarsSimpleSearch({bodyTypes, makes,yearList}: Props) {
         const selectedMakeID =selectedValue;
         setMakeId(selectedMakeID)
         const modelbymake = await  GetModelWiseMakeList(selectedMakeID);// models.filter(x=>x.makeId == parseInt(selectedValue));
-        setMappedModels(modelbymake)
+        setMappedModels(modelbymake.data)
 
     };
 
@@ -78,6 +79,8 @@ export default function CarsSimpleSearch({bodyTypes, makes,yearList}: Props) {
         if (steeringTypeId != "0") params.set("steeringID", steeringTypeId)
         if (fromYear != "0") params.set("fromYear", fromYear)
         if (toYear != "0") params.set("toYear", toYear)
+        params.set("PageNumber", "1")
+
         setLoading(true);
         router.push(`/global/results/cars?${params.toString()}`)
     }
