@@ -43,7 +43,7 @@ async function Header({locations, bodyTypes,makes,  stockCount}:Props) {
                       {/* Stack the columns on mobile by making one full-width and the other half-width */}
                       <div className="row">
                           <TopCountryTimeBar stockCount={stockCount}/>
-                          <SignInForm/>
+                          {/*<SignInForm/>*/}
                           {/*<div className="col-lg-2 col-md-6 col-12 text-center">*/}
                           {/*    <div className="currencydropdown">*/}
                           {/*        <button className="currencydropbtn">*/}

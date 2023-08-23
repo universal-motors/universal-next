@@ -29,7 +29,7 @@ const GetLocations = async () => {
     return await agent.LoadData.inventoryLocationList();// db.tblBodyTypes.findMany({where: {isActive:true}});
 }
 const GetFilteredCars = async (filter:string) => {
-    return await agent.LoadData.stockList(filter);
+    return await agent.LoadData.stockList(filter,1);
     //db.tblMasterCountry.findMany({where: {IsActive:true}} );
 }
 
