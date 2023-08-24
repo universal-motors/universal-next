@@ -1,5 +1,4 @@
 'use client'
-
 import { Tab } from '@headlessui/react'
 import {BodyType} from "@/models/Master/BodyType";
 import {Make} from "@/models/Master/Make";
@@ -13,6 +12,10 @@ function classNames(...classes:any[]) {
     return classes.filter(Boolean).join(' ')
 }
 
+interface Props {
+    bodyTlist : BodyType[]
+    makeList: Make[]
+}
 
 
 interface TabType {
@@ -31,37 +34,14 @@ const initialState = {
 
 }
 
-const GetBodyTypes = async () => {
-
-    return await agent.LoadData.bodyTypeList();// db.tblBodyTypes.findMany({where: {isActive:true}});
-}
-
-const GetCarMakes = async () => {
-    return await  agent.LoadData.carMakeList();//db.tblMakes.findMany({where: {isActive:true}} );
-}
-
-const GetTrucks = async () => {
-    return await  agent.LoadData.truckList();//db.tblCarModels.findMany({where: {isActive:true}} );
-}
-
-const GetMachinery = async () => {
-    return await  agent.LoadData.machineryList();//db.tblCarModels.findMany({where: {isActive:true}} );
-}
 
 
+export default async function HomeUI({makeList,bodyTlist}:Props){
 
-export default async function HomeUI(){
-    const bodyTypes = await GetBodyTypes();
-    const makes = await GetCarMakes();
-    // const trucks = await GetTrucks();
-    // const machineries = await GetMachinery();
+    const bodyTypes = bodyTlist;
+    const makes = makeList;
     const currentYear = new Date().getFullYear()
     const yearList = Array.from({ length: 16 }, (_, index) => (currentYear - index).toString());
-    //const [filter, setFilter] = useState(initialState);
-   // const [url, setUrl] = useState('/search?');
-    //const queryParams:string[] = [];
-  //  const router = useRouter();
-
 
 
     const tabs : TabType[] = [
@@ -105,8 +85,8 @@ export default async function HomeUI(){
                                 )}
                             >
                                 <CarsSimpleSearch
-                                    bodyTypes={bodyTypes.data}
-                                    makes={makes.data}
+                                    bodyTypes={bodyTypes}
+                                    makes={makes}
                                     yearList={yearList}
 
                                 />
@@ -120,8 +100,8 @@ export default async function HomeUI(){
                                 )}
                             >
                                 <TruckSimpleSearch
-                                    bodyTypes={bodyTypes.data}
-                                    makes={makes.data}
+                                    bodyTypes={bodyTypes}
+                                    makes={makes}
                                     yearList={yearList}
 
                                 />

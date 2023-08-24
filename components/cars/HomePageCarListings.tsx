@@ -1,26 +1,16 @@
 'use client';
-import {Accordion, Tab, Tabs} from "react-bootstrap";
-//import {tblCars} from ".prisma/client";
 import Link from "next/link";
-import {StockCars} from "@/models/StockCars";
-import classNames from "classnames";
-import {Menu, Transition} from "@headlessui/react";
-import {Fragment} from "react";
 import FaqComponent from "@/components/layout/FaqComponent";
 import PriceFormat from "@/utils/PriceFormat";
-import agent from "@/api/agent";
-// import db from "@/utils/db";
-// const GetStock = async () => {
-//     return await db.tblCars.findMany({where: {IsActive:true}});
-// }
+import {StockCars} from "@/models/StockCars";
 
-const GetStock = async ()  => {
-    return await agent.LoadData.homepageStockList();//db.tblCars.findMany({where: {IsActive:true}});
+interface Props {
+    carlist : StockCars[]
 }
 
 
-export default  async function HomePageCarListings () {
-    const stockcars = await GetStock();
+export default  async function HomePageCarListings ({carlist}:Props) {
+    const stockcars = carlist;
     return (
         <>
             <div className="row ">
@@ -40,7 +30,7 @@ export default  async function HomePageCarListings () {
                         <div className="carsrow row py-5">
                             {
 
-                                stockcars.data
+                                stockcars
                                     // .filter(car => (car.price  <= 15000 && car.price >=5000) && car.bodyTypeId==1)
                                     .filter(car => car.locationId  == 84)
                                     .sort((a, b) => b.stockId - a.stockId)
@@ -75,7 +65,7 @@ export default  async function HomePageCarListings () {
 
                                 <div className="carsrow row py-5">
                                     {
-                                        stockcars.data
+                                        stockcars
                                             .filter(car => car.locationId ==185)
                                             .sort((a, b) => b.stockId - a.stockId)
                                            // .slice(0,10)
@@ -118,7 +108,7 @@ export default  async function HomePageCarListings () {
                             <div className="showcase-Recheading">
                                 <div className="carsrow row py-5">
                                     {
-                                        stockcars.data
+                                        stockcars
                                             // .filter(car => car.price  <= 5000)
                                             .filter(car => car.locationId  == 157 || car.locationId  == 174)
                                             .sort((a, b) => b.stockId - a.stockId)
