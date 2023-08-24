@@ -24,7 +24,7 @@ import {Trucks} from "@/models/Trucks";
 import {Customer, UserFormValues} from "@/models/Customer";
 import {PaginationHeader} from "@/models/Master/Pagination";
 
-//const baseURL = 'https://universalmotorsapi20230324211515.azurewebsites.net/api/';
+
 const baseURL = 'https://api20230805195433.azurewebsites.net/api/';
 const parseResponse = async <T>(response: Response): Promise<{ data: T, paginationHeader: PaginationHeader }> => {
     if (!response.ok) {
