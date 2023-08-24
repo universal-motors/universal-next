@@ -22,16 +22,29 @@ interface Props {
     }
 }
 
+const GetFilteredCars = async (filter:string) => {
+    return await agent.LoadData.stockList(filter,1);
+    //db.tblMasterCountry.findMany({where: {IsActive:true}} );
+}
 
 
 const GetLocations = async () => {
 
-    return await agent.LoadData.inventoryLocationList();// db.tblBodyTypes.findMany({where: {isActive:true}});
+    const result = await agent.LoadData.inventoryLocationList();// db.tblBodyTypes.findMany({where: {isActive:true}});
+    return result.data
 }
-const GetFilteredCars = async (filter:string) => {
-    return await agent.LoadData.stockList(filter);
-    //db.tblMasterCountry.findMany({where: {IsActive:true}} );
+
+
+const GetBodyTypes = async () => {
+    const result = await agent.LoadData.bodyTypeList();// db.tblBodyTypes.findMany({where: {isActive:true}});
+    return result.data
 }
+
+const GetCarMakes = async () => {
+    const result = await  agent.LoadData.carMakeList();//db.tblMakes.findMany({where: {isActive:true}} );
+    return result.data
+}
+
 
 
 
@@ -49,13 +62,10 @@ export default async function ResultPage({searchParams}:Props) {
     if (searchParams.maxMileage) params.set("MaxMileage", searchParams.maxMileage.toString())
     if (searchParams.searchTerm) params.set("SearchTerm", searchParams.searchTerm)
 
-    //
-    // const [data, setData] = useState<StockCars[]>([])
-    // const [isLoading, setLoading] = useState(true)
 
-    //const result:StockCars[] = await agent.LoadData.stockList()
+    const bodyTypes = await GetBodyTypes();
+    const makes = await GetCarMakes();
     const locations = await GetLocations();
-    //const cars = await GetFilteredCars(filter);
 
 
 
@@ -64,8 +74,8 @@ export default async function ResultPage({searchParams}:Props) {
 
         <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 p-0 second-searchform">
             {/*<DetailedSearchBox />*/}
-            <HomeUI/>
-            <CarSearchResult params={params} locations={locations.data} />
+            <HomeUI makeList={makes} bodyTlist={bodyTypes}/>
+            <CarSearchResult params={params} locations={locations} />
         </div>
     )
 }

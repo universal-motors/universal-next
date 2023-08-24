@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { Analytics } from '@vercel/analytics/react';
 import Script from "next/script";
 import NextTopLoader from 'nextjs-toploader';
-import NextAuthSessionProvider from "@/components/user/Auth/NextSessionProvider";
+import NextAuthSessionProvider from "@/context/NextSessionProvider";
 
 
 

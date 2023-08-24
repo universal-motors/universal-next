@@ -5,8 +5,7 @@ import FrontSlider from "@/components/layout/FrontSlider";
 import Sidebar from "@/components/layout/Sidebar";
 import Footer from "@/components/layout/Footer";
 import agent from "@/api/agent";
-import {StockCars} from "@/models/StockCars";
-import axios, {AxiosResponse} from 'axios';
+
 
 
 export const metadata = {
@@ -48,12 +47,12 @@ export default async function RootLayout({
     return (
 
     <>
+
         <Header bodyTypes={bodyTypes.data} stockCount={stockCount.data} locations={locations.data} makes={makes.data}/>
         <FrontSlider />
         <section className="sidebar-menu">
             <div className="container-fluid">
                 <div className="row">
-
                     <Sidebar  locations={locations.data} makes={makes.data}/>
                     {children}
                 </div>

@@ -3,41 +3,35 @@ import agent from "@/api/agent";
 import Link from "next/link";
 import HomeUI from "@/components/ui/HomeUI";
 
-const GetStock = async () => {
-    return await agent.LoadData.homepageStockList();//db.tblCars.findMany({where: {IsActive:true}});
+
+const GetStock = async ()  => {
+    const result =await agent.LoadData.homepageStockList();//db.tblCars.findMany({where: {IsActive:true}});
+    return result.data
 }
 
 const GetBodyTypes = async () => {
-
-  return await agent.LoadData.bodyTypeList();// db.tblBodyTypes.findMany({where: {isActive:true}});
-}
-const GetLocations = async () => {
-    return await agent.LoadData.countryList();
-    //db.tblMasterCountry.findMany({where: {IsActive:true}} );
+    const result = await agent.LoadData.bodyTypeList();// db.tblBodyTypes.findMany({where: {isActive:true}});
+    return result.data
 }
 
 const GetCarMakes = async () => {
-  return await  agent.LoadData.carMakeList();//db.tblMakes.findMany({where: {isActive:true}} );
+    const result = await  agent.LoadData.carMakeList();//db.tblMakes.findMany({where: {isActive:true}} );
+    return result.data
 }
-
-
 
 export default async function Home() {
 
     const stocks = await GetStock();
     const bodyTypes = await GetBodyTypes();
-    const locations = await GetLocations();
-
-  const makes = await GetCarMakes();
- // const models = await GetCarModels();
+    const makes = await GetCarMakes();
 
   return (
       <>
           <div className="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
 
-              <HomeUI/>
+              <HomeUI bodyTlist={bodyTypes} makeList={makes}/>
               <div className="carboxes mt-3">
-                  <HomePageCarListings />
+                  <HomePageCarListings carlist={stocks} />
               </div>
 
 

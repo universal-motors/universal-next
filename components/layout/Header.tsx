@@ -1,7 +1,3 @@
-
-//import {tblBodyTypes, tblMakes, tblMasterCountry} from ".prisma/client";
-
-
 import SearchBar from "@/components/ui/SearchBar";
 import {FcBusinessman, FcCurrencyExchange, FcCustomerSupport, FcGlobe, FcLike, FcOnlineSupport} from "react-icons/fc";
 import TopCountryTimeBar from "@/components/layout/TopCountryTimeBar";
@@ -13,12 +9,6 @@ import {BodyType} from "@/models/Master/BodyType";
 import {Make} from "@/models/Master/Make";
 import {StockCars} from "@/models/StockCars";
 import Link from "next/link";
-import {
-    SignedIn,
-    SignedOut,
-    SignInButton,
-    UserButton
-} from "@clerk/nextjs";
 import SignInForm from "@/components/user/Auth/SignInForm";
 
 interface Props{

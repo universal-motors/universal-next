@@ -19,18 +19,23 @@ interface Props {
         searchFromBox:string
     }
 }
-const GetBodyTypes = async () => {
-
-    return await agent.LoadData.bodyTypeList();// db.tblBodyTypes.findMany({where: {isActive:true}});
-}
 const GetLocations = async () => {
-    return await agent.LoadData.countryList();
-    //db.tblMasterCountry.findMany({where: {IsActive:true}} );
+
+    const result = await agent.LoadData.inventoryLocationList();// db.tblBodyTypes.findMany({where: {isActive:true}});
+    return result.data
+}
+
+
+const GetBodyTypes = async () => {
+    const result = await agent.LoadData.bodyTypeList();// db.tblBodyTypes.findMany({where: {isActive:true}});
+    return result.data
 }
 
 const GetCarMakes = async () => {
-    return await  agent.LoadData.carMakeList();//db.tblMakes.findMany({where: {isActive:true}} );
+    const result = await  agent.LoadData.carMakeList();//db.tblMakes.findMany({where: {isActive:true}} );
+    return result.data
 }
+
 
 export default async function ResultPage({searchParams}:Props) {
 
@@ -45,9 +50,9 @@ export default async function ResultPage({searchParams}:Props) {
 
         <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 p-0 second-searchform">
             {/*<DetailedSearchBox />*/}
-            <HomeUI />
-            <SearchingCriteria resultCount={cars.length} locations={locations.data} />
-            <TruckSearchResult cars={cars} locations={locations.data} />
+            <HomeUI makeList={carMake} bodyTlist={bodyTypes}/>
+            <SearchingCriteria resultCount={cars.length} locations={locations} />
+            <TruckSearchResult cars={cars} locations={locations} />
         </div>
     )
 }
