@@ -1,6 +1,5 @@
 'use client'
 
-import axios from "axios";
 import {useForm} from 'react-hook-form'
 import {signIn, signOut, useSession} from "next-auth/react";
 
