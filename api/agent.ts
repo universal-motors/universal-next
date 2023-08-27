@@ -24,7 +24,7 @@ import {Trucks} from "@/models/Trucks";
 import {Customer, UserFormValues} from "@/models/Customer";
 import {PaginationHeader} from "@/models/Master/Pagination";
 
-
+//const baseURL = 'https://localhost:5001/api/';
 const baseURL = 'https://api20230805195433.azurewebsites.net/api/';
 const parseResponse = async <T>(response: Response): Promise<{ data: T, paginationHeader: PaginationHeader }> => {
     if (!response.ok) {
@@ -40,16 +40,20 @@ const parseResponse = async <T>(response: Response): Promise<{ data: T, paginati
         paginationHeader
     };
 };
+
+
 const responseBody = <T> (response: AxiosResponse<T>) => response.data;
 
 
 const request = {
+    
     get: async <T>(url: string) => {
 
         const response = await fetch(baseURL + url);
         return parseResponse<T>(response);
 
     },
+
     post: async <T>(url: string, body: object) => {
         const response = await fetch(baseURL + url, {
             method: 'POST',
@@ -80,26 +84,16 @@ const request = {
 
 const LoadData = {
     //------ Main Units
-   //stockList: (filter:string) => request.get<{StockList:StockCars[], Header:PaginationHeader}>(`carstock?PageSize=25&pageNumber=1&${filter}`),
-    stockList: (filter:string, currentPage: number) => request.get<StockCars[]>(`carstock?PageSize=25&pageNumber=${currentPage}&${filter}`),
 
-    //stockList: ()=>   axios.get<StockCars[]>(baseURL+'carstock?pageNumber=1&pageSize=50')
-      //  .then(responseBody),
-    //     .catch(error => {
-    //         console.error('There was an error fetching the data:', error);
-    // }),
+    stockList: (filter:string, currentPage: number) => request.get<StockCars[]>(`carstock?PageSize=25&pageNumber=${currentPage}&${filter}`),
+    truckList: (filter:string, currentPage: number) => request.get<Trucks[]>(`trucks?PageSize=25&pageNumber=${currentPage}&${filter}`),
+    machineryList: () => request.get<Machinery[]>('machinery?pageNumber=1&pageSize=50'),
     homepageStockList: () => request.get<StockCars[]>('carstock/homepage_cars'),
+
     stock: (stockID: number) => request.get<StockCars>(`carstock/${stockID}`),
     truck: (stockID: number) => request.get<Trucks>(`trucks/${stockID}`),
-    truckList: () => request.get<Trucks[]>('trucks'),
 
-    // truckList: () => axios.get<Trucks[]>(baseURL+'trucks?pageNumber=1&pageSize=50')
-    //     .then(responseBody)
-    //     .catch(error => {
-    //     console.error('There was an error fetching the data:', error);
-    // }),
 
-    machineryList: () => request.get<Machinery[]>('machinery?pageNumber=1&pageSize=50'),
     stockSliderList: (stockID: number) => request.get<StockPictures[]>(`carstock/imagestock/${stockID}`),
 
     //------ Master Data

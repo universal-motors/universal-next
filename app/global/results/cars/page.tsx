@@ -75,6 +75,7 @@ export default async function ResultPage({searchParams}:Props) {
         <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 p-0 second-searchform">
             {/*<DetailedSearchBox />*/}
             <HomeUI makeList={makes} bodyTlist={bodyTypes}/>
+            {/*<SearchingCriteria resultCount={cars.length} locations={locations} />*/}
             <CarSearchResult params={params} locations={locations} />
         </div>
     )

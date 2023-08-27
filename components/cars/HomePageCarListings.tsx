@@ -3,6 +3,7 @@ import Link from "next/link";
 import FaqComponent from "@/components/layout/FaqComponent";
 import PriceFormat from "@/utils/PriceFormat";
 import {StockCars} from "@/models/StockCars";
+import Image from "next/image";
 
 interface Props {
     carlist : StockCars[]
@@ -39,7 +40,7 @@ export default  async function HomePageCarListings ({carlist}:Props) {
                                         <Link key={car.stockId} href={`/global/results/cars/${car.stockId}`}>
                                             <div className="shadow border col-sm transition duration-300 ease-in-out hover:scale-110 bg-green-50"  >
                                                 <div className="cardimage">
-                                                    <img  src={car.imageUrl} alt={car.slug} title={car.slug} />
+                                                    <Image  src={car.imageUrl} alt={car.slug} title={car.slug} height={185} width={242} />
                                                 </div>
                                                 <div className="cardcontent">
                                                     <h4>{car.listingTitle}</h4>
@@ -74,7 +75,7 @@ export default  async function HomePageCarListings ({carlist}:Props) {
                                                 <Link key={car.stockId} href={`/global/results/cars/${car.stockId}`}>
                                                     <div className="shadow border col-sm transition duration-300 ease-in-out hover:scale-110 bg-blue-50"  >
                                                         <div className="cardimage">
-                                                            <img src={car.imageUrl} alt={car.slug} title={car.slug} />
+                                                            <Image  src={car.imageUrl} alt={car.slug} title={car.slug} height={185} width={242} />
                                                         </div>
                                                         <div className="cardcontent">
                                                             <h4>{car.listingTitle}</h4>
@@ -118,7 +119,7 @@ export default  async function HomePageCarListings ({carlist}:Props) {
                                                 {/*<Link key={car.stockId} href={`/global/results/${encodeURIComponent(car.stockId)}`}>*/}
                                                     <div className="shadow border col-sm transition duration-300 ease-in-out hover:scale-110 bg-yellow-50"  >
                                                         <div className="cardimage">
-                                                            <img src={car.imageUrl} alt={car.slug} title={car.slug} />
+                                                            <Image  src={car.imageUrl} alt={car.slug} title={car.slug} height={185} width={242} />
                                                         </div>
                                                         <div className="cardcontent">
                                                             <h4>{car.listingTitle}</h4>

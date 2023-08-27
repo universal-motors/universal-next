@@ -1,4 +1,4 @@
-
+'use client'
 
 import SearchBar from "@/components/ui/SearchBar";
 import {FcBusinessman, FcCurrencyExchange, FcCustomerSupport, FcGlobe, FcLike, FcOnlineSupport} from "react-icons/fc";
@@ -11,6 +11,8 @@ import {BodyType} from "@/models/Master/BodyType";
 import {Make} from "@/models/Master/Make";
 import {StockCars} from "@/models/StockCars";
 import Link from "next/link";
+import {useSession} from "next-auth/react";
+import SignInComponentUI from "@/components/ui/SigninSignOutUI";
 
 interface Props{
     locations : Country[]
@@ -22,8 +24,8 @@ interface Props{
 const currentYear = new Date().getFullYear()
 
 
-async function Header({locations, bodyTypes,makes,  stockCount}:Props) {
-
+function Header({locations, bodyTypes,makes,  stockCount}:Props) {
+    const { data: session } = useSession()
       return (
           <>
 
@@ -34,54 +36,6 @@ async function Header({locations, bodyTypes,makes,  stockCount}:Props) {
                       {/* Stack the columns on mobile by making one full-width and the other half-width */}
                       <div className="row">
                           <TopCountryTimeBar stockCount={stockCount}/>
-                          {/*<SignInForm/>*/}
-                          {/*<div className="col-lg-2 col-md-6 col-12 text-center">*/}
-                          {/*    <div className="currencydropdown">*/}
-                          {/*        <button className="currencydropbtn">*/}
-                          {/*           <span className="inline-flex mt-1 "><h5><FcCurrencyExchange className='mr-2'/></h5> Select Your Currency</span>*/}
-                          {/*        </button>*/}
-                          {/*        <div className="currencydropdown-content currencdd">*/}
-                          {/*            <Link href="#"><b>$</b><span>&nbsp;</span>USD</Link>*/}
-                          {/*            <Link href="#"><b>¥</b><span>&nbsp;</span>JPY</Link>*/}
-                          {/*            <Link href="#"><b>د.إ</b><span>&nbsp;</span>AED</Link>*/}
-                          {/*        </div>*/}
-                          {/*    </div>*/}
-                          {/*</div>*/}
-                          {/*<div className="col-lg-2 col-md-6 col-12">*/}
-                          {/*    <div className="currencydropdown countrydrop">*/}
-                          {/*        <button className="currencydropbtn" style={{width: 'inherit'}}>*/}
-                          {/*            /!*<i className="fa fa-globe" style={{position: 'relative', left: '-10px', fontSize: '20px'}} />*!/*/}
-                          {/*            <span className="inline-flex mt-1 "><h5><FcGlobe className='mr-2'/></h5>Select Your Country</span>*/}
-                          {/*        </button>*/}
-                          {/*        <div className="currencydropdown-content">*/}
-                          {/*            <ul className="countdrop ">*/}
-                          {/*            {*/}
-                          {/*                locations*/}
-                          {/*                    .filter(location=> location.isHotLocation)*/}
-                          {/*                    .map(location=> (*/}
-                          {/*                        <li key={location.countryId}>*/}
-                          {/*                            <Link    href={{*/}
-                          {/*                                pathname : "/global/results/cars",*/}
-                          {/*                                query: {*/}
-                          {/*                                    countryID: location.countryId*/}
-                          {/*                                }*/}
-                          {/*                            }}>*/}
-                          {/*                              <span className=" inline-flex items-center rounded-md">*/}
-                          {/*                                   <img*/}
-                          {/*                                       src={"/assets/images/flags/"+location.slug+".svg"}*/}
-                          {/*                                       className="flagimg-fluid mr-3"*/}
-                          {/*                                       alt={location.slug??""}*/}
-                          {/*                                   />{location.countryName}*/}
-                          {/*                              </span>*/}
-
-                          {/*                            </Link>*/}
-                          {/*                        </li>*/}
-                          {/*                    ))*/}
-                          {/*            }*/}
-                          {/*            </ul>`*/}
-                          {/*        </div>*/}
-                          {/*    </div>*/}
-                          {/*</div>*/}
                       </div>
                   </div>
               </header>
@@ -154,34 +108,7 @@ async function Header({locations, bodyTypes,makes,  stockCount}:Props) {
                                           </div>
                                       </div>
                                   </div>
-                                  <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                                      <div className="registerbox">
-                                          {/*<i className="fa fa-user" />*/}
-                                          <h2><FcBusinessman className='m-2'/></h2>
-                                          <div className="currencydropdown">
-                                              <button className="currencydropbtn supportbtn">
-                                                  Hello, Sign in<br />My Account
-                                              </button>
-
-                                              <div className="currencydropdown-content regiscontent">
-                                                  <div className="row">
-                                                      <div className="col-md-12">
-                                                          <p className="m-0" style={{fontSize: '14px'}}><strong>My Account</strong></p>
-                                                          {/*<LoginModal/>*/}
-                                                          <div className="regisfooter">
-                                                              <p style={{fontSize: '14px'}} className="m-0">New Customer?</p>
-                                                              <p>
-                                                                  <Link className="p-0 m-0" href="#" style={{color: 'blue', fontSize: '14px'}}>
-                                                                      <span>&nbsp;</span>Sign Up
-                                                                  </Link>
-                                                              </p>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
+                                  <SignInComponentUI/>
                               </div>
                           </div>
                       </div>

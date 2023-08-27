@@ -21,18 +21,6 @@ interface Props{
     params: URLSearchParams
 }
 
-const GetInitialStock = async (paramURL:string) => {
-    try {
-        const { data, paginationHeader } = await agent.LoadData.stockList(paramURL,1);
-        return {
-            data,paginationHeader
-        }
-    }catch (error:any){
-        console.log(error);
-    }
-
-}
-
 export default  function CarSearchResult({locations, params}:Props){
 
     const searchParams:URLSearchParams = params;
@@ -48,7 +36,6 @@ export default  function CarSearchResult({locations, params}:Props){
     });
 
 
-
     useEffect(() => {
         // Assuming you have an API function called fetchResults
         const GetStock = async (paramURL:string) => {
@@ -60,9 +47,6 @@ export default  function CarSearchResult({locations, params}:Props){
                 }
 
                 setSearchData(data);
-                console.log(data)
-                console.log({paginationHeader} + "paginationHeader")
-
 
             }catch (error:any){
                 console.log(error);
@@ -76,10 +60,8 @@ export default  function CarSearchResult({locations, params}:Props){
         for (let i = 0; i < paramsArray.length; i += 2) {
             queryStringParts.push(`${paramsArray[i]}=${paramsArray[i + 1]}`);
         }
+
         const filterString = queryStringParts.join('&');
-        console.log(currentPage)
-        console.log(filterString)
-        // console.log(queryStringParts.join('&'))
         GetStock(filterString).then(r => console.log(r));
 
 
@@ -88,10 +70,8 @@ export default  function CarSearchResult({locations, params}:Props){
 
     return(
         <>
-            {/*<SearchingCriteria resultCount={searchData.length} locations={locations} />*/}
-            {/*<PaginationComponent currentPage={currentPage} totalPost={cars.length} postPerPage={postsPerPage} setCurrentPage={setCurrentPage} />*/}
+            <PaginationComponent currentPage={paginationData.CurrentPage} totalPost={paginationData.TotalCount} postPerPage={paginationData.PageSize} setCurrentPage={setCurrentPage} />
           {
-             // Array.isArray(searchData) && searchData.map(result => (( car:StockCars) =>
               Array.isArray(searchData) && searchData.map(car=>(
                     <div key={car.stockId} className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div className="row my-5 ">

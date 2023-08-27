@@ -68,7 +68,7 @@ export default function CarsSimpleSearch({bodyTypes, makes,yearList}: Props) {
 
     function handleSubmit(event:FormEvent){
         event.preventDefault()
-        console.log(makeId,"MakeID, ", modelId, "ModelID, ", bodyTypeId, "BodyTypeID")
+        //console.log(makeId,"MakeID, ", modelId, "ModelID, ", bodyTypeId, "BodyTypeID")
 
         const params = new URLSearchParams();
 
