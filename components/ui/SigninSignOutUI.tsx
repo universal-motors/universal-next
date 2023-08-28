@@ -5,7 +5,6 @@ import {Button} from "@tremor/react";
 
 export default function SignInComponentUI() {
     const { data: session } = useSession()
-    console.log(session)
 
     if(session) {
         return <>

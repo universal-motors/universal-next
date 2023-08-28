@@ -25,7 +25,7 @@ const currentYear = new Date().getFullYear()
 
 
 function Header({locations, bodyTypes,makes,  stockCount}:Props) {
-    const { data: session } = useSession()
+  //  const { data: session } = useSession()
       return (
           <>
 
@@ -108,7 +108,7 @@ function Header({locations, bodyTypes,makes,  stockCount}:Props) {
                                           </div>
                                       </div>
                                   </div>
-                                  <SignInComponentUI/>
+                                  {/*<SignInComponentUI/>*/}
                               </div>
                           </div>
                       </div>

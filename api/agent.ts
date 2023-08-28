@@ -1,4 +1,3 @@
-import axios, {AxiosResponse} from 'axios';
 import {StockCars} from "@/models/StockCars";
 import {Country} from "@/models/Master/Country";
 import {Machinery} from "@/models/Machinery";
@@ -40,10 +39,6 @@ const parseResponse = async <T>(response: Response): Promise<{ data: T, paginati
         paginationHeader
     };
 };
-
-
-const responseBody = <T> (response: AxiosResponse<T>) => response.data;
-
 
 const request = {
     
