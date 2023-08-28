@@ -40,6 +40,7 @@ const parseResponse = async <T>(response: Response): Promise<{ data: T, paginati
     };
 };
 
+
 const request = {
     
     get: async <T>(url: string) => {
