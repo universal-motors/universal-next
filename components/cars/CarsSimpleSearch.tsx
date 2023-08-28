@@ -168,7 +168,7 @@ export default function CarsSimpleSearch({bodyTypes, makes,yearList}: Props) {
                             </div>
                         </div>
                     </div>
-                    <div className="col-xl-4 col-lg-4 col-md-8 col-sm-6 col-6">
+                    <div className="col-xl-4 col-lg-4 col-md-8 col-sm-6 col-12">
                         <div className="showcase-Boxbtn">
                             <Button>
                                 {isLoading ? (
