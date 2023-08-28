@@ -1,5 +1,3 @@
-// import '../globals.css'
-// import 'bootstrap/dist/css/bootstrap.min.css'
 import Header from "@/components/layout/Header";
 import FrontSlider from "@/components/layout/FrontSlider";
 import Sidebar from "@/components/layout/Sidebar";
@@ -23,7 +21,9 @@ const GetCarMakes = async () => {
     return await  agent.LoadData.carMakeList();//return await prisma.tblMakes.findMany({where: {isActive:true}} );
 }
 const GetStockCount = async () => {
-    return await agent.LoadData.stockCount();
+    const test = await agent.StockCount;
+     return test;
+    //return await agent.LoadData.stockCount();
     //db.tblMasterCountry.findMany({where: {IsActive:true}} );
 }
 
@@ -48,7 +48,7 @@ export default async function RootLayout({
 
     <>
 
-        <Header bodyTypes={bodyTypes.data} stockCount={stockCount.data} locations={locations.data} makes={makes.data}/>
+        <Header bodyTypes={bodyTypes.data} stockCount={stockCount} locations={locations.data} makes={makes.data}/>
         <FrontSlider />
         <section className="sidebar-menu">
             <div className="container-fluid">

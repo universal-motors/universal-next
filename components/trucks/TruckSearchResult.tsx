@@ -16,11 +16,11 @@ import {PaginationHeader} from "@/models/Master/Pagination";
 import agent from "@/api/agent";
 interface Props{
 
+    locations: Country[]
     params: URLSearchParams
-    locations: Country[]//tblMasterCountry[]
 }
 
-export default function TruckSearchResult({params,locations}:Props){
+export default function TruckSearchResult({locations,params}:Props){
 
     const searchParams:URLSearchParams = params;
     const[ searchData, setSearchData] = useState<Trucks[]>([]);

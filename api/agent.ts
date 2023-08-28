@@ -138,9 +138,12 @@ const Account = {
 
 }
 
+const StockCount = getData();
+
 const agent = {
     LoadData,
-    Account
+    Account,
+    StockCount
 };
 
 
@@ -148,7 +151,16 @@ export default agent;
 
 
 
+async function getData() {
+    const res = await fetch(baseURL+'carstock/count', { next: { revalidate: 18000 } })
 
+    if (!res.ok) {
+        // This will activate the closest `error.js` Error Boundary
+        throw new Error('Failed to fetch data')
+    }
+
+    return res.json()
+}
 
 
 

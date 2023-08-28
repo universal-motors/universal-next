@@ -1,4 +1,3 @@
-'use client';
 import Link from "next/link";
 import FaqComponent from "@/components/layout/FaqComponent";
 import PriceFormat from "@/utils/PriceFormat";
@@ -6,12 +5,12 @@ import {StockCars} from "@/models/StockCars";
 import Image from "next/image";
 
 interface Props {
-    carlist : StockCars[]
+    stockcars : StockCars[]
 }
 
 
-export default  async function HomePageCarListings ({carlist}:Props) {
-    const stockcars = carlist;
+export default function HomePageCarListings ({stockcars}:Props) {
+
     return (
         <>
             <div className="row ">

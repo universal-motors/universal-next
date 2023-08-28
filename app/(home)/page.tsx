@@ -31,7 +31,7 @@ export default async function Home() {
 
               <HomeUI  bodyTlist={bodyTypes} makeList={makes}/>
               <div className="carboxes mt-3">
-                  <HomePageCarListings carlist={stocks} />
+                  <HomePageCarListings stockcars={stocks} />
               </div>
 
 

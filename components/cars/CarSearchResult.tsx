@@ -21,7 +21,7 @@ interface Props{
     params: URLSearchParams
 }
 
-export default  function CarSearchResult({locations, params}:Props){
+export default function CarSearchResult({locations, params}:Props){
 
     const searchParams:URLSearchParams = params;
     const[ searchData, setSearchData] = useState<StockCars[]>([]);

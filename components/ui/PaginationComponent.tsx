@@ -19,9 +19,6 @@ export default function PaginationComponent({totalPost, currentPage, postPerPage
         pageNumbers.push(i)
 
     }
-console.log(pageNumbers)
-
-
 
     if (totalPost==0){
         return (

@@ -38,6 +38,7 @@ const GetCarMakes = async () => {
 
 
 export default async function ResultPage({searchParams}:Props) {
+    console.log(searchParams)
     const params = new URLSearchParams();
 
     if (searchParams.makeID) params.set("MakeID", searchParams.makeID.toString())
@@ -50,8 +51,7 @@ export default async function ResultPage({searchParams}:Props) {
     const locations = await GetLocations();
     const bodyTypes = await GetBodyTypes();
     const carMake = await GetCarMakes();
-    console.log(searchParams)
-    console.log(params)
+
 
   return (
 

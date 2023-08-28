@@ -49,9 +49,11 @@ const GetCarMakes = async () => {
 
 
 export default async function ResultPage({searchParams}:Props) {
+    console.log(searchParams)
     const params = new URLSearchParams();
     if (searchParams.bodyTypeID) params.set("BodyTypeID", searchParams.bodyTypeID.toString())
     if (searchParams.makeID) params.set("MakeID", searchParams.makeID.toString())
+    if (searchParams.countryID) params.set("countryID", searchParams.countryID.toString())
     if (searchParams.modelID) params.set("ModelID", searchParams.modelID.toString())
     if (searchParams.steeringID) params.set("SteeringID", searchParams.steeringID.toString())
     if (searchParams.minPrice) params.set("MinPrice", searchParams.minPrice.toString())
