@@ -75,7 +75,7 @@ export default function TruckSearchResult({locations,params}:Props){
                     <div key={truck.stockId} className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div className="row my-5 ">
                             <div className="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-5">
-                                <div className="searched-truckimage ">
+                                <div className="searched-carimage ">
                                     <Link href={`/global/results/trucks/${truck.stockId}`}>
                                         <Image src={truck.imageUrl??""} className="mb-4" alt=""  height={150}
                                                width={150} /></Link>
