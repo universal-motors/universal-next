@@ -148,7 +148,7 @@ export default function TruckSimpleSearch({bodyTypes, makes,yearList}: Props) {
 
 
                     </div>
-                    <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
+                    <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
                         <label>Price Until:</label>
                         <SearchSelect value={toPrice} onValueChange={setToPrice}>
                             <SearchSelectItem value="10000" >
@@ -170,7 +170,7 @@ export default function TruckSimpleSearch({bodyTypes, makes,yearList}: Props) {
 
 
                     </div>
-                    <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6">
+                    <div className="col-xl-4 col-lg-4 col-md-8 col-sm-6 col-6">
                         <div className="showcase-Boxbtn">
                             <Button>
                                 {isLoading ? (

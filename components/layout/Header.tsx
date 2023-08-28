@@ -108,7 +108,7 @@ function Header({locations, bodyTypes,makes,  stockCount}:Props) {
                                           </div>
                                       </div>
                                   </div>
-                                  {/*<SignInComponentUI/>*/}
+                                  <SignInComponentUI/>
                               </div>
                           </div>
                       </div>

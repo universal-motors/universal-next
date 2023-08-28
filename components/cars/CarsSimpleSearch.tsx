@@ -105,13 +105,13 @@ export default function CarsSimpleSearch({bodyTypes, makes,yearList}: Props) {
                         </SearchSelect>
                     </div>
 
-                    <div className="col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
                         <label>Model:</label>
                         {
                             renderMappedModels()
                         }
                     </div>
-                    <div className="col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
                         <label>Body Type: </label>
                         <SearchSelect value={bodyTypeId} onValueChange={setBodyTypeId}>
 
@@ -124,7 +124,7 @@ export default function CarsSimpleSearch({bodyTypes, makes,yearList}: Props) {
                             }
                         </SearchSelect>
                     </div>
-                    <div className="col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
                         <label>Steering: </label>
                         <SearchSelect value={steeringTypeId} onValueChange={setSteeringTypeId}>
                             <SearchSelectItem value="1" >
@@ -140,7 +140,7 @@ export default function CarsSimpleSearch({bodyTypes, makes,yearList}: Props) {
                     <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
                         <div className="showcase-Boxselect">
                             <label>Manufacturing Year:</label>
-                            <div className="flex flex-row">
+                            <div className="flex flex-column">
                                 <div className="flex-none w-30 h-15 ">
                                     <SearchSelect value={fromYear} onValueChange={setFromYear}>
                                         {
@@ -168,7 +168,7 @@ export default function CarsSimpleSearch({bodyTypes, makes,yearList}: Props) {
                             </div>
                         </div>
                     </div>
-                    <div className="col-xl-4 col-lg-4 col-md-8 col-sm-6 col-12">
+                    <div className="col-xl-4 col-lg-4 col-md-8 col-sm-6 col-6">
                         <div className="showcase-Boxbtn">
                             <Button>
                                 {isLoading ? (
