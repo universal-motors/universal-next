@@ -19,7 +19,7 @@ export default async function TruckKeyInformation({car}:Props){
             <h2>Key Information</h2>
         </div>
 
-        <div className="row features-table">
+        <div className="row features-table ">
             <table className="keyinfo">
                 <tbody>
                 <tr>
@@ -89,9 +89,9 @@ export default async function TruckKeyInformation({car}:Props){
                 </tbody>
             </table>
         </div>
-        <div className="features">
+        <div className="features ">
             <h2>Features</h2>
-            <ul className="featureitem">
+            <ul className="featureitem ">
                 {
 
                     // stockOptions

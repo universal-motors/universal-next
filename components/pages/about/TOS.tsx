@@ -37,7 +37,7 @@ export default function TOS (){
                                                 Universal
                                                 Motor runs the
                                                 website
-                                                <a href="https://www.universalmotordsltd.com">www.universalmotordsltd.com</a>
+                                                <a href="https://www.universalmotorsltd.com">www.universalmotorsltd.com</a>
                                                 (the site) under
                                                 the terms and
                                                 conditions set
