@@ -9,60 +9,100 @@ import {PiEngineFill, PiGearFineBold } from "react-icons/pi";
 import {BiSolidColorFill} from "react-icons/bi";
 import {MdAirlineSeatReclineExtra} from "react-icons/md";
 import {Country} from "@/models/Master/Country";
-import { useState} from "react";
+import {useEffect, useState} from "react";
 import PaginationComponent from "@/components/ui/PaginationComponent";
 import {Trucks} from "@/models/Trucks";
+import {PaginationHeader} from "@/models/Master/Pagination";
+import agent from "@/api/agent";
 interface Props{
-//    cars: tblCars[]
-    cars: Trucks[]
-    locations: Country[]//tblMasterCountry[]
+
+    locations: Country[]
+    params: URLSearchParams
 }
 
-export default function TruckSearchResult({cars,locations}:Props){
-    const searchData:Trucks[] = cars;
-    const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage,setPostsPerPage] = useState(20);
-    const lastPostIndex = currentPage * postsPerPage;
-    const firstPostIndex = lastPostIndex - postsPerPage;
-    const currentPosts = searchData.slice(firstPostIndex,lastPostIndex);
+export default function TruckSearchResult({locations,params}:Props){
+
+    const searchParams:URLSearchParams = params;
+    const[ searchData, setSearchData] = useState<Trucks[]>([]);
+    const [currentPage, setCurrentPage] = useState<number>(1);
+    const [paginationData, setPaginationData] = useState<PaginationHeader>({
+        CurrentPage: 1,
+        TotalPages: 0,
+        PageSize: 25,
+        TotalCount: 0,
+        HasPreviousPage: false,
+        HasNextPage: false
+    });
+
+
+    useEffect(() => {
+        // Assuming you have an API function called fetchResults
+        const GetStock = async (paramURL:string) => {
+            try {
+                const { data, paginationHeader } = await agent.LoadData.truckList(paramURL,currentPage);
+
+                if (paginationHeader) {
+                    setPaginationData(paginationHeader);
+                }
+
+                setSearchData(data);
+
+            }catch (error:any){
+                console.log(error);
+            }
+
+        }
+
+        const paramsArray = searchParams.toString().split(',');
+
+        const queryStringParts = [];
+        for (let i = 0; i < paramsArray.length; i += 2) {
+            queryStringParts.push(`${paramsArray[i]}=${paramsArray[i + 1]}`);
+        }
+
+        const filterString = queryStringParts.join('&');
+        GetStock(filterString).then(r => console.log(r));
+
+
+    }, [searchParams, currentPage]);
+
 
     return(
         <>
-            <PaginationComponent currentPage={currentPage} totalPost={cars.length} postPerPage={postsPerPage} setCurrentPage={setCurrentPage} />
+            <PaginationComponent currentPage={paginationData.CurrentPage} totalPost={paginationData.TotalCount} postPerPage={paginationData.PageSize} setCurrentPage={setCurrentPage} />
           {
-
-                currentPosts.map(car=>(
-                    <div key={car.stockId} className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+              Array.isArray(searchData) && searchData.map(truck=>(
+                    <div key={truck.stockId} className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div className="row my-5 ">
                             <div className="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-5">
                                 <div className="searched-carimage ">
-                                    <Link href={`/global/results/trucks/${car.stockId}`}>
-                                        <Image src={car.imageUrl??""} className="mb-4" alt=""  height={150}
+                                    <Link href={`/global/results/trucks/${truck.stockId}`}>
+                                        <Image src={truck.imageUrl??""} className="mb-4" alt=""  height={150}
                                                width={150} /></Link>
 
-                                    <h4 className="ml-5">STOCK ID : <span className="inline-flex items-center gap-x-1.5 rounded-full bg-yellow-400 px-2 py-1 text-l font-medium text-blue-950">{car.stockCode}</span></h4>
+                                    <h4 className="ml-5">STOCK ID : <span className="inline-flex items-center gap-x-1.5 rounded-full bg-yellow-400 px-2 py-1 text-l font-medium text-blue-950">{truck.stockCode}</span></h4>
 
                                 </div>
                             </div>
 
                             <div className="col-xl-6 col-lg-6 col-md-6 d-md-block d-none">
-                                <div className="car-details">
+                                <div className="truck-details">
                                     <div className="row ">
                                         <div className="col-lg-6 col-md-6 col-sm-6">
-                                            <Link href={`/global/results/trucks/${car.stockId}`}>
-                                                <h6 className="listname font-bold uppercase">{car.listingTitle}</h6></Link>
+                                            <Link href={`/global/results/trucks/${truck.stockId}`}>
+                                                <h6 className="listname font-bold uppercase">{truck.listingTitle}</h6></Link>
                                         </div>
                                         <div className="col-lg-6 col-md-6 col-sm-6">
-                                            <div className="car-country">
+                                            <div className="truck-country">
                                                 <h6 className="text-right">
                                                     <span className="font-bold inline-flex">
                                                         <Image
-                                                            src={`/assets/images/flags/${locations.find(x=>x.countryId==car.locationId)?.slug}.svg`}
+                                                            src={`/assets/images/flags/${locations.find(x=>x.countryId==truck.locationId)?.slug}.svg`}
                                                             className="img-fluid mr-2"
                                                             height={20}
                                                             width={20}
-                                                            alt={`${car.locationName} flag`} />
-                                                        {car.locationName}
+                                                            alt={`${truck.locationName} flag`} />
+                                                        {truck.locationName}
                                                     </span>
                                                 </h6>
                                             </div>
@@ -74,39 +114,39 @@ export default function TruckSearchResult({cars,locations}:Props){
                                                 <h4>Mileage</h4>
                                                 <span className="label-text  p-1  flex items-center rounded-md ml-5">
                                                      <img decoding="async" src="/assets/images/kmsDriven.svg" loading="eager" className="h-6 mr-2"/>
-                                                    {car.mileage}
+                                                    {truck.mileage}
                                                  </span>
                                             </div>
                                             <div className="col-sm specs">
                                                 <h4>YEAR</h4>
                                                 <span className="label-text  p-1  flex items-center rounded-md ml-5">
                                                     <img decoding="async" src="/assets/images/registrationYear.svg" loading="eager" className="h-6 mr-2"/>
-                                                    {car.year} </span>
+                                                    {truck.year} </span>
                                             </div>
                                             <div className="col-sm specs">
                                                 <h4>Engine</h4>
                                                 <span className="label-text  p-1 flex items-center rounded-md ml-5">
                                                      {/*<img decoding="async" src="/assets/images/engineDisplacement.svg" loading="eager"className="h-6 mr-2"/>*/}
                                                     <span className="h-auto mr-2"><PiEngineFill /></span>
-                                                    {car.engineSize}</span>
+                                                    {truck.engineSize}</span>
                                             </div>
                                             <div className="col-sm specs">
                                                 <h4>Transmision</h4>
                                                 <span className="label-text  p-1 flex items-center rounded-md ml-5">
                                                     <img decoding="async" src="/assets/images/transmission.svg" loading="eager" className="h-6"/>
-                                                    {car.transmissionName} </span>
+                                                    {truck.transmissionName} </span>
                                             </div>
                                             {/*<div className="col-sm specs">*/}
                                             {/*    <h4>Country</h4>*/}
                                             {/*    <span className="label-text p-1 flex items-center rounded-md ml-5">*/}
                                             {/*    /!*<img decoding="async" src={`/assets/images/flags/${location.slug}.svg`} loading="eager"className="h-4 mr-2"/>*!/*/}
-                                            {/*        {car.locationName} </span>*/}
+                                            {/*        {truck.locationName} </span>*/}
                                             {/*</div>*/}
                                             <div className="col-sm specs">
                                                 <h4>Fuel</h4>
                                                 <span className="label-text  p-1 flex items-center rounded-md ml-5">
                                                     <span className="h-auto mr-2"><FaGasPump /></span>
-                                                    {car.typeOfFuel}
+                                                    {truck.typeOfFuel}
                                                  </span>
                                             </div>
 
@@ -117,49 +157,49 @@ export default function TruckSearchResult({cars,locations}:Props){
                                                 <h4>Axle</h4>
                                                 <span className="label-text  p-1 flex items-center rounded-md ml-5">
                                                       <span className="h-auto mr-2"><PiGearFineBold /></span>
-                                                    {car.axle}
+                                                    {truck.axle}
                                                  </span>
                                             </div>
                                             <div className="col-sm specs">
                                                 <h4>Loading Capacity</h4>
                                                 <span className="label-text  p-1 flex items-center rounded-md ml-5">
                                                   <span className="h-auto mr-2"><FaTruckLoading /></span>
-                                                    {car.loadingCapacity}</span>
+                                                    {truck.loadingCapacity}</span>
                                             </div>
                                             <div className="col-sm specs">
                                                 <h4>Category</h4>
                                                 <span className="label-text  p-1 flex items-center rounded-md ml-5">
                                                      <span className="h-auto mr-2"><MdAirlineSeatReclineExtra /></span>
-                                                    {car.vehicleCategory} </span>
+                                                    {truck.vehicleCategory} </span>
                                             </div>
                                             <div className="col-sm specs">
                                                 <h4>Color</h4>
                                                 <span className="label-text  p-1 flex items-center rounded-md ml-5">
                                                   <span className="h-auto mr-2"><BiSolidColorFill /></span>
-                                                    {car.colorName}</span>
+                                                    {truck.colorName}</span>
 
                                             </div>
                                             <div className="col-sm specs">
                                                 <h4>Model Code</h4>
                                                 <span className="label-text p-1 flex items-center rounded-md ml-5">
                                                   {/*<span className="h-6 mr-2"><AiOutlineBarcode /></span>*/}
-                                                    {car.modelCode}</span>
+                                                    {truck.modelCode}</span>
 
                                             </div>
                                             {/*<div className="col-sm specs">*/}
                                             {/*    <h4>Engine Number</h4>*/}
                                             {/*    <span className="label-text  p-1 flex items-center rounded-md ml-5">*/}
                                             {/*      /!*<span className="h-6 mr-2"><PiEngineFill /></span>*!/*/}
-                                            {/*        {car.engineNumber}</span>*/}
+                                            {/*        {truck.engineNumber}</span>*/}
 
                                             {/*</div>*/}
                                         </div>
 
 
                                     </div>
-                                    <div className="carlistfeatures row pt-2">
+                                    <div className="trucklistfeatures row pt-2">
                                         <div className="col-md-8 flist">
-                                            {/*<CarOptionList optionsMaster={optionsMaster} stockID={car.stockId}  />*/}
+                                            {/*<truckOptionList optionsMaster={optionsMaster} stockID={truck.stockId}  />*/}
                                             {/*<ul>*/}
                                             {/*    {*/}
 
@@ -187,14 +227,14 @@ export default function TruckSearchResult({cars,locations}:Props){
                                 </div>
                             </div>
                             <div className="col-xl-3 col-lg-3 col-md-3 col-sm-8 col-7">
-                                <div className="car-inquiry">
-                                    {/*<Link href={`/global/results/${car.stockId}`}><h6 className="listname">{car.ListingTitle}</h6></Link>*/}
+                                <div className="truck-inquiry">
+                                    {/*<Link href={`/global/results/${truck.stockId}`}><h6 className="listname">{truck.ListingTitle}</h6></Link>*/}
                                     <div className="fprice">
-                                        <h6 className="listname font-bold text-[20px]  uppercase">{car.listingTitle}</h6>
+                                        <h6 className="listname font-bold text-[20px]  uppercase">{truck.listingTitle}</h6>
                                         <h6 className="font-bold">
                                             FOB Price:
                                             <span className="mb-5 text-[20px] ">
-                                               <PriceFormat carPrice={car.price} />
+                                               <PriceFormat carPrice={truck.price} />
                                             </span>
                                         </h6>
                                     </div>
@@ -229,7 +269,7 @@ export default function TruckSearchResult({cars,locations}:Props){
                                     </div>
                                     <h4 />
 
-                                    <Link href={`/global/results/trucks/${car.stockId}`}>
+                                    <Link href={`/global/results/trucks/${truck.stockId}`}>
                                         <button className="offerbtn">
                                         <span className="font-bold">    Send Offer</span>
                                         </button>
@@ -243,7 +283,7 @@ export default function TruckSearchResult({cars,locations}:Props){
                     </div>
                 ))
             }
-            <PaginationComponent currentPage={currentPage} totalPost={cars.length} postPerPage={postsPerPage} setCurrentPage={setCurrentPage} />
+            <PaginationComponent currentPage={paginationData.CurrentPage} totalPost={paginationData.TotalCount} postPerPage={paginationData.PageSize} setCurrentPage={setCurrentPage} />
         </>
     )
 }

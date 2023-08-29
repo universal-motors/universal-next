@@ -14,7 +14,7 @@ export default function SearchBar() {
         event.preventDefault()
         if(searchKey==="") return;
 
-        router.push(`/global/results/cars/?searchKey=${searchKey}`)
+        router.push(`/global/results/cars/?searchTerm=${searchKey}`)
         setSearchKey("")
 
     }

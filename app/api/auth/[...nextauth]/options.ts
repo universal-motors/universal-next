@@ -1,5 +1,8 @@
 import type { NextAuthOptions } from 'next-auth';
 import GitHubProvider from 'next-auth/providers/github';
+import FacebookProvider from 'next-auth/providers/facebook'
+import GoogleProvider from 'next-auth/providers/google'
+import EmailProvider from 'next-auth/providers/email'
 import CredentialsProvider from 'next-auth/providers/credentials';
 import agent from "@/api/agent";
 
@@ -10,6 +13,14 @@ export  const options: NextAuthOptions = {
         GitHubProvider({
             clientId: process.env.GITHUB_ID as string,
             clientSecret: process.env.GITHUB_SECRET as string,
+        }),
+        FacebookProvider({
+            clientId: process.env.FACEBOOK_ID as string,
+            clientSecret: process.env.FACEBOOK_SECRET as string,
+        }),
+        GoogleProvider({
+            clientId: process.env.GOOGLE_ID as string,
+            clientSecret: process.env.GOOGLE_SECRET as string,
         }),
 
         CredentialsProvider({

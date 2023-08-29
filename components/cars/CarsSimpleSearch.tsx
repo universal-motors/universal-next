@@ -68,7 +68,7 @@ export default function CarsSimpleSearch({bodyTypes, makes,yearList}: Props) {
 
     function handleSubmit(event:FormEvent){
         event.preventDefault()
-        console.log(makeId,"MakeID, ", modelId, "ModelID, ", bodyTypeId, "BodyTypeID")
+        //console.log(makeId,"MakeID, ", modelId, "ModelID, ", bodyTypeId, "BodyTypeID")
 
         const params = new URLSearchParams();
 
@@ -79,7 +79,8 @@ export default function CarsSimpleSearch({bodyTypes, makes,yearList}: Props) {
         if (steeringTypeId != "0") params.set("steeringID", steeringTypeId)
         if (fromYear != "0") params.set("fromYear", fromYear)
         if (toYear != "0") params.set("toYear", toYear)
-        params.set("PageNumber", "1")
+
+
 
         setLoading(true);
         router.push(`/global/results/cars?${params.toString()}`)
@@ -89,7 +90,7 @@ export default function CarsSimpleSearch({bodyTypes, makes,yearList}: Props) {
         <div className="showcase-Box carform mb-5">
             <Form onSubmit={handleSubmit} autoComplete="off">
                 <div className="row">
-                    <div className="col-lg-4 col-md-6 col-sm-6 col-6">
+                    <div className="col-lg-4 col-md-6 col-sm-6 col-12">
                         <label>Make: </label>
                         {/*<SearchSelect value={makeId} onValueChange={setMakeId}>*/}
                         <SearchSelect value={makeId} onValueChange={handleValueChange}>
@@ -105,13 +106,13 @@ export default function CarsSimpleSearch({bodyTypes, makes,yearList}: Props) {
                         </SearchSelect>
                     </div>
 
-                    <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6">
+                    <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
                         <label>Model:</label>
                         {
                             renderMappedModels()
                         }
                     </div>
-                    <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6">
+                    <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
                         <label>Body Type: </label>
                         <SearchSelect value={bodyTypeId} onValueChange={setBodyTypeId}>
 
@@ -124,7 +125,7 @@ export default function CarsSimpleSearch({bodyTypes, makes,yearList}: Props) {
                             }
                         </SearchSelect>
                     </div>
-                    <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6">
+                    <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
                         <label>Steering: </label>
                         <SearchSelect value={steeringTypeId} onValueChange={setSteeringTypeId}>
                             <SearchSelectItem value="1" >
@@ -137,11 +138,11 @@ export default function CarsSimpleSearch({bodyTypes, makes,yearList}: Props) {
 
 
                     </div>
-                    <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6">
+                    <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
                         <div className="showcase-Boxselect">
                             <label>Manufacturing Year:</label>
-                            <div className="flex flex-row">
-                                <div className="flex-none w-20 h-14 ">
+                            <div className="flex flex-column">
+                                <div className="flex-none w-30 h-15 ">
                                     <SearchSelect value={fromYear} onValueChange={setFromYear}>
                                         {
                                             yearList.map(year=> (
@@ -152,7 +153,7 @@ export default function CarsSimpleSearch({bodyTypes, makes,yearList}: Props) {
                                         }
                                     </SearchSelect>
                                 </div>
-                                <div className="flex-auto w-10  ">
+                                <div className="flex-auto w-30">
                                     <SearchSelect value={toYear} onValueChange={setToYear}>
                                         {
                                             yearList.map(year=> (
@@ -168,7 +169,7 @@ export default function CarsSimpleSearch({bodyTypes, makes,yearList}: Props) {
                             </div>
                         </div>
                     </div>
-                    <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6">
+                    <div className="col-xl-4 col-lg-4 col-md-8 col-sm-6 col-6">
                         <div className="showcase-Boxbtn">
                             <Button>
                                 {isLoading ? (

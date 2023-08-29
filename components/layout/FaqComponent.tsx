@@ -1,3 +1,4 @@
+'use client'
 import {Accordion, Tab, Tabs} from "react-bootstrap";
 
 export default function FaqComponent(){

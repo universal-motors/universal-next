@@ -49,9 +49,11 @@ const GetCarMakes = async () => {
 
 
 export default async function ResultPage({searchParams}:Props) {
+    console.log(searchParams)
     const params = new URLSearchParams();
     if (searchParams.bodyTypeID) params.set("BodyTypeID", searchParams.bodyTypeID.toString())
     if (searchParams.makeID) params.set("MakeID", searchParams.makeID.toString())
+    if (searchParams.countryID) params.set("countryID", searchParams.countryID.toString())
     if (searchParams.modelID) params.set("ModelID", searchParams.modelID.toString())
     if (searchParams.steeringID) params.set("SteeringID", searchParams.steeringID.toString())
     if (searchParams.minPrice) params.set("MinPrice", searchParams.minPrice.toString())
@@ -61,7 +63,7 @@ export default async function ResultPage({searchParams}:Props) {
     if (searchParams.minMileage) params.set("MinMileage", searchParams.minMileage.toString())
     if (searchParams.maxMileage) params.set("MaxMileage", searchParams.maxMileage.toString())
     if (searchParams.searchTerm) params.set("SearchTerm", searchParams.searchTerm)
-
+    params.set("OrderBy","stockid%20desc")
 
     const bodyTypes = await GetBodyTypes();
     const makes = await GetCarMakes();
@@ -75,6 +77,7 @@ export default async function ResultPage({searchParams}:Props) {
         <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 p-0 second-searchform">
             {/*<DetailedSearchBox />*/}
             <HomeUI makeList={makes} bodyTlist={bodyTypes}/>
+            {/*<SearchingCriteria resultCount={cars.length} locations={locations} />*/}
             <CarSearchResult params={params} locations={locations} />
         </div>
     )

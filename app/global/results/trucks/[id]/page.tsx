@@ -7,6 +7,7 @@ import ContactUs from "@/components/pages/contact/ContactUs";
 import TruckKeyInformation from "@/app/global/results/trucks/[id]/TruckKeyInformation";
 import TruckSpecification from "@/app/global/results/trucks/[id]/TruckSpecification";
 import {Trucks} from "@/models/Trucks";
+import {useQuery} from "react-query";
 
 interface Props {
     params: {
@@ -14,17 +15,26 @@ interface Props {
     }
 }
 
+const   GetTruck = async (stockID: number) => {
+    // const result = await agent.LoadData.truck(stockID);
+    // return result.data;
+
+
+
+}
+
 export default async function CarDetailed({params}:Props){
-    const Stock = await agent.LoadData.truckList();
-    const Truck : Trucks|undefined = Stock.data.find(x=> x.stockId == params.id);
+
+    const Stock = await agent.LoadData.truck(params.id);
+    //const Truck  = await GetTruck(params.id);
     const Countries = await agent.LoadData.countryList();//db.tblMasterCountry.findMany({where: {IsActive:true}});
     const PortMapping = await agent.LoadData.portmapping();
     const Ports = await agent.LoadData.portsList();
-    const InventoryLocation = Countries.data.find(x=> x.countryId == Truck?.locationId)
+    const InventoryLocation = Countries.data.find(x=> x.countryId == Stock.data?.locationId)
     const freightChargeMaster = await agent.LoadData.freightcost();
     const inspectionCost = await agent.LoadData.inspectioncost();
 
-    if (Truck != null)
+    if (Stock.data != null)
 
     return(
         <>
@@ -34,29 +44,29 @@ export default async function CarDetailed({params}:Props){
                         <div className="container-fluid">
                             <div id="productslider" className="carousel slide">
                                 <div className="row">
-                                 <h1 className="mobicar carname">{Truck.listingTitle}</h1>
+                                 <h1 className="mobicar carname">{Stock.data?.listingTitle}</h1>
                                     <div className="col-lg-6 col-md-6 detail-leftsection">
                                         <div className="row">
                                             <div id="wrap" className="container-fluid">
                                                 <div className="row">
-                                                    <CarDetailedSlideshow mainPic={Truck.imageUrl} stockID={Truck.stockId} />
+                                                    <CarDetailedSlideshow mainPic={Stock.data?.imageUrl} stockID={Stock.data?.stockId} />
                                                 </div>
                                             </div>
                                         </div>
                                         <hr />
                                         <div className="shipping-details">
-                                            <TruckSpecification car={Truck} location={InventoryLocation} />
-                                            <TruckKeyInformation car={Truck}/>
+                                            <TruckSpecification car={Stock.data} location={InventoryLocation} />
+                                            <TruckKeyInformation car={Stock.data}/>
                                         </div>
                                     </div>
                                     <div className="col-lg-6 col-md-6">
-                                        <h1 className="pccar carname">{Truck.listingTitle}</h1>
+                                        <h1 className="pccar carname">{Stock.data?.listingTitle}</h1>
                                         <div className="col-md-4 col-sm-4 col-4">
                                             <div className="stock">
                                                <span className="flex items-center gap-x-1 bg-red-100 px-2 py-1 font-medium text-red-700">
                                                         Stock ID :
                                                         <img className='h-6 m-2' src={`/assets/images/flags/${InventoryLocation?.slug}.svg`} alt={InventoryLocation?.slug} />
-                                                        {Truck.stockCode}
+                                                        {Stock.data?.stockCode}
                                                 </span>
 
                                             </div>
@@ -103,7 +113,7 @@ export default async function CarDetailed({params}:Props){
                                         {/*    </div>*/}
                                         {/*</div>*/}
                                         <PriceCalculator
-                                            car={Truck}
+                                            car={Stock.data}
                                             countries={Countries.data}
                                             ports={Ports.data}
                                             portMapping={PortMapping.data}

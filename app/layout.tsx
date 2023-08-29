@@ -1,16 +1,21 @@
+'use client'
 import './globals.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Analytics } from '@vercel/analytics/react';
 import Script from "next/script";
 import NextTopLoader from 'nextjs-toploader';
 import NextAuthSessionProvider from "@/context/NextSessionProvider";
+import {QueryClient, QueryClientProvider} from "react-query";
+import React, {ReactNode} from "react";
 
 
 
 export default async function RootLayout({ children,
                                          }: {
-    children: React.ReactNode
+    children: ReactNode
 }) {
+
+    const client = new QueryClient();
 
     return (
 
@@ -34,9 +39,12 @@ export default async function RootLayout({ children,
                 speed={200}
                 shadow="0 0 10px #2299DD,0 0 5px #2299DD"
             />
-                   {/*<NextAuthSessionProvider>*/}
-                    {children}
-                   {/*</NextAuthSessionProvider>*/}
+
+                   <NextAuthSessionProvider>
+                       {/*<QueryClientProvider client={client}>*/}
+                            {children}
+                       {/*</QueryClientProvider>*/}
+                   </NextAuthSessionProvider>
                 <Analytics />
 
             </body>
