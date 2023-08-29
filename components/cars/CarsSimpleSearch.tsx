@@ -79,7 +79,8 @@ export default function CarsSimpleSearch({bodyTypes, makes,yearList}: Props) {
         if (steeringTypeId != "0") params.set("steeringID", steeringTypeId)
         if (fromYear != "0") params.set("fromYear", fromYear)
         if (toYear != "0") params.set("toYear", toYear)
-        params.set("PageNumber", "1")
+
+
 
         setLoading(true);
         router.push(`/global/results/cars?${params.toString()}`)

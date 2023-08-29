@@ -63,7 +63,7 @@ export default async function ResultPage({searchParams}:Props) {
     if (searchParams.minMileage) params.set("MinMileage", searchParams.minMileage.toString())
     if (searchParams.maxMileage) params.set("MaxMileage", searchParams.maxMileage.toString())
     if (searchParams.searchTerm) params.set("SearchTerm", searchParams.searchTerm)
-
+    params.set("OrderBy","stockid%20desc")
 
     const bodyTypes = await GetBodyTypes();
     const makes = await GetCarMakes();

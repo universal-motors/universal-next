@@ -77,7 +77,6 @@ export default function TruckSimpleSearch({bodyTypes, makes,yearList}: Props) {
         if (toPrice != "0") params.set("toPrice", toPrice)
         if (toYear != "0") params.set("toYear", toYear)
         setLoading(true);
-        console.log(params.toString())
         router.push(`/global/results/trucks?${params.toString()}`)
 
     }
