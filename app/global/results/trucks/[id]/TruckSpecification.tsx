@@ -26,12 +26,17 @@ export default function TruckSpecification({car, location}:Props){
                     <img decoding="async" src="/assets/images/registrationYear.svg" loading="eager" className="mx-auto mr-2"/><br/>
                        {car.year} </span>
                 </div>
-                <div className="col-sm specs">
-                    <h4>Engine</h4>
-                    <span className="label-text  items-center rounded-md ml-5">
+
+                {
+                    car.engineSize != "0" && (
+                        <div className="col-sm specs">
+                            <h4>Engine</h4>
+                            <span className="label-text  items-center rounded-md ml-5">
                     <img decoding="async" src="/assets/images/engineDisplacement.svg" loading="eager" className="mx-auto mr-2"/><br/>
-                       {car.engineSize}</span>
-                </div>
+                                {car.engineSize}</span>
+                        </div>
+                    )
+                }
                 <div className="col-sm specs">
                     <h4>Axle</h4>
                     <span className="label-text  items-center rounded-md ml-5">

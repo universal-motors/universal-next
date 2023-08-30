@@ -9,7 +9,8 @@ export interface Trucks {
     makeName:string,
     conditionId: number,
     conditionType:string,
-
+    steeringTypeId: number,
+    steeringType:string,
     vehicleCategory:string,
     categoryID: number,
 
