@@ -2,6 +2,7 @@
 import {StockCars} from "@/models/StockCars";
 import agent from "@/api/agent";
 import {Trucks} from "@/models/Trucks";
+import NumberFormat from "@/lib/utils";
 
 
 
@@ -76,7 +77,7 @@ export default async function TruckKeyInformation({car}:Props){
                 </tr>
                 <tr>
                     <td className="first">Mileage</td>
-                    <td>{car.mileage}</td>
+                    <td>{NumberFormat(car.mileage)} Kms</td>
                 </tr>
                 <tr>
                     <td className="first">Loading Capacity</td>

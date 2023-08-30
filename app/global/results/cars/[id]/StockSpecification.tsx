@@ -1,5 +1,6 @@
 import {StockCars} from "@/models/StockCars";
 import {Country} from "@/models/Master/Country";
+import NumberFormat from "@/lib/utils";
 
 interface Props {
     car : StockCars,
@@ -14,7 +15,7 @@ export default function StockSpecification({car, location}:Props){
                     <h4>Mileage</h4>
                     <span className="label-text   items-center rounded-md ml-5">
                     <img decoding="async" src="/assets/images/kmsDriven.svg" loading="eager" className="mx-auto mr-2"/><br/>
-                        {car.mileage}
+                        {NumberFormat(car.mileage)} Kms
                     </span>
                 </div>
                 <div className="col-sm specs">
