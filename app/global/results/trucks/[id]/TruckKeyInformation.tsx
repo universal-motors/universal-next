@@ -2,6 +2,7 @@
 import {StockCars} from "@/models/StockCars";
 import agent from "@/api/agent";
 import {Trucks} from "@/models/Trucks";
+import NumberFormat from "@/lib/utils";
 
 
 
@@ -19,13 +20,13 @@ export default async function TruckKeyInformation({car}:Props){
             <h2>Key Information</h2>
         </div>
 
-        <div className="row features-table">
-            <table className="keyinfo">
+        <div className="row features-table ">
+            <table className="keyinfo shadow-md sm:rounded-lg">
                 <tbody>
                 <tr>
                     <td className="first">Model Code</td>
                     {
-                        car.modelCode !== '' ? ( <td> {car.modelCode}</td>) : (<td>Not Available</td>)
+                        (car.modelCode !== '' ) ? ( <td className='text-center'> {car.modelCode}</td>) : (<td className='text-center bg-gray-100 text-red-600'>Not Available</td>)
                     }
                 </tr>
                 {/*<tr>*/}
@@ -36,62 +37,76 @@ export default async function TruckKeyInformation({car}:Props){
                 {/*</tr>*/}
                 <tr>
                     <td className="first">Engine Size</td>
-                    <td>{car.engineSize}</td>
+                    <td className='text-center'>{car.engineSize}</td>
                 </tr>
                 <tr>
                     <td className="first">Engine Number</td>
                     {
-                        car.engineNumber !== '' ? ( <td> {car.engineNumber}</td>) : (<td>Not Available</td>)
+
+                        car.engineNumber!= undefined ? ( <td className='text-center'> {car.engineNumber}</td>) : (<td className='text-center bg-gray-100 text-red-600'>Not Available</td>)
                     }
                 </tr>
                 <tr>
                     <td className="first">Vehicle Category</td>
-                    <td>{car.vehicleCategory}</td>
+                    <td className='text-center'>{car.vehicleCategory}</td>
                 </tr>
                 <tr>
                     <td className="first">Body Length</td>
-                    <td>{car.lengthOfCar}</td>
+                    {
+                        car.lengthOfCar != 0 ? ( <td className='text-center'> {car.lengthOfCar}</td>) : (<td className='text-center bg-gray-100 text-red-600'>Not Available</td>)
+                    }
                 </tr>
                 <tr>
                     <td className="first">Dimension</td>
-                    <td>{car.M3}</td>
+                     {car.M3 != undefined ? ( <td className='text-center'> {car.M3}</td>) : (<td className='text-center bg-gray-100 text-red-600'>Not Available</td>)}
+                </tr>
+                <tr>
+                    <td className="first">Steering Type</td>
+                    {
+                        car.steeringTypeId == 1 ? ( <td className='text-center'> Right Hand</td>) : (<td className='text-center'>Left Hand</td>)
+                    }
+
                 </tr>
                 </tbody>
             </table>
-            <table className="keyinfo">
+            <table className="keyinfo shadow-md sm:rounded-lg">
                 <tbody>
                 <tr>
                     <td className="first">Chasis Number</td>
                     {
-                        car.chasisNumber !== '' ? ( <td> {car.chasisNumber}</td>) : (<td>Not Available</td>)
+                        car.chasisNumber !== '' ? ( <td className='text-center'> {car.chasisNumber}</td>) : (<td className='text-center bg-gray-100 text-red-600'>Not Available</td>)
                     }
                 </tr>
                 <tr>
                     <td className="first">Axle Type</td>
-                    <td>{car.axle}</td>
+                    <td className='text-center'>{car.axle}</td>
                 </tr>
                 <tr>
                     <td className="first">Fuel</td>
-                    <td>{car.typeOfFuel}</td>
+                    <td className='text-center'>{car.typeOfFuel}</td>
                 </tr>
                 <tr>
                     <td className="first">Mileage</td>
-                    <td>{car.mileage}</td>
+                    <td  className='text-center'>{NumberFormat(car.mileage)} Kms</td>
                 </tr>
                 <tr>
                     <td className="first">Loading Capacity</td>
-                    <td>{car.loadingCapacity}</td>
+                    {
+                        car.loadingCapacity != '' ? ( <td className='text-center'> {car.loadingCapacity}</td>) : (<td className='text-center bg-gray-100 text-red-600'>Not Available</td>)
+                    }
+
                 </tr>
+
                 <tr>
                     <td className="first">Colour</td>
-                    <td>{car.colorName}</td>
+                    <td className='text-center'>{car.colorName}</td>
                 </tr>
                 </tbody>
             </table>
         </div>
-        <div className="features">
+        <div className="features ">
             <h2>Features</h2>
-            <ul className="featureitem">
+            <ul className="featureitem ">
                 {
 
                     // stockOptions

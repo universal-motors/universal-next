@@ -66,7 +66,7 @@ export default  function TopCountryTimeBar({stockCount}:Props){
                 </div>
             </div>
             <div className="col-lg-4 col-md-6 col-12 text-center mt-1">
-                <div className="flex items-center mt-3 pl-44">
+                <div className="flex items-center mt-3">
                     <img alt="UAE Flag" src="/assets/images/flags/uae_flag.jpg" className="h-4 mr-2" />
                     <img alt="UAE Time" src="/assets/images/Clock.svg" className="h-5" />
                     <span className="inline-flex items-center gap-x-1.5 ml-3 rounded-md bg-green-100 px-2 py-1 text-xs font-medium text-green-900">

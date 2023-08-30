@@ -8,6 +8,7 @@ import TruckKeyInformation from "@/app/global/results/trucks/[id]/TruckKeyInform
 import TruckSpecification from "@/app/global/results/trucks/[id]/TruckSpecification";
 import {Trucks} from "@/models/Trucks";
 import {useQuery} from "react-query";
+import DescriptionUI from "@/components/ui/DescriptionUI";
 
 interface Props {
     params: {
@@ -57,6 +58,7 @@ export default async function CarDetailed({params}:Props){
                                         <div className="shipping-details">
                                             <TruckSpecification car={Stock.data} location={InventoryLocation} />
                                             <TruckKeyInformation car={Stock.data}/>
+                                            <DescriptionUI description={Stock.data.description}/>
                                         </div>
                                     </div>
                                     <div className="col-lg-6 col-md-6">
@@ -122,6 +124,7 @@ export default async function CarDetailed({params}:Props){
                                         />
                                         {/*<InquiryForm/>*/}
                                         <ContactUs/>
+
                                     </div>
 
 

@@ -6,6 +6,7 @@ import PriceCalculator from "@/app/global/results/cars/[id]/PriceCalculator";
 import InquiryForm from "@/app/global/results/cars/[id]/InquiryForm";
 import agent from "@/api/agent";
 import ContactUs from "@/components/pages/contact/ContactUs";
+import DescriptionUI from "@/components/ui/DescriptionUI";
 
 interface Props {
     params: {
@@ -45,6 +46,7 @@ export default async function CarDetailed({params}:Props){
                                         <div className="shipping-details">
                                             <StockSpecification car={Stock.data} location={InventoryLocation} />
                                             <StockKeyInformation car={Stock.data}/>
+                                            <DescriptionUI description={Stock.data.description}/>
                                         </div>
                                     </div>
                                     <div className="col-lg-6 col-md-6">
@@ -110,6 +112,7 @@ export default async function CarDetailed({params}:Props){
                                         />
                                         {/*<InquiryForm/>*/}
                                         <ContactUs/>
+
                                     </div>
 
 

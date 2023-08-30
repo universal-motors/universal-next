@@ -3,13 +3,15 @@ import FaqComponent from "@/components/layout/FaqComponent";
 import PriceFormat from "@/utils/PriceFormat";
 import {StockCars} from "@/models/StockCars";
 import Image from "next/image";
+import {Trucks} from "@/models/Trucks";
 
 interface Props {
     stockcars : StockCars[]
+    trucks: Trucks[]
 }
 
 
-export default function HomePageCarListings ({stockcars}:Props) {
+export default function HomePageCarListings ({stockcars,trucks}:Props) {
 
     return (
         <>
@@ -37,6 +39,40 @@ export default function HomePageCarListings ({stockcars}:Props) {
                                    // .slice(0,10)
                                     .map(car=> (
                                         <Link key={car.stockId} href={`/global/results/cars/${car.stockId}`}>
+                                            <div className="shadow border col-sm transition duration-300 ease-in-out hover:scale-110 bg-green-50"  >
+                                                <div className="cardimage">
+                                                    <Image  src={car.imageUrl} alt={car.slug} title={car.slug} height={185} width={242} />
+                                                </div>
+                                                <div className="cardcontent">
+                                                    <h4>{car.listingTitle}</h4>
+                                                    <p className="modelno">{car.modelCode}</p>
+                                                    <p className="car-price">Price:  <span><PriceFormat carPrice={car.price} /></span></p>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    ))
+                            }
+
+                        </div>
+                    </div>
+                    <div>
+                        {/*<h2 className="text-blue-800">Most Popular in <span>your Country</span></h2>*/}
+                        <div className="flex inline">
+                            <h2 className="text-blue-800">
+                                Most Recent <span> Listed Trucks </span>
+                            </h2>
+                            {/*<img src="/assets/images/flags/JP.svg" className="img-fluid ml-2 h-5" alt="Japan" />*/}
+                        </div>
+
+
+
+                        <div className="carsrow row py-5">
+                            {
+
+                                trucks
+                                    .slice(0,10)
+                                    .map(car=> (
+                                        <Link key={car.stockId} href={`/global/results/trucks/${car.stockId}`}>
                                             <div className="shadow border col-sm transition duration-300 ease-in-out hover:scale-110 bg-green-50"  >
                                                 <div className="cardimage">
                                                     <Image  src={car.imageUrl} alt={car.slug} title={car.slug} height={185} width={242} />
