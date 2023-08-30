@@ -46,6 +46,7 @@ export default async function CarDetailed({params}:Props){
                                         <div className="shipping-details">
                                             <StockSpecification car={Stock.data} location={InventoryLocation} />
                                             <StockKeyInformation car={Stock.data}/>
+                                            <DescriptionUI description={Stock.data.description}/>
                                         </div>
                                     </div>
                                     <div className="col-lg-6 col-md-6">
@@ -111,7 +112,7 @@ export default async function CarDetailed({params}:Props){
                                         />
                                         {/*<InquiryForm/>*/}
                                         <ContactUs/>
-                                        <DescriptionUI description={Stock.data.description}/>
+
                                     </div>
 
 

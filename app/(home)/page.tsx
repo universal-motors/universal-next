@@ -9,6 +9,11 @@ const GetStock = async ()  => {
     return result.data
 }
 
+const GetTrucks = async ()  => {
+    const result =await agent.LoadData.truckList("pageNumber=1&orderby=stockid%20desc&PAGESIZE=10",1);//db.tblCars.findMany({where: {IsActive:true}});
+    return result.data
+}
+
 const GetBodyTypes = async () => {
     const result = await agent.LoadData.bodyTypeList();// db.tblBodyTypes.findMany({where: {isActive:true}});
     return result.data
@@ -22,6 +27,7 @@ const GetCarMakes = async () => {
 export default async function Home() {
 
     const stocks = await GetStock();
+    const topTrucks =await GetTrucks();
     const bodyTypes = await GetBodyTypes();
     const makes = await GetCarMakes();
 
@@ -31,7 +37,7 @@ export default async function Home() {
 
               <HomeUI  bodyTlist={bodyTypes} makeList={makes}/>
               <div className="carboxes mt-3">
-                  <HomePageCarListings stockcars={stocks} />
+                  <HomePageCarListings stockcars={stocks} trucks={topTrucks} />
               </div>
 
 
