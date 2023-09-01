@@ -21,12 +21,22 @@ const GetCarMakes = async () => {
     return await  agent.LoadData.carMakeList();//return await prisma.tblMakes.findMany({where: {isActive:true}} );
 }
 const GetStockCount = async () => {
-    const test = await agent.StockCount;
-     return test;
+    const data = await agent.StockCount;
+     return data;
     //return await agent.LoadData.stockCount();
     //db.tblMasterCountry.findMany({where: {IsActive:true}} );
 }
+const GetPortMapping = async () => {
+    const data = await agent.LoadData.portmapping();
+    return data.data;
 
+}
+
+const GetAllPorts = async () => {
+    const data = await agent.LoadData.portsList();
+    return data.data;
+
+}
 
 
 
@@ -39,7 +49,8 @@ export default async function RootLayout({
     const bodyTypes = await GetBodyTypes();
     const locations = await GetLocations();
     const makes = await GetCarMakes();
-  //  const stock = await GetStock();
+    const portList = await GetAllPorts();
+    const portMapping = await GetPortMapping();
     const stockCount = await GetStockCount();
 
 
@@ -48,7 +59,7 @@ export default async function RootLayout({
 
     <>
 
-        <Header bodyTypes={bodyTypes.data} stockCount={stockCount} locations={locations.data} makes={makes.data}/>
+        <Header ports={portList}  portMapping={portMapping} stockCount={stockCount} locations={locations.data}/>
         <FrontSlider />
         <section className="sidebar-menu">
             <div className="container-fluid">

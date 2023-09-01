@@ -7,7 +7,6 @@ import ContactUs from "@/components/pages/contact/ContactUs";
 import TruckKeyInformation from "@/app/global/results/trucks/[id]/TruckKeyInformation";
 import TruckSpecification from "@/app/global/results/trucks/[id]/TruckSpecification";
 import {Trucks} from "@/models/Trucks";
-import {useQuery} from "react-query";
 import DescriptionUI from "@/components/ui/DescriptionUI";
 
 interface Props {

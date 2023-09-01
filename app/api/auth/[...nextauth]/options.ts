@@ -5,11 +5,32 @@ import GoogleProvider from 'next-auth/providers/google'
 import EmailProvider from 'next-auth/providers/email'
 import CredentialsProvider from 'next-auth/providers/credentials';
 import agent from "@/api/agent";
+import {Customer} from "@/models/Customer";
+
 
 
 
 export  const options: NextAuthOptions = {
     providers: [
+        // CredentialsProvider({
+        //
+        //     // The name to display on the sign-in form (e.g. "Sign in with...")
+        //     name: 'Credentials',
+        //     credentials: {
+        //         username: { label: 'Username', type: 'text' },
+        //         password: {  label: 'Password', type: 'password' },
+        //     },
+        //     async authorize(credentials:Customer) {
+        //         // Call your custom API's login endpoint and return user data if successful
+        //         const user = await agent.Account.login(credentials);
+        //         if (user) {
+        //             return user;
+        //         } else {
+        //             return null;
+        //         }
+        //     }
+        // }),
+
         GitHubProvider({
             clientId: process.env.GITHUB_ID as string,
             clientSecret: process.env.GITHUB_SECRET as string,
@@ -55,6 +76,9 @@ export  const options: NextAuthOptions = {
                 return null
             }
         })
+
+
+
     ],
 
 
