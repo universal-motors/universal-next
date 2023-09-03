@@ -143,7 +143,8 @@ const StockCount = getData();
 const agent = {
     LoadData,
     Account,
-    StockCount
+    StockCount,
+    basUrl: baseURL
 };
 
 

@@ -1,10 +1,12 @@
 'use client'
 import {Controller, useForm} from 'react-hook-form'
-import {Customer} from "@/models/Customer";
+import {CustomerSignUp} from "@/models/Customer";
 import {Country} from "@/models/Master/Country";
 import {Ports} from "@/models/Master/Ports";
 import {PortMapping} from "@/models/Master/PortMapping";
 import {FormEvent} from "react";
+import agent from "@/api/agent";
+import {POST} from "@/app/api/auth/[...nextauth]/route";
 
 
 
@@ -16,10 +18,10 @@ interface Props {
 }
 
 function SignUp({countries, ports,portMapping,setSignIn}: Props) {
-    const form = useForm<Customer>();
+    const form = useForm<CustomerSignUp>();
     const {register,control,formState, handleSubmit} = form;
     const {errors} = formState;
-
+    const role = ["Customer"]
     const handleSignIn = (event:FormEvent) => {
         // event.preventDefault()
         setSignIn(true)
@@ -31,10 +33,31 @@ function SignUp({countries, ports,portMapping,setSignIn}: Props) {
     return (
         <>
         <div className="p-3">
-            <p className="text-sm text-gray-500">
-                <form onSubmit={handleSubmit((data)=>{
-                    console.log(data)
-                })}>
+            <div className="text-sm text-gray-500">
+                <form onSubmit={handleSubmit(async (data) => {
+                  // console.log(data)
+                    try {
+                        const response = await fetch(agent.basUrl+'authentication',
+                            {
+                                method:'POST',
+                                headers: {'Content-Type': 'application/json'},
+                                body: JSON.stringify(data)
+                            }
+                        )
+
+                        if (!response.ok){
+                            throw new Error("Something went wrong, we cant register you at the moment")
+                        }
+
+                        const test =await agent.Account.login(data)
+                        console.log(test)
+
+                    }catch (e) {
+                        console.log(e)
+                    }
+                }
+                )}>
+                    <input {...register("roles")} value={role} type="text"/>
                     <div className=" flex justify-between text-sm">
                         <input {...register("firstname")} type="text" className="border rounded p-2 py-3 w-[49%]" placeholder="First Name" required/>
                         <input {...register("lastname")}  type="text" className="border rounded p-2 py-3 w-[49%]" placeholder="Last Name" />
@@ -93,7 +116,7 @@ function SignUp({countries, ports,portMapping,setSignIn}: Props) {
                     </div>
                 </form>
 
-            </p>
+            </div>
         </div>
 
 

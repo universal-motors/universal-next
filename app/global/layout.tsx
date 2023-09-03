@@ -24,6 +24,16 @@ const GetStockCount = async () => {
   //db.tblMasterCountry.findMany({where: {IsActive:true}} );
 }
 
+const GetPorts = async () => {
+  const result = await  agent.LoadData.portsList();
+  return result.data;
+}
+
+const GetMappingPort = async () => {
+  const result = await  agent.LoadData.portmapping();
+  return result.data;
+}
+
 export default async function RootLayout({
   children,
 }: {
@@ -33,12 +43,14 @@ export default async function RootLayout({
   const locations = await GetLocations();
   const makes = await GetCarMakes();
   const stockCount = await GetStockCount();
+  const portList = await GetPorts();
+  const portMap = await GetMappingPort();
 
   return (
 
     <>
 
-        <Header bodyTypes={bodyTypes.data} stockCount={stockCount.data} locations={locations.data} makes={makes.data}/>
+        <Header ports={portList} portMapping={portMap} stockCount={stockCount.data} locations={locations.data}/>
         <section className="sidebar-menu">
           <div className="container-fluid">
             <div className="row">
@@ -56,3 +68,4 @@ export default async function RootLayout({
 
   )
 }
+
