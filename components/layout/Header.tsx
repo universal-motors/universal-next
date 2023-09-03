@@ -13,18 +13,23 @@ import {StockCars} from "@/models/StockCars";
 import Link from "next/link";
 import {useSession} from "next-auth/react";
 import SignInComponentUI from "@/components/ui/SigninSignOutUI";
+import AuthModal from "@/components/user/Auth/AuthModal";
+import {Ports} from "@/models/Master/Ports";
+import {PortMapping} from "@/models/Master/PortMapping";
 
 interface Props{
     locations : Country[]
-    bodyTypes : BodyType[]
-    makes : Make[]
+   // bodyTypes : BodyType[]
+   // makes : Make[]
+    ports : Ports[]
+    portMapping : PortMapping[]
     stockCount : number
 }
 
 const currentYear = new Date().getFullYear()
 
 
-function Header({locations, bodyTypes,makes,  stockCount}:Props) {
+function Header({locations, ports, portMapping, stockCount}:Props) {
   //  const { data: session } = useSession()
       return (
           <>
@@ -108,7 +113,9 @@ function Header({locations, bodyTypes,makes,  stockCount}:Props) {
                                           </div>
                                       </div>
                                   </div>
-                                  <SignInComponentUI/>
+                                <AuthModal countryList={locations} portList={ports} portMapping={portMapping}/>
+
+                                  {/*<SignInComponentUI/>*/}
                               </div>
                           </div>
                       </div>

@@ -5,7 +5,6 @@ import { Analytics } from '@vercel/analytics/react';
 import Script from "next/script";
 import NextTopLoader from 'nextjs-toploader';
 import NextAuthSessionProvider from "@/context/NextSessionProvider";
-import {QueryClient, QueryClientProvider} from "react-query";
 import React, {ReactNode} from "react";
 
 
@@ -15,7 +14,7 @@ export default async function RootLayout({ children,
     children: ReactNode
 }) {
 
-    const client = new QueryClient();
+
 
     return (
 
@@ -41,10 +40,8 @@ export default async function RootLayout({ children,
             />
 
                    <NextAuthSessionProvider>
-                       {/*<QueryClientProvider client={client}>*/}
-                            {children}
-                       {/*</QueryClientProvider>*/}
-                   </NextAuthSessionProvider>
+                        {children}
+                    </NextAuthSessionProvider>
                 <Analytics />
 
             </body>

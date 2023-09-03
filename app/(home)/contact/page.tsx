@@ -1,6 +1,4 @@
-import InquiryForm from "@/app/global/results/cars/[id]/InquiryForm";
 import ContactUs from "@/components/pages/contact/ContactUs";
-import Link from "next/link";
 
 export default function Page() {
     return (
