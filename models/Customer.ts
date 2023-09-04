@@ -4,12 +4,13 @@ export interface CustomerSignUp {
     firstname: string,
     lastname: string,
     password: string,
+    confirmPassword: string,
     token : string,
     email: string,
-    phone: string,
-    roles: string,
+    phoneNumber: string,
+    roles: string[],
     countryID : number,
-    prefferedPortID : number
+    preferredPortId : number
 
 }
 

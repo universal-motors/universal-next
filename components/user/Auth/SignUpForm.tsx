@@ -5,8 +5,7 @@ import {Country} from "@/models/Master/Country";
 import {Ports} from "@/models/Master/Ports";
 import {PortMapping} from "@/models/Master/PortMapping";
 import {FormEvent} from "react";
-import agent from "@/api/agent";
-import {POST} from "@/app/api/auth/[...nextauth]/route";
+import {signIn} from "next-auth/react";
 
 
 
@@ -21,7 +20,7 @@ function SignUp({countries, ports,portMapping,setSignIn}: Props) {
     const form = useForm<CustomerSignUp>();
     const {register,control,formState, handleSubmit} = form;
     const {errors} = formState;
-    const role = ["Customer"]
+    const role = ["Customer",]
     const handleSignIn = (event:FormEvent) => {
         // event.preventDefault()
         setSignIn(true)
@@ -35,29 +34,35 @@ function SignUp({countries, ports,portMapping,setSignIn}: Props) {
         <div className="p-3">
             <div className="text-sm text-gray-500">
                 <form onSubmit={handleSubmit(async (data) => {
-                  // console.log(data)
+                    data.roles = ["Customer",]
+                    //console.log(data)
                     try {
-                        const response = await fetch(agent.basUrl+'authentication',
+                        const response = await fetch('https://api20230805195433.azurewebsites.net/api/authentication',//agent.basUrl+'authentication/',
                             {
                                 method:'POST',
                                 headers: {'Content-Type': 'application/json'},
                                 body: JSON.stringify(data)
                             }
                         )
-
+                        console.log(response)
                         if (!response.ok){
                             throw new Error("Something went wrong, we cant register you at the moment")
                         }
 
-                        const test =await agent.Account.login(data)
-                        console.log(test)
+                        await signIn('credentials', {
+                            username: data.username,
+                            password: data.password,
+                        })
+
+                        console.log("Account created successfully");
+
 
                     }catch (e) {
                         console.log(e)
                     }
                 }
                 )}>
-                    <input {...register("roles")} value={role} type="text"/>
+
                     <div className=" flex justify-between text-sm">
                         <input {...register("firstname")} type="text" className="border rounded p-2 py-3 w-[49%]" placeholder="First Name" required/>
                         <input {...register("lastname")}  type="text" className="border rounded p-2 py-3 w-[49%]" placeholder="Last Name" />
@@ -76,7 +81,7 @@ function SignUp({countries, ports,portMapping,setSignIn}: Props) {
 
                             }
                         </select>
-                        <select className="border rounded p-2 w-[49%]"  {...register("prefferedPortID")} placeholder="Select Port">
+                        <select className="border rounded p-2 w-[49%]"  {...register("preferredPortId")} placeholder="Select Port">
                             {
                                 ports
                                     .map(country=> (
@@ -94,7 +99,7 @@ function SignUp({countries, ports,portMapping,setSignIn}: Props) {
                                 message: "Invalid email address"
                             }
                         })} type="email"  className="border rounded p-2 w-[49%]" placeholder="Email Address" required/>
-                        <input {...register("phone",{
+                        <input {...register("phoneNumber",{
                             required: "Phone number is required",
                         })} placeholder="Phone Number"  className="border rounded p-2 py-3 w-[49%]" />
                     </div>
@@ -103,6 +108,7 @@ function SignUp({countries, ports,portMapping,setSignIn}: Props) {
                             required: "Username is required",
                         })} type="text" className="border rounded p-2 w-[49%]" placeholder="Username" required/>
                         <input {...register("password")} type="password"  className="border rounded p-2 py-3 w-[49%]" placeholder="Password" required/>
+                        <input {...register("confirmPassword")} type="password"  className="border rounded p-2 py-3 w-[49%]" placeholder="Confirm Password" required/>
                     </div>
                     <div className="my-3 flex justify-between text-sm">
                     <button
