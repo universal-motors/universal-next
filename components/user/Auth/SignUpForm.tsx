@@ -4,7 +4,7 @@ import {CustomerSignUp} from "@/models/Customer";
 import {Country} from "@/models/Master/Country";
 import {Ports} from "@/models/Master/Ports";
 import {PortMapping} from "@/models/Master/PortMapping";
-import {FormEvent} from "react";
+import {ChangeEvent, FormEvent, useEffect, useState} from "react";
 import {signIn} from "next-auth/react";
 
 
@@ -17,14 +17,30 @@ interface Props {
 }
 
 function SignUp({countries, ports,portMapping,setSignIn}: Props) {
+    const [countryID, setCountryID] = useState(0);
+    const [portID, setPortID] = useState(0);
+    const [mappedPorts, setMappedPorts] = useState<PortMapping[]>([]);
+    const [countryCode, setCountryCode] = useState("");
     const form = useForm<CustomerSignUp>();
     const {register,control,formState, handleSubmit} = form;
     const {errors} = formState;
     const role = ["Customer",]
+
     const handleSignIn = (event:FormEvent) => {
         // event.preventDefault()
         setSignIn(true)
     }
+
+    const handleCountryChange = (event:ChangeEvent<HTMLSelectElement>) => {
+        const destinationID =parseInt(event.target.value)
+        setCountryID(destinationID)
+        setPortID(0)
+       const ports = portMapping.filter(port=> port.countryID == destinationID);
+        setMappedPorts(ports)
+        setCountryCode(countries.filter(x=>x.countryId==destinationID)[0].countryCode)
+
+    };
+
 
 
 
@@ -67,27 +83,27 @@ function SignUp({countries, ports,portMapping,setSignIn}: Props) {
                         <input {...register("firstname")} type="text" className="border rounded p-2 py-3 w-[49%]" placeholder="First Name" required/>
                         <input {...register("lastname")}  type="text" className="border rounded p-2 py-3 w-[49%]" placeholder="Last Name" />
                     </div>
+                    {/*<div className="flex justify-between text-sm">*/}
+                    {/*    <label className=" rounded p-2 w-[49%]"  htmlFor="username" >Your Country</label>*/}
+                    {/*    <label className=" rounded p-2 w-[49%]"  htmlFor="username" >Preffered Port</label>*/}
+                    {/*</div>*/}
                     <div className="flex justify-between text-sm">
-                        <label className=" rounded p-2 w-[49%]"  htmlFor="username" >Your Country</label>
-                        <label className=" rounded p-2 w-[49%]"  htmlFor="username" >Preffered Port</label>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                        <select className="border rounded p-2 w-[49%]" {...register("countryID")} placeholder="Select Country">
+                       <select className="mt-3 border rounded p-2 w-[49%]" {...register("countryID")} onChange={handleCountryChange} placeholder="Select Country">
+                            <option value={0}>Select Country</option>
                             {
                                 countries
                                     .map(country=> (
-                                        <option key={country.countryId} value={country.countryId}>{country.countryName}</option>
+                                        <option key={country.countryId}  value={country.countryId}>{country.countryName}</option>
                                     ))
-
                             }
                         </select>
-                        <select className="border rounded p-2 w-[49%]"  {...register("preferredPortId")} placeholder="Select Port">
+                        <select  value={portID} className="mt-3 border rounded p-2 w-[49%]"  aria-expanded="true" aria-haspopup="true">
+                            <option  value={0}>Select Port</option>
                             {
-                                ports
-                                    .map(country=> (
-                                        <option key={country.portId} value={country.portId}>{country.portName}</option>
+                                mappedPorts
+                                    .map(port=> (
+                                        <option key={port.portId} value={port.portId}>{ports.find(x=>x.portId==port.portId)?.portName}</option>
                                     ))
-
                             }
                         </select>
                     </div>
@@ -101,7 +117,7 @@ function SignUp({countries, ports,portMapping,setSignIn}: Props) {
                         })} type="email"  className="border rounded p-2 w-[49%]" placeholder="Email Address" required/>
                         <input {...register("phoneNumber",{
                             required: "Phone number is required",
-                        })} placeholder="Phone Number"  className="border rounded p-2 py-3 w-[49%]" />
+                        })} placeholder="Phone Number" defaultValue={countryCode}  className="border rounded p-2 py-3 w-[49%]" />
                     </div>
                     <div className="my-3 flex justify-between text-sm">
                         <input {...register("username", {
