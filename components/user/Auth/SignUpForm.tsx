@@ -6,6 +6,7 @@ import {Ports} from "@/models/Master/Ports";
 import {PortMapping} from "@/models/Master/PortMapping";
 import {ChangeEvent, FormEvent, useEffect, useState} from "react";
 import {signIn} from "next-auth/react";
+import agent from "@/api/agent";
 
 
 
@@ -42,42 +43,17 @@ function SignUp({countries, ports,portMapping,setSignIn}: Props) {
     };
 
 
-
-
-
     return (
         <>
         <div className="p-3">
             <div className="text-sm text-gray-500">
                 <form onSubmit={handleSubmit(async (data) => {
                     data.roles = ["Customer",]
-                    //console.log(data)
-                    try {
-                        const response = await fetch('https://api20230805195433.azurewebsites.net/api/authentication',//agent.basUrl+'authentication/',
-                            {
-                                method:'POST',
-                                headers: {'Content-Type': 'application/json'},
-                                body: JSON.stringify(data)
-                            }
-                        )
-                        console.log(response)
-                        if (!response.ok){
-                            throw new Error("Something went wrong, we cant register you at the moment")
-                        }
+                    await agent.Account.register(data);
 
-                        await signIn('credentials', {
-                            username: data.username,
-                            password: data.password,
-                        })
-
-                        console.log("Account created successfully");
+                })}>
 
 
-                    }catch (e) {
-                        console.log(e)
-                    }
-                }
-                )}>
 
                     <div className=" flex justify-between text-sm">
                         <input {...register("firstname")} type="text" className="border rounded p-2 py-3 w-[49%]" placeholder="First Name" required/>
@@ -97,7 +73,7 @@ function SignUp({countries, ports,portMapping,setSignIn}: Props) {
                                     ))
                             }
                         </select>
-                        <select  value={portID} className="mt-3 border rounded p-2 w-[49%]"  aria-expanded="true" aria-haspopup="true">
+                        <select  {...register("preferredPortId")} className="mt-3 border rounded p-2 w-[49%]"  aria-expanded="true" aria-haspopup="true">
                             <option  value={0}>Select Port</option>
                             {
                                 mappedPorts

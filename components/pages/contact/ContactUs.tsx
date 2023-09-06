@@ -7,7 +7,11 @@ import emailjs from '@emailjs/browser';
 function classNames(...classes:string[]) {
     return classes.filter(Boolean).join(' ')
 }
-export default function ContactUs (){
+
+interface Props{
+    stockcode: string
+}
+export default function ContactUs ({stockcode}:Props) {
     const [agreed, setAgreed] = useState(false)
     const form = useRef<HTMLFormElement>(null);
     let [isOpen, setIsOpen] = useState(false)
@@ -19,6 +23,7 @@ export default function ContactUs (){
 
     const sendEmail = (e:FormEvent) => {
         e.preventDefault();
+
         if (!agreed){
             console.log('no message sent')
         }else{
@@ -108,6 +113,7 @@ export default function ContactUs (){
                                     />
                                 </div>
                             </div>
+                            <input value={stockcode} id="stockcode" name="stockcode" hidden/>
 
                             <div className="sm:col-span-2">
                                 <label htmlFor="message" className="block text-sm font-semibold leading-6 text-gray-900">

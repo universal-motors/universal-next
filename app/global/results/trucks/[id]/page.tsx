@@ -122,7 +122,7 @@ export default async function CarDetailed({params}:Props){
                                             inspectionCost={inspectionCost.data}
                                         />
                                         {/*<InquiryForm/>*/}
-                                        <ContactUs/>
+                                        <ContactUs stockcode={Stock.data.stockCode}/>
 
                                     </div>
 

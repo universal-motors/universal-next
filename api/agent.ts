@@ -22,6 +22,7 @@ import {CarOptionsMapping} from "@/models/Master/CarOptionsMapping";
 import {Trucks} from "@/models/Trucks";
 import {Customer, UserFormValues} from "@/models/Customer";
 import {PaginationHeader} from "@/models/Master/Pagination";
+import {signIn} from "next-auth/react";
 
 //const baseURL = 'https://localhost:5001/api/';
 const baseURL = 'https://api20230805195433.azurewebsites.net/api/';
@@ -145,7 +146,7 @@ const Account = {
     //   -------Accounts
     currentUser : async (token: string) : Promise<Customer> => await getUser(token),
     //request.get<Customer>('authentication', user),
-    register: (user: UserFormValues) => request.post<Customer>('authentication', user),
+    register: (user: UserFormValues) => registertUser(user),//request.post<Customer>('authentication', user),
     login: (user: UserFormValues) => request.post<{token: string}>('authentication/login', user),
 
 }
@@ -175,11 +176,34 @@ async function getData() {
     return res.json()
 }
 
+async function registertUser(user: UserFormValues) {
+    try {
+        const response = await fetch('https://api20230805195433.azurewebsites.net/api/authentication',//agent.basUrl+'authentication/',
+            {
+                method:'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(user)
+            }
+        )
+        console.log(response)
+        if (!response.ok){
+            throw new Error("Something went wrong, we cant register you at the moment")
+        }
+
+        await signIn('credentials', {
+            username: user.username,
+            password: user.password,
+        })
+
+        console.log("Account created successfully");
 
 
-// const getUser(token:string) => {
-//
-// }
+    }catch (e) {
+        console.log(e)
+    }
+}
+
+
 async  function getUser(token:string): Promise<Customer>   {
     const currentUser =  await fetch('https://api20230805195433.azurewebsites.net/api/authentication',
         {
