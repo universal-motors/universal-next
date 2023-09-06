@@ -22,10 +22,12 @@ import {CarOptionsMapping} from "@/models/Master/CarOptionsMapping";
 import {Trucks} from "@/models/Trucks";
 import {Customer, UserFormValues} from "@/models/Customer";
 import {PaginationHeader} from "@/models/Master/Pagination";
+import {signIn} from "next-auth/react";
 
 //const baseURL = 'https://localhost:5001/api/';
 const baseURL = 'https://api20230805195433.azurewebsites.net/api/';
 const parseResponse = async <T>(response: Response): Promise<{ data: T, paginationHeader: PaginationHeader }> => {
+
     if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
     }
@@ -39,6 +41,16 @@ const parseResponse = async <T>(response: Response): Promise<{ data: T, paginati
         paginationHeader
     };
 };
+
+const parseUserResponse = async <Customer>(response: Response): Promise<Customer> => {
+    if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const data: Customer = await response.json();
+    return data;
+
+};
+
 
 
 const request = {
@@ -132,9 +144,10 @@ const LoadData = {
 
 const Account = {
     //   -------Accounts
-    currentUser : () => request.get<Customer>('authentication'),
-    register: (user: UserFormValues) => request.post<Customer>('authentication', user),
-    login: (user: UserFormValues) => request.post<Customer>('authentication/login', user),
+    currentUser : async (token: string) : Promise<Customer> => await getUser(token),
+    //request.get<Customer>('authentication', user),
+    register: (user: UserFormValues) => registertUser(user),//request.post<Customer>('authentication', user),
+    login: (user: UserFormValues) => request.post<{token: string}>('authentication/login', user),
 
 }
 
@@ -163,9 +176,49 @@ async function getData() {
     return res.json()
 }
 
+async function registertUser(user: UserFormValues) {
+    try {
+        const response = await fetch('https://api20230805195433.azurewebsites.net/api/authentication',//agent.basUrl+'authentication/',
+            {
+                method:'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(user)
+            }
+        )
+        console.log(response)
+        if (!response.ok){
+            throw new Error("Something went wrong, we cant register you at the moment")
+        }
+
+        await signIn('credentials', {
+            username: user.username,
+            password: user.password,
+        })
+
+        console.log("Account created successfully");
 
 
+    }catch (e) {
+        console.log(e)
+    }
+}
 
+
+async  function getUser(token:string): Promise<Customer>   {
+    const currentUser =  await fetch('https://api20230805195433.azurewebsites.net/api/authentication',
+        {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}` // Adding the Bearer token to the headers
+
+            },
+
+        });
+        const response = await parseUserResponse(currentUser);
+        console.log(response)
+        return response as Customer;
+}
 
 
 

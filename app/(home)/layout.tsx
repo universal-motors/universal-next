@@ -15,7 +15,8 @@ const GetBodyTypes = async () => {
     return await agent.LoadData.bodyTypeList();// db.tblBodyTypes.findMany({where: {isActive:true}});
 }
 const GetLocations = async () => {
-    return await agent.LoadData.inventoryLocationList();//return await prisma.tblMasterCountry.findMany({where: {IsActive:true}} );
+    const result = await agent.LoadData.countryList();//return await prisma.tblMasterCountry.findMany({where: {IsActive:true}} );
+    return result.data;
 }
 const GetCarMakes = async () => {
     return await  agent.LoadData.carMakeList();//return await prisma.tblMakes.findMany({where: {isActive:true}} );
@@ -48,6 +49,7 @@ export default async function RootLayout({
 
     const bodyTypes = await GetBodyTypes();
     const locations = await GetLocations();
+    const inventoryLocation = locations.filter(x => x.isInventoryLocation && x.isActive);
     const makes = await GetCarMakes();
     const portList = await GetAllPorts();
     const portMapping = await GetPortMapping();
@@ -59,17 +61,17 @@ export default async function RootLayout({
 
     <>
 
-        <Header ports={portList}  portMapping={portMapping} stockCount={stockCount} locations={locations.data}/>
+        <Header ports={portList}  portMapping={portMapping} stockCount={stockCount} locations={locations}/>
         <FrontSlider />
         <section className="sidebar-menu">
             <div className="container-fluid">
                 <div className="row">
-                    <Sidebar  locations={locations.data} makes={makes.data}/>
+                    <Sidebar  locations={inventoryLocation} makes={makes.data}/>
                     {children}
                 </div>
             </div>
         </section>
-        <Footer bodyTypes={bodyTypes.data} locations={locations.data} makes={makes.data}/>
+        <Footer bodyTypes={bodyTypes.data} locations={inventoryLocation} makes={makes.data}/>
     </>
 
 

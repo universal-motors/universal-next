@@ -10,37 +10,18 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 
 export  const options: NextAuthOptions = {
     providers: [
-        // CredentialsProvider({
-        //
-        //     // The name to display on the sign-in form (e.g. "Sign in with...")
-        //     name: 'Credentials',
-        //     credentials: {
-        //         username: { label: 'Username', type: 'text' },
-        //         password: {  label: 'Password', type: 'password' },
-        //     },
-        //     async authorize(credentials:Customer) {
-        //         // Call your custom API's login endpoint and return user data if successful
-        //         const user = await agent.Account.login(credentials);
-        //         if (user) {
-        //             return user;
-        //         } else {
-        //             return null;
-        //         }
-        //     }
+        // GitHubProvider({
+        //     clientId: process.env.GITHUB_ID as string,
+        //     clientSecret: process.env.GITHUB_SECRET as string,
         // }),
-
-        GitHubProvider({
-            clientId: process.env.GITHUB_ID as string,
-            clientSecret: process.env.GITHUB_SECRET as string,
-        }),
-        FacebookProvider({
-            clientId: process.env.FACEBOOK_ID as string,
-            clientSecret: process.env.FACEBOOK_SECRET as string,
-        }),
-        GoogleProvider({
-            clientId: process.env.GOOGLE_ID as string,
-            clientSecret: process.env.GOOGLE_SECRET as string,
-        }),
+        // FacebookProvider({
+        //     clientId: process.env.FACEBOOK_ID as string,
+        //     clientSecret: process.env.FACEBOOK_SECRET as string,
+        // }),
+        // GoogleProvider({
+        //     clientId: process.env.GOOGLE_ID as string,
+        //     clientSecret: process.env.GOOGLE_SECRET as string,
+        // }),
 
         CredentialsProvider({
 
@@ -57,8 +38,8 @@ export  const options: NextAuthOptions = {
             },
             async authorize(credentials, req) {
 
-               //const res = await fetch("https://api20230805195433.azurewebsites.net/api/authentication/login", {
-               const res = await fetch("https://localhost:5001/api/authentication/login", {
+               const res = await fetch("https://api20230805195433.azurewebsites.net/api/authentication/login", {
+               //const res = await fetch("https://localhost:5001/api/authentication/login", {
                     method: 'POST',
                     body: JSON.stringify(credentials),
                     headers: { "Content-Type": "application/json" }
@@ -66,7 +47,7 @@ export  const options: NextAuthOptions = {
                 const user = await res.json()
                 // If no error and we have user data, return it
                 if (res.ok && user) {
-                    console.log(user)
+                    //console.log(user)
                     return user
                 }
                 // Return null if user data could not be retrieved
