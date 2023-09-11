@@ -7,9 +7,6 @@ import Navigation from "@/components/layout/Navigation";
 import Image from "next/image";
 
 import {Country} from "@/models/Master/Country";
-import {BodyType} from "@/models/Master/BodyType";
-import {Make} from "@/models/Master/Make";
-import {StockCars} from "@/models/StockCars";
 import Link from "next/link";
 import {useSession} from "next-auth/react";
 import SignInComponentUI from "@/components/ui/SigninSignOutUI";

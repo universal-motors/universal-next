@@ -44,6 +44,7 @@ export  const options: NextAuthOptions = {
                     body: JSON.stringify(credentials),
                     headers: { "Content-Type": "application/json" }
                 })
+
                 const user = await res.json()
                 // If no error and we have user data, return it
                 if (res.ok && user) {
@@ -59,6 +60,11 @@ export  const options: NextAuthOptions = {
 
 
     ],
+    session: {
+        strategy: "jwt",
+    },
+
+    debug: process.env.NODE_ENV === "development"
 
 
     // pages: {
