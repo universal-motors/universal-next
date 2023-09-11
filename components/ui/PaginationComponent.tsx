@@ -1,5 +1,5 @@
 'use client'
-import {Dispatch, SetStateAction} from "react";
+import {Dispatch, SetStateAction, useState} from "react";
 import {Button} from "@tremor/react";
 
 interface Props{
@@ -11,7 +11,7 @@ interface Props{
 
 export default function PaginationComponent({totalPost, currentPage, postPerPage, setCurrentPage}:Props) {
     const totalPages = Math.ceil(totalPost/postPerPage)
-    let pageNumbers:any = [];
+   let pageNumbers:any = [];
     //console.log(totalPages, currentPage, postPerPage)
     for(let i = currentPage -3; i <= currentPage + 3; i++){
         if (i<1) continue;
@@ -20,7 +20,7 @@ export default function PaginationComponent({totalPost, currentPage, postPerPage
 
     }
 
-    if (totalPost==0){
+    if (totalPost==undefined){
         return (
             <>
                 <nav
@@ -37,7 +37,26 @@ export default function PaginationComponent({totalPost, currentPage, postPerPage
 
             </>
         );
-    }else {
+    }
+    else if (totalPost==0){
+        return (
+            <>
+                <nav
+                    className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6"
+                    aria-label="Pagination"
+                >
+                    <div className="hidden sm:block">
+                        <p className="text-sm text-gray-700">
+                           No Result found
+                        </p>
+                    </div>
+
+                </nav>
+
+            </>
+        );
+    }
+    else {
 
 
         return (

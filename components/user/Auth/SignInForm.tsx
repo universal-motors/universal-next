@@ -7,7 +7,7 @@ import {useStore} from "@/store/store";
 import {CustomerSignUp} from "@/models/Customer";
 import {Button} from "@tremor/react";
 import {useRouter} from "next/navigation";
-
+import {getServerSession} from 'next-auth'
 
 export interface User {
     username: string;
