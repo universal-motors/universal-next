@@ -65,7 +65,6 @@ export default async function TruckKeyInformation({car}:Props){
                     {
                         car.steeringTypeId == 1 ? ( <td className='text-center'> Right Hand</td>) : (<td className='text-center'>Left Hand</td>)
                     }
-
                 </tr>
                 </tbody>
             </table>
