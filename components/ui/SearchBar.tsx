@@ -5,30 +5,50 @@ import {useRouter} from "next/navigation";
 import {FormEvent, useState, useTransition} from "react";
 import {TbTruck} from "react-icons/tb";
 
+const vehicleTypes = [
+    { id: '1', title: 'Cars' },
+    { id: '2', title: 'Trucks' },
+    { id: '3', title: 'Machinery' },
+]
 
 export default function SearchBar() {
     const router = useRouter();
+    const [searchCategory,setSearchCategory] = useState("1");
     const [searchKey,setSearchKey] = useState("");
 
 
-    const onHandleSubmitCar = (event:FormEvent) => {
+    const onHandleSubmit = (event:FormEvent) => {
         event.preventDefault()
         if(searchKey==="") return;
 
-        router.push(`/global/results/cars/?searchTerm=${searchKey}`)
+        switch (searchCategory) {
+            case '1':
+                router.push(`/global/results/cars/?searchTerm=${searchKey}`)
+                break;
+
+            case '2':
+                router.push(`/global/results/trucks/?searchTerm=${searchKey}`)
+                break;
+
+            case '3':
+                // Code to execute when searchCategory is 'case2'
+                break;
+            // Add more cases as needed
+            default:
+            // Code to execute when searchCategory doesn't match any case
+        }
+
+
+
         setSearchKey("")
 
     }
 
-    const onHandleSubmitTruck = (event:FormEvent) => {
-        event.preventDefault()
-        if(searchKey==="") return;
 
-        router.push(`/global/results/trucks/?searchTerm=${searchKey}`)
-        setSearchKey("")
-
-    }
-
+    const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const result = event.target.id
+        setSearchCategory(result);
+    };
 
     return (
         <div>
@@ -47,28 +67,36 @@ export default function SearchBar() {
                         onChange={(e)=>setSearchKey(e.target.value)}
                     />
                 </div>
-                <button
-                    type="button"
-                    onClick={onHandleSubmitCar}
-                    className="transition duration-300 ease-in-out hover:scale-110 bg-gray-200 relative -ml-px inline-flex items-center gap-x-1.5  px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                >
-                    {/*{isPending && "Searching ... "}*/}
-                    {/*{!isPending && <FcSearch className="-ml-0.5 h-5 w-5 text-gray-400" aria-hidden="true" />}*/}
-                    Search<IoCarSportSharp className="-ml-0.5 h-5 w-5 text-blue-600" aria-hidden="true" />
 
-                </button>
                  <button
                      type="button"
-                     onClick={onHandleSubmitTruck}
+                     onClick={onHandleSubmit}
                      className="transition duration-300 ease-in-out hover:scale-110 bg-yellow-400 relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
                  >
                      {/*{isPending && "Searching ... "}*/}
                      {/*{!isPending && <FcSearch className="-ml-0.5 h-5 w-5 text-gray-400" aria-hidden="true" />}*/}
-                     Search<TbTruck className="-ml-0.5 h-5 w-5 text-red-800" aria-hidden="true" />
+                     Search
 
                  </button>
 
             </div>
+               <div className="space-y-4 sm:flex sm:items-center sm:space-x-10 sm:space-y-0">
+                   {vehicleTypes.map((notificationMethod) => (
+                       <div key={notificationMethod.id} className="flex items-center">
+                           <input
+                               id={notificationMethod.id}
+                               name="notification-method"
+                               type="radio"
+                               defaultChecked={notificationMethod.id === '1'}
+                               onChange={handleRadioChange}
+                               className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                           />
+                           <label htmlFor={notificationMethod.id} className="ml-3 block text-sm font-medium leading-6 text-blue-100">
+                               {notificationMethod.title}
+                           </label>
+                       </div>
+                   ))}
+               </div>
             </form>
         </div>
     )

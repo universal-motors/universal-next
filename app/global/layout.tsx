@@ -5,7 +5,10 @@ import Footer from "@/components/layout/Footer";
 import agent from "@/api/agent";
 
 export const metadata = {
-  title: 'Universal Motors - Japanese Used Cars For Sale. Shipping Globally! ',
+  title: {
+    template: '%s - Universal Motors',
+    default: 'Universal Motors', // a default is required when creating a template
+  },
   description: 'Japanese Used Cars For Sale. Shipping Globally! ',
 }
 

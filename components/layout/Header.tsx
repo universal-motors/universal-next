@@ -141,11 +141,11 @@ function Header({locations, ports, portMapping, stockCount}:Props) {
                                           <li className="highlighted"><i className="fa fa-gear" />Site Setting</li>
                                           <li className="last">Currency</li>
                                           <li className="highlighted"><i className="fa fa-search" />Search</li>
-                                          <li> <Link href="/global/results/cars?makeID=5"> Seach by Make</Link></li>
-                                          <li><Link href="/global/results/cars?bodyTypeID=3">Seach by Type</Link></li>
-                                          <li><Link href="/global/results/cars?price=25000">Seach by Price</Link></li>
-                                          <li><Link href={`/global/results/cars?year=${new Date().getFullYear()}`}>Seach by Year</Link></li>
-                                          <li className="last">Seach by Inventory Location</li>
+                                          <li> <Link href="/global/results/cars?makeID=5"> Search by Make</Link></li>
+                                          <li><Link href="/global/results/cars?bodyTypeID=3">Search by Type</Link></li>
+                                          <li><Link href="/global/results/cars?price=25000">Search by Price</Link></li>
+                                          <li><Link href={`/global/results/cars?year=${new Date().getFullYear()}`}>Search by Year</Link></li>
+                                          <li className="last">Search by Inventory Location</li>
                                           <li className="highlighted"><i className="fa fa-globe" />Local Service</li>
                                           {
 

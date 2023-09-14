@@ -19,8 +19,21 @@ const   GetTruck = async (stockID: number) => {
     // const result = await agent.LoadData.truck(stockID);
     // return result.data;
 
+}
 
 
+export async function generateMetadata({params}:Props){
+    const data = await agent.LoadData.truck(params.id);
+    const stockItem = data.data;
+
+    return {
+        title:stockItem.stockCode+ ' - '+ stockItem.listingTitle,
+        description:stockItem.stockCode+ ' - '+ stockItem.listingTitle + ' - ' + stockItem.locationName +' Trucks on Universal Motors Ltd',
+
+        openGraph: {
+            images: [stockItem.imageUrl],
+        },
+    }
 }
 
 export default async function CarDetailed({params}:Props){

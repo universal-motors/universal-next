@@ -7,10 +7,23 @@ import InquiryForm from "@/app/global/results/cars/[id]/InquiryForm";
 import agent from "@/api/agent";
 import ContactUs from "@/components/pages/contact/ContactUs";
 import DescriptionUI from "@/components/ui/DescriptionUI";
+import { Metadata } from 'next'
 
 interface Props {
     params: {
         id:number
+    }
+}
+
+export async function generateMetadata({params}:Props){
+    const stockitem = await agent.LoadData.stock(params.id);
+    return {
+        title: stockitem.data.stockCode+ ' - '+ stockitem.data.listingTitle,
+        description:stockitem.data.stockCode+ ' - '+ stockitem.data.listingTitle + ' - ' + stockitem.data.locationName +' Stock on Universal Motors Ltd',
+
+        openGraph: {
+         images: [stockitem.data.imageUrl],
+        },
     }
 }
 
