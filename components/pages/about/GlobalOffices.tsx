@@ -68,7 +68,8 @@ export default function GlobalOffices (){
                                                     <img className="texttest" style={{width: '100% !important'}} src="/assets/images/newcontentimgs/New folder/United_Arab_Emirates_(UAE)_Flag_Emoji.png" alt="" /><br />
                                                     <div style={{margin: 'auto', display: 'table', textAlign: 'center'}}>
                                                         <p style={{color: 'white', paddingTop: '10px !important'}}>Universal Global Consortium</p>
-                                                        <a href="#" style={{color: '#ffb703'}}>RM 405, 4th Floor Al Wahda <br />Building Opp, Day to day <br /> Market Near City Center Deira <br />DUBAI, AE</a><br />
+
+                                                        <a href="#" style={{color: '#ffb703'}}> Premises 8253, Dubai Digital Park,<br /> Building A2, Dubai Silicon Oasis <br /> DUBAI, AE</a><br />
                                                         <a style={{color: '#ffb703'}} href="tel:+971 55 410 9650">+971 55 410 9650</a><br />
                                                         <a style={{color: '#ffb703'}} href="mailto:csd@universalmotorsltd.com">csd@universalmotorsltd.com</a>
                                                     </div>
