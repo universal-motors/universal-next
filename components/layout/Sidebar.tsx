@@ -69,7 +69,7 @@ function Sidebar({locations, makes}:Props){
                                     <li key={make.makeId} >
                                         <Link
                                             href={{
-                                                pathname : "/global/results/cars",
+                                                pathname : "/global/results/trucks",
                                                 query: {
                                                     makeID: make.makeId
                                                 }
