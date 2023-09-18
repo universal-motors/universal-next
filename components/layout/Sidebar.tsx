@@ -132,7 +132,7 @@ function Sidebar({locations, makes}:Props){
                     <ul className="countdrop mt-3 mb-3">
                         {
                             makes
-                                .filter(x=>x.vehicleTypeId==2)
+                                .filter(x=>x.vehicleTypeId==2 && x.stockCount > 0)
                                 .sort((a,b)=> b.stockCount - a.stockCount)
                                 .slice(0, 10) // Get the first 10 records
                                 .map(make=> (
