@@ -94,7 +94,7 @@ function Sidebar({locations, makes}:Props){
 
                 </ul>
                     <h5 style={{ fontSize: 18, color: "black" }}>Inventory Location</h5>
-                        <ul className="countdrop mt-3">
+                        <ul className="countdrop mt-3 mb-3">
                             {
                                 locations
                                     .sort((a,b)=> b.stockCount - a.stockCount)
