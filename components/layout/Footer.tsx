@@ -35,8 +35,8 @@ function Footer({locations, bodyTypes,makes}:Props){
                                         width={30}
                                         style={{ marginBottom: '8px' }}
                                     />
-                                    <p>RM 405, 4th Floor Al Wahda Building Opp, Day to day Market Near
-                                        City <br/>Center Deira
+
+                                    <p> Premises 8253, Dubai Digital Park <br/>Building A2, Dubai Silicon Oasis
                                         <b > DUBAI, UAE</b></p>
                                 </div>
                                 <div className="flex-auto inline-flex mt-2" style={{ flexDirection: 'column' }}>
