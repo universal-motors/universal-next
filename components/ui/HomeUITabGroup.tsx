@@ -29,8 +29,9 @@ const tabs: TabType[] = [
 
 export default function HomeUITabGroup({ bodyTypes, makes }: Props) {
   const currentYear = new Date().getFullYear();
-  const yearList = Array.from({ length: 16 }, (_, index) =>
-    (currentYear - index).toString()
+  const fromYear = 1970;
+  const yearList = Array.from({ length: currentYear-fromYear }, (_, index) =>
+    (fromYear + index).toString()
   );
 
   return (

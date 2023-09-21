@@ -13,6 +13,8 @@ import SignInComponentUI from "@/components/ui/SigninSignOutUI";
 import AuthModal from "@/components/user/Auth/AuthModal";
 import {Ports} from "@/models/Master/Ports";
 import {PortMapping} from "@/models/Master/PortMapping";
+import {Fragment, useState} from "react";
+import {Dialog, Transition} from "@headlessui/react";
 
 interface Props{
     locations : Country[]
@@ -28,6 +30,17 @@ const currentYear = new Date().getFullYear()
 
 function Header({locations, ports, portMapping, stockCount}:Props) {
   //  const { data: session } = useSession()
+    let [isOpen, setIsOpen] = useState(true)
+
+    function closeMobileSearchModal() {
+        setIsOpen(false)
+    }
+
+    function openMobileSearchModal() {
+        setIsOpen(true)
+    }
+
+
       return (
           <>
 
@@ -48,6 +61,8 @@ function Header({locations, ports, portMapping, stockCount}:Props) {
                               <Link href="/"><img src="/assets/images/logo.png" alt="logo" className="header-logo" style={{ width: '100%', position: 'relative', top: '20px', left: '-20px' }} /></Link>
                           </div>
                           <div className="col-xl-5 col-lg-5 col-md-5">
+
+
                               <SearchBar/>
 
                           </div>
@@ -141,6 +156,7 @@ function Header({locations, ports, portMapping, stockCount}:Props) {
                                           <li className="highlighted"><i className="fa fa-gear" />Site Setting</li>
                                           <li className="last">Currency</li>
                                           <li className="highlighted"><i className="fa fa-search" />Search</li>
+
                                           <li> <Link href="/global/results/cars?makeID=5"> Search by Make</Link></li>
                                           <li><Link href="/global/results/cars?bodyTypeID=3">Search by Type</Link></li>
                                           <li><Link href="/global/results/cars?price=25000">Search by Price</Link></li>
@@ -203,9 +219,66 @@ function Header({locations, ports, portMapping, stockCount}:Props) {
                               <Link href="/"><img src="/assets/images/logo.png" alt="logo" className="mobile-logo" width={50}/></Link>
                           </div>
                           <div className="col-7">
-                              <div className="featuresection flex inline-flex">
+                             <div className="featuresection flex inline-flex">
+                                  <Link href=""  onClick={openMobileSearchModal} >
+                                      <img src="https://img.icons8.com/ios-glyphs/2x/search.png" alt="" width={25} />
+                                  </Link>
+                                 <Transition appear show={isOpen} as={Fragment}>
+                                     <Dialog as="div" className="relative z-10" onClose={closeMobileSearchModal}>
+                                         <Transition.Child
+                                             as={Fragment}
+                                             enter="ease-out duration-300"
+                                             enterFrom="opacity-0"
+                                             enterTo="opacity-100"
+                                             leave="ease-in duration-200"
+                                             leaveFrom="opacity-100"
+                                             leaveTo="opacity-0"
+                                         >
+                                             <div className="fixed inset-0 bg-black bg-opacity-25" />
+                                         </Transition.Child>
 
-                                  {/*<Link href="#search"><img src="https://img.icons8.com/ios-glyphs/2x/search.png" alt="" width={25} /></Link>*/}
+                                         <div className="fixed inset-0 overflow-y-auto">
+                                             <div className="flex min-h-full items-center justify-center p-4 text-center">
+                                                 <Transition.Child
+                                                     as={Fragment}
+                                                     enter="ease-out duration-300"
+                                                     enterFrom="opacity-0 scale-95"
+                                                     enterTo="opacity-100 scale-100"
+                                                     leave="ease-in duration-200"
+                                                     leaveFrom="opacity-100 scale-100"
+                                                     leaveTo="opacity-0 scale-95"
+                                                 >
+                                                     <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                                                         <Dialog.Title
+                                                             as="h3"
+                                                             className="text-lg font-medium leading-6 text-gray-900"
+                                                         >
+                                                             Search ...
+                                                         </Dialog.Title>
+                                                         <div className="mt-2">
+                                                             <div className="col-xl-5 col-lg-5 col-md-5">
+
+
+                                                                 <SearchBar/>
+
+                                                             </div>
+                                                         </div>
+
+                                                         <div className="mt-4">
+                                                             <button
+                                                                 type="button"
+                                                                 className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                                                                 onClick={closeMobileSearchModal}
+                                                             >
+                                                                 Cancel
+                                                             </button>
+                                                         </div>
+                                                     </Dialog.Panel>
+                                                 </Transition.Child>
+                                             </div>
+                                         </div>
+                                     </Dialog>
+                                 </Transition>
                                   <Link href="#support">
                                       <img src="https://img.icons8.com/external-icongeek26-outline-icongeek26/2x/external-headphone-music-icongeek26-outline-icongeek26.png" alt="" width={25} />
                                   </Link>
@@ -213,6 +286,7 @@ function Header({locations, ports, portMapping, stockCount}:Props) {
                                   <Link href="#">
                                       <img src="https://img.icons8.com/fluency-systems-regular/2x/user.png" alt="" width={25} />
                                   </Link>
+
                                   {/* <Link href="#support"><i class="fa fa-headphones"></i></Link>
                     <Link href="#"><i class="fa fa-heart-o"></i></Link>
                     <Link href="#customer"><i class="fa fa-user-o"></i></Link> */}
@@ -227,3 +301,4 @@ function Header({locations, ports, portMapping, stockCount}:Props) {
 }
 
 export default Header
+
