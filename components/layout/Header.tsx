@@ -30,7 +30,7 @@ const currentYear = new Date().getFullYear()
 
 function Header({locations, ports, portMapping, stockCount}:Props) {
   //  const { data: session } = useSession()
-    let [isOpen, setIsOpen] = useState(true)
+    let [isOpen, setIsOpen] = useState(false)
 
     function closeMobileSearchModal() {
         setIsOpen(false)
