@@ -1,14 +1,14 @@
-import Header from "@/components/layout/Header";
-import FrontSlider from "@/components/layout/FrontSlider";
-import Sidebar from "@/components/layout/Sidebar";
-import Footer from "@/components/layout/Footer";
 import agent from "@/api/agent";
+import Footer from "@/components/layout/Footer";
+import FrontSlider from "@/components/layout/FrontSlider";
+import Header from "@/components/layout/Header";
+import Sidebar from "@/components/layout/Sidebar";
 
 
 
 export const metadata = {
-  title: 'Universal Motors - Japanese Used Cars For Sale. Shipping Globally! ',
-  description: 'Japanese Used Cars For Sale. Shipping Globally! ',
+    title: 'Universal Motors - Japanese Used Cars For Sale. Shipping Globally! ',
+    description: 'Japanese Used Cars For Sale. Shipping Globally! ',
 }
 
 const GetBodyTypes = async () => {
@@ -19,11 +19,11 @@ const GetLocations = async () => {
     return result.data;
 }
 const GetCarMakes = async () => {
-    return await  agent.LoadData.carMakeList();//return await prisma.tblMakes.findMany({where: {isActive:true}} );
+    return await agent.LoadData.carMakeList();//return await prisma.tblMakes.findMany({where: {isActive:true}} );
 }
 const GetStockCount = async () => {
-    const data = await agent.StockCount;
-     return data;
+    return await agent.LoadData.stockCount();
+    //return data;
     //return await agent.LoadData.stockCount();
     //db.tblMasterCountry.findMany({where: {IsActive:true}} );
 }
@@ -42,9 +42,9 @@ const GetAllPorts = async () => {
 
 
 export default async function RootLayout({
-  children,
+    children,
 }: {
-  children: React.ReactNode
+    children: React.ReactNode
 }) {
 
     const bodyTypes = await GetBodyTypes();
@@ -56,25 +56,24 @@ export default async function RootLayout({
     const stockCount = await GetStockCount();
 
 
-
     return (
 
-    <>
+        <>
 
-        <Header ports={portList}  portMapping={portMapping} stockCount={stockCount} locations={locations}/>
-        <FrontSlider />
-        <section className="sidebar-menu">
-            <div className="container-fluid">
-                <div className="row">
-                    <Sidebar  locations={inventoryLocation} makes={makes.data}/>
-                    {children}
+            <Header ports={portList} portMapping={portMapping} stockCount={stockCount.data} locations={locations} />
+            <FrontSlider />
+            <section className="sidebar-menu">
+                <div className="container-fluid">
+                    <div className="row">
+                        <Sidebar locations={inventoryLocation} makes={makes.data} />
+                        {children}
+                    </div>
                 </div>
-            </div>
-        </section>
-        <Footer bodyTypes={bodyTypes.data} locations={inventoryLocation} makes={makes.data}/>
-    </>
+            </section>
+            <Footer bodyTypes={bodyTypes.data} locations={inventoryLocation} makes={makes.data} />
+        </>
 
 
 
-  )
+    )
 }
