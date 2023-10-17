@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Tabs from "../Tabs";
 import AccountForm from "./accountInfo";
+import CosigneeForm from "./cosignee";
 import ProfileForm from "./profile";
 
 export default function Forms() {
@@ -11,6 +12,8 @@ export default function Forms() {
                 return <ProfileForm />
             case 'My Account Info':
                 return <AccountForm />
+            case 'My Cosignee Details':
+                return <CosigneeForm />
             default:
                 break;
         }
