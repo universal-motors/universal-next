@@ -1,7 +1,7 @@
-import HomePageCarListings from "@/components/cars/HomePageCarListings";
 import agent from "@/api/agent";
-import Link from "next/link";
+import HomePageCarListings from "@/components/cars/HomePageCarListings";
 import HomeUI from "@/components/ui/HomeUI";
+import Link from "next/link";
 
 const GetStock = async () => {
   const result = await agent.LoadData.homepageStockList(); //db.tblCars.findMany({where: {IsActive:true}});

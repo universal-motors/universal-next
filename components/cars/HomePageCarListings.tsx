@@ -1,9 +1,9 @@
-import Link from "next/link";
 import FaqComponent from "@/components/layout/FaqComponent";
-import PriceFormat from "@/utils/PriceFormat";
 import { StockCars } from "@/models/StockCars";
-import Image from "next/image";
 import { Trucks } from "@/models/Trucks";
+import PriceFormat from "@/utils/PriceFormat";
+import Image from "next/image";
+import Link from "next/link";
 
 interface Props {
   stockcars: StockCars[];
