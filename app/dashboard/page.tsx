@@ -3,20 +3,10 @@
 import { useStore } from "@/store/store";
 import Forms from "./components/Forms";
 
-interface TabType {
-  name: string;
-  href: string;
-  current: boolean;
-}
-
-function classNames(...classes: any[]) {
-  return classes.filter(Boolean).join(" ");
-}
-
 export default async function Dashboard() {
   //const session = await getServerSession(options)
   const { userStore } = useStore();
-  console.log(userStore.isLoggedIn);
+  // console.log(userStore.isLoggedIn);
 
   return (
     <>
