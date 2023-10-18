@@ -1,5 +1,5 @@
 export interface CarOptions {
-    optionId: number
-    optionName: string
-    isActive: boolean
+  optionId: number;
+  optionName: string;
+  isActive: boolean;
 }

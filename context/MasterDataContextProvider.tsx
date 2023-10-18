@@ -1,17 +1,14 @@
-import React, {ReactNode, useState} from "react";
-import {MasterData} from "@/models/MasterData";
+import React, { ReactNode, useState } from "react";
+import { MasterData } from "@/models/MasterData";
 
-interface IProps{
-    children:ReactNode;
+interface IProps {
+  children: ReactNode;
 }
 
-const MasterDataContextProvider = ({children}:IProps) => {
+const MasterDataContextProvider = ({ children }: IProps) => {
+  //const [{bodyList, makeList, countryList, homepageStock}]=useState<MasterData>()
 
-    //const [{bodyList, makeList, countryList, homepageStock}]=useState<MasterData>()
+  return <div>MasterData Context Provider</div>;
+};
 
-    return (
-        <div>MasterData Context Provider</div>
-    )
-}
-
-export default MasterDataContextProvider
+export default MasterDataContextProvider;
