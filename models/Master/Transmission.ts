@@ -1,6 +1,6 @@
 export interface Transmission {
-    transmissionId: number
-    transmissionName: string
-    slug: string
-    isActive: boolean
+  transmissionId: number;
+  transmissionName: string;
+  slug: string;
+  isActive: boolean;
 }

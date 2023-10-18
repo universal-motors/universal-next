@@ -30,14 +30,14 @@ const tabs: TabType[] = [
 export default function HomeUITabGroup({ bodyTypes, makes }: Props) {
   const currentYear = new Date().getFullYear();
   const fromYear = 1970;
-  const yearList = Array.from({ length: currentYear-fromYear }, (_, index) =>
+  const yearList = Array.from({ length: currentYear - fromYear }, (_, index) =>
     (fromYear + index).toString()
   );
 
   return (
     <>
       <Tab.Group>
-        <Tab.List className="flex space-x-1 rounded-xl bg-blue-900/20 p-1">
+        <Tab.List className='flex space-x-1 rounded-xl bg-blue-900/20 p-1'>
           {tabs.map((tab) => (
             <Tab
               key={tab.name}

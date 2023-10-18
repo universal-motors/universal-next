@@ -2,13 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri&display=swap");
 body {
-  font-family: 'Hind Siliguri', sans-serif;
+  font-family: "Hind Siliguri", sans-serif;
 }
 
-
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 600;
 }
 .showcase-Recheading .row p {
@@ -20,7 +24,8 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   padding-top: 15px;
 }
-.detailedsection section.product-slider-section .container-fluid, footer .container-fluid {
+.detailedsection section.product-slider-section .container-fluid,
+footer .container-fluid {
   padding-left: 6%;
   padding-right: 6%;
 }
@@ -39,7 +44,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .dshare i {
-  color: #221C63 !important;
+  color: #221c63 !important;
 }
 
 .download-proimg a:hover {
@@ -68,8 +73,6 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 2px;
 }
 
-
-
 .loading-progress {
   position: relative;
   display: block;
@@ -86,11 +89,9 @@ h1, h2, h3, h4, h5, h6 {
   transform: rotate(-90deg);
 }
 
-
-
 .spinner {
   border: 16px solid silver;
-  border-top: 16px solid #337AB7;
+  border-top: 16px solid #337ab7;
   border-radius: 50%;
   width: 80px;
   height: 80px;
@@ -299,7 +300,8 @@ section.menuhead.sticky-header,
   top: 0;
   z-index: 999;
 }
-.formvariation, .formss {
+.formvariation,
+.formss {
   max-width: 70% !important;
 }
 .showcase-Make.rightsidebar ul.countdrop {
@@ -329,7 +331,7 @@ button.regisbtn {
 }
 
 section.sticky-header {
-  background: #221C63;
+  background: #221c63;
   padding: 15px 0 0px;
 }
 
@@ -375,7 +377,7 @@ button.supportbtn {
 /* ....mobile Header...... */
 
 section.mobile-header {
-  background: #221C63;
+  background: #221c63;
   padding: 5px 0;
 }
 
@@ -392,7 +394,7 @@ section.mobile-header {
 .side-logo {
   width: 100px;
   padding-left: 20px;
-  filter: drop-shadow(2px 4px 6px black)
+  filter: drop-shadow(2px 4px 6px black);
 }
 
 .mobile-container .sidemenu {
@@ -487,7 +489,6 @@ section.sidebar-menu .col-xl-2.col-lg-2.col-md-2.col-sm-2.col-12 {
   position: relative;
   margin-top: 20px;
   margin-bottom: 50px;
-
 }
 .col-xl-8.col-lg-8.col-md-8.col-sm-8.col-8.p-0.formss {
   margin-bottom: -150px;
@@ -500,10 +501,10 @@ section.sidebar-menu .col-xl-2.col-lg-2.col-md-2.col-sm-2.col-12 {
 .fa.fa-car,
 .fa.fa-truck {
   font-size: 25px;
-  color: #221C63;
+  color: #221c63;
   border: 1px solid;
   padding: 10px;
-  box-shadow: 1px 2px 14px #221c63 !important
+  box-shadow: 1px 2px 14px #221c63 !important;
 }
 
 span#truckicon:hover,
@@ -531,14 +532,17 @@ div.thumb {
   margin-top: 0.8rem;
 }
 
-.results ul.nav.nav-tabs a.nav-link.active, .results ul.nav.nav-tabs a.nav-link:hover {
+.results ul.nav.nav-tabs a.nav-link.active,
+.results ul.nav.nav-tabs a.nav-link:hover {
   background: transparent !important;
 }
 
-.results a.nav-link a:hover, .results a.nav-link a:active {
-  background: #FFB703 !important;
+.results a.nav-link a:hover,
+.results a.nav-link a:active {
+  background: #ffb703 !important;
 }
-.results a.nav-link a:hover span, .results a.nav-link a:active span{
+.results a.nav-link a:hover span,
+.results a.nav-link a:active span {
   color: white;
 }
 .detail-leftsection div#wrap .row .col-12 {
@@ -555,7 +559,6 @@ div.thumb img {
 }
 
 .formrow {
-
   position: relative;
   justify-content: center;
   bottom: 190px;
@@ -563,7 +566,7 @@ div.thumb img {
 
 .formvariation {
   background: #cee0fc;
-  border-top: 5px solid #221C63;
+  border-top: 5px solid #221c63;
   padding: 10px;
   z-index: 1;
 }
@@ -615,7 +618,6 @@ ul.sidelist li {
   color: black;
   border-bottom: 0.5px solid #e4e4e5;
 }
-
 
 #times {
   color: white;
@@ -674,8 +676,8 @@ ul.sidelist li a {
   margin: 5px 0;
   width: 100%;
   border-radius: 5px;
-  background: #FFB703;
-  color: #221C63;
+  background: #ffb703;
+  color: #221c63;
   border: none;
 }
 
@@ -684,7 +686,11 @@ ul.sidelist li a {
   /*    border-radius: 0px 50px 0 0;*/
 }
 
-.searched-carimage a, .car-details a, a.page-link, a.nav-link2, .car-inquiry a {
+.searched-carimage a,
+.car-details a,
+a.page-link,
+a.nav-link2,
+.car-inquiry a {
   max-width: 100% !important;
 }
 
@@ -701,7 +707,7 @@ ul.sidelist li a {
   margin-top: 50px;
   max-width: 95%;
   box-shadow: 1px 7px 11px 0px #cdcdcd;
-  border-top: 5px solid #221C63;
+  border-top: 5px solid #221c63;
 }
 .searched-carimage img {
   width: 100%;
@@ -728,11 +734,13 @@ div#carousel .carousel-inner .carousel-item.zoom-image img {
   text-align: center;
 }
 
-.searched-carimage h4, .searched-carimage h5 {
+.searched-carimage h4,
+.searched-carimage h5 {
   font-size: 15px;
 }
 
-.searched-carimage h4 span, .searched-carimage h5 span {
+.searched-carimage h4 span,
+.searched-carimage h5 span {
   font-weight: 400;
 }
 
@@ -740,7 +748,7 @@ div#carousel .carousel-inner .carousel-item.zoom-image img {
   width: 20px;
 }
 h6.listname {
-  color: #221C63 !important;
+  color: #221c63 !important;
 }
 .scolumn h6 {
   background: #ebf3ff;
@@ -754,7 +762,8 @@ h6.listname {
   font-size: 14px;
 }
 
-.rcolumn p, .scolumn p {
+.rcolumn p,
+.scolumn p {
   font-size: 12px;
 }
 
@@ -767,15 +776,13 @@ h6.listname {
 }
 span.fav-text {
   font-size: 16px;
-  color: #FFB703;
+  color: #ffb703;
 }
 
 .addfav i {
   color: red !important;
   font-size: 16px;
 }
-
-
 
 .rcolumn .col-6 {
   border: 1px solid #cbe0ff;
@@ -788,7 +795,7 @@ span.fav-text {
 }
 
 .fprice span {
-  color: #FFB703;
+  color: #ffb703;
   float: right;
 }
 
@@ -799,7 +806,7 @@ span.fav-text {
 
 button.offerbtn {
   width: 100%;
-  background: #FFB703;
+  background: #ffb703;
   padding: 5px;
   font-size: 14px;
   border-radius: 5px;
@@ -827,10 +834,9 @@ button.offerbtn {
   display: inline-block;
 }
 .searched-carimage h5 {
-  color: #FFB703;
+  color: #ffb703;
   font-size: 17px;
 }
-
 
 .results {
   padding: 50px 10px;
@@ -841,7 +847,7 @@ button.offerbtn {
 ul.nav.nav-tab li.nav-item {
   max-width: 100%;
   padding: 8px 16px;
-  border: 2px solid #FFB703;
+  border: 2px solid #ffb703;
   margin: 5px 5px 5px 0;
   background: white;
   font-weight: 400;
@@ -851,15 +857,17 @@ ul.nav.nav-tab li.nav-item {
 }
 
 ul.nav.nav-tab li.nav-item a {
-  color: #FFB703 !important;
+  color: #ffb703 !important;
 }
 
-ul.nav.nav-tab li.nav-item:hover, ul.nav.nav-tab li.nav-item:active {
+ul.nav.nav-tab li.nav-item:hover,
+ul.nav.nav-tab li.nav-item:active {
   background: #ffb703;
   transition: 0.4s;
 }
 
-ul.nav.nav-tab li.nav-item:hover a, ul.nav.nav-tab li.nav-item:active a {
+ul.nav.nav-tab li.nav-item:hover a,
+ul.nav.nav-tab li.nav-item:active a {
   color: white !important;
   text-decoration: none !important;
 }
@@ -876,7 +884,6 @@ ul.nav.nav-tab li.nav-item:hover a, ul.nav.nav-tab li.nav-item:active a {
   background: #cee0fc;
   padding: 0px 30px 30px 30px;
 }
-
 
 #check:checked ~ .mobile-container {
   transform: translateX(-20px);
@@ -905,12 +912,12 @@ section.mobile-header .col-7 {
 }
 @media only screen and (min-width: 1601px) and (max-width: 2000px) {
   .cardimage img {
-    height: 170px !important
+    height: 170px !important;
   }
 }
 @media only screen and (min-width: 2001px) and (max-width: 2400px) {
   .cardimage img {
-    height: 210px !important
+    height: 210px !important;
   }
 }
 @media only screen and (min-width: 2401px) and (max-width: 3200px) {
@@ -918,7 +925,7 @@ section.mobile-header .col-7 {
     height: 650px;
   }
   .cardimage img {
-    height: 270px !important
+    height: 270px !important;
   }
 }
 @media only screen and (min-width: 3201px) and (max-width: 6400px) {
@@ -970,7 +977,7 @@ section.sidebar-menu .container-fluid {
   margin-top: 6px;
 }
 h6.lsitname {
-  color: #221C63;
+  color: #221c63;
   font-size: 18px;
 }
 
@@ -980,10 +987,11 @@ h6.lsitname {
 
 .buy-steptxt b {
   font-size: 22px;
-  color: #221C63;
+  color: #221c63;
 }
 
-.buy-stepheading h4, h4.buy-stepheading {
+.buy-stepheading h4,
+h4.buy-stepheading {
   font-size: 30px !important;
   text-align: center;
   margin: 50px 0px;
@@ -992,7 +1000,7 @@ h6.lsitname {
 .b1 div:first-child {
   background: #221c63;
   padding: 10px 10px 30px 10px;
-  box-shadow: 6px 8px 17px 0px #CECECE;
+  box-shadow: 6px 8px 17px 0px #cecece;
 }
 
 .b1 div:first-child img {
@@ -1021,7 +1029,8 @@ h6.lsitname {
 /*}*/
 
 i.fa.fa-whatsapp,
-i.fa.fa-facebook, i.fa.fa-twitter {
+i.fa.fa-facebook,
+i.fa.fa-twitter {
   font-size: 30px;
   padding: 10px;
 }
@@ -1049,7 +1058,8 @@ p.modelno {
   border-radius: 2px 2px 0 0;
 }
 
-.carboxes h2, .carboxes h3 {
+.carboxes h2,
+.carboxes h3 {
   font-weight: 600;
 }
 
@@ -1069,13 +1079,14 @@ p.modelno {
 
 .btn-link {
   font-weight: 600;
-  color: #221C63;
+  color: #221c63;
   text-decoration: none;
   text-align: left;
   padding: 0 !important;
 }
 
-div#faqExampleall span, button.btn.btn-link span {
+div#faqExampleall span,
+button.btn.btn-link span {
   font-size: 13px;
 }
 
@@ -1092,11 +1103,10 @@ div#faqExampleall .card {
 
 .btn-link:hover {
   text-decoration: none !important;
-  color: #221C63;
+  color: #221c63;
 }
 
 .cta-homeSec {
-
   padding: 2rem 1.3rem;
   margin: 50px 0;
 }
@@ -1124,7 +1134,7 @@ div#faqExampleall .card {
 
 .cta-homeSec h6 a {
   margin-top: 30px;
-  background: #FFB703;
+  background: #ffb703;
   color: white;
   font-size: 16px;
   padding: 10px 10px;
@@ -1142,7 +1152,7 @@ i.fa.fa-circle:before {
 }
 
 ul.nav.nav-tabs li.nav-item a {
-  color: #FFB703 !important;
+  color: #ffb703 !important;
   max-width: 100%;
   padding: 8px 16px;
   border: 2px solid;
@@ -1158,7 +1168,8 @@ ul.nav.nav-tabs li.nav-item a {
   margin: 20px auto;
 }
 
-.breadcrumbs ul, .about-goBox ul {
+.breadcrumbs ul,
+.about-goBox ul {
   list-style: none;
   padding: 0;
 }
@@ -1185,10 +1196,21 @@ ul.nav.nav-tabs li.nav-item a {
   font-weight: 600;
 }
 
-h3.text-center.whyhead, gceInform-Imptxt h4, .about-goBox h1, .gceBest-Carz h3, .gceClearing-From h3, .gceCountry-Local h3, .gceDelivery-Ser h3, .gceFaq-tabs h3, .gceGet-touch h3, .gceInform-Import h3, .gcePayment-Option h3, .gceWhy-Choose h3 {
+h3.text-center.whyhead,
+gceInform-Imptxt h4,
+.about-goBox h1,
+.gceBest-Carz h3,
+.gceClearing-From h3,
+.gceCountry-Local h3,
+.gceDelivery-Ser h3,
+.gceFaq-tabs h3,
+.gceGet-touch h3,
+.gceInform-Import h3,
+.gcePayment-Option h3,
+.gceWhy-Choose h3 {
   font-size: 25px;
   line-height: normal;
-  color: #221C63;
+  color: #221c63;
   margin: 1.5rem 0;
   font-weight: bold !important;
 }
@@ -1230,14 +1252,14 @@ p.whytext {
 .breadcrumbs ul li {
   display: inline-block;
   position: relative;
-  color: #221C63;
+  color: #221c63;
   font-size: 16px;
 }
 
 .about-goBox ul li {
   display: block;
   position: relative;
-  color: #221C63;
+  color: #221c63;
   font-size: 16px;
   line-height: 2.2;
 }
@@ -1251,7 +1273,7 @@ img.widthhundread {
 }
 
 .breadcrumbs ul li a {
-  color: #221C63;
+  color: #221c63;
   font-size: 16px;
   font-weight: 600;
   letter-spacing: 0.4px;
@@ -1263,22 +1285,24 @@ img.widthhundread {
   top: -1px;
   padding: 0 5px 0 5px;
   content: "\f054";
-  color: #221C63;
+  color: #221c63;
   font-size: 10px;
 }
 
-ul.nav.nav-tabs a.nav-link.active, ul.nav.nav-tabs a.nav-link:hover {
+ul.nav.nav-tabs a.nav-link.active,
+ul.nav.nav-tabs a.nav-link:hover {
   color: white !important;
-  background: #FFB703;
+  background: #ffb703;
 }
 
 .cardcontent {
   padding: 5px;
 }
 
-p.modelno, p.car-price {
+p.modelno,
+p.car-price {
   font-size: 13px !important;
-  color: #221C63;
+  color: #221c63;
   font-weight: 600;
   letter-spacing: 0.5px;
   word-spacing: 5px;
@@ -1288,9 +1312,8 @@ p.car-price span {
   color: #ffb703;
 }
 
-
 .cardcontent h4 {
-  color: #221C63;
+  color: #221c63;
   font-size: 13px;
   height: 30px;
   overflow-y: hidden;
@@ -1318,30 +1341,34 @@ h1.mobicar.carname {
 .gceCountry-Local.exp-Information.bankinfo .gceInform-Imptxt h4 {
   padding-bottom: 20px;
   font-size: 20px;
-  color: #221C63;
+  color: #221c63;
   font-weight: bold;
 }
 
 @media only screen and (min-width: 1057px) and (max-width: 1110px) {
-  ul.navbar-nav li a, button.supportbtn {
+  ul.navbar-nav li a,
+  button.supportbtn {
     font-size: 13px;
   }
 }
 
 @media only screen and (min-width: 1001px) and (max-width: 1056px) {
-  ul.navbar-nav li a, button.supportbtn {
+  ul.navbar-nav li a,
+  button.supportbtn {
     font-size: 12px;
   }
 }
 
 @media only screen and (min-width: 884px) and (max-width: 1000px) {
-  ul.navbar-nav li a, button.supportbtn {
+  ul.navbar-nav li a,
+  button.supportbtn {
     font-size: 11px;
   }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 883px) {
-  ul.navbar-nav li a, button.supportbtn {
+  ul.navbar-nav li a,
+  button.supportbtn {
     font-size: 8px;
   }
 }
@@ -1354,7 +1381,10 @@ h1.mobicar.carname {
   .col-xl-8.col-lg-8.col-md-8.col-sm-12.col-12.carboxes {
     margin-top: 150px;
   }
-  select#max-price-select, select#min-price-select, select#max-mileage-select, select#min-mileage-select {
+  select#max-price-select,
+  select#min-price-select,
+  select#max-mileage-select,
+  select#min-mileage-select {
     font-size: 8px !important;
     padding: 5px 2px;
   }
@@ -1381,7 +1411,8 @@ h1.mobicar.carname {
     width: auto;
   }
 
-  header .headerbg, section.menuhead.sticky-header {
+  header .headerbg,
+  section.menuhead.sticky-header {
     display: none;
   }
 
@@ -1406,7 +1437,15 @@ h1.mobicar.carname {
     font-size: 14px;
   }
 
-  .gceBest-Carz h3, .gceClearing-From h3, .gceCountry-Local h3, .gceDelivery-Ser h3, .gceFaq-tabs h3, .gceGet-touch h3, .gceInform-Import h3, .gcePayment-Option h3, .gceWhy-Choose h3 {
+  .gceBest-Carz h3,
+  .gceClearing-From h3,
+  .gceCountry-Local h3,
+  .gceDelivery-Ser h3,
+  .gceFaq-tabs h3,
+  .gceGet-touch h3,
+  .gceInform-Import h3,
+  .gcePayment-Option h3,
+  .gceWhy-Choose h3 {
     font-size: 20px;
   }
 
@@ -1414,7 +1453,8 @@ h1.mobicar.carname {
     font-size: 15px;
   }
 
-  .whatsappbg, .fbpbg {
+  .whatsappbg,
+  .fbpbg {
     padding: 40% !important;
   }
 
@@ -1424,7 +1464,8 @@ h1.mobicar.carname {
     max-width: 50%;
   }
 
-  .carboxes h2, .carboxes h3 {
+  .carboxes h2,
+  .carboxes h3 {
     font-size: 20px;
   }
 
@@ -1435,8 +1476,8 @@ h1.mobicar.carname {
     padding-top: 10px !important;
     padding-bottom: 10px !important;
     margin-bottom: 30px;
-    --bs-gutter-x:0rem !important;
-    transition: transform .3s ease-in-out;
+    --bs-gutter-x: 0rem !important;
+    transition: transform 0.3s ease-in-out;
   }
 
   .formrow.row {
@@ -1483,7 +1524,6 @@ h1.mobicar.carname {
     padding: 30px 10px 0;
   }
 
-
   .col-lg-6.col-md-6.detail-leftsection div#wrap {
     margin: 10px 0 !important;
   }
@@ -1502,7 +1542,7 @@ h1.mobicar.carname {
     margin: 0 auto;
     font-size: 25px;
     width: 100%;
-    text-align: center
+    text-align: center;
   }
 
   h1.pccar.carname {
@@ -1549,7 +1589,8 @@ h1.mobicar.carname {
     display: flex !important;
   }
 
-  .showcase-Box.truckform, .showcase-Box.carform {
+  .showcase-Box.truckform,
+  .showcase-Box.carform {
     background: #cee0fc;
     padding: 0px 10px 30px 10px;
   }
@@ -1578,7 +1619,6 @@ section.mobile-header input {
   background-position: center;
 }
 
-
 footer a,
 footer p,
 footer span,
@@ -1589,7 +1629,7 @@ footer h4 {
 }
 
 footer {
-  background: #221C63;
+  background: #221c63;
   padding: 80px 0 10px;
 }
 
@@ -1632,8 +1672,6 @@ footer .f1 {
 footer .header-logo {
   width: 50px;
 }
-
-
 
 @media only screen and (max-width: 768px) and (min-width: 576px) {
   .cardimage img {
@@ -1726,14 +1764,13 @@ footer .header-logo {
   }
 }
 
-
 /*Car Detailed Page CSS*/
 
 /* ................*/
 .col-sm.specs h4 {
   font-size: 14px;
   font-weight: 700;
-  color: #221C63;
+  color: #221c63;
 }
 
 .col-sm.specs p {
@@ -1754,9 +1791,12 @@ h1.carname {
   font-size: 30px;
   font-weight: 600;
   text-transform: uppercase;
-  color: #221C63;
-  font-family: 'Franklin gothic medium', sans-serif;
-  text-shadow: 2px 2px 4px rgba(179, 147, 211, 0.1), 3px 4px 4px rgba(179, 147, 211, 0.15), 4px 6px 4px rgba(179, 147, 211, 0.2);
+  color: #221c63;
+  font-family: "Franklin gothic medium", sans-serif;
+  text-shadow:
+    2px 2px 4px rgba(179, 147, 211, 0.1),
+    3px 4px 4px rgba(179, 147, 211, 0.15),
+    4px 6px 4px rgba(179, 147, 211, 0.2);
 }
 
 .addfav {
@@ -1775,7 +1815,7 @@ h1.carname {
 
 .auction h5 {
   font-size: 13px;
-  color: #FFB703;
+  color: #ffb703;
 }
 
 .fob-price {
@@ -1847,7 +1887,6 @@ h1.carname {
   padding: 15px 0;
 }
 
-
 .row.specsrow .specs {
   border-right: 1px solid silver;
 }
@@ -1903,11 +1942,9 @@ table.keyinfo {
   justify-content: center;
 }
 
-
 .product-slider-section .carousel-inner {
   cursor: crosshair;
 }
-
 
 .product-slider-section .carousel-indicators {
   overflow-y: hidden;
@@ -1935,8 +1972,6 @@ table.keyinfo {
   margin: 0 auto;
 }
 
-
-
 .price {
   margin: 20px 0;
   font-size: 20px;
@@ -1954,7 +1989,6 @@ table.keyinfo {
   color: #fff;
   padding: 5px;
 }
-
 
 .sale-span {
   background-color: #21a4fb;
@@ -1985,7 +2019,7 @@ table.keyinfo {
   background-color: #222;
   padding: 17px 60px;
   margin: 0 auto;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.20);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .add-to-cart-btn span {
@@ -2002,7 +2036,7 @@ table.keyinfo {
   width: 140%;
   background-color: #21a4fb;
   color: #fff;
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
   transform: translateX(-98%) translateY(-25%) rotate(45deg);
 }
 
@@ -2057,7 +2091,6 @@ p.inquire-text {
   padding-bottom: 20px;
 }
 
-
 .wrap {
   position: absolute;
   top: 40%;
@@ -2067,10 +2100,15 @@ p.inquire-text {
   text-align: center;
 }
 
-
 .animate-charcter {
   text-transform: uppercase;
-  background-image: linear-gradient( -225deg, #231557 0%, #44107a 29%, #ff1361 67%, #fff800 100% );
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
   background-size: auto auto;
 
   background-size: 200% auto;
@@ -2116,7 +2154,9 @@ p.inquire-text {
   right: 0px;
   width: 100px;
   height: 100%;
-  box-shadow: 0 0 10px #29d, 0 0 5px #29d;
+  box-shadow:
+    0 0 10px #29d,
+    0 0 5px #29d;
   opacity: 1;
 
   transform: rotate(3deg) translate(0px, -4px);
@@ -2146,8 +2186,10 @@ p.inquire-text {
   right: 0px;
   width: 100px;
   height: 100%;
-  box-shadow: 0 0 10px #29d, 0 0 5px #29d;
-  opacity: 1.0;
+  box-shadow:
+    0 0 10px #29d,
+    0 0 5px #29d;
+  opacity: 1;
 
   -webkit-transform: rotate(3deg) translate(0px, -4px);
   -ms-transform: rotate(3deg) translate(0px, -4px);
@@ -2188,14 +2230,21 @@ p.inquire-text {
 }
 
 @-webkit-keyframes nprogress-spinner {
-  0%   { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
 @keyframes nprogress-spinner {
-  0%   { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
-
 
 @media only screen and (max-width: 767px) {
   .copyright .header-logo {
@@ -2241,7 +2290,7 @@ p.inquire-text {
   }
 }
 
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 768px) {
   .showcase-Make.rightsidebar ul.countdrop {
     display: block !important;
   }
@@ -2259,4 +2308,3 @@ p.inquire-text {
     justify-content: center;
   }
 }
-

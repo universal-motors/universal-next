@@ -1,5 +1,5 @@
 export interface CarOptionsMapping {
-    carOptionsId: number
-    stockId: number
-    id: number
+  carOptionsId: number;
+  stockId: number;
+  id: number;
 }
