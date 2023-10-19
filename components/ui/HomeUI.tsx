@@ -1,6 +1,6 @@
+import HomeUITabGroup from "@/components/ui/HomeUITabGroup";
 import { BodyType } from "@/models/Master/BodyType";
 import { Make } from "@/models/Master/Make";
-import HomeUITabGroup from "@/components/ui/HomeUITabGroup";
 
 interface Props {
   bodyTlist: BodyType[];
@@ -20,7 +20,7 @@ export default async function HomeUI({ makeList, bodyTlist }: Props) {
   return (
     <>
       <div>
-        <div className='block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500'>
+        <div className="block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500">
           <HomeUITabGroup makes={makeList} bodyTypes={bodyTlist} />
         </div>
       </div>

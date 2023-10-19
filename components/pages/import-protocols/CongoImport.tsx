@@ -5,31 +5,31 @@ export default function CongoImport() {
     <>
       <title>Import Protocol In Democratic Republic of the Congo</title>
       <div>
-        <div className='col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12'>
-          <div className='gceCountry-landing'>
+        <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12">
+          <div className="gceCountry-landing">
             {/* The breadcrumb Begins*/}
-            <div className='breadcrumbs'>
+            <div className="breadcrumbs">
               <ul>
                 <li>
-                  <Link href='/'> Home</Link>
+                  <Link href="/"> Home</Link>
                 </li>
                 <li>
-                  <Link href='#'>Import Protocol In DR Congo</Link>
+                  <Link href="#">Import Protocol In DR Congo</Link>
                 </li>
               </ul>
             </div>
-            <div className='buy-stepBox'>
+            <div className="buy-stepBox">
               <img
-                className='widthhundread'
-                src='/assets/images/import-protocols/Import Regulations Final-07.png'
-                alt=''
+                className="widthhundread"
+                src="/assets/images/import-protocols/Import Regulations Final-07.png"
+                alt=""
               />
             </div>
-            <div className='buy-stepBox'>
+            <div className="buy-stepBox">
               <img
-                className='widthhundread'
-                src='/assets/images/import-protocols/Import Regulations Final-08.png'
-                alt=''
+                className="widthhundread"
+                src="/assets/images/import-protocols/Import Regulations Final-08.png"
+                alt=""
               />
             </div>
           </div>

@@ -4,19 +4,19 @@ import AboutPageSideBar from "@/components/pages/about/AboutPageSideBar";
 export default function PrivacyPolicy() {
   return (
     <>
-      <div className='col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12'>
-        <div className='gceCountry-landing about-globaloffSec'>
+      <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12">
+        <div className="gceCountry-landing about-globaloffSec">
           {/* The breadcrumb Begins*/}
-          <div className='breadcrumbs'>
+          <div className="breadcrumbs">
             <ul>
               <li>
-                <Link href='/index'> Home</Link>
+                <Link href="/index"> Home</Link>
               </li>
               <li>
-                <Link href='/global/about-universal-motors'> About Us </Link>
+                <Link href="/global/about-universal-motors"> About Us </Link>
               </li>
               <li>
-                <Link href='/global/about-universal-motors?page=privacy-policy'>
+                <Link href="/global/about-universal-motors?page=privacy-policy">
                   {" "}
                   Privacy Policy
                 </Link>
@@ -24,11 +24,11 @@ export default function PrivacyPolicy() {
             </ul>
           </div>
           {/* The breadcrumb Ends*/}
-          <div className='row'>
+          <div className="row">
             <AboutPageSideBar />
-            <div className='col-xl-9 col-lg-9 col-md-8 col-sm-12 col-12'>
+            <div className="col-xl-9 col-lg-9 col-md-8 col-sm-12 col-12">
               {/* Privacy Policy Begins*/}
-              <div className='gceCountry-Local'>
+              <div className="gceCountry-Local">
                 <h3>Privacy Policy</h3>
                 <p>
                   It understands the importance of social responsibility and
@@ -44,14 +44,14 @@ export default function PrivacyPolicy() {
                   Information.
                 </p>
               </div>
-              <div className='gceCountry-Local exp-Information'>
+              <div className="gceCountry-Local exp-Information">
                 <p>
                   Universal Motors always ensures that your privacy is protected
                   when you are visiting our websites.
                 </p>
-                <div className='gceInform-Imptxt'>
+                <div className="gceInform-Imptxt">
                   <h4>
-                    <i className='fa fa-caret-right' aria-hidden='true' />
+                    <i className="fa fa-caret-right" aria-hidden="true" />
                     Collected information
                   </h4>
                   <p>
@@ -65,7 +65,7 @@ export default function PrivacyPolicy() {
                     preferences and interests
                   </p>
                   <h4>
-                    <i className='fa fa-caret-right' aria-hidden='true' />
+                    <i className="fa fa-caret-right" aria-hidden="true" />
                     Usage of Information Collected
                   </h4>
                   <p>
@@ -88,7 +88,7 @@ export default function PrivacyPolicy() {
                     according to your interests.
                   </p>
                   <h4>
-                    <i className='fa fa-caret-right' aria-hidden='true' />
+                    <i className="fa fa-caret-right" aria-hidden="true" />
                     Deleting or Updating of Information provided
                   </h4>
                   <p>
@@ -97,7 +97,7 @@ export default function PrivacyPolicy() {
                     <br />- If you have previously agreed to us using your
                     personal information for direct marketing purposes, you may
                     change your mind at any time by emailing us at{" "}
-                    <a href='mailto:csd@universalmotorsltd.com'>
+                    <a href="mailto:csd@universalmotorsltd.com">
                       csd@universalmotorsltd.com
                     </a>
                     . We may use your personal information to send you

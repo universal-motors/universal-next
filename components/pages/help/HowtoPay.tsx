@@ -3,25 +3,25 @@ import Link from "next/link";
 export default function HowtoPay() {
   return (
     <>
-      <div className='col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12'>
-        <div className='gceCountry-landing'>
+      <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12">
+        <div className="gceCountry-landing">
           {/* The breadcrumb Begins*/}
-          <div className='breadcrumbs'>
+          <div className="breadcrumbs">
             <ul>
               <li>
-                <Link href='/'> Home</Link>
+                <Link href="/"> Home</Link>
               </li>
               <li>
-                <Link href='#'> Export Information</Link>
+                <Link href="#"> Export Information</Link>
               </li>
             </ul>
           </div>
-          <div className='pl-5'>
-            <h3 className='font-semibold leading-7 text-blue-950'>
+          <div className="pl-5">
+            <h3 className="font-semibold leading-7 text-blue-950">
               Export Information
             </h3>
-            <div className='mt-6'>
-              <h5 className='text-blue-950 italic capitalize mb-4 font-medium'>
+            <div className="mt-6">
+              <h5 className="text-blue-950 italic capitalize mb-4 font-medium">
                 Universal Motor Standard Terms of Trade are as follows:
               </h5>
               <p>
@@ -41,11 +41,11 @@ export default function HowtoPay() {
                 Scanned TT copy will be required after payment in order to avoid
                 any delay of shipping or document preparation.
               </p>
-              <h5 className='text-2xl font-medium leading-normal mt-0 mb-2 text-orange-400'>
+              <h5 className="text-2xl font-medium leading-normal mt-0 mb-2 text-orange-400">
                 {" "}
                 Shipping Terms
               </h5>
-              <h6 className='text-lg text-cyan-950 underline shadow-sm'>
+              <h6 className="text-lg text-cyan-950 underline shadow-sm">
                 FOB: Free-On-Board:
               </h6>
               <p>
@@ -54,7 +54,7 @@ export default function HowtoPay() {
                 of the vehicle and the expenses until loading on the ship in
                 Japan.
               </p>
-              <h6 className='text-lg text-cyan-950 underline shadow-sm'>
+              <h6 className="text-lg text-cyan-950 underline shadow-sm">
                 CFR: Cost and Freight.
                 <br />
                 CIF: Cost, Insurance and Freight.
@@ -64,7 +64,7 @@ export default function HowtoPay() {
                 Japan and during ocean freight. If you need an insurance for the
                 vehicle, please ask for our assistance.
               </p>
-              <h6 className='text-lg text-cyan-950 underline shadow-sm'>
+              <h6 className="text-lg text-cyan-950 underline shadow-sm">
                 T.T: Telegraphic Transfer / Wire Transfer:
               </h6>
               <p>
@@ -72,7 +72,7 @@ export default function HowtoPay() {
                 most effective mode of sending money. You can transfer money by
                 Telegraphic Transfer at most of the major banks.
               </p>
-              <h6 className='text-lg text-cyan-950 underline shadow-sm'>
+              <h6 className="text-lg text-cyan-950 underline shadow-sm">
                 L/C: Letter of Credit:
               </h6>
               <p>

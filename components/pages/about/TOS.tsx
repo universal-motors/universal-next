@@ -4,39 +4,39 @@ import Link from "next/link";
 export default function TOS() {
   return (
     <>
-      <div className='col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12'>
-        <div className='gceCountry-landing about-termService'>
+      <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12">
+        <div className="gceCountry-landing about-termService">
           {/* The breadcrumb Begins*/}
-          <div className='breadcrumbs'>
+          <div className="breadcrumbs">
             <ul>
               <li>
-                <Link href='/'> Home</Link>
+                <Link href="/"> Home</Link>
               </li>
               <li>
-                <Link href='/global/about-universal-motors'> About Us </Link>
+                <Link href="/global/about-universal-motors"> About Us </Link>
               </li>
               <li>
-                <Link href='#'>Terms of Service</Link>
+                <Link href="#">Terms of Service</Link>
               </li>
             </ul>
           </div>
           {/* The breadcrumb Ends*/}
-          <div className='row'>
+          <div className="row">
             <AboutPageSideBar />
-            <div className='col-xl-9 col-lg-9 col-md-8 col-sm-12 col-12'>
+            <div className="col-xl-9 col-lg-9 col-md-8 col-sm-12 col-12">
               {/* The Global Car Exporter Begins*/}
-              <div className='gceCountry-Local'>
+              <div className="gceCountry-Local">
                 <h3>Terms of Service</h3>
-                <div className='row'>
-                  <div className='col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12'>
-                    <div className='gceInform-Imptxt'>
+                <div className="row">
+                  <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div className="gceInform-Imptxt">
                       <h4>
-                        <i className='fa fa-circle' aria-hidden='true' />
+                        <i className="fa fa-circle" aria-hidden="true" />
                         GENERAL
                       </h4>
                       <p>
                         Universal Motor runs the website
-                        <a href='https://www.universalmotorsltd.com'>
+                        <a href="https://www.universalmotorsltd.com">
                           www.universalmotorsltd.com
                         </a>
                         (the site) under the terms and conditions set out below
@@ -44,7 +44,7 @@ export default function TOS() {
                         using the site.
                       </p>
                       <h4>
-                        <i className='fa fa-circle' aria-hidden='true' />
+                        <i className="fa fa-circle" aria-hidden="true" />
                         COPYRIGHT
                       </h4>
                       <p>
@@ -53,7 +53,7 @@ export default function TOS() {
                         site is prohibited.
                       </p>
                       <h4>
-                        <i className='fa fa-circle' aria-hidden='true' />
+                        <i className="fa fa-circle" aria-hidden="true" />
                         OTHER AGREEMENTS
                       </h4>
                       <p>
@@ -64,7 +64,7 @@ export default function TOS() {
                         terms differ.
                       </p>
                       <h4>
-                        <i className='fa fa-circle' aria-hidden='true' />
+                        <i className="fa fa-circle" aria-hidden="true" />
                         NON-ENGLISH TERMS
                       </h4>
                       <p>
@@ -73,7 +73,7 @@ export default function TOS() {
                         and intended for only convenience.
                       </p>
                       <h4>
-                        <i className='fa fa-circle' aria-hidden='true' />
+                        <i className="fa fa-circle" aria-hidden="true" />
                         REGISTRATION
                       </h4>
                       <p>
@@ -84,7 +84,7 @@ export default function TOS() {
                         for loss arising from wrong information.
                       </p>
                       <h4>
-                        <i className='fa fa-circle' aria-hidden='true' />
+                        <i className="fa fa-circle" aria-hidden="true" />
                         PRICING AND SALE
                       </h4>
                       <p>
@@ -93,7 +93,7 @@ export default function TOS() {
                         FOB terms.
                       </p>
                       <h4>
-                        <i className='fa fa-circle' aria-hidden='true' />
+                        <i className="fa fa-circle" aria-hidden="true" />
                         PAYMENT
                       </h4>
                       <p>
@@ -106,7 +106,7 @@ export default function TOS() {
                         and payable by you.
                       </p>
                       <h4>
-                        <i className='fa fa-circle' aria-hidden='true' />
+                        <i className="fa fa-circle" aria-hidden="true" />
                         DELIVERY AND SHIPPING
                       </h4>
                       <p>
@@ -124,7 +124,7 @@ export default function TOS() {
                         other consumables.
                       </p>
                       <h4>
-                        <i className='fa fa-circle' aria-hidden='true' />
+                        <i className="fa fa-circle" aria-hidden="true" />
                         DOCUMENTS
                       </h4>
                       <p>
@@ -136,7 +136,7 @@ export default function TOS() {
                         non-amended, non-issued, or retained documents.
                       </p>
                       <h4>
-                        <i className='fa fa-circle' aria-hidden='true' />
+                        <i className="fa fa-circle" aria-hidden="true" />
                         NONPAYMENT AND CANCELATION
                       </h4>
                       <p>
@@ -149,7 +149,7 @@ export default function TOS() {
                         noncancelable.
                       </p>
                       <h4>
-                        <i className='fa fa-circle' aria-hidden='true' />
+                        <i className="fa fa-circle" aria-hidden="true" />
                         SITE CONTENT
                       </h4>
                       <p>
@@ -161,7 +161,7 @@ export default function TOS() {
                         reliant on information posted on the site.
                       </p>
                       <h4>
-                        <i className='fa fa-circle' aria-hidden='true' />
+                        <i className="fa fa-circle" aria-hidden="true" />
                         WARRANTY
                       </h4>
                       <p>
@@ -174,7 +174,7 @@ export default function TOS() {
                         disclosed car defects.
                       </p>
                       <h4>
-                        <i className='fa fa-circle' aria-hidden='true' />
+                        <i className="fa fa-circle" aria-hidden="true" />
                         LIMITED LIABILITY
                       </h4>
                       <p>
@@ -184,7 +184,7 @@ export default function TOS() {
                         or use.
                       </p>
                       <h4>
-                        <i className='fa fa-circle' aria-hidden='true' />
+                        <i className="fa fa-circle" aria-hidden="true" />
                         INDEMNITY
                       </h4>
                       <p>
@@ -193,7 +193,7 @@ export default function TOS() {
                         or violation of contract or third-party rights or law.
                       </p>
                       <h4>
-                        <i className='fa fa-circle' aria-hidden='true' />
+                        <i className="fa fa-circle" aria-hidden="true" />
                         ANTI CORRUPTION
                       </h4>
                       <p>
@@ -204,7 +204,7 @@ export default function TOS() {
                         transaction is prohibited.
                       </p>
                       <h4>
-                        <i className='fa fa-circle' aria-hidden='true' />
+                        <i className="fa fa-circle" aria-hidden="true" />
                         ANTI-SOCIAL FORCES
                       </h4>
                       <p>
@@ -216,7 +216,7 @@ export default function TOS() {
                         contravening transaction is prohibited.
                       </p>
                       <h4>
-                        <i className='fa fa-circle' aria-hidden='true' />
+                        <i className="fa fa-circle" aria-hidden="true" />
                         SECURITY EXPORT CONTROL
                       </h4>
                       <p>
@@ -227,7 +227,7 @@ export default function TOS() {
                         development. Any contravening transaction is prohibited.
                       </p>
                       <h4>
-                        <i className='fa fa-circle' aria-hidden='true' />
+                        <i className="fa fa-circle" aria-hidden="true" />
                         MISCELLANEOUS
                       </h4>
                       <p>

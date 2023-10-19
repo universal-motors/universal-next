@@ -5,19 +5,19 @@ import Link from "next/link";
 export default function AntiSocialForces() {
   return (
     <>
-      <div className='col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12'>
-        <div className='gceCountry-landing basic-antiPolicy'>
+      <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12">
+        <div className="gceCountry-landing basic-antiPolicy">
           {/* The breadcrumb Begins*/}
-          <div className='breadcrumbs'>
+          <div className="breadcrumbs">
             <ul>
               <li>
-                <Link href='/'> Home</Link>
+                <Link href="/"> Home</Link>
               </li>
               <li>
-                <Link href='/global/about-universal-motors/'> About Us </Link>
+                <Link href="/global/about-universal-motors/"> About Us </Link>
               </li>
               <li>
-                <Link href='/global/about-universal-motors?page=policy-against-anti-social'>
+                <Link href="/global/about-universal-motors?page=policy-against-anti-social">
                   Basic Policy Against Anti-Social Forces
                 </Link>
               </li>
@@ -25,18 +25,18 @@ export default function AntiSocialForces() {
           </div>
           {/* The breadcrumb Ends*/}
 
-          <div className='row'>
+          <div className="row">
             <AboutPageSideBar />
-            <div className='col-xl-9 col-lg-9 col-md-8 col-sm-12 col-12 '>
+            <div className="col-xl-9 col-lg-9 col-md-8 col-sm-12 col-12 ">
               {/* The CSR Policy Begins*/}
-              <div className='gceCountry-Local exp-Information'>
+              <div className="gceCountry-Local exp-Information">
                 <p>
                   Universal Motors hereby declares its policy dealing with
                   Anti-Social Forces (&quot ASF &quot) as follows:
                 </p>
-                <div className='gceInform-Imptxt'>
+                <div className="gceInform-Imptxt">
                   <h4>
-                    <i className='fa fa-caret-right' aria-hidden='true' />
+                    <i className="fa fa-caret-right" aria-hidden="true" />
                     1. Coping with ASF
                   </h4>
                   <p>
@@ -45,7 +45,7 @@ export default function AntiSocialForces() {
                     an organization along with our Executive Management team.
                   </p>
                   <h4>
-                    <i className='fa fa-caret-right' aria-hidden='true' />
+                    <i className="fa fa-caret-right" aria-hidden="true" />
                     2. Cutting off all business with ASF
                   </h4>
                   <p>
@@ -55,7 +55,7 @@ export default function AntiSocialForces() {
                     partnership with ASF.
                   </p>
                   <h4>
-                    <i className='fa fa-caret-right' aria-hidden='true' />
+                    <i className="fa fa-caret-right" aria-hidden="true" />
                     3. Cooperating with Outside Professional Organizations
                   </h4>
                   <p>
@@ -66,7 +66,7 @@ export default function AntiSocialForces() {
                     Elimination Center.
                   </p>
                   <h4>
-                    <i className='fa fa-caret-right' aria-hidden='true' />
+                    <i className="fa fa-caret-right" aria-hidden="true" />
                     4. Legal procedures to counteract civil and criminal ASF
                     activity
                   </h4>
@@ -77,7 +77,7 @@ export default function AntiSocialForces() {
                     to respond to these demands.
                   </p>
                   <h4>
-                    <i className='fa fa-caret-right' aria-hidden='true' />
+                    <i className="fa fa-caret-right" aria-hidden="true" />
                     5. Restriction of under-the-table deals and fund provision
                   </h4>
                   <p>

@@ -4,27 +4,27 @@ import { Accordion, Tab, Tabs } from "react-bootstrap";
 export default function FaqComponent() {
   return (
     <>
-      <div className='gceFaq-tabs faqSec'>
+      <div className="gceFaq-tabs faqSec">
         <h3>FAQs</h3>
         <Tabs
-          defaultActiveKey='all'
-          id='justify-tab-example'
-          className='nav nav-tabs'
+          defaultActiveKey="all"
+          id="justify-tab-example"
+          className="nav nav-tabs"
           fill
         >
-          <Tab eventKey='all' title='ALL'>
-            <div className='tab-pane active' id='tabs-all' role='tabpanel'>
-              <div className='row'>
-                <div className='col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12'>
-                  <div className='accordion faqExample' id='faqExampleall'>
-                    <div className='row'>
-                      <div className='col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12'>
+          <Tab eventKey="all" title="ALL">
+            <div className="tab-pane active" id="tabs-all" role="tabpanel">
+              <div className="row">
+                <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                  <div className="accordion faqExample" id="faqExampleall">
+                    <div className="row">
+                      <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                         <Accordion>
-                          <Accordion.Item eventKey='0'>
-                            <Accordion.Header className='card-header'>
+                          <Accordion.Item eventKey="0">
+                            <Accordion.Header className="card-header">
                               <span> What do I have to do to buy a car?</span>
                             </Accordion.Header>
-                            <Accordion.Body className='card-body'>
+                            <Accordion.Body className="card-body">
                               <span>
                                 {" "}
                                 Registration is required. After registration is
@@ -32,8 +32,8 @@ export default function FaqComponent() {
                               </span>
                             </Accordion.Body>
                           </Accordion.Item>
-                          <Accordion.Item eventKey='1'>
-                            <Accordion.Header className='card-header'>
+                          <Accordion.Item eventKey="1">
+                            <Accordion.Header className="card-header">
                               {" "}
                               <span>
                                 {" "}
@@ -41,7 +41,7 @@ export default function FaqComponent() {
                                 member of Universal Motors?
                               </span>
                             </Accordion.Header>
-                            <Accordion.Body className='card-body'>
+                            <Accordion.Body className="card-body">
                               <span>
                                 {" "}
                                 Anyone who is an automobile dealer or an
@@ -56,8 +56,8 @@ export default function FaqComponent() {
                               </span>
                             </Accordion.Body>
                           </Accordion.Item>
-                          <Accordion.Item eventKey='2'>
-                            <Accordion.Header className='card-header'>
+                          <Accordion.Item eventKey="2">
+                            <Accordion.Header className="card-header">
                               {" "}
                               <span>
                                 {" "}
@@ -65,7 +65,7 @@ export default function FaqComponent() {
                                 your Inventory and in auction?
                               </span>
                             </Accordion.Header>
-                            <Accordion.Body className='card-body'>
+                            <Accordion.Body className="card-body">
                               <span>
                                 {" "}
                                 Usually, we have more than a thousand cars in
@@ -77,8 +77,8 @@ export default function FaqComponent() {
                               </span>
                             </Accordion.Body>
                           </Accordion.Item>
-                          <Accordion.Item eventKey='3'>
-                            <Accordion.Header className='card-header'>
+                          <Accordion.Item eventKey="3">
+                            <Accordion.Header className="card-header">
                               {" "}
                               <span>
                                 {" "}
@@ -86,7 +86,7 @@ export default function FaqComponent() {
                                 Universal Motors?
                               </span>
                             </Accordion.Header>
-                            <Accordion.Body className='card-body'>
+                            <Accordion.Body className="card-body">
                               <span>
                                 {" "}
                                 Normally we do accept payment by telegraphic
@@ -95,15 +95,15 @@ export default function FaqComponent() {
                               </span>
                             </Accordion.Body>
                           </Accordion.Item>
-                          <Accordion.Item eventKey='4'>
-                            <Accordion.Header className='card-header'>
+                          <Accordion.Item eventKey="4">
+                            <Accordion.Header className="card-header">
                               {" "}
                               <span>
                                 {" "}
                                 How long does it take me to receive my car?
                               </span>
                             </Accordion.Header>
-                            <Accordion.Body className='card-body'>
+                            <Accordion.Body className="card-body">
                               <span>
                                 {" "}
                                 We cannot tell you the exact time for your car
@@ -113,12 +113,12 @@ export default function FaqComponent() {
                               </span>
                             </Accordion.Body>
                           </Accordion.Item>
-                          <Accordion.Item eventKey='5'>
-                            <Accordion.Header className='card-header'>
+                          <Accordion.Item eventKey="5">
+                            <Accordion.Header className="card-header">
                               {" "}
                               <span> Is there any membership fee?</span>
                             </Accordion.Header>
-                            <Accordion.Body className='card-body'>
+                            <Accordion.Body className="card-body">
                               <span>
                                 {" "}
                                 No. No fees or hidden charges are required. So
@@ -126,15 +126,15 @@ export default function FaqComponent() {
                               </span>
                             </Accordion.Body>
                           </Accordion.Item>
-                          <Accordion.Item eventKey='6'>
-                            <Accordion.Header className='card-header'>
+                          <Accordion.Item eventKey="6">
+                            <Accordion.Header className="card-header">
                               {" "}
                               <span>
                                 If I purchase a vehicle at $ 2,000, how much
                                 will I have to pay as extra charges?
                               </span>
                             </Accordion.Header>
-                            <Accordion.Body className='card-body'>
+                            <Accordion.Body className="card-body">
                               <span>
                                 {" "}
                                 If the price is in FOB, you will have to pay
@@ -149,16 +149,16 @@ export default function FaqComponent() {
                           </Accordion.Item>
                         </Accordion>
                       </div>
-                      <div className='col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12'>
+                      <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                         <Accordion>
-                          <Accordion.Item eventKey='0'>
-                            <Accordion.Header className='card-header'>
+                          <Accordion.Item eventKey="0">
+                            <Accordion.Header className="card-header">
                               <span>
                                 {" "}
                                 Can I purchase LHD cars from Universal Motors?
                               </span>
                             </Accordion.Header>
-                            <Accordion.Body className='card-body'>
+                            <Accordion.Body className="card-body">
                               <span>
                                 {" "}
                                 LHD cars are usually imported from countries
@@ -168,12 +168,12 @@ export default function FaqComponent() {
                               </span>
                             </Accordion.Body>
                           </Accordion.Item>
-                          <Accordion.Item eventKey='1'>
-                            <Accordion.Header className='card-header'>
+                          <Accordion.Item eventKey="1">
+                            <Accordion.Header className="card-header">
                               {" "}
                               <span> Can I cancel my purchase order?</span>
                             </Accordion.Header>
-                            <Accordion.Body className='card-body'>
+                            <Accordion.Body className="card-body">
                               <span>
                                 {" "}
                                 When you cancel an order, we may have to resell
@@ -184,15 +184,15 @@ export default function FaqComponent() {
                               </span>
                             </Accordion.Body>
                           </Accordion.Item>
-                          <Accordion.Item eventKey='2'>
-                            <Accordion.Header className='card-header'>
+                          <Accordion.Item eventKey="2">
+                            <Accordion.Header className="card-header">
                               {" "}
                               <span>
                                 {" "}
                                 Do you inspect the cars before shipping?
                               </span>
                             </Accordion.Header>
-                            <Accordion.Body className='card-body'>
+                            <Accordion.Body className="card-body">
                               <span>
                                 {" "}
                                 All the cars are thoroughly inspected to confirm
@@ -202,20 +202,20 @@ export default function FaqComponent() {
                               </span>
                             </Accordion.Body>
                           </Accordion.Item>
-                          <Accordion.Item eventKey='3'>
-                            <Accordion.Header className='card-header'>
+                          <Accordion.Item eventKey="3">
+                            <Accordion.Header className="card-header">
                               {" "}
                               <span>
                                 {" "}
                                 When can I use online auction service?
                               </span>
                             </Accordion.Header>
-                            <Accordion.Body className='card-body'>
+                            <Accordion.Body className="card-body">
                               <span>You can use it every day.</span>
                             </Accordion.Body>
                           </Accordion.Item>
-                          <Accordion.Item eventKey='4'>
-                            <Accordion.Header className='card-header'>
+                          <Accordion.Item eventKey="4">
+                            <Accordion.Header className="card-header">
                               {" "}
                               <span>
                                 {" "}
@@ -224,7 +224,7 @@ export default function FaqComponent() {
                                 auction?
                               </span>
                             </Accordion.Header>
-                            <Accordion.Body className='card-body'>
+                            <Accordion.Body className="card-body">
                               <span>
                                 {" "}
                                 Yes, the data from recent auctions will be a
@@ -234,15 +234,15 @@ export default function FaqComponent() {
                               </span>
                             </Accordion.Body>
                           </Accordion.Item>
-                          <Accordion.Item eventKey='5' className='danger'>
-                            <Accordion.Header className='card-header'>
+                          <Accordion.Item eventKey="5" className="danger">
+                            <Accordion.Header className="card-header">
                               {" "}
                               <span>
                                 {" "}
                                 Do your staffs inspect the cars before bidding?
                               </span>
                             </Accordion.Header>
-                            <Accordion.Body className='card-body'>
+                            <Accordion.Body className="card-body">
                               <span>
                                 {" "}
                                 We have highly skilled professionals who
@@ -262,13 +262,13 @@ export default function FaqComponent() {
               </div>
             </div>
           </Tab>
-          <Tab eventKey='auction_service' title='Auction Service'>
-            <div className='accordion faqExample' id='faqExampleall'>
-              <div className='row'>
-                <div className='col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12'>
+          <Tab eventKey="auction_service" title="Auction Service">
+            <div className="accordion faqExample" id="faqExampleall">
+              <div className="row">
+                <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                   <Accordion>
-                    <Accordion.Item eventKey='0'>
-                      <Accordion.Header className='card-header'>
+                    <Accordion.Item eventKey="0">
+                      <Accordion.Header className="card-header">
                         {" "}
                         <span>
                           {" "}
@@ -276,7 +276,7 @@ export default function FaqComponent() {
                           Inventory and in auction?
                         </span>
                       </Accordion.Header>
-                      <Accordion.Body className='card-body'>
+                      <Accordion.Body className="card-body">
                         <span>
                           {" "}
                           Usually, we have more than a thousand cars in our
@@ -287,12 +287,12 @@ export default function FaqComponent() {
                         </span>
                       </Accordion.Body>
                     </Accordion.Item>
-                    <Accordion.Item eventKey='1'>
-                      <Accordion.Header className='card-header'>
+                    <Accordion.Item eventKey="1">
+                      <Accordion.Header className="card-header">
                         {" "}
                         <span> Can I cancel my purchase order?</span>
                       </Accordion.Header>
-                      <Accordion.Body className='card-body'>
+                      <Accordion.Body className="card-body">
                         <span>
                           {" "}
                           When you cancel an order, we may have to resell that
@@ -304,19 +304,19 @@ export default function FaqComponent() {
                     </Accordion.Item>
                   </Accordion>
                 </div>
-                <div className='col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12'>
+                <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                   <Accordion>
-                    <Accordion.Item eventKey='0'>
-                      <Accordion.Header className='card-header'>
+                    <Accordion.Item eventKey="0">
+                      <Accordion.Header className="card-header">
                         {" "}
                         <span> When can I use online auction service?</span>
                       </Accordion.Header>
-                      <Accordion.Body className='card-body'>
+                      <Accordion.Body className="card-body">
                         <span>You can use it every day.</span>
                       </Accordion.Body>
                     </Accordion.Item>
-                    <Accordion.Item eventKey='1'>
-                      <Accordion.Header className='card-header'>
+                    <Accordion.Item eventKey="1">
+                      <Accordion.Header className="card-header">
                         {" "}
                         <span>
                           {" "}
@@ -324,7 +324,7 @@ export default function FaqComponent() {
                           for a vehicle I am interested in at an auction?
                         </span>
                       </Accordion.Header>
-                      <Accordion.Body className='card-body'>
+                      <Accordion.Body className="card-body">
                         <span>
                           {" "}
                           Yes, the data from recent auctions will be a good
@@ -338,18 +338,18 @@ export default function FaqComponent() {
               </div>
             </div>
           </Tab>
-          <Tab eventKey='lhd_cars' title='LHD Cars'>
-            <div className='accordion faqExample' id='faqExampleall'>
-              <div className='col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12'>
+          <Tab eventKey="lhd_cars" title="LHD Cars">
+            <div className="accordion faqExample" id="faqExampleall">
+              <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                 <Accordion>
-                  <Accordion.Item eventKey='0'>
-                    <Accordion.Header className='card-header'>
+                  <Accordion.Item eventKey="0">
+                    <Accordion.Header className="card-header">
                       <span>
                         {" "}
                         Can I purchase LHD cars from Universal Motors?
                       </span>
                     </Accordion.Header>
-                    <Accordion.Body className='card-body'>
+                    <Accordion.Body className="card-body">
                       <span>
                         {" "}
                         LHD cars are usually imported from countries like UAE,
@@ -363,19 +363,19 @@ export default function FaqComponent() {
               </div>
             </div>
           </Tab>
-          <Tab eventKey='others' title='Others'>
-            <div className='accordion faqExample' id='faqExampleall'>
-              <div className='col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12'>
+          <Tab eventKey="others" title="Others">
+            <div className="accordion faqExample" id="faqExampleall">
+              <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                 <Accordion>
-                  <Accordion.Item eventKey='0'>
-                    <Accordion.Header className='card-header'>
+                  <Accordion.Item eventKey="0">
+                    <Accordion.Header className="card-header">
                       {" "}
                       <span>
                         If I purchase a vehicle at $ 2,000, how much will I have
                         to pay as extra charges?
                       </span>
                     </Accordion.Header>
-                    <Accordion.Body className='card-body'>
+                    <Accordion.Body className="card-body">
                       <span>
                         {" "}
                         If the price is in FOB, you will have to pay Freight
@@ -391,16 +391,16 @@ export default function FaqComponent() {
               </div>
             </div>
           </Tab>
-          <Tab eventKey='payment_buy' title='Payment &amp; How to Buy'>
-            <div className='accordion faqExample' id='faqExampleall'>
-              <div className='row'>
-                <div className='col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12'>
+          <Tab eventKey="payment_buy" title="Payment &amp; How to Buy">
+            <div className="accordion faqExample" id="faqExampleall">
+              <div className="row">
+                <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                   <Accordion>
-                    <Accordion.Item eventKey='0'>
-                      <Accordion.Header className='card-header'>
+                    <Accordion.Item eventKey="0">
+                      <Accordion.Header className="card-header">
                         <span> What do I have to do to buy a car?</span>
                       </Accordion.Header>
-                      <Accordion.Body className='card-body'>
+                      <Accordion.Body className="card-body">
                         <span>
                           {" "}
                           Registration is required. After registration is
@@ -410,10 +410,10 @@ export default function FaqComponent() {
                     </Accordion.Item>
                   </Accordion>
                 </div>
-                <div className='col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12'>
+                <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                   <Accordion>
-                    <Accordion.Item eventKey='0'>
-                      <Accordion.Header className='card-header'>
+                    <Accordion.Item eventKey="0">
+                      <Accordion.Header className="card-header">
                         {" "}
                         <span>
                           {" "}
@@ -421,7 +421,7 @@ export default function FaqComponent() {
                           Motors?
                         </span>
                       </Accordion.Header>
-                      <Accordion.Body className='card-body'>
+                      <Accordion.Body className="card-body">
                         <span>
                           {" "}
                           Normally we do accept payment by telegraphic transfer
@@ -434,20 +434,20 @@ export default function FaqComponent() {
               </div>
             </div>
           </Tab>
-          <Tab eventKey='registratin_criteria' title='Registration Criteria'>
-            <div className='accordion faqExample' id='faqExampleall'>
-              <div className='row'>
-                <div className='col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12'>
+          <Tab eventKey="registratin_criteria" title="Registration Criteria">
+            <div className="accordion faqExample" id="faqExampleall">
+              <div className="row">
+                <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                   <Accordion>
-                    <Accordion.Item eventKey='0'>
-                      <Accordion.Header className='card-header'>
+                    <Accordion.Item eventKey="0">
+                      <Accordion.Header className="card-header">
                         <span>
                           {" "}
                           Do you have any criteria to become a registered member
                           of Universal Motors?
                         </span>
                       </Accordion.Header>
-                      <Accordion.Body className='card-body'>
+                      <Accordion.Body className="card-body">
                         <span>
                           {" "}
                           Anyone who is an automobile dealer or an individual
@@ -463,14 +463,14 @@ export default function FaqComponent() {
                     </Accordion.Item>
                   </Accordion>
                 </div>
-                <div className='col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12'>
+                <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                   <Accordion>
-                    <Accordion.Item eventKey='0'>
-                      <Accordion.Header className='card-header'>
+                    <Accordion.Item eventKey="0">
+                      <Accordion.Header className="card-header">
                         {" "}
                         <span> Is there any membership fee?</span>
                       </Accordion.Header>
-                      <Accordion.Body className='card-body'>
+                      <Accordion.Body className="card-body">
                         <span>
                           {" "}
                           No. No fees or hidden charges are required. So dont
@@ -483,19 +483,19 @@ export default function FaqComponent() {
               </div>
             </div>
           </Tab>
-          <Tab eventKey='shipping_document' title='Shipping &amp; Document'>
-            <div className='accordion faqExample' id='faqExampleall'>
-              <div className='row'>
-                <div className='col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12'>
+          <Tab eventKey="shipping_document" title="Shipping &amp; Document">
+            <div className="accordion faqExample" id="faqExampleall">
+              <div className="row">
+                <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                   <Accordion>
-                    <Accordion.Item eventKey='0'>
-                      <Accordion.Header className='card-header'>
+                    <Accordion.Item eventKey="0">
+                      <Accordion.Header className="card-header">
                         <span>
                           {" "}
                           How long does it take me to receive my car?
                         </span>
                       </Accordion.Header>
-                      <Accordion.Body className='card-body'>
+                      <Accordion.Body className="card-body">
                         <span>
                           {" "}
                           We cannot tell you the exact time for your car to be
@@ -509,19 +509,19 @@ export default function FaqComponent() {
               </div>
             </div>
           </Tab>
-          <Tab eventKey='vehicle_inspection' title='Vehicle Inspection'>
-            <div className='accordion faqExample' id='faqExampleall'>
-              <div className='row'>
-                <div className='col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12'>
+          <Tab eventKey="vehicle_inspection" title="Vehicle Inspection">
+            <div className="accordion faqExample" id="faqExampleall">
+              <div className="row">
+                <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                   <Accordion>
-                    <Accordion.Item eventKey='0'>
-                      <Accordion.Header className='card-header'>
+                    <Accordion.Item eventKey="0">
+                      <Accordion.Header className="card-header">
                         <span>
                           {" "}
                           Do your staffs inspect the cars before bidding?
                         </span>
                       </Accordion.Header>
-                      <Accordion.Body className='card-body'>
+                      <Accordion.Body className="card-body">
                         <span>
                           {" "}
                           We have highly skilled professionals who carefully
@@ -534,14 +534,14 @@ export default function FaqComponent() {
                     </Accordion.Item>
                   </Accordion>
                 </div>
-                <div className='col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12'>
+                <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                   <Accordion>
-                    <Accordion.Item eventKey='0'>
-                      <Accordion.Header className='card-header'>
+                    <Accordion.Item eventKey="0">
+                      <Accordion.Header className="card-header">
                         {" "}
                         <span> Do you inspect the cars before shipping?</span>
                       </Accordion.Header>
-                      <Accordion.Body className='card-body'>
+                      <Accordion.Body className="card-body">
                         <span>
                           {" "}
                           All the cars are thoroughly inspected to confirm that

@@ -18,10 +18,23 @@ export default function Forms() {
         break;
     }
   };
+  const list = [
+    "My Profile",
+    "My Account Info",
+    "My Cosignee Details",
+    "My Favorites",
+    "Inquiry & Bid List",
+    "Reserved Vehicles",
+    "Purchased Vehicles",
+  ];
   return (
-    <div className='w-full'>
-      <div className='w-full flex justify-center flex-col'>
-        <Tabs setCurrentForm={setCurrentForm} currentForm={currentForm} />
+    <div className="w-full">
+      <div className="w-full flex justify-center flex-col">
+        <Tabs
+          list={list}
+          setCurrentForm={setCurrentForm}
+          currentForm={currentForm}
+        />
         {getCurrentForm()}
       </div>
     </div>

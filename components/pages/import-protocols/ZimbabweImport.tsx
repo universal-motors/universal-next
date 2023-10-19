@@ -5,31 +5,31 @@ export default function ZimbabweImport() {
     <>
       <title>Import Protocol In Zimbabwe</title>
       <div>
-        <div className='col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12'>
-          <div className='gceCountry-landing'>
+        <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12">
+          <div className="gceCountry-landing">
             {/* The breadcrumb Begins*/}
-            <div className='breadcrumbs'>
+            <div className="breadcrumbs">
               <ul>
                 <li>
-                  <Link href='/'> Home</Link>
+                  <Link href="/"> Home</Link>
                 </li>
                 <li>
-                  <Link href='#'>Import Protocol In Zimbabwe</Link>
+                  <Link href="#">Import Protocol In Zimbabwe</Link>
                 </li>
               </ul>
             </div>
-            <div className='buy-stepBox'>
+            <div className="buy-stepBox">
               <img
-                className='widthhundread'
-                src='/assets/images/import-protocols/Import Regulations Final-34.png'
-                alt=''
+                className="widthhundread"
+                src="/assets/images/import-protocols/Import Regulations Final-34.png"
+                alt=""
               />
             </div>
-            <div className='buy-stepBox'>
+            <div className="buy-stepBox">
               <img
-                className='widthhundread'
-                src='/assets/images/import-protocols/Import Regulations Final-35.png'
-                alt=''
+                className="widthhundread"
+                src="/assets/images/import-protocols/Import Regulations Final-35.png"
+                alt=""
               />
             </div>
           </div>

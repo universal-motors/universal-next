@@ -15,36 +15,36 @@ export default function SignInComponentUI() {
   }
   return (
     <>
-      <div className='col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12'>
-        <div className='registerbox'>
+      <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+        <div className="registerbox">
           {/*<i className="fa fa-user" />*/}
           <h2>
-            <FcBusinessman className='m-2' />
+            <FcBusinessman className="m-2" />
           </h2>
-          <div className='currencydropdown'>
+          <div className="currencydropdown">
             <button
               onClick={() => signIn()}
-              className='currencydropbtn supportbtn'
+              className="currencydropbtn supportbtn"
             >
               Hello, Sign in
               <br />
               My Account
             </button>
 
-            <div className='currencydropdown-content regiscontent'>
-              <div className='row'>
-                <div className='col-md-12'>
-                  <p className='m-0' style={{ fontSize: "14px" }}>
+            <div className="currencydropdown-content regiscontent">
+              <div className="row">
+                <div className="col-md-12">
+                  <p className="m-0" style={{ fontSize: "14px" }}>
                     <strong>My Account</strong>
                   </p>
                   {/*<LoginModal/>*/}
-                  <div className='regisfooter'>
-                    <p style={{ fontSize: "14px" }} className='m-0'>
+                  <div className="regisfooter">
+                    <p style={{ fontSize: "14px" }} className="m-0">
                       New Customer?
                     </p>
                     <p>
                       <Button
-                        className='p-0 m-0'
+                        className="p-0 m-0"
                         onClick={() => signIn()}
                         style={{ color: "blue", fontSize: "14px" }}
                       >

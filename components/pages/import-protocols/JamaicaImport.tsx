@@ -5,38 +5,38 @@ export default function JamaicaImport() {
     <>
       <title>Import Protocol In Jamaica</title>
       <div>
-        <div className='col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12'>
-          <div className='gceCountry-landing'>
+        <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12">
+          <div className="gceCountry-landing">
             {/* The breadcrumb Begins*/}
-            <div className='breadcrumbs'>
+            <div className="breadcrumbs">
               <ul>
                 <li>
-                  <Link href='/'> Home</Link>
+                  <Link href="/"> Home</Link>
                 </li>
                 <li>
-                  <Link href='#'>Import Protocol In Jamaica</Link>
+                  <Link href="#">Import Protocol In Jamaica</Link>
                 </li>
               </ul>
             </div>
-            <div className='buy-stepBox'>
+            <div className="buy-stepBox">
               <img
-                className='widthhundread'
-                src='/assets/images/import-protocols/Import Regulations Final-11.png'
-                alt=''
+                className="widthhundread"
+                src="/assets/images/import-protocols/Import Regulations Final-11.png"
+                alt=""
               />
             </div>
-            <div className='buy-stepBox'>
+            <div className="buy-stepBox">
               <img
-                className='widthhundread'
-                src='/assets/images/import-protocols/Import Regulations Final-12.png'
-                alt=''
+                className="widthhundread"
+                src="/assets/images/import-protocols/Import Regulations Final-12.png"
+                alt=""
               />
             </div>
-            <div className='buy-stepBox'>
+            <div className="buy-stepBox">
               <img
-                className='widthhundread'
-                src='/assets/images/import-protocols/Import Regulations Final-13.png'
-                alt=''
+                className="widthhundread"
+                src="/assets/images/import-protocols/Import Regulations Final-13.png"
+                alt=""
               />
             </div>
           </div>

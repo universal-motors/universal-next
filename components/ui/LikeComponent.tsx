@@ -8,10 +8,10 @@ export default function LikeComponent() {
     setStatus(!status);
     //        onClick();
   };
-  if (status) return <AiFillHeart color='#ff6b81' size={20} onClick={toggle} />;
+  if (status) return <AiFillHeart color="#ff6b81" size={20} onClick={toggle} />;
   return (
     <>
-      <span onClick={toggle} className='inline-flex font-bold fav-text'>
+      <span onClick={toggle} className="inline-flex font-bold fav-text">
         <AiOutlineHeart size={20} /> Add to Favorites
       </span>
     </>

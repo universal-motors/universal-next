@@ -47,19 +47,19 @@ export default async function CarDetailed({ params }: Props) {
   if (Stock != null)
     return (
       <>
-        <div className='col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection'>
-          <div className='row'>
-            <section className='product-slider-section'>
-              <div className='container-fluid'>
-                <div id='productslider' className='carousel slide'>
-                  <div className='row'>
-                    <h1 className='mobicar carname'>
+        <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection">
+          <div className="row">
+            <section className="product-slider-section">
+              <div className="container-fluid">
+                <div id="productslider" className="carousel slide">
+                  <div className="row">
+                    <h1 className="mobicar carname">
                       {Stock.data.listingTitle}
                     </h1>
-                    <div className='col-lg-6 col-md-6 detail-leftsection'>
-                      <div className='row'>
-                        <div id='wrap' className='container-fluid'>
-                          <div className='row'>
+                    <div className="col-lg-6 col-md-6 detail-leftsection">
+                      <div className="row">
+                        <div id="wrap" className="container-fluid">
+                          <div className="row">
                             <CarDetailedSlideshow
                               mainPic={Stock.data.imageUrl}
                               stockID={Stock.data.stockId}
@@ -68,7 +68,7 @@ export default async function CarDetailed({ params }: Props) {
                         </div>
                       </div>
                       <hr />
-                      <div className='shipping-details'>
+                      <div className="shipping-details">
                         <StockSpecification
                           car={Stock.data}
                           location={InventoryLocation}
@@ -77,16 +77,16 @@ export default async function CarDetailed({ params }: Props) {
                         <DescriptionUI description={Stock.data.description} />
                       </div>
                     </div>
-                    <div className='col-lg-6 col-md-6'>
-                      <h1 className='pccar carname'>
+                    <div className="col-lg-6 col-md-6">
+                      <h1 className="pccar carname">
                         {Stock.data.listingTitle}
                       </h1>
-                      <div className='col-md-4 col-sm-4 col-4'>
-                        <div className='stock'>
-                          <span className='flex items-center gap-x-1 bg-red-100 px-2 py-1 font-medium text-red-700'>
+                      <div className="col-md-4 col-sm-4 col-4">
+                        <div className="stock">
+                          <span className="flex items-center gap-x-1 bg-red-100 px-2 py-1 font-medium text-red-700">
                             Stock ID :
                             <img
-                              className='h-6 m-2'
+                              className="h-6 m-2"
                               src={`/assets/images/flags/${InventoryLocation?.slug}.svg`}
                               alt={InventoryLocation?.slug}
                             />

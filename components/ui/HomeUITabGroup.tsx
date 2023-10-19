@@ -1,10 +1,12 @@
 "use client";
 
-import { Tab } from "@headlessui/react";
+import Tabs from "@/app/dashboard/components/Tabs";
 import CarsSimpleSearch from "@/components/cars/CarsSimpleSearch";
 import TruckSimpleSearch from "@/components/trucks/TruckSimpleSearch";
 import { BodyType } from "@/models/Master/BodyType";
 import { Make } from "@/models/Master/Make";
+import { Tab } from "@headlessui/react";
+import { useState } from "react";
 
 interface TabType {
   name: string;
@@ -28,16 +30,45 @@ const tabs: TabType[] = [
 ];
 
 export default function HomeUITabGroup({ bodyTypes, makes }: Props) {
+  const [currentForm, setCurrentForm] = useState("Cars");
   const currentYear = new Date().getFullYear();
   const fromYear = 1970;
   const yearList = Array.from({ length: currentYear - fromYear }, (_, index) =>
     (fromYear + index).toString()
   );
-
+  const list = ["Cars", "Truck", "Heavy Machinery"];
+  const getForm = () => {
+    switch (currentForm) {
+      case "Cars":
+        return (
+          <CarsSimpleSearch
+            bodyTypes={bodyTypes}
+            makes={makes}
+            yearList={yearList}
+          />
+        );
+      case "Truck":
+        return (
+          <TruckSimpleSearch
+            bodyTypes={bodyTypes}
+            makes={makes}
+            yearList={yearList}
+          />
+        );
+      default:
+        break;
+    }
+  };
   return (
     <>
+      <Tabs
+        list={list}
+        setCurrentForm={setCurrentForm}
+        currentForm={currentForm}
+      />
+      {getForm()}
       <Tab.Group>
-        <Tab.List className='flex space-x-1 rounded-xl bg-blue-900/20 p-1'>
+        {/* <Tab.List className='flex space-x-1 rounded-xl bg-blue-900/20 p-1'>
           {tabs.map((tab) => (
             <Tab
               key={tab.name}
@@ -54,9 +85,9 @@ export default function HomeUITabGroup({ bodyTypes, makes }: Props) {
               {tab.name}
             </Tab>
           ))}
-        </Tab.List>
+        </Tab.List> */}
         <Tab.Panels>
-          <Tab.Panel
+          {/* <Tab.Panel
             className={classNames(
               "rounded-xl bg-white p-3",
               "ring-white ring-opacity-80 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2"
@@ -79,7 +110,7 @@ export default function HomeUITabGroup({ bodyTypes, makes }: Props) {
               makes={makes}
               yearList={yearList}
             />
-          </Tab.Panel>
+          </Tab.Panel> */}
 
           <Tab.Panel>
             {/*<div className="showcase-Box truckform">*/}

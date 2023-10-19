@@ -45,43 +45,43 @@ export default function TopCountryTimeBar({ stockCount }: Props) {
 
   return (
     <>
-      <div className='firstsection col-lg-4 col-md-6 col-12 text-center'>
-        <div className='flex items-center my-2'>
-          <span className=' inline-flex items-center gap-x-1.5 ml-3 rounded-md bg-gray-100 px-2 py-1 text-lg align-middle tracking-tight  font-medium text-gray-900'>
+      <div className="firstsection col-lg-4 col-md-6 col-12 text-center">
+        <div className="flex items-center my-2">
+          <span className=" inline-flex items-center gap-x-1.5 ml-3 rounded-md bg-gray-100 px-2 py-1 text-lg align-middle tracking-tight  font-medium text-gray-900">
             <svg
-              className='h-1.5 w-1.5 fill-indigo-500'
-              viewBox='0 0 6 6'
-              aria-hidden='true'
+              className="h-1.5 w-1.5 fill-indigo-500"
+              viewBox="0 0 6 6"
+              aria-hidden="true"
             >
               <circle cx={3} cy={3} r={3} />
             </svg>
             TOTAL STOCK
             <img
-              alt=''
-              src='https://upload.wikimedia.org/wikipedia/commons/4/43/Sedan-car.svg'
-              className='h-5 mr-2'
+              alt=""
+              src="https://upload.wikimedia.org/wikipedia/commons/4/43/Sedan-car.svg"
+              className="h-5 mr-2"
             />{" "}
             :
-            <span className='ml-1 bg-gradient-to-r rounded-2xl p-1 from-orange-500 to-yellow-500'>
+            <span className="ml-1 bg-gradient-to-r rounded-2xl p-1 from-orange-500 to-yellow-500">
               {" "}
               <NumberFormat numbers={stockCount} />
             </span>
           </span>
         </div>
       </div>
-      <div className='col-lg-4 col-md-6 col-12 text-center mt-1'>
-        <div className='flex items-center mt-3'>
+      <div className="col-lg-4 col-md-6 col-12 text-center mt-1">
+        <div className="flex items-center mt-3">
           <img
-            alt='UAE Flag'
-            src='/assets/images/flags/uae_flag.jpg'
-            className='h-4 mr-2'
+            alt="UAE Flag"
+            src="/assets/images/flags/uae_flag.jpg"
+            className="h-4 mr-2"
           />
-          <img alt='UAE Time' src='/assets/images/Clock.svg' className='h-5' />
-          <span className='inline-flex items-center gap-x-1.5 ml-3 rounded-md bg-green-100 px-2 py-1 text-xs font-medium text-green-900'>
+          <img alt="UAE Time" src="/assets/images/Clock.svg" className="h-5" />
+          <span className="inline-flex items-center gap-x-1.5 ml-3 rounded-md bg-green-100 px-2 py-1 text-xs font-medium text-green-900">
             <svg
-              className='h-1.5 w-1.5 fill-black'
-              viewBox='0 0 6 6'
-              aria-hidden='true'
+              className="h-1.5 w-1.5 fill-black"
+              viewBox="0 0 6 6"
+              aria-hidden="true"
             >
               <circle cx={3} cy={3} r={3} />
             </svg>
@@ -89,23 +89,23 @@ export default function TopCountryTimeBar({ stockCount }: Props) {
           </span>
         </div>
       </div>
-      <div className='secondsection col-lg-4 col-md-6 col-12 text-center mt-1'>
-        <div className='flex items-center mt-3'>
+      <div className="secondsection col-lg-4 col-md-6 col-12 text-center mt-1">
+        <div className="flex items-center mt-3">
           <img
-            alt='Japan Flag'
-            src='/assets/images/flags/JP.svg'
-            className='h-4 mr-2'
+            alt="Japan Flag"
+            src="/assets/images/flags/JP.svg"
+            className="h-4 mr-2"
           />
           <img
-            alt='Japan Time'
-            src='/assets/images/Clock.svg'
-            className='h-5'
+            alt="Japan Time"
+            src="/assets/images/Clock.svg"
+            className="h-5"
           />
-          <span className='inline-flex items-center gap-x-1.5 ml-3 rounded-md bg-red-100 px-2 py-1 text-xs font-medium text-red-700'>
+          <span className="inline-flex items-center gap-x-1.5 ml-3 rounded-md bg-red-100 px-2 py-1 text-xs font-medium text-red-700">
             <svg
-              className='h-1.5 w-1.5 fill-red-500'
-              viewBox='0 0 6 6'
-              aria-hidden='true'
+              className="h-1.5 w-1.5 fill-red-500"
+              viewBox="0 0 6 6"
+              aria-hidden="true"
             >
               <circle cx={3} cy={3} r={3} />
             </svg>

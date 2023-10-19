@@ -58,10 +58,10 @@ export default async function RootLayout({
       />
       {/* <FrontSlider /> */}
       <section>
-        <div className='w-[99%]'>
-          <div className='row'>
+        <div className="w-[99%]">
+          <div className="row">
             {/* <Sidebar locations={inventoryLocation} makes={makes.data} /> */}
-            <div className='flex flex-row min-h-screen w-screen'>
+            <div className="flex flex-row min-h-screen w-screen">
               <SidebarItems />
               {children}
             </div>

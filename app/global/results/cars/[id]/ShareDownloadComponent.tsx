@@ -16,30 +16,30 @@ export default function ShareDownloadComponent({ imageList }: Props) {
 
   return (
     <>
-      <div className='dshare'>
-        <div className='col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6'>
-          <div className='download-soialmedia'>
+      <div className="dshare">
+        <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+          <div className="download-soialmedia">
             <ul>
               <p>Share:</p>
               <a
-                target='_blank'
-                href='https://www.facebook.com/Universal-Motors-LTD-101574801831062'
+                target="_blank"
+                href="https://www.facebook.com/Universal-Motors-LTD-101574801831062"
               >
-                <i className='fa fa-facebook' style={{ fontSize: "24px" }} />
+                <i className="fa fa-facebook" style={{ fontSize: "24px" }} />
               </a>
-              <a target='_blank' href='https://wa.link/5g81p6'>
-                <i className='fa fa-whatsapp' style={{ fontSize: "24px" }} />
+              <a target="_blank" href="https://wa.link/5g81p6">
+                <i className="fa fa-whatsapp" style={{ fontSize: "24px" }} />
               </a>
-              <a href='#'>
-                <i className='fa fa-twitter' style={{ fontSize: "24px" }} />
+              <a href="#">
+                <i className="fa fa-twitter" style={{ fontSize: "24px" }} />
               </a>
             </ul>
           </div>
         </div>
-        <div className='col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 d-md-block'>
-          <div className='download-proimg'>
+        <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 d-md-block">
+          <div className="download-proimg">
             <button>
-              <i className='fa fa-download' style={{ fontSize: "24px" }} />{" "}
+              <i className="fa fa-download" style={{ fontSize: "24px" }} />{" "}
               Download Images
             </button>
           </div>

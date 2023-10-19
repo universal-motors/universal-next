@@ -4,38 +4,38 @@ import Link from "next/link";
 export default function CompanyProfile() {
   return (
     <>
-      <div className='col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12'>
-        <div className='gceCountry-landing basic-antiPolicy'>
+      <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12">
+        <div className="gceCountry-landing basic-antiPolicy">
           {/* The breadcrumb Begins*/}
-          <div className='breadcrumbs'>
+          <div className="breadcrumbs">
             <ul>
               <li>
-                <Link href='/'> Home</Link>
+                <Link href="/"> Home</Link>
               </li>
               <li>
                 {" "}
-                <Link href='/global/about-universal-motors'> About Us </Link>
+                <Link href="/global/about-universal-motors"> About Us </Link>
               </li>
               <li>
-                <Link href='/global/about-universal-motors?page=company-profile'>
+                <Link href="/global/about-universal-motors?page=company-profile">
                   About-Global Car Exporter (Universal Motor)
                 </Link>
               </li>
             </ul>
           </div>
           {/* The breadcrumb Ends*/}
-          <div className='row'>
+          <div className="row">
             <AboutPageSideBar />
-            <div className='col-xl-9 col-lg-9 col-md-8 col-sm-12 col-12'>
+            <div className="col-xl-9 col-lg-9 col-md-8 col-sm-12 col-12">
               {/* The Global Car Exporter Begins*/}
-              <div className='gceCountry-Local'>
+              <div className="gceCountry-Local">
                 <h3>
                   Global Car Exporter (Universal Motor)-{" "}
                   <span>A Reliable Source Of Car</span>
                 </h3>
-                <div className='row'>
-                  <div className='col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12'>
-                    <div className='gceInform-Imptxt'>
+                <div className="row">
+                  <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div className="gceInform-Imptxt">
                       <p>
                         We have been exporting used cars worldwide. Our team
                         specialize in sourcing used cars from multiple countries

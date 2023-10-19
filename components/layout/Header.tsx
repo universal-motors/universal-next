@@ -48,23 +48,23 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
 
   return (
     <>
-      <header className='headerbg'>
-        <div className='container-fluid'>
+      <header className="headerbg">
+        <div className="container-fluid">
           {/* Stack the columns on mobile by making one full-width and the other half-width */}
-          <div className='row'>
+          <div className="row">
             <TopCountryTimeBar stockCount={stockCount} />
           </div>
         </div>
       </header>
-      <section className='menuhead sticky-header' id='sheader'>
-        <div className='container-fluid'>
-          <div className='row' style={{ justifyContent: "end" }}>
-            <div className='col-xl-1 col-lg-2 col-md-2'>
-              <Link href='/'>
+      <section className="menuhead sticky-header" id="sheader">
+        <div className="container-fluid">
+          <div className="row" style={{ justifyContent: "end" }}>
+            <div className="col-xl-1 col-lg-2 col-md-2">
+              <Link href="/">
                 <img
-                  src='/assets/images/logo.png'
-                  alt='logo'
-                  className='header-logo'
+                  src="/assets/images/logo.png"
+                  alt="logo"
+                  className="header-logo"
                   style={{
                     width: "100%",
                     position: "relative",
@@ -74,95 +74,95 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                 />
               </Link>
             </div>
-            <div className='col-xl-5 col-lg-5 col-md-5'>
+            <div className="col-xl-5 col-lg-5 col-md-5">
               <SearchBar />
             </div>
 
-            <div className='col-xl-5 col-lg-5 col-md-5'>
-              <div className='row'>
+            <div className="col-xl-5 col-lg-5 col-md-5">
+              <div className="row">
                 <div
-                  className='col-xl-4 col-lg-4 col-md-5 col-sm-12 col-12'
+                  className="col-xl-4 col-lg-4 col-md-5 col-sm-12 col-12"
                   style={{ paddingRight: "0 !important", paddingLeft: 0 }}
                 >
-                  <div className='support'>
+                  <div className="support">
                     {/*<i className="fa fa-headphones" />*/}
                     <h2>
-                      <FcCustomerSupport className='m-2' />
+                      <FcCustomerSupport className="m-2" />
                     </h2>
-                    <div className='currencydropdown'>
-                      <button className='currencydropbtn supportbtn'>
+                    <div className="currencydropdown">
+                      <button className="currencydropbtn supportbtn">
                         Support
                         <br />
                         +49 471 9731 9003
                       </button>
-                      <div className='currencydropdown-content supportcontent'>
-                        <div className='row bg-white'>
-                          <div className='col-md-6 px-1'>
-                            <p className='m-0' style={{ fontSize: "12px" }}>
+                      <div className="currencydropdown-content supportcontent">
+                        <div className="row bg-white">
+                          <div className="col-md-6 px-1">
+                            <p className="m-0" style={{ fontSize: "12px" }}>
                               <strong>Call Us</strong>
                             </p>
-                            <p className='m-0' style={{ fontSize: "12px" }}>
+                            <p className="m-0" style={{ fontSize: "12px" }}>
                               Call our award-winning sales &amp; support team
                             </p>
                             <i
-                              className='fa fa-phone mb-1'
+                              className="fa fa-phone mb-1"
                               style={{ fontSize: "12px" }}
                             >
                               +49 471 9731 9003
                             </i>
                             <i
-                              className='fa fa-phone mb-1'
+                              className="fa fa-phone mb-1"
                               style={{ fontSize: "12px" }}
                             >
                               +81 50 5050 8550
                             </i>
 
-                            <p className='m-0' style={{ fontSize: "12px" }}>
+                            <p className="m-0" style={{ fontSize: "12px" }}>
                               <strong>Email</strong>
                             </p>
                             <p>
                               <Link
-                                className='p-0'
-                                href='mailto:info@universalmotorsltd.com'
+                                className="p-0"
+                                href="mailto:info@universalmotorsltd.com"
                                 style={{ color: "blue", fontSize: "12px" }}
                               >
                                 info@universalmotorsltd.com
                               </Link>
                             </p>
-                            <p className='m-0' style={{ fontSize: "12px" }}>
+                            <p className="m-0" style={{ fontSize: "12px" }}>
                               <strong>Business Hours</strong>
                             </p>
-                            <p style={{ fontSize: "12px" }} className='m-0'>
+                            <p style={{ fontSize: "12px" }} className="m-0">
                               Mon - Fri: 9:00 AM - 6:00 PM
                               <br />
                               Saturday: 9:00 AM - 1:00 PM
                             </p>
                           </div>
-                          <div className='col-md-6 px-1'>
-                            <p className='m-0' style={{ fontSize: "12px" }}>
+                          <div className="col-md-6 px-1">
+                            <p className="m-0" style={{ fontSize: "12px" }}>
                               <strong>Chat Now</strong>
                             </p>
-                            <p className='mb-1' style={{ fontSize: "12px" }}>
+                            <p className="mb-1" style={{ fontSize: "12px" }}>
                               Chat with our sales team &amp; support team for
                               quick answers on product features, pricing and
                               more.
                             </p>
                             <button
-                              className='chatbtn'
+                              className="chatbtn"
                               style={{ fontSize: "12px" }}
                             >
                               Chat Now
                             </button>
-                            <p style={{ fontSize: "12px" }} className='m-0'>
+                            <p style={{ fontSize: "12px" }} className="m-0">
                               24/7
                             </p>
-                            <p className='m-0' style={{ fontSize: "12px" }}>
+                            <p className="m-0" style={{ fontSize: "12px" }}>
                               <strong>Whatsapp</strong>
                             </p>
                             <p>
                               <Link
-                                className='p-0 m-0'
-                                href='https://wa.link/5g81p6'
+                                className="p-0 m-0"
+                                href="https://wa.link/5g81p6"
                                 style={{ color: "blue", fontSize: "12px" }}
                               >
                                 +49 471 9731 9003
@@ -174,14 +174,14 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                     </div>
                   </div>
                 </div>
-                <div className='col-xl-4 col-lg-4 col-md-3 col-sm-12 col-12'>
-                  <div className='support'>
+                <div className="col-xl-4 col-lg-4 col-md-3 col-sm-12 col-12">
+                  <div className="support">
                     {/*<i className="fa fa-heart" />*/}
                     <h2>
-                      <FcLike className='m-2' />
+                      <FcLike className="m-2" />
                     </h2>
-                    <div className='currencydropdown'>
-                      <button className='currencydropbtn supportbtn'>
+                    <div className="currencydropdown">
+                      <button className="currencydropbtn supportbtn">
                         Check
                         <br />
                         Favourites
@@ -202,52 +202,52 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
           <Navigation />
         </div>
 
-        <div className='container-fluid'></div>
+        <div className="container-fluid"></div>
       </section>
       {/* ........MOBILE HEADER....... */}
-      <section className='mobile-header'>
-        <div className='container-fluid'>
-          <div className='row'>
-            <div className='col-2'>
-              <input type='checkbox' id='check' />
-              <div className='mobile-container'>
-                <label htmlFor='check'>
-                  <span className='fa fa-times' id='times' />
-                  <span className='fa fa-bars' id='bars' />
+      <section className="mobile-header">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-2">
+              <input type="checkbox" id="check" />
+              <div className="mobile-container">
+                <label htmlFor="check">
+                  <span className="fa fa-times" id="times" />
+                  <span className="fa fa-bars" id="bars" />
                 </label>
-                <div className='sidemenu'>
-                  <Link href='/'>
+                <div className="sidemenu">
+                  <Link href="/">
                     <img
-                      src='/assets/images/logo.png'
-                      className='side-logo'
-                      alt='hamburger icon'
+                      src="/assets/images/logo.png"
+                      className="side-logo"
+                      alt="hamburger icon"
                     />
                   </Link>
-                  <ul className='sidelist'>
-                    <li className='highlighted'>
-                      <i className='fa fa-gear' />
+                  <ul className="sidelist">
+                    <li className="highlighted">
+                      <i className="fa fa-gear" />
                       Site Setting
                     </li>
-                    <li className='last'>Currency</li>
-                    <li className='highlighted'>
-                      <i className='fa fa-search' />
+                    <li className="last">Currency</li>
+                    <li className="highlighted">
+                      <i className="fa fa-search" />
                       Search
                     </li>
 
                     <li>
                       {" "}
-                      <Link href='/global/results/cars?makeID=5'>
+                      <Link href="/global/results/cars?makeID=5">
                         {" "}
                         Search by Make
                       </Link>
                     </li>
                     <li>
-                      <Link href='/global/results/cars?bodyTypeID=3'>
+                      <Link href="/global/results/cars?bodyTypeID=3">
                         Search by Type
                       </Link>
                     </li>
                     <li>
-                      <Link href='/global/results/cars?price=25000'>
+                      <Link href="/global/results/cars?price=25000">
                         Search by Price
                       </Link>
                     </li>
@@ -258,9 +258,9 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                         Search by Year
                       </Link>
                     </li>
-                    <li className='last'>Search by Inventory Location</li>
-                    <li className='highlighted'>
-                      <i className='fa fa-globe' />
+                    <li className="last">Search by Inventory Location</li>
+                    <li className="highlighted">
+                      <i className="fa fa-globe" />
                       Local Service
                     </li>
                     {locations
@@ -275,10 +275,10 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                               },
                             }}
                           >
-                            <span className=' inline-flex items-center rounded-md'>
+                            <span className=" inline-flex items-center rounded-md">
                               <Image
                                 src={`/assets/images/flags/${location.slug}.svg`}
-                                className='flagimg-fluid mr-5'
+                                className="flagimg-fluid mr-5"
                                 alt={location.slug ?? ""}
                                 width={16}
                                 height={16}
@@ -288,74 +288,74 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                           </Link>
                         </li>
                       ))}
-                    <li className='highlighted'>
-                      <i className='fa fa-phone' />
+                    <li className="highlighted">
+                      <i className="fa fa-phone" />
                       Contact Us
                     </li>
                     <li>+49 471 9731 9003</li>
-                    <li className='last'>+81 50 5050 8550</li>
+                    <li className="last">+81 50 5050 8550</li>
                     <li>info@universalmotorsltd.com</li>
 
-                    <li className='highlighted'>
-                      <i className='fa fa-question' />
+                    <li className="highlighted">
+                      <i className="fa fa-question" />
                       Need Help
                     </li>
                     <li>
-                      <Link href='/global/information?page=why-choose-universal-motors'>
+                      <Link href="/global/information?page=why-choose-universal-motors">
                         Why Choose UM?
                       </Link>
                     </li>
                     <li>
-                      <Link href='/global/information?page=how-to-buy'>
+                      <Link href="/global/information?page=how-to-buy">
                         How To Buy
                       </Link>
                     </li>
                     <li>
-                      <Link href='/global/information?page=how-to-pay'>
+                      <Link href="/global/information?page=how-to-pay">
                         How to Pay?
                       </Link>
                     </li>
                     <li>
-                      <Link href='/global/information?page=faqs'>FAQs</Link>
+                      <Link href="/global/information?page=faqs">FAQs</Link>
                     </li>
-                    <li className='last'>
-                      <Link href='/global/information?page=export-information'>
+                    <li className="last">
+                      <Link href="/global/information?page=export-information">
                         Exports Information
                       </Link>
                     </li>
-                    <li className='highlighted'>
-                      <i className='fa fa-info' />
-                      <Link href='/global/information?page=about-universal-motors'>
+                    <li className="highlighted">
+                      <i className="fa fa-info" />
+                      <Link href="/global/information?page=about-universal-motors">
                         About UM
                       </Link>
                     </li>
                     <li>
-                      <Link href='/global/about-universal-motors?page=company-profile'>
+                      <Link href="/global/about-universal-motors?page=company-profile">
                         Company Profile
                       </Link>
                     </li>
                     <li>
-                      <Link href='/global/about-universal-motors?page=global-offices'>
+                      <Link href="/global/about-universal-motors?page=global-offices">
                         Global Offices
                       </Link>
                     </li>
                     <li>
-                      <Link href='/global/about-universal-motors?page=terms-of-service'>
+                      <Link href="/global/about-universal-motors?page=terms-of-service">
                         Terms Of Services
                       </Link>
                     </li>
                     <li>
-                      <Link href='/global/about-universal-motors?page=privacy-policy'>
+                      <Link href="/global/about-universal-motors?page=privacy-policy">
                         Privacy Policy
                       </Link>
                     </li>
                     <li>
-                      <Link href='/global/about-universal-motors?page=security-export-control'>
+                      <Link href="/global/about-universal-motors?page=security-export-control">
                         Secutiy Export Control
                       </Link>
                     </li>
-                    <li className='last'>
-                      <Link href='/global/about-universal-motors?page=policy-against-anti-social'>
+                    <li className="last">
+                      <Link href="/global/about-universal-motors?page=policy-against-anti-social">
                         Basic Policy Against Anti-Social Forces
                       </Link>
                     </li>
@@ -363,71 +363,71 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                 </div>
               </div>
             </div>
-            <div className='col-3'>
-              <Link href='/'>
+            <div className="col-3">
+              <Link href="/">
                 <img
-                  src='/assets/images/logo.png'
-                  alt='logo'
-                  className='mobile-logo'
+                  src="/assets/images/logo.png"
+                  alt="logo"
+                  className="mobile-logo"
                   width={50}
                 />
               </Link>
             </div>
-            <div className='col-7'>
-              <div className='featuresection flex inline-flex'>
-                <Link href='' onClick={openMobileSearchModal}>
+            <div className="col-7">
+              <div className="featuresection flex inline-flex">
+                <Link href="" onClick={openMobileSearchModal}>
                   <img
-                    src='https://img.icons8.com/ios-glyphs/2x/search.png'
-                    alt=''
+                    src="https://img.icons8.com/ios-glyphs/2x/search.png"
+                    alt=""
                     width={25}
                   />
                 </Link>
                 <Transition appear show={isOpen} as={Fragment}>
                   <Dialog
-                    as='div'
-                    className='relative z-10'
+                    as="div"
+                    className="relative z-10"
                     onClose={closeMobileSearchModal}
                   >
                     <Transition.Child
                       as={Fragment}
-                      enter='ease-out duration-300'
-                      enterFrom='opacity-0'
-                      enterTo='opacity-100'
-                      leave='ease-in duration-200'
-                      leaveFrom='opacity-100'
-                      leaveTo='opacity-0'
+                      enter="ease-out duration-300"
+                      enterFrom="opacity-0"
+                      enterTo="opacity-100"
+                      leave="ease-in duration-200"
+                      leaveFrom="opacity-100"
+                      leaveTo="opacity-0"
                     >
-                      <div className='fixed inset-0 bg-black bg-opacity-25' />
+                      <div className="fixed inset-0 bg-black bg-opacity-25" />
                     </Transition.Child>
 
-                    <div className='fixed inset-0 overflow-y-auto'>
-                      <div className='flex min-h-full  items-center justify-center p-4 text-center'>
+                    <div className="fixed inset-0 overflow-y-auto">
+                      <div className="flex min-h-full  items-center justify-center p-4 text-center">
                         <Transition.Child
                           as={Fragment}
-                          enter='ease-out duration-300'
-                          enterFrom='opacity-0 scale-95'
-                          enterTo='opacity-100 scale-100'
-                          leave='ease-in duration-200'
-                          leaveFrom='opacity-100 scale-100'
-                          leaveTo='opacity-0 scale-95'
+                          enter="ease-out duration-300"
+                          enterFrom="opacity-0 scale-95"
+                          enterTo="opacity-100 scale-100"
+                          leave="ease-in duration-200"
+                          leaveFrom="opacity-100 scale-100"
+                          leaveTo="opacity-0 scale-95"
                         >
-                          <Dialog.Panel className='w-full max-w-md transform overflow-hidden rounded-2xl bg-blue-950 p-6 text-left align-middle shadow-xl transition-all'>
+                          <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-blue-950 p-6 text-left align-middle shadow-xl transition-all">
                             <Dialog.Title
-                              as='h3'
-                              className='text-lg font-medium leading-6 text-white'
+                              as="h3"
+                              className="text-lg font-medium leading-6 text-white"
                             >
                               Search ...
                             </Dialog.Title>
-                            <div className='mt-4'>
-                              <div className='col-xl-5 col-lg-5 col-md-5'>
+                            <div className="mt-4">
+                              <div className="col-xl-5 col-lg-5 col-md-5">
                                 <SearchBar />
                               </div>
                             </div>
 
-                            <div className='mt-4'>
+                            <div className="mt-4">
                               <button
-                                type='button'
-                                className='inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
+                                type="button"
+                                className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                                 onClick={closeMobileSearchModal}
                               >
                                 Cancel
@@ -439,24 +439,24 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                     </div>
                   </Dialog>
                 </Transition>
-                <Link href='#support'>
+                <Link href="#support">
                   <img
-                    src='https://img.icons8.com/external-icongeek26-outline-icongeek26/2x/external-headphone-music-icongeek26-outline-icongeek26.png'
-                    alt=''
+                    src="https://img.icons8.com/external-icongeek26-outline-icongeek26/2x/external-headphone-music-icongeek26-outline-icongeek26.png"
+                    alt=""
                     width={25}
                   />
                 </Link>
-                <Link href='#customer'>
+                <Link href="#customer">
                   <img
-                    src='https://img.icons8.com/ios/2x/hearts.png'
-                    alt=''
+                    src="https://img.icons8.com/ios/2x/hearts.png"
+                    alt=""
                     width={25}
                   />
                 </Link>
-                <Link href='#'>
+                <Link href="#">
                   <img
-                    src='https://img.icons8.com/fluency-systems-regular/2x/user.png'
-                    alt=''
+                    src="https://img.icons8.com/fluency-systems-regular/2x/user.png"
+                    alt=""
                     width={25}
                   />
                 </Link>

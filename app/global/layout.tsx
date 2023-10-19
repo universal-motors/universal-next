@@ -65,7 +65,7 @@ export default async function RootLayout({
       />
       <section className={isLogin ? "" : "sidebar-menu"}>
         <div className={isLogin ? "w-[99%]" : "container-fluid"}>
-          <div className='row'>
+          <div className="row">
             {isLogin ? (
               <SidebarItems />
             ) : (

@@ -7,15 +7,15 @@ function FrontSlider() {
     <>
       {/* .........Carousel......... */}
       {/*<LikeComponent onClick={()=>console.log("click")}/>*/}
-      <Carousel indicators={false} interval={3000} className='carousel slide'>
+      <Carousel indicators={false} interval={3000} className="carousel slide">
         <Carousel.Item>
-          <img className='d-block w-100' src='/assets/images/slider/3.jpeg' />
+          <img className="d-block w-100" src="/assets/images/slider/3.jpeg" />
         </Carousel.Item>
         <Carousel.Item>
-          <img className='d-block w-100' src='/assets/images/slider/2.jpeg' />
+          <img className="d-block w-100" src="/assets/images/slider/2.jpeg" />
         </Carousel.Item>
         <Carousel.Item>
-          <img className='d-block w-100' src='/assets/images/slider/1.png' />
+          <img className="d-block w-100" src="/assets/images/slider/1.png" />
         </Carousel.Item>
       </Carousel>
       {/* <section>*/}

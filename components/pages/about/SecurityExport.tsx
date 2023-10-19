@@ -4,26 +4,26 @@ import Link from "next/link";
 export default function SecurityExport() {
   return (
     <>
-      <div className='col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12'>
-        <div className='gceCountry-landing about-globaloffSec'>
+      <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12">
+        <div className="gceCountry-landing about-globaloffSec">
           {/* The breadcrumb Begins*/}
-          <div className='breadcrumbs'>
+          <div className="breadcrumbs">
             <ul>
               <li>
-                <Link href='/'>Home</Link>
+                <Link href="/">Home</Link>
               </li>
               <li>
-                <Link href='/global/about-universal-motors'> About Us </Link>
+                <Link href="/global/about-universal-motors"> About Us </Link>
               </li>
               <li>
-                <Link href='#'> Security Export Control</Link>
+                <Link href="#"> Security Export Control</Link>
               </li>
             </ul>
           </div>
           {/* The breadcrumb Ends*/}
-          <div className='row'>
+          <div className="row">
             <AboutPageSideBar />
-            <div className='col-xl-9 col-lg-9 col-md-8 col-sm-12 col-12'>
+            <div className="col-xl-9 col-lg-9 col-md-8 col-sm-12 col-12">
               <h3>Security Export Control</h3>
               <p>
                 Any applicable national and international laws, norms, and

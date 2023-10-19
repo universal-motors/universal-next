@@ -10,15 +10,15 @@ export default async function StockKeyInformation({ car }: Props) {
 
   return (
     <>
-      <div className='border-b border-gray-200 bg-white px-4 py-5 sm:px-6'>
-        <h2 className='text-base font-semibold leading-6 text-gray-900'>
+      <div className="border-b border-gray-200 bg-white px-4 py-5 sm:px-6">
+        <h2 className="text-base font-semibold leading-6 text-gray-900">
           Key Information
         </h2>
-        <div className='row features-table'>
-          <table className='keyinfo'>
+        <div className="row features-table">
+          <table className="keyinfo">
             <tbody>
               <tr>
-                <td className='first'>Model Code</td>
+                <td className="first">Model Code</td>
                 {car.modelCode !== "" ? (
                   <td> {car.modelCode}</td>
                 ) : (
@@ -32,11 +32,11 @@ export default async function StockKeyInformation({ car }: Props) {
               {/*    }*/}
               {/*</tr>*/}
               <tr>
-                <td className='first'>Engine Size</td>
+                <td className="first">Engine Size</td>
                 <td>{car.engineSize}</td>
               </tr>
               <tr>
-                <td className='first'>Engine Number</td>
+                <td className="first">Engine Number</td>
                 {car.engineNumber !== "" ? (
                   <td> {car.engineNumber}</td>
                 ) : (
@@ -44,23 +44,23 @@ export default async function StockKeyInformation({ car }: Props) {
                 )}
               </tr>
               <tr>
-                <td className='first'>Body Type</td>
+                <td className="first">Body Type</td>
                 <td>{car.typeOfBody}</td>
               </tr>
               <tr>
-                <td className='first'>Body Length</td>
+                <td className="first">Body Length</td>
                 <td>{car.lengthOfCar}</td>
               </tr>
               <tr>
-                <td className='first'>Dimension</td>
+                <td className="first">Dimension</td>
                 <td>{car.m3}</td>
               </tr>
             </tbody>
           </table>
-          <table className='keyinfo'>
+          <table className="keyinfo">
             <tbody>
               <tr>
-                <td className='first'>Chasis Number</td>
+                <td className="first">Chasis Number</td>
                 {car.chasisNumber !== "" ? (
                   <td> {car.chasisNumber}</td>
                 ) : (
@@ -68,23 +68,23 @@ export default async function StockKeyInformation({ car }: Props) {
                 )}
               </tr>
               <tr>
-                <td className='first'>Steering Type</td>
+                <td className="first">Steering Type</td>
                 <td>{car.typeOfSteering}</td>
               </tr>
               <tr>
-                <td className='first'>Fuel</td>
+                <td className="first">Fuel</td>
                 <td>{car.typeOfFuel}</td>
               </tr>
               <tr>
-                <td className='first'>Number of Doors</td>
+                <td className="first">Number of Doors</td>
                 <td>{car.noOfDoors}</td>
               </tr>
               <tr>
-                <td className='first'>Number of Seats</td>
+                <td className="first">Number of Seats</td>
                 <td>{car.noOfSeats}</td>
               </tr>
               <tr>
-                <td className='first'>Colour</td>
+                <td className="first">Colour</td>
                 <td>{car.colorName}</td>
               </tr>
             </tbody>
@@ -92,22 +92,22 @@ export default async function StockKeyInformation({ car }: Props) {
         </div>
       </div>
 
-      <div className='border-b border-gray-200 bg-white px-4 py-5 sm:px-6'>
-        <h2 className='text-base font-semibold leading-6 text-gray-900'>
+      <div className="border-b border-gray-200 bg-white px-4 py-5 sm:px-6">
+        <h2 className="text-base font-semibold leading-6 text-gray-900">
           Features
         </h2>
-        <ul className='featureitem'>
+        <ul className="featureitem">
           {stockOptions.data
             .filter((op) => op.stockId === car.stockId)
             .map((op) => (
-              <li className='active' key={op.id}>
+              <li className="active" key={op.id}>
                 <h5>
                   {
-                    <span className='inline-flex items-center gap-x-1.5 rounded-md px-2 py-1 text-sm font-medium  '>
+                    <span className="inline-flex items-center gap-x-1.5 rounded-md px-2 py-1 text-sm font-medium  ">
                       <svg
-                        className='h-1.5 w-1.5 fill-green-400'
-                        viewBox='0 0 6 6'
-                        aria-hidden='true'
+                        className="h-1.5 w-1.5 fill-green-400"
+                        viewBox="0 0 6 6"
+                        aria-hidden="true"
                       >
                         <circle cx={3} cy={3} r={3} />
                       </svg>

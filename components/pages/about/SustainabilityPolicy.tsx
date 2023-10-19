@@ -4,32 +4,32 @@ import AboutPageSideBar from "@/components/pages/about/AboutPageSideBar";
 export default function SustainabilityPolicy() {
   return (
     <>
-      <div className='col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12'>
-        <div className='gceCountry-landing'>
+      <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12">
+        <div className="gceCountry-landing">
           {/* The breadcrumb Begins*/}
-          <div className='breadcrumbs'>
+          <div className="breadcrumbs">
             <ul>
               <li>
-                <Link href='/'> Home</Link>
+                <Link href="/"> Home</Link>
               </li>
               <li>
-                <Link href='#'>Sustainability Fundamental Policy</Link>
+                <Link href="#">Sustainability Fundamental Policy</Link>
               </li>
             </ul>
           </div>
 
-          <div className='row'>
+          <div className="row">
             <AboutPageSideBar />
-            <div className='col-xl-9 col-lg-9 col-md-8 col-sm-12 col-12'>
-              <div className='gceCountry-Local exp-Information'>
+            <div className="col-xl-9 col-lg-9 col-md-8 col-sm-12 col-12">
+              <div className="gceCountry-Local exp-Information">
                 <h3>Contribution toward Sustainable Development</h3>
-                <div className='gceInform-Imptxt'>
+                <div className="gceInform-Imptxt">
                   <h4>
-                    <i className='fa fa-caret-right' aria-hidden='true' />
+                    <i className="fa fa-caret-right" aria-hidden="true" />
                     Customers
                   </h4>
                   <p>
-                    <span className='boldp'>
+                    <span className="boldp">
                       Based on our philosophy that &quot;Customer is King&quot;,
                       we provide innovative, safe, and outstanding high-quality
                       cars that meet a wide variety of customer
@@ -38,11 +38,11 @@ export default function SustainabilityPolicy() {
                     </span>
                   </p>
                   <h4>
-                    <i className='fa fa-caret-right' aria-hidden='true' />
+                    <i className="fa fa-caret-right" aria-hidden="true" />
                     Employees
                   </h4>
                   <p>
-                    <span className='boldp'>
+                    <span className="boldp">
                       We respect our employees and believe that the success of
                       our business is led by each individual&apos;s creativity
                       and solid teamwork. We support personalgrowth for our
@@ -58,11 +58,11 @@ export default function SustainabilityPolicy() {
                     </span>
                   </p>
                   <h4>
-                    <i className='fa fa-caret-right' aria-hidden='true' />
+                    <i className="fa fa-caret-right" aria-hidden="true" />
                     Business Partners
                   </h4>
                   <p>
-                    <span className='boldp'>
+                    <span className="boldp">
                       We respect our business partners such as suppliers and
                       dealers and work with them through long-term relationships
                       to realize mutual growth based on mutual trust.
@@ -76,11 +76,11 @@ export default function SustainabilityPolicy() {
                     </span>
                   </p>
                   <h4>
-                    <i className='fa fa-caret-right' aria-hidden='true' />
+                    <i className="fa fa-caret-right" aria-hidden="true" />
                     Shareholders
                   </h4>
                   <p>
-                    <span className='boldp'>
+                    <span className="boldp">
                       We strive to enhance corporate value while achieving
                       stable and long-term growth for the benefit of our
                       shareholders.
@@ -91,11 +91,11 @@ export default function SustainabilityPolicy() {
                     </span>
                   </p>
                   <h4>
-                    <i className='fa fa-caret-right' aria-hidden='true' />
+                    <i className="fa fa-caret-right" aria-hidden="true" />
                     Social Contribution
                   </h4>
                   <p>
-                    <span className='boldp'>
+                    <span className="boldp">
                       Wherever we do business, we actively promote and engage,
                       both individually and with partners, in social
                       contribution activities that help strengthen communities

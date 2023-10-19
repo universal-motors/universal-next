@@ -8,23 +8,23 @@ export const metadata = {
 export default function AboutUs() {
   return (
     <>
-      <div className='col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12'>
-        <div className='gceCountry-landing'>
+      <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12">
+        <div className="gceCountry-landing">
           {/* The breadcrumb Begins*/}
-          <div className='breadcrumbs'>
+          <div className="breadcrumbs">
             <ul>
               <li>
-                <a href='/'> Home</a>
+                <a href="/"> Home</a>
               </li>
               <li>
-                <a href='/global/about-universal-motors?page=about-us'>
+                <a href="/global/about-universal-motors?page=about-us">
                   About Us
                 </a>
               </li>
             </ul>
           </div>
 
-          <div className='gceInform-Imptxt'>
+          <div className="gceInform-Imptxt">
             <p>
               We have been exporting used cars worldwide. Our team specialize in
               sourcing used cars from multiple countries to find the best value
@@ -53,31 +53,31 @@ export default function AboutUs() {
               <b> Satisfied customer brings another customer</b>
             </p>
             <img
-              className='widthhundread'
-              src='/assets/images/newcontentimgs/website-02.png'
-              alt=''
+              className="widthhundread"
+              src="/assets/images/newcontentimgs/website-02.png"
+              alt=""
             />
-            <div className=''>
-              <div className='row'>
-                <div className='col-md-12 col-12'>
-                  <div className='buy-stepheading'>
+            <div className="">
+              <div className="row">
+                <div className="col-md-12 col-12">
+                  <div className="buy-stepheading">
                     <h4>About Us</h4>
                   </div>
                 </div>
               </div>
-              <div className='buy-stBox-right'>
-                <div className='row'>
-                  <div className='col-md-5 col-12'>
-                    <div className='buy-stepimg'>
+              <div className="buy-stBox-right">
+                <div className="row">
+                  <div className="col-md-5 col-12">
+                    <div className="buy-stepimg">
                       <img
-                        src='/assets/images/newcontentimgs/New folder/website-0.png'
-                        className='img-fluid'
-                        alt='CHOOSE THE VEHICLE YOU WANT TO PURCHASE.OUR CAR SEARCH ENGINE WILL HELP YOU SEARCH THROUGH OUR INVENTORY.'
+                        src="/assets/images/newcontentimgs/New folder/website-0.png"
+                        className="img-fluid"
+                        alt="CHOOSE THE VEHICLE YOU WANT TO PURCHASE.OUR CAR SEARCH ENGINE WILL HELP YOU SEARCH THROUGH OUR INVENTORY."
                       />
                     </div>
                   </div>
-                  <div className='col-md-7 col-12 pl-5'>
-                    <div className='buy-steptxt'>
+                  <div className="col-md-7 col-12 pl-5">
+                    <div className="buy-steptxt">
                       <p>
                         <b> Serving Consumers Worldwide</b>
                       </p>
@@ -100,10 +100,10 @@ export default function AboutUs() {
                   </div>
                 </div>
               </div>
-              <div className='buy-stBox-right'>
-                <div className='row'>
-                  <div className='col-md-7 col-12 pr-5'>
-                    <div className='buy-steptxt'>
+              <div className="buy-stBox-right">
+                <div className="row">
+                  <div className="col-md-7 col-12 pr-5">
+                    <div className="buy-steptxt">
                       <p>
                         <b>Interminable Customer Support</b>
                       </p>
@@ -123,30 +123,30 @@ export default function AboutUs() {
                       </p>
                     </div>
                   </div>
-                  <div className='col-md-5 col-12'>
-                    <div className='buy-stepimg'>
+                  <div className="col-md-5 col-12">
+                    <div className="buy-stepimg">
                       <img
-                        src='/assets/images/newcontentimgs/New folder/website-1.png'
-                        className='img-fluid'
-                        alt='YOU CAN ALSO CUSTOMIZE SEARCH DEPENDING ON YOUR REQUIREMENT AND PREFERENCES. DETAILED PHOTOS AND SPECIFICATIONS CAN BE SEEN FOR EACH INVENTORY.'
+                        src="/assets/images/newcontentimgs/New folder/website-1.png"
+                        className="img-fluid"
+                        alt="YOU CAN ALSO CUSTOMIZE SEARCH DEPENDING ON YOUR REQUIREMENT AND PREFERENCES. DETAILED PHOTOS AND SPECIFICATIONS CAN BE SEEN FOR EACH INVENTORY."
                       />
                     </div>
                   </div>
                 </div>
               </div>
-              <div className='buy-stBox-right'>
-                <div className='row'>
-                  <div className='col-md-5 col-12 pr-5'>
-                    <div className='buy-stepimg'>
+              <div className="buy-stBox-right">
+                <div className="row">
+                  <div className="col-md-5 col-12 pr-5">
+                    <div className="buy-stepimg">
                       <img
-                        src='/assets/images/newcontentimgs/New folder/website-2.png'
-                        className='img-fluid'
-                        alt='CHOOSE THE VEHICLE YOU WANT TO PURCHASE.OUR CAR SEARCH ENGINE WILL HELP YOU SEARCH THROUGH OUR INVENTORY.'
+                        src="/assets/images/newcontentimgs/New folder/website-2.png"
+                        className="img-fluid"
+                        alt="CHOOSE THE VEHICLE YOU WANT TO PURCHASE.OUR CAR SEARCH ENGINE WILL HELP YOU SEARCH THROUGH OUR INVENTORY."
                       />
                     </div>
                   </div>
-                  <div className='col-md-7 col-12 pl-5'>
-                    <div className='buy-steptxt'>
+                  <div className="col-md-7 col-12 pl-5">
+                    <div className="buy-steptxt">
                       <p>
                         <b>Passionate &amp; Trustworthy Sales Team</b>
                       </p>
@@ -169,10 +169,10 @@ export default function AboutUs() {
                   </div>
                 </div>
               </div>
-              <div className='buy-stBox-right'>
-                <div className='row'>
-                  <div className='col-md-7 col-12 pr-5'>
-                    <div className='buy-steptxt'>
+              <div className="buy-stBox-right">
+                <div className="row">
+                  <div className="col-md-7 col-12 pr-5">
+                    <div className="buy-steptxt">
                       <p>
                         <b>Great Reconditioned &amp; Examined Cars</b>
                       </p>
@@ -192,12 +192,12 @@ export default function AboutUs() {
                       </p>
                     </div>
                   </div>
-                  <div className='col-md-5 col-12'>
-                    <div className='buy-stepimg'>
+                  <div className="col-md-5 col-12">
+                    <div className="buy-stepimg">
                       <img
-                        src='/assets/images/newcontentimgs/New folder/website-03.png'
-                        className='img-fluid'
-                        alt='YOU CAN ALSO CUSTOMIZE SEARCH DEPENDING ON YOUR REQUIREMENT AND PREFERENCES. DETAILED PHOTOS AND SPECIFICATIONS CAN BE SEEN FOR EACH INVENTORY.'
+                        src="/assets/images/newcontentimgs/New folder/website-03.png"
+                        className="img-fluid"
+                        alt="YOU CAN ALSO CUSTOMIZE SEARCH DEPENDING ON YOUR REQUIREMENT AND PREFERENCES. DETAILED PHOTOS AND SPECIFICATIONS CAN BE SEEN FOR EACH INVENTORY."
                       />
                     </div>
                   </div>

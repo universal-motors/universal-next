@@ -22,91 +22,91 @@ interface Props {
 export default async function ResultPage({ searchParams }: Props) {
   if (searchParams.page == "ghana" || searchParams.page == undefined) {
     return (
-      <div className='col-xl-10 col-lg-10 col-md-10 '>
+      <div className="col-xl-10 col-lg-10 col-md-10 ">
         <GhanaImport />
       </div>
     );
   } else if (searchParams.page == "zimbabwe") {
     return (
-      <div className='col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection'>
+      <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection">
         <ZimbabweImport />
       </div>
     );
   } else if (searchParams.page == "zambia") {
     return (
-      <div className='col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection'>
+      <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection">
         <ZambiaImport />
       </div>
     );
   } else if (searchParams.page == "uganda") {
     return (
-      <div className='col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection'>
+      <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection">
         <UgandaImport />
       </div>
     );
   } else if (searchParams.page == "tanzania") {
     return (
-      <div className='col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection'>
+      <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection">
         <TanzaniaImport />
       </div>
     );
   } else if (searchParams.page == "sudan") {
     return (
-      <div className='col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection'>
+      <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection">
         <SouthSudanImport />
       </div>
     );
   } else if (searchParams.page == "russia") {
     return (
-      <div className='col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection'>
+      <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection">
         <RussiaImport />
       </div>
     );
   } else if (searchParams.page == "chile") {
     return (
-      <div className='col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection'>
+      <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection">
         <ChileImport />
       </div>
     );
   } else if (searchParams.page == "congo") {
     return (
-      <div className='col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection'>
+      <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection">
         <CongoImport />
       </div>
     );
   } else if (searchParams.page == "guyana") {
     return (
-      <div className='col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection'>
+      <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection">
         <GuyanaImport />
       </div>
     );
   } else if (searchParams.page == "jamaica") {
     return (
-      <div className='col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection'>
+      <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection">
         <JamaicaImport />
       </div>
     );
   } else if (searchParams.page == "kenya") {
     return (
-      <div className='col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection'>
+      <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection">
         <KenyaImport />
       </div>
     );
   } else if (searchParams.page == "malawi") {
     return (
-      <div className='col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection'>
+      <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection">
         <MalawiImport />
       </div>
     );
   } else if (searchParams.page == "pakistan") {
     return (
-      <div className='col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection'>
+      <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection">
         <PakistanImport />
       </div>
     );
   } else if (searchParams.page == "paraguay") {
     return (
-      <div className='col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection'>
+      <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection">
         <ParaguayImport />
       </div>
     );

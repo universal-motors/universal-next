@@ -3,60 +3,60 @@ import Link from "next/link";
 export default function HowToBuy() {
   return (
     <>
-      <div className='col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12'>
-        <div className='gceCountry-landing'>
-          <div className='breadcrumbs'>
+      <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12">
+        <div className="gceCountry-landing">
+          <div className="breadcrumbs">
             <ul>
               <li>
-                <Link href='/'> Home</Link>
+                <Link href="/"> Home</Link>
               </li>
               <li>
-                <Link href='#'>How To Buy</Link>
+                <Link href="#">How To Buy</Link>
               </li>
             </ul>
           </div>
-          <div className='gceInform-Imptxt'>
-            <div className='container'>
-              <div className='row'>
-                <div className='col-md-6'>
+          <div className="gceInform-Imptxt">
+            <div className="container">
+              <div className="row">
+                <div className="col-md-6">
                   <h3>From Stock</h3>
                   <img
-                    src='/assets/images/newcontentimgs/New folder/website-10.png'
-                    alt=''
+                    src="/assets/images/newcontentimgs/New folder/website-10.png"
+                    alt=""
                   />
                 </div>
-                <div className='col-md-6'>
+                <div className="col-md-6">
                   <h3>From Auction</h3>
                   <img
                     style={{ width: "100% !important" }}
-                    src='/assets/images/newcontentimgs/New folder/website-11.png'
-                    alt=''
+                    src="/assets/images/newcontentimgs/New folder/website-11.png"
+                    alt=""
                   />
                 </div>
               </div>
             </div>
             <div>
-              <div className='row'>
-                <div className='col-md-12 col-12'>
-                  <div className='buy-stepheading'>
+              <div className="row">
+                <div className="col-md-12 col-12">
+                  <div className="buy-stepheading">
                     <h4>How To Buy From Stock</h4>
                   </div>
                 </div>
               </div>
-              <div className='buy-stBox-right'>
-                <div className='row'>
-                  <div className='col-md-5 col-12'>
-                    <div className='buy-stepimg'>
+              <div className="buy-stBox-right">
+                <div className="row">
+                  <div className="col-md-5 col-12">
+                    <div className="buy-stepimg">
                       <img
                         style={{ margin: "auto !important", display: "table" }}
-                        src='/assets/images/newcontentimgs/New folder/mouse-cursor-png-5a376f62b53756.6700541015135824347423-removebg-preview.png'
-                        className='img-fluid'
-                        alt='CHOOSE THE VEHICLE YOU WANT TO PURCHASE.OUR CAR SEARCH ENGINE WILL HELP YOU SEARCH THROUGH OUR INVENTORY.'
+                        src="/assets/images/newcontentimgs/New folder/mouse-cursor-png-5a376f62b53756.6700541015135824347423-removebg-preview.png"
+                        className="img-fluid"
+                        alt="CHOOSE THE VEHICLE YOU WANT TO PURCHASE.OUR CAR SEARCH ENGINE WILL HELP YOU SEARCH THROUGH OUR INVENTORY."
                       />
                     </div>
                   </div>
-                  <div className='col-md-7 col-12 pl-5'>
-                    <div className='buy-steptxt'>
+                  <div className="col-md-7 col-12 pl-5">
+                    <div className="buy-steptxt">
                       <p>
                         <b> 1. Choose the Vehicle</b>
                       </p>
@@ -74,10 +74,10 @@ export default function HowToBuy() {
                   </div>
                 </div>
               </div>
-              <div className='buy-stBox-right'>
-                <div className='row'>
-                  <div className='col-md-7 col-12 pr-5'>
-                    <div className='buy-steptxt'>
+              <div className="buy-stBox-right">
+                <div className="row">
+                  <div className="col-md-7 col-12 pr-5">
+                    <div className="buy-steptxt">
                       <p>
                         <b>2. Receive Official Proforma Invoice</b>
                       </p>
@@ -91,39 +91,39 @@ export default function HowToBuy() {
                       </p>
                     </div>
                   </div>
-                  <div className='col-md-5 col-12'>
-                    <div className='buy-stepimg'>
+                  <div className="col-md-5 col-12">
+                    <div className="buy-stepimg">
                       <img
                         style={{
                           margin: "auto !important",
                           display: "table",
                           width: "40% !important",
                         }}
-                        src='/assets/images/newcontentimgs/New folder/328-3284939_tasks-clipart.png'
-                        className='img-fluid'
-                        alt='YOU CAN ALSO CUSTOMIZE SEARCH DEPENDING ON YOUR REQUIREMENT AND PREFERENCES. DETAILED PHOTOS AND SPECIFICATIONS CAN BE SEEN FOR EACH INVENTORY.'
+                        src="/assets/images/newcontentimgs/New folder/328-3284939_tasks-clipart.png"
+                        className="img-fluid"
+                        alt="YOU CAN ALSO CUSTOMIZE SEARCH DEPENDING ON YOUR REQUIREMENT AND PREFERENCES. DETAILED PHOTOS AND SPECIFICATIONS CAN BE SEEN FOR EACH INVENTORY."
                       />
                     </div>
                   </div>
                 </div>
               </div>
-              <div className='buy-stBox-right'>
-                <div className='row'>
-                  <div className='col-md-5 col-12'>
-                    <div className='buy-stepimg'>
+              <div className="buy-stBox-right">
+                <div className="row">
+                  <div className="col-md-5 col-12">
+                    <div className="buy-stepimg">
                       <img
                         style={{
                           margin: "auto !important",
                           display: "table",
                           width: "50% !important",
                         }}
-                        src='/assets/images/newcontentimgs/New folder/5a35519780ae37.4302250615134437355271.png'
-                        className='img-fluid'
+                        src="/assets/images/newcontentimgs/New folder/5a35519780ae37.4302250615134437355271.png"
+                        className="img-fluid"
                       />
                     </div>
                   </div>
-                  <div className='col-md-7 col-12 pl-5'>
-                    <div className='buy-steptxt'>
+                  <div className="col-md-7 col-12 pl-5">
+                    <div className="buy-steptxt">
                       <p>
                         <b>3. Proceed with Payments</b>
                       </p>
@@ -141,10 +141,10 @@ export default function HowToBuy() {
                   </div>
                 </div>
               </div>
-              <div className='buy-stBox-right'>
-                <div className='row'>
-                  <div className='col-md-7 col-12 pr-5'>
-                    <div className='buy-steptxt'>
+              <div className="buy-stBox-right">
+                <div className="row">
+                  <div className="col-md-7 col-12 pr-5">
+                    <div className="buy-steptxt">
                       <p>
                         <b>4. Payment Confirmation and Shipment Booking</b>
                       </p>
@@ -159,34 +159,34 @@ export default function HowToBuy() {
                       </p>
                     </div>
                   </div>
-                  <div className='col-md-5 col-12'>
-                    <div className='buy-stepimg'>
+                  <div className="col-md-5 col-12">
+                    <div className="buy-stepimg">
                       <img
                         style={{
                           margin: "auto !important",
                           display: "table",
                           width: "40% !important",
                         }}
-                        src='/assets/images/newcontentimgs/New folder/11-115763_calendar-icon-png.png'
-                        className='img-fluid'
+                        src="/assets/images/newcontentimgs/New folder/11-115763_calendar-icon-png.png"
+                        className="img-fluid"
                       />
                     </div>
                   </div>
                 </div>
               </div>
-              <div className='buy-stBox-right'>
-                <div className='row'>
-                  <div className='col-md-5 col-12'>
-                    <div className='buy-stepimg'>
+              <div className="buy-stBox-right">
+                <div className="row">
+                  <div className="col-md-5 col-12">
+                    <div className="buy-stepimg">
                       <img
                         style={{ margin: "auto !important", display: "table" }}
-                        src='/assets/images/newcontentimgs/New folder/m2i8i8m2G6i8G6Z5-removebg-preview.png'
-                        className='img-fluid'
+                        src="/assets/images/newcontentimgs/New folder/m2i8i8m2G6i8G6Z5-removebg-preview.png"
+                        className="img-fluid"
                       />
                     </div>
                   </div>
-                  <div className='col-md-7 col-12 pl-5'>
-                    <div className='buy-steptxt'>
+                  <div className="col-md-7 col-12 pl-5">
+                    <div className="buy-steptxt">
                       <p>
                         <b>5. Vehicle Shipping Process</b>
                       </p>
@@ -202,10 +202,10 @@ export default function HowToBuy() {
                   </div>
                 </div>
               </div>
-              <div className='buy-stBox-right'>
-                <div className='row'>
-                  <div className='col-md-7 col-12 pr-5'>
-                    <div className='buy-steptxt'>
+              <div className="buy-stBox-right">
+                <div className="row">
+                  <div className="col-md-7 col-12 pr-5">
+                    <div className="buy-steptxt">
                       <p>
                         <b>6. Vehicle Documents</b>
                       </p>
@@ -221,38 +221,38 @@ export default function HowToBuy() {
                       </p>
                     </div>
                   </div>
-                  <div className='col-md-5 col-12'>
-                    <div className='buy-stepimg'>
+                  <div className="col-md-5 col-12">
+                    <div className="buy-stepimg">
                       <img
                         style={{
                           margin: "auto !important",
                           display: "table",
                           width: "60% !important",
                         }}
-                        src='/assets/images/newcontentimgs/New folder/240_F_320330955_uOfwFjgiBFk7czfVD22uEb6YxAvn0hgk-removebg-preview.png'
-                        className='img-fluid'
+                        src="/assets/images/newcontentimgs/New folder/240_F_320330955_uOfwFjgiBFk7czfVD22uEb6YxAvn0hgk-removebg-preview.png"
+                        className="img-fluid"
                       />
                     </div>
                   </div>
                 </div>
               </div>
-              <div className='buy-stBox-right'>
-                <div className='row'>
-                  <div className='col-md-5 col-12'>
-                    <div className='buy-stepimg'>
+              <div className="buy-stBox-right">
+                <div className="row">
+                  <div className="col-md-5 col-12">
+                    <div className="buy-stepimg">
                       <img
                         style={{
                           margin: "auto !important",
                           display: "table",
                           width: "50% !important",
                         }}
-                        src='/assets/images/newcontentimgs/New folder/pngegg (2).png'
-                        className='img-fluid'
+                        src="/assets/images/newcontentimgs/New folder/pngegg (2).png"
+                        className="img-fluid"
                       />
                     </div>
                   </div>
-                  <div className='col-md-7 col-12 pl-5'>
-                    <div className='buy-steptxt'>
+                  <div className="col-md-7 col-12 pl-5">
+                    <div className="buy-steptxt">
                       <p>
                         <b>7. Courier of Documents</b>
                       </p>
@@ -269,10 +269,10 @@ export default function HowToBuy() {
                   </div>
                 </div>
               </div>
-              <div className='buy-stBox-right'>
-                <div className='row'>
-                  <div className='col-md-7 col-12 pr-5'>
-                    <div className='buy-steptxt'>
+              <div className="buy-stBox-right">
+                <div className="row">
+                  <div className="col-md-7 col-12 pr-5">
+                    <div className="buy-steptxt">
                       <p>
                         <b>8. Clearing Vehicle / Delivery</b>
                       </p>
@@ -286,23 +286,23 @@ export default function HowToBuy() {
                       </p>
                     </div>
                   </div>
-                  <div className='col-md-5 col-12'>
-                    <div className='buy-stepimg'>
+                  <div className="col-md-5 col-12">
+                    <div className="buy-stepimg">
                       <img
                         style={{
                           margin: "auto !important",
                           display: "table",
                           width: "60% !important",
                         }}
-                        src='/assets/images/newcontentimgs/New folder/189-1896112_car-png-icon.png'
-                        className='img-fluid'
+                        src="/assets/images/newcontentimgs/New folder/189-1896112_car-png-icon.png"
+                        className="img-fluid"
                       />
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <h4 className='text-center buy-stepheading'>
+            <h4 className="text-center buy-stepheading">
               How to buy from auction
             </h4>
             <h4>STEP 1 MEMBERSHIP REGISTRATION</h4>
@@ -369,9 +369,9 @@ export default function HowToBuy() {
             {/* <img class="widthhundread" src="images/newcontentimgs/website-12.png" alt=""> */}
           </div>
         </div>
-        <div className='row pt-10'>
-          <div className='col-md-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4'>
-            <div className='gceInform-Imptxt'>
+        <div className="row pt-10">
+          <div className="col-md-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+            <div className="gceInform-Imptxt">
               <h4>Japanese Car Auction Sheet Codes</h4>
               <p>1. Registration month</p>
               <p>2. chassis code</p>
@@ -388,11 +388,11 @@ export default function HowToBuy() {
               <p>13. Key specification on the car</p>
             </div>
           </div>
-          <div className='col-md-8 col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8'>
+          <div className="col-md-8 col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
             <img
-              className='widthhundread'
-              src='/assets/images/newcontentimgs/website-12.png'
-              alt=''
+              className="widthhundread"
+              src="/assets/images/newcontentimgs/website-12.png"
+              alt=""
             />
           </div>
         </div>

@@ -9,7 +9,7 @@ export default function FAQSPage() {
         <title>
           Frequently Asked Questions (F.A.Qs) - Universal Motors Ltd.
         </title>
-        <div className='col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12'>
+        <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12">
           <FaqComponent />
         </div>
       </div>

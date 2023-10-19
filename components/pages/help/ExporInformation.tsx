@@ -3,24 +3,24 @@ import Link from "next/link";
 export default function ExporInformation() {
   return (
     <>
-      <div className='col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12'>
-        <div className='gceCountry-landing'>
+      <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12">
+        <div className="gceCountry-landing">
           {/* The breadcrumb Begins*/}
-          <div className='breadcrumbs'>
+          <div className="breadcrumbs">
             <ul>
               <li>
-                <Link href='/'> Home</Link>
+                <Link href="/"> Home</Link>
               </li>
               <li>
-                <Link href='#'> Export Information</Link>
+                <Link href="#"> Export Information</Link>
               </li>
             </ul>
           </div>
-          <div className='gceCountry-Local exp-Information'>
+          <div className="gceCountry-Local exp-Information">
             <h3>Export Information</h3>
-            <div className='gceInform-Imptxt'>
+            <div className="gceInform-Imptxt">
               <h4>
-                <i className='fa fa-caret-right' aria-hidden='true' />
+                <i className="fa fa-caret-right" aria-hidden="true" />
                 Universal Motor Standard Terms of Trade are as follows:
               </h4>
               <p>
@@ -42,7 +42,7 @@ export default function ExporInformation() {
               </p>
               <h6>Shipping Terms</h6>
               <h4>
-                <i className='fa fa-caret-right' aria-hidden='true' />
+                <i className="fa fa-caret-right" aria-hidden="true" />
                 FOB: Free - On - Board:
               </h4>
               <p>
@@ -52,7 +52,7 @@ export default function ExporInformation() {
                 Japan.
               </p>
               <h4>
-                <i className='fa fa-caret-right' aria-hidden='true' />
+                <i className="fa fa-caret-right" aria-hidden="true" />
                 CFR: Cost and Freight.
                 <br />
                 CIF: Cost, Insurance and Freight.
@@ -63,7 +63,7 @@ export default function ExporInformation() {
                 vehicle, please ask for our assistance.
               </p>
               <h4>
-                <i className='fa fa-caret-right' aria-hidden='true' />
+                <i className="fa fa-caret-right" aria-hidden="true" />
                 T.T: Telegraphic Transfer / Wire Transfer:
               </h4>
               <p>
@@ -72,7 +72,7 @@ export default function ExporInformation() {
                 Telegraphic Transfer at most of the major banks.
               </p>
               <h4>
-                <i className='fa fa-caret-right' aria-hidden='true' />
+                <i className="fa fa-caret-right" aria-hidden="true" />
                 L/C: Letter of Credit:
               </h4>
               <p>

@@ -45,8 +45,8 @@ function SignInForm({ signIn, setSignIn }: Props) {
 
   return (
     <>
-      <div className='p-3'>
-        <div className='text-sm text-gray-500'>
+      <div className="p-3">
+        <div className="text-sm text-gray-500">
           <form
             onSubmit={handleSubmit((data) => {
               // console.log(submit)
@@ -65,10 +65,10 @@ function SignInForm({ signIn, setSignIn }: Props) {
               }
             })}
           >
-            <div className='mb-6'>
+            <div className="mb-6">
               <label
-                htmlFor='username'
-                className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
+                htmlFor="username"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
                 Your Username
               </label>
@@ -76,39 +76,39 @@ function SignInForm({ signIn, setSignIn }: Props) {
                 {...register("username", {
                   required: "Username is required",
                 })}
-                id='username'
-                className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-                placeholder='Username'
+                id="username"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Username"
                 required
               />
             </div>
-            <div className='mb-6'>
+            <div className="mb-6">
               <label
-                htmlFor='password'
-                className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
+                htmlFor="password"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
                 Your password
               </label>
               <input
                 {...register("password")}
-                type='password'
-                id='password'
-                className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-                placeholder='Password'
+                type="password"
+                id="password"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Password"
                 required
               />
             </div>
-            <div className='my-3 flex justify-between text-sm'>
+            <div className="my-3 flex justify-between text-sm">
               <Button
                 loading={submit}
-                type='submit'
-                className='px-4 py-2 rounded-xl text-white m-0 bg-green-500 hover:bg-green-600 transition'
+                type="submit"
+                className="px-4 py-2 rounded-xl text-white m-0 bg-green-500 hover:bg-green-600 transition"
               >
                 Log In
               </Button>
               <button
                 onClick={handleSignUp}
-                className='px-4 py-2 rounded-xl bg-neutral-50 hover:bg-blue-100  transition'
+                className="px-4 py-2 rounded-xl bg-neutral-50 hover:bg-blue-100  transition"
               >
                 New Customer? Sign Up
               </button>

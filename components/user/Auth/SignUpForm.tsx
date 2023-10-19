@@ -43,39 +43,39 @@ function SignUp({ countries, ports, portMapping, setSignIn }: Props) {
 
   return (
     <>
-      <div className='p-3'>
-        <div className='text-sm text-gray-500'>
+      <div className="p-3">
+        <div className="text-sm text-gray-500">
           <form
             onSubmit={handleSubmit(async (data) => {
               data.roles = ["Customer"];
               await agent.Account.register(data);
             })}
           >
-            <div className=' flex justify-between text-sm'>
+            <div className=" flex justify-between text-sm">
               <input
                 {...register("firstname")}
-                type='text'
-                className='border rounded p-2 py-3 w-[49%]'
-                placeholder='First Name'
+                type="text"
+                className="border rounded p-2 py-3 w-[49%]"
+                placeholder="First Name"
                 required
               />
               <input
                 {...register("lastname")}
-                type='text'
-                className='border rounded p-2 py-3 w-[49%]'
-                placeholder='Last Name'
+                type="text"
+                className="border rounded p-2 py-3 w-[49%]"
+                placeholder="Last Name"
               />
             </div>
             {/*<div className="flex justify-between text-sm">*/}
             {/*    <label className=" rounded p-2 w-[49%]"  htmlFor="username" >Your Country</label>*/}
             {/*    <label className=" rounded p-2 w-[49%]"  htmlFor="username" >Preffered Port</label>*/}
             {/*</div>*/}
-            <div className='flex justify-between text-sm'>
+            <div className="flex justify-between text-sm">
               <select
-                className='mt-3 border rounded p-2 w-[49%]'
+                className="mt-3 border rounded p-2 w-[49%]"
                 {...register("countryID")}
                 onChange={handleCountryChange}
-                placeholder='Select Country'
+                placeholder="Select Country"
               >
                 <option value={0}>Select Country</option>
                 {countries.map((country) => (
@@ -86,9 +86,9 @@ function SignUp({ countries, ports, portMapping, setSignIn }: Props) {
               </select>
               <select
                 {...register("preferredPortId")}
-                className='mt-3 border rounded p-2 w-[49%]'
-                aria-expanded='true'
-                aria-haspopup='true'
+                className="mt-3 border rounded p-2 w-[49%]"
+                aria-expanded="true"
+                aria-haspopup="true"
               >
                 <option value={0}>Select Port</option>
                 {mappedPorts.map((port) => (
@@ -98,7 +98,7 @@ function SignUp({ countries, ports, portMapping, setSignIn }: Props) {
                 ))}
               </select>
             </div>
-            <div className='my-3 flex justify-between text-sm'>
+            <div className="my-3 flex justify-between text-sm">
               <input
                 {...register("email", {
                   required: "Email is required",
@@ -107,55 +107,55 @@ function SignUp({ countries, ports, portMapping, setSignIn }: Props) {
                     message: "Invalid email address",
                   },
                 })}
-                type='email'
-                className='border rounded p-2 w-[49%]'
-                placeholder='Email Address'
+                type="email"
+                className="border rounded p-2 w-[49%]"
+                placeholder="Email Address"
                 required
               />
               <input
                 {...register("phoneNumber", {
                   required: "Phone number is required",
                 })}
-                placeholder='Phone Number'
+                placeholder="Phone Number"
                 defaultValue={countryCode}
-                className='border rounded p-2 py-3 w-[49%]'
+                className="border rounded p-2 py-3 w-[49%]"
               />
             </div>
-            <div className='my-3 flex justify-between text-sm'>
+            <div className="my-3 flex justify-between text-sm">
               <input
                 {...register("username", {
                   required: "Username is required",
                 })}
-                type='text'
-                className='border rounded p-2 w-[49%]'
-                placeholder='Username'
+                type="text"
+                className="border rounded p-2 w-[49%]"
+                placeholder="Username"
                 required
               />
               <input
                 {...register("password")}
-                type='password'
-                className='border rounded p-2 py-3 w-[49%]'
-                placeholder='Password'
+                type="password"
+                className="border rounded p-2 py-3 w-[49%]"
+                placeholder="Password"
                 required
               />
               <input
                 {...register("confirmPassword")}
-                type='password'
-                className='border rounded p-2 py-3 w-[49%]'
-                placeholder='Confirm Password'
+                type="password"
+                className="border rounded p-2 py-3 w-[49%]"
+                placeholder="Confirm Password"
                 required
               />
             </div>
-            <div className='my-3 flex justify-between text-sm'>
+            <div className="my-3 flex justify-between text-sm">
               <button
-                className='px-4 py-2 rounded-xl text-white m-0 bg-red-500 hover:bg-red-600 transition'
-                type='submit'
+                className="px-4 py-2 rounded-xl text-white m-0 bg-red-500 hover:bg-red-600 transition"
+                type="submit"
               >
                 Signup
               </button>
               <button
                 onClick={handleSignIn}
-                className='px-4 py-2 rounded-xl bg-neutral-50 hover:bg-blue-100  transition'
+                className="px-4 py-2 rounded-xl bg-neutral-50 hover:bg-blue-100  transition"
               >
                 Existing Customer? Sign In
               </button>

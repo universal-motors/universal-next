@@ -13,7 +13,7 @@ const SuggestionsList = (props: any) => {
   if (inputValue && displaySuggestions) {
     if (suggestions.length > 0) {
       return (
-        <ul className='list-none p-0  overflow-y-auto max-w-250 border-2 border-gray-500 rounded-2xl'>
+        <ul className="list-none p-0  overflow-y-auto max-w-250 border-2 border-gray-500 rounded-2xl">
           {suggestions.map((suggestion: any, index: number) => {
             const isSelected = selectedSuggestion === index;
             const classname = ` p-2 text-gray-700 cursor-pointer ${

@@ -48,44 +48,44 @@ export default function SearchBar() {
   return (
     <div>
       <form>
-        <div className='mt-2 flex rounded-md shadow-sm'>
-          <div className='relative flex flex-grow items-stretch focus-within:z-10'>
-            <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3'>
-              <FcSearch className='h-5 w-5 text-gray-400' aria-hidden='true' />
+        <div className="mt-2 flex rounded-md shadow-sm">
+          <div className="relative flex flex-grow items-stretch focus-within:z-10">
+            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+              <FcSearch className="h-5 w-5 text-gray-400" aria-hidden="true" />
             </div>
             <input
-              className='block w-full rounded-none rounded-l-md border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
-              placeholder='Stock Code, Listing Title, Year of Listing, Model Code ...'
+              className="block w-full rounded-none rounded-l-md border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              placeholder="Stock Code, Listing Title, Year of Listing, Model Code ..."
               value={searchKey}
-              name='searchKey'
+              name="searchKey"
               onChange={(e) => setSearchKey(e.target.value)}
             />
           </div>
 
           <button
-            type='button'
+            type="button"
             onClick={onHandleSubmit}
-            className='transition duration-300 ease-in-out hover:scale-110 bg-yellow-400 relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50'
+            className="transition duration-300 ease-in-out hover:scale-110 bg-yellow-400 relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
           >
             {/*{isPending && "Searching ... "}*/}
             {/*{!isPending && <FcSearch className="-ml-0.5 h-5 w-5 text-gray-400" aria-hidden="true" />}*/}
             Search
           </button>
         </div>
-        <div className='space-y-4 sm:flex sm:items-center sm:space-x-10 sm:space-y-0'>
+        <div className="space-y-4 sm:flex sm:items-center sm:space-x-10 sm:space-y-0">
           {vehicleTypes.map((notificationMethod) => (
-            <div key={notificationMethod.id} className='flex items-center'>
+            <div key={notificationMethod.id} className="flex items-center">
               <input
                 id={notificationMethod.id}
-                name='notification-method'
-                type='radio'
+                name="notification-method"
+                type="radio"
                 defaultChecked={notificationMethod.id === "1"}
                 onChange={handleRadioChange}
-                className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600'
+                className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
               />
               <label
                 htmlFor={notificationMethod.id}
-                className='ml-3 block text-sm font-medium leading-6 text-blue-100'
+                className="ml-3 block text-sm font-medium leading-6 text-blue-100"
               >
                 {notificationMethod.title}
               </label>

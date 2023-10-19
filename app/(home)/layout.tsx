@@ -59,9 +59,9 @@ export default async function RootLayout({
         locations={locations}
       />
       <FrontSlider />
-      <section className='sidebar-menu'>
-        <div className='container-fluid'>
-          <div className='row'>
+      <section className="sidebar-menu">
+        <div className="container-fluid">
+          <div className="row">
             <Sidebar locations={inventoryLocation} makes={makes.data} />
             {children}
           </div>

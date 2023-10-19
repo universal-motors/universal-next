@@ -4,34 +4,34 @@ import AboutPageSideBar from "@/components/pages/about/AboutPageSideBar";
 export default function DisclaimerPolicy() {
   return (
     <>
-      <div className='col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12'>
-        <div className='gceCountry-landing'>
+      <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12">
+        <div className="gceCountry-landing">
           {/* The breadcrumb Begins*/}
-          <div className='breadcrumbs'>
+          <div className="breadcrumbs">
             <ul>
               <li>
-                <Link href='/'> Home</Link>
+                <Link href="/"> Home</Link>
               </li>
               <li>
                 {" "}
-                <Link href='/global/about-universal-motors?page=disclaimer-policy'>
+                <Link href="/global/about-universal-motors?page=disclaimer-policy">
                   Disclaimer Policy
                 </Link>
               </li>
             </ul>
           </div>
-          <div className='row'>
+          <div className="row">
             <AboutPageSideBar />
-            <div className='col-xl-9 col-lg-9 col-md-8 col-sm-12 col-12'>
-              <div className='gceCountry-Local exp-Information'>
+            <div className="col-xl-9 col-lg-9 col-md-8 col-sm-12 col-12">
+              <div className="gceCountry-Local exp-Information">
                 <p>
                   This Website is Managed and Maintained by Universal Motors. In
                   undertaking business with Universal Motors, please ensure that
                   you must have read and agreed to the terms in this document.
                 </p>
-                <div className='gceInform-Imptxt'>
+                <div className="gceInform-Imptxt">
                   <h4>
-                    <i className='fa fa-caret-right' aria-hidden='true' />
+                    <i className="fa fa-caret-right" aria-hidden="true" />
                     TERMS OF BUSINESS
                   </h4>
                   <p>
@@ -51,7 +51,7 @@ export default function DisclaimerPolicy() {
                     destination port and the marine insurance.
                   </p>
                   <h4>
-                    <i className='fa fa-caret-right' aria-hidden='true' />
+                    <i className="fa fa-caret-right" aria-hidden="true" />
                     PAYMENT
                   </h4>
                   <p>
@@ -62,7 +62,7 @@ export default function DisclaimerPolicy() {
                     invoice is issued.
                   </p>
                   <h4>
-                    <i className='fa fa-caret-right' aria-hidden='true' />
+                    <i className="fa fa-caret-right" aria-hidden="true" />
                     CURRENCIES
                   </h4>
                   <p>
@@ -73,7 +73,7 @@ export default function DisclaimerPolicy() {
                     customer.
                   </p>
                   <h4>
-                    <i className='fa fa-caret-right' aria-hidden='true' />
+                    <i className="fa fa-caret-right" aria-hidden="true" />
                     DOCUMENT PRESENTATION
                   </h4>
                   <p>
@@ -106,7 +106,7 @@ export default function DisclaimerPolicy() {
                     added on to customers account.
                   </p>
                   <h4>
-                    <i className='fa fa-caret-right' aria-hidden='true' />
+                    <i className="fa fa-caret-right" aria-hidden="true" />
                     IMPORT RESTRICTIONS
                   </h4>
                   <p>
@@ -117,7 +117,7 @@ export default function DisclaimerPolicy() {
                     destination.
                   </p>
                   <h4>
-                    <i className='fa fa-caret-right' aria-hidden='true' />
+                    <i className="fa fa-caret-right" aria-hidden="true" />
                     INSPECTION REQUIREMENT
                   </h4>
                   <p>
@@ -135,7 +135,7 @@ export default function DisclaimerPolicy() {
                     number, providing MOZ number is customers responsibility.
                   </p>
                   <h4>
-                    <i className='fa fa-caret-right' aria-hidden='true' />
+                    <i className="fa fa-caret-right" aria-hidden="true" />
                     SHIPPING DELAYS AND ISSUES
                   </h4>
                   <p>
@@ -149,7 +149,7 @@ export default function DisclaimerPolicy() {
                     notice.
                   </p>
                   <h4>
-                    <i className='fa fa-caret-right' aria-hidden='true' />
+                    <i className="fa fa-caret-right" aria-hidden="true" />
                     VEHICLE AVAILIBILITY
                   </h4>
                   <p>
@@ -159,7 +159,7 @@ export default function DisclaimerPolicy() {
                     website.
                   </p>
                   <h4>
-                    <i className='fa fa-caret-right' aria-hidden='true' />
+                    <i className="fa fa-caret-right" aria-hidden="true" />
                     VEHICLE SALES POLICY
                   </h4>
                   <p>
@@ -172,7 +172,7 @@ export default function DisclaimerPolicy() {
                     special permission is granted by management.
                   </p>
                   <h4>
-                    <i className='fa fa-caret-right' aria-hidden='true' />
+                    <i className="fa fa-caret-right" aria-hidden="true" />
                     WEBSITE ACCOUNTS
                   </h4>
                   <p>
@@ -181,7 +181,7 @@ export default function DisclaimerPolicy() {
                     notice/s.
                   </p>
                   <h4>
-                    <i className='fa fa-caret-right' aria-hidden='true' />
+                    <i className="fa fa-caret-right" aria-hidden="true" />
                     COOKIE POLICY
                   </h4>
                   <p>
@@ -189,7 +189,7 @@ export default function DisclaimerPolicy() {
                     website can remember what you have browsed.
                   </p>
                   <h4>
-                    <i className='fa fa-caret-right' aria-hidden='true' />
+                    <i className="fa fa-caret-right" aria-hidden="true" />
                     SECURITY EXPORT CONTROL
                   </h4>
                   <p>

@@ -1,12 +1,12 @@
 "use client";
-import { Form } from "react-bootstrap";
-import { Button, SearchSelect, SearchSelectItem } from "@tremor/react";
-import { FormEvent, useState } from "react";
-import { CarModel } from "@/models/Master/CarModel";
 import agent from "@/api/agent";
 import { BodyType } from "@/models/Master/BodyType";
+import { CarModel } from "@/models/Master/CarModel";
 import { Make } from "@/models/Master/Make";
+import { SearchSelect, SearchSelectItem } from "@tremor/react";
 import { useRouter } from "next/navigation";
+import { FormEvent, useState } from "react";
+import { Form } from "react-bootstrap";
 
 interface Props {
   bodyTypes: BodyType[]; //tblBodyTypes[],
@@ -56,7 +56,7 @@ export default function TruckSimpleSearch({
 
     return (
       <SearchSelect value={makeId} onValueChange={handleValueChange} disabled>
-        <SearchSelectItem value='0'>Select...</SearchSelectItem>
+        <SearchSelectItem value="0">Select...</SearchSelectItem>
       </SearchSelect>
     );
   };
@@ -78,79 +78,97 @@ export default function TruckSimpleSearch({
   }
 
   return (
-    <div className='showcase-Box carform mb-5'>
-      <Form onSubmit={handleSubmit} autoComplete='off'>
-        <div className='row'>
-          <div className='col-lg-4 col-md-6 col-sm-6 col-12'>
-            <label>Make: </label>
-            {/*<SearchSelect value={makeId} onValueChange={setMakeId}>*/}
-            <SearchSelect value={makeId} onValueChange={handleValueChange}>
-              {makes
-                .filter((make) => make.vehicleTypeId == 2)
-                .map((make) => (
-                  <SearchSelectItem
-                    key={make.makeId}
-                    value={make.makeId.toString()}
-                  >
-                    {make.makeName} {}
-                  </SearchSelectItem>
-                ))}
-            </SearchSelect>
-          </div>
-
-          <div className='col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12'>
-            <label>Model:</label>
-            {renderMappedModels()}
-          </div>
-
-          <div className='col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12'>
-            <label>Mileage</label>
-            <div className='showcase-Boxselect'>
-              <SearchSelect value={mileage} onValueChange={setMileage}>
-                <SearchSelectItem value='50000'>50,000</SearchSelectItem>
-                <SearchSelectItem value='100000'>100,000</SearchSelectItem>
-                <SearchSelectItem value='150000'>150,000</SearchSelectItem>
-                <SearchSelectItem value='200000'>200,000</SearchSelectItem>
-                <SearchSelectItem value='300000'>300,000</SearchSelectItem>
-              </SearchSelect>
-            </div>
-          </div>
-          <div className='col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12'>
-            <label>Reg. Date from</label>
-            <SearchSelect value={toYear} onValueChange={setToYear}>
-              {yearList.map((year) => (
-                <SearchSelectItem key={year} value={year.toString()}>
-                  {year}
+    // <div className="showcase-Box carform mb-5">
+    <Form onSubmit={handleSubmit} autoComplete="off">
+      <div className=" row mt-4 gap-y-5  border border-gray-200 mx-2 bg-slate-100 rounded-2xl py-3 shadow-md">
+        <div className="col-lg-4 col-md-6 col-sm-6 col-12">
+          <label>Make: </label>
+          {/*<SearchSelect value={makeId} onValueChange={setMakeId}>*/}
+          <SearchSelect value={makeId} onValueChange={handleValueChange}>
+            {makes
+              .filter((make) => make.vehicleTypeId == 2)
+              .map((make) => (
+                <SearchSelectItem
+                  key={make.makeId}
+                  value={make.makeId.toString()}
+                >
+                  {make.makeName} {}
                 </SearchSelectItem>
               ))}
+          </SearchSelect>
+        </div>
+
+        <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Model:
+          </label>
+          {renderMappedModels()}
+        </div>
+
+        <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Mileage
+          </label>
+          <div className="showcase-Boxselect">
+            <SearchSelect value={mileage} onValueChange={setMileage}>
+              <SearchSelectItem value="50000">50,000</SearchSelectItem>
+              <SearchSelectItem value="100000">100,000</SearchSelectItem>
+              <SearchSelectItem value="150000">150,000</SearchSelectItem>
+              <SearchSelectItem value="200000">200,000</SearchSelectItem>
+              <SearchSelectItem value="300000">300,000</SearchSelectItem>
             </SearchSelect>
-          </div>
-          <div className='col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12'>
-            <label>Price Until:</label>
-            <SearchSelect value={toPrice} onValueChange={setToPrice}>
-              <SearchSelectItem value='10000'>$10,000</SearchSelectItem>
-              <SearchSelectItem value='20000'>$20,000</SearchSelectItem>
-              <SearchSelectItem value='30000'>$30,000</SearchSelectItem>
-              <SearchSelectItem value='40000'>$40,000</SearchSelectItem>
-              <SearchSelectItem value='50000'>$50,000</SearchSelectItem>
-            </SearchSelect>
-          </div>
-          <div className='col-xl-4 col-lg-4 col-md-8 col-sm-6 col-6'>
-            <div className='showcase-Boxbtn'>
-              <Button>
-                {isLoading ? (
-                  // This is where you'd add your loading spinner.
-                  // You can use an SVG, an image, or anything else you'd like.
-                  // For this example, I'll just use text.
-                  <span>Loading...</span>
-                ) : (
-                  <span>Search</span>
-                )}
-              </Button>
-            </div>
           </div>
         </div>
-      </Form>
-    </div>
+        <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Model:Reg. Date from
+          </label>
+          <SearchSelect value={toYear} onValueChange={setToYear}>
+            {yearList.map((year) => (
+              <SearchSelectItem key={year} value={year.toString()}>
+                {year}
+              </SearchSelectItem>
+            ))}
+          </SearchSelect>
+        </div>
+        <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Price Until:
+          </label>
+          <SearchSelect value={toPrice} onValueChange={setToPrice}>
+            <SearchSelectItem value="10000">$10,000</SearchSelectItem>
+            <SearchSelectItem value="20000">$20,000</SearchSelectItem>
+            <SearchSelectItem value="30000">$30,000</SearchSelectItem>
+            <SearchSelectItem value="40000">$40,000</SearchSelectItem>
+            <SearchSelectItem value="50000">$50,000</SearchSelectItem>
+          </SearchSelect>
+        </div>
+        <div className="col-xl-4 col-lg-4 col-md-8 col-sm-6 col-6">
+          {/* <div className="showcase-Boxbtn"> */}
+          {/* <Button>
+              {isLoading ? (
+                // This is where you'd add your loading spinner.
+                // You can use an SVG, an image, or anything else you'd like.
+                // For this example, I'll just use text.
+                <span>Loading...</span>
+              ) : (
+                <span>Search</span>
+              )}
+            </Button> */}
+          <button className="w-full font-semibold bg-slate-500 p-2 rounded-xl text-white hover:border-2 hover:border-slate-500 hover:bg-transparent hover:!text-slate-500 ">
+            {isLoading ? (
+              // This is where you'd add your loading spinner.
+              // You can use an SVG, an image, or anything else you'd like.
+              // For this example, I'll just use text.
+              <span>Loading...</span>
+            ) : (
+              <span>Search</span>
+            )}
+          </button>
+          {/* </div> */}
+        </div>
+      </div>
+    </Form>
+    // </div>
   );
 }

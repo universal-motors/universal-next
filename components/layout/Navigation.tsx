@@ -12,44 +12,44 @@ import { PiCreditCardBold } from "react-icons/pi";
 export default function Navigation() {
   return (
     <>
-      <div style={{ display: "flex", justifyContent: "center" }} id='min-1'>
-        <nav className='bg-transparent'>
-          <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-            <div className='flex items-center justify-between h-16'>
-              <div className='flex items-center'>
-                <div className='hidden md:block'>
-                  <div className=' text-white px-3 py-2 rounded-md text-sm font-medium'>
-                    <ul className='flex items-center'>
-                      <li className='p-4'>
+      <div style={{ display: "flex", justifyContent: "center" }} id="min-1">
+        <nav className="bg-transparent">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between h-16">
+              <div className="flex items-center">
+                <div className="hidden md:block">
+                  <div className=" text-white px-3 py-2 rounded-md text-sm font-medium">
+                    <ul className="flex items-center">
+                      <li className="p-4">
                         <Menu
-                          as='div'
-                          className='relative  inline-block text-left'
+                          as="div"
+                          className="relative  inline-block text-left"
                         >
                           <div>
-                            <Menu.Button className='transition duration-300 ease-in-out hover:scale-110 inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50'>
+                            <Menu.Button className="transition duration-300 ease-in-out hover:scale-110 inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
                               Need Help ?
                               <TbSquareRoundedChevronDownFilled
-                                className='-mr-1 h-5 w-5 text-gray-400'
-                                aria-hidden='true'
+                                className="-mr-1 h-5 w-5 text-gray-400"
+                                aria-hidden="true"
                               />
                             </Menu.Button>
                           </div>
 
                           <Transition
                             as={Fragment}
-                            enter='transition ease-out duration-100'
-                            enterFrom='transform opacity-0 scale-95'
-                            enterTo='transform opacity-100 scale-100'
-                            leave='transition ease-in duration-75'
-                            leaveFrom='transform opacity-100 scale-100'
-                            leaveTo='transform opacity-0 scale-95'
+                            enter="transition ease-out duration-100"
+                            enterFrom="transform opacity-0 scale-95"
+                            enterTo="transform opacity-100 scale-100"
+                            leave="transition ease-in duration-75"
+                            leaveFrom="transform opacity-100 scale-100"
+                            leaveTo="transform opacity-0 scale-95"
                           >
-                            <Menu.Items className='absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
-                              <div className='py-1'>
+                            <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                              <div className="py-1">
                                 <Menu.Item>
                                   {({ active }) => (
                                     <Link
-                                      href='/global/information?page=why-choose-universal-motors'
+                                      href="/global/information?page=why-choose-universal-motors"
                                       className={classNames(
                                         active
                                           ? "bg-gray-100 text-gray-900"
@@ -64,7 +64,7 @@ export default function Navigation() {
                                 <Menu.Item>
                                   {({ active }) => (
                                     <Link
-                                      href='/global/information?page=how-to-buy'
+                                      href="/global/information?page=how-to-buy"
                                       className={classNames(
                                         active
                                           ? "bg-gray-100 text-gray-900"
@@ -77,11 +77,11 @@ export default function Navigation() {
                                   )}
                                 </Menu.Item>
                               </div>
-                              <div className='py-1'>
+                              <div className="py-1">
                                 <Menu.Item>
                                   {({ active }) => (
                                     <Link
-                                      href='/global/information?page=export-information'
+                                      href="/global/information?page=export-information"
                                       className={classNames(
                                         active
                                           ? "bg-gray-100 text-gray-900"
@@ -94,11 +94,11 @@ export default function Navigation() {
                                   )}
                                 </Menu.Item>
                               </div>
-                              <div className='py-1'>
+                              <div className="py-1">
                                 <Menu.Item>
                                   {({ active }) => (
                                     <Link
-                                      href='/global/information?page=vehicle-shipment-condition'
+                                      href="/global/information?page=vehicle-shipment-condition"
                                       className={classNames(
                                         active
                                           ? "bg-gray-100 text-gray-900"
@@ -113,7 +113,7 @@ export default function Navigation() {
                                 <Menu.Item>
                                   {({ active }) => (
                                     <Link
-                                      href='/global/information?page=export-import-services'
+                                      href="/global/information?page=export-import-services"
                                       className={classNames(
                                         active
                                           ? "bg-gray-100 text-gray-900"
@@ -130,36 +130,36 @@ export default function Navigation() {
                           </Transition>
                         </Menu>
                       </li>
-                      <li className='p-4'>
+                      <li className="p-4">
                         <Menu
-                          as='div'
-                          className='relative inline-block text-left'
+                          as="div"
+                          className="relative inline-block text-left"
                         >
                           <div>
-                            <Menu.Button className='transition duration-300 ease-in-out hover:scale-110 inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50'>
+                            <Menu.Button className="transition duration-300 ease-in-out hover:scale-110 inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
                               About Universal Motors
                               <TbSquareRoundedChevronDownFilled
-                                className='-mr-1 h-5 w-5 text-gray-400'
-                                aria-hidden='true'
+                                className="-mr-1 h-5 w-5 text-gray-400"
+                                aria-hidden="true"
                               />
                             </Menu.Button>
                           </div>
 
                           <Transition
                             as={Fragment}
-                            enter='transition ease-out duration-100'
-                            enterFrom='transform opacity-0 scale-95'
-                            enterTo='transform opacity-100 scale-100'
-                            leave='transition ease-in duration-75'
-                            leaveFrom='transform opacity-100 scale-100'
-                            leaveTo='transform opacity-0 scale-95'
+                            enter="transition ease-out duration-100"
+                            enterFrom="transform opacity-0 scale-95"
+                            enterTo="transform opacity-100 scale-100"
+                            leave="transition ease-in duration-75"
+                            leaveFrom="transform opacity-100 scale-100"
+                            leaveTo="transform opacity-0 scale-95"
                           >
-                            <Menu.Items className='absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
-                              <div className='py-1'>
+                            <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                              <div className="py-1">
                                 <Menu.Item>
                                   {({ active }) => (
                                     <Link
-                                      href='/global/about-universal-motors/'
+                                      href="/global/about-universal-motors/"
                                       className={classNames(
                                         active
                                           ? "bg-gray-100 text-gray-900"
@@ -174,7 +174,7 @@ export default function Navigation() {
                                 <Menu.Item>
                                   {({ active }) => (
                                     <Link
-                                      href='/global/about-universal-motors?page=sustainability-fundamental-policy'
+                                      href="/global/about-universal-motors?page=sustainability-fundamental-policy"
                                       className={classNames(
                                         active
                                           ? "bg-gray-100 text-gray-900"
@@ -189,11 +189,11 @@ export default function Navigation() {
                                   )}
                                 </Menu.Item>
                               </div>
-                              <div className='py-1'>
+                              <div className="py-1">
                                 <Menu.Item>
                                   {({ active }) => (
                                     <Link
-                                      href='/global/about-universal-motors?page=company-profile'
+                                      href="/global/about-universal-motors?page=company-profile"
                                       className={classNames(
                                         active
                                           ? "bg-gray-100 text-gray-900"
@@ -208,7 +208,7 @@ export default function Navigation() {
                                 <Menu.Item>
                                   {({ active }) => (
                                     <Link
-                                      href='/global/about-universal-motors?page=global-offices'
+                                      href="/global/about-universal-motors?page=global-offices"
                                       className={classNames(
                                         active
                                           ? "bg-gray-100 text-gray-900"
@@ -221,11 +221,11 @@ export default function Navigation() {
                                   )}
                                 </Menu.Item>
                               </div>
-                              <div className='py-1'>
+                              <div className="py-1">
                                 <Menu.Item>
                                   {({ active }) => (
                                     <Link
-                                      href='/global/about-universal-motors?page=terms-of-service'
+                                      href="/global/about-universal-motors?page=terms-of-service"
                                       className={classNames(
                                         active
                                           ? "bg-gray-100 text-gray-900"
@@ -240,7 +240,7 @@ export default function Navigation() {
                                 <Menu.Item>
                                   {({ active }) => (
                                     <Link
-                                      href='/global/about-universal-motors?page=privacy-policy'
+                                      href="/global/about-universal-motors?page=privacy-policy"
                                       className={classNames(
                                         active
                                           ? "bg-gray-100 text-gray-900"
@@ -255,7 +255,7 @@ export default function Navigation() {
                                 <Menu.Item>
                                   {({ active }) => (
                                     <Link
-                                      href='/global/about-universal-motors?page=security-export-control'
+                                      href="/global/about-universal-motors?page=security-export-control"
                                       className={classNames(
                                         active
                                           ? "bg-gray-100 text-gray-900"
@@ -270,7 +270,7 @@ export default function Navigation() {
                                 <Menu.Item>
                                   {({ active }) => (
                                     <Link
-                                      href='/global/about-universal-motors?page=policy-against-anti-social'
+                                      href="/global/about-universal-motors?page=policy-against-anti-social"
                                       className={classNames(
                                         active
                                           ? "bg-gray-100 text-gray-900"
@@ -287,7 +287,7 @@ export default function Navigation() {
                                 <Menu.Item>
                                   {({ active }) => (
                                     <Link
-                                      href='/global/about-universal-motors?page=disclaimer-policy'
+                                      href="/global/about-universal-motors?page=disclaimer-policy"
                                       className={classNames(
                                         active
                                           ? "bg-gray-100 text-gray-900"
@@ -304,35 +304,35 @@ export default function Navigation() {
                           </Transition>
                         </Menu>
                       </li>
-                      <li className='p-4'>
+                      <li className="p-4">
                         <Menu
-                          as='div'
-                          className='relative inline-block text-left'
+                          as="div"
+                          className="relative inline-block text-left"
                         >
                           <div>
-                            <Menu.Button className='transition duration-300 ease-in-out hover:scale-110 inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50'>
+                            <Menu.Button className="transition duration-300 ease-in-out hover:scale-110 inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
                               Import Protocols
                               <TbSquareRoundedChevronDownFilled
-                                className='-mr-1 h-5 w-5 text-gray-400'
-                                aria-hidden='true'
+                                className="-mr-1 h-5 w-5 text-gray-400"
+                                aria-hidden="true"
                               />
                             </Menu.Button>
                           </div>
 
                           <Transition
                             as={Fragment}
-                            enter='transition ease-out duration-100'
-                            enterFrom='transform opacity-0 scale-95'
-                            enterTo='transform opacity-100 scale-100'
-                            leave='transition ease-in duration-75'
-                            leaveFrom='transform opacity-100 scale-100'
-                            leaveTo='transform opacity-0 scale-95'
+                            enter="transition ease-out duration-100"
+                            enterFrom="transform opacity-0 scale-95"
+                            enterTo="transform opacity-100 scale-100"
+                            leave="transition ease-in duration-75"
+                            leaveFrom="transform opacity-100 scale-100"
+                            leaveTo="transform opacity-0 scale-95"
                           >
-                            <Menu.Items className='absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
+                            <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                               <Menu.Item>
                                 {({ active }) => (
                                   <Link
-                                    href='/global/information/import-protocols?page=chile'
+                                    href="/global/information/import-protocols?page=chile"
                                     className={classNames(
                                       active
                                         ? "bg-gray-100 text-gray-900"
@@ -340,11 +340,11 @@ export default function Navigation() {
                                       "block px-4 py-2 text-sm"
                                     )}
                                   >
-                                    <span className='flex inline'>
+                                    <span className="flex inline">
                                       <img
-                                        src='/assets/images/flags/CL.svg'
-                                        alt='Chile flag'
-                                        className='h-5 mr-3'
+                                        src="/assets/images/flags/CL.svg"
+                                        alt="Chile flag"
+                                        className="h-5 mr-3"
                                       />{" "}
                                       Chile
                                     </span>
@@ -354,7 +354,7 @@ export default function Navigation() {
                               <Menu.Item>
                                 {({ active }) => (
                                   <Link
-                                    href='/global/information/import-protocols?page=congo'
+                                    href="/global/information/import-protocols?page=congo"
                                     className={classNames(
                                       active
                                         ? "bg-gray-100 text-gray-900"
@@ -362,11 +362,11 @@ export default function Navigation() {
                                       "block px-4 py-2 text-sm"
                                     )}
                                   >
-                                    <span className='flex inline'>
+                                    <span className="flex inline">
                                       <img
-                                        src='/assets/images/flags/CD.svg'
-                                        alt='Congo flag'
-                                        className='h-5 mr-3'
+                                        src="/assets/images/flags/CD.svg"
+                                        alt="Congo flag"
+                                        className="h-5 mr-3"
                                       />{" "}
                                       DR Congo
                                     </span>
@@ -377,7 +377,7 @@ export default function Navigation() {
                               <Menu.Item>
                                 {({ active }) => (
                                   <Link
-                                    href='/global/information/import-protocols?page=guyana'
+                                    href="/global/information/import-protocols?page=guyana"
                                     className={classNames(
                                       active
                                         ? "bg-gray-100 text-gray-900"
@@ -385,11 +385,11 @@ export default function Navigation() {
                                       "block px-4 py-2 text-sm"
                                     )}
                                   >
-                                    <span className='flex inline'>
+                                    <span className="flex inline">
                                       <img
-                                        src='/assets/images/flags/GY.svg'
-                                        alt='Guyana flag'
-                                        className='h-5 mr-3'
+                                        src="/assets/images/flags/GY.svg"
+                                        alt="Guyana flag"
+                                        className="h-5 mr-3"
                                       />{" "}
                                       Guyana
                                     </span>
@@ -399,7 +399,7 @@ export default function Navigation() {
                               <Menu.Item>
                                 {({ active }) => (
                                   <Link
-                                    href='/global/information/import-protocols?page=jamaica'
+                                    href="/global/information/import-protocols?page=jamaica"
                                     className={classNames(
                                       active
                                         ? "bg-gray-100 text-gray-900"
@@ -407,11 +407,11 @@ export default function Navigation() {
                                       "block px-4 py-2 text-sm"
                                     )}
                                   >
-                                    <span className='flex inline'>
+                                    <span className="flex inline">
                                       <img
-                                        src='/assets/images/flags/JM.svg'
-                                        alt='Jamaica flag'
-                                        className='h-5 mr-3'
+                                        src="/assets/images/flags/JM.svg"
+                                        alt="Jamaica flag"
+                                        className="h-5 mr-3"
                                       />{" "}
                                       Jamaica
                                     </span>
@@ -422,7 +422,7 @@ export default function Navigation() {
                               <Menu.Item>
                                 {({ active }) => (
                                   <Link
-                                    href='/global/information/import-protocols?page=kenya'
+                                    href="/global/information/import-protocols?page=kenya"
                                     className={classNames(
                                       active
                                         ? "bg-gray-100 text-gray-900"
@@ -430,11 +430,11 @@ export default function Navigation() {
                                       "block px-4 py-2 text-sm"
                                     )}
                                   >
-                                    <span className='flex inline'>
+                                    <span className="flex inline">
                                       <img
-                                        src='/assets/images/flags/KE.svg'
-                                        alt='Kenya flag'
-                                        className='h-5 mr-3'
+                                        src="/assets/images/flags/KE.svg"
+                                        alt="Kenya flag"
+                                        className="h-5 mr-3"
                                       />{" "}
                                       Kenya
                                     </span>
@@ -444,7 +444,7 @@ export default function Navigation() {
                               <Menu.Item>
                                 {({ active }) => (
                                   <Link
-                                    href='/global/information/import-protocols?page=malawi'
+                                    href="/global/information/import-protocols?page=malawi"
                                     className={classNames(
                                       active
                                         ? "bg-gray-100 text-gray-900"
@@ -452,11 +452,11 @@ export default function Navigation() {
                                       "block px-4 py-2 text-sm"
                                     )}
                                   >
-                                    <span className='flex inline'>
+                                    <span className="flex inline">
                                       <img
-                                        src='/assets/images/flags/MW.svg'
-                                        alt='Malawi flag'
-                                        className='h-5 mr-3'
+                                        src="/assets/images/flags/MW.svg"
+                                        alt="Malawi flag"
+                                        className="h-5 mr-3"
                                       />{" "}
                                       Malawi
                                     </span>
@@ -466,7 +466,7 @@ export default function Navigation() {
                               <Menu.Item>
                                 {({ active }) => (
                                   <Link
-                                    href='/global/information/import-protocols?page=pakistan'
+                                    href="/global/information/import-protocols?page=pakistan"
                                     className={classNames(
                                       active
                                         ? "bg-gray-100 text-gray-900"
@@ -474,11 +474,11 @@ export default function Navigation() {
                                       "block px-4 py-2 text-sm"
                                     )}
                                   >
-                                    <span className='flex inline'>
+                                    <span className="flex inline">
                                       <img
-                                        src='/assets/images/flags/PK.svg'
-                                        alt='Pakistan flag'
-                                        className='h-5 mr-3'
+                                        src="/assets/images/flags/PK.svg"
+                                        alt="Pakistan flag"
+                                        className="h-5 mr-3"
                                       />{" "}
                                       Pakistan
                                     </span>
@@ -488,7 +488,7 @@ export default function Navigation() {
                               <Menu.Item>
                                 {({ active }) => (
                                   <Link
-                                    href='/global/information/import-protocols?page=paraguay'
+                                    href="/global/information/import-protocols?page=paraguay"
                                     className={classNames(
                                       active
                                         ? "bg-gray-100 text-gray-900"
@@ -496,11 +496,11 @@ export default function Navigation() {
                                       "block px-4 py-2 text-sm"
                                     )}
                                   >
-                                    <span className='flex inline'>
+                                    <span className="flex inline">
                                       <img
-                                        src='/assets/images/flags/PY.svg'
-                                        alt='Paraguay flag'
-                                        className='h-5 mr-3'
+                                        src="/assets/images/flags/PY.svg"
+                                        alt="Paraguay flag"
+                                        className="h-5 mr-3"
                                       />{" "}
                                       Paraguay
                                     </span>
@@ -510,7 +510,7 @@ export default function Navigation() {
                               <Menu.Item>
                                 {({ active }) => (
                                   <Link
-                                    href='/global/information/import-protocols?page=russia'
+                                    href="/global/information/import-protocols?page=russia"
                                     className={classNames(
                                       active
                                         ? "bg-gray-100 text-gray-900"
@@ -518,11 +518,11 @@ export default function Navigation() {
                                       "block px-4 py-2 text-sm"
                                     )}
                                   >
-                                    <span className='flex inline'>
+                                    <span className="flex inline">
                                       <img
-                                        src='/assets/images/flags/RU.svg'
-                                        alt='Russia flag'
-                                        className='h-5 mr-3'
+                                        src="/assets/images/flags/RU.svg"
+                                        alt="Russia flag"
+                                        className="h-5 mr-3"
                                       />{" "}
                                       Russia
                                     </span>
@@ -533,7 +533,7 @@ export default function Navigation() {
                               <Menu.Item>
                                 {({ active }) => (
                                   <Link
-                                    href='/global/information/import-protocols?page=sudan'
+                                    href="/global/information/import-protocols?page=sudan"
                                     className={classNames(
                                       active
                                         ? "bg-gray-100 text-gray-900"
@@ -541,11 +541,11 @@ export default function Navigation() {
                                       "block px-4 py-2 text-sm"
                                     )}
                                   >
-                                    <span className='flex inline'>
+                                    <span className="flex inline">
                                       <img
-                                        src='/assets/images/flags/SS.svg'
-                                        alt='Sudan flag'
-                                        className='h-5 mr-3'
+                                        src="/assets/images/flags/SS.svg"
+                                        alt="Sudan flag"
+                                        className="h-5 mr-3"
                                       />{" "}
                                       Sudan
                                     </span>
@@ -556,7 +556,7 @@ export default function Navigation() {
                               <Menu.Item>
                                 {({ active }) => (
                                   <Link
-                                    href='/global/information/import-protocols?page=tanzania'
+                                    href="/global/information/import-protocols?page=tanzania"
                                     className={classNames(
                                       active
                                         ? "bg-gray-100 text-gray-900"
@@ -564,11 +564,11 @@ export default function Navigation() {
                                       "block px-4 py-2 text-sm"
                                     )}
                                   >
-                                    <span className='flex inline'>
+                                    <span className="flex inline">
                                       <img
-                                        src='/assets/images/flags/TZ.svg'
-                                        alt='Tanzania flag'
-                                        className='h-5 mr-3'
+                                        src="/assets/images/flags/TZ.svg"
+                                        alt="Tanzania flag"
+                                        className="h-5 mr-3"
                                       />{" "}
                                       Tanzania
                                     </span>
@@ -578,7 +578,7 @@ export default function Navigation() {
                               <Menu.Item>
                                 {({ active }) => (
                                   <Link
-                                    href='/global/information/import-protocols?page=uganda'
+                                    href="/global/information/import-protocols?page=uganda"
                                     className={classNames(
                                       active
                                         ? "bg-gray-100 text-gray-900"
@@ -586,11 +586,11 @@ export default function Navigation() {
                                       "block px-4 py-2 text-sm"
                                     )}
                                   >
-                                    <span className='flex inline'>
+                                    <span className="flex inline">
                                       <img
-                                        src='/assets/images/flags/UG.svg'
-                                        alt='Uganda flag'
-                                        className='h-5 mr-3'
+                                        src="/assets/images/flags/UG.svg"
+                                        alt="Uganda flag"
+                                        className="h-5 mr-3"
                                       />{" "}
                                       Uganda
                                     </span>
@@ -600,7 +600,7 @@ export default function Navigation() {
                               <Menu.Item>
                                 {({ active }) => (
                                   <Link
-                                    href='/global/information/import-protocols?page=zambia'
+                                    href="/global/information/import-protocols?page=zambia"
                                     className={classNames(
                                       active
                                         ? "bg-gray-100 text-gray-900"
@@ -608,11 +608,11 @@ export default function Navigation() {
                                       "block px-4 py-2 text-sm"
                                     )}
                                   >
-                                    <span className='flex inline'>
+                                    <span className="flex inline">
                                       <img
-                                        src='/assets/images/flags/ZM.svg'
-                                        alt='Zambia flag'
-                                        className='h-5 mr-3'
+                                        src="/assets/images/flags/ZM.svg"
+                                        alt="Zambia flag"
+                                        className="h-5 mr-3"
                                       />{" "}
                                       Zambia
                                     </span>
@@ -622,7 +622,7 @@ export default function Navigation() {
                               <Menu.Item>
                                 {({ active }) => (
                                   <Link
-                                    href='/global/information/import-protocols?page=zimbabwe'
+                                    href="/global/information/import-protocols?page=zimbabwe"
                                     className={classNames(
                                       active
                                         ? "bg-gray-100 text-gray-900"
@@ -630,11 +630,11 @@ export default function Navigation() {
                                       "block px-4 py-2 text-sm"
                                     )}
                                   >
-                                    <span className='flex inline'>
+                                    <span className="flex inline">
                                       <img
-                                        src='/assets/images/flags/ZW.svg'
-                                        alt='Zimbabwe flag'
-                                        className='h-5 mr-3'
+                                        src="/assets/images/flags/ZW.svg"
+                                        alt="Zimbabwe flag"
+                                        className="h-5 mr-3"
                                       />{" "}
                                       Zimbabwe
                                     </span>
@@ -644,7 +644,7 @@ export default function Navigation() {
                               <Menu.Item>
                                 {({ active }) => (
                                   <Link
-                                    href='/global/information/import-protocols?page=ghana'
+                                    href="/global/information/import-protocols?page=ghana"
                                     className={classNames(
                                       active
                                         ? "bg-gray-100 text-gray-900"
@@ -652,11 +652,11 @@ export default function Navigation() {
                                       "block px-4 py-2 text-sm"
                                     )}
                                   >
-                                    <span className='flex inline'>
+                                    <span className="flex inline">
                                       <img
-                                        src='/assets/images/flags/GH.svg'
-                                        alt='Ghana flag'
-                                        className='h-5 mr-3'
+                                        src="/assets/images/flags/GH.svg"
+                                        alt="Ghana flag"
+                                        className="h-5 mr-3"
                                       />{" "}
                                       Ghana
                                     </span>
@@ -667,17 +667,17 @@ export default function Navigation() {
                           </Transition>
                         </Menu>
                       </li>
-                      <li className='p-4'>
-                        <Button className='transition duration-300 ease-in-out hover:scale-110 inline-flex w-full justify-center gap-x-1.5 rounded-md bg-green-50 px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-green-300'>
+                      <li className="p-4">
+                        <Button className="transition duration-300 ease-in-out hover:scale-110 inline-flex w-full justify-center gap-x-1.5 rounded-md bg-green-50 px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-green-300">
                           <Link
-                            href='/global/information?page=how-to-pay'
-                            className='bg-gray-100 text-gray-900'
+                            href="/global/information?page=how-to-pay"
+                            className="bg-gray-100 text-gray-900"
                           >
-                            <span className='flex inline'>
+                            <span className="flex inline">
                               How to Pay{" "}
                               <PiCreditCardBold
-                                className='-mr-2 h-5 w-5 text-gray-800'
-                                aria-hidden='true'
+                                className="-mr-2 h-5 w-5 text-gray-800"
+                                aria-hidden="true"
                               />
                             </span>
                           </Link>
@@ -691,17 +691,17 @@ export default function Navigation() {
                       {/*                                </span></Link>*/}
                       {/*    </Button>*/}
                       {/*</li>*/}
-                      <li className='p-4'>
-                        <Button className='transition duration-300 ease-in-out hover:scale-110 inline-flex w-full justify-center gap-x-1.5 rounded-md bg-yellow-50 px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-yellow-300'>
+                      <li className="p-4">
+                        <Button className="transition duration-300 ease-in-out hover:scale-110 inline-flex w-full justify-center gap-x-1.5 rounded-md bg-yellow-50 px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-yellow-300">
                           <Link
-                            href='/global/information?page=bank-information'
-                            className='bg-gray-100 text-gray-900'
+                            href="/global/information?page=bank-information"
+                            className="bg-gray-100 text-gray-900"
                           >
-                            <span className='flex inline'>
+                            <span className="flex inline">
                               Bank Information{" "}
                               <CiBank
-                                className='-mr-2 h-5 w-5 text-gray-800'
-                                aria-hidden='true'
+                                className="-mr-2 h-5 w-5 text-gray-800"
+                                aria-hidden="true"
                               />
                             </span>
                           </Link>
