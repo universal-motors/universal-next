@@ -1,0 +1,63 @@
+"use client";
+import PriceFormat from "@/utils/PriceFormat";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { FaHeart } from "react-icons/fa";
+
+type Prop = {
+  car: any;
+  href: string;
+};
+export default function CarCard({ car, href }: Prop) {
+  const [fav, setFav] = useState(false);
+  const router = useRouter();
+  return (
+    <div className="transition duration-300 ease-in-out hover:scale-105 my-10 flex min-w-[220px] w-[230px] flex-col overflow-hidden border border-gray-100 bg-[#F1F5F9] shadow-md p-0 rounded-md">
+      <div className="relative w-full h-48">
+        <Image
+          alt="img"
+          style={{
+            objectFit: "cover",
+            width: "100%",
+            height: "100%",
+            position: "absolute",
+            top: "0px",
+          }}
+          width={285}
+          height={400}
+          src={car.imageUrl}
+        />
+
+        <FaHeart
+          onClick={() => setFav(!fav)}
+          size={"24px"}
+          style={{
+            position: "absolute",
+            top: "4px",
+            right: "4px",
+            color: !fav ? "white" : "#F44336",
+            cursor: "pointer",
+          }}
+        />
+      </div>
+      <div
+        onClick={() => {
+          router.push(href);
+        }}
+        className="w-full flex flex-col px-2 cursor-pointer relative h-44"
+      >
+        <p className=" font-semibold text-slate-600 mt-2 ">
+          {car.listingTitle}
+        </p>
+        <p className="text-slate-600 text-xs font-[400] ">{car.modelCode}</p>
+        <p className=" absolute bottom-1 text-white bg-[#221C63] border-[1px] border-slate-400 rounded-lg py-1 px-4">
+          <span className="font-semibold">Price:</span>{" "}
+          <span>
+            <PriceFormat carPrice={car.price} />
+          </span>
+        </p>
+      </div>
+    </div>
+  );
+}
