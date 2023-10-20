@@ -21,9 +21,6 @@ const GetCarMakes = async () => {
 };
 const GetStockCount = async () => {
   return await agent.LoadData.stockCount();
-  //return data;
-  //return await agent.LoadData.stockCount();
-  //db.tblMasterCountry.findMany({where: {IsActive:true}} );
 };
 const GetPortMapping = async () => {
   const data = await agent.LoadData.portmapping();

@@ -55,6 +55,13 @@ const parseUserResponse = async <Customer>(
   return data;
 };
 
+const requestNoCache = {
+  get: async <T>(url:string) => {
+    const response = await fetch(baseURL + url, {cache: 'no-store'});
+    return parseResponse<T>(response);
+  }
+}
+
 const request = {
   get: async <T>(url: string) => {
     const response = await fetch(baseURL + url);
@@ -102,8 +109,8 @@ const LoadData = {
     ),
   machineryList: () =>
     request.get<Machinery[]>("machinery?pageNumber=1&pageSize=50"),
-  homepageStockList: () => request.get<StockCars[]>("carstock/homepage_cars"),
-
+  homepageStockList: () => requestNoCache.get<StockCars[]>("carstock/homepage_cars"),
+  //test: () => await fetch(baseURL+"carstock/homepage_cars", {cache: 'no-store'});
   stock: (stockID: number) => request.get<StockCars>(`carstock/${stockID}`),
   truck: (stockID: number) => request.get<Trucks>(`trucks/${stockID}`),
 
@@ -144,7 +151,7 @@ const LoadData = {
   freightcost: () => request.get<FreightCost[]>("compute/freightcost/"),
   portmapping: () => request.get<PortMapping[]>("compute/portmapping/"),
   getClientIP: () => request.get<string>("compute/getClientIP/"),
-  stockCount: () => request.get<number>("carstock/count"),
+  stockCount: () => requestNoCache.get<number>("carstock/count"),
   carmodelCount: (modelID: number) =>
     request.get<number>(`compute/carmodel/count/${modelID}`),
   makeCount: (makeID: number) =>
