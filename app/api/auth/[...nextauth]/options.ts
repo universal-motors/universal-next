@@ -1,8 +1,8 @@
 import type { NextAuthOptions } from "next-auth";
-import GitHubProvider from "next-auth/providers/github";
-import FacebookProvider from "next-auth/providers/facebook";
-import GoogleProvider from "next-auth/providers/google";
+// import GitHubProvider from "next-auth/providers/github";
+// import FacebookProvider from "next-auth/providers/facebook";
 import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
 
 export const options: NextAuthOptions = {
   providers: [
@@ -14,10 +14,10 @@ export const options: NextAuthOptions = {
     //     clientId: process.env.FACEBOOK_ID as string,
     //     clientSecret: process.env.FACEBOOK_SECRET as string,
     // }),
-    // GoogleProvider({
-    //     clientId: process.env.GOOGLE_ID as string,
-    //     clientSecret: process.env.GOOGLE_SECRET as string,
-    // }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_ID as string,
+      clientSecret: process.env.GOOGLE_SECRET as string,
+    }),
 
     CredentialsProvider({
       credentials: {

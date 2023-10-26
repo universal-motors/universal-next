@@ -1,11 +1,11 @@
 "use client";
-import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
-import { FcBusinessman } from "react-icons/fc";
 import SignInForm from "@/components/user/Auth/SignInForm";
 import SignUpForm from "@/components/user/Auth/SignUpForm";
 import { Country } from "@/models/Master/Country";
 import { Ports } from "@/models/Master/Ports";
+import { Dialog, Transition } from "@headlessui/react";
+import { Fragment, useState } from "react";
+import { FcBusinessman } from "react-icons/fc";
 
 interface Props {
   countryList: Country[];
@@ -88,7 +88,7 @@ export default function AuthModal({
                     {isSignIn ? "Sign In" : "Sign Up"}
                   </Dialog.Title>
                   {isSignIn ? (
-                    <SignInForm signIn={true} setSignIn={setIsSignIn} />
+                    <SignInForm signin={true} setSignIn={setIsSignIn} />
                   ) : (
                     <SignUpForm
                       setSignIn={setIsSignIn}
