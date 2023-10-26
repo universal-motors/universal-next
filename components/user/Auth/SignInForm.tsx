@@ -1,13 +1,12 @@
 "use client";
 
-import { useForm } from "react-hook-form";
-import { signIn, signOut, useSession } from "next-auth/react";
-import { FormEvent, useEffect, useState } from "react";
-import { useStore } from "@/store/store";
 import { CustomerSignUp } from "@/models/Customer";
+import { useStore } from "@/store/store";
 import { Button } from "@tremor/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { getServerSession } from "next-auth";
+import { FormEvent, useState } from "react";
+import { useForm } from "react-hook-form";
 
 export interface User {
   username: string;
@@ -15,11 +14,11 @@ export interface User {
   email: string;
 }
 interface Props {
-  signIn: boolean;
+  signin: boolean;
   setSignIn: (value: boolean) => void;
 }
 
-function SignInForm({ signIn, setSignIn }: Props) {
+function SignInForm({ signin, setSignIn }: Props) {
   const [submit, setSubmit] = useState<boolean>(false);
 
   const router = useRouter();
@@ -42,7 +41,9 @@ function SignInForm({ signIn, setSignIn }: Props) {
 
     setSignIn(false);
   };
-
+  const signInWithGoogle = () => {
+    signIn("google");
+  };
   return (
     <>
       <div className="p-3">
@@ -106,6 +107,13 @@ function SignInForm({ signIn, setSignIn }: Props) {
               >
                 Log In
               </Button>
+              <Button
+                onClick={signInWithGoogle}
+                className="px-4 py-2 rounded-xl text-white m-0 bg-green-500 hover:bg-green-600 transition"
+              >
+                Log In with google
+              </Button>
+
               <button
                 onClick={handleSignUp}
                 className="px-4 py-2 rounded-xl bg-neutral-50 hover:bg-blue-100  transition"
