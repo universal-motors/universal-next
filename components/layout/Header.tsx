@@ -190,9 +190,9 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                   </div>
                 </div>
                 <AuthModal
-                  countryList={locations}
-                  portList={ports}
-                  portMapping={portMapping}
+                  // countryList={locations}
+                  // portList={ports}
+                  // portMapping={portMapping}
                 />
 
                 {/*<SignInComponentUI/>*/}
