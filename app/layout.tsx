@@ -1,11 +1,11 @@
 "use client";
-import "./globals.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import NextAuthSessionProvider from "@/context/NextSessionProvider";
 import { Analytics } from "@vercel/analytics/react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import Script from "next/script";
 import NextTopLoader from "nextjs-toploader";
-import NextAuthSessionProvider from "@/context/NextSessionProvider";
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
+import "./globals.css";
 
 export default async function RootLayout({
   children,
@@ -25,6 +25,10 @@ export default async function RootLayout({
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <link
+          href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap"
+          rel="stylesheet"
         />
       </head>
       <body>
