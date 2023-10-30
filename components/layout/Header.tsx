@@ -77,11 +77,9 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                 >
                   <div className="support">
                     {/*<i className="fa fa-headphones" />*/}
-                    <h2>
-                      <FcCustomerSupport className="m-2" />
-                    </h2>
+                    <FcCustomerSupport className="m-2 " size={40} />
                     <div className="currencydropdown">
-                      <button className="currencydropbtn supportbtn">
+                      <button className="currencydropbtn supportbtn ">
                         Support
                         <br />
                         +49 471 9731 9003
