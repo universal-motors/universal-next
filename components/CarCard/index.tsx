@@ -50,8 +50,10 @@ export default function CarCard({ car, href }: Prop) {
         <p className=" font-semibold text-slate-600 mt-2 ">
           {car.listingTitle}
         </p>
-        <p className="text-slate-600 text-xs font-[400] ">{car.modelCode}</p>
-        <p className=" absolute bottom-1 text-white bg-[#221C63] border-[1px] border-slate-400 rounded-lg py-1 px-4">
+        <p className="text-slate-600 text-xs font-semibold mt-3">
+          {car.modelCode}
+        </p>
+        <p className=" absolute bottom-3 text-white bg-[#221C63] border-[1px] border-slate-400 rounded-lg py-1 px-4">
           <span className="font-semibold">Price:</span>{" "}
           <span>
             <PriceFormat carPrice={car.price} />
