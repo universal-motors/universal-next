@@ -1,5 +1,5 @@
-import { StockCars } from "@/models/StockCars";
 import agent from "@/api/agent";
+import { StockCars } from "@/models/StockCars";
 
 interface Props {
   car: StockCars;
@@ -96,32 +96,41 @@ export default async function StockKeyInformation({ car }: Props) {
         <h2 className="text-base font-semibold leading-6 text-gray-900">
           Features
         </h2>
-        <ul className="featureitem">
+        <div className=" flex flex-wrap gap-3">
           {stockOptions.data
             .filter((op) => op.stockId === car.stockId)
             .map((op) => (
-              <li className="active" key={op.id}>
-                <h5>
+              // <li className="active" key={op.id}>
+              //   <h5>
+              //     {
+              //       <span className="inline-flex items-center gap-x-1.5 rounded-md px-2 py-1 text-sm font-medium  ">
+              //         <svg
+              //           className="h-1.5 w-1.5 fill-green-400"
+              //           viewBox="0 0 6 6"
+              //           aria-hidden="true"
+              //         >
+              //           <circle cx={3} cy={3} r={3} />
+              //         </svg>
+              // {
+              //   optionsMaster.data.find(
+              //     (x) => x.optionId == op.carOptionsId
+              //   )?.optionName
+              // }
+              //       </span>
+              //     }
+              //   </h5>
+              // </li>
+              <div className="center relative inline-block select-none whitespace-nowrap rounded-lg bg-[#221C63] py-2 px-3.5 align-baseline font-sans text-xs font-bold uppercase leading-none text-white">
+                <div className="mt-px">
                   {
-                    <span className="inline-flex items-center gap-x-1.5 rounded-md px-2 py-1 text-sm font-medium  ">
-                      <svg
-                        className="h-1.5 w-1.5 fill-green-400"
-                        viewBox="0 0 6 6"
-                        aria-hidden="true"
-                      >
-                        <circle cx={3} cy={3} r={3} />
-                      </svg>
-                      {
-                        optionsMaster.data.find(
-                          (x) => x.optionId == op.carOptionsId
-                        )?.optionName
-                      }
-                    </span>
+                    optionsMaster.data.find(
+                      (x) => x.optionId == op.carOptionsId
+                    )?.optionName
                   }
-                </h5>
-              </li>
+                </div>
+              </div>
             ))}
-        </ul>
+        </div>
       </div>
     </>
   );
