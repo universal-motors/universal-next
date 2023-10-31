@@ -1899,7 +1899,7 @@ h1.carname {
 }
 
 .keyinfo td.first {
-  background: #add8e6;
+  background: #f1f5f9;
   font-weight: 700;
 }
 
@@ -2054,13 +2054,13 @@ table.keyinfo {
 }
 
 .inquiry-section {
-  border: 1px solid #5a922c;
+  border: 1px solid #919dad;
   border-radius: 5px;
-  background-color: #f7fff0;
+  background-color: #f1f5f9;
 }
 
 .inquire h4 {
-  background-color: #5a922c;
+  background-color: #919dad;
   padding: 10px;
   color: white;
 }

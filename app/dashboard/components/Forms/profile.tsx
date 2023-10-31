@@ -2,10 +2,14 @@
 import { Autocomplete } from "@/components/AutoComplete";
 import Input from "@/components/Input";
 import { countries } from "@/lib/utils";
-import { useState } from "react";
+import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import { AiFillDelete } from "react-icons/ai";
 
 export default function ProfileForm() {
+  const { status, data: session } = useSession();
+
   const [Emails, setEmails] = useState<string[]>([""]);
   const [Phones, setPhones] = useState<string[]>([""]);
   const addEmail = () => {
@@ -38,43 +42,83 @@ export default function ProfileForm() {
     updatedPhones.splice(index, 1);
     setPhones(updatedPhones);
   };
+  type TProfile = {
+    first_name: string;
+    last_name: string;
+    company_name: string;
+    address: string;
+    country: string;
+    port: string;
+  };
+  const form = useForm<TProfile>();
+  const { register, control, formState, setValue, handleSubmit } = form;
+  useEffect(() => {
+    if (session && session?.user)
+      setValue("first_name", String(session.user?.name));
+  }, [status]);
   return (
     <div className="w-[90%] mx-auto mt-7">
-      <form>
+      <form
+        onSubmit={handleSubmit((data) => {
+          console.log(data);
+        })}
+      >
         <div className="grid gap-6 mb-6 md:grid-cols-2">
           <Input
             label={"First name"}
             type="text"
             placeholder="John"
             htmlFor="first_name"
+            register={{
+              ...register("first_name", {
+                required: " required",
+              }),
+            }}
           />
           <Input
             label={"Last name"}
             type="text"
             placeholder="Doe"
             htmlFor="last_name"
+            register={{
+              ...register("last_name", {
+                required: " required",
+              }),
+            }}
           />
           <Input
             label={"Company Name"}
             type="text"
             placeholder="Company Name"
+            register={{
+              ...register("company_name", {
+                required: " required",
+              }),
+            }}
             htmlFor="company_name"
           />
           <Input
             label={"Address"}
             type="text"
             placeholder="Address"
+            register={{
+              ...register("address", {
+                required: " required",
+              }),
+            }}
             htmlFor="address"
           />
           <Autocomplete
             list={countries.map((item) => item.name)}
             placeholder={"Country"}
+            setValue={setValue}
             htmlFor={"country"}
             label="Country"
           />
           <Autocomplete
             list={["Left Hand", "Right Hand"]}
             placeholder={"port"}
+            setValue={setValue}
             htmlFor={"port"}
             label="Port"
           />
