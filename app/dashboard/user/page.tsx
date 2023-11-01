@@ -1,6 +1,6 @@
 "use client";
 import { getServerSession } from "next-auth";
-import { options } from "@/app/api/auth/[...nextauth]/options";
+import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 import { useStore } from "@/store/store";
 
 export default async function Page() {

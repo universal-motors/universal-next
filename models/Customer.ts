@@ -1,22 +1,22 @@
 export interface CustomerSignUp {
-  username: string;
-  firstname: string;
+  customerCode: string;
+  name: string;
   lastname: string;
-  password: string;
-  confirmPassword: string;
-  token: string;
-  email: string;
-  phoneNumber: string;
-  roles: string[];
+  companyName: string;
+  address: string;
   countryID: number;
   preferredPortId: number;
+  email: string;
+  phoneNumber: string;
+ // roles: string[];
+
 }
 
-export interface UserFormValues {
-  username: string;
-  email: string;
-  password: string;
-}
+// export interface UserFormValues {
+//   username: string;
+//   email: string;
+//   password: string;
+// }
 
 export interface Customer {
   CustomerId: number;
