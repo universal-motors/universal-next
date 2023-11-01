@@ -1,19 +1,19 @@
 "use client";
-import Link from "next/link";
-import Image from "next/image";
 import LikeComponent from "@/components/ui/LikeComponent";
 import PriceFormat from "@/utils/PriceFormat";
+import Image from "next/image";
+import Link from "next/link";
 
-import { FaGasPump, FaTruckLoading } from "react-icons/fa";
-import { PiEngineFill, PiGearFineBold } from "react-icons/pi";
-import { BiSolidColorFill } from "react-icons/bi";
-import { MdAirlineSeatReclineExtra } from "react-icons/md";
-import { Country } from "@/models/Master/Country";
-import { useEffect, useState } from "react";
-import PaginationComponent from "@/components/ui/PaginationComponent";
-import { Trucks } from "@/models/Trucks";
-import { PaginationHeader } from "@/models/Master/Pagination";
 import agent from "@/api/agent";
+import PaginationComponent from "@/components/ui/PaginationComponent";
+import { Country } from "@/models/Master/Country";
+import { PaginationHeader } from "@/models/Master/Pagination";
+import { Trucks } from "@/models/Trucks";
+import { useEffect, useState } from "react";
+import { BiSolidColorFill } from "react-icons/bi";
+import { FaGasPump, FaTruckLoading } from "react-icons/fa";
+import { MdAirlineSeatReclineExtra } from "react-icons/md";
+import { PiEngineFill, PiGearFineBold } from "react-icons/pi";
 interface Props {
   locations: Country[];
   params: URLSearchParams;
@@ -21,6 +21,7 @@ interface Props {
 
 export default function TruckSearchResult({ locations, params }: Props) {
   const searchParams: URLSearchParams = params;
+  const [sort, setSort] = useState<number>(0);
   const [searchData, setSearchData] = useState<Trucks[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [paginationData, setPaginationData] = useState<PaginationHeader>({
@@ -31,7 +32,44 @@ export default function TruckSearchResult({ locations, params }: Props) {
     HasPreviousPage: false,
     HasNextPage: false,
   });
+  function compareCars(car1: Trucks, car2: Trucks, sortCriteria: number) {
+    switch (sortCriteria) {
+      case 1:
+        return car1.listingTitle.localeCompare(car2.listingTitle);
+      case 2:
+        return car2.listingTitle.localeCompare(car1.listingTitle);
+      // case 3:
+      //   return car1.modelName.localeCompare(car2.modelName);
+      // case 4:
+      //   return car2.modelName.localeCompare(car1.modelName);
+      case 5:
+        return car1.year - car2.year;
+      case 6:
+        return car2.year - car1.year;
+      case 7:
+        return car1.mileage - car2.mileage;
+      case 8:
+        return car2.mileage - car1.mileage;
+      case 9:
+        return Number(car1.engineSize) - Number(car2.engineSize);
+      case 10:
+        return Number(car2.engineSize) - Number(car1.engineSize);
+      case 11:
+        return car1.price - car2.price;
+      case 12:
+        return car2.price - car1.price;
+      default:
+        return 0; // Default sorting order (no sorting)
+    }
+  }
 
+  useEffect(() => {
+    if (sort >= 1) {
+      const sortedData = [...searchData];
+      sortedData.sort((car1, car2) => compareCars(car1, car2, sort));
+      setSearchData(sortedData);
+    }
+  }, [sort, paginationData]);
   useEffect(() => {
     // Assuming you have an API function called fetchResults
     const GetStock = async (paramURL: string) => {
@@ -65,6 +103,8 @@ export default function TruckSearchResult({ locations, params }: Props) {
   return (
     <>
       <PaginationComponent
+        isTruck={true}
+        setSort={setSort}
         currentPage={paginationData.CurrentPage}
         totalPost={paginationData.TotalCount}
         postPerPage={paginationData.PageSize}
@@ -330,6 +370,8 @@ export default function TruckSearchResult({ locations, params }: Props) {
           </div>
         ))}
       <PaginationComponent
+        isTruck={true}
+        setSort={setSort}
         currentPage={paginationData.CurrentPage}
         totalPost={paginationData.TotalCount}
         postPerPage={paginationData.PageSize}

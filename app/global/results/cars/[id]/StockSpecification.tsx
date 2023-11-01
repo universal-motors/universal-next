@@ -1,7 +1,6 @@
-import { StockCars } from "@/models/StockCars";
-import { Country } from "@/models/Master/Country";
 import NumberFormat from "@/lib/utils";
-import { setEngine } from "crypto";
+import { Country } from "@/models/Master/Country";
+import { StockCars } from "@/models/StockCars";
 
 interface Props {
   car: StockCars;
@@ -12,8 +11,9 @@ export default function StockSpecification({ car, location }: Props) {
     <>
       <div className="row specsrow">
         <div className="col-sm specs">
-          <h4>Mileage</h4>
-          <span className="label-text   items-center rounded-md ml-5">
+          {/* <p className="text-2xl font-bold" >Mileage</p> */}
+          <h4 className="!text-[9px] sm:!text-base font-bold">Mileage</h4>
+          <span className="label-text !text-[9px] sm:!text-base  items-center rounded-md ml-5">
             <img
               decoding="async"
               src="/assets/images/kmsDriven.svg"
@@ -25,8 +25,8 @@ export default function StockSpecification({ car, location }: Props) {
           </span>
         </div>
         <div className="col-sm specs">
-          <h4>YEAR</h4>
-          <span className="label-text   items-center rounded-md ml-5">
+          <h4 className="!text-[9px] sm:!text-base">YEAR</h4>
+          <span className="label-text  !text-[9px] sm:!text-base items-center rounded-md ml-5">
             <img
               decoding="async"
               src="/assets/images/registrationYear.svg"
@@ -39,8 +39,8 @@ export default function StockSpecification({ car, location }: Props) {
         </div>
         {car.engineSize && (
           <div className="col-sm specs">
-            <h4>Engine</h4>
-            <span className="label-text  items-center rounded-md ml-5">
+            <h4 className="!text-[9px] sm:!text-base">Engine</h4>
+            <span className="label-text !text-[9px] sm:!text-base items-center rounded-md ml-5">
               <img
                 decoding="async"
                 src="/assets/images/engineDisplacement.svg"
@@ -54,8 +54,8 @@ export default function StockSpecification({ car, location }: Props) {
         )}
 
         <div className="col-sm specs">
-          <h4>Transmision</h4>
-          <span className="label-text  items-center rounded-md ml-5">
+          <h4 className="!text-[9px] sm:!text-base">Transmision</h4>
+          <span className="label-text !text-[9px] sm:!text-base items-center rounded-md ml-5">
             <img
               decoding="async"
               src="/assets/images/transmission.svg"
@@ -67,8 +67,8 @@ export default function StockSpecification({ car, location }: Props) {
           </span>
         </div>
         <div className="col-sm specs">
-          <h4>Country</h4>
-          <span className="label-text  text-center items-center rounded-md ml-5">
+          <h4 className="!text-[9px] sm:!text-base">Country</h4>
+          <span className="label-text !text-[9px] sm:!text-base text-center items-center rounded-md ml-5">
             <img
               decoding="async"
               src={`/assets/images/flags/${location?.slug}.svg`}
