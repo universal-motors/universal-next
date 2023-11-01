@@ -43,18 +43,20 @@ export default function ProfileForm() {
     setPhones(updatedPhones);
   };
   type TProfile = {
-    first_name: string;
-    last_name: string;
+    firstname: string;
+    lastname: string;
+    email: string;
+    phoneNumber: string;
     company_name: string;
     address: string;
-    country: string;
-    port: string;
+    countryID: string;
+    preferredPortId: string;
   };
   const form = useForm<TProfile>();
   const { register, control, formState, setValue, handleSubmit } = form;
   useEffect(() => {
     if (session && session?.user)
-      setValue("first_name", String(session.user?.name));
+      setValue("firstname", String(session.user?.name));
   }, [status]);
   return (
     <div className="w-[90%] mx-auto mt-7">
@@ -68,9 +70,9 @@ export default function ProfileForm() {
             label={"First name"}
             type="text"
             placeholder="John"
-            htmlFor="first_name"
+            htmlFor="firstname"
             register={{
-              ...register("first_name", {
+              ...register("firstname", {
                 required: " required",
               }),
             }}
@@ -79,9 +81,9 @@ export default function ProfileForm() {
             label={"Last name"}
             type="text"
             placeholder="Doe"
-            htmlFor="last_name"
+            htmlFor="lastname"
             register={{
-              ...register("last_name", {
+              ...register("lastname", {
                 required: " required",
               }),
             }}
@@ -112,7 +114,7 @@ export default function ProfileForm() {
             list={countries.map((item) => item.name)}
             placeholder={"Country"}
             setValue={setValue}
-            htmlFor={"country"}
+            htmlFor={"countryID"}
             label="Country"
           />
           <Autocomplete
