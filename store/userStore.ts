@@ -1,6 +1,5 @@
-import { Customer, UserFormValues } from "@/models/Customer";
+import { Customer } from "@/models/Customer";
 import { makeAutoObservable } from "mobx";
-import agent from "@/api/agent";
 
 interface ResponseObject {
   token: string;
@@ -41,19 +40,18 @@ export default class UserStore {
     return this.loggedIn;
   }
 
-  login = async (credits: UserFormValues) => {
+  login = async () => {
     try {
-      const data = await agent.Account.login(credits);
-      this.setToken(data.data.token);
-      const response = await agent.Account.currentUser(
-        this.token ? this.token : ""
-      );
-      if (response != null) {
-        // console.log(response);
-        this.setLoggedIn(true);
-        // console.log(this.loggedIn);
-      }
-
+      // const data = await agent.Account.login(credits);
+      // this.setToken(data.data.token);
+      // const response = await agent.Account.currentUser(
+      //   this.token ? this.token : ""
+      // );
+      // if (response != null) {
+      //   // console.log(response);
+      //   this.setLoggedIn(true);
+      //   // console.log(this.loggedIn);
+      // }
       // this.user = JSON.parse(JSON.stringify(response));
       // console.log(response)
       // console.log(this.user);

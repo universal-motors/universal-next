@@ -1,29 +1,33 @@
-import { StockCars } from "@/models/StockCars";
-import { Country } from "@/models/Master/Country";
 import { Machinery } from "@/models/Machinery";
-import { FuelType } from "@/models/Master/FuelType";
-import { BodyType } from "@/models/Master/BodyType";
-import { Make } from "@/models/Master/Make";
-import { CarModel } from "@/models/Master/CarModel";
-import { DrivetrainType } from "@/models/Master/DrivetrainType";
-import { SteeringType } from "@/models/Master/SteeringType";
-import { Colors } from "@/models/Master/Colors";
-import { Transmission } from "@/models/Master/Transmission";
-import { CarCondition } from "@/models/Master/CarCondition";
 import { Axle } from "@/models/Master/Axle";
-import { Ports } from "@/models/Master/Ports";
-import { VehicleCategory } from "@/models/Master/VehicleCategory";
+import { BodyType } from "@/models/Master/BodyType";
+import { CarCondition } from "@/models/Master/CarCondition";
+import { CarModel } from "@/models/Master/CarModel";
 import { CarOptions } from "@/models/Master/CarOptions";
-import { InspectionCost } from "@/models/Master/InspectionCost";
-import { FreightCost } from "@/models/Master/FreightCost";
-import { PortMapping } from "@/models/Master/PortMapping";
-import { StockPictures } from "@/models/Master/StockPictures";
 import { CarOptionsMapping } from "@/models/Master/CarOptionsMapping";
+import { Colors } from "@/models/Master/Colors";
+import { Country } from "@/models/Master/Country";
+import { DrivetrainType } from "@/models/Master/DrivetrainType";
+import { FreightCost } from "@/models/Master/FreightCost";
+import { FuelType } from "@/models/Master/FuelType";
+import { InspectionCost } from "@/models/Master/InspectionCost";
+import { Make } from "@/models/Master/Make";
+import { PortMapping } from "@/models/Master/PortMapping";
+import { Ports } from "@/models/Master/Ports";
+import { SteeringType } from "@/models/Master/SteeringType";
+import { StockPictures } from "@/models/Master/StockPictures";
+import { Transmission } from "@/models/Master/Transmission";
+import { VehicleCategory } from "@/models/Master/VehicleCategory";
+import { StockCars } from "@/models/StockCars";
 import { Trucks } from "@/models/Trucks";
 //import { Customer, UserFormValues } from "@/models/Customer";
+import {
+  ConsigneeCourier,
+  CourierDispatch,
+  Customer,
+  CustomerSignUp,
+} from "@/models/Customer";
 import { PaginationHeader } from "@/models/Master/Pagination";
-import { signIn } from "next-auth/react";
-import {ConsigneeCourier, CourierDispatch, Customer, CustomerSignUp} from "@/models/Customer";
 
 //const baseURL = 'https://localhost:5001/api/';
 const baseURL = "https://api20230805195433.azurewebsites.net/api/";
@@ -156,17 +160,22 @@ const LoadData = {
   steeringTypeCount: (steeringID: number) =>
     request.get<number>(`compute/steeringType/count/${steeringID}`),
 
-
   //----- Customer Data
-  generateCustomerCode: (locationID : number) =>request.get<string>(`customers/GenerateCustomerCode/${locationID}`),
-  customerCheck: (email : string) =>request.get<boolean>(`customers/Exists/${email}`),
-  register: (user: CustomerSignUp) => registertUser(user),//request.post<CustomerSignUp>('authentication', user),
-  customerProfile: (email : string) => request.get<Customer[]>(`customers/ByEmail/${email}/`),
-  consigneeCourierByCustomer: (customerID: number) => request.get<ConsigneeCourier[]>(`customers/Consignee/${customerID}`),
-  consigneeCourierByID: (id: number) => request.get<ConsigneeCourier[]>(`customers/Consignee/id/${id}`),
-  courierDispatchByCustomer: (customerID: number) => request.get<CourierDispatch[]>(`customers/CourierDispatch/${customerID}`),
-  courierDispatchByID: (id: number) => request.get<CourierDispatch[]>(`customers/CourierDispatch/id/${id}`),
-
+  generateCustomerCode: (locationID: number) =>
+    request.get<string>(`customers/GenerateCustomerCode/${locationID}`),
+  customerCheck: (email: string) =>
+    request.get<boolean>(`customers/Exists/${email}`),
+  register: (user: CustomerSignUp) => registertUser(user), //request.post<CustomerSignUp>('authentication', user),
+  customerProfile: (email: string) =>
+    request.get<Customer[]>(`customers/ByEmail/${email}/`),
+  consigneeCourierByCustomer: (customerID: number) =>
+    request.get<ConsigneeCourier[]>(`customers/Consignee/${customerID}`),
+  consigneeCourierByID: (id: number) =>
+    request.get<ConsigneeCourier[]>(`customers/Consignee/id/${id}`),
+  courierDispatchByCustomer: (customerID: number) =>
+    request.get<CourierDispatch[]>(`customers/CourierDispatch/${customerID}`),
+  courierDispatchByID: (id: number) =>
+    request.get<CourierDispatch[]>(`customers/CourierDispatch/id/${id}`),
 };
 //
 // const Account = {
@@ -182,7 +191,7 @@ const StockCount = getData();
 
 const agent = {
   LoadData,
- // Account,
+  // Account,
   StockCount,
   basUrl: baseURL,
 };

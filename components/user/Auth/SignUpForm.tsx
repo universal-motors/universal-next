@@ -1,12 +1,11 @@
 "use client";
-import { Controller, useForm } from "react-hook-form";
+import agent from "@/api/agent";
 import { CustomerSignUp } from "@/models/Customer";
 import { Country } from "@/models/Master/Country";
-import { Ports } from "@/models/Master/Ports";
 import { PortMapping } from "@/models/Master/PortMapping";
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { signIn } from "next-auth/react";
-import agent from "@/api/agent";
+import { Ports } from "@/models/Master/Ports";
+import { ChangeEvent, FormEvent, useState } from "react";
+import { useForm } from "react-hook-form";
 
 interface Props {
   countries: Country[]; //tblBodyTypes[],
@@ -47,13 +46,13 @@ function SignUp({ countries, ports, portMapping, setSignIn }: Props) {
         <div className="text-sm text-gray-500">
           <form
             onSubmit={handleSubmit(async (data) => {
-              data.roles = ["Customer"];
-              await agent.Account.register(data);
+              // data.roles = ["Customer"];
+              await agent.LoadData.register(data);
             })}
           >
             <div className=" flex justify-between text-sm">
               <input
-                {...register("firstname")}
+                // {...register("firstname")}
                 type="text"
                 className="border rounded p-2 py-3 w-[49%]"
                 placeholder="First Name"
@@ -123,23 +122,23 @@ function SignUp({ countries, ports, portMapping, setSignIn }: Props) {
             </div>
             <div className="my-3 flex justify-between text-sm">
               <input
-                {...register("username", {
-                  required: "Username is required",
-                })}
+                // {...register("username", {
+                //   required: "Username is required",
+                // })}
                 type="text"
                 className="border rounded p-2 w-[49%]"
                 placeholder="Username"
                 required
               />
               <input
-                {...register("password")}
+                // {...register("password")}
                 type="password"
                 className="border rounded p-2 py-3 w-[49%]"
                 placeholder="Password"
                 required
               />
               <input
-                {...register("confirmPassword")}
+                // {...register("confirmPassword")}
                 type="password"
                 className="border rounded p-2 py-3 w-[49%]"
                 placeholder="Confirm Password"

@@ -8,8 +8,7 @@ export interface CustomerSignUp {
   preferredPortId: number;
   email: string;
   phoneNumber: string;
- // roles: string[];
-
+  // roles: string[];
 }
 
 // export interface UserFormValues {

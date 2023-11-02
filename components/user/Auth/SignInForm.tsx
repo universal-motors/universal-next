@@ -54,11 +54,11 @@ function SignInForm({ signin, setSignIn }: Props) {
               setSubmit(true);
               // console.log(submit)
               try {
-                userStore.login(data).then((r) => {
-                  if (userStore.isLoggedIn) {
-                    router.push("/dashboard");
-                  }
-                });
+                // userStore.login(data).then((r) => {
+                //   if (userStore.isLoggedIn) {
+                //     router.push("/dashboard");
+                //   }
+                // });
               } catch (e) {
                 console.log(e);
               } finally {
@@ -74,9 +74,9 @@ function SignInForm({ signin, setSignIn }: Props) {
                 Your Username
               </label>
               <input
-                {...register("username", {
-                  required: "Username is required",
-                })}
+                // {...register("username", {
+                //   required: "Username is required",
+                // })}
                 id="username"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Username"
@@ -91,7 +91,7 @@ function SignInForm({ signin, setSignIn }: Props) {
                 Your password
               </label>
               <input
-                {...register("password")}
+                // {...register("password")}
                 type="password"
                 id="password"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
