@@ -1,21 +1,57 @@
 "use client";
-import { Autocomplete } from "@/components/AutoComplete";
+import agent from "@/api/agent";
 import Input from "@/components/Input";
-import { countries } from "@/lib/utils";
+import { PortMapping } from "@/models/Master/PortMapping";
+import axios from "axios";
 import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillDelete } from "react-icons/ai";
 
 export default function ProfileForm() {
+  const [countries, setCounties] = useState<any>([]);
+  const [portMapping, setPortMapping] = useState<any>([]);
+  const [ports, setPorts] = useState<any>([]);
+  // let countries: any;
+  // let portMapping: any;
+  // let ports: any;
+  const getData = async () => {
+    const countries = await agent.LoadData.countryList();
+    const portMapping = await agent.LoadData.portmapping();
+    const ports = await agent.LoadData.portsList();
+    setCounties(countries.data);
+    setPortMapping(portMapping.data);
+    setPorts(ports.data);
+    console.log(portMapping.data, "<--");
+  };
+  useEffect(() => {
+    getData();
+  }, []);
   const { status, data: session } = useSession();
-
+  const [countryID, setCountryID] = useState(0);
+  const [mappedPorts, setMappedPorts] = useState<PortMapping[]>([]);
+  const [portID, setPortID] = useState(0);
   const [Emails, setEmails] = useState<string[]>([""]);
   const [Phones, setPhones] = useState<string[]>([""]);
   const addEmail = () => {
     setEmails([...Emails, ""]);
   };
+  console.log("-->", countryID);
+  const handleCountryChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    console.log(event.target.value, portMapping);
+    const destinationID = parseInt(event.target.value);
+    setCountryID(destinationID);
+    setPortID(0);
+    const ports = portMapping.filter(
+      (port: { countryID: number }) => port.countryID == destinationID
+    );
+    setMappedPorts(ports);
+  };
 
+  const handlePortChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    const changedPortID = parseInt(event.target.value);
+    setPortID(changedPortID);
+  };
   const updateEmail = (index: number, newValue: string) => {
     const updatedEmails = [...Emails];
     updatedEmails[index] = newValue;
@@ -43,26 +79,74 @@ export default function ProfileForm() {
     setPhones(updatedPhones);
   };
   type TProfile = {
-    firstname: string;
+    customerCode: string;
+    name: string;
     lastname: string;
-    email: string;
-    phoneNumber: string;
-    company_name: string;
+    email: string[];
+    phoneNumber: string[];
+    companyName: string;
     address: string;
-    countryID: string;
+    countryID: number;
     preferredPortId: string;
   };
+  // interface CustomerSignUp {
+  //   customerCode: string;
+  //   name: string;
+  //   lastname: string;
+  //   companyName: string;
+  //   address: string;
+  //   countryID: number;
+  //   preferredPortId: number;
+  //   email: string;
+  //   phoneNumber: string;
+  //   // roles: string[];
+
+  // }
   const form = useForm<TProfile>();
   const { register, control, formState, setValue, handleSubmit } = form;
   useEffect(() => {
-    if (session && session?.user)
-      setValue("firstname", String(session.user?.name));
+    if (session && session?.user) {
+      setValue("name", String(session.user?.name));
+      setEmails([String(session.user?.email)]);
+      checkEmail(String(session.user?.email));
+    }
   }, [status]);
+
+  const generateCustomerCode = async (countryID: number) => {
+    return await agent.LoadData.generateCustomerCode(countryID);
+  };
+  // console.log(generateCustomerCode(157))
+  const checkEmail = async (email: string) => {
+    try {
+      let res = await axios({
+        method: "get",
+        url: `customers/Exists/${email}`,
+        // data: reqBody
+      });
+      console.log(res);
+      // let data = res.data;
+      // return data;
+    } catch (error: any) {
+      if (error && error.message === "Request failed with status code 404") {
+        console.log(error.message);
+      } // this is the main part. Use the response property from the error object
+
+      // return error.response;
+    }
+  };
+  useEffect(() => {
+    setValue("email", Emails);
+  }, [Emails]);
+
+  useEffect(() => {
+    setValue("phoneNumber", Phones);
+  }, [Phones]);
+
   return (
     <div className="w-[90%] mx-auto mt-7">
       <form
-        onSubmit={handleSubmit((data) => {
-          console.log(data);
+        onSubmit={handleSubmit(async (data) => {
+          console.log(generateCustomerCode(157));
         })}
       >
         <div className="grid gap-6 mb-6 md:grid-cols-2">
@@ -70,9 +154,9 @@ export default function ProfileForm() {
             label={"First name"}
             type="text"
             placeholder="John"
-            htmlFor="firstname"
+            htmlFor="name"
             register={{
-              ...register("firstname", {
+              ...register("name", {
                 required: " required",
               }),
             }}
@@ -93,11 +177,11 @@ export default function ProfileForm() {
             type="text"
             placeholder="Company Name"
             register={{
-              ...register("company_name", {
+              ...register("companyName", {
                 required: " required",
               }),
             }}
-            htmlFor="company_name"
+            htmlFor="companyName"
           />
           <Input
             label={"Address"}
@@ -110,20 +194,52 @@ export default function ProfileForm() {
             }}
             htmlFor="address"
           />
-          <Autocomplete
+          {/* <Autocomplete
             list={countries.map((item) => item.name)}
             placeholder={"Country"}
             setValue={setValue}
             htmlFor={"countryID"}
             label="Country"
-          />
-          <Autocomplete
+          /> */}
+          <select
+            value={countryID}
+            onChange={handleCountryChange}
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            aria-expanded="true"
+            aria-haspopup="true"
+          >
+            <option value={0}>Select Destination</option>
+            {countries.map((country: any) => (
+              // <SelectItem key={country.countryId} value={country.countryId.toString()}>{country.countryName}</SelectItem>
+              <option key={country.countryId} value={country.countryId}>
+                {country.countryName}
+              </option>
+            ))}
+          </select>
+          <select
+            value={portID}
+            onChange={handlePortChange}
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            aria-expanded="true"
+            aria-haspopup="true"
+          >
+            <option value={0}>Select Port</option>
+            {mappedPorts.map((port) => (
+              <option key={port.portId} value={port.portId}>
+                {
+                  ports.find((x: { portId: number }) => x.portId == port.portId)
+                    ?.portName
+                }
+              </option>
+            ))}
+          </select>
+          {/* <Autocomplete
             list={["Left Hand", "Right Hand"]}
             placeholder={"port"}
             setValue={setValue}
             htmlFor={"port"}
             label="Port"
-          />
+          /> */}
           <div className="w-full flex  flex-col justify-center items-center">
             {Emails.map((item, i) => {
               return (

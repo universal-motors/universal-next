@@ -23,7 +23,7 @@ const SuggestionsList = (props: any) => {
               <li
                 key={index}
                 className={classname}
-                onClick={() => onSelectSuggestion(index)}
+                onClick={() => onSelectSuggestion(suggestion)}
               >
                 {suggestion}
               </li>
