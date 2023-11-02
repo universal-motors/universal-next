@@ -201,38 +201,55 @@ export default function ProfileForm() {
             htmlFor={"countryID"}
             label="Country"
           /> */}
-          <select
-            value={countryID}
-            onChange={handleCountryChange}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            aria-expanded="true"
-            aria-haspopup="true"
-          >
-            <option value={0}>Select Destination</option>
-            {countries.map((country: any) => (
-              // <SelectItem key={country.countryId} value={country.countryId.toString()}>{country.countryName}</SelectItem>
-              <option key={country.countryId} value={country.countryId}>
-                {country.countryName}
-              </option>
-            ))}
-          </select>
-          <select
-            value={portID}
-            onChange={handlePortChange}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            aria-expanded="true"
-            aria-haspopup="true"
-          >
-            <option value={0}>Select Port</option>
-            {mappedPorts.map((port) => (
-              <option key={port.portId} value={port.portId}>
-                {
-                  ports.find((x: { portId: number }) => x.portId == port.portId)
-                    ?.portName
-                }
-              </option>
-            ))}
-          </select>
+          <div className="w-full">
+            <label
+              htmlFor={"Country"}
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Country
+            </label>
+            <select
+              value={countryID}
+              onChange={handleCountryChange}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              aria-expanded="true"
+              aria-haspopup="true"
+            >
+              <option value={0}>Select Country</option>
+              {countries.map((country: any) => (
+                // <SelectItem key={country.countryId} value={country.countryId.toString()}>{country.countryName}</SelectItem>
+                <option key={country.countryId} value={country.countryId}>
+                  {country.countryName}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="w-full">
+            <label
+              htmlFor={"Port"}
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Port
+            </label>
+            <select
+              value={portID}
+              onChange={handlePortChange}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              aria-expanded="true"
+              aria-haspopup="true"
+            >
+              <option value={0}>Select Port</option>
+              {mappedPorts.map((port) => (
+                <option key={port.portId} value={port.portId}>
+                  {
+                    ports.find(
+                      (x: { portId: number }) => x.portId == port.portId
+                    )?.portName
+                  }
+                </option>
+              ))}
+            </select>
+          </div>
           {/* <Autocomplete
             list={["Left Hand", "Right Hand"]}
             placeholder={"port"}

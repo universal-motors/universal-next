@@ -1,8 +1,12 @@
+"use client";
 import { Autocomplete } from "@/components/AutoComplete";
 import Input from "@/components/Input";
 import { countries } from "@/lib/utils";
+import { useForm } from "react-hook-form";
 
 export default function CosigneeForm() {
+  const form = useForm<any>();
+  const { register, control, formState, setValue, handleSubmit } = form;
   return (
     <div className="w-[90%] mx-auto mt-7">
       <form>
@@ -23,12 +27,14 @@ export default function CosigneeForm() {
             list={countries.map((item) => item.name)}
             placeholder={"Consignee Country"}
             htmlFor={"consignee_country"}
+            setValue={setValue}
             label="Consignee Country"
           />
           <Autocomplete
             list={countries.map((item) => item.name)}
             placeholder={"Notify Country"}
             htmlFor={"notify_country"}
+            setValue={setValue}
             label="Notify Country"
           />
           <Input
