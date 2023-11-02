@@ -120,10 +120,10 @@ export default function ProfileForm() {
     try {
       let res = await axios({
         method: "get",
-        url: `customers/Exists/${email}`,
+        url: `https://api20230805195433.azurewebsites.net/api/customers/Exists/${email}`,
         // data: reqBody
       });
-      console.log(res);
+      console.log("check--->", res);
       // let data = res.data;
       // return data;
     } catch (error: any) {
@@ -146,7 +146,38 @@ export default function ProfileForm() {
     <div className="w-[90%] mx-auto mt-7">
       <form
         onSubmit={handleSubmit(async (data) => {
-          console.log(generateCustomerCode(157));
+          try {
+            let res = await axios({
+              method: "get",
+              url: ` https://api20230805195433.azurewebsites.net/api/customers/GenerateCustomerCode/${countryID}`,
+              // data: reqBody
+            });
+            console.log(res.data);
+            console.log({
+              ...data,
+              customerCode: res.data,
+              email: Emails[0],
+              phoneNumber: Phones[0],
+            });
+            await agent.LoadData.register({
+              ...data,
+              customerCode: res.data,
+              email: Emails[0],
+              phone: Phones[0],
+              preferredPortId: portID,
+            });
+            // let data = res.data;
+            // return data;
+          } catch (error: any) {
+            if (
+              error &&
+              error.message === "Request failed with status code 404"
+            ) {
+              console.log(error.message);
+            } // this is the main part. Use the response property from the error object
+
+            // return error.response;
+          }
         })}
       >
         <div className="grid gap-6 mb-6 md:grid-cols-2">

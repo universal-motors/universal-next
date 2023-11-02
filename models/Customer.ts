@@ -7,7 +7,7 @@ export interface CustomerSignUp {
   countryID: number;
   preferredPortId: number;
   email: string;
-  phoneNumber: string;
+  phone: string;
   // roles: string[];
 }
 
