@@ -1,12 +1,11 @@
 "use client";
-import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
-import { FcBusinessman } from "react-icons/fc";
-import SignInForm from "@/components/user/Auth/SignInForm";
-import SignUpForm from "@/components/user/Auth/SignUpForm";
 import { Country } from "@/models/Master/Country";
 import { Ports } from "@/models/Master/Ports";
-
+import { useUserStore } from "@/store/store";
+import { signIn, signOut, useSession } from "next-auth/react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 interface Props {
   countryList: Country[];
   portList: Ports[];
@@ -18,21 +17,25 @@ export default function AuthModal({
   portList,
   portMapping,
 }: Props) {
-  let [isOpen, setIsOpen] = useState(false);
-  let [isSignIn, setIsSignIn] = useState(true);
-
-  function closeModal() {
-    setIsOpen(false);
-    setIsSignIn(true);
-  }
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  const handleSignUp = () => {
-    setIsSignIn(false);
-  };
+  const { status, data: session } = useSession();
+  const router = useRouter();
+  const { deleteData } = useUserStore();
+  const [dropdown, setDropdown] = useState(false);
+  // let [isOpen, setIsOpen] = useState(false);
+  // let [isSignIn, setIsSignIn] = useState(true);
+  //
+  // function closeModal() {
+  //   setIsOpen(false);
+  //   setIsSignIn(true);
+  // }
+  //
+  // function openModal() {
+  //   setIsOpen(true);
+  // }
+  //
+  // const handleSignUp = () => {
+  //   setIsSignIn(false);
+  // };
 
   return (
     <>
@@ -40,69 +43,167 @@ export default function AuthModal({
         <div className="registerbox">
           {/*<i className="fa fa-user" />*/}
           <h2>
-            <FcBusinessman className="m-2" />
+            {/* {status === 'unauthenticated' && <FcBusinessman className="m-2" />} */}
+            {session?.user?.image && status === "authenticated" && (
+              <div className="flex items-center ">
+                <div className="relative mt-2">
+                  <button
+                    onClick={() => {
+                      setDropdown(!dropdown);
+                    }}
+                    id="dropdownAvatarNameButton"
+                    data-dropdown-toggle="dropdownAvatarName"
+                    className="flex items-center text-sm font-medium text-white rounded-full hover:text-blue-600 dark:hover:text-blue-500 md:mr-0  dark:text-white"
+                    type="button"
+                  >
+                    <span className="sr-only">Open user menu</span>
+                    <img
+                      className="w-8 h-8 mr-2 rounded-full"
+                      src={session.user.image}
+                      alt="user photo"
+                    />
+                    {session?.user?.name}
+                    <svg
+                      className="w-2.5 h-2.5 ml-2.5"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 10 6"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="m1 1 4 4 4-4"
+                      />
+                    </svg>
+                  </button>
+
+                  <div
+                    id="dropdownAvatarName"
+                    className={`${
+                      !dropdown && "hidden"
+                    } z-50 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}
+                  >
+                    <div className="px-1 py-3 text-sm text-gray-900 dark:text-white">
+                      <div className="font-medium ">{session?.user?.name}</div>
+                      <div className="truncate text-[10px]">
+                        {session?.user?.email}
+                      </div>
+                    </div>
+
+                    <div className="py-2">
+                      <Link
+                        href="/dashboard"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                      >
+                        Dashboard
+                      </Link>
+                    </div>
+                    <div className="py-2">
+                      <Link
+                        href="/"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                      >
+                        Favourites
+                      </Link>
+                    </div>
+
+                    <div className="py-2 cursor-pointer">
+                      <p
+                        onClick={() => {
+                          signOut();
+                          deleteData();
+                        }}
+                        className="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                      >
+                        Sign out
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </h2>
           <div className="currencydropdown">
-            <button
-              type="button"
-              onClick={openModal}
-              className="rounded-md bg-blue-300 bg-opacity-100 px-4 py-2 text-sm font-medium hover:bg-opacity-70 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-opacity-75"
-            >
-              {/*Hello, Sign in<br />My Account*/}
-              {isSignIn ? "Sign In" : "Sign Up"}
-            </button>
+            {
+              status === "unauthenticated" && (
+                <button
+                  onClick={() => signIn("google")}
+                  className="text-sm px-4 py-2 border flex gap-2 border-slate-200 dark:border-slate-700 rounded-lg text-slate-200 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-400 dark:hover:text-slate-300 hover:shadow transition duration-150"
+                >
+                  <img
+                    className="w-6 h-6"
+                    src="https://www.svgrepo.com/show/475656/google-color.svg"
+                    loading="lazy"
+                    alt="google logo"
+                  />
+                  <span>Login with Google</span>
+                </button>
+              )
+              //  <button
+              //   type="button"
+              //   onClick={() => signIn("google")}
+              //   className="rounded-md bg-blue-300 bg-opacity-100 px-4 py-2 text-sm font-medium hover:bg-opacity-70 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-opacity-75"
+              // >
+
+              //   <div> Hello, Sign in<br />My Account</div>
+
+              // </button>
+            }
           </div>
         </div>
       </div>
 
-      <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={closeModal}>
-          <Transition.Child
-            as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            <div className="fixed inset-0 bg-black bg-opacity-25" />
-          </Transition.Child>
+      {/*<Transition appear show={isOpen} as={Fragment}>*/}
+      {/*  <Dialog as="div" className="relative z-10" onClose={closeModal}>*/}
+      {/*    <Transition.Child*/}
+      {/*      as={Fragment}*/}
+      {/*      enter="ease-out duration-300"*/}
+      {/*      enterFrom="opacity-0"*/}
+      {/*      enterTo="opacity-100"*/}
+      {/*      leave="ease-in duration-200"*/}
+      {/*      leaveFrom="opacity-100"*/}
+      {/*      leaveTo="opacity-0"*/}
+      {/*    >*/}
+      {/*      <div className="fixed inset-0 bg-black bg-opacity-25" />*/}
+      {/*    </Transition.Child>*/}
 
-          <div className="fixed inset-0 overflow-y-auto">
-            <div className="flex min-h-full items-center justify-center p-4 text-center">
-              <Transition.Child
-                as={Fragment}
-                enter="ease-out duration-300"
-                enterFrom="opacity-0 scale-95"
-                enterTo="opacity-100 scale-100"
-                leave="ease-in duration-200"
-                leaveFrom="opacity-100 scale-100"
-                leaveTo="opacity-0 scale-95"
-              >
-                <Dialog.Panel className="w-full max-w-md  transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                  <Dialog.Title
-                    as="h3"
-                    className="text-lg text-center uppercase font-medium leading-6 text-gray-900 p-2"
-                  >
-                    {isSignIn ? "Sign In" : "Sign Up"}
-                  </Dialog.Title>
-                  {isSignIn ? (
-                    <SignInForm signIn={true} setSignIn={setIsSignIn} />
-                  ) : (
-                    <SignUpForm
-                      setSignIn={setIsSignIn}
-                      countries={countryList}
-                      ports={portList}
-                      portMapping={portMapping}
-                    />
-                  )}
-                </Dialog.Panel>
-              </Transition.Child>
-            </div>
-          </div>
-        </Dialog>
-      </Transition>
+      {/*    <div className="fixed inset-0 overflow-y-auto">*/}
+      {/*      <div className="flex min-h-full items-center justify-center p-4 text-center">*/}
+      {/*        <Transition.Child*/}
+      {/*          as={Fragment}*/}
+      {/*          enter="ease-out duration-300"*/}
+      {/*          enterFrom="opacity-0 scale-95"*/}
+      {/*          enterTo="opacity-100 scale-100"*/}
+      {/*          leave="ease-in duration-200"*/}
+      {/*          leaveFrom="opacity-100 scale-100"*/}
+      {/*          leaveTo="opacity-0 scale-95"*/}
+      {/*        >*/}
+      {/*          <Dialog.Panel className="w-full max-w-md  transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">*/}
+      {/*            <Dialog.Title*/}
+      {/*              as="h3"*/}
+      {/*              className="text-lg text-center uppercase font-medium leading-6 text-gray-900 p-2"*/}
+      {/*            >*/}
+      {/*              {isSignIn ? "Sign In" : "Sign Up"}*/}
+      {/*            </Dialog.Title>*/}
+      {/*            {isSignIn ? (*/}
+      {/*              <p signin={true} setSignIn={setIsSignIn} />*/}
+      {/*            ) : (*/}
+      {/*              <SignUpForm*/}
+      {/*                setSignIn={setIsSignIn}*/}
+      {/*                countries={countryList}*/}
+      {/*                ports={portList}*/}
+      {/*                portMapping={portMapping}*/}
+      {/*              />*/}
+      {/*            )}*/}
+      {/*          </Dialog.Panel>*/}
+      {/*        </Transition.Child>*/}
+      {/*      </div>*/}
+      {/*    </div>*/}
+      {/*  </Dialog>*/}
+      {/*</Transition>*/}
     </>
   );
 }

@@ -1,5 +1,5 @@
-import { StockCars } from "@/models/StockCars";
 import agent from "@/api/agent";
+import { StockCars } from "@/models/StockCars";
 
 interface Props {
   car: StockCars;
@@ -10,19 +10,24 @@ export default async function StockKeyInformation({ car }: Props) {
 
   return (
     <>
-      <div className="border-b border-gray-200 bg-white px-4 py-5 sm:px-6">
-        <h2 className="text-base font-semibold leading-6 text-gray-900">
+      <div className="border-b border-gray-200 bg-white px-2 py-5 sm:px-6">
+        <h2 className="!text-[14px] sm:!text-[20px] font-semibold leading-6 text-gray-900">
           Key Information
         </h2>
-        <div className="row features-table">
+        <div className="row features-table ">
           <table className="keyinfo">
             <tbody>
               <tr>
-                <td className="first">Model Code</td>
+                <td className="first !text-[9px] sm:!text-[12px]">
+                  Model Code
+                </td>
                 {car.modelCode !== "" ? (
-                  <td> {car.modelCode}</td>
+                  <td className="!text-[9px] sm:!text-[12px]">
+                    {" "}
+                    {car.modelCode}
+                  </td>
                 ) : (
-                  <td>Not Available</td>
+                  <td className="!text-[9px] sm:!text-[12px]">Not Available</td>
                 )}
               </tr>
               {/*<tr>*/}
@@ -32,60 +37,90 @@ export default async function StockKeyInformation({ car }: Props) {
               {/*    }*/}
               {/*</tr>*/}
               <tr>
-                <td className="first">Engine Size</td>
-                <td>{car.engineSize}</td>
+                <td className="first !text-[9px] sm:!text-[12px]">
+                  Engine Size
+                </td>
+                <td className="!text-[9px] sm:!text-[12px]">
+                  {car.engineSize}
+                </td>
               </tr>
               <tr>
-                <td className="first">Engine Number</td>
+                <td className="first !text-[9px] sm:!text-[12px]">
+                  Engine Number
+                </td>
                 {car.engineNumber !== "" ? (
-                  <td> {car.engineNumber}</td>
+                  <td className="!text-[9px] sm:!text-[12px]">
+                    {" "}
+                    {car.engineNumber}
+                  </td>
                 ) : (
-                  <td>Not Available</td>
+                  <td className="!text-[9px] sm:!text-[12px]">Not Available</td>
                 )}
               </tr>
               <tr>
-                <td className="first">Body Type</td>
-                <td>{car.typeOfBody}</td>
+                <td className="first !text-[9px] sm:!text-[12px]">Body Type</td>
+                <td className="!text-[9px] sm:!text-[12px]">
+                  {car.typeOfBody}
+                </td>
               </tr>
               <tr>
-                <td className="first">Body Length</td>
-                <td>{car.lengthOfCar}</td>
+                <td className="first !text-[9px] sm:!text-[12px]">
+                  Body Length
+                </td>
+                <td className="!text-[9px] sm:!text-[12px]">
+                  {car.lengthOfCar}
+                </td>
               </tr>
               <tr>
-                <td className="first">Dimension</td>
-                <td>{car.m3}</td>
+                <td className="first !text-[9px] sm:!text-[12px]">Dimension</td>
+                <td className="!text-[9px] sm:!text-[12px]">{car.m3}</td>
               </tr>
             </tbody>
           </table>
           <table className="keyinfo">
             <tbody>
               <tr>
-                <td className="first">Chasis Number</td>
+                <td className="first !text-[9px] sm:!text-[12px]">
+                  Chasis Number
+                </td>
                 {car.chasisNumber !== "" ? (
-                  <td> {car.chasisNumber}</td>
+                  <td className="!text-[9px] sm:!text-[12px]">
+                    {" "}
+                    {car.chasisNumber}
+                  </td>
                 ) : (
-                  <td>Not Available</td>
+                  <td className="!text-[9px] sm:!text-[12px]">Not Available</td>
                 )}
               </tr>
               <tr>
-                <td className="first">Steering Type</td>
-                <td>{car.typeOfSteering}</td>
+                <td className="first !text-[9px] sm:!text-[12px]">
+                  Steering Type
+                </td>
+                <td className="!text-[9px] sm:!text-[12px]">
+                  {car.typeOfSteering}
+                </td>
               </tr>
               <tr>
-                <td className="first">Fuel</td>
-                <td>{car.typeOfFuel}</td>
+                <td className="first !text-[9px] sm:!text-[12px]">Fuel</td>
+                <td className="!text-[9px] sm:!text-[12px]">
+                  {car.typeOfFuel}
+                </td>
               </tr>
               <tr>
-                <td className="first">Number of Doors</td>
-                <td>{car.noOfDoors}</td>
+                <td className="first !text-[9px] sm:!text-[12px]">
+                  Number of Doors
+                </td>
+                <td className="!text-[9px] sm:!text-[12px]">{car.noOfDoors}</td>
               </tr>
               <tr>
-                <td className="first">Number of Seats</td>
-                <td>{car.noOfSeats}</td>
+                <td className="first !text-[9px] sm:!text-[12px]">
+                  Number of Seats
+                </td>
+                <td className="!text-[9px] sm:!text-[12px]">{car.noOfSeats}</td>
               </tr>
               <tr>
-                <td className="first">Colour</td>
-                <td>{car.colorName}</td>
+                <td className="first !text-[9px] sm:!text-[12px]">Colour</td>
+                <td className="!text-[9px] sm:!text-[12px]">{car.colorName}</td>
               </tr>
             </tbody>
           </table>
@@ -93,35 +128,44 @@ export default async function StockKeyInformation({ car }: Props) {
       </div>
 
       <div className="border-b border-gray-200 bg-white px-4 py-5 sm:px-6">
-        <h2 className="text-base font-semibold leading-6 text-gray-900">
+        <h2 className="!text-[14px] sm:!text-[20px] font-semibold leading-6 text-gray-900">
           Features
         </h2>
-        <ul className="featureitem">
+        <div className=" flex flex-wrap gap-3">
           {stockOptions.data
             .filter((op) => op.stockId === car.stockId)
             .map((op) => (
-              <li className="active" key={op.id}>
-                <h5>
+              // <li className="active" key={op.id}>
+              //   <h5>
+              //     {
+              //       <span className="inline-flex items-center gap-x-1.5 rounded-md px-2 py-1 text-sm font-medium  ">
+              //         <svg
+              //           className="h-1.5 w-1.5 fill-green-400"
+              //           viewBox="0 0 6 6"
+              //           aria-hidden="true"
+              //         >
+              //           <circle cx={3} cy={3} r={3} />
+              //         </svg>
+              // {
+              //   optionsMaster.data.find(
+              //     (x) => x.optionId == op.carOptionsId
+              //   )?.optionName
+              // }
+              //       </span>
+              //     }
+              //   </h5>
+              // </li>
+              <div className="center relative inline-block select-none whitespace-nowrap rounded-lg bg-[#221C63] py-2 px-3.5 align-baseline font-sans text-xs font-bold uppercase leading-none text-white">
+                <div className="mt-px !text-[9px] sm:!text-[12px]">
                   {
-                    <span className="inline-flex items-center gap-x-1.5 rounded-md px-2 py-1 text-sm font-medium  ">
-                      <svg
-                        className="h-1.5 w-1.5 fill-green-400"
-                        viewBox="0 0 6 6"
-                        aria-hidden="true"
-                      >
-                        <circle cx={3} cy={3} r={3} />
-                      </svg>
-                      {
-                        optionsMaster.data.find(
-                          (x) => x.optionId == op.carOptionsId
-                        )?.optionName
-                      }
-                    </span>
+                    optionsMaster.data.find(
+                      (x) => x.optionId == op.carOptionsId
+                    )?.optionName
                   }
-                </h5>
-              </li>
+                </div>
+              </div>
             ))}
-        </ul>
+        </div>
       </div>
     </>
   );

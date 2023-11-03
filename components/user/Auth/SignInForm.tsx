@@ -1,13 +1,11 @@
 "use client";
 
-import { useForm } from "react-hook-form";
-import { signIn, signOut, useSession } from "next-auth/react";
-import { FormEvent, useEffect, useState } from "react";
-import { useStore } from "@/store/store";
 import { CustomerSignUp } from "@/models/Customer";
 import { Button } from "@tremor/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { getServerSession } from "next-auth";
+import { FormEvent, useState } from "react";
+import { useForm } from "react-hook-form";
 
 export interface User {
   username: string;
@@ -15,15 +13,15 @@ export interface User {
   email: string;
 }
 interface Props {
-  signIn: boolean;
+  signin: boolean;
   setSignIn: (value: boolean) => void;
 }
 
-function SignInForm({ signIn, setSignIn }: Props) {
+function SignInForm({ signin, setSignIn }: Props) {
   const [submit, setSubmit] = useState<boolean>(false);
 
   const router = useRouter();
-  const { userStore } = useStore();
+  // const { userStore } = useStore();
   //var loading = false;
   const { data: session } = useSession();
   const form = useForm<CustomerSignUp>();
@@ -42,7 +40,9 @@ function SignInForm({ signIn, setSignIn }: Props) {
 
     setSignIn(false);
   };
-
+  const signInWithGoogle = () => {
+    signIn("google");
+  };
   return (
     <>
       <div className="p-3">
@@ -53,11 +53,11 @@ function SignInForm({ signIn, setSignIn }: Props) {
               setSubmit(true);
               // console.log(submit)
               try {
-                userStore.login(data).then((r) => {
-                  if (userStore.isLoggedIn) {
-                    router.push("/dashboard");
-                  }
-                });
+                // userStore.login(data).then((r) => {
+                //   if (userStore.isLoggedIn) {
+                //     router.push("/dashboard");
+                //   }
+                // });
               } catch (e) {
                 console.log(e);
               } finally {
@@ -73,9 +73,9 @@ function SignInForm({ signIn, setSignIn }: Props) {
                 Your Username
               </label>
               <input
-                {...register("username", {
-                  required: "Username is required",
-                })}
+                // {...register("username", {
+                //   required: "Username is required",
+                // })}
                 id="username"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Username"
@@ -90,7 +90,7 @@ function SignInForm({ signIn, setSignIn }: Props) {
                 Your password
               </label>
               <input
-                {...register("password")}
+                // {...register("password")}
                 type="password"
                 id="password"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -106,6 +106,13 @@ function SignInForm({ signIn, setSignIn }: Props) {
               >
                 Log In
               </Button>
+              <Button
+                onClick={signInWithGoogle}
+                className="px-4 py-2 rounded-xl text-white m-0 bg-green-500 hover:bg-green-600 transition"
+              >
+                Log In with google
+              </Button>
+
               <button
                 onClick={handleSignUp}
                 className="px-4 py-2 rounded-xl bg-neutral-50 hover:bg-blue-100  transition"

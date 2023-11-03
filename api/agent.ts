@@ -1,28 +1,33 @@
-import { StockCars } from "@/models/StockCars";
-import { Country } from "@/models/Master/Country";
 import { Machinery } from "@/models/Machinery";
-import { FuelType } from "@/models/Master/FuelType";
-import { BodyType } from "@/models/Master/BodyType";
-import { Make } from "@/models/Master/Make";
-import { CarModel } from "@/models/Master/CarModel";
-import { DrivetrainType } from "@/models/Master/DrivetrainType";
-import { SteeringType } from "@/models/Master/SteeringType";
-import { Colors } from "@/models/Master/Colors";
-import { Transmission } from "@/models/Master/Transmission";
-import { CarCondition } from "@/models/Master/CarCondition";
 import { Axle } from "@/models/Master/Axle";
-import { Ports } from "@/models/Master/Ports";
-import { VehicleCategory } from "@/models/Master/VehicleCategory";
+import { BodyType } from "@/models/Master/BodyType";
+import { CarCondition } from "@/models/Master/CarCondition";
+import { CarModel } from "@/models/Master/CarModel";
 import { CarOptions } from "@/models/Master/CarOptions";
-import { InspectionCost } from "@/models/Master/InspectionCost";
-import { FreightCost } from "@/models/Master/FreightCost";
-import { PortMapping } from "@/models/Master/PortMapping";
-import { StockPictures } from "@/models/Master/StockPictures";
 import { CarOptionsMapping } from "@/models/Master/CarOptionsMapping";
+import { Colors } from "@/models/Master/Colors";
+import { Country } from "@/models/Master/Country";
+import { DrivetrainType } from "@/models/Master/DrivetrainType";
+import { FreightCost } from "@/models/Master/FreightCost";
+import { FuelType } from "@/models/Master/FuelType";
+import { InspectionCost } from "@/models/Master/InspectionCost";
+import { Make } from "@/models/Master/Make";
+import { PortMapping } from "@/models/Master/PortMapping";
+import { Ports } from "@/models/Master/Ports";
+import { SteeringType } from "@/models/Master/SteeringType";
+import { StockPictures } from "@/models/Master/StockPictures";
+import { Transmission } from "@/models/Master/Transmission";
+import { VehicleCategory } from "@/models/Master/VehicleCategory";
+import { StockCars } from "@/models/StockCars";
 import { Trucks } from "@/models/Trucks";
-import { Customer, UserFormValues } from "@/models/Customer";
+//import { Customer, UserFormValues } from "@/models/Customer";
+import {
+  ConsigneeCourier,
+  CourierDispatch,
+  Customer,
+  CustomerSignUp,
+} from "@/models/Customer";
 import { PaginationHeader } from "@/models/Master/Pagination";
-import { signIn } from "next-auth/react";
 
 //const baseURL = 'https://localhost:5001/api/';
 const baseURL = "https://api20230805195433.azurewebsites.net/api/";
@@ -137,6 +142,7 @@ const LoadData = {
   carCondiionList: () => request.get<CarCondition[]>("masterdata/carcondition"),
   axleList: () => request.get<Axle[]>("masterdata/axle"),
   portsList: () => request.get<Ports[]>("masterdata/ports"),
+
   vehicleCategoryList: () =>
     request.get<VehicleCategory[]>("masterdata/vehiclecategory"),
   caroptionsList: () => request.get<CarOptions[]>("masterdata/caroptions"),
@@ -160,22 +166,39 @@ const LoadData = {
     request.get<number>(`compute/bodytype/count/${bodytypeID}`),
   steeringTypeCount: (steeringID: number) =>
     request.get<number>(`compute/steeringType/count/${steeringID}`),
-};
 
-const Account = {
-  //   -------Accounts
-  currentUser: async (token: string): Promise<Customer> => await getUser(token),
-  //request.get<Customer>('authentication', user),
-  register: (user: UserFormValues) => registertUser(user), //request.post<Customer>('authentication', user),
-  login: (user: UserFormValues) =>
-    request.post<{ token: string }>("authentication/login", user),
+  //----- Customer Data
+  generateCustomerCode: (locationID: number) =>
+    request.get<string>(`customers/GenerateCustomerCode/${locationID}`),
+  customerCheck: (email: string) =>
+    request.get<boolean>(`customers/Exists/${email}`),
+  register: (user: CustomerSignUp) => registertUser(user), //request.post<CustomerSignUp>('authentication', user),
+  customerProfile: (email: string) =>
+    request.get<Customer[]>(`customers/ByEmail/${email}/`),
+  consigneeCourierByCustomer: (customerID: number) =>
+    request.get<ConsigneeCourier[]>(`customers/Consignee/${customerID}`),
+  consigneeCourierByID: (id: number) =>
+    request.get<ConsigneeCourier[]>(`customers/Consignee/id/${id}`),
+  courierDispatchByCustomer: (customerID: number) =>
+    request.get<CourierDispatch[]>(`customers/CourierDispatch/${customerID}`),
+  courierDispatchByID: (id: number) =>
+    request.get<CourierDispatch[]>(`customers/CourierDispatch/id/${id}`),
 };
+//
+// const Account = {
+//   //   -------Accounts
+//   currentUser: async (token: string): Promise<Customer> => await getUser(token),
+//   //request.get<Customer>('authentication', user),
+//   register: (user: UserFormValues) => registertUser(user), //request.post<Customer>('authentication', user),
+//   login: (user: UserFormValues) =>
+//     request.post<{ token: string }>("authentication/login", user),
+// };
 
 const StockCount = getData();
 
 const agent = {
   LoadData,
-  Account,
+  // Account,
   StockCount,
   basUrl: baseURL,
 };
@@ -195,10 +218,10 @@ async function getData() {
   return res.json();
 }
 
-async function registertUser(user: UserFormValues) {
+async function registertUser(user: CustomerSignUp) {
   try {
     const response = await fetch(
-      "https://api20230805195433.azurewebsites.net/api/authentication", //agent.basUrl+'authentication/',
+      "https://api20230805195433.azurewebsites.net/api/customers", //agent.basUrl+'authentication/',
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -212,83 +235,29 @@ async function registertUser(user: UserFormValues) {
       );
     }
 
-    await signIn("credentials", {
-      username: user.username,
-      password: user.password,
-    });
+    // await signIn("credentials", {
+    //   username: user.username,
+    //   password: user.password,
+    // });
 
     console.log("Account created successfully");
   } catch (e) {
     console.log(e);
   }
 }
-
-async function getUser(token: string): Promise<Customer> {
-  const currentUser = await fetch(
-    "https://api20230805195433.azurewebsites.net/api/authentication",
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`, // Adding the Bearer token to the headers
-      },
-    }
-  );
-  const response = await parseUserResponse(currentUser);
-  console.log(response);
-  return response as Customer;
-}
-
-//axios.defaults.baseURL = 'https://universalmotorsapi20230324211515.azurewebsites.net/api/'
-// const responseBody = <T> (response: AxiosResponse<T>) => response.data;
 //
-// const request = {
-//     get: <T> (url: string) => axios.get<T>(url).then(responseBody),
-//     post: <T> (url: string, body: object) => axios.post<T>(url,body).then(responseBody),
-//     put: <T> (url: string, body: object) => axios.put<T>(url,body).then(responseBody),
-//     delete: <T> (url: string) => axios.delete<T>(url).then(responseBody)
-// }
-
-//
-// const LoadData = {
-//
-//     //------                                        Main Units
-//     stockList: ()=> request.get<StockCars[]>('carstock'),
-//     stock: (stockID : number)=> request.get<StockCars>(`carstock/${stockID}`),
-//     truckList: ()=> request.get('trucks'),
-//     machineryList: ()=> request.get<Machinery[]>('machinery'),
-//     stockSliderList: (stockID: number) => request.get<StockPictures[]>(`carstock/imagestock/${stockID}`),
-//
-//     //------                                        Master Data
-//     countryList: ()=> request.get<Country[]>('masterdata/country'),
-//     carMakeList: ()=> request.get<Make[]>('masterdata/make/1'),
-//     truckMakeList: ()=> request.get<Make[]>('masterdata/make/2'),
-//     machineryMakeList: ()=> request.get<Make[]>('masterdata/make/3'),
-//     bodyTypeList: ()=> request.get<BodyType[]>('masterdata/bodytype'),
-//     fuelTypeList: ()=> request.get<FuelType[]>('masterdata/fueltype'),
-//     carModelList: ()=> request.get<CarModel[]>('masterdata/carmodel'),
-//     drtivetrainList: ()=> request.get<DrivetrainType[]>('masterdata/drivetraintype'),
-//     steeringList: ()=> request.get<SteeringType[]>('masterdata/steeringtype'),
-//     colorsList: ()=> request.get<Colors[]>('masterdata/colors'),
-//     transmissionsList: ()=> request.get<Transmission[]>('masterdata/transmissions'),
-//     carCondiionList: ()=> request.get<CarCondition[]>('masterdata/carcondition'),
-//     axleList: ()=> request.get<Axle[]>('masterdata/axle'),
-//     portsList: ()=> request.get<Ports[]>('masterdata/ports'),
-//     vehicleCategoryList: ()=> request.get<VehicleCategory[]>('masterdata/vehiclecategory'),
-//     caroptionsList: ()=> request.get<CarOptions[]>('masterdata/caroptions'),
-//
-//     // Required Parameter
-//     caroptionMappingList: (stockID:number)=> request.get<CarOptionsMapping[]>(`/carstock/caroptions/${stockID}`),
-//
-//
-//     //------                                        Computational
-//     inspectioncost: ()=> request.get<InspectionCost[]>('compute/inspectioncost/'),
-//     freightcost: ()=> request.get<FreightCost[]>('compute/freightcost/'),
-//     portmapping: ()=> request.get<PortMapping[]>('compute/portmapping/'),
-//     getClientIP: ()=> request.get<string>('compute/getClientIP/'),
-//     stockCount: ()=> request.get<number>('compute/stock/count'),
-//     carmodelCount: (modelID:number)=> request.get<number>(`compute/carmodel/count/${modelID}`),
-//     makeCount: (makeID:number)=> request.get<number>(`compute/make/count/${makeID}`),
-//     bodytypeCount: (bodytypeID:number)=> request.get<number>(`compute/bodytype/count/${bodytypeID}`),
-//     steeringTypeCount: (steeringID:number)=> request.get<number>(`compute/steeringType/count/${steeringID}`),
+// async function getUser(token: string): Promise<Customer> {
+//   const currentUser = await fetch(
+//     "https://api20230805195433.azurewebsites.net/api/authentication",
+//     {
+//       method: "GET",
+//       headers: {
+//         "Content-Type": "application/json",
+//         Authorization: `Bearer ${token}`, // Adding the Bearer token to the headers
+//       },
+//     }
+//   );
+//   const response = await parseUserResponse(currentUser);
+//   console.log(response);
+//   return response as Customer;
 // }

@@ -1,10 +1,13 @@
 import type { NextAuthOptions } from "next-auth";
-import GitHubProvider from "next-auth/providers/github";
-import FacebookProvider from "next-auth/providers/facebook";
-import GoogleProvider from "next-auth/providers/google";
+// import GitHubProvider from "next-auth/providers/github";
+// import FacebookProvider from "next-auth/providers/facebook";
 import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
 
-export const options: NextAuthOptions = {
+export const authOptions: NextAuthOptions = {
+  session: {
+    strategy: "jwt",
+  },
   providers: [
     // GitHubProvider({
     //     clientId: process.env.GITHUB_ID as string,
@@ -14,10 +17,10 @@ export const options: NextAuthOptions = {
     //     clientId: process.env.FACEBOOK_ID as string,
     //     clientSecret: process.env.FACEBOOK_SECRET as string,
     // }),
-    // GoogleProvider({
-    //     clientId: process.env.GOOGLE_ID as string,
-    //     clientSecret: process.env.GOOGLE_SECRET as string,
-    // }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_ID as string,
+      clientSecret: process.env.GOOGLE_SECRET as string,
+    }),
 
     CredentialsProvider({
       credentials: {
@@ -54,9 +57,6 @@ export const options: NextAuthOptions = {
       },
     }),
   ],
-  session: {
-    strategy: "jwt",
-  },
 
   debug: process.env.NODE_ENV === "development",
 

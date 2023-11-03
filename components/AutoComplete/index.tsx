@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Input from "../Input";
 
 const SuggestionsList = (props: any) => {
@@ -23,7 +23,7 @@ const SuggestionsList = (props: any) => {
               <li
                 key={index}
                 className={classname}
-                onClick={() => onSelectSuggestion(index)}
+                onClick={() => onSelectSuggestion(suggestion)}
               >
                 {suggestion}
               </li>
@@ -42,8 +42,15 @@ type Prop = {
   placeholder: string;
   htmlFor: string;
   label: string;
+  setValue?: any;
 };
-export const Autocomplete = ({ list, placeholder, htmlFor, label }: Prop) => {
+export const Autocomplete = ({
+  list,
+  placeholder,
+  htmlFor,
+  label,
+  setValue,
+}: Prop) => {
   const [inputValue, setInputValue] = useState("");
   const [filteredSuggestions, setFilteredSuggestions] = useState<any>([]);
   const [selectedSuggestion, setSelectedSuggestion] = useState(0);
@@ -67,7 +74,9 @@ export const Autocomplete = ({ list, placeholder, htmlFor, label }: Prop) => {
     setFilteredSuggestions([]);
     setDisplaySuggestions(false);
   };
-
+  useEffect(() => {
+    setValue(htmlFor, selectedSuggestion);
+  }, [selectedSuggestion]);
   return (
     <div>
       <Input

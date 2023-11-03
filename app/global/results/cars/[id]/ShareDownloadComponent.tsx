@@ -1,5 +1,4 @@
 "use client";
-import { StockCars } from "@/models/StockCars";
 import { StockPictures } from "@/models/Master/StockPictures";
 
 interface Props {
@@ -20,26 +19,26 @@ export default function ShareDownloadComponent({ imageList }: Props) {
         <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
           <div className="download-soialmedia">
             <ul>
-              <p>Share:</p>
+              <p className="text-[10px] sm:text-base">Share:</p>
               <a
                 target="_blank"
                 href="https://www.facebook.com/Universal-Motors-LTD-101574801831062"
               >
-                <i className="fa fa-facebook" style={{ fontSize: "24px" }} />
+                <i className="fa fa-facebook !text-[16px] sm:!text-[24px] " />
               </a>
               <a target="_blank" href="https://wa.link/5g81p6">
-                <i className="fa fa-whatsapp" style={{ fontSize: "24px" }} />
+                <i className="fa fa-whatsapp !text-[16px] sm:!text-[24px] " />
               </a>
               <a href="#">
-                <i className="fa fa-twitter" style={{ fontSize: "24px" }} />
+                <i className="fa fa-twitter !text-[16px] sm:!text-[24px] " />
               </a>
             </ul>
           </div>
         </div>
         <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 d-md-block">
           <div className="download-proimg">
-            <button>
-              <i className="fa fa-download" style={{ fontSize: "24px" }} />{" "}
+            <button className="text-[10px] sm:text-base">
+              <i className="fa fa-download !text-[16px] sm:!text-[24px] " />{" "}
               Download Images
             </button>
           </div>

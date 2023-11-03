@@ -1,7 +1,7 @@
 "use client";
-import { Dialog, Switch, Transition } from "@headlessui/react";
-import { FormEvent, FormEventHandler, Fragment, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import { Dialog, Switch, Transition } from "@headlessui/react";
+import { FormEvent, Fragment, useRef, useState } from "react";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -56,7 +56,7 @@ export default function ContactUs({ stockcode }: Props) {
         </div>
         <div className="row inquiry-bottom">
           <div className="mx-auto max-w-2xl text-center">
-            <h3 className="text-lg font-bold tracking-tight text-gray-900 sm:text-4xl">
+            <h3 className="text-lg font-bold tracking-tight text-[#919dad] sm:text-4xl">
               Want To Talk To Us
             </h3>
           </div>
@@ -159,7 +159,7 @@ export default function ContactUs({ stockcode }: Props) {
                     checked={agreed}
                     onChange={setAgreed}
                     className={classNames(
-                      agreed ? "bg-indigo-600" : "bg-gray-200",
+                      agreed ? "bg-[#221C63]" : "bg-gray-200",
                       "flex w-8 flex-none cursor-pointer rounded-full p-px ring-1 ring-inset ring-gray-900/5 transition-colors duration-200 ease-in-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     )}
                   >
@@ -175,7 +175,7 @@ export default function ContactUs({ stockcode }: Props) {
                 </div>
                 <Switch.Label className="text-sm leading-6 text-gray-600">
                   By selecting this, you agree to our{" "}
-                  <a href="#" className="font-semibold text-indigo-600">
+                  <a href="#" className="font-semibold text-[#221C63]">
                     privacy&nbsp;policy
                   </a>
                   .
@@ -185,7 +185,7 @@ export default function ContactUs({ stockcode }: Props) {
             <div className="mt-10">
               <button
                 type="submit"
-                className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="block w-full rounded-md bg-[#221C63] px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 "
               >
                 Lets talk
               </button>

@@ -1,27 +1,18 @@
 "use client";
 
-import SearchBar from "@/components/ui/SearchBar";
-import {
-  FcBusinessman,
-  FcCurrencyExchange,
-  FcCustomerSupport,
-  FcGlobe,
-  FcLike,
-  FcOnlineSupport,
-} from "react-icons/fc";
-import TopCountryTimeBar from "@/components/layout/TopCountryTimeBar";
 import Navigation from "@/components/layout/Navigation";
+import TopCountryTimeBar from "@/components/layout/TopCountryTimeBar";
+import SearchBar from "@/components/ui/SearchBar";
 import Image from "next/image";
+import { FcCustomerSupport } from "react-icons/fc";
 
-import { Country } from "@/models/Master/Country";
-import Link from "next/link";
-import { useSession } from "next-auth/react";
-import SignInComponentUI from "@/components/ui/SigninSignOutUI";
 import AuthModal from "@/components/user/Auth/AuthModal";
-import { Ports } from "@/models/Master/Ports";
+import { Country } from "@/models/Master/Country";
 import { PortMapping } from "@/models/Master/PortMapping";
-import { Fragment, useState } from "react";
+import { Ports } from "@/models/Master/Ports";
 import { Dialog, Transition } from "@headlessui/react";
+import Link from "next/link";
+import { Fragment, useState } from "react";
 
 interface Props {
   locations: Country[];
@@ -86,11 +77,9 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                 >
                   <div className="support">
                     {/*<i className="fa fa-headphones" />*/}
-                    <h2>
-                      <FcCustomerSupport className="m-2" />
-                    </h2>
+                    <FcCustomerSupport className="m-2 " size={40} />
                     <div className="currencydropdown">
-                      <button className="currencydropbtn supportbtn">
+                      <button className="currencydropbtn supportbtn ">
                         Support
                         <br />
                         +49 471 9731 9003
@@ -174,9 +163,8 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                     </div>
                   </div>
                 </div>
-                <div className="col-xl-4 col-lg-4 col-md-3 col-sm-12 col-12">
+                {/* <div className="col-xl-4 col-lg-4 col-md-3 col-sm-12 col-12">
                   <div className="support">
-                    {/*<i className="fa fa-heart" />*/}
                     <h2>
                       <FcLike className="m-2" />
                     </h2>
@@ -188,11 +176,13 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                       </button>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 <AuthModal
-                  countryList={locations}
-                  portList={ports}
-                  portMapping={portMapping}
+                  countryList={[]}
+                  portList={[]}
+                  portMapping={undefined} // countryList={locations}
+                  // portList={ports}
+                  // portMapping={portMapping}
                 />
 
                 {/*<SignInComponentUI/>*/}

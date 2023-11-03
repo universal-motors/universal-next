@@ -1,19 +1,22 @@
 "use client";
-import { Dispatch, SetStateAction, useState } from "react";
-import { Button } from "@tremor/react";
+import { Dispatch, SetStateAction } from "react";
 
 interface Props {
   totalPost: number;
   currentPage: number;
   postPerPage: number;
   setCurrentPage: Dispatch<SetStateAction<number>>;
+  setSort: Dispatch<SetStateAction<number>>;
+  isTruck: boolean;
 }
 
 export default function PaginationComponent({
   totalPost,
   currentPage,
   postPerPage,
+  isTruck,
   setCurrentPage,
+  setSort,
 }: Props) {
   const totalPages = Math.ceil(totalPost / postPerPage);
   let pageNumbers: any = [];
@@ -69,14 +72,42 @@ export default function PaginationComponent({
             </a>
           </div>
           <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
-            <div>
+            <div className="flex gap-4">
               <p className="text-sm text-gray-700">
                 Showing <span className="font-medium">Page {currentPage}</span>{" "}
                 of <span className="font-medium"></span> {totalPages}
                 <span className="font-medium"> for {totalPost}</span> results
               </p>
             </div>
-            <div>
+            <div className="flex gap-5">
+              <div className="flex gap-4 items-center">
+                <p>Sort by: </p>
+                <select
+                  className="w-auto rounded-md bg-white px-6 py-2 !text-[9px] sm:!text-sm font-semibold text-blue-900 hover:bg-blue-100"
+                  aria-expanded="true"
+                  aria-haspopup="true"
+                  onChange={(e) => {
+                    setSort(Number(e.target.value));
+                  }}
+                >
+                  <option value={1}>
+                    {isTruck ? "Truck" : "Car "} Name - A to Z
+                  </option>
+                  <option value={2}>
+                    {isTruck ? "Truck" : "Car "} Name - Z to A
+                  </option>
+                  {/* <option value={3}>Model - A to Z</option>
+                  <option value={4}>Model - Z to A</option> */}
+                  <option value={5}> Year - Old to New</option>
+                  <option value={6}>Year - New to Old</option>
+                  <option value={7}>Mileage - Low to High</option>
+                  <option value={8}>Mileage - High to Low</option>
+                  <option value={9}>Engine(cc) - Low to High</option>
+                  <option value={10}>Engine(cc) - High to Low</option>
+                  <option value={11}>Price - Low to High</option>
+                  <option value={12}>Price - High to Low</option>
+                </select>
+              </div>
               <nav
                 className="isolate inline-flex -space-x-px rounded-md shadow-sm"
                 aria-label="Pagination"

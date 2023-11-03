@@ -1,14 +1,13 @@
 "use client";
-import { StockCars } from "@/models/StockCars";
 import { Country } from "@/models/Master/Country";
-import { Ports } from "@/models/Master/Ports";
-import { Switch } from "@headlessui/react";
-import { ChangeEvent, useState } from "react";
-import { PortMapping } from "@/models/Master/PortMapping";
 import { FreightCost } from "@/models/Master/FreightCost";
 import { InspectionCost } from "@/models/Master/InspectionCost";
-import classNames from "classnames";
+import { PortMapping } from "@/models/Master/PortMapping";
+import { Ports } from "@/models/Master/Ports";
 import PriceFormat from "@/utils/PriceFormat";
+import { Switch } from "@headlessui/react";
+import classNames from "classnames";
+import { ChangeEvent, useEffect, useState } from "react";
 
 interface Props {
   car: any;
@@ -75,7 +74,9 @@ export default function PriceCalculator({
       setinsurance(0);
     }
   };
-
+  useEffect(() => {
+    getTotalPrice();
+  }, [inspection, insurance, freightCharge]);
   const handleInspectionChange = () => {
     if (!onInspectionCost) {
       setEnablInspection(true);
@@ -107,10 +108,12 @@ export default function PriceCalculator({
         <div className="detaildark">
           <div className="row">
             {/*<Example car={car} countries={countries}/>*/}
-            <div className="col-md-5 col-sm-5 col-5 fob-price flex ">
-              <span className="mr-2">FOB Price:</span>
+            <div className="col-md-5 col-sm-5 col-5 fob-price flex items-center">
+              <span className="mr-2 !text-[9px] sm:!text-[16px]">
+                FOB Price:
+              </span>
               <select
-                className="w-auto rounded-md bg-white px-3 py-2 text-sm font-semibold text-blue-900 hover:bg-blue-100"
+                className="w-auto rounded-md bg-white px-3 py-2 !text-[9px] sm:!text-sm font-semibold text-blue-900 hover:bg-blue-100"
                 aria-expanded="true"
                 aria-haspopup="true"
               >
@@ -122,7 +125,7 @@ export default function PriceCalculator({
             </div>
 
             <div className="col-md-7 col-sm-7 col-7 carprice">
-              <dd className="mt-1  mr-10 text-3xl font-semibold leading-6 text-indigo-900">
+              <dd className="mt-1  mr-10 !text-[16px] sm:!text-3xl font-semibold leading-6 text-indigo-900">
                 <PriceFormat carPrice={car.price} />
               </dd>
               {/*@if (selectedCurrencyID == 0)*/}
@@ -145,14 +148,16 @@ export default function PriceCalculator({
             </div>
           </div>
           <hr />
-          <div className="flex flex-row">
-            <div className="inline-flex basis-1/2 m-2">
-              <span className="m-2 text-sm">Freight To : </span>
+          <div className="flex flex-row w-full">
+            <div className="flex !flex-col sm:!flex-row  basis-1/2 m-2">
+              <span className="m-2 text-sm !text-[9px] sm:!text-[15px]">
+                Freight To :{" "}
+              </span>
 
               <select
                 value={countryID}
                 onChange={handleCountryChange}
-                className="w-2/3  gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-blue-900 hover:bg-blue-100"
+                className="w-2/3  gap-x-1.5 rounded-md bg-white px-3 py-2 !text-[9px] sm:!text-sm font-semibold text-blue-900 hover:bg-blue-100"
                 aria-expanded="true"
                 aria-haspopup="true"
               >
@@ -165,12 +170,14 @@ export default function PriceCalculator({
                 ))}
               </select>
             </div>
-            <div className="inline-flex  basis-1/2 m-2">
-              <span className="m-2 text-sm">Port/City :</span>
+            <div className="flex !flex-col sm:!flex-row  basis-1/2 m-2">
+              <span className="m-2 text-sm !text-[9px] sm:!text-[15px]">
+                Port/City :
+              </span>
               <select
                 value={portID}
                 onChange={handlePortChange}
-                className="w-2/3  gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-blue-900 hover:bg-blue-100"
+                className="w-2/3  gap-x-1.5 rounded-md  !text-[9px] sm:!text-sm bg-white px-3 py-2 text-sm font-semibold text-blue-900 hover:bg-blue-100"
                 aria-expanded="true"
                 aria-haspopup="true"
               >
@@ -188,20 +195,25 @@ export default function PriceCalculator({
 
           <div className="flex flex-row">
             <div className="text-center basis-1/3 m-2">
-              <span className="m-2 text-sm">Freight Charges </span>
+              <span className="m-2 !text-[9px] sm:!text-sm">
+                Freight Charges{" "}
+              </span>
               <dd className="mt-1 text-lg font-semibold leading-6 text-indigo-900">
                 <PriceFormat carPrice={freightCharge} />
               </dd>
             </div>
             <div className="text-center basis-1/3">
-              <Switch.Group as="div" className="flex items-center mt-2">
+              <Switch.Group
+                as="div"
+                className="flex !flex-col sm:!flex-row items-center mt-2"
+              >
                 <Switch
                   checked={onInsuranceCost}
                   // disabled={portID==0}
                   onChange={handleInsuranceChange}
                   className={classNames(
-                    onInsuranceCost ? "bg-indigo-600" : "bg-gray-200",
-                    "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2"
+                    onInsuranceCost ? "bg-[#221C63]" : "bg-gray-200",
+                    "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#221C63] focus:ring-offset-2"
                   )}
                 >
                   <span
@@ -213,7 +225,7 @@ export default function PriceCalculator({
                   />
                 </Switch>
                 <Switch.Label as="span" className="ml-3 text-sm ">
-                  <span className="font-medium text-gray-900">
+                  <span className="!text-[9px] sm:!text-sm font-medium text-gray-900">
                     Insurance Cost
                   </span>{" "}
                 </Switch.Label>
@@ -225,14 +237,17 @@ export default function PriceCalculator({
               )}
             </div>
             <div className="text-center basis-1/3">
-              <Switch.Group as="div" className="flex items-center mt-2">
+              <Switch.Group
+                as="div"
+                className="flex items-center  !flex-col sm:!flex-row  mt-2"
+              >
                 <Switch
                   checked={onInspectionCost}
                   // disabled={countryID==0}
                   onChange={handleInspectionChange}
                   className={classNames(
-                    onInspectionCost ? "bg-indigo-600" : "bg-gray-200",
-                    "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2"
+                    onInspectionCost ? "bg-[#221C63]" : "bg-gray-200",
+                    "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#221C63] focus:ring-offset-2"
                   )}
                 >
                   <span
@@ -244,7 +259,7 @@ export default function PriceCalculator({
                   />
                 </Switch>
                 <Switch.Label as="span" className="ml-3 text-sm">
-                  <span className="font-medium text-gray-900">
+                  <span className=" !text-[9px] sm:!text-sm font-medium text-gray-900">
                     Inspection Cost
                   </span>{" "}
                 </Switch.Label>
@@ -278,19 +293,19 @@ export default function PriceCalculator({
                 {/*<h5 className="tprice">TOTAL PRICE (£)</h5>*/}
                 {/*{'}'}*/}
 
-                <button
+                {/* <button
                   type="button"
                   onClick={getTotalPrice}
-                  className="inline-block rounded bg-success px-6 pb-2 pt-2.5 text-lg font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#14a44d] transition duration-150 ease-in-out hover:bg-success-600 hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:bg-success-600 focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] focus:outline-none focus:ring-0 active:bg-success-700 active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.3),0_4px_18px_0_rgba(20,164,77,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]"
+                  className="inline-block rounded bg-[#221C63] px-6 pb-2 pt-2.5 text-lg font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#221C63] transition duration-150 ease-in-out  focus:bg-[#221C63]  focus:outline-none focus:ring-0 active:bg-success-700  dark:shadow-[0_4px_9px_-4px_rgba(20,164,77,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(20,164,77,0.2),0_4px_18px_0_rgba(20,164,77,0.1)]"
                 >
                   Get TOTAL PRICE
-                </button>
+                </button> */}
               </div>
             </div>
             <div className="col-lg-6 col-md-6">
-              <div className="p-2  bg-gradient-to-r from-cyan-500 to-blue-500 shadow-lg rounded-2xl">
+              <div className="p-2  bg-transparent border-2 border-[#221C63]  shadow-lg rounded-2xl">
                 {totalPrice != 0 && (
-                  <dd className="mt-1 shadow-2xl text-2xl font-semibold leading-6 text-cyan-50">
+                  <dd className="mt-1 shadow-2xl !text-[16px] sm:!text-2xl font-semibold leading-6 text-[#221C63]">
                     <PriceFormat carPrice={totalPrice} />
                   </dd>
                 )}

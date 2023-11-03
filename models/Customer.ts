@@ -1,44 +1,43 @@
 export interface CustomerSignUp {
-  username: string;
-  firstname: string;
+  customerCode: string;
+  name: string;
   lastname: string;
-  password: string;
-  confirmPassword: string;
-  token: string;
-  email: string;
-  phoneNumber: string;
-  roles: string[];
+  companyName: string;
+  address: string;
   countryID: number;
   preferredPortId: number;
+  email: string;
+  phone: string;
+  // roles: string[];
 }
 
-export interface UserFormValues {
-  username: string;
-  email: string;
-  password: string;
-}
+// export interface UserFormValues {
+//   username: string;
+//   email: string;
+//   password: string;
+// }
 
 export interface Customer {
-  CustomerId: number;
-  CustomerCode: string;
-  TitleId: number;
-  Name: string;
-  LastName: string;
-  CompanyName: string;
-  Address: string;
-  CountryId: number;
-  PreferredPortId: number;
-  Email: string;
-  Email2: string;
-  Email3: string;
-  Phone: string;
-  Phone2: string;
-  Phone3: string;
-  IsAssigned: boolean;
-  AssignedAgentId: number;
-  IsTrxAccActive: boolean;
+  customerId: number;
+  customerCode: string;
+  titleId: number;
+  name: string;
+  lastName: string;
+  companyName: string;
+  address: string;
+  countryId: number;
+  preferredPortId: number;
+  email: string;
+  email2: string;
+  email3: string;
+  phone: string;
+  phone2: string;
+  phone3: string;
+  isAssigned: boolean;
+  assignedAgentId: number;
+  isTrxAccActive: boolean;
   isActive: boolean;
-  CreatedOn: string;
+  createdOn: string;
 }
 
 export interface ConsigneeCourier {
