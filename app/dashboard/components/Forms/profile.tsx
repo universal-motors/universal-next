@@ -2,16 +2,20 @@
 import agent from "@/api/agent";
 import Input from "@/components/Input";
 import { PortMapping } from "@/models/Master/PortMapping";
+import { useUserStore } from "@/store/store";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillDelete } from "react-icons/ai";
+import { toast } from "react-toastify";
 
 export default function ProfileForm() {
   const [countries, setCounties] = useState<any>([]);
+  const { user, update: updateData } = useUserStore();
   const [portMapping, setPortMapping] = useState<any>([]);
   const [ports, setPorts] = useState<any>([]);
+  const [update, setUpdate] = useState(false);
   // let countries: any;
   // let portMapping: any;
   // let ports: any;
@@ -22,7 +26,6 @@ export default function ProfileForm() {
     setCounties(countries.data);
     setPortMapping(portMapping.data);
     setPorts(ports.data);
-    console.log(portMapping.data, "<--");
   };
   useEffect(() => {
     getData();
@@ -36,9 +39,7 @@ export default function ProfileForm() {
   const addEmail = () => {
     setEmails([...Emails, ""]);
   };
-  console.log("-->", countryID);
   const handleCountryChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    console.log(event.target.value, portMapping);
     const destinationID = parseInt(event.target.value);
     setCountryID(destinationID);
     setPortID(0);
@@ -47,7 +48,16 @@ export default function ProfileForm() {
     );
     setMappedPorts(ports);
   };
-
+  const countryChange = (event: number | string) => {
+    const destinationID = Number(event);
+    const ports = portMapping.filter(
+      (port: { countryID: number }) => port.countryID == destinationID
+    );
+    setMappedPorts(ports);
+  };
+  useEffect(() => {
+    countryChange(countryID);
+  }, [ports]);
   const handlePortChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const changedPortID = parseInt(event.target.value);
     setPortID(changedPortID);
@@ -89,21 +99,9 @@ export default function ProfileForm() {
     countryID: number;
     preferredPortId: string;
   };
-  // interface CustomerSignUp {
-  //   customerCode: string;
-  //   name: string;
-  //   lastname: string;
-  //   companyName: string;
-  //   address: string;
-  //   countryID: number;
-  //   preferredPortId: number;
-  //   email: string;
-  //   phoneNumber: string;
-  //   // roles: string[];
-
-  // }
   const form = useForm<TProfile>();
   const { register, control, formState, setValue, handleSubmit } = form;
+  const { isSubmitting } = formState;
   useEffect(() => {
     if (session && session?.user) {
       setValue("name", String(session.user?.name));
@@ -112,10 +110,6 @@ export default function ProfileForm() {
     }
   }, [status]);
 
-  const generateCustomerCode = async (countryID: number) => {
-    return await agent.LoadData.generateCustomerCode(countryID);
-  };
-  // console.log(generateCustomerCode(157))
   const checkEmail = async (email: string) => {
     try {
       let res = await axios({
@@ -123,12 +117,44 @@ export default function ProfileForm() {
         url: `https://api20230805195433.azurewebsites.net/api/customers/Exists/${email}`,
         // data: reqBody
       });
-      console.log("check--->", res);
+      if (res && res.data) {
+        setUpdate(true);
+        try {
+          let res = await axios({
+            method: "get",
+            url: `https://api20230805195433.azurewebsites.net/api/customers/ByEmail/${email}/`,
+            // data: reqBody
+          });
+          updateData(res.data);
+          setValue("name", String(res.data.name));
+          setValue("companyName", String(res.data.companyName));
+          setValue("lastname", String(res.data.lastName));
+          setValue("preferredPortId", res.data.preferredPortId);
+          setValue("countryID", res.data.countryId);
+          setValue("address", res.data.address);
+          setValue("phoneNumber", res.data.phone);
+          setCountryID(res.data.countryId);
+          setPortID(res.data.preferredPortId);
+          setPhones([res.data.phone]);
+          countryChange(res.data.countryId);
+          // let data = res.data;
+          // return data;
+        } catch (error: any) {
+          if (
+            error &&
+            error.message === "Request failed with status code 404"
+          ) {
+            console.log(error.message);
+          } // this is the main part. Use the response property from the error object
+          // return error.response;
+        }
+      }
       // let data = res.data;
       // return data;
     } catch (error: any) {
       if (error && error.message === "Request failed with status code 404") {
         console.log(error.message);
+        setUpdate(false);
       } // this is the main part. Use the response property from the error object
 
       // return error.response;
@@ -146,26 +172,34 @@ export default function ProfileForm() {
     <div className="w-[90%] mx-auto mt-7">
       <form
         onSubmit={handleSubmit(async (data) => {
+          if (update) {
+            return toast.info(
+              "Sorry, the update feature is currently unavailable."
+            );
+          }
           try {
             let res = await axios({
               method: "get",
               url: ` https://api20230805195433.azurewebsites.net/api/customers/GenerateCustomerCode/${countryID}`,
               // data: reqBody
             });
-            console.log(res.data);
-            console.log({
-              ...data,
-              customerCode: res.data,
-              email: Emails[0],
-              phoneNumber: Phones[0],
-            });
+            // console.log({
+            //   ...data,
+            //   customerCode: res.data,
+            //   email: Emails[0],
+            //   phoneNumber: Phones[0],
+            // });
             await agent.LoadData.register({
               ...data,
               customerCode: res.data,
               email: Emails[0],
               phone: Phones[0],
               preferredPortId: portID,
+              countryID: countryID,
             });
+            toast.success(
+              `Account ${update ? "Updated" : "Created"} Successfully`
+            );
             // let data = res.data;
             // return data;
           } catch (error: any) {
@@ -240,6 +274,7 @@ export default function ProfileForm() {
               Country
             </label>
             <select
+              disabled={update}
               value={countryID}
               onChange={handleCountryChange}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -263,6 +298,7 @@ export default function ProfileForm() {
               Port
             </label>
             <select
+              disabled={update}
               value={portID}
               onChange={handlePortChange}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -297,6 +333,7 @@ export default function ProfileForm() {
                 >
                   <Input
                     value={Emails[i]}
+                    disabled={true}
                     label={i >= 1 ? "Email " + (i + 1) : "Email"}
                     onChange={(e: any) => {
                       updateEmail(i, e.target.value);
@@ -318,7 +355,7 @@ export default function ProfileForm() {
                 </div>
               );
             })}
-            {Emails && Emails.length < 3 && (
+            {update && Emails && Emails.length < 3 && (
               <div
                 onClick={addEmail}
                 className=" cursor-pointer text-white mt-2 bg-[#221C63] hover:bg-[#857de0] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -358,7 +395,7 @@ export default function ProfileForm() {
                 </div>
               );
             })}
-            {Phones && Phones.length < 3 && (
+            {update && Phones && Phones.length < 3 && (
               <div
                 onClick={addPhone}
                 className=" cursor-pointer text-white mt-2 bg-[#221C63] hover:bg-[#857de0] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -369,12 +406,34 @@ export default function ProfileForm() {
           </div>
         </div>
         <div className="w-full flex justify-center my-10">
-          <button
-            type="submit"
-            className=" text-white bg-[#221C63] hover:bg-[#857de0] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            Update
-          </button>
+          {isSubmitting ? (
+            <div role="status">
+              <svg
+                aria-hidden="true"
+                className="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                viewBox="0 0 100 101"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                  fill="currentFill"
+                />
+              </svg>
+              <span className="sr-only">Loading</span>
+            </div>
+          ) : (
+            <button
+              type="submit"
+              className=" text-white bg-[#221C63] hover:bg-[#857de0] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              {update ? "Update" : "Add"}
+            </button>
+          )}
         </div>
       </form>
     </div>

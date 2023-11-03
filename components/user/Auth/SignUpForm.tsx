@@ -112,9 +112,9 @@ function SignUp({ countries, ports, portMapping, setSignIn }: Props) {
                 required
               />
               <input
-                {...register("phoneNumber", {
-                  required: "Phone number is required",
-                })}
+                // {...register("phoneNumber", {
+                //   required: "Phone number is required",
+                // })}
                 placeholder="Phone Number"
                 defaultValue={countryCode}
                 className="border rounded p-2 py-3 w-[49%]"

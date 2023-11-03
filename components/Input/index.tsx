@@ -7,6 +7,7 @@ type Prop = {
   value?: string | number;
   defaultValue?: string | number;
   register?: any;
+  disabled?: Boolean;
 };
 export default function Input({
   onChange,
@@ -16,6 +17,7 @@ export default function Input({
   placeholder,
   value,
   defaultValue,
+  disabled,
   register,
 }: Prop) {
   return (
@@ -27,6 +29,7 @@ export default function Input({
         {label}
       </label>
       <input
+        disabled={disabled}
         defaultValue={defaultValue}
         value={value}
         onChange={onChange}

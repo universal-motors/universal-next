@@ -115,38 +115,40 @@ export default function SearchBar() {
           </div>
         </div>
         <div className="relative w-full">
-          <input
-            placeholder="Stock Code, Listing Title, Year of Listing, Model Code ..."
-            value={searchKey}
-            name="searchKey"
-            onChange={(e) => setSearchKey(e.target.value)}
-            type="search"
-            id="search-dropdown"
-            className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-300  dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-            required
-          />
-          <button
-            onClick={onHandleSubmit}
-            type="submit"
-            className="absolute top-0 right-0 p-2.5 text-sm font-medium h-full text-white bg-[#FFB703] rounded-r-lg border border-blue-700 hover:bg-[#ffcf55]  dark:bg-[#ffb8038a] dark:hover:bg-[#ffb8038a] "
-          >
-            <svg
-              className="w-4 h-4"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 20 20"
+          <form onSubmit={onHandleSubmit}>
+            <input
+              placeholder="Stock Code, Listing Title, Year of Listing, Model Code ..."
+              value={searchKey}
+              name="searchKey"
+              onChange={(e) => setSearchKey(e.target.value)}
+              type="search"
+              id="search-dropdown"
+              className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-300  dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+              required
+            />
+            <button
+              onClick={onHandleSubmit}
+              type="submit"
+              className="absolute top-0 right-0 p-2.5 text-sm font-medium h-full text-white bg-[#FFB703] rounded-r-lg border border-blue-700 hover:bg-[#ffcf55]  dark:bg-[#ffb8038a] dark:hover:bg-[#ffb8038a] "
             >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-              />
-            </svg>
-            <span className="sr-only">Search</span>
-          </button>
+              <svg
+                className="w-4 h-4"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                />
+              </svg>
+              <span className="sr-only">Search</span>
+            </button>
+          </form>
         </div>
       </div>
     </div>

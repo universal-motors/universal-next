@@ -1,32 +1,31 @@
-import { Customer } from "@/models/Customer";
 import { makeAutoObservable } from "mobx";
 
 interface ResponseObject {
   token: string;
 }
 export default class UserStore {
-  user: Customer = {
-    CustomerId: 0,
-    CustomerCode: "",
-    TitleId: 0,
-    Name: "",
-    LastName: "",
-    CompanyName: "",
-    Address: "",
-    CountryId: 0,
-    PreferredPortId: 0,
-    Email: "",
-    Email2: "",
-    Email3: "",
-    Phone: "",
-    Phone2: "",
-    Phone3: "",
-    IsAssigned: false,
-    AssignedAgentId: 0,
-    IsTrxAccActive: false,
-    isActive: false,
-    CreatedOn: "",
-  };
+  // user: Customer = {
+  //   // CustomerId: 0,
+  //   // CustomerCode: "",
+  //   TitleId: 0,
+  //   Name: "",
+  //   LastName: "",
+  //   CompanyName: "",
+  //   Address: "",
+  //   CountryId: 0,
+  //   PreferredPortId: 0,
+  //   Email: "",
+  //   Email2: "",
+  //   Email3: "",
+  //   Phone: "",
+  //   Phone2: "",
+  //   Phone3: "",
+  //   IsAssigned: false,
+  //   AssignedAgentId: 0,
+  //   IsTrxAccActive: false,
+  //   isActive: false,
+  //   CreatedOn: "",
+  // };
   token: string | null = null;
   apploaded: boolean = false;
   loggedIn: boolean = true;
