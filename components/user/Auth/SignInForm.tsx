@@ -1,7 +1,6 @@
 "use client";
 
 import { CustomerSignUp } from "@/models/Customer";
-import { useStore } from "@/store/store";
 import { Button } from "@tremor/react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -22,7 +21,7 @@ function SignInForm({ signin, setSignIn }: Props) {
   const [submit, setSubmit] = useState<boolean>(false);
 
   const router = useRouter();
-  const { userStore } = useStore();
+  // const { userStore } = useStore();
   //var loading = false;
   const { data: session } = useSession();
   const form = useForm<CustomerSignUp>();

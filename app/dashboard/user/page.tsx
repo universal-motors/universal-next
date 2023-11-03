@@ -1,14 +1,12 @@
 "use client";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/options";
-import { useStore } from "@/store/store";
+// import { useStore } from "@/store/store";
 
 export default async function Page() {
   //const session = await getServerSession(options)
-  const { userStore } = useStore();
+  // const { userStore } = useStore();
   return (
     <>
-      {userStore.isLoggedIn ? (
+      {true ? (
         "Test"
       ) : (
         <div className="bg-gradient-to-r from-cyan-500 to-blue-500 w-full h-screen m-auto flex items-center justify-center">
