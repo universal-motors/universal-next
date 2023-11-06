@@ -61,11 +61,11 @@ const parseUserResponse = async <Customer>(
 };
 
 const requestNoCache = {
-  get: async <T>(url:string) => {
-    const response = await fetch(baseURL + url, {cache: 'no-store'});
+  get: async <T>(url: string) => {
+    const response = await fetch(baseURL + url, { cache: "no-store" });
     return parseResponse<T>(response);
-  }
-}
+  },
+};
 
 const request = {
   get: async <T>(url: string) => {
@@ -114,7 +114,8 @@ const LoadData = {
     ),
   machineryList: () =>
     request.get<Machinery[]>("machinery?pageNumber=1&pageSize=50"),
-  homepageStockList: () => requestNoCache.get<StockCars[]>("carstock/homepage_cars"),
+  homepageStockList: () =>
+    requestNoCache.get<StockCars[]>("carstock/homepage_cars"),
   //test: () => await fetch(baseURL+"carstock/homepage_cars", {cache: 'no-store'});
   stock: (stockID: number) => request.get<StockCars>(`carstock/${stockID}`),
   truck: (stockID: number) => request.get<Trucks>(`trucks/${stockID}`),

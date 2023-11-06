@@ -2,6 +2,7 @@ import agent from "@/api/agent";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import SidebarItems from "@/components/sidebarItems";
+import "react-phone-number-input/style.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 export const metadata = {

@@ -10,7 +10,9 @@ import AuthModal from "@/components/user/Auth/AuthModal";
 import { Country } from "@/models/Master/Country";
 import { PortMapping } from "@/models/Master/PortMapping";
 import { Ports } from "@/models/Master/Ports";
+import { useUserStore } from "@/store/store";
 import { Dialog, Transition } from "@headlessui/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { Fragment, useState } from "react";
 
@@ -28,7 +30,9 @@ const currentYear = new Date().getFullYear();
 function Header({ locations, ports, portMapping, stockCount }: Props) {
   //  const { data: session } = useSession()
   let [isOpen, setIsOpen] = useState(false);
-
+  const [dropdown, setDropdown] = useState(false);
+  const { status, data: session } = useSession();
+  const { deleteData } = useUserStore();
   function closeMobileSearchModal() {
     setIsOpen(false);
   }
@@ -443,18 +447,80 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                     width={25}
                   />
                 </Link>
-                <Link href="#">
-                  <img
-                    src="https://img.icons8.com/fluency-systems-regular/2x/user.png"
-                    alt=""
-                    width={25}
-                  />
-                </Link>
+                <div className="pt-[6px]">
+                  {status === "unauthenticated" ? (
+                    <img
+                      src="https://img.icons8.com/fluency-systems-regular/2x/user.png"
+                      alt=""
+                      onClick={() => signIn("google")}
+                      width={25}
+                    />
+                  ) : (
+                    <>
+                      <img
+                        src={
+                          session?.user?.image ??
+                          "https://img.icons8.com/fluency-systems-regular/2x/user.png"
+                        }
+                        alt=""
+                        onClick={() => setDropdown(!dropdown)}
+                        width={25}
+                        className="rounded-full"
+                      />
+                    </>
+                  )}
+                </div>
 
                 {/* <Link href="#support"><i class="fa fa-headphones"></i></Link>
                     <Link href="#"><i class="fa fa-heart-o"></i></Link>
                     <Link href="#customer"><i class="fa fa-user-o"></i></Link> */}
               </div>
+              {status !== "unauthenticated" && (
+                <div
+                  id="dropdownAvatarName"
+                  className={`${
+                    !dropdown && "hidden"
+                  } z-50 absolute right-0 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}
+                >
+                  <div className="px-1 py-3 text-sm !text-gray-900 ">
+                    <div className="font-medium text-center ">
+                      {session?.user?.name}
+                    </div>
+                    <div className="truncate text-center text-[10px]">
+                      {session?.user?.email}
+                    </div>
+                  </div>
+
+                  <div className="py-2">
+                    <Link
+                      href="/dashboard"
+                      className="text-center block px-4 py-2 text-sm !text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    >
+                      Dashboard
+                    </Link>
+                  </div>
+                  <div className="py-2">
+                    <Link
+                      href="/"
+                      className="text-center block px-4 py-2 text-sm !text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    >
+                      Favourites
+                    </Link>
+                  </div>
+
+                  <div className="py-2 cursor-pointer">
+                    <p
+                      onClick={() => {
+                        signOut();
+                        deleteData();
+                      }}
+                      className="block px-4 py-2  text-center text-sm !text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    >
+                      Sign out
+                    </p>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
