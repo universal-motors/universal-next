@@ -246,6 +246,62 @@ async function registertUser(user: CustomerSignUp) {
     console.log(e);
   }
 }
+
+async function addFavourite(fav: CustomerSignUp) {
+  try {
+    const response = await fetch(
+        "https://api20230805195433.azurewebsites.net/api/customers/FavStock/Add", //agent.basUrl+'authentication/',
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(fav),
+        }
+    );
+    console.log(response);
+    if (!response.ok) {
+      throw new Error(
+          "Something went wrong, we cant register you at the moment"
+      );
+    }
+
+    // await signIn("credentials", {
+    //   username: user.username,
+    //   password: user.password,
+    // });
+
+    console.log("Fav added Successfully");
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+async function removeFavourite(fav: CustomerSignUp) {
+  try {
+    const response = await fetch(
+        "https://api20230805195433.azurewebsites.net/api/customers/FavStock/Remove", //agent.basUrl+'authentication/',
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(fav),
+        }
+    );
+    console.log(response);
+    if (!response.ok) {
+      throw new Error(
+          "Something went wrong, we cant register you at the moment"
+      );
+    }
+
+    // await signIn("credentials", {
+    //   username: user.username,
+    //   password: user.password,
+    // });
+
+    console.log("Fav removed Successfully");
+  } catch (e) {
+    console.log(e);
+  }
+}
 //
 // async function getUser(token: string): Promise<Customer> {
 //   const currentUser = await fetch(
