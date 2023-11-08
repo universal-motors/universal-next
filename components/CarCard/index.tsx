@@ -1,5 +1,8 @@
 "use client";
+import { addFavourite, removeFavourite } from "@/api/agent";
+import { useUserStore } from "@/store/store";
 import PriceFormat from "@/utils/PriceFormat";
+import { signIn } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -12,6 +15,7 @@ type Prop = {
 export default function CarCard({ car, href }: Prop) {
   const [fav, setFav] = useState(false);
   const router = useRouter();
+  const { user } = useUserStore();
   return (
     <div className="transition duration-300 ease-in-out hover:scale-105 my-10 flex min-w-[220px] w-[230px] flex-col overflow-hidden border border-gray-100 bg-[#F1F5F9] shadow-md p-0 rounded-md">
       <div className="relative w-full h-48">
@@ -30,7 +34,26 @@ export default function CarCard({ car, href }: Prop) {
         />
 
         <FaHeart
-          onClick={() => setFav(!fav)}
+          onClick={() => {
+            if (user && user.customerId) {
+              if (fav) {
+                removeFavourite({
+                  customerId: user.customerId,
+                  stockId: car.stockId,
+                });
+                setFav(!fav);
+                return;
+              }
+              addFavourite({
+                customerId: user.customerId,
+                stockId: car.stockId,
+              });
+              setFav(!fav);
+              return;
+            }
+            signIn("google");
+            console.log("Not Logged In");
+          }}
           size={"24px"}
           style={{
             position: "absolute",
