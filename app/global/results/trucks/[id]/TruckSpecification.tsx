@@ -1,7 +1,6 @@
-import { StockCars } from "@/models/StockCars";
+import NumberFormat from "@/lib/utils";
 import { Country } from "@/models/Master/Country";
 import { Trucks } from "@/models/Trucks";
-import NumberFormat from "@/lib/utils";
 
 interface Props {
   car: Trucks;
@@ -12,8 +11,8 @@ export default function TruckSpecification({ car, location }: Props) {
     <>
       <div className="row specsrow">
         <div className="col-sm specs">
-          <h4>Mileage</h4>
-          <span className="label-text   items-center rounded-md ml-5">
+          <h4 className="!text-[9px] sm:!text-base font-bold">Mileage</h4>
+          <span className="label-text   items-center rounded-md ml-5 !text-[9px] sm:!text-base ">
             <img
               decoding="async"
               src="/assets/images/kmsDriven.svg"
@@ -24,8 +23,8 @@ export default function TruckSpecification({ car, location }: Props) {
             {NumberFormat(car.mileage)} Kms
           </span>
         </div>
-        <div className="col-sm specs">
-          <h4>YEAR</h4>
+        <div className="col-sm specs  !text-[9px] sm:!text-base ">
+          <h4 className="!text-[9px] sm:!text-base ">YEAR</h4>
           <span className="label-text   items-center rounded-md ml-5">
             <img
               decoding="async"
@@ -39,8 +38,8 @@ export default function TruckSpecification({ car, location }: Props) {
         </div>
 
         {car.engineSize != "0" && (
-          <div className="col-sm specs">
-            <h4>Engine</h4>
+          <div className="col-sm specs  !text-[9px] sm:!text-base ">
+            <h4 className="!text-[9px] sm:!text-base ">Engine</h4>
             <span className="label-text  items-center rounded-md ml-5">
               <img
                 decoding="async"
@@ -54,8 +53,8 @@ export default function TruckSpecification({ car, location }: Props) {
           </div>
         )}
         <div className="col-sm specs">
-          <h4>Axle</h4>
-          <span className="label-text  items-center rounded-md ml-5">
+          <h4 className="!text-[9px] sm:!text-base ">Axle</h4>
+          <span className="label-text  items-center rounded-md ml-5 !text-[9px] sm:!text-base ">
             <img
               decoding="async"
               src="/assets/images/transmission.svg"
@@ -67,13 +66,13 @@ export default function TruckSpecification({ car, location }: Props) {
           </span>
         </div>
         <div className="col-sm specs">
-          <h4>Country</h4>
-          <span className="label-text  text-center items-center rounded-md ml-5">
+          <h4 className="!text-[9px] sm:!text-base ">Country</h4>
+          <span className="label-text  text-center items-center rounded-md ml-5 !text-[9px] sm:!text-base ">
             <img
               decoding="async"
               src={`/assets/images/flags/${location?.slug}.svg`}
               loading="eager"
-              className="h-8 mx-auto"
+              className="h-6 sm:h-8 mx-auto"
             />
             <br />
             {car.locationName}{" "}

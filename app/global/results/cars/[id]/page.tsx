@@ -91,7 +91,6 @@ export default async function CarDetailed({ params }: Props) {
                           </span>
                         </div>
                       </div>
-
                       <hr />
 
                       <h4>

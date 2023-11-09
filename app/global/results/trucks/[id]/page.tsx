@@ -1,12 +1,9 @@
-import CarDetailedSlideshow from "@/app/global/results/cars/[id]/CarDetailedSlideshow";
-import StockSpecification from "@/app/global/results/cars/[id]/StockSpecification";
-import StockKeyInformation from "@/app/global/results/cars/[id]/StockKeyInformation";
-import PriceCalculator from "@/app/global/results/cars/[id]/PriceCalculator";
 import agent from "@/api/agent";
-import ContactUs from "@/components/pages/contact/ContactUs";
+import CarDetailedSlideshow from "@/app/global/results/cars/[id]/CarDetailedSlideshow";
+import PriceCalculator from "@/app/global/results/cars/[id]/PriceCalculator";
 import TruckKeyInformation from "@/app/global/results/trucks/[id]/TruckKeyInformation";
 import TruckSpecification from "@/app/global/results/trucks/[id]/TruckSpecification";
-import { Trucks } from "@/models/Trucks";
+import ContactUs from "@/components/pages/contact/ContactUs";
 import DescriptionUI from "@/components/ui/DescriptionUI";
 
 interface Props {
@@ -64,7 +61,7 @@ export default async function CarDetailed({ params }: Props) {
                     <h1 className="mobicar carname">
                       {Stock.data?.listingTitle}
                     </h1>
-                    <div className="col-lg-6 col-md-6 detail-leftsection">
+                    <div className="col-lg-6  detail-leftsection">
                       <div className="row">
                         <div id="wrap" className="container-fluid">
                           <div className="row">
@@ -85,20 +82,20 @@ export default async function CarDetailed({ params }: Props) {
                         <DescriptionUI description={Stock.data.description} />
                       </div>
                     </div>
-                    <div className="col-lg-6 col-md-6">
+                    <div className="col-lg-6 ">
                       <h1 className="pccar carname">
                         {Stock.data?.listingTitle}
                       </h1>
-                      <div className="col-md-4 col-sm-4 col-4">
-                        <div className="stock">
-                          <span className="flex items-center gap-x-1 bg-red-100 px-2 py-1 font-medium text-red-700">
+                      <div className="col-12">
+                        <div className="stock w-56">
+                          <span className="flex items-center gap-x-1 bg-[#f1f5f9] px-2 py-1 font-medium text-[#221C63] border-[1px] border-[#221C63] rounded-xl my-2">
                             Stock ID :
                             <img
                               className="h-6 m-2"
                               src={`/assets/images/flags/${InventoryLocation?.slug}.svg`}
                               alt={InventoryLocation?.slug}
                             />
-                            {Stock.data?.stockCode}
+                            {Stock.data.stockCode}
                           </span>
                         </div>
                       </div>
