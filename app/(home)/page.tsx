@@ -1,8 +1,8 @@
 import agent from "@/api/agent";
+import SidebarSlider from "@/components/SidebarSlider";
 import HomePageCarListings from "@/components/cars/HomePageCarListings";
 import HomeUI from "@/components/ui/HomeUI";
 import Link from "next/link";
-
 const GetStock = async () => {
   const result = await agent.LoadData.homepageStockList(); //db.tblCars.findMany({where: {IsActive:true}});
   return result.data;
@@ -290,6 +290,22 @@ export default async function Home() {
               </span>
             </Link>
           </ul>
+        </div>
+        <div>
+          <p className=" text-xl  md:text-2xl font-semibold leading-none tracking-tight text-gray-600 dark:text-white text-center mt-5 mb-3 ">
+            Testimonial
+          </p>
+          <SidebarSlider />
+          <div className="w-full flex justify-center mb-5">
+            <Link
+              className="transition duration-300 ease-in-out hover:scale-110"
+              href="/global/testimonial"
+            >
+              <span className="cursor-pointer text-sm rounded-lg text-center font-semibold leading-none tracking-tight text-gray-600 dark:text-white mt-2 mb-3 border-2 border-gray-600 px-2 py-1">
+                View All
+              </span>
+            </Link>
+          </div>
         </div>
         <div className="followme py-3">
           <h5>Follow Us:</h5>

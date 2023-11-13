@@ -174,6 +174,21 @@ export default function Navigation() {
                                 <Menu.Item>
                                   {({ active }) => (
                                     <Link
+                                      href="/global/testimonial"
+                                      className={classNames(
+                                        active
+                                          ? "bg-gray-100 text-gray-900"
+                                          : "text-gray-700",
+                                        "block px-4 py-2 text-sm"
+                                      )}
+                                    >
+                                      <span>Testimonials</span>
+                                    </Link>
+                                  )}
+                                </Menu.Item>
+                                <Menu.Item>
+                                  {({ active }) => (
+                                    <Link
                                       href="/global/about-universal-motors?page=sustainability-fundamental-policy"
                                       className={classNames(
                                         active
