@@ -78,8 +78,8 @@ export default async function CarDetailed({ params }: Props) {
                       <h1 className="pccar carname">
                         {Stock.data.listingTitle}
                       </h1>
-                      <div className="col-md-4 col-sm-4 col-12">
-                        <div className="stock">
+                      <div className="col-12">
+                        <div className="stock w-56">
                           <span className="flex items-center gap-x-1 bg-[#f1f5f9] px-2 py-1 font-medium text-[#221C63] border-[1px] border-[#221C63] rounded-xl my-2">
                             Stock ID :
                             <img
@@ -91,7 +91,6 @@ export default async function CarDetailed({ params }: Props) {
                           </span>
                         </div>
                       </div>
-
                       <hr />
 
                       <h4>

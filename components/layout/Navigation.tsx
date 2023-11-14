@@ -1,13 +1,13 @@
 "use client";
 
 import { Menu, Transition } from "@headlessui/react";
-import Link from "next/link";
-import classNames from "classnames";
-import { Fragment } from "react";
 import { Button } from "@tremor/react";
-import { TbSquareRoundedChevronDownFilled } from "react-icons/tb";
+import classNames from "classnames";
+import Link from "next/link";
+import { Fragment } from "react";
 import { CiBank } from "react-icons/ci";
 import { PiCreditCardBold } from "react-icons/pi";
+import { TbSquareRoundedChevronDownFilled } from "react-icons/tb";
 
 export default function Navigation() {
   return (
@@ -26,10 +26,10 @@ export default function Navigation() {
                           className="relative  inline-block text-left"
                         >
                           <div>
-                            <Menu.Button className="transition duration-300 ease-in-out hover:scale-110 inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                            <Menu.Button className="transition  duration-300 ease-in-out hover:scale-105 inline-flex w-full justify-center gap-x-1.5 rounded-md  px-1 xl:!px-3 py-1 xl:!py-2 !text-[10px] xl:!text-xs font-semibold !text-white border-2 !border-white hover:!border-[#9CA3AF] hover:!text-[#9CA3AF] shadow-sm ring-1 ring-inset ring-gray-300 ">
                               Need Help ?
                               <TbSquareRoundedChevronDownFilled
-                                className="-mr-1 h-5 w-5 text-gray-400"
+                                className="-mr-1 h-4 w-4 text-gray-400"
                                 aria-hidden="true"
                               />
                             </Menu.Button>
@@ -136,10 +136,10 @@ export default function Navigation() {
                           className="relative inline-block text-left"
                         >
                           <div>
-                            <Menu.Button className="transition duration-300 ease-in-out hover:scale-110 inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                            <Menu.Button className="transition duration-300 ease-in-out hover:scale-105 inline-flex w-full justify-center gap-x-1.5 rounded-md px-1 xl:!px-3 py-1 xl:!py-2 !text-[10px] xl:!text-xs font-semibold   !text-white border-2 !border-white hover:!border-[#9CA3AF] hover:!text-[#9CA3AF] shadow-sm ring-1 ring-inset ">
                               About Universal Motors
                               <TbSquareRoundedChevronDownFilled
-                                className="-mr-1 h-5 w-5 text-gray-400"
+                                className="-mr-1 h-4 w-4 text-gray-400"
                                 aria-hidden="true"
                               />
                             </Menu.Button>
@@ -168,6 +168,21 @@ export default function Navigation() {
                                       )}
                                     >
                                       <span>About Us?</span>
+                                    </Link>
+                                  )}
+                                </Menu.Item>
+                                <Menu.Item>
+                                  {({ active }) => (
+                                    <Link
+                                      href="/global/testimonial"
+                                      className={classNames(
+                                        active
+                                          ? "bg-gray-100 text-gray-900"
+                                          : "text-gray-700",
+                                        "block px-4 py-2 text-sm"
+                                      )}
+                                    >
+                                      <span>Testimonials</span>
                                     </Link>
                                   )}
                                 </Menu.Item>
@@ -310,10 +325,10 @@ export default function Navigation() {
                           className="relative inline-block text-left"
                         >
                           <div>
-                            <Menu.Button className="transition duration-300 ease-in-out hover:scale-110 inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                            <Menu.Button className="transition duration-300 ease-in-out hover:scale-105 inline-flex w-full justify-center gap-x-1.5 rounded-md  px-1 xl:!px-3 py-1 xl:!py-2 !text-[10px] xl:!text-xs font-semibold  !text-white border-2 !border-white hover:!border-[#9CA3AF] hover:!text-[#9CA3AF] shadow-sm ring-1 ring-inset ">
                               Import Protocols
                               <TbSquareRoundedChevronDownFilled
-                                className="-mr-1 h-5 w-5 text-gray-400"
+                                className="-mr-1 h-4 w-4 text-gray-400"
                                 aria-hidden="true"
                               />
                             </Menu.Button>
@@ -668,15 +683,15 @@ export default function Navigation() {
                         </Menu>
                       </li>
                       <li className="p-4">
-                        <Button className="transition duration-300 ease-in-out hover:scale-110 inline-flex w-full justify-center gap-x-1.5 rounded-md bg-green-50 px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-green-300">
+                        <Button className="transition duration-300 ease-in-out hover:scale-105 inline-flex w-full  justify-center gap-x-1.5 rounded-md bg-transparent  px-1 xl:!px-3 py-1 xl:!py-2 !text-xs  font-semibold !text-white border-2 !border-white hover:!border-[#9CA3AF] hover:!text-[#9CA3AF] shadow-sm ring-1 ring-inset ">
                           <Link
                             href="/global/information?page=how-to-pay"
-                            className="bg-gray-100 text-gray-900"
+                            className=" "
                           >
-                            <span className="flex inline">
+                            <span className="flex inline !text-[10px] xl:!text-xs">
                               How to Pay{" "}
                               <PiCreditCardBold
-                                className="-mr-2 h-5 w-5 text-gray-800"
+                                className="ml-2 h-4 w-4 "
                                 aria-hidden="true"
                               />
                             </span>
@@ -692,15 +707,15 @@ export default function Navigation() {
                       {/*    </Button>*/}
                       {/*</li>*/}
                       <li className="p-4">
-                        <Button className="transition duration-300 ease-in-out hover:scale-110 inline-flex w-full justify-center gap-x-1.5 rounded-md bg-yellow-50 px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-yellow-300">
+                        <Button className="transition duration-300 ease-in-out hover:scale-110 inline-flex w-full justify-center gap-x-1.5 bg-transparent rounded-md px-1 xl:!px-3 py-1 xl:!py-2 text-xs  font-semibold !text-white border-2 !border-white hover:!border-[#9CA3AF] hover:!text-[#9CA3AF] shadow-sm ring-1 ring-inset ">
                           <Link
                             href="/global/information?page=bank-information"
-                            className="bg-gray-100 text-gray-900"
+                            className=""
                           >
-                            <span className="flex inline">
+                            <span className="flex inline !text-[10px] xl:!text-xs">
                               Bank Information{" "}
                               <CiBank
-                                className="-mr-2 h-5 w-5 text-gray-800"
+                                className="ml-2 h-4 w-4"
                                 aria-hidden="true"
                               />
                             </span>

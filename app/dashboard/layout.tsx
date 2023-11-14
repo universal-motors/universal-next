@@ -2,6 +2,7 @@ import agent from "@/api/agent";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import SidebarItems from "@/components/sidebarItems";
+import "react-phone-number-input/style.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 export const metadata = {
@@ -74,7 +75,7 @@ export default async function RootLayout({
         <div className="w-[99%]">
           <div className="row">
             {/* <Sidebar locations={inventoryLocation} makes={makes.data} /> */}
-            <div className="flex flex-row min-h-screen w-screen">
+            <div className="flex flex-row min-h-screen w-screen m-auto">
               <SidebarItems />
               {children}
             </div>

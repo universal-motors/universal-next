@@ -27,7 +27,9 @@ import {
   Customer,
   CustomerSignUp,
 } from "@/models/Customer";
+import { GetFavorite, TFavorite } from "@/models/Master/AddFav";
 import { PaginationHeader } from "@/models/Master/Pagination";
+import { toast } from "react-toastify";
 
 //const baseURL = 'https://localhost:5001/api/';
 const baseURL = "https://api20230805195433.azurewebsites.net/api/";
@@ -61,11 +63,11 @@ const parseUserResponse = async <Customer>(
 };
 
 const requestNoCache = {
-  get: async <T>(url:string) => {
-    const response = await fetch(baseURL + url, {cache: 'no-store'});
+  get: async <T>(url: string) => {
+    const response = await fetch(baseURL + url, { cache: "no-store" });
     return parseResponse<T>(response);
-  }
-}
+  },
+};
 
 const request = {
   get: async <T>(url: string) => {
@@ -103,18 +105,22 @@ const request = {
 
 const LoadData = {
   //------ Main Units
+  favouriteList: (customerID: number) =>
+    request.get<GetFavorite[]>(`customers/FavStock/${customerID}`),
 
   stockList: (filter: string, currentPage: number) =>
     request.get<StockCars[]>(
       `carstock?PageSize=25&pageNumber=${currentPage}&${filter}`
     ),
+
   truckList: (filter: string, currentPage: number) =>
     request.get<Trucks[]>(
       `trucks?PageSize=25&pageNumber=${currentPage}&${filter}`
     ),
   machineryList: () =>
     request.get<Machinery[]>("machinery?pageNumber=1&pageSize=50"),
-  homepageStockList: () => requestNoCache.get<StockCars[]>("carstock/homepage_cars"),
+  homepageStockList: () =>
+    requestNoCache.get<StockCars[]>("carstock/homepage_cars"),
   //test: () => await fetch(baseURL+"carstock/homepage_cars", {cache: 'no-store'});
   stock: (stockID: number) => request.get<StockCars>(`carstock/${stockID}`),
   truck: (stockID: number) => request.get<Trucks>(`trucks/${stockID}`),
@@ -241,6 +247,63 @@ async function registertUser(user: CustomerSignUp) {
     // });
 
     console.log("Account created successfully");
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+export async function addFavourite(fav: TFavorite) {
+  try {
+    const response = await fetch(
+      "https://api20230805195433.azurewebsites.net/api/customers/FavStock/Add", //agent.basUrl+'authentication/',
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(fav),
+      }
+    );
+    console.log(response);
+    // if (!response.ok) {
+    //   throw new Error(
+    //     "Something went wrong, we cant register you at the moment"
+    //   );
+    // }
+
+    // await signIn("credentials", {
+    //   username: user.username,
+    //   password: user.password,
+    // });
+
+    console.log("Fav added Successfully");
+    toast.success("Favorite Added Successfully");
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+export async function removeFavourite(fav: TFavorite) {
+  try {
+    const response = await fetch(
+      "https://api20230805195433.azurewebsites.net/api/customers/FavStock/Remove", //agent.basUrl+'authentication/',
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(fav),
+      }
+    );
+    console.log(response);
+    // if (!response.ok) {
+    //   throw new Error(
+    //     "Something went wrong, we cant register you at the moment"
+    //   );
+    // }
+
+    // await signIn("credentials", {
+    //   username: user.username,
+    //   password: user.password,
+    // });
+
+    console.log("Fav removed Successfully");
   } catch (e) {
     console.log(e);
   }

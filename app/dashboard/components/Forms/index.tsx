@@ -2,6 +2,7 @@ import { useState } from "react";
 import Tabs from "../Tabs";
 import AccountForm from "./accountInfo";
 import CosigneeForm from "./cosignee";
+import Favorite from "./favorite";
 import ProfileForm from "./profile";
 
 export default function Forms() {
@@ -14,6 +15,8 @@ export default function Forms() {
         return <AccountForm />;
       case "My Cosignee Details":
         return <CosigneeForm />;
+      case "My Favorites":
+        return <Favorite />;
       default:
         break;
     }

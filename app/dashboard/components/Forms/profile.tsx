@@ -9,6 +9,7 @@ import { ChangeEvent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillDelete } from "react-icons/ai";
 import { toast } from "react-toastify";
+import PhoneNumberInput from "../PhoneInput";
 
 export default function ProfileForm() {
   const [countries, setCounties] = useState<any>([]);
@@ -31,6 +32,7 @@ export default function ProfileForm() {
     getData();
   }, []);
   const { status, data: session } = useSession();
+  const [phoneError, setError] = useState<Boolean[]>([]);
   const [countryID, setCountryID] = useState(0);
   const [mappedPorts, setMappedPorts] = useState<PortMapping[]>([]);
   const [portID, setPortID] = useState(0);
@@ -167,7 +169,7 @@ export default function ProfileForm() {
   useEffect(() => {
     setValue("phoneNumber", Phones);
   }, [Phones]);
-
+  console.log(phoneError);
   return (
     <div className="w-[90%] mx-auto mt-7">
       <form
@@ -372,7 +374,7 @@ export default function ProfileForm() {
                   key={i}
                   className="flex w-full items-end justify-center gap-2 mt-1"
                 >
-                  <Input
+                  {/* <Input
                     value={Phones[i]}
                     label={i >= 1 ? "Phone " + (i + 1) : "Phone"}
                     onChange={(e: any) => {
@@ -381,6 +383,23 @@ export default function ProfileForm() {
                     type="text"
                     placeholder={i >= 1 ? "Phone " + (i + 1) : "Phone"}
                     htmlFor={"Phone" + i}
+                  /> */}
+                  <PhoneNumberInput
+                    // setError={
+                    //   (error: boolean) => {
+
+                    //     const errors = phoneError
+                    //     errors[i] = error
+                    //     setError(errors)
+                    //   }}
+                    label={i >= 1 ? "Phone " + (i + 1) : "Phone"}
+                    value={Phones[i]}
+                    setValue={(e: any) => {
+                      updatePhone(i, e.target.value);
+                    }}
+                    //  setValue={(e: any) => {
+                    //   updatePhone(i, e.target.value);
+                    // }}
                   />
                   {i >= 1 && (
                     <AiFillDelete

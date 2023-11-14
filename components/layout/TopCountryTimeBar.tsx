@@ -1,11 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Navigation from "@/components/layout/Navigation";
-import Image from "next/image";
-import agent from "@/api/agent";
-import PriceFormat from "@/utils/PriceFormat";
 import NumberFormat from "@/utils/NumberFormat";
+import { useEffect, useState } from "react";
 interface Props {
   stockCount: number;
 }
@@ -47,9 +43,9 @@ export default function TopCountryTimeBar({ stockCount }: Props) {
     <>
       <div className="firstsection col-lg-4 col-md-6 col-12 text-center">
         <div className="flex items-center my-2">
-          <span className=" inline-flex items-center gap-x-1.5 ml-3 rounded-md bg-gray-100 px-2 py-1 text-lg align-middle tracking-tight  font-medium text-gray-900">
+          <span className=" inline-flex items-center gap-x-1.5 ml-3 rounded-md border-2 border-[#221C63] px-2 py-1 text-lg align-middle tracking-tight  font-medium text-[#221C63]">
             <svg
-              className="h-1.5 w-1.5 fill-indigo-500"
+              className="h-1.5 w-1.5 fill-[#FFB703]"
               viewBox="0 0 6 6"
               aria-hidden="true"
             >
@@ -62,7 +58,7 @@ export default function TopCountryTimeBar({ stockCount }: Props) {
               className="h-5 mr-2"
             />{" "}
             :
-            <span className="ml-1 bg-gradient-to-r rounded-2xl p-1 from-orange-500 to-yellow-500">
+            <span className="ml-1 bg-[#221C63] rounded-2xl p-1 text-white">
               {" "}
               <NumberFormat numbers={stockCount} />
             </span>
@@ -77,9 +73,9 @@ export default function TopCountryTimeBar({ stockCount }: Props) {
             className="h-4 mr-2"
           />
           <img alt="UAE Time" src="/assets/images/Clock.svg" className="h-5" />
-          <span className="inline-flex items-center gap-x-1.5 ml-3 rounded-md bg-green-100 px-2 py-1 text-xs font-medium text-green-900">
+          <span className="inline-flex items-center gap-x-1.5 ml-3 rounded-md bg-[#221C63] px-2 py-1 text-xs font-medium text-white">
             <svg
-              className="h-1.5 w-1.5 fill-black"
+              className="h-1.5 w-1.5 fill-[#FFB703]"
               viewBox="0 0 6 6"
               aria-hidden="true"
             >
@@ -101,9 +97,9 @@ export default function TopCountryTimeBar({ stockCount }: Props) {
             src="/assets/images/Clock.svg"
             className="h-5"
           />
-          <span className="inline-flex items-center gap-x-1.5 ml-3 rounded-md bg-red-100 px-2 py-1 text-xs font-medium text-red-700">
+          <span className="inline-flex items-center gap-x-1.5 ml-3 rounded-md bg-[#221C63] px-2 py-1 text-xs font-medium text-white">
             <svg
-              className="h-1.5 w-1.5 fill-red-500"
+              className="h-1.5 w-1.5 fill-[#FFB703]"
               viewBox="0 0 6 6"
               aria-hidden="true"
             >
