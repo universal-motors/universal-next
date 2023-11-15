@@ -189,6 +189,22 @@ const LoadData = {
     request.get<CourierDispatch[]>(`customers/CourierDispatch/${customerID}`),
   courierDispatchByID: (id: number) =>
     request.get<CourierDispatch[]>(`customers/CourierDispatch/id/${id}`),
+
+  /*Added on 15th November -------------------------------Start ----------*/
+  purchasedCarsByCustomerID: (customerId: number) =>
+    request.get<StockCars[]>(`customers/purchase/cars/${customerId}`),
+  purchasedMachineryByCustomerID: (customerId: number) =>
+    request.get<Machinery[]>(`customers/purchase/machinery/${customerId}`),
+  purchasedTrucksByCustomerID: (customerId: number) =>
+    request.get<Trucks[]>(`customers/purchase/trucks/${customerId}`),
+  reservedCarsByCustomerID: (customerId: number) =>
+    request.get<StockCars[]>(`customers/reserved/cars/${customerId}`),
+  reservedMachineryByCustomerID: (customerId: number) =>
+    request.get<Machinery[]>(`customers/reserved/machinery/${customerId}`),
+  reservedTrucksByCustomerID: (customerId: number) =>
+    request.get<Trucks[]>(`customers/reserved/trucks/${customerId}`),
+  //Added on 15th November --------------------------------------------End ---*/
+
 };
 //
 // const Account = {
