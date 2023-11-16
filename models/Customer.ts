@@ -19,6 +19,7 @@ export interface CustomerSignUp {
 
 export interface Customer {
   customerId: number;
+  img?: string;
   customerCode: string;
   titleId: number;
   name: string;

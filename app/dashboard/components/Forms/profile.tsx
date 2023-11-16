@@ -13,31 +13,52 @@ import PhoneNumberInput from "../PhoneInput";
 
 export default function ProfileForm() {
   const [countries, setCounties] = useState<any>([]);
-  const { user, update: updateData } = useUserStore();
-  const [portMapping, setPortMapping] = useState<any>([]);
-  const [ports, setPorts] = useState<any>([]);
-  const [update, setUpdate] = useState(false);
-  // let countries: any;
-  // let portMapping: any;
-  // let ports: any;
-  const getData = async () => {
-    const countries = await agent.LoadData.countryList();
-    const portMapping = await agent.LoadData.portmapping();
-    const ports = await agent.LoadData.portsList();
-    setCounties(countries.data);
-    setPortMapping(portMapping.data);
-    setPorts(ports.data);
-  };
-  useEffect(() => {
-    getData();
-  }, []);
-  // const { status, data: session } = useSession();
   const [phoneError, setError] = useState<Boolean[]>([]);
   const [countryID, setCountryID] = useState(0);
   const [mappedPorts, setMappedPorts] = useState<PortMapping[]>([]);
   const [portID, setPortID] = useState(0);
   const [Emails, setEmails] = useState<string[]>([""]);
   const [Phones, setPhones] = useState<string[]>([""]);
+  const { user, update: updateData, isUpdate } = useUserStore();
+  const [portMapping, setPortMapping] = useState<any>([]);
+  const [ports, setPorts] = useState<any>([]);
+  // const [update, setUpdate] = useState(false);
+  // let countries: any;
+  // let portMapping: any;
+  // let ports: any;
+  console.log("isUpdate", isUpdate);
+  const getData = async () => {
+    const countries = await agent.LoadData.countryList();
+    const portMapping = await agent.LoadData.portmapping();
+    const ports = await agent.LoadData.portsList();
+    // if (isUpdate) {
+    setValue("name", String(user.name));
+    setValue("companyName", String(user.companyName));
+    setValue("lastname", String(user.lastName));
+    setValue("preferredPortId", String(user.preferredPortId));
+    setValue("countryID", user.countryId);
+    setValue("address", user.address);
+    setValue("phoneNumber", [user.phone]);
+    setCountryID(user.countryId);
+    setPortID(user.preferredPortId);
+    console.log(user.phone, "use");
+    setPhones([String(user.phone)]);
+    countryChange(user.countryId);
+    setEmails([String(user?.email)]);
+    // } else {
+    //   setValue("name", String(user?.name));
+    //   setEmails([String(user?.email)]);
+    // }
+
+    setCounties(countries.data);
+    setPortMapping(portMapping.data);
+    setPorts(ports.data);
+  };
+  useEffect(() => {
+    getData();
+  }, [isUpdate]);
+  // const { status, data: session } = useSession();
+
   const addEmail = () => {
     setEmails([...Emails, ""]);
   };
@@ -108,73 +129,73 @@ export default function ProfileForm() {
   //   if (session && session?.user) {
   //     setValue("name", String(session.user?.name));
   //     setEmails([String(session.user?.email)]);
-  //     checkEmail(String(session.user?.email));
+  //     // checkEmail(String(session.user?.email));
   //   }
   // }, [status]);
 
-  const checkEmail = async (email: string) => {
-    try {
-      let res = await axios({
-        method: "get",
-        url: `https://api20230805195433.azurewebsites.net/api/customers/Exists/${email}`,
-        // data: reqBody
-      });
-      if (res && res.data) {
-        setUpdate(true);
-        try {
-          let res = await axios({
-            method: "get",
-            url: `https://api20230805195433.azurewebsites.net/api/customers/ByEmail/${email}/`,
-            // data: reqBody
-          });
-          updateData(res.data);
-          setValue("name", String(res.data.name));
-          setValue("companyName", String(res.data.companyName));
-          setValue("lastname", String(res.data.lastName));
-          setValue("preferredPortId", res.data.preferredPortId);
-          setValue("countryID", res.data.countryId);
-          setValue("address", res.data.address);
-          setValue("phoneNumber", res.data.phone);
-          setCountryID(res.data.countryId);
-          setPortID(res.data.preferredPortId);
-          setPhones([res.data.phone]);
-          countryChange(res.data.countryId);
-          // let data = res.data;
-          // return data;
-        } catch (error: any) {
-          if (
-            error &&
-            error.message === "Request failed with status code 404"
-          ) {
-            console.log(error.message);
-          } // this is the main part. Use the response property from the error object
-          // return error.response;
-        }
-      }
-      // let data = res.data;
-      // return data;
-    } catch (error: any) {
-      if (error && error.message === "Request failed with status code 404") {
-        console.log(error.message);
-        setUpdate(false);
-      } // this is the main part. Use the response property from the error object
+  // const checkEmail = async (email: string) => {
+  //   try {
+  //     let res = await axios({
+  //       method: "get",
+  //       url: `https://api20230805195433.azurewebsites.net/api/customers/Exists/${email}`,
+  //       // data: reqBody
+  //     });
+  //     if (res && res.data) {
+  //       setUpdate(true);
+  //       try {
+  //         let res = await axios({
+  //           method: "get",
+  //           url: `https://api20230805195433.azurewebsites.net/api/customers/ByEmail/${email}/`,
+  //           // data: reqBody
+  //         });
+  //         updateData(res.data);
+  // setValue("name", String(res.data.name));
+  // setValue("companyName", String(res.data.companyName));
+  // setValue("lastname", String(res.data.lastName));
+  // setValue("preferredPortId", res.data.preferredPortId);
+  // setValue("countryID", res.data.countryId);
+  // setValue("address", res.data.address);
+  // setValue("phoneNumber", res.data.phone);
+  // setCountryID(res.data.countryId);
+  // setPortID(res.data.preferredPortId);
+  // setPhones([res.data.phone]);
+  // countryChange(res.data.countryId);
+  //         // let data = res.data;
+  //         // return data;
+  //       } catch (error: any) {
+  //         if (
+  //           error &&
+  //           error.message === "Request failed with status code 404"
+  //         ) {
+  //           console.log(error.message);
+  //         } // this is the main part. Use the response property from the error object
+  //         // return error.response;
+  //       }
+  //     }
+  //     // let data = res.data;
+  //     // return data;
+  //   } catch (error: any) {
+  //     if (error && error.message === "Request failed with status code 404") {
+  //       console.log(error.message);
+  //       setUpdate(false);
+  //     } // this is the main part. Use the response property from the error object
 
-      // return error.response;
-    }
-  };
+  //     // return error.response;
+  //   }
+  // };
   useEffect(() => {
     setValue("email", Emails);
   }, [Emails]);
-
+  console.log("email", Emails);
   useEffect(() => {
     setValue("phoneNumber", Phones);
   }, [Phones]);
-  console.log(phoneError);
+  console.log(Phones, "pgone");
   return (
     <div className="w-[90%] mx-auto mt-7">
       <form
         onSubmit={handleSubmit(async (data) => {
-          if (update) {
+          if (isUpdate) {
             return toast.info(
               "Sorry, the update feature is currently unavailable."
             );
@@ -200,7 +221,7 @@ export default function ProfileForm() {
               countryID: countryID,
             });
             toast.success(
-              `Account ${update ? "Updated" : "Created"} Successfully`
+              `Account ${isUpdate ? "Updated" : "Created"} Successfully`
             );
             // let data = res.data;
             // return data;
@@ -276,7 +297,7 @@ export default function ProfileForm() {
               Country
             </label>
             <select
-              disabled={update}
+              disabled={isUpdate ? true : false}
               value={countryID}
               onChange={handleCountryChange}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -300,7 +321,7 @@ export default function ProfileForm() {
               Port
             </label>
             <select
-              disabled={update}
+              disabled={isUpdate ? true : false}
               value={portID}
               onChange={handlePortChange}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -357,7 +378,7 @@ export default function ProfileForm() {
                 </div>
               );
             })}
-            {update && Emails && Emails.length < 3 && (
+            {isUpdate && Emails && Emails.length < 3 && (
               <div
                 onClick={addEmail}
                 className=" cursor-pointer text-white mt-2 bg-[#221C63] hover:bg-[#857de0] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -414,7 +435,7 @@ export default function ProfileForm() {
                 </div>
               );
             })}
-            {update && Phones && Phones.length < 3 && (
+            {isUpdate && Phones && Phones.length < 3 && (
               <div
                 onClick={addPhone}
                 className=" cursor-pointer text-white mt-2 bg-[#221C63] hover:bg-[#857de0] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -450,7 +471,7 @@ export default function ProfileForm() {
               type="submit"
               className=" text-white bg-[#221C63] hover:bg-[#857de0] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
-              {update ? "Update" : "Add"}
+              {isUpdate ? "Update" : "Add"}
             </button>
           )}
         </div>

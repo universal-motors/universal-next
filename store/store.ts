@@ -21,6 +21,7 @@ const initialUserData = {
   customerId: 0,
   customerCode: "",
   titleId: 0,
+  img: "",
   name: "",
   lastName: "",
   companyName: "",
@@ -41,7 +42,9 @@ const initialUserData = {
 };
 
 interface userData {
+  isUpdate: Boolean;
   user: Customer;
+  setIsUpdate: (current: Boolean) => void;
   update: (newUserData: Customer) => void;
   deleteData: () => void;
 }
@@ -64,15 +67,22 @@ const persistedUserData =
 
 export const useUserStore = create<userData>((set) => ({
   user: persistedUserData,
+  isUpdate: false,
   update: (newUserData: Customer) =>
     set((state) => {
       const updatedUser = { ...state.user, ...newUserData };
       localStorage.setItem("user_data", JSON.stringify(updatedUser));
       return { user: updatedUser };
     }),
+  setIsUpdate: (current: Boolean) =>
+    set(() => {
+      localStorage.setItem("isUpdate", JSON.stringify(current));
+      return { isUpdate: current };
+    }),
   deleteData: () =>
     set(() => {
       localStorage.removeItem("user_data");
-      return { user: initialUserData };
+      localStorage.removeItem("isUpdate");
+      return { user: initialUserData, isUpdate: false };
     }),
 }));
