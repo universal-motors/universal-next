@@ -2,10 +2,14 @@
 import { Country } from "@/models/Master/Country";
 import { Ports } from "@/models/Master/Ports";
 import { useUserStore } from "@/store/store";
-import { signIn, signOut, useSession } from "next-auth/react";
-import Link from "next/link";
+import { GoogleLogin } from "@react-oauth/google";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { FcGoogle } from "react-icons/fc";
+// import { signOut, useSession } from "next-auth/react";
+// import jwt_decode from "jwt-decode";
+// const jwt_decode = require('jwt-decode');
+import { jwtDecode } from "jwt-decode";
 interface Props {
   countryList: Country[];
   portList: Ports[];
@@ -17,7 +21,7 @@ export default function AuthModal({
   portList,
   portMapping,
 }: Props) {
-  const { status, data: session } = useSession();
+  // const { status, data: session } = useSession();
   const router = useRouter();
   const { deleteData } = useUserStore();
   const [dropdown, setDropdown] = useState(false);
@@ -36,6 +40,25 @@ export default function AuthModal({
   // const handleSignUp = () => {
   //   setIsSignIn(false);
   // };
+  const responseGoogle = (response: any) => {
+    console.log(response);
+    const userObject = jwtDecode(response.credential);
+    console.log(userObject);
+    // var userObject = jwt_decode(response.credential);
+    // console.log(userObject);
+    // localStorage.setItem('user', JSON.stringify(userObject));
+    // const { name, sub, picture } = userObject;
+    // const doc = {
+    //   _id: sub,
+    //   _type: 'user',
+    //   userName: name,
+    //   image: picture,
+    // };
+    // console.log(doc);
+    // client.createIfNotExists(doc).then(() => {
+    //   navigate('/', { replace: true });
+    // });
+  };
 
   return (
     <>
@@ -44,7 +67,7 @@ export default function AuthModal({
           {/*<i className="fa fa-user" />*/}
           <h2>
             {/* {status === 'unauthenticated' && <FcBusinessman className="m-2" />} */}
-            {session?.user?.image && status === "authenticated" && (
+            {/* {session?.user?.image && status === "authenticated" && (
               <div className="flex items-center ">
                 <div className="relative mt-2">
                   <button
@@ -82,9 +105,8 @@ export default function AuthModal({
 
                   <div
                     id="dropdownAvatarName"
-                    className={`${
-                      !dropdown && "hidden"
-                    } z-50 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}
+                    className={`${!dropdown && "hidden"
+                      } z-50 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}
                   >
                     <div className="px-1 py-3 text-sm text-gray-900 dark:text-white">
                       <div className="font-medium ">{session?.user?.name}</div>
@@ -124,10 +146,29 @@ export default function AuthModal({
                   </div>
                 </div>
               </div>
-            )}
+            )} */}
           </h2>
           <div className="currencydropdown">
-            {
+            <GoogleLogin
+              render={(renderProps: any) => {
+                return (
+                  <>
+                    <button
+                      type="button"
+                      className="bg-mainColor flex justify-center items-center p-3 rounded-lg cursor-pointer outline-none"
+                      onClick={renderProps.onClick}
+                      disabled={renderProps.disabled}
+                    >
+                      <FcGoogle className="mr-4" /> Sign in with google
+                    </button>
+                  </>
+                );
+              }}
+              onSuccess={responseGoogle}
+              onFailure={responseGoogle}
+              cookiePolicy="single_host_origin"
+            />
+            {/* {
               status === "unauthenticated" && (
                 <button
                   onClick={() => signIn("google")}
@@ -151,7 +192,7 @@ export default function AuthModal({
               //   <div> Hello, Sign in<br />My Account</div>
 
               // </button>
-            }
+            // } */}
           </div>
         </div>
       </div>

@@ -4,7 +4,7 @@ import Input from "@/components/Input";
 import { PortMapping } from "@/models/Master/PortMapping";
 import { useUserStore } from "@/store/store";
 import axios from "axios";
-import { useSession } from "next-auth/react";
+// import { useSession } from "next-auth/react";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillDelete } from "react-icons/ai";
@@ -31,7 +31,7 @@ export default function ProfileForm() {
   useEffect(() => {
     getData();
   }, []);
-  const { status, data: session } = useSession();
+  // const { status, data: session } = useSession();
   const [phoneError, setError] = useState<Boolean[]>([]);
   const [countryID, setCountryID] = useState(0);
   const [mappedPorts, setMappedPorts] = useState<PortMapping[]>([]);
@@ -104,13 +104,13 @@ export default function ProfileForm() {
   const form = useForm<TProfile>();
   const { register, control, formState, setValue, handleSubmit } = form;
   const { isSubmitting } = formState;
-  useEffect(() => {
-    if (session && session?.user) {
-      setValue("name", String(session.user?.name));
-      setEmails([String(session.user?.email)]);
-      checkEmail(String(session.user?.email));
-    }
-  }, [status]);
+  // useEffect(() => {
+  //   if (session && session?.user) {
+  //     setValue("name", String(session.user?.name));
+  //     setEmails([String(session.user?.email)]);
+  //     checkEmail(String(session.user?.email));
+  //   }
+  // }, [status]);
 
   const checkEmail = async (email: string) => {
     try {

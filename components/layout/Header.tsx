@@ -12,7 +12,7 @@ import { PortMapping } from "@/models/Master/PortMapping";
 import { Ports } from "@/models/Master/Ports";
 import { useUserStore } from "@/store/store";
 import { Dialog, Transition } from "@headlessui/react";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signIn, signOut } from "next-auth/react";
 import Link from "next/link";
 import { Fragment, useState } from "react";
 
@@ -31,7 +31,7 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
   //  const { data: session } = useSession()
   let [isOpen, setIsOpen] = useState(false);
   const [dropdown, setDropdown] = useState(false);
-  const { status, data: session } = useSession();
+  // const { status, data: session } = useSession();
   const { deleteData } = useUserStore();
   function closeMobileSearchModal() {
     setIsOpen(false);
@@ -457,7 +457,7 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                     />
                   ) : (
                     <>
-                      <img
+                      {/* <img
                         src={
                           session?.user?.image ??
                           "https://img.icons8.com/fluency-systems-regular/2x/user.png"
@@ -466,7 +466,7 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                         onClick={() => setDropdown(!dropdown)}
                         width={25}
                         className="rounded-full"
-                      />
+                      /> */}
                     </>
                   )}
                 </div>
@@ -482,14 +482,14 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                     !dropdown && "hidden"
                   } z-50 absolute right-0 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}
                 >
-                  <div className="px-1 py-3 text-sm !text-gray-900 ">
+                  {/* <div className="px-1 py-3 text-sm !text-gray-900 ">
                     <div className="font-medium text-center ">
                       {session?.user?.name}
                     </div>
                     <div className="truncate text-center text-[10px]">
                       {session?.user?.email}
                     </div>
-                  </div>
+                  </div> */}
 
                   <div className="py-2">
                     <Link

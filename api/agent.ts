@@ -204,7 +204,6 @@ const LoadData = {
   reservedTrucksByCustomerID: (customerId: number) =>
     request.get<Trucks[]>(`customers/reserved/trucks/${customerId}`),
   //Added on 15th November --------------------------------------------End ---*/
-
 };
 //
 // const Account = {
