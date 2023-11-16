@@ -17,7 +17,7 @@
 import { Customer } from "@/models/Customer";
 import { create } from "zustand";
 
-const initialUserData = {
+export const initialUserData = {
   customerId: 0,
   customerCode: "",
   titleId: 0,
@@ -57,8 +57,8 @@ interface userData {
 const persistedUserData =
   JSON.parse(
     typeof window !== "undefined" &&
-      window.localStorage &&
-      (localStorage?.getItem("user_data") as any)
+    window.localStorage &&
+    (localStorage?.getItem("user_data") as any)
   ) || initialUserData;
 
 // interface userData {
