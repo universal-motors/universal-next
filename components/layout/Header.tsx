@@ -12,7 +12,6 @@ import { PortMapping } from "@/models/Master/PortMapping";
 import { Ports } from "@/models/Master/Ports";
 import { useUserStore } from "@/store/store";
 import { Dialog, Transition } from "@headlessui/react";
-import { signIn, signOut } from "next-auth/react";
 import Link from "next/link";
 import { Fragment, useState } from "react";
 
@@ -185,8 +184,8 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                   countryList={[]}
                   portList={[]}
                   portMapping={undefined} // countryList={locations}
-                  // portList={ports}
-                  // portMapping={portMapping}
+                // portList={ports}
+                // portMapping={portMapping}
                 />
 
                 {/*<SignInComponentUI/>*/}
@@ -447,7 +446,7 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                     width={25}
                   />
                 </Link>
-                <div className="pt-[6px]">
+                {/* <div className="pt-[6px]">
                   {status === "unauthenticated" ? (
                     <img
                       src="https://img.icons8.com/fluency-systems-regular/2x/user.png"
@@ -457,7 +456,7 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                     />
                   ) : (
                     <>
-                      {/* <img
+                      <img
                         src={
                           session?.user?.image ??
                           "https://img.icons8.com/fluency-systems-regular/2x/user.png"
@@ -466,15 +465,15 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                         onClick={() => setDropdown(!dropdown)}
                         width={25}
                         className="rounded-full"
-                      /> */}
+                      />
                     </>
                   )}
-                </div>
+                </div> */}
 
                 {/* <Link href="#support"><i class="fa fa-headphones"></i></Link>
                     <Link href="#"><i class="fa fa-heart-o"></i></Link>
                     <Link href="#customer"><i class="fa fa-user-o"></i></Link> */}
-              </div>
+                {/* </div>
               {status !== "unauthenticated" && (
                 <div
                   id="dropdownAvatarName"
@@ -482,14 +481,14 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                     !dropdown && "hidden"
                   } z-50 absolute right-0 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}
                 >
-                  {/* <div className="px-1 py-3 text-sm !text-gray-900 ">
+                  <div className="px-1 py-3 text-sm !text-gray-900 ">
                     <div className="font-medium text-center ">
                       {session?.user?.name}
                     </div>
                     <div className="truncate text-center text-[10px]">
                       {session?.user?.email}
                     </div>
-                  </div> */}
+                  </div>
 
                   <div className="py-2">
                     <Link
@@ -520,7 +519,8 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                     </p>
                   </div>
                 </div>
-              )}
+              )} */}
+              </div>
             </div>
           </div>
         </div>

@@ -5,7 +5,6 @@ import { useUserStore } from "@/store/store";
 import { GoogleLogin } from "@react-oauth/google";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { FcGoogle } from "react-icons/fc";
 // import { signOut, useSession } from "next-auth/react";
 // import jwt_decode from "jwt-decode";
 // const jwt_decode = require('jwt-decode');
@@ -150,23 +149,23 @@ export default function AuthModal({
           </h2>
           <div className="currencydropdown">
             <GoogleLogin
-              render={(renderProps: any) => {
-                return (
-                  <>
-                    <button
-                      type="button"
-                      className="bg-mainColor flex justify-center items-center p-3 rounded-lg cursor-pointer outline-none"
-                      onClick={renderProps.onClick}
-                      disabled={renderProps.disabled}
-                    >
-                      <FcGoogle className="mr-4" /> Sign in with google
-                    </button>
-                  </>
-                );
-              }}
+              // render={(renderProps: any) => {
+              //   return (
+              //     <>
+              //       <button
+              //         type="button"
+              //         className="bg-mainColor flex justify-center items-center p-3 rounded-lg cursor-pointer outline-none"
+              //         onClick={renderProps.onClick}
+              //         disabled={renderProps.disabled}
+              //       >
+              //         <FcGoogle className="mr-4" /> Sign in with google
+              //       </button>
+              //     </>
+              //   );
+              // }}
               onSuccess={responseGoogle}
-              onFailure={responseGoogle}
-              cookiePolicy="single_host_origin"
+            // onFailure={responseGoogle}
+            // cookiePolicy="single_host_origin"
             />
             {/* {
               status === "unauthenticated" && (
