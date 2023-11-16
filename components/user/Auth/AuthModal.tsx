@@ -47,6 +47,7 @@ export default function AuthModal({
   // };
   const checkEmail = async (email: string, img: string, name: string) => {
     try {
+      updateData({ ...initialUserData, email: email, name: name, img: img });
       let res = await axios({
         method: "get",
         url: `https://api20230805195433.azurewebsites.net/api/customers/Exists/${email}`,
@@ -62,7 +63,6 @@ export default function AuthModal({
             // data: reqBody
           });
           updateData({ ...res.data, img: img });
-          router.push("/dashboard");
         } catch (error: any) {
           if (
             error &&
@@ -73,6 +73,7 @@ export default function AuthModal({
           // return error.response;
         }
       }
+      router.push("/dashboard");
     } catch (error: any) {
       if (error && error.message === "Request failed with status code 404") {
         console.log(error.message);
@@ -95,7 +96,7 @@ export default function AuthModal({
       <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
         <div className="registerbox">
           <h2>
-            {user && user?.img && user.email && (
+            {user.email && (
               <div className="flex items-center ">
                 <div className="relative mt-2">
                   <button
