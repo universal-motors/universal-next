@@ -57,8 +57,8 @@ interface userData {
 const persistedUserData =
   JSON.parse(
     typeof window !== "undefined" &&
-    window.localStorage &&
-    (localStorage?.getItem("user_data") as any)
+      window.localStorage &&
+      (localStorage?.getItem("user_data") as any)
   ) || initialUserData;
 
 // interface userData {
