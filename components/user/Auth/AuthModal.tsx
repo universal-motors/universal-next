@@ -2,12 +2,13 @@
 import { Country } from "@/models/Master/Country";
 import { Ports } from "@/models/Master/Ports";
 import { initialUserData, useUserStore } from "@/store/store";
-import { GoogleLogin, googleLogout } from "@react-oauth/google";
+import { googleLogout } from "@react-oauth/google";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 // import { signOut, useSession } from "next-auth/react";
 // import jwt_decode from "jwt-decode";
 // const jwt_decode = require('jwt-decode');
+import { UserButton } from "@clerk/nextjs";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import Link from "next/link";
@@ -134,9 +135,8 @@ export default function AuthModal({
 
                   <div
                     id="dropdownAvatarName"
-                    className={`${
-                      !dropdown && "hidden"
-                    } z-50 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}
+                    className={`${!dropdown && "hidden"
+                      } z-50 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}
                   >
                     <div className="px-1 py-3 text-sm text-gray-900 dark:text-white">
                       <div className="font-medium ">{user?.name}</div>
@@ -177,7 +177,7 @@ export default function AuthModal({
             )}
           </h2>
           <div className="currencydropdown">
-            {!user?.email && (
+            {/* {!user?.email && (
               <GoogleLogin
                 // auto_select
                 useOneTap
@@ -185,7 +185,20 @@ export default function AuthModal({
                 // onFailure={responseGoogle}
                 // cookiePolicy="single_host_origin"
               />
-            )}
+            )} */}
+            <button
+              onClick={() => { router.push('/sign-in') }}
+              className="text-sm px-4 py-2 border flex gap-2 border-slate-200 dark:border-slate-700 rounded-lg text-slate-200 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-400 dark:hover:text-slate-300 hover:shadow transition duration-150"
+            >
+              <img
+                className="w-6 h-6"
+                src="https://www.svgrepo.com/show/475656/google-color.svg"
+                loading="lazy"
+                alt="google logo"
+              />
+              <span>Login </span>
+            </button>
+            <UserButton afterSignOutUrl="/" />
             {/* {
               status === "unauthenticated" && (
                 <button
