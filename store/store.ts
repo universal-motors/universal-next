@@ -61,13 +61,20 @@ const persistedUserData =
       (localStorage?.getItem("user_data") as any)
   ) || initialUserData;
 
+const isUpdate =
+  JSON.parse(
+    typeof window !== "undefined" &&
+      window.localStorage &&
+      (localStorage?.getItem("isUpdate") as any)
+  ) || false;
+
 // interface userData {
 //   user: Customer;
 // }
 
 export const useUserStore = create<userData>((set) => ({
   user: persistedUserData,
-  isUpdate: false,
+  isUpdate: isUpdate,
   update: (newUserData: Customer) =>
     set((state) => {
       const updatedUser = { ...state.user, ...newUserData };

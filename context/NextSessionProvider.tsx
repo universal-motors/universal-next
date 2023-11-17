@@ -2,7 +2,7 @@
 
 import React from "react";
 // import { SessionProvider } from "next-auth/react";
-import { GoogleOAuthProvider } from '@react-oauth/google';
+import { GoogleOAuthProvider } from "@react-oauth/google";
 interface Props {
   children: React.ReactNode;
 }

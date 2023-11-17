@@ -3,7 +3,6 @@ import agent from "@/api/agent";
 import Input from "@/components/Input";
 import { PortMapping } from "@/models/Master/PortMapping";
 import { useUserStore } from "@/store/store";
-import axios from "axios";
 // import { useSession } from "next-auth/react";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -186,11 +185,9 @@ export default function ProfileForm() {
   useEffect(() => {
     setValue("email", Emails);
   }, [Emails]);
-  console.log("email", Emails);
   useEffect(() => {
     setValue("phoneNumber", Phones);
   }, [Phones]);
-  console.log(Phones, "pgone");
   return (
     <div className="w-[90%] mx-auto mt-7">
       <form
@@ -201,20 +198,8 @@ export default function ProfileForm() {
             );
           }
           try {
-            let res = await axios({
-              method: "get",
-              url: ` https://api20230805195433.azurewebsites.net/api/customers/GenerateCustomerCode/${countryID}`,
-              // data: reqBody
-            });
-            // console.log({
-            //   ...data,
-            //   customerCode: res.data,
-            //   email: Emails[0],
-            //   phoneNumber: Phones[0],
-            // });
             await agent.LoadData.register({
               ...data,
-              customerCode: res.data,
               email: Emails[0],
               phone: Phones[0],
               preferredPortId: portID,
