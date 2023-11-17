@@ -191,40 +191,44 @@ export default function ProfileForm() {
   return (
     <div className="w-[90%] mx-auto mt-7">
       <form
-        onSubmit={handleSubmit(async (data) => {
-          if (isUpdate) {
-            return toast.info(
-              "Sorry, the update feature is currently unavailable."
-            );
-          }
-          try {
-            const obj: any = {
-              address: data.address,
-              companyName: data.companyName,
-              lastname: data.lastname,
-              name: data.name,
-              email: Emails[0],
-              phone: Phones[0],
-              preferredPortId: portID,
-              countryID: countryID
+        onSubmit={
+          handleSubmit(async (data) => {
+            if (isUpdate) {
+              return toast.info(
+                "Sorry, the update feature is currently unavailable."
+              );
             }
-            await agent.LoadData.register(obj);
-            toast.success(
-              `Account ${isUpdate ? "Updated" : "Created"} Successfully`
-            );
-            // let data = res.data;
-            // return data;
-          } catch (error: any) {
-            if (
-              error &&
-              error.message === "Request failed with status code 404"
-            ) {
-              console.log(error.message);
-            } // this is the main part. Use the response property from the error object
+            try {
+              const obj: any = {
+                address: data.address,
+                companyName: data.companyName,
+                lastname: data.lastname,
+                name: data.name,
+                email: Emails[0],
+                phone: Phones[0],
+                preferredPortId: portID,
+                countryID: countryID
+              }
+              await agent.LoadData.register(obj);
+              toast.success(
+                `Account ${isUpdate ? "Updated" : "Created"} Successfully`
+              );
+              // let data = res.data;
+              // return data;
+            } catch (error: any) {
+              if (
+                error &&
+                error.message === "Request failed with status code 404"
+              ) {
+                console.log(error.message);
+              } // this is the main part. Use the response property from the error object
 
-            // return error.response;
+              // return error.response;
+            }
           }
-        })}
+          )
+
+        }
       >
         <div className="grid gap-6 mb-6 md:grid-cols-2">
           <Input

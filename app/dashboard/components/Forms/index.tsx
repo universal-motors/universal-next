@@ -23,7 +23,7 @@ export default function Forms() {
   };
   const list = [
     "My Profile",
-    "My Account Info",
+    // "My Account Info",
     "My Cosignee Details",
     "My Favorites",
     "Inquiry & Bid List",
