@@ -198,13 +198,17 @@ export default function ProfileForm() {
             );
           }
           try {
-            await agent.LoadData.register({
-              ...data,
+            const obj: any = {
+              address: data.address,
+              companyName: data.companyName,
+              lastname: data.lastname,
+              name: data.name,
               email: Emails[0],
               phone: Phones[0],
               preferredPortId: portID,
-              countryID: countryID,
-            });
+              countryID: countryID
+            }
+            await agent.LoadData.register(obj);
             toast.success(
               `Account ${isUpdate ? "Updated" : "Created"} Successfully`
             );
@@ -401,11 +405,12 @@ export default function ProfileForm() {
                     label={i >= 1 ? "Phone " + (i + 1) : "Phone"}
                     value={Phones[i]}
                     setValue={(e: any) => {
+                      console.log(e)
                       updatePhone(i, e.target.value);
                     }}
-                    //  setValue={(e: any) => {
-                    //   updatePhone(i, e.target.value);
-                    // }}
+                  //  setValue={(e: any) => {
+                  //   updatePhone(i, e.target.value);
+                  // }}
                   />
                   {i >= 1 && (
                     <AiFillDelete
@@ -461,6 +466,6 @@ export default function ProfileForm() {
           )}
         </div>
       </form>
-    </div>
+    </div >
   );
 }
