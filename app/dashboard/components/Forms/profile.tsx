@@ -4,6 +4,8 @@ import Input from "@/components/Input";
 import { PortMapping } from "@/models/Master/PortMapping";
 import { useUserStore } from "@/store/store";
 // import { useSession } from "next-auth/react";
+import { checkEmail } from "@/services/profile";
+import { useRouter } from "next/navigation";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillDelete } from "react-icons/ai";
@@ -13,19 +15,19 @@ import PhoneNumberInput from "../PhoneInput";
 export default function ProfileForm() {
   const [countries, setCounties] = useState<any>([]);
   const [phoneError, setError] = useState<Boolean[]>([]);
+  const { user, update: updateData, isUpdate, setIsUpdate } = useUserStore();
   const [countryID, setCountryID] = useState(0);
   const [mappedPorts, setMappedPorts] = useState<PortMapping[]>([]);
   const [portID, setPortID] = useState(0);
   const [Emails, setEmails] = useState<string[]>([""]);
   const [Phones, setPhones] = useState<string[]>([""]);
-  const { user, update: updateData, isUpdate } = useUserStore();
   const [portMapping, setPortMapping] = useState<any>([]);
   const [ports, setPorts] = useState<any>([]);
   // const [update, setUpdate] = useState(false);
   // let countries: any;
   // let portMapping: any;
   // let ports: any;
-  console.log("isUpdate", isUpdate);
+  const router = useRouter();
   const getData = async () => {
     const countries = await agent.LoadData.countryList();
     const portMapping = await agent.LoadData.portmapping();
@@ -213,6 +215,7 @@ export default function ProfileForm() {
               toast.success(
                 `Account ${isUpdate ? "Updated" : "Created"} Successfully`
               );
+              checkEmail(Emails[0], user?.img, obj.name, setIsUpdate, updateData, router);
               // let data = res.data;
               // return data;
             } catch (error: any) {
@@ -410,7 +413,7 @@ export default function ProfileForm() {
                     value={Phones[i]}
                     setValue={(e: any) => {
                       console.log(e)
-                      updatePhone(i, e.target.value);
+                      updatePhone(i, e);
                     }}
                   //  setValue={(e: any) => {
                   //   updatePhone(i, e.target.value);

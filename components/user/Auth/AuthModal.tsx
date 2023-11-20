@@ -1,14 +1,14 @@
 "use client";
 import { Country } from "@/models/Master/Country";
 import { Ports } from "@/models/Master/Ports";
-import { initialUserData, useUserStore } from "@/store/store";
+import { useUserStore } from "@/store/store";
 import { GoogleLogin, googleLogout } from "@react-oauth/google";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 // import { signOut, useSession } from "next-auth/react";
 // import jwt_decode from "jwt-decode";
 // const jwt_decode = require('jwt-decode');
-import axios from "axios";
+import { checkEmail } from "@/services/profile";
 import { jwtDecode } from "jwt-decode";
 import Link from "next/link";
 interface Props {
@@ -45,50 +45,48 @@ export default function AuthModal({
   // const handleSignUp = () => {
   //   setIsSignIn(false);
   // };
-  const checkEmail = async (email: string, img: string, name: string) => {
-    try {
-      updateData({ ...initialUserData, email: email, name: name, img: img });
-      let res = await axios({
-        method: "get",
-        url: `https://api20230805195433.azurewebsites.net/api/customers/Exists/${email}`,
-        // data: reqBody
-      });
-      if (res && res.data) {
-        // setUpdate(true);
-        setIsUpdate(true);
-        try {
-          let res = await axios({
-            method: "get",
-            url: `https://api20230805195433.azurewebsites.net/api/customers/ByEmail/${email}/`,
-            // data: reqBody
-          });
-          updateData({ ...res.data, img: img });
-        } catch (error: any) {
-          if (
-            error &&
-            error.message === "Request failed with status code 404"
-          ) {
-            console.log(error.message);
-          } // this is the main part. Use the response property from the error object
-          // return error.response;
-        }
-      }
-      router.push("/dashboard");
-    } catch (error: any) {
-      if (error && error.message === "Request failed with status code 404") {
-        console.log(error.message);
-        updateData({ ...initialUserData, email: email, name: name });
-        setIsUpdate(false);
-      } // this is the main part. Use the response property from the error object
+  // const checkEmail = async (email: string, img: string, name: string) => {
+  //   try {
+  //     updateData({ ...initialUserData, email: email, name: name, img: img });
+  //     let res = await axios({
+  //       method: "get",
+  //       url: `https://api20230805195433.azurewebsites.net/api/customers/Exists/${email}`,
+  //       // data: reqBody
+  //     });
+  //     if (res && res.data) {
+  //       // setUpdate(true);
+  //       setIsUpdate(true);
+  //       try {
+  //         let res = await axios({
+  //           method: "get",
+  //           url: `https://api20230805195433.azurewebsites.net/api/customers/ByEmail/${email}/`,
+  //           // data: reqBody
+  //         });
+  //         updateData({ ...res.data, img: img });
+  //       } catch (error: any) {
+  //         if (
+  //           error &&
+  //           error.message === "Request failed with status code 404"
+  //         ) {
+  //           console.log(error.message);
+  //         } // this is the main part. Use the response property from the error object
+  //         // return error.response;
+  //       }
+  //     }
+  //     router.push("/dashboard");
+  //   } catch (error: any) {
+  //     if (error && error.message === "Request failed with status code 404") {
+  //       console.log(error.message);
+  //       updateData({ ...initialUserData, email: email, name: name });
+  //       setIsUpdate(false);
+  //     } // this is the main part. Use the response property from the error object
 
-      // return error.response;
-    }
-  };
+  //     // return error.response;
+  //   }
+  // };
   const responseGoogle = (response: any) => {
-    console.log(response);
     const userObject: any = jwtDecode(response.credential);
-    console.log(userObject);
-    checkEmail(userObject.email, userObject?.picture, userObject?.name);
+    checkEmail(userObject.email, userObject?.picture, userObject?.name, setIsUpdate, updateData, router);
   };
 
   return (
@@ -134,9 +132,8 @@ export default function AuthModal({
 
                   <div
                     id="dropdownAvatarName"
-                    className={`${
-                      !dropdown && "hidden"
-                    } z-50 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}
+                    className={`${!dropdown && "hidden"
+                      } z-50 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}
                   >
                     <div className="px-1 py-3 text-sm text-gray-900 dark:text-white">
                       <div className="font-medium ">{user?.name}</div>
@@ -182,8 +179,8 @@ export default function AuthModal({
                 // auto_select
                 useOneTap
                 onSuccess={responseGoogle}
-                // onFailure={responseGoogle}
-                // cookiePolicy="single_host_origin"
+              // onFailure={responseGoogle}
+              // cookiePolicy="single_host_origin"
               />
             )}
             {/* {
