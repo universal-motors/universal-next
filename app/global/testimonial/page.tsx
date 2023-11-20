@@ -36,7 +36,7 @@ export default function Testimonial() {
                     </div>
                     <div className="flex-grow pl-3">
                       <h6 className="font-bold  text-lg lg:text-2xl  text-gray-600">
-                        Julie Charles
+                        Mr. Reagan
                       </h6>
                     </div>
                   </div>
@@ -229,7 +229,7 @@ export default function Testimonial() {
                 “	The foremost thing that struck me was the transparency in dealings. I received a detailed history of the vehicle I chose, which helped me make an informed decision. I am really satisfied and happy to be their customer now. ”
               </p>
               <p className="font-bold text-lg lg:text-2xl mt-3 text-gray-600">
-                Kris Stanton
+                Mr. Reagan
               </p>
             </div>
             <div className="h-full w-[90%] lg:w-[50%] items-center flex justify-end">
@@ -252,7 +252,7 @@ export default function Testimonial() {
                 “Me and my friend were searching for a used car in good condition but were unable to find one. Through our search, we went through this website and contacted the dealers. This decision turned out to be the best, and we purchased a used Toyota at an amazing cost. Happy to be their customers! ”
               </p>
               <p className="font-bold text-lg lg:text-2xl mt-3 text-gray-600">
-                Tommie Ewart
+                Mr. Danny
               </p>
             </div>
             <div className="h-full w-[90%] lg:w-[50%] items-center flex justify-end">
@@ -275,7 +275,7 @@ export default function Testimonial() {
                 “I recently purchased a heavy-duty truck from them, and the variety they offer is mind-boggling. The truck I bought was exactly as advertised: robust, well-maintained and the same as told to me. I am extremely satisfied with what I have bought. ”
               </p>
               <p className="font-bold text-lg lg:text-2xl mt-3 text-gray-600">
-                Julia Hudson
+                Mr. Mosha
               </p>
             </div>
             <div className="h-full w-[90%] lg:w-[50%]  items-center flex justify-end">
