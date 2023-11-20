@@ -6,6 +6,12 @@ import { useEffect, useState } from "react";
 
 export default function Favorite() {
   const [fav, setFav] = useState<any>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(10); // Define your desired
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = fav.slice(indexOfFirstItem, indexOfLastItem);
+
   const { user } = useUserStore();
   const [fetch, setFetch] = useState<Boolean>(false);
   useEffect(() => {
@@ -15,18 +21,7 @@ export default function Favorite() {
     };
     getData();
   }, [fetch]);
-  // {
-  //     "stockID": 14242,
-  //     "customerID": 1,
-  //     "stockCode": "JP9039",
-  //     "makeName": "Toyota",
-  //     "modelName": "Premio",
-  //     "year": 2009,
-  //     "price": 4250,
-  //     "imageurl": "https://universalmotorstorage.blob.core.windows.net/umimages/1b815960-a2ee-4f41-b12d-d4365f034fa7.jpeg",
-  //     "listingTitle": "2009 Toyota Premio",
-  //     "addedOn": "2023-11-07T12:34:46.203"
-  // }
+  const totalPages = Math.ceil(fav.length / itemsPerPage);
 
   return (
     <div className="flex flex-col gap-5 my-5">
@@ -57,11 +52,11 @@ export default function Favorite() {
             </tr>
           </thead>
           <tbody>
-            {fav.map((item: any) => {
+            {currentItems.map((item: any) => {
               return <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                 <th scope="row" className="px-6 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  <div className="!w-16 !h-16">
-                    <img src={item?.imageurl} className="!w-16 !h-16" alt="" />
+                  <div className="!w-20 !h-16">
+                    <img src={item?.imageurl} className="!w-20 !h-16" alt="" />
                   </div>
 
                 </th>
@@ -92,6 +87,21 @@ export default function Favorite() {
             }
           </tbody>
         </table>
+      </div>
+      <div className="flex w-full justify-center">
+        {currentPage > 1 && <p onClick={() => {
+          if (currentPage > 1)
+            setCurrentPage(currentPage - 1)
+        }} className="cursor-pointer flex items-center justify-center px-3 h-8 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+          Previous
+        </p>}
+
+        {currentPage < totalPages && <p onClick={() => {
+          if (currentPage < totalPages)
+            setCurrentPage(currentPage + 1)
+        }} className="cursor-pointer  flex items-center justify-center px-3 h-8 ms-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+          Next
+        </p>}
       </div>
 
     </div>

@@ -36,7 +36,7 @@ export default function Testimonial() {
                     </div>
                     <div className="flex-grow pl-3">
                       <h6 className="font-bold  text-lg lg:text-2xl  text-gray-600">
-                        Mr. Reagan
+                        Julie regans
                       </h6>
                     </div>
                   </div>
@@ -84,7 +84,7 @@ export default function Testimonial() {
                     </div>
                     <div className="flex-grow pl-3">
                       <h6 className="font-bold  text-lg lg:text-2xl  uppercase text-gray-600">
-                        Flavia Derby
+                        Mr. Mosha
                       </h6>
                     </div>
                   </div>
@@ -107,7 +107,7 @@ export default function Testimonial() {
                     </div>
                     <div className="flex-grow pl-3">
                       <h6 className="font-bold  text-lg lg:text-2xl  uppercase text-gray-600">
-                        Rebecca Williams
+                        Mr. Reagan
                       </h6>
                     </div>
                   </div>
@@ -132,7 +132,7 @@ export default function Testimonial() {
                     </div>
                     <div className="flex-grow pl-3">
                       <h6 className="font-bold  text-lg lg:text-2xl  uppercase text-gray-600">
-                        Charlie Howse
+                        Rebecca Williams
                       </h6>
                     </div>
                   </div>
@@ -155,7 +155,7 @@ export default function Testimonial() {
                     </div>
                     <div className="flex-grow pl-3">
                       <h6 className="font-bold  text-lg lg:text-2xl  uppercase text-gray-600">
-                        Sophia carter
+                        Mr. Danny
                       </h6>
                     </div>
                   </div>
@@ -199,29 +199,7 @@ export default function Testimonial() {
         modules={[Pagination, Navigation]}
         className="mySwiper mt-16"
       >
-        <SwiperSlide>
-          <div className="w-[80%] m-auto h-[500px] flex flex-col lg:flex-row  items-center justify-center ">
-            <div className="h-full w-[90%] lg:w-[50%] flex justify-center flex-col">
-              <p className="text-base text-gray-500 lg:text-lg dark:text-gray-400">
-                “We were hesitant about purchasing a used vehicle online, but Universal Motor’s commitment to quality reassured us. We browsed through their extensive collection, and guess what!? We found our dream car- a sleek, efficient Japanese sedan that was in pristine condition. ”
-              </p>
-              <p className="font-bold text-lg lg:text-2xl mt-3 text-gray-600">
-                Albert Jonathan
-              </p>
-            </div>
-            <div className="h-full w-[90%] lg:w-[50%] items-center flex justify-end">
-              <iframe
-                width="90%"
-                height="75%"
-                src="https://www.youtube.com/embed/_AiD96wV92w?si=GU8DiY05IeOcbRWR"
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              ></iframe>
-            </div>
-          </div>
-        </SwiperSlide>
+
         <SwiperSlide>
           <div className="w-[80%] m-auto h-[500px] flex flex-col lg:flex-row  items-center justify-center ">
             <div className="h-full w-[90%] lg:w-[50%] flex justify-center flex-col">
@@ -283,6 +261,29 @@ export default function Testimonial() {
                 width="90%"
                 height="75%"
                 src="https://www.youtube.com/embed/82K4XGQOO5I?si=wMaeaKxYHp4DGM1i"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="w-[80%] m-auto h-[500px] flex flex-col lg:flex-row  items-center justify-center ">
+            <div className="h-full w-[90%] lg:w-[50%] flex justify-center flex-col">
+              <p className="text-base text-gray-500 lg:text-lg dark:text-gray-400">
+                “We were hesitant about purchasing a used vehicle online, but Universal Motor’s commitment to quality reassured us. We browsed through their extensive collection, and guess what!? We found our dream car- a sleek, efficient Japanese sedan that was in pristine condition. ”
+              </p>
+              <p className="font-bold text-lg lg:text-2xl mt-3 text-gray-600">
+                Albert Jonathan
+              </p>
+            </div>
+            <div className="h-full w-[90%] lg:w-[50%] items-center flex justify-end">
+              <iframe
+                width="90%"
+                height="75%"
+                src="https://www.youtube.com/embed/_AiD96wV92w?si=GU8DiY05IeOcbRWR"
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
