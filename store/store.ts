@@ -17,10 +17,11 @@
 import { Customer } from "@/models/Customer";
 import { create } from "zustand";
 
-const initialUserData = {
+export const initialUserData = {
   customerId: 0,
   customerCode: "",
   titleId: 0,
+  img: "",
   name: "",
   lastName: "",
   companyName: "",
@@ -41,7 +42,9 @@ const initialUserData = {
 };
 
 interface userData {
+  isUpdate: Boolean;
   user: Customer;
+  setIsUpdate: (current: Boolean) => void;
   update: (newUserData: Customer) => void;
   deleteData: () => void;
 }
@@ -58,21 +61,35 @@ const persistedUserData =
       (localStorage?.getItem("user_data") as any)
   ) || initialUserData;
 
+const isUpdate =
+  JSON.parse(
+    typeof window !== "undefined" &&
+      window.localStorage &&
+      (localStorage?.getItem("isUpdate") as any)
+  ) || false;
+
 // interface userData {
 //   user: Customer;
 // }
 
 export const useUserStore = create<userData>((set) => ({
   user: persistedUserData,
+  isUpdate: isUpdate,
   update: (newUserData: Customer) =>
     set((state) => {
       const updatedUser = { ...state.user, ...newUserData };
       localStorage.setItem("user_data", JSON.stringify(updatedUser));
       return { user: updatedUser };
     }),
+  setIsUpdate: (current: Boolean) =>
+    set(() => {
+      localStorage.setItem("isUpdate", JSON.stringify(current));
+      return { isUpdate: current };
+    }),
   deleteData: () =>
     set(() => {
       localStorage.removeItem("user_data");
-      return { user: initialUserData };
+      localStorage.removeItem("isUpdate");
+      return { user: initialUserData, isUpdate: false };
     }),
 }));

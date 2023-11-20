@@ -2,7 +2,7 @@
 
 import { CustomerSignUp } from "@/models/Customer";
 import { Button } from "@tremor/react";
-import { signIn, signOut, useSession } from "next-auth/react";
+// import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -23,17 +23,17 @@ function SignInForm({ signin, setSignIn }: Props) {
   const router = useRouter();
   // const { userStore } = useStore();
   //var loading = false;
-  const { data: session } = useSession();
+  // const { data: session } = useSession();
   const form = useForm<CustomerSignUp>();
   const { register, control, formState, handleSubmit } = form;
 
-  if (session && session.user) {
-    return (
-      <>
-        <button onClick={() => signOut()}>Sign Out</button>
-      </>
-    );
-  }
+  // if (session && session.user) {
+  //   return (
+  //     <>
+  //       <button onClick={() => signOut()}>Sign Out</button>
+  //     </>
+  //   );
+  // }
 
   const handleSignUp = (event: FormEvent) => {
     event.preventDefault();
@@ -41,7 +41,7 @@ function SignInForm({ signin, setSignIn }: Props) {
     setSignIn(false);
   };
   const signInWithGoogle = () => {
-    signIn("google");
+    // signIn("google");
   };
   return (
     <>

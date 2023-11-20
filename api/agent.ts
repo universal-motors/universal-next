@@ -107,7 +107,7 @@ const LoadData = {
   //------ Main Units
   favouriteList: (customerID: number) =>
     //request.get<GetFavorite[]>(`customers/FavStock/${customerID}`),
-    request.get<GetFavorite[]>(`customers/favourite_cars/${customerID}`),
+    request.get<GetFavorite[]>(`carStock/favourite_cars/${customerID}`),
 
   stockList: (filter: string, currentPage: number) =>
     request.get<StockCars[]>(
@@ -205,7 +205,6 @@ const LoadData = {
   reservedTrucksByCustomerID: (customerId: number) =>
     request.get<Trucks[]>(`customers/reserved/trucks/${customerId}`),
   //Added on 15th November --------------------------------------------End ---*/
-
 };
 //
 // const Account = {

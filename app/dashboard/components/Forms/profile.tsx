@@ -3,8 +3,9 @@ import agent from "@/api/agent";
 import Input from "@/components/Input";
 import { PortMapping } from "@/models/Master/PortMapping";
 import { useUserStore } from "@/store/store";
-import axios from "axios";
-import { useSession } from "next-auth/react";
+// import { useSession } from "next-auth/react";
+import { checkEmail } from "@/services/profile";
+import { useRouter } from "next/navigation";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillDelete } from "react-icons/ai";
@@ -13,31 +14,52 @@ import PhoneNumberInput from "../PhoneInput";
 
 export default function ProfileForm() {
   const [countries, setCounties] = useState<any>([]);
-  const { user, update: updateData } = useUserStore();
+  const [phoneError, setError] = useState<Boolean[]>([]);
+  const { user, update: updateData, isUpdate, setIsUpdate } = useUserStore();
+  const [countryID, setCountryID] = useState(0);
+  const [mappedPorts, setMappedPorts] = useState<PortMapping[]>([]);
+  const [portID, setPortID] = useState(0);
+  const [Emails, setEmails] = useState<string[]>([""]);
+  const [Phones, setPhones] = useState<string[]>([""]);
   const [portMapping, setPortMapping] = useState<any>([]);
   const [ports, setPorts] = useState<any>([]);
-  const [update, setUpdate] = useState(false);
+  // const [update, setUpdate] = useState(false);
   // let countries: any;
   // let portMapping: any;
   // let ports: any;
+  const router = useRouter();
   const getData = async () => {
     const countries = await agent.LoadData.countryList();
     const portMapping = await agent.LoadData.portmapping();
     const ports = await agent.LoadData.portsList();
+    // if (isUpdate) {
+    setValue("name", String(user.name));
+    setValue("companyName", String(user.companyName));
+    setValue("lastname", String(user.lastName));
+    setValue("preferredPortId", String(user.preferredPortId));
+    setValue("countryID", user.countryId);
+    setValue("address", user.address);
+    setValue("phoneNumber", [user.phone]);
+    setCountryID(user.countryId);
+    setPortID(user.preferredPortId);
+    console.log(user.phone, "use");
+    setPhones([String(user.phone)]);
+    countryChange(user.countryId);
+    setEmails([String(user?.email)]);
+    // } else {
+    //   setValue("name", String(user?.name));
+    //   setEmails([String(user?.email)]);
+    // }
+
     setCounties(countries.data);
     setPortMapping(portMapping.data);
     setPorts(ports.data);
   };
   useEffect(() => {
     getData();
-  }, []);
-  const { status, data: session } = useSession();
-  const [phoneError, setError] = useState<Boolean[]>([]);
-  const [countryID, setCountryID] = useState(0);
-  const [mappedPorts, setMappedPorts] = useState<PortMapping[]>([]);
-  const [portID, setPortID] = useState(0);
-  const [Emails, setEmails] = useState<string[]>([""]);
-  const [Phones, setPhones] = useState<string[]>([""]);
+  }, [isUpdate]);
+  // const { status, data: session } = useSession();
+
   const addEmail = () => {
     setEmails([...Emails, ""]);
   };
@@ -104,117 +126,112 @@ export default function ProfileForm() {
   const form = useForm<TProfile>();
   const { register, control, formState, setValue, handleSubmit } = form;
   const { isSubmitting } = formState;
-  useEffect(() => {
-    if (session && session?.user) {
-      setValue("name", String(session.user?.name));
-      setEmails([String(session.user?.email)]);
-      checkEmail(String(session.user?.email));
-    }
-  }, [status]);
+  // useEffect(() => {
+  //   if (session && session?.user) {
+  //     setValue("name", String(session.user?.name));
+  //     setEmails([String(session.user?.email)]);
+  //     // checkEmail(String(session.user?.email));
+  //   }
+  // }, [status]);
 
-  const checkEmail = async (email: string) => {
-    try {
-      let res = await axios({
-        method: "get",
-        url: `https://api20230805195433.azurewebsites.net/api/customers/Exists/${email}`,
-        // data: reqBody
-      });
-      if (res && res.data) {
-        setUpdate(true);
-        try {
-          let res = await axios({
-            method: "get",
-            url: `https://api20230805195433.azurewebsites.net/api/customers/ByEmail/${email}/`,
-            // data: reqBody
-          });
-          updateData(res.data);
-          setValue("name", String(res.data.name));
-          setValue("companyName", String(res.data.companyName));
-          setValue("lastname", String(res.data.lastName));
-          setValue("preferredPortId", res.data.preferredPortId);
-          setValue("countryID", res.data.countryId);
-          setValue("address", res.data.address);
-          setValue("phoneNumber", res.data.phone);
-          setCountryID(res.data.countryId);
-          setPortID(res.data.preferredPortId);
-          setPhones([res.data.phone]);
-          countryChange(res.data.countryId);
-          // let data = res.data;
-          // return data;
-        } catch (error: any) {
-          if (
-            error &&
-            error.message === "Request failed with status code 404"
-          ) {
-            console.log(error.message);
-          } // this is the main part. Use the response property from the error object
-          // return error.response;
-        }
-      }
-      // let data = res.data;
-      // return data;
-    } catch (error: any) {
-      if (error && error.message === "Request failed with status code 404") {
-        console.log(error.message);
-        setUpdate(false);
-      } // this is the main part. Use the response property from the error object
+  // const checkEmail = async (email: string) => {
+  //   try {
+  //     let res = await axios({
+  //       method: "get",
+  //       url: `https://api20230805195433.azurewebsites.net/api/customers/Exists/${email}`,
+  //       // data: reqBody
+  //     });
+  //     if (res && res.data) {
+  //       setUpdate(true);
+  //       try {
+  //         let res = await axios({
+  //           method: "get",
+  //           url: `https://api20230805195433.azurewebsites.net/api/customers/ByEmail/${email}/`,
+  //           // data: reqBody
+  //         });
+  //         updateData(res.data);
+  // setValue("name", String(res.data.name));
+  // setValue("companyName", String(res.data.companyName));
+  // setValue("lastname", String(res.data.lastName));
+  // setValue("preferredPortId", res.data.preferredPortId);
+  // setValue("countryID", res.data.countryId);
+  // setValue("address", res.data.address);
+  // setValue("phoneNumber", res.data.phone);
+  // setCountryID(res.data.countryId);
+  // setPortID(res.data.preferredPortId);
+  // setPhones([res.data.phone]);
+  // countryChange(res.data.countryId);
+  //         // let data = res.data;
+  //         // return data;
+  //       } catch (error: any) {
+  //         if (
+  //           error &&
+  //           error.message === "Request failed with status code 404"
+  //         ) {
+  //           console.log(error.message);
+  //         } // this is the main part. Use the response property from the error object
+  //         // return error.response;
+  //       }
+  //     }
+  //     // let data = res.data;
+  //     // return data;
+  //   } catch (error: any) {
+  //     if (error && error.message === "Request failed with status code 404") {
+  //       console.log(error.message);
+  //       setUpdate(false);
+  //     } // this is the main part. Use the response property from the error object
 
-      // return error.response;
-    }
-  };
+  //     // return error.response;
+  //   }
+  // };
   useEffect(() => {
     setValue("email", Emails);
   }, [Emails]);
-
   useEffect(() => {
     setValue("phoneNumber", Phones);
   }, [Phones]);
-  console.log(phoneError);
   return (
     <div className="w-[90%] mx-auto mt-7">
       <form
-        onSubmit={handleSubmit(async (data) => {
-          if (update) {
-            return toast.info(
-              "Sorry, the update feature is currently unavailable."
-            );
-          }
-          try {
-            let res = await axios({
-              method: "get",
-              url: ` https://api20230805195433.azurewebsites.net/api/customers/GenerateCustomerCode/${countryID}`,
-              // data: reqBody
-            });
-            // console.log({
-            //   ...data,
-            //   customerCode: res.data,
-            //   email: Emails[0],
-            //   phoneNumber: Phones[0],
-            // });
-            await agent.LoadData.register({
-              ...data,
-              customerCode: res.data,
-              email: Emails[0],
-              phone: Phones[0],
-              preferredPortId: portID,
-              countryID: countryID,
-            });
-            toast.success(
-              `Account ${update ? "Updated" : "Created"} Successfully`
-            );
-            // let data = res.data;
-            // return data;
-          } catch (error: any) {
-            if (
-              error &&
-              error.message === "Request failed with status code 404"
-            ) {
-              console.log(error.message);
-            } // this is the main part. Use the response property from the error object
+        onSubmit={
+          handleSubmit(async (data) => {
+            if (isUpdate) {
+              return toast.info(
+                "Sorry, the update feature is currently unavailable."
+              );
+            }
+            try {
+              const obj: any = {
+                address: data.address,
+                companyName: data.companyName,
+                lastname: data.lastname,
+                name: data.name,
+                email: Emails[0],
+                phone: Phones[0],
+                preferredPortId: portID,
+                countryID: countryID
+              }
+              await agent.LoadData.register(obj);
+              toast.success(
+                `Account ${isUpdate ? "Updated" : "Created"} Successfully`
+              );
+              checkEmail(Emails[0], user?.img, obj.name, setIsUpdate, updateData, router);
+              // let data = res.data;
+              // return data;
+            } catch (error: any) {
+              if (
+                error &&
+                error.message === "Request failed with status code 404"
+              ) {
+                console.log(error.message);
+              } // this is the main part. Use the response property from the error object
 
-            // return error.response;
+              // return error.response;
+            }
           }
-        })}
+          )
+
+        }
       >
         <div className="grid gap-6 mb-6 md:grid-cols-2">
           <Input
@@ -276,7 +293,7 @@ export default function ProfileForm() {
               Country
             </label>
             <select
-              disabled={update}
+              disabled={isUpdate ? true : false}
               value={countryID}
               onChange={handleCountryChange}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -300,7 +317,7 @@ export default function ProfileForm() {
               Port
             </label>
             <select
-              disabled={update}
+              disabled={isUpdate ? true : false}
               value={portID}
               onChange={handlePortChange}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -357,7 +374,7 @@ export default function ProfileForm() {
                 </div>
               );
             })}
-            {update && Emails && Emails.length < 3 && (
+            {isUpdate && Emails && Emails.length < 3 && (
               <div
                 onClick={addEmail}
                 className=" cursor-pointer text-white mt-2 bg-[#221C63] hover:bg-[#857de0] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -395,11 +412,12 @@ export default function ProfileForm() {
                     label={i >= 1 ? "Phone " + (i + 1) : "Phone"}
                     value={Phones[i]}
                     setValue={(e: any) => {
-                      updatePhone(i, e.target.value);
+                      console.log(e)
+                      updatePhone(i, e);
                     }}
-                    //  setValue={(e: any) => {
-                    //   updatePhone(i, e.target.value);
-                    // }}
+                  //  setValue={(e: any) => {
+                  //   updatePhone(i, e.target.value);
+                  // }}
                   />
                   {i >= 1 && (
                     <AiFillDelete
@@ -414,7 +432,7 @@ export default function ProfileForm() {
                 </div>
               );
             })}
-            {update && Phones && Phones.length < 3 && (
+            {isUpdate && Phones && Phones.length < 3 && (
               <div
                 onClick={addPhone}
                 className=" cursor-pointer text-white mt-2 bg-[#221C63] hover:bg-[#857de0] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -450,11 +468,11 @@ export default function ProfileForm() {
               type="submit"
               className=" text-white bg-[#221C63] hover:bg-[#857de0] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
-              {update ? "Update" : "Add"}
+              {isUpdate ? "Update" : "Add"}
             </button>
           )}
         </div>
       </form>
-    </div>
+    </div >
   );
 }

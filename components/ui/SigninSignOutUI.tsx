@@ -1,18 +1,18 @@
-import { useSession, signIn, signOut } from "next-auth/react";
-import { FcBusinessman } from "react-icons/fc";
+// import { useSession, signIn, signOut } from "next-auth/react";
 import { Button } from "@tremor/react";
+import { FcBusinessman } from "react-icons/fc";
 
 export default function SignInComponentUI() {
-  const { data: session } = useSession();
+  // const { data: session } = useSession();
 
-  if (session) {
-    return (
-      <>
-        {/*Signed in as {session?.user.email} <br/>*/}
-        <button onClick={() => signOut()}>Sign out</button>
-      </>
-    );
-  }
+  // if (session) {
+  //   return (
+  //     <>
+  //       {/*Signed in as {session?.user.email} <br/>*/}
+  //       {/* <button onClick={() => signOut()}>Sign out</button> */}
+  //     </>
+  //   );
+  // }
   return (
     <>
       <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
@@ -23,7 +23,7 @@ export default function SignInComponentUI() {
           </h2>
           <div className="currencydropdown">
             <button
-              onClick={() => signIn()}
+              // onClick={() => signIn()}
               className="currencydropbtn supportbtn"
             >
               Hello, Sign in
@@ -45,7 +45,7 @@ export default function SignInComponentUI() {
                     <p>
                       <Button
                         className="p-0 m-0"
-                        onClick={() => signIn()}
+                        // onClick={() => signIn()}
                         style={{ color: "blue", fontSize: "14px" }}
                       >
                         <span>&nbsp;</span>Sign Up

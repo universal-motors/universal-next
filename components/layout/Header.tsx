@@ -12,7 +12,6 @@ import { PortMapping } from "@/models/Master/PortMapping";
 import { Ports } from "@/models/Master/Ports";
 import { useUserStore } from "@/store/store";
 import { Dialog, Transition } from "@headlessui/react";
-import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { Fragment, useState } from "react";
 
@@ -31,7 +30,7 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
   //  const { data: session } = useSession()
   let [isOpen, setIsOpen] = useState(false);
   const [dropdown, setDropdown] = useState(false);
-  const { status, data: session } = useSession();
+  // const { status, data: session } = useSession();
   const { deleteData } = useUserStore();
   function closeMobileSearchModal() {
     setIsOpen(false);
@@ -447,7 +446,7 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                     width={25}
                   />
                 </Link>
-                <div className="pt-[6px]">
+                {/* <div className="pt-[6px]">
                   {status === "unauthenticated" ? (
                     <img
                       src="https://img.icons8.com/fluency-systems-regular/2x/user.png"
@@ -469,12 +468,12 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                       />
                     </>
                   )}
-                </div>
+                </div> */}
 
                 {/* <Link href="#support"><i class="fa fa-headphones"></i></Link>
                     <Link href="#"><i class="fa fa-heart-o"></i></Link>
                     <Link href="#customer"><i class="fa fa-user-o"></i></Link> */}
-              </div>
+                {/* </div>
               {status !== "unauthenticated" && (
                 <div
                   id="dropdownAvatarName"
@@ -520,7 +519,8 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                     </p>
                   </div>
                 </div>
-              )}
+              )} */}
+              </div>
             </div>
           </div>
         </div>

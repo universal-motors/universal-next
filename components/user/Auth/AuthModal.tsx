@@ -2,10 +2,15 @@
 import { Country } from "@/models/Master/Country";
 import { Ports } from "@/models/Master/Ports";
 import { useUserStore } from "@/store/store";
-import { signIn, signOut, useSession } from "next-auth/react";
-import Link from "next/link";
+import { GoogleLogin, googleLogout } from "@react-oauth/google";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+// import { signOut, useSession } from "next-auth/react";
+// import jwt_decode from "jwt-decode";
+// const jwt_decode = require('jwt-decode');
+import { checkEmail } from "@/services/profile";
+import { jwtDecode } from "jwt-decode";
+import Link from "next/link";
 interface Props {
   countryList: Country[];
   portList: Ports[];
@@ -17,10 +22,14 @@ export default function AuthModal({
   portList,
   portMapping,
 }: Props) {
-  const { status, data: session } = useSession();
+  // Check if user is authenticated
+
+  // const { status, data: session } = useSession();
   const router = useRouter();
-  const { deleteData } = useUserStore();
+  // const { deleteData } = useUserStore();
+  const { user, update: updateData, deleteData, setIsUpdate } = useUserStore();
   const [dropdown, setDropdown] = useState(false);
+  console.log("user", user);
   // let [isOpen, setIsOpen] = useState(false);
   // let [isSignIn, setIsSignIn] = useState(true);
   //
@@ -36,15 +45,56 @@ export default function AuthModal({
   // const handleSignUp = () => {
   //   setIsSignIn(false);
   // };
+  // const checkEmail = async (email: string, img: string, name: string) => {
+  //   try {
+  //     updateData({ ...initialUserData, email: email, name: name, img: img });
+  //     let res = await axios({
+  //       method: "get",
+  //       url: `https://api20230805195433.azurewebsites.net/api/customers/Exists/${email}`,
+  //       // data: reqBody
+  //     });
+  //     if (res && res.data) {
+  //       // setUpdate(true);
+  //       setIsUpdate(true);
+  //       try {
+  //         let res = await axios({
+  //           method: "get",
+  //           url: `https://api20230805195433.azurewebsites.net/api/customers/ByEmail/${email}/`,
+  //           // data: reqBody
+  //         });
+  //         updateData({ ...res.data, img: img });
+  //       } catch (error: any) {
+  //         if (
+  //           error &&
+  //           error.message === "Request failed with status code 404"
+  //         ) {
+  //           console.log(error.message);
+  //         } // this is the main part. Use the response property from the error object
+  //         // return error.response;
+  //       }
+  //     }
+  //     router.push("/dashboard");
+  //   } catch (error: any) {
+  //     if (error && error.message === "Request failed with status code 404") {
+  //       console.log(error.message);
+  //       updateData({ ...initialUserData, email: email, name: name });
+  //       setIsUpdate(false);
+  //     } // this is the main part. Use the response property from the error object
+
+  //     // return error.response;
+  //   }
+  // };
+  const responseGoogle = (response: any) => {
+    const userObject: any = jwtDecode(response.credential);
+    checkEmail(userObject.email, userObject?.picture, userObject?.name, setIsUpdate, updateData, router);
+  };
 
   return (
     <>
       <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
         <div className="registerbox">
-          {/*<i className="fa fa-user" />*/}
           <h2>
-            {/* {status === 'unauthenticated' && <FcBusinessman className="m-2" />} */}
-            {session?.user?.image && status === "authenticated" && (
+            {user.email && (
               <div className="flex items-center ">
                 <div className="relative mt-2">
                   <button
@@ -59,10 +109,10 @@ export default function AuthModal({
                     <span className="sr-only">Open user menu</span>
                     <img
                       className="w-8 h-8 mr-2 rounded-full"
-                      src={session.user.image}
+                      src={user.img}
                       alt="user photo"
                     />
-                    {session?.user?.name}
+                    {user?.name}
                     <svg
                       className="w-2.5 h-2.5 ml-2.5"
                       aria-hidden="true"
@@ -82,15 +132,12 @@ export default function AuthModal({
 
                   <div
                     id="dropdownAvatarName"
-                    className={`${
-                      !dropdown && "hidden"
-                    } z-50 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}
+                    className={`${!dropdown && "hidden"
+                      } z-50 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}
                   >
                     <div className="px-1 py-3 text-sm text-gray-900 dark:text-white">
-                      <div className="font-medium ">{session?.user?.name}</div>
-                      <div className="truncate text-[10px]">
-                        {session?.user?.email}
-                      </div>
+                      <div className="font-medium ">{user?.name}</div>
+                      <div className="truncate text-[10px]">{user?.email}</div>
                     </div>
 
                     <div className="py-2">
@@ -113,7 +160,7 @@ export default function AuthModal({
                     <div className="py-2 cursor-pointer">
                       <p
                         onClick={() => {
-                          signOut();
+                          googleLogout();
                           deleteData();
                         }}
                         className="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
@@ -127,7 +174,16 @@ export default function AuthModal({
             )}
           </h2>
           <div className="currencydropdown">
-            {
+            {!user?.email && (
+              <GoogleLogin
+                // auto_select
+                useOneTap
+                onSuccess={responseGoogle}
+              // onFailure={responseGoogle}
+              // cookiePolicy="single_host_origin"
+              />
+            )}
+            {/* {
               status === "unauthenticated" && (
                 <button
                   onClick={() => signIn("google")}
@@ -151,7 +207,7 @@ export default function AuthModal({
               //   <div> Hello, Sign in<br />My Account</div>
 
               // </button>
-            }
+            // } */}
           </div>
         </div>
       </div>
