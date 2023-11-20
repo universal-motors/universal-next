@@ -76,7 +76,7 @@ export default function Favorite() {
                   <p className="font-medium text-red-500  hover:underline ml-3 cursor-pointer" onClick={async () => {
                     await removeFavourite({
                       customerId: user.customerId,
-                      stockId: item.stockId,
+                      stockId: item.stockID,
                     })
                     setFetch(!fetch);
                   }} >Remove</p>

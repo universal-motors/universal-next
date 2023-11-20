@@ -36,7 +36,7 @@ export default function Testimonial() {
                     </div>
                     <div className="flex-grow pl-3">
                       <h6 className="font-bold  text-lg lg:text-2xl  text-gray-600">
-                        Julie regans
+                        Adisa
                       </h6>
                     </div>
                   </div>
