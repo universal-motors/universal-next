@@ -175,11 +175,11 @@ const LoadData = {
     request.get<number>(`compute/steeringType/count/${steeringID}`),
 
   //----- Customer Data
-  generateCustomerCode: (locationID: number) =>
-    request.get<string>(`customers/GenerateCustomerCode/${locationID}`),
+  // generateCustomerCode: (locationID: number) =>
+  //   request.get<string>(`customers/GenerateCustomerCode/${locationID}`),
   customerCheck: (email: string) =>
     request.get<boolean>(`customers/Exists/${email}`),
-  register: (user: CustomerSignUp) => registertUser(user), //request.post<CustomerSignUp>('authentication', user),
+  register: (user: CustomerSignUp) => registerUser(user), //request.post<CustomerSignUp>('authentication', user),
   customerProfile: (email: string) =>
     request.get<Customer[]>(`customers/ByEmail/${email}/`),
   consigneeCourierByCustomer: (customerID: number) =>
@@ -205,6 +205,24 @@ const LoadData = {
   reservedTrucksByCustomerID: (customerId: number) =>
     request.get<Trucks[]>(`customers/reserved/trucks/${customerId}`),
   //Added on 15th November --------------------------------------------End ---*/
+
+  //Adding SalesOrder Endpoints and Money Allocation Endpoints
+  //Sales Order *********
+  salesOrderBySalesOrderID: (salesOrderId: number) =>
+    request.get<Trucks[]>(`customers/salesorder/${salesOrderId}`),
+  salesOrderByCustomerID: (salesOrderId: number) =>
+    request.get<Trucks[]>(`customers/salesorder/customer/${salesOrderId}`),
+  salesOrderByCustomerIDStockID: (customerId: number, stockId: number) =>
+    request.get<Trucks[]>(`customers/salesorder/${customerId}/${stockId}`),
+
+  //Money Allocation ********
+  moneyAllocationByID: (id: number) =>
+    request.get<Trucks[]>(`customers/money_allocation/${id}`),
+  moneyAllocationByCustomerID: (customerId: number) =>
+    request.get<Trucks[]>(`customers/money_allocation/customer/${customerId}`),
+  moneyAllocationByCustomerIDStockID: (customerId: number, stockId: number) =>
+    request.get<Trucks[]>(`customers/money_allocation/${customerId}/${stockId}`),
+
 };
 //
 // const Account = {
@@ -240,32 +258,36 @@ async function getData() {
   return res.json();
 }
 
-async function registertUser(user: CustomerSignUp) {
+async function registerUser(user: CustomerSignUp) {
   try {
     const response = await fetch(
-      "https://api20230805195433.azurewebsites.net/api/customers", //agent.basUrl+'authentication/',
+      "https://api20230805195433.azurewebsites.net/api/customers",
       {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          // Add any additional headers as needed
+        },
         body: JSON.stringify(user),
       }
     );
     if (!response.ok) {
-      throw new Error(
-        "Something went wrong, we cant register you at the moment"
-      );
+      throw new Error(`Server responded with an error: ${response.statusText}`);
     }
-
-    // await signIn("credentials", {
-    //   username: user.username,
-    //   password: user.password,
-    // });
-
     console.log("Account created successfully");
-  } catch (e) {
-    console.log(e);
+
+    // Continue processing for successful registration
+  } catch (error: any) {
+    if (error.name === 'TypeError' && error.message === 'Failed to fetch') {
+      console.error('Network error. Make sure you are connected to the internet.');
+    } else {
+      console.error('Error during registration:', error.message);
+    }
+    // Handle the error appropriately, e.g., show an error message to the user
   }
 }
+
+
 
 export async function addFavourite(fav: TFavorite) {
   try {
@@ -305,7 +327,8 @@ export async function removeFavourite(fav: TFavorite) {
         body: JSON.stringify(fav),
       }
     );
-    console.log(response);
+
+    // Check if the response status is in the success range (200-299)
     // if (!response.ok) {
     //   throw new Error(
     //     "Something went wrong, we cant register you at the moment"
