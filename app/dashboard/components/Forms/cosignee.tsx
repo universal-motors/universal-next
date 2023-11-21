@@ -17,7 +17,9 @@ export default function CosigneeForm() {
   useEffect(() => {
     const getData = async () => {
       const countries = await agent.LoadData.countryList();
-      const { data } = await agent.LoadData.consigneeCourierByCustomer(user.customerId)
+      const { data } = await agent.LoadData.consigneeCourierByCustomer(
+        user.customerId
+      );
       if (data && data.length) {
         setValue("consigneeName", String(data[0]?.consigneeName));
         setValue("notifyPartyName", String(data[0]?.notifyPartyName));
@@ -29,14 +31,13 @@ export default function CosigneeForm() {
         setValue("notifyPartyEmail", String(data[0]?.notifyPartyEmail));
         setValue("consigneePhone", String(data[0]?.consigneePhone));
         setValue("notifyPartyPhone", String(data[0]?.notifyPartyPhone));
-        setConsigneeCountryID(data[0]?.consigneeCountryId)
-        setNotifyCountryID(data[0]?.notifyPartyCountryId)
-
+        setConsigneeCountryID(data[0]?.consigneeCountryId);
+        setNotifyCountryID(data[0]?.notifyPartyCountryId);
       }
       setCounties(countries.data);
-    }
-    getData()
-  }, [])
+    };
+    getData();
+  }, []);
   const handleCountryChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const destinationID = parseInt(event.target.value);
     setConsigneeCountryID(destinationID);
@@ -184,7 +185,6 @@ export default function CosigneeForm() {
                 required: " required",
               }),
             }}
-
           />
           <Input
             label={"Consignee Email"}

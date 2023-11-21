@@ -86,7 +86,14 @@ export default function AuthModal({
   // };
   const responseGoogle = (response: any) => {
     const userObject: any = jwtDecode(response.credential);
-    checkEmail(userObject.email, userObject?.picture, userObject?.name, setIsUpdate, updateData, router);
+    checkEmail(
+      userObject.email,
+      userObject?.picture,
+      userObject?.name,
+      setIsUpdate,
+      updateData,
+      router
+    );
   };
 
   return (
@@ -132,8 +139,9 @@ export default function AuthModal({
 
                   <div
                     id="dropdownAvatarName"
-                    className={`${!dropdown && "hidden"
-                      } z-50 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}
+                    className={`${
+                      !dropdown && "hidden"
+                    } z-50 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}
                   >
                     <div className="px-1 py-3 text-sm text-gray-900 dark:text-white">
                       <div className="font-medium ">{user?.name}</div>
@@ -179,8 +187,8 @@ export default function AuthModal({
                 // auto_select
                 useOneTap
                 onSuccess={responseGoogle}
-              // onFailure={responseGoogle}
-              // cookiePolicy="single_host_origin"
+                // onFailure={responseGoogle}
+                // cookiePolicy="single_host_origin"
               />
             )}
             {/* {

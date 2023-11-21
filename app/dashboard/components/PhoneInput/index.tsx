@@ -19,11 +19,11 @@ export default function PhoneNumberInput({ value, setValue, label }: Prop) {
   //     setError(phoneInputValue && isValidPhoneNumber(phoneInputValue) ? true : false)
   // }, [phoneInputValue])
   useEffect(() => {
-    setPhoneInputValue(value)
-  }, [value])
+    setPhoneInputValue(value);
+  }, [value]);
   useEffect(() => {
-    setValue(phoneInputValue)
-  }, [phoneInputValue])
+    setValue(phoneInputValue);
+  }, [phoneInputValue]);
   return (
     <div className="w-full">
       <label
@@ -34,8 +34,9 @@ export default function PhoneNumberInput({ value, setValue, label }: Prop) {
       </label>
       <PhoneInput
         id="phone-input"
-        className={`bg-gray-50 border ${isValid ? "!border-gray-300" : "!border-red-500"
-          } text-gray-900 text-sm rounded-lg h-11  focus:ring-blue-500 focus:border-blue-500 block !w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
+        className={`bg-gray-50 border ${
+          isValid ? "!border-gray-300" : "!border-red-500"
+        } text-gray-900 text-sm rounded-lg h-11  focus:ring-blue-500 focus:border-blue-500 block !w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
         placeholder="Enter phone number"
         value={phoneInputValue}
         onChange={setPhoneInputValue}

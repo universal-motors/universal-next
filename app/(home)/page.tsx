@@ -58,7 +58,6 @@ export default async function Home() {
           </div>
         </div>
 
-
         <div className="showcase-Make rightsidebar">
           <h5 className="pt-3 text-center justify-items-center">
             <b>UM in Your Country</b>

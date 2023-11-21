@@ -17,7 +17,8 @@ export default function Testimonial() {
                 are saying about us
               </h1>
               <h3 className="text-base mb-5 font-light">
-                Our Satisfied customers around the globe appreciates what we serve.
+                Our Satisfied customers around the globe appreciates what we
+                serve.
               </h3>
               <div className="text-center mb-10">
                 <span className="inline-block w-1 h-1 rounded-full bg-[#221c63] ml-1"></span>
@@ -45,7 +46,12 @@ export default function Testimonial() {
                       <span className=" leading-none italic font-bold text-base text-gray-500 lg:text-lg mr-1">
                         "
                       </span>
-                      From compact cars to heavy-duty trucks and machinery, this website is a treasure trove of Japanese vehicles. I found my dream car here at the most economical price, and the quality surpassed my expectations. I highly recommend these car dealers to others to have the best car-buying experience.
+                      From compact cars to heavy-duty trucks and machinery, this
+                      website is a treasure trove of Japanese vehicles. I found
+                      my dream car here at the most economical price, and the
+                      quality surpassed my expectations. I highly recommend
+                      these car dealers to others to have the best car-buying
+                      experience.
                       <span className="text-lg leading-none italic font-bold text-gray-400 ml-1">
                         "
                       </span>
@@ -68,7 +74,12 @@ export default function Testimonial() {
                       <span className="leading-none italic font-bold text-base text-gray-500 lg:text-lg mr-1">
                         "
                       </span>
-                      I have bought multiple vehicles from Universal Motors, and each time, I have been impressed by the condition and performance of the cars. Their Japanese machinery collection is extensive, making it easy to find precisely what you need. Everyone willing to purchase their dream car must contact them to enjoy the lifetime experience.
+                      I have bought multiple vehicles from Universal Motors, and
+                      each time, I have been impressed by the condition and
+                      performance of the cars. Their Japanese machinery
+                      collection is extensive, making it easy to find precisely
+                      what you need. Everyone willing to purchase their dream
+                      car must contact them to enjoy the lifetime experience.
                       <span className="text-lg leading-none italic font-bold text-gray-400 ml-1">
                         "
                       </span>
@@ -93,7 +104,12 @@ export default function Testimonial() {
                       <span className=" text-base text-gray-500 lg:text-lg leading-none italic font-bold  mr-1">
                         "
                       </span>
-                      Finding the right Japanese car was a breeze with Universal Motors. The range of automobiles, coupled with detailed descriptions and transparent pricing on their website, is 100% authentic. Their professional team also give you keen details and guides you through the process step-wise. These dealers are highly recommended.
+                      Finding the right Japanese car was a breeze with Universal
+                      Motors. The range of automobiles, coupled with detailed
+                      descriptions and transparent pricing on their website, is
+                      100% authentic. Their professional team also give you keen
+                      details and guides you through the process step-wise.
+                      These dealers are highly recommended.
                       <span className="text-lg leading-none italic font-bold text-gray-400 ml-1">
                         "
                       </span>
@@ -116,7 +132,11 @@ export default function Testimonial() {
                       <span className=" text-base text-gray-500 lg:text-lg leading-none italic font-bold  mr-1">
                         "
                       </span>
-                      The customer service here is exceptional. They guided me through the entire process, answered all my queries and ensured that I got the perfect Japanese truck. I had a fantastic truck-buying experience with them and will highly suggest it to others!
+                      The customer service here is exceptional. They guided me
+                      through the entire process, answered all my queries and
+                      ensured that I got the perfect Japanese truck. I had a
+                      fantastic truck-buying experience with them and will
+                      highly suggest it to others!
                       <span className="text-lg leading-none italic font-bold text-gray-400 ml-1">
                         "
                       </span>
@@ -141,7 +161,11 @@ export default function Testimonial() {
                       <span className="  text-base text-gray-500 lg:text-lg   leading-none italic font-bold  mr-1">
                         "
                       </span>
-                      Among the competitive market of car sellers, I still prefer Universal Motors, as the machinery they offer is guaranteed. From classic models to the latest release, I found the excellent value of my money. Definitely, this is my go-to for future purchases.
+                      Among the competitive market of car sellers, I still
+                      prefer Universal Motors, as the machinery they offer is
+                      guaranteed. From classic models to the latest release, I
+                      found the excellent value of my money. Definitely, this is
+                      my go-to for future purchases.
                       <span className="text-lg leading-none italic font-bold text-gray-400 ml-1">
                         "
                       </span>
@@ -164,7 +188,11 @@ export default function Testimonial() {
                       <span className=" text-base text-gray-500 lg:text-lg  leading-none italic font-bold mr-1">
                         "
                       </span>
-                      I stumbled upon this website while searching for a specific Japanese model. Not only did I find it, but the condition and price were better than I hoped. It was a genuinely satisfying purchase experience. I will for sure recommend it to others.
+                      I stumbled upon this website while searching for a
+                      specific Japanese model. Not only did I find it, but the
+                      condition and price were better than I hoped. It was a
+                      genuinely satisfying purchase experience. I will for sure
+                      recommend it to others.
                       <span className="text-lg leading-none italic font-bold text-gray-400 ml-1">
                         "
                       </span>
@@ -199,12 +227,14 @@ export default function Testimonial() {
         modules={[Pagination, Navigation]}
         className="mySwiper mt-16"
       >
-
         <SwiperSlide>
           <div className="w-[80%] m-auto h-[500px] flex flex-col lg:flex-row  items-center justify-center ">
             <div className="h-full w-[90%] lg:w-[50%] flex justify-center flex-col">
               <p className="text-base text-gray-500 lg:text-lg dark:text-gray-400">
-                “	The foremost thing that struck me was the transparency in dealings. I received a detailed history of the vehicle I chose, which helped me make an informed decision. I am really satisfied and happy to be their customer now. ”
+                “ The foremost thing that struck me was the transparency in
+                dealings. I received a detailed history of the vehicle I chose,
+                which helped me make an informed decision. I am really satisfied
+                and happy to be their customer now. ”
               </p>
               <p className="font-bold text-lg lg:text-2xl mt-3 text-gray-600">
                 Mr. Reagan
@@ -227,7 +257,11 @@ export default function Testimonial() {
           <div className="w-[80%] m-auto h-[500px] flex flex-col lg:flex-row  items-center justify-center ">
             <div className="h-full w-[90%] lg:w-[50%] flex justify-center flex-col">
               <p className="text-base text-gray-500 lg:text-lg dark:text-gray-400">
-                “Me and my friend were searching for a used car in good condition but were unable to find one. Through our search, we went through this website and contacted the dealers. This decision turned out to be the best, and we purchased a used Toyota at an amazing cost. Happy to be their customers! ”
+                “Me and my friend were searching for a used car in good
+                condition but were unable to find one. Through our search, we
+                went through this website and contacted the dealers. This
+                decision turned out to be the best, and we purchased a used
+                Toyota at an amazing cost. Happy to be their customers! ”
               </p>
               <p className="font-bold text-lg lg:text-2xl mt-3 text-gray-600">
                 Mr. Danny
@@ -250,7 +284,10 @@ export default function Testimonial() {
           <div className="w-[80%] m-auto h-[500px] flex flex-col lg:flex-row  items-center justify-center ">
             <div className="h-full w-[90%] lg:w-[50%] flex justify-center flex-col">
               <p className="text-base text-gray-500 lg:text-lg dark:text-gray-400">
-                “I recently purchased a heavy-duty truck from them, and the variety they offer is mind-boggling. The truck I bought was exactly as advertised: robust, well-maintained and the same as told to me. I am extremely satisfied with what I have bought. ”
+                “I recently purchased a heavy-duty truck from them, and the
+                variety they offer is mind-boggling. The truck I bought was
+                exactly as advertised: robust, well-maintained and the same as
+                told to me. I am extremely satisfied with what I have bought. ”
               </p>
               <p className="font-bold text-lg lg:text-2xl mt-3 text-gray-600">
                 Mr. Mosha
@@ -273,7 +310,11 @@ export default function Testimonial() {
           <div className="w-[80%] m-auto h-[500px] flex flex-col lg:flex-row  items-center justify-center ">
             <div className="h-full w-[90%] lg:w-[50%] flex justify-center flex-col">
               <p className="text-base text-gray-500 lg:text-lg dark:text-gray-400">
-                “We were hesitant about purchasing a used vehicle online, but Universal Motor’s commitment to quality reassured us. We browsed through their extensive collection, and guess what!? We found our dream car- a sleek, efficient Japanese sedan that was in pristine condition. ”
+                “We were hesitant about purchasing a used vehicle online, but
+                Universal Motor’s commitment to quality reassured us. We browsed
+                through their extensive collection, and guess what!? We found
+                our dream car- a sleek, efficient Japanese sedan that was in
+                pristine condition. ”
               </p>
               <p className="font-bold text-lg lg:text-2xl mt-3 text-gray-600">
                 Albert Jonathan

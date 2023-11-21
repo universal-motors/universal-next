@@ -10,7 +10,6 @@ export default function SidebarSlider() {
       style={{ width: "95%", margin: "auto", cursor: "grab" }}
       spaceBetween={50}
       centeredSlides={true}
-
       pagination={{
         clickable: true,
       }}
