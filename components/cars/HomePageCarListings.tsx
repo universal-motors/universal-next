@@ -65,6 +65,7 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
               <div className="grid !grid-cols-10 2xl:!grid-cols-5  gap-60  2xl:gap-3 w-full ">
                 {trucks.slice(0, 10).map((car) => (
                   <CarCard
+                    fav={fav}
                     car={car}
                     href={`/global/results/trucks/${car.stockId}`}
                   />
@@ -93,6 +94,7 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
                       .map((car) => (
                         // <Link key={car.stockId} href={`/global/results/${encodeURIComponent(car.stockId)}`}>
                         <CarCard
+                          fav={fav}
                           car={car}
                           href={`/global/results/cars/${car.stockId}`}
                         />
@@ -127,6 +129,7 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
                       // .slice(0,10)
                       .map((car) => (
                         <CarCard
+                          fav={fav}
                           car={car}
                           href={`/global/results/cars/${car.stockId}`}
                         />
