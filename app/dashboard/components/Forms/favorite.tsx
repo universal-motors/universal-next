@@ -22,7 +22,6 @@ export default function Favorite() {
     getData();
   }, [fetch]);
   const totalPages = Math.ceil(fav.length / itemsPerPage);
-
   return (
     <div className="flex flex-col gap-5 my-5">
       {/* {fav.map((item: any) => {
@@ -70,7 +69,7 @@ export default function Favorite() {
                     <PriceFormat carPrice={item.price} />
                   </td>
                   <td className="px-6 py-4 flex gap-1">
-                    <Link href={`/global/results/cars/${item.stockID}`}>
+                    <Link href={item?.vehicleTypeId == 2 ? `/global/results/trucks/${item.stockID}` : `/global/results/cars/${item.stockID}`}>
                       <button className="bg-[#221C63] hover:bg-[#857de0] text-white font-bold py-2 px-4 rounded">
                         view{" "}
                       </button>
