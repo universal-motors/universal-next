@@ -1,48 +1,64 @@
+"use client";
+import { log } from "console";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 export default function SidebarItems() {
+  const pathname = usePathname();
+  console.log(pathname);
   return (
     <div className=" col-lg-2 bg-[#221C63] hidden md:flex flex-none flex-col justify-between p-6 text-white border-y-[1px] border-[#ffff14]">
       <nav className="space-y-2">
-        <a
-          href="#"
-          className="block px-6 py-2 hover:bg-[#006aff] transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14]"
-        >
-          Change Password
-        </a>
-
-        <a
-          href="#"
-          className="block px-6 py-2 hover:bg-[#006aff] transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14]"
+        <Link
+          className={`block px-6 py-2 hover:/dashboard transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14] ${
+            pathname === "/dashboard" ? "bg-[#006aff]" : "hover:bg-[#006aff]"
+          }`}
+          href="/dashboard"
         >
           Account Information
-        </a>
+        </Link>
 
-        <a
-          href="#"
-          className="block px-6 py-2 hover:bg-[#006aff] transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14]"
+        <Link
+          className={`block px-6 py-2 hover:bg-[#006aff] transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14] ${
+            pathname === "/contact-information"
+              ? "bg-[#006aff]"
+              : "hover:bg-[#006aff]"
+          }`}
+          href="/contact-information"
         >
           Contact Information
-        </a>
+        </Link>
 
-        <a
-          href="#"
-          className="block px-6 py-2 hover:bg-[#006aff] transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14]"
+        <Link
+          className={`block px-6 py-2 hover:bg-[#006aff] transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14] ${
+            pathname === "/connect-accounts"
+              ? "bg-[#006aff]"
+              : "hover:bg-[#006aff]"
+          }`}
+          href="/connect-accounts"
         >
           Connect Accounts
-        </a>
+        </Link>
 
-        <a
-          href="#"
-          className="block px-6 py-2 hover:bg-[#006aff] transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14]"
+        <Link
+          className={`block px-6 py-2 hover:bg-[#006aff] transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14] ${
+            pathname === "/preferences" ? "bg-[#006aff]" : "hover:bg-[#006aff]"
+          }`}
+          href="/Preferences"
         >
           Preferences
-        </a>
+        </Link>
 
-        <a
-          href="#"
-          className="block px-6 py-2 hover:bg-[#006aff] transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14]"
+        <Link
+          className={`block px-6 py-2 hover:bg-[#006aff] transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14]  ${
+            pathname === "/account-activity"
+              ? "bg-[#006aff]"
+              : "hover:bg-[#006aff]"
+          }`}
+          href="/account activity"
         >
           Account Activity
-        </a>
+        </Link>
       </nav>
       <div className="w-full h-12 px-[46px] py-2 bg-[#474747] bg-opacity-20 rounded-lg justify-start items-center gap-3 inline-flex">
         <div className="justify-start items-center gap-3 flex">
