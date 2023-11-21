@@ -18,9 +18,10 @@ export default function HowToBuy() {
           <div className="gceInform-Imptxt">
             <div className="container">
               <div className="row">
-                <div className="col-md-6">
+                <div className="col-md-6 shadow-none">
                   <h3>From Stock</h3>
                   <img
+                    className="shadow-none"
                     src="/assets/images/newcontentimgs/New folder/website-10.png"
                     alt=""
                   />
@@ -28,6 +29,7 @@ export default function HowToBuy() {
                 <div className="col-md-6">
                   <h3>From Auction</h3>
                   <img
+                    className="shadow-none"
                     style={{ width: "100% !important" }}
                     src="/assets/images/newcontentimgs/New folder/website-11.png"
                     alt=""
@@ -48,7 +50,12 @@ export default function HowToBuy() {
                   <div className="col-md-5 col-12">
                     <div className="buy-stepimg">
                       <img
-                        style={{ margin: "auto !important", display: "table" }}
+                        style={{
+                          margin: "auto !important",
+                          display: "table",
+                          boxShadow: "none",
+                          height: "200px",
+                        }}
                         src="/assets/images/newcontentimgs/New folder/mouse-cursor-png-5a376f62b53756.6700541015135824347423-removebg-preview.png"
                         className="img-fluid"
                         alt="CHOOSE THE VEHICLE YOU WANT TO PURCHASE.OUR CAR SEARCH ENGINE WILL HELP YOU SEARCH THROUGH OUR INVENTORY."
@@ -98,6 +105,8 @@ export default function HowToBuy() {
                           margin: "auto !important",
                           display: "table",
                           width: "40% !important",
+                          boxShadow: "none",
+                          height: "200px",
                         }}
                         src="/assets/images/newcontentimgs/New folder/328-3284939_tasks-clipart.png"
                         className="img-fluid"
@@ -116,6 +125,8 @@ export default function HowToBuy() {
                           margin: "auto !important",
                           display: "table",
                           width: "50% !important",
+                          boxShadow: "none",
+                          height: "200px",
                         }}
                         src="/assets/images/newcontentimgs/New folder/5a35519780ae37.4302250615134437355271.png"
                         className="img-fluid"
@@ -166,6 +177,8 @@ export default function HowToBuy() {
                           margin: "auto !important",
                           display: "table",
                           width: "40% !important",
+                          boxShadow: "none",
+                          height: "200px",
                         }}
                         src="/assets/images/newcontentimgs/New folder/11-115763_calendar-icon-png.png"
                         className="img-fluid"
@@ -179,7 +192,12 @@ export default function HowToBuy() {
                   <div className="col-md-5 col-12">
                     <div className="buy-stepimg">
                       <img
-                        style={{ margin: "auto !important", display: "table" }}
+                        style={{
+                          margin: "auto !important",
+                          display: "table",
+                          boxShadow: "none",
+                          height: "200px",
+                        }}
                         src="/assets/images/newcontentimgs/New folder/m2i8i8m2G6i8G6Z5-removebg-preview.png"
                         className="img-fluid"
                       />
@@ -228,6 +246,8 @@ export default function HowToBuy() {
                           margin: "auto !important",
                           display: "table",
                           width: "60% !important",
+                          boxShadow: "none",
+                          height: "200px",
                         }}
                         src="/assets/images/newcontentimgs/New folder/240_F_320330955_uOfwFjgiBFk7czfVD22uEb6YxAvn0hgk-removebg-preview.png"
                         className="img-fluid"
@@ -245,6 +265,8 @@ export default function HowToBuy() {
                           margin: "auto !important",
                           display: "table",
                           width: "50% !important",
+                          boxShadow: "none",
+                          height: "200px",
                         }}
                         src="/assets/images/newcontentimgs/New folder/pngegg (2).png"
                         className="img-fluid"
@@ -293,6 +315,8 @@ export default function HowToBuy() {
                           margin: "auto !important",
                           display: "table",
                           width: "60% !important",
+                          boxShadow: "none",
+                          height: "200px",
                         }}
                         src="/assets/images/newcontentimgs/New folder/189-1896112_car-png-icon.png"
                         className="img-fluid"

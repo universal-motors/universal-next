@@ -1,4 +1,7 @@
 import AboutPageSideBar from "@/components/pages/about/AboutPageSideBar";
+import VisionMission from "@/components/pages/about/visionMission";
+import { watch } from "fs";
+import Image from "next/image";
 
 export const metadata = {
   title: "Test ",
@@ -52,11 +55,8 @@ export default function AboutUs() {
               in your budget price. Our motive is customer satisfaction because{" "}
               <b> Satisfied customer brings another customer</b>
             </p>
-            <img
-              className="widthhundread"
-              src="/assets/images/newcontentimgs/website-02.png"
-              alt=""
-            />
+            <VisionMission />
+
             <div className="">
               <div className="row">
                 <div className="col-md-12 col-12">
@@ -68,10 +68,10 @@ export default function AboutUs() {
               <div className="buy-stBox-right">
                 <div className="row">
                   <div className="col-md-5 col-12">
-                    <div className="buy-stepimg">
+                    <div className="buy-stepimg ">
                       <img
                         src="/assets/images/newcontentimgs/New folder/website-0.png"
-                        className="img-fluid"
+                        className="img-fluid !shadow-none "
                         alt="CHOOSE THE VEHICLE YOU WANT TO PURCHASE.OUR CAR SEARCH ENGINE WILL HELP YOU SEARCH THROUGH OUR INVENTORY."
                       />
                     </div>
@@ -127,7 +127,7 @@ export default function AboutUs() {
                     <div className="buy-stepimg">
                       <img
                         src="/assets/images/newcontentimgs/New folder/website-1.png"
-                        className="img-fluid"
+                        className="img-fluid !shadow-none "
                         alt="YOU CAN ALSO CUSTOMIZE SEARCH DEPENDING ON YOUR REQUIREMENT AND PREFERENCES. DETAILED PHOTOS AND SPECIFICATIONS CAN BE SEEN FOR EACH INVENTORY."
                       />
                     </div>
@@ -140,7 +140,7 @@ export default function AboutUs() {
                     <div className="buy-stepimg">
                       <img
                         src="/assets/images/newcontentimgs/New folder/website-2.png"
-                        className="img-fluid"
+                        className="img-fluid !shadow-none "
                         alt="CHOOSE THE VEHICLE YOU WANT TO PURCHASE.OUR CAR SEARCH ENGINE WILL HELP YOU SEARCH THROUGH OUR INVENTORY."
                       />
                     </div>
@@ -196,7 +196,7 @@ export default function AboutUs() {
                     <div className="buy-stepimg">
                       <img
                         src="/assets/images/newcontentimgs/New folder/website-03.png"
-                        className="img-fluid"
+                        className="img-fluid !shadow-none "
                         alt="YOU CAN ALSO CUSTOMIZE SEARCH DEPENDING ON YOUR REQUIREMENT AND PREFERENCES. DETAILED PHOTOS AND SPECIFICATIONS CAN BE SEEN FOR EACH INVENTORY."
                       />
                     </div>

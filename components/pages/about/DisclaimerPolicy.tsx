@@ -30,15 +30,15 @@ export default function DisclaimerPolicy() {
                   you must have read and agreed to the terms in this document.
                 </p>
                 <div className="gceInform-Imptxt">
-                  <h4>
+                  <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                     <i className="fa fa-caret-right" aria-hidden="true" />
                     TERMS OF BUSINESS
                   </h4>
-                  <p>
+                  <p className="mt-3">
                     Universal Motors only conducts its used car export business
                     by using following terms of:
                   </p>
-                  <p>
+                  <p className="mt-3">
                     C&amp;F (Cost and Freight): This is the price which includes
                     the cost of the vehicle plus all other local costs
                     applicable pre-shipment. It also includes the cost of
@@ -50,40 +50,40 @@ export default function DisclaimerPolicy() {
                     applicable pre shipment, the shipping costs to the
                     destination port and the marine insurance.
                   </p>
-                  <h4>
+                  <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                     <i className="fa fa-caret-right" aria-hidden="true" />
                     PAYMENT
                   </h4>
-                  <p>
+                  <p className="mt-3">
                     Only Bank Transfer or Telegraphic Transfer, Letter of Credit
                     for bigger purchases and Credit card payment via PayPal is
                     accepted. No other means or modes of payments are accepted.
                     No payments are accepted or entertained unless an official
                     invoice is issued.
                   </p>
-                  <h4>
+                  <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                     <i className="fa fa-caret-right" aria-hidden="true" />
                     CURRENCIES
                   </h4>
-                  <p>
+                  <p className="mt-3">
                     Universal Motors only accepts payment in US dollars.
                     Universal Motors cannot be held responsible for any
                     payments, funds or monies lost during this process. All bank
                     charges involved in the payment transfer are to be paid by
                     customer.
                   </p>
-                  <h4>
+                  <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                     <i className="fa fa-caret-right" aria-hidden="true" />
                     DOCUMENT PRESENTATION
                   </h4>
-                  <p>
+                  <p className="mt-3">
                     As per requirement of customs department at destination,
                     Universal Motors can provide all necessary documents needed
                     for hassle free export. By default, we provide following
                     documents via traceable courier once payment is received
                     and/or ship has left.
                   </p>
-                  <p>
+                  <p className="mt-3">
                     Bill of Ladings
                     <br />
                     Vehicle Registration Certificate
@@ -105,22 +105,22 @@ export default function DisclaimerPolicy() {
                     cost involved to prepare these additional documents will be
                     added on to customers account.
                   </p>
-                  <h4>
+                  <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                     <i className="fa fa-caret-right" aria-hidden="true" />
                     IMPORT RESTRICTIONS
                   </h4>
-                  <p>
+                  <p className="mt-3">
                     Please check the import restrictions in force at your
                     destination, country or port, Universal Motors cannot be
                     held responsible for any vehicle imported which cannot
                     enter, registered, used or comply in your country, port or
                     destination.
                   </p>
-                  <h4>
+                  <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                     <i className="fa fa-caret-right" aria-hidden="true" />
                     INSPECTION REQUIREMENT
                   </h4>
-                  <p>
+                  <p className="mt-3">
                     Some countries in African continent such as Mozambique
                     (Intertek Inspection) , Kenya (Jevic Inspection for Kenya) ,
                     Tanzania (Tanzania Bureau Services Inspection or TBS),
@@ -134,11 +134,11 @@ export default function DisclaimerPolicy() {
                     inspections. For Mozambique inspection, we will require MOZ
                     number, providing MOZ number is customers responsibility.
                   </p>
-                  <h4>
+                  <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                     <i className="fa fa-caret-right" aria-hidden="true" />
                     SHIPPING DELAYS AND ISSUES
                   </h4>
-                  <p>
+                  <p className="mt-3">
                     Any sudden changes in pre setted or booked Shipping
                     schedules, Rates, Dates, Vessel Changes and Packing sequence
                     are not normal practice to happen, so Universal Motors
@@ -148,21 +148,21 @@ export default function DisclaimerPolicy() {
                     lines and agents do reserve the right to change them without
                     notice.
                   </p>
-                  <h4>
+                  <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                     <i className="fa fa-caret-right" aria-hidden="true" />
                     VEHICLE AVAILIBILITY
                   </h4>
-                  <p>
+                  <p className="mt-3">
                     All vehicles listed on website are tried to be updated as
                     regularly as possible. Universal Motors, reserves full right
                     to list, delete, update, watermark the stock listed on the
                     website.
                   </p>
-                  <h4>
+                  <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                     <i className="fa fa-caret-right" aria-hidden="true" />
                     VEHICLE SALES POLICY
                   </h4>
-                  <p>
+                  <p className="mt-3">
                     Universal Motors, in any circumstances cannot be held
                     responsible, liable or accountable for any discrepancies,
                     temperament or differences in odometer mileage. However if
@@ -171,28 +171,28 @@ export default function DisclaimerPolicy() {
                     non refundable, non exchangeable in any circumstances unless
                     special permission is granted by management.
                   </p>
-                  <h4>
+                  <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                     <i className="fa fa-caret-right" aria-hidden="true" />
                     WEBSITE ACCOUNTS
                   </h4>
-                  <p>
+                  <p className="mt-3">
                     Universal Motors, reserves the right to cancel your account
                     with our website for any reason without giving any advance
                     notice/s.
                   </p>
-                  <h4>
+                  <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                     <i className="fa fa-caret-right" aria-hidden="true" />
                     COOKIE POLICY
                   </h4>
-                  <p>
+                  <p className="mt-3">
                     To differentiate you from other users, we use cookies so our
                     website can remember what you have browsed.
                   </p>
-                  <h4>
+                  <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                     <i className="fa fa-caret-right" aria-hidden="true" />
                     SECURITY EXPORT CONTROL
                   </h4>
-                  <p>
+                  <p className="mt-3">
                     Any applicable national and international laws, norms, and
                     regulations contributing to maintenance of international
                     peace and security, as well as anti-terrorism, including all

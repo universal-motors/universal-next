@@ -24,11 +24,11 @@ export default function SustainabilityPolicy() {
               <div className="gceCountry-Local exp-Information">
                 <h3>Contribution toward Sustainable Development</h3>
                 <div className="gceInform-Imptxt">
-                  <h4>
+                  <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                     <i className="fa fa-caret-right" aria-hidden="true" />
                     Customers
                   </h4>
-                  <p>
+                  <p className="mt-1">
                     <span className="boldp">
                       Based on our philosophy that &quot;Customer is King&quot;,
                       we provide innovative, safe, and outstanding high-quality
@@ -37,11 +37,11 @@ export default function SustainabilityPolicy() {
                       world.
                     </span>
                   </p>
-                  <h4>
+                  <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                     <i className="fa fa-caret-right" aria-hidden="true" />
                     Employees
                   </h4>
-                  <p>
+                  <p className="mt-1">
                     <span className="boldp">
                       We respect our employees and believe that the success of
                       our business is led by each individual&apos;s creativity
@@ -57,11 +57,11 @@ export default function SustainabilityPolicy() {
                       use or tolerate any form of forced or child labor.
                     </span>
                   </p>
-                  <h4>
+                  <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                     <i className="fa fa-caret-right" aria-hidden="true" />
                     Business Partners
                   </h4>
-                  <p>
+                  <p className="mt-1">
                     <span className="boldp">
                       We respect our business partners such as suppliers and
                       dealers and work with them through long-term relationships
@@ -75,11 +75,11 @@ export default function SustainabilityPolicy() {
                       region&apos;s competition laws.
                     </span>
                   </p>
-                  <h4>
+                  <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                     <i className="fa fa-caret-right" aria-hidden="true" />
                     Shareholders
                   </h4>
-                  <p>
+                  <p className="mt-1">
                     <span className="boldp">
                       We strive to enhance corporate value while achieving
                       stable and long-term growth for the benefit of our
@@ -90,11 +90,11 @@ export default function SustainabilityPolicy() {
                       condition and non-financial information.
                     </span>
                   </p>
-                  <h4>
+                  <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                     <i className="fa fa-caret-right" aria-hidden="true" />
                     Social Contribution
                   </h4>
-                  <p>
+                  <p className="mt-1">
                     <span className="boldp">
                       Wherever we do business, we actively promote and engage,
                       both individually and with partners, in social
