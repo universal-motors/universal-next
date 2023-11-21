@@ -32,6 +32,19 @@ export default function CarPurchasedTable() {
             Price
           </th>
           <th scope="col" className="px-6 py-3">
+            ETD
+          </th>
+          <th scope="col" className="px-6 py-3">
+            ETA
+          </th>
+          <th scope="col" className="px-6 py-3">
+            Deposit
+          </th>
+          <th scope="col" className="px-6 py-3">
+            Balance
+          </th>
+
+          <th scope="col" className="px-6 py-3">
             Action
           </th>
         </tr>

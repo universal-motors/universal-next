@@ -69,14 +69,14 @@ export default function Favorite() {
                   <td className="px-6 py-4">
                     <PriceFormat carPrice={item.price} />
                   </td>
-                  <td className="px-6 py-4 flex">
+                  <td className="px-6 py-4 flex gap-1">
                     <Link href={`/global/results/cars/${item.stockID}`}>
-                      <p className="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                        View
-                      </p>
+                      <button className="bg-[#221C63] hover:bg-[#857de0] text-white font-bold py-2 px-4 rounded">
+                        view{" "}
+                      </button>
                     </Link>
-                    <p
-                      className="font-medium text-red-500  hover:underline ml-3 cursor-pointer"
+
+                    <button
                       onClick={async () => {
                         await removeFavourite({
                           customerId: user.customerId,
@@ -84,9 +84,10 @@ export default function Favorite() {
                         });
                         setFetch(!fetch);
                       }}
+                      className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
                     >
                       Remove
-                    </p>
+                    </button>
                   </td>
                 </tr>
               );
