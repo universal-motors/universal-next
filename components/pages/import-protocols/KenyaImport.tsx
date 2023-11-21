@@ -20,14 +20,14 @@ export default function KenyaImport() {
             </div>
             <div className="buy-stepBox">
               <img
-                className="widthhundread"
+                className="widthhundread !shadow-none"
                 src="/assets/images/import-protocols/Import Regulations Final-14.png"
                 alt=""
               />
             </div>
             <div className="buy-stepBox">
               <img
-                className="widthhundread"
+                className="widthhundread !shadow-none"
                 src="/assets/images/import-protocols/Import Regulations Final-15.png"
                 alt=""
               />

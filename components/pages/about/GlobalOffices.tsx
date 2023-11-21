@@ -47,7 +47,7 @@ export default function GlobalOffices() {
                     </div>
                     <div className="row">
                       <div className="col-md-4 b1">
-                        <div>
+                        <div className="!shadow-none">
                           <img
                             className="texttest"
                             style={{ width: "100% !important" }}
@@ -91,7 +91,7 @@ export default function GlobalOffices() {
                         </div>
                       </div>
                       <div className="col-md-4  b1">
-                        <div>
+                        <div className="!shadow-none">
                           <img
                             className="texttest"
                             style={{ width: "100% !important" }}
@@ -139,7 +139,7 @@ export default function GlobalOffices() {
                         className="col-md-4 b1
 "
                       >
-                        <div>
+                        <div className="!shadow-none">
                           <img
                             className="texttest"
                             style={{ width: "100% !important" }}

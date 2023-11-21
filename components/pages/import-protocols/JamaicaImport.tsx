@@ -20,21 +20,21 @@ export default function JamaicaImport() {
             </div>
             <div className="buy-stepBox">
               <img
-                className="widthhundread"
+                className="widthhundread !shadow-none"
                 src="/assets/images/import-protocols/Import Regulations Final-11.png"
                 alt=""
               />
             </div>
             <div className="buy-stepBox">
               <img
-                className="widthhundread"
+                className="widthhundread !shadow-none"
                 src="/assets/images/import-protocols/Import Regulations Final-12.png"
                 alt=""
               />
             </div>
             <div className="buy-stepBox">
               <img
-                className="widthhundread"
+                className="widthhundread !shadow-none"
                 src="/assets/images/import-protocols/Import Regulations Final-13.png"
                 alt=""
               />

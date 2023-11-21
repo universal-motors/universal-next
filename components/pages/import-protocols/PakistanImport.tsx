@@ -20,14 +20,14 @@ export default function PakistanImport() {
             </div>
             <div className="buy-stepBox">
               <img
-                className="widthhundread"
+                className="widthhundread !shadow-none"
                 src="/assets/images/import-protocols/Import Regulations Final-20.png"
                 alt=""
               />
             </div>
             <div className="buy-stepBox">
               <img
-                className="widthhundread"
+                className="widthhundread !shadow-none"
                 src="/assets/images/import-protocols/Import Regulations Final-21.png"
                 alt=""
               />

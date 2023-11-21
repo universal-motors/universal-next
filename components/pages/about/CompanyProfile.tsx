@@ -1,4 +1,5 @@
 import AboutPageSideBar from "@/components/pages/about/AboutPageSideBar";
+import VisionMission from "@/components/pages/about/visionMission";
 import Link from "next/link";
 
 export default function CompanyProfile() {
@@ -35,7 +36,7 @@ export default function CompanyProfile() {
                 </h3>
                 <div className="row">
                   <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div className="gceInform-Imptxt">
+                    <div className="gceInform-Imptxt ">
                       <p>
                         We have been exporting used cars worldwide. Our team
                         specialize in sourcing used cars from multiple countries
@@ -46,7 +47,7 @@ export default function CompanyProfile() {
                         get to know many of our customers very well and are
                         proud to have known many of them for a long time.
                       </p>
-                      <p>
+                      <p className="mt-3">
                         Exporter of Japanese Used Cars &amp; Trucks Universal
                         Motors is responding to the increasing demand for
                         Japanese used car in many countries, and will export
@@ -55,7 +56,7 @@ export default function CompanyProfile() {
                         Japan, so we can provide you many high-quality Japanese
                         used car that have been maintained carefully in Japan.
                       </p>
-                      <p>
+                      <p className="mt-3">
                         When you are considering importing a Japanese used car,
                         please contact us. We can directly sell Japanese used
                         car for distribution within Japan, and also for export.
@@ -65,36 +66,34 @@ export default function CompanyProfile() {
                         price. Our motive is customer satisfaction because
                         Satisfied customer brings another customer.
                       </p>
-                      <h4>Vision</h4>
-                      <p>
-                        To become world’s largest used cars exporters with
-                        exceptional service and high quality standards.
-                      </p>
-                      <h4>Mission</h4>
-                      <p>
-                        To provide best car buying experience through offering a
-                        wide range of cars at a price that is within client’s
-                        budget.
-                      </p>
-                      <h4>Values</h4>
-                      <p>
+                      <VisionMission />
+                      <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
+                        Values
+                      </h4>
+                      <p className="mt-1">
                         Build the Team Train &amp; encourage team to achieve
                         excellence by challenging them to be innovative, and
                         recognise and reward them according to their performance
                       </p>
-                      <h5>Integrity:</h5>
-                      <p>
+                      <h5 className="mt-3 !text-base sm:!text-xl text-[#221C63]">
+                        Integrity
+                      </h5>
+                      <p className="mt-1">
                         To be the market leader in exporting automobiles around
                         the globe.
                       </p>
-                      <h5>Reliability:</h5>
-                      <p>
+                      <h5 className="mt-3 !text-base sm:!text-xl text-[#221C63]">
+                        Reliability
+                      </h5>
+                      <p className="mt-1">
                         Build the Team Train &amp; encourage team to achieve
                         excellence by challenging them to be innovative, and
                         recognise and reward them according to their performance
                       </p>
-                      <h5>Serving Consumers Worldwide</h5>
-                      <p>
+                      <h5 className="mt-3 !text-base sm:!text-xl text-[#221C63]">
+                        Serving Consumers Worldwide
+                      </h5>
+                      <p className="mt-1">
                         Universal Motors is serving customers all over the
                         world. Our consumers had always find us the best choice
                         for their needs of used cars and vehicles import. Wide
@@ -102,16 +101,20 @@ export default function CompanyProfile() {
                         provide any sort of Japanese vehicles to our customers
                         in shortest period of time with best price.
                       </p>
-                      <h5>Interminable Customer Support</h5>
-                      <p>
+                      <h5 className="mt-3 !text-base sm:!text-xl text-[#221C63]">
+                        Interminable Customer Support
+                      </h5>
+                      <p className="mt-1">
                         Our professional and highly motivated sales team is
                         always there when our customers want them. Whether our
                         customers are looking for one unit for personal use or a
                         trader looking to import medium to large amount, we
                         would be pleased to attend them at our finest.
                       </p>
-                      <h5>Passionate &amp; Trustworthy Sales Team</h5>
-                      <p>
+                      <h5 className="mt-3 !text-base sm:!text-xl text-[#221C63]">
+                        Passionate &amp; Trustworthy Sales Team
+                      </h5>
+                      <p className="mt-1">
                         Our passionate and trustworthy sales team guarantees
                         that the consumers get support at every step of
                         importing procedure. We believe on excellence and
@@ -119,8 +122,10 @@ export default function CompanyProfile() {
                         country and district, irrespective of quantity to
                         contact us with full confidence and faith.
                       </p>
-                      <h5>Great Reconditioned &amp; Examined Cars</h5>
-                      <p>
+                      <h5 className="mt-3 !text-base sm:!text-xl text-[#221C63]">
+                        Great Reconditioned &amp; Examined Cars
+                      </h5>
+                      <p className="mt-1">
                         All our cars are duly examined before purchase from our
                         in house mechanism and reconditioned to the best by
                         skilled reconditioning crew. Buy with confidence, we

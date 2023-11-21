@@ -24,7 +24,7 @@ export default function VehicleShipmentCondition() {
               <div className="row">
                 <div className="col-md-4">
                   <img
-                    className="widthhundread"
+                    className="widthhundread !shadow-none"
                     src="/assets/images/newcontentimgs/New%20folder/website-4.png"
                     alt=""
                   />
@@ -34,7 +34,7 @@ export default function VehicleShipmentCondition() {
                 </div>
                 <div className="col-md-4">
                   <img
-                    className="widthhundread"
+                    className="widthhundread !shadow-none"
                     src="/assets/images/newcontentimgs/New%20folder/website-5.png"
                     alt=""
                   />
@@ -45,7 +45,7 @@ export default function VehicleShipmentCondition() {
                 </div>
                 <div className="col-md-4">
                   <img
-                    className="widthhundread"
+                    className="widthhundread !shadow-none"
                     src="/assets/images/newcontentimgs/New%20folder/website-6.png"
                     alt=""
                   />
@@ -60,7 +60,7 @@ export default function VehicleShipmentCondition() {
               <div className="row">
                 <div className="col-md-4">
                   <img
-                    className="widthhundread"
+                    className="widthhundread !shadow-none"
                     src="/assets/images/newcontentimgs/New%20folder/website-7.png"
                     alt=""
                   />
@@ -72,7 +72,7 @@ export default function VehicleShipmentCondition() {
                 </div>
                 <div className="col-md-4">
                   <img
-                    className="widthhundread"
+                    className="widthhundread !shadow-none"
                     src="/assets/images/newcontentimgs/New%20folder/website-8.png"
                     alt=""
                   />
@@ -80,7 +80,7 @@ export default function VehicleShipmentCondition() {
                 </div>
                 <div className="col-md-4">
                   <img
-                    className="widthhundread"
+                    className="widthhundread !shadow-none"
                     src="/assets/images/newcontentimgs/New%20folder/website-9.png"
                     alt=""
                   />

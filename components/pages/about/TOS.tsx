@@ -30,11 +30,11 @@ export default function TOS() {
                 <div className="row">
                   <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div className="gceInform-Imptxt">
-                      <h4>
+                      <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                         <i className="fa fa-circle" aria-hidden="true" />
                         GENERAL
                       </h4>
-                      <p>
+                      <p className="mt-1">
                         Universal Motor runs the website
                         <a href="https://www.universalmotorsltd.com">
                           www.universalmotorsltd.com
@@ -43,60 +43,60 @@ export default function TOS() {
                         (terms). You confirm that you agree to these terms by
                         using the site.
                       </p>
-                      <h4>
+                      <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                         <i className="fa fa-circle" aria-hidden="true" />
                         COPYRIGHT
                       </h4>
-                      <p>
+                      <p className="mt-1">
                         Copyrights to all content on the site belong to
                         Universal Motor. Reproduction or use of content on the
                         site is prohibited.
                       </p>
-                      <h4>
+                      <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                         <i className="fa fa-circle" aria-hidden="true" />
                         OTHER AGREEMENTS
                       </h4>
-                      <p>
+                      <p className="mt-1">
                         These terms govern all transactions except where
                         Universal Motor signs a separate written contract with
                         you. If Universal Motor signs a contract with you, that
                         contract will prevail wherever that contract and these
                         terms differ.
                       </p>
-                      <h4>
+                      <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                         <i className="fa fa-circle" aria-hidden="true" />
                         NON-ENGLISH TERMS
                       </h4>
-                      <p>
+                      <p className="mt-1">
                         Only the English version of these terms is
                         authoritative. Non-English translations are inoperative
                         and intended for only convenience.
                       </p>
-                      <h4>
+                      <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                         <i className="fa fa-circle" aria-hidden="true" />
                         REGISTRATION
                       </h4>
-                      <p>
+                      <p className="mt-1">
                         Customer account registration is required to make
                         transactions. Registration is free. To register, you
                         must provide Universal Motor accurate, complete, and
                         current information. Universal Motor will not be liable
                         for loss arising from wrong information.
                       </p>
-                      <h4>
+                      <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                         <i className="fa fa-circle" aria-hidden="true" />
                         PRICING AND SALE
                       </h4>
-                      <p>
+                      <p className="mt-1">
                         Cars are priced in United States dollars or Japanese yen
                         and, unless otherwise stated in writing, sold on CFR or
                         FOB terms.
                       </p>
-                      <h4>
+                      <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                         <i className="fa fa-circle" aria-hidden="true" />
                         PAYMENT
                       </h4>
-                      <p>
+                      <p className="mt-1">
                         Full or part payment is due seven days after invoice
                         issuance and is deemed paid on Universal Motors’s
                         receipt of your electronic funds transfer. For cars
@@ -105,11 +105,11 @@ export default function TOS() {
                         transaction costs are not included in the invoice price
                         and payable by you.
                       </p>
-                      <h4>
+                      <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                         <i className="fa fa-circle" aria-hidden="true" />
                         DELIVERY AND SHIPPING
                       </h4>
-                      <p>
+                      <p className="mt-1">
                         After full or part payment, Universal Motor books
                         shipping subject to carrier’s terms. The place of
                         delivery is carrier’s facility. Risk passes to you on
@@ -123,11 +123,11 @@ export default function TOS() {
                         checking and refilling engine oil, radiator coolant, and
                         other consumables.
                       </p>
-                      <h4>
+                      <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                         <i className="fa fa-circle" aria-hidden="true" />
                         DOCUMENTS
                       </h4>
-                      <p>
+                      <p className="mt-1">
                         Original transportation documents are released and sent
                         to you only after full payment. You must make timely
                         full payment for processing and sending before shipment
@@ -135,11 +135,11 @@ export default function TOS() {
                         arising from damaged, delayed, erroneous, lost,
                         non-amended, non-issued, or retained documents.
                       </p>
-                      <h4>
+                      <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                         <i className="fa fa-circle" aria-hidden="true" />
                         NONPAYMENT AND CANCELATION
                       </h4>
-                      <p>
+                      <p className="mt-1">
                         If you fail to pay Universal Motors the full invoice
                         price by seven days after the carrier’s sailing date,
                         the car will be deemed unpaid, and you might forfeit any
@@ -148,11 +148,11 @@ export default function TOS() {
                         tenders a car to the carrier, the order becomes
                         noncancelable.
                       </p>
-                      <h4>
+                      <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                         <i className="fa fa-circle" aria-hidden="true" />
                         SITE CONTENT
                       </h4>
-                      <p>
+                      <p className="mt-1">
                         Universal Motor exercises due care in posting
                         information on the site; however, Universal Motor makes
                         no warranty of completeness, accuracy, validity, or
@@ -160,11 +160,11 @@ export default function TOS() {
                         loss arising from decisions or actions taken by you
                         reliant on information posted on the site.
                       </p>
-                      <h4>
+                      <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                         <i className="fa fa-circle" aria-hidden="true" />
                         WARRANTY
                       </h4>
-                      <p>
+                      <p className="mt-1">
                         Universal Motor offers the site and cars as is without
                         warranting fitness for your particular purpose and
                         merchantability. Universal Motors warrants only that
@@ -173,41 +173,41 @@ export default function TOS() {
                         description. Universal Motor will not be liable for
                         disclosed car defects.
                       </p>
-                      <h4>
+                      <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                         <i className="fa fa-circle" aria-hidden="true" />
                         LIMITED LIABILITY
                       </h4>
-                      <p>
+                      <p className="mt-1">
                         Universal Motor will not be liable for more than the
                         invoice price of the subject car(s); consequential,
                         indirect, or punitive damages; or lost business, profit,
                         or use.
                       </p>
-                      <h4>
+                      <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                         <i className="fa fa-circle" aria-hidden="true" />
                         INDEMNITY
                       </h4>
-                      <p>
+                      <p className="mt-1">
                         You shall indemnify Universal Motor for loss arising
                         from your breach of these terms, negligence, wrongdoing,
                         or violation of contract or third-party rights or law.
                       </p>
-                      <h4>
+                      <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                         <i className="fa fa-circle" aria-hidden="true" />
                         ANTI CORRUPTION
                       </h4>
-                      <p>
+                      <p className="mt-1">
                         Universal Motor complies with the Japan Unfair
                         Competition Prevention Act, OECD Convention on Combating
                         Bribery of Foreign Public Officials, and other
                         anti-corruption applicable law. Any contravening
                         transaction is prohibited.
                       </p>
-                      <h4>
+                      <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                         <i className="fa fa-circle" aria-hidden="true" />
                         ANTI-SOCIAL FORCES
                       </h4>
-                      <p>
+                      <p className="mt-1">
                         Universal Motor never deals with organized crime and
                         takes measures to prevent anti-social transactions,
                         including screening business partners for anti-social
@@ -215,22 +215,22 @@ export default function TOS() {
                         forces in procurement and sales contracts. Any
                         contravening transaction is prohibited.
                       </p>
-                      <h4>
+                      <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                         <i className="fa fa-circle" aria-hidden="true" />
                         SECURITY EXPORT CONTROL
                       </h4>
-                      <p>
+                      <p className="mt-1">
                         Universal Motor complies with Japan Foreign Exchange and
                         Foreign Trade Act export controls, including list
                         controls and catch-all controls and other applicable
                         laws and regulations to prevent illegal weapons
                         development. Any contravening transaction is prohibited.
                       </p>
-                      <h4>
+                      <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                         <i className="fa fa-circle" aria-hidden="true" />
                         MISCELLANEOUS
                       </h4>
-                      <p>
+                      <p className="mt-1">
                         These terms constitute the entire agreement between you
                         and Universal Motor, and a forbearance in exercising or
                         requiring satisfaction of a provision, act, omission, or

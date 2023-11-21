@@ -45,16 +45,16 @@ export default function PrivacyPolicy() {
                 </p>
               </div>
               <div className="gceCountry-Local exp-Information">
-                <p>
+                <p className="mt-1">
                   Universal Motors always ensures that your privacy is protected
                   when you are visiting our websites.
                 </p>
                 <div className="gceInform-Imptxt">
-                  <h4>
+                  <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                     <i className="fa fa-caret-right" aria-hidden="true" />
                     Collected information
                   </h4>
-                  <p>
+                  <p className="mt-1">
                     We may collect the following information:
                     <br />
                     - Customers Name
@@ -64,11 +64,11 @@ export default function PrivacyPolicy() {
                     <br />- Demographic information such as postcode,
                     preferences and interests
                   </p>
-                  <h4>
+                  <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                     <i className="fa fa-caret-right" aria-hidden="true" />
                     Usage of Information Collected
                   </h4>
-                  <p>
+                  <p className="mt-1">
                     We require this information to understand your needs and
                     provide you with a better service, and in particular for
                     internal record keeping.
@@ -87,11 +87,11 @@ export default function PrivacyPolicy() {
                     We may use the information to customize the website
                     according to your interests.
                   </p>
-                  <h4>
+                  <h4 className="mt-3  !text-base sm:!text-xl text-[#221C63]">
                     <i className="fa fa-caret-right" aria-hidden="true" />
                     Deleting or Updating of Information provided
                   </h4>
-                  <p>
+                  <p className="mt-1">
                     You may choose to restrict the collection or use of your
                     personal information in the following ways:
                     <br />- If you have previously agreed to us using your
@@ -108,7 +108,7 @@ export default function PrivacyPolicy() {
                     us as soon as possible, at the above address. We will
                     promptly correct any information found to be incorrect.
                   </p>
-                  <p>
+                  <p className="mt-3">
                     <b>
                       All information listed and provided information or data on
                       the websites, emails and vehicles listed is to the `best
