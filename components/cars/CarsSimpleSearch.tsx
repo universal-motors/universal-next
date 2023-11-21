@@ -147,9 +147,13 @@ export default function CarsSimpleSearch({
             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               Manufacturing Year:
             </label>
-            <div className="flex flex-column  ">
+            <div className="flex flex-row gap-2">
               <div className="flex-none w-30 h-15 ">
-                <SearchSelect value={fromYear} onValueChange={setFromYear}>
+                <SearchSelect
+                  placeholder="starting year"
+                  value={fromYear}
+                  onValueChange={setFromYear}
+                >
                   {yearList.map((year) => (
                     <SearchSelectItem key={year} value={year.toString()}>
                       {year}
@@ -157,12 +161,12 @@ export default function CarsSimpleSearch({
                   ))}
                 </SearchSelect>
               </div>
-              <div className="w-full flex items-center justify-center">
-                <div className="h-5 bg-slate-300 w-[2px]"></div>
-              </div>
-
               <div className="flex-auto w-30">
-                <SearchSelect value={toYear} onValueChange={setToYear}>
+                <SearchSelect
+                  placeholder="ending year"
+                  value={toYear}
+                  onValueChange={setToYear}
+                >
                   {yearList.map((year) => (
                     <SearchSelectItem key={year} value={year.toString()}>
                       {year}

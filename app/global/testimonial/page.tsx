@@ -5,6 +5,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import Image from "next/image";
 export default function Testimonial() {
   return (
     <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 p-0 second-searchform">
@@ -33,11 +34,16 @@ export default function Testimonial() {
                 <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
                   <div className="w-full flex mb-4 items-center">
                     <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                      <img src="https://i.pravatar.cc/100?img=1" alt="" />
+                      <Image
+                        src="/assets/images/imageHampton Charles.png"
+                        alt="hampton"
+                        width={50}
+                        height={50}
+                      />
                     </div>
                     <div className="flex-grow pl-3">
                       <h6 className="font-bold  text-lg lg:text-2xl  text-gray-600">
-                        Adisa
+                        Hampton Charles
                       </h6>
                     </div>
                   </div>
@@ -61,11 +67,16 @@ export default function Testimonial() {
                 <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
                   <div className="w-full flex mb-4 items-center">
                     <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                      <img src="https://i.pravatar.cc/100?img=2" alt="" />
+                      <img
+                        src="/assets/images/imageJohn Matayo.png"
+                        alt="john"
+                        width={50}
+                        height={50}
+                      />
                     </div>
                     <div className="flex-grow pl-3">
                       <h6 className="font-bold  text-lg lg:text-2xl  uppercase text-gray-600">
-                        Jack Harper
+                        John Matayo
                       </h6>
                     </div>
                   </div>
@@ -91,7 +102,12 @@ export default function Testimonial() {
                 <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
                   <div className="w-full flex mb-4 items-center">
                     <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                      <img src="https://i.pravatar.cc/100?img=3" alt="" />
+                      <img
+                        src="/assets/images/imageMosha.png"
+                        alt="Mosha"
+                        width={50}
+                        height={50}
+                      />
                     </div>
                     <div className="flex-grow pl-3">
                       <h6 className="font-bold  text-lg lg:text-2xl  uppercase text-gray-600">
@@ -119,7 +135,12 @@ export default function Testimonial() {
                 <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
                   <div className="w-full flex mb-4 items-center">
                     <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                      <img src="https://i.pravatar.cc/100?img=4" alt="" />
+                      <img
+                        src="/assets/images/imageRegan.png"
+                        alt="Regan"
+                        width={50}
+                        height={50}
+                      />
                     </div>
                     <div className="flex-grow pl-3">
                       <h6 className="font-bold  text-lg lg:text-2xl  uppercase text-gray-600">
@@ -148,11 +169,16 @@ export default function Testimonial() {
                 <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
                   <div className="w-full flex mb-4 items-center">
                     <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                      <img src="https://i.pravatar.cc/100?img=5" alt="" />
+                      <Image
+                        src="/assets/images/imageAlfred.png"
+                        alt="alfred"
+                        width={50}
+                        height={50}
+                      />
                     </div>
                     <div className="flex-grow pl-3">
                       <h6 className="font-bold  text-lg lg:text-2xl  uppercase text-gray-600">
-                        Rebecca Williams
+                        Alfred Nyanda
                       </h6>
                     </div>
                   </div>
@@ -175,7 +201,12 @@ export default function Testimonial() {
                 <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
                   <div className="w-full flex mb-4 items-center">
                     <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                      <img src="https://i.pravatar.cc/100?img=6" alt="" />
+                      <img
+                        src="/assets/images/imageDanny.png"
+                        alt=""
+                        width={50}
+                        height={50}
+                      />
                     </div>
                     <div className="flex-grow pl-3">
                       <h6 className="font-bold  text-lg lg:text-2xl  uppercase text-gray-600">
@@ -317,7 +348,7 @@ export default function Testimonial() {
                 pristine condition. ”
               </p>
               <p className="font-bold text-lg lg:text-2xl mt-3 text-gray-600">
-                Albert Jonathan
+                Hampton Charles
               </p>
             </div>
             <div className="h-full w-[90%] lg:w-[50%] items-center flex justify-end">
