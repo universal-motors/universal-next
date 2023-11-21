@@ -106,7 +106,8 @@ const request = {
 const LoadData = {
   //------ Main Units
   favouriteList: (customerID: number) =>
-    request.get<GetFavorite[]>(`customers/FavStock/${customerID}`),
+    //request.get<GetFavorite[]>(`customers/FavStock/${customerID}`),
+    request.get<GetFavorite[]>(`carStock/favourite_cars/${customerID}`),
 
   stockList: (filter: string, currentPage: number) =>
     request.get<StockCars[]>(

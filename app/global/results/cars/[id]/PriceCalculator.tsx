@@ -304,10 +304,21 @@ export default function PriceCalculator({
             </div>
             <div className="col-lg-6 col-md-6">
               <div className="p-2  bg-transparent border-2 border-[#221C63]  shadow-lg rounded-2xl">
-                {totalPrice != 0 && (
+                {/* {totalPrice != 0 && (
                   <dd className="mt-1 shadow-2xl !text-[16px] sm:!text-2xl font-semibold leading-6 text-[#221C63]">
                     <PriceFormat carPrice={totalPrice} />
                   </dd>
+                )} */}
+                {portID == 0 ? (
+                  <p className="text-[#221C63] text-[12px !important] lg:text-[14px !important] font-semibold">
+                    Ask total CNF
+                  </p>
+                ) : (
+                  totalPrice != 0 && (
+                    <dd className="mt-1 shadow-2xl !text-[16px] sm:!text-2xl font-semibold leading-6 text-[#221C63]">
+                      <PriceFormat carPrice={totalPrice} />
+                    </dd>
+                  )
                 )}
               </div>
             </div>

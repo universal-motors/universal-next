@@ -4,6 +4,8 @@ import AccountForm from "./accountInfo";
 import CosigneeForm from "./cosignee";
 import Favorite from "./favorite";
 import ProfileForm from "./profile";
+import Purchased from "./purchased";
+import Reserved from "./reserved";
 
 export default function Forms() {
   const [currentForm, setCurrentForm] = useState<string>("My Profile");
@@ -17,13 +19,17 @@ export default function Forms() {
         return <CosigneeForm />;
       case "My Favorites":
         return <Favorite />;
+      case "Reserved Vehicles":
+        return <Reserved />;
+      case "Purchased Vehicles":
+        return <Purchased />;
       default:
         break;
     }
   };
   const list = [
     "My Profile",
-    "My Account Info",
+    // "My Account Info",
     "My Cosignee Details",
     "My Favorites",
     "Inquiry & Bid List",
