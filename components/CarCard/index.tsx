@@ -5,16 +5,23 @@ import PriceFormat from "@/utils/PriceFormat";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaHeart } from "react-icons/fa";
 
 type Prop = {
   car: any;
   href: string;
+  fav?: any;
 };
-export default function CarCard({ car, href }: Prop) {
-  const [fav, setFav] = useState(false);
+export default function CarCard({ car, href, fav }: Prop) {
+  const [isfav, setFav] = useState(false);
   const router = useRouter();
+  const isfa = fav?.find(((itm: any) => itm.stockID === car.stockId))
+  useEffect(() => {
+    if (isfa) {
+      setFav(true)
+    }
+  }, [isfa])
   const { user } = useUserStore();
   return (
     <div className="transition duration-300 ease-in-out hover:scale-105 my-10 flex min-w-[220px] w-[230px] flex-col overflow-hidden border border-gray-100 bg-[#F1F5F9] shadow-md p-0 rounded-md">
@@ -36,19 +43,19 @@ export default function CarCard({ car, href }: Prop) {
         <FaHeart
           onClick={() => {
             if (user && user.customerId) {
-              if (fav) {
+              if (isfav) {
                 removeFavourite({
                   customerId: user.customerId,
                   stockId: car.stockId,
                 });
-                setFav(!fav);
+                setFav(!isfav);
                 return;
               }
               addFavourite({
                 customerId: user.customerId,
                 stockId: car.stockId,
               });
-              setFav(!fav);
+              setFav(!isfav);
               return;
             }
             signIn("google");
@@ -59,7 +66,7 @@ export default function CarCard({ car, href }: Prop) {
             position: "absolute",
             top: "4px",
             right: "4px",
-            color: !fav ? "white" : "#F44336",
+            color: !isfav ? "white" : "#F44336",
             cursor: "pointer",
           }}
         />

@@ -1,7 +1,11 @@
+"use client"
+import agent from "@/api/agent";
 import FaqComponent from "@/components/layout/FaqComponent";
 import { StockCars } from "@/models/StockCars";
 import { Trucks } from "@/models/Trucks";
+import { useUserStore } from "@/store/store";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import CarCard from "../CarCard";
 
 interface Props {
@@ -10,6 +14,15 @@ interface Props {
 }
 
 export default function HomePageCarListings({ stockcars, trucks }: Props) {
+  const [fav, setFav] = useState<any>([]);
+  const { user } = useUserStore();
+  useEffect(() => {
+    const getData = async () => {
+      const favorite = await agent.LoadData.favouriteList(user.customerId);
+      setFav(favorite.data);
+    };
+    getData();
+  }, []);
   return (
     <>
       <div className="row ">
@@ -31,6 +44,7 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
                   // .slice(0,10)
                   .map((car) => (
                     <CarCard
+                      fav={fav}
                       car={car}
                       href={`/global/results/cars/${car.stockId}`}
                     />

@@ -250,7 +250,6 @@ async function registertUser(user: CustomerSignUp) {
         body: JSON.stringify(user),
       }
     );
-    console.log(response);
     if (!response.ok) {
       throw new Error(
         "Something went wrong, we cant register you at the moment"
@@ -278,7 +277,6 @@ export async function addFavourite(fav: TFavorite) {
         body: JSON.stringify(fav),
       }
     );
-    console.log(response);
     // if (!response.ok) {
     //   throw new Error(
     //     "Something went wrong, we cant register you at the moment"
