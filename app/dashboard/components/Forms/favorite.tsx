@@ -21,7 +21,6 @@ export default function Favorite() {
     };
     getData();
   }, [fetch]);
-  console.log(fav);
   const totalPages = Math.ceil(fav.length / itemsPerPage);
 
   return (
