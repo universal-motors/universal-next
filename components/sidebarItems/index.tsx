@@ -16,6 +16,14 @@ export default function SidebarItems() {
         >
           Account Information
         </Link>
+        <Link
+          className={`block px-6 py-2 hover:/dashboard transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14] ${
+            pathname === "/favorite" ? "bg-[#006aff]" : "hover:bg-[#006aff]"
+          }`}
+          href="/favorite"
+        >
+          My Favorite
+        </Link>
 
         <Link
           className={`block px-6 py-2 hover:bg-[#006aff] transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14] ${
