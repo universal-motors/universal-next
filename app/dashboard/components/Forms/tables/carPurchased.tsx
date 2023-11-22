@@ -1,5 +1,5 @@
 import agent from "@/api/agent";
-import { StockCars } from "@/models/StockCars";
+import { MoneyAllocation } from "@/models/Master/MoneyAllocation";
 import { useUserStore } from "@/store/store";
 import PriceFormat from "@/utils/PriceFormat";
 import Link from "next/link";
@@ -7,13 +7,13 @@ import { useEffect, useState } from "react";
 
 export default function CarPurchasedTable() {
   const { user } = useUserStore();
-  const [data, setData] = useState<StockCars[]>();
+  const [data, setData] = useState<MoneyAllocation[]>();
   useEffect(() => {
     const getData = async () => {
-      const { data } = await agent.LoadData.reservedCarsByCustomerID(
+      const { data } = await agent.LoadData.moneyAllocationByCustomerID(
         user.customerId
       );
-      setData(data);
+      console.log("--->", data);
     };
     getData();
   }, [fetch]);
@@ -50,7 +50,7 @@ export default function CarPurchasedTable() {
         </tr>
       </thead>
       <tbody>
-        {data?.map((item: StockCars) => {
+        {data?.map((item: MoneyAllocation) => {
           return (
             <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
               <th
@@ -64,10 +64,10 @@ export default function CarPurchasedTable() {
               <td className="px-6 py-4">{item.listingTitle}</td>
               <td className="px-6 py-4">{item.year}</td>
               <td className="px-6 py-4">
-                <PriceFormat carPrice={item.price} />
+                <PriceFormat carPrice={item.totalCost} />
               </td>
               <td className="px-6 py-4 flex">
-                <Link href={`/global/results/cars/${item.stockId}`}>
+                <Link href={`/global/results/cars/${item.stockID}`}>
                   <p className="font-medium text-blue-600 dark:text-blue-500 hover:underline">
                     View
                   </p>
