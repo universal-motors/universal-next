@@ -1,6 +1,6 @@
 "use client";
 
-import Tabs from "@/app/dashboard/components/Tabs";
+import Tabs from "@/app/(dashboard-layout)/dashboard/components/Tabs";
 import CarsSimpleSearch from "@/components/cars/CarsSimpleSearch";
 import TruckSimpleSearch from "@/components/trucks/TruckSimpleSearch";
 import { BodyType } from "@/models/Master/BodyType";

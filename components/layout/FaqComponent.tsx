@@ -537,7 +537,7 @@ export default function FaqComponent() {
                 <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                   <Accordion>
                     <Accordion.Item eventKey="0">
-                      <Accordion.Header className="card-header">
+                      <Accordion.Header className="card-header ">
                         {" "}
                         <span> Do you inspect the cars before shipping?</span>
                       </Accordion.Header>
