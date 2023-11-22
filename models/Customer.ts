@@ -1,5 +1,5 @@
 export interface CustomerSignUp {
-  customerCode: string;
+
   name: string;
   lastname: string;
   companyName: string;

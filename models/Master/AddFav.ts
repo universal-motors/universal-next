@@ -4,6 +4,7 @@ export type TFavorite = {
 };
 export type GetFavorite = {
   StockId: number;
+  VehicleTypeId: number;
   StockCode: string;
   MakeName: string;
   ModelName: string;
