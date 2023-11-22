@@ -223,8 +223,14 @@ const LoadData = {
   moneyAllocationByCustomerID: (customerId: number) =>
     request.get<MoneyAllocation[]>(`customers/money_allocation/customer/${customerId}`),
   moneyAllocationByCustomerIDStockID: (customerId: number, stockId: number) =>
+<<<<<<< HEAD
     request.get<MoneyAllocation[]>(`customers/money_allocation/${customerId}/${stockId}`),
 
+=======
+    request.get<Trucks[]>(
+      `customers/money_allocation/${customerId}/${stockId}`
+    ),
+>>>>>>> de6b50c65ae37f888d0643560a0d5597da229215
 };
 //
 // const Account = {
@@ -280,16 +286,16 @@ async function registerUser(user: CustomerSignUp) {
 
     // Continue processing for successful registration
   } catch (error: any) {
-    if (error.name === 'TypeError' && error.message === 'Failed to fetch') {
-      console.error('Network error. Make sure you are connected to the internet.');
+    if (error.name === "TypeError" && error.message === "Failed to fetch") {
+      console.error(
+        "Network error. Make sure you are connected to the internet."
+      );
     } else {
-      console.error('Error during registration:', error.message);
+      console.error("Error during registration:", error.message);
     }
     // Handle the error appropriately, e.g., show an error message to the user
   }
 }
-
-
 
 export async function addFavourite(fav: TFavorite) {
   try {
