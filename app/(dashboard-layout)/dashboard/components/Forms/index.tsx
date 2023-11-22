@@ -16,9 +16,9 @@ export default function Forms() {
       case "My Account Info":
         return <AccountForm />;
       case "My Cosignee Details":
-        return <CosigneeForm />;
       case "My Favorites":
         return <Favorite />;
+        return <CosigneeForm />;
       case "Reserved Vehicles":
         return <Reserved />;
       case "Purchased Vehicles":
@@ -31,7 +31,7 @@ export default function Forms() {
     "My Profile",
     // "My Account Info",
     "My Cosignee Details",
-    "My Favorites",
+    // "My Favorites",
     "Inquiry & Bid List",
     "Reserved Vehicles",
     "Purchased Vehicles",
