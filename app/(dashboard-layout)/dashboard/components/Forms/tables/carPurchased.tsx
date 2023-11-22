@@ -8,9 +8,10 @@ import { useEffect, useState } from "react";
 export default function CarPurchasedTable() {
   const { user } = useUserStore();
   const [data, setData] = useState<MoneyAllocation[]>();
+
   useEffect(() => {
     const getData = async () => {
-      const { data } = await agent.LoadData.moneyAllocationByCustomerID(
+      const { data } = await agent.LoadData.purchasedCarsByCustomerID(
         user.customerId
       );
       console.log("--->", data);
