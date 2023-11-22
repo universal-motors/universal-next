@@ -223,14 +223,8 @@ const LoadData = {
   moneyAllocationByCustomerID: (customerId: number) =>
     request.get<MoneyAllocation[]>(`customers/money_allocation/customer/${customerId}`),
   moneyAllocationByCustomerIDStockID: (customerId: number, stockId: number) =>
-<<<<<<< HEAD
     request.get<MoneyAllocation[]>(`customers/money_allocation/${customerId}/${stockId}`),
 
-=======
-    request.get<Trucks[]>(
-      `customers/money_allocation/${customerId}/${stockId}`
-    ),
->>>>>>> de6b50c65ae37f888d0643560a0d5597da229215
 };
 //
 // const Account = {
