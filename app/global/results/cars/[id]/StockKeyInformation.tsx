@@ -76,7 +76,9 @@ export default async function StockKeyInformation({ car }: Props) {
                 <td className="!text-[9px] sm:!text-[12px]">{car.m3}</td>
               </tr>
               <tr>
-                <td className="first !text-[9px] sm:!text-[12px]">Type</td>
+                <td className="first !text-[9px] sm:!text-[12px]">
+                  Drivetrain
+                </td>
                 <td>{car.drivetrainType}</td>
               </tr>
             </tbody>

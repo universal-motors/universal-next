@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import agent from "@/api/agent";
 import FaqComponent from "@/components/layout/FaqComponent";
 import { StockCars } from "@/models/StockCars";
