@@ -28,7 +28,9 @@ import {
   CustomerSignUp,
 } from "@/models/Customer";
 import { GetFavorite, TFavorite } from "@/models/Master/AddFav";
+import { MoneyAllocation } from "@/models/Master/MoneyAllocation";
 import { PaginationHeader } from "@/models/Master/Pagination";
+import { SalesOrder } from "@/models/Master/SalesOrder";
 import { toast } from "react-toastify";
 
 //const baseURL = 'https://localhost:5001/api/';
@@ -209,21 +211,20 @@ const LoadData = {
   //Adding SalesOrder Endpoints and Money Allocation Endpoints
   //Sales Order *********
   salesOrderBySalesOrderID: (salesOrderId: number) =>
-    request.get<Trucks[]>(`customers/salesorder/${salesOrderId}`),
+    request.get<SalesOrder[]>(`customers/salesorder/${salesOrderId}`),
   salesOrderByCustomerID: (salesOrderId: number) =>
-    request.get<Trucks[]>(`customers/salesorder/customer/${salesOrderId}`),
+    request.get<SalesOrder[]>(`customers/salesorder/customer/${salesOrderId}`),
   salesOrderByCustomerIDStockID: (customerId: number, stockId: number) =>
-    request.get<Trucks[]>(`customers/salesorder/${customerId}/${stockId}`),
+    request.get<SalesOrder[]>(`customers/salesorder/${customerId}/${stockId}`),
 
   //Money Allocation ********
   moneyAllocationByID: (id: number) =>
-    request.get<Trucks[]>(`customers/money_allocation/${id}`),
+    request.get<MoneyAllocation[]>(`customers/money_allocation/${id}`),
   moneyAllocationByCustomerID: (customerId: number) =>
-    request.get<Trucks[]>(`customers/money_allocation/customer/${customerId}`),
+    request.get<MoneyAllocation[]>(`customers/money_allocation/customer/${customerId}`),
   moneyAllocationByCustomerIDStockID: (customerId: number, stockId: number) =>
-    request.get<Trucks[]>(
-      `customers/money_allocation/${customerId}/${stockId}`
-    ),
+    request.get<MoneyAllocation[]>(`customers/money_allocation/${customerId}/${stockId}`),
+
 };
 //
 // const Account = {
