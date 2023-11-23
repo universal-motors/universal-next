@@ -41,24 +41,22 @@ export default async function Home() {
         </div>
       </div>
       <div className="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 ">
-        <figure className="h-auto max-w-lg transition-all duration-300 rounded-lg ">
-          <a href="https://wa.link/5g81p6">
-            <img
-              className="rounded-lg"
-              src="/assets/images/what-share.jpg"
-              alt="Whatsapp Description"
-            />
-          </a>
-        </figure>
-        <figure className="h-auto max-w-lg transition-all duration-300 rounded-lg ">
-          <Link href="https://www.facebook.com/people/Universal-Motors-LTD/100064181618215/?wtsid=rdr_0KEZcfREX6pES4I4W">
-            <img
-              className="rounded-lg"
-              src="/assets/images/faceboook-share.jpg"
-              alt="Facebook Description"
-            />
-          </Link>
-        </figure>
+        <div>
+          <p className=" text-xl  md:text-2xl font-semibold leading-none tracking-tight text-gray-600 dark:text-white text-center mt-5 mb-3 ">
+            Testimonial
+          </p>
+          <SidebarSlider />
+          <div className="w-full flex justify-center mb-5">
+            <Link
+              className="transition duration-300 ease-in-out hover:scale-110"
+              href="/global/testimonial"
+            >
+              <span className="cursor-pointer text-sm rounded-lg text-center font-semibold leading-none tracking-tight text-gray-600 dark:text-white mt-2 mb-3 border-2 border-gray-600 px-2 py-1">
+                View All
+              </span>
+            </Link>
+          </div>
+        </div>
 
         <div className="showcase-Make rightsidebar">
           <h5 className="pt-3 text-center justify-items-center">
@@ -291,22 +289,24 @@ export default async function Home() {
             </Link>
           </ul>
         </div>
-        <div>
-          <p className=" text-xl  md:text-2xl font-semibold leading-none tracking-tight text-gray-600 dark:text-white text-center mt-5 mb-3 ">
-            Testimonial
-          </p>
-          <SidebarSlider />
-          <div className="w-full flex justify-center mb-5">
-            <Link
-              className="transition duration-300 ease-in-out hover:scale-110"
-              href="/global/testimonial"
-            >
-              <span className="cursor-pointer text-sm rounded-lg text-center font-semibold leading-none tracking-tight text-gray-600 dark:text-white mt-2 mb-3 border-2 border-gray-600 px-2 py-1">
-                View All
-              </span>
-            </Link>
-          </div>
-        </div>
+        {/* <figure className="h-auto max-w-lg transition-all duration-300 rounded-lg ">
+          <a href="https://wa.link/5g81p6">
+            <img
+              className="rounded-lg"
+              src="/assets/images/what-share.jpg"
+              alt="Whatsapp Description"
+            />
+          </a>
+        </figure>
+        <figure className="h-auto max-w-lg transition-all duration-300 rounded-lg ">
+          <Link href="https://www.facebook.com/people/Universal-Motors-LTD/100064181618215/?wtsid=rdr_0KEZcfREX6pES4I4W">
+            <img
+              className="rounded-lg"
+              src="/assets/images/faceboook-share.jpg"
+              alt="Facebook Description"
+            />
+          </Link>
+        </figure> */}
         <div className="followme py-3">
           <h5>Follow Us:</h5>
           <div className="icons">

@@ -20,14 +20,14 @@ export default function TanzaniaImport() {
             </div>
             <div className="buy-stepBox">
               <img
-                className="widthhundread"
+                className="widthhundread !shadow-none"
                 src="/assets/images/import-protocols/Import Regulations Final-28.png"
                 alt=""
               />
             </div>
             <div className="buy-stepBox">
               <img
-                className="widthhundread"
+                className="widthhundread !shadow-none"
                 src="/assets/images/import-protocols/Import Regulations Final-29.png"
                 alt=""
               />

@@ -1,4 +1,4 @@
-import { useState } from "react"; // Import useState if you're not already using it.
+import { useEffect, useState } from "react"; // Import useState if you're not already using it.
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import "./phone.css";
 type Prop = {
@@ -18,6 +18,12 @@ export default function PhoneNumberInput({ value, setValue, label }: Prop) {
   // useEffect(() => {
   //     setError(phoneInputValue && isValidPhoneNumber(phoneInputValue) ? true : false)
   // }, [phoneInputValue])
+  useEffect(() => {
+    setPhoneInputValue(value);
+  }, [value]);
+  useEffect(() => {
+    setValue(phoneInputValue);
+  }, [phoneInputValue]);
   return (
     <div className="w-full">
       <label

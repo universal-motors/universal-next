@@ -10,10 +10,6 @@ export default function SidebarSlider() {
       style={{ width: "95%", margin: "auto", cursor: "grab" }}
       spaceBetween={50}
       centeredSlides={true}
-      autoplay={{
-        delay: 5000,
-        disableOnInteraction: false,
-      }}
       pagination={{
         clickable: true,
       }}
@@ -27,7 +23,7 @@ export default function SidebarSlider() {
           <iframe
             width="100%"
             height="85%"
-            src="https://www.youtube.com/embed/_AiD96wV92w?si=GU8DiY05IeOcbRWR?rel=0&amp;autoplay=1&mute=1"
+            src="https://www.youtube.com/embed/_AiD96wV92w?si=GU8DiY05IeOcbRWR"
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; mute;clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -40,7 +36,7 @@ export default function SidebarSlider() {
           <iframe
             width="100%"
             height="85%"
-            src="https://www.youtube.com/embed/1lpf7D35SBg?si=pQV66mBZJRwkctXg?rel=0&amp;autoplay=1&mute=1"
+            src="https://www.youtube.com/embed/1lpf7D35SBg?si=pQV66mBZJRwkctXg"
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -53,7 +49,7 @@ export default function SidebarSlider() {
           <iframe
             width="100%"
             height="85%"
-            src="https://www.youtube.com/embed/vSNQE4iNI1Q?si=ukAOjJ3-thOuOcPm?rel=0&amp;autoplay=1&mute=1"
+            src="https://www.youtube.com/embed/vSNQE4iNI1Q?si=ukAOjJ3-thOuOcPm"
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; mute;clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -66,7 +62,7 @@ export default function SidebarSlider() {
           <iframe
             width="100%"
             height="85%"
-            src="https://www.youtube.com/embed/82K4XGQOO5I?si=wMaeaKxYHp4DGM1i?rel=0&amp;autoplay=1&mute=1"
+            src="https://www.youtube.com/embed/82K4XGQOO5I?si=wMaeaKxYHp4DGM1i"
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; mute;clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

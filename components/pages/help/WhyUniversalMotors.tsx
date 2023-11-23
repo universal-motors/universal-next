@@ -31,6 +31,7 @@ export default function WhyUniversalMotors() {
                 <div className="col-md-6">
                   <div>
                     <img
+                      className="!shadow-none"
                       src="/assets/images/newcontentimgs/New folder/mos4-removebg-preview.png"
                       alt=""
                     />
@@ -48,6 +49,7 @@ export default function WhyUniversalMotors() {
                 <div className="col-md-6">
                   <div>
                     <img
+                      className="!shadow-none"
                       src="/assets/images/newcontentimgs/New folder/mos2.png"
                       alt=""
                     />
@@ -65,6 +67,7 @@ export default function WhyUniversalMotors() {
                 <div className="col-md-6">
                   <div>
                     <img
+                      className="!shadow-none"
                       src="/assets/images/newcontentimgs/New folder/mos1.png"
                       alt=""
                     />
@@ -81,6 +84,7 @@ export default function WhyUniversalMotors() {
                 <div className="col-md-6">
                   <div>
                     <img
+                      className="!shadow-none"
                       src="/assets/images/newcontentimgs/New folder/mos3.png"
                       alt=""
                     />

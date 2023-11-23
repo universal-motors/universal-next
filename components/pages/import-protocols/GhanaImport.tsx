@@ -20,21 +20,21 @@ export default function GhanaImport() {
             </div>
             <div className="buy-stepBox">
               <img
-                className="widthhundread"
+                className="widthhundread !shadow-none"
                 src="/assets/images/import-protocols/Import Regulations Final-36.png"
                 alt=""
               />
             </div>
             <div className="buy-stepBox">
               <img
-                className="widthhundread"
+                className="widthhundread !shadow-none"
                 src="/assets/images/import-protocols/Import Regulations Final-37.png"
                 alt=""
               />
             </div>
             <div className="buy-stepBox">
               <img
-                className="widthhundread"
+                className="widthhundread !shadow-none"
                 src="/assets/images/import-protocols/Import Regulations Final-38.png"
                 alt=""
               />

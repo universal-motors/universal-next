@@ -1,5 +1,4 @@
 export interface CustomerSignUp {
-  customerCode: string;
   name: string;
   lastname: string;
   companyName: string;
@@ -19,6 +18,7 @@ export interface CustomerSignUp {
 
 export interface Customer {
   customerId: number;
+  img?: string;
   customerCode: string;
   titleId: number;
   name: string;
@@ -42,21 +42,21 @@ export interface Customer {
 
 export interface ConsigneeCourier {
   id: number;
-  CustomerID: number;
-  ConsigneeName: string;
-  ConsigneeCity: string;
-  ConsigneeAddress: string;
-  ConsigneeCountryId: number;
-  ConsigneeEmail: string;
-  ConsigneePhone: string;
-  NotifyPartyName: string;
-  NotifyPartyCity: string;
-  NotifyPartyAddress: string;
-  NotifyPartyCountryId: number;
-  NotifyPartyEmail: string;
-  NotifyPartyPhone: string;
+  customerID: number;
+  consigneeName: string;
+  consigneeCity: string;
+  consigneeAddress: string;
+  consigneeCountryId: number;
+  consigneeEmail: string;
+  consigneePhone: string;
+  notifyPartyName: string;
+  notifyPartyCity: string;
+  notifyPartyAddress: string;
+  notifyPartyCountryId: number;
+  notifyPartyEmail: string;
+  notifyPartyPhone: string;
   isActive: boolean;
-  CreatedOn: string;
+  createdOn: string;
 }
 
 export interface CourierDispatch {
