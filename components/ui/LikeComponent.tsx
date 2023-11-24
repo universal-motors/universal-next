@@ -11,12 +11,9 @@ type Prop = {
   fav?: any;
 };
 export default function LikeComponent({ fav, car }: Prop) {
-  console.log(fav);
-
   const [status, setStatus] = useState(false);
   const router = useRouter();
   const isfa = fav.find((itm: any) => itm.stockID === car);
-  console.log(isfa);
   useEffect(() => {
     if (isfa) {
       setStatus(true);
