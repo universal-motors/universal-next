@@ -2,10 +2,9 @@
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { addFavourite, removeFavourite } from "@/api/agent";
 import { useUserStore } from "@/store/store";
-import PriceFormat from "@/utils/PriceFormat";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { type } from "os";
+
 
 type Prop = {
   car: any;

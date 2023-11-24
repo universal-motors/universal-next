@@ -15,7 +15,6 @@ import { FaGasPump } from "react-icons/fa";
 import { GiCarDoor } from "react-icons/gi";
 import { MdAirlineSeatReclineExtra } from "react-icons/md";
 import { PiEngineFill, PiGearFineBold } from "react-icons/pi";
-import Favorite from "@/app/dashboard/components/Forms/favorite";
 import { useUserStore } from "@/store/store";
 interface Props {
   locations: Country[];
