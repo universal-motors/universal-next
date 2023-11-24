@@ -28,17 +28,10 @@ export default function SidebarItems() {
         </Link>
 
         <Link
-<<<<<<< HEAD
           className={`block px-6 py-2 hover:bg-[#006aff] transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14] ${pathname === "/contact-information"
             ? "bg-[#006aff]"
             : "hover:bg-[#006aff]"
             }`}
-=======
-          className={`block px-6 py-2 hover:bg-[#006aff] transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14] ${pathname === "/contact-information"
-            ? "bg-[#006aff]"
-            : "hover:bg-[#006aff]"
-            }`}
->>>>>>> ccd7371f5bc43e834e18dc2557a0f12edfbf4a04
           href="/contact-information"
         >
           Contact Information
