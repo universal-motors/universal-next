@@ -1,8 +1,6 @@
 import agent from "@/api/agent";
 import { StockCars } from "@/models/StockCars";
 import { useUserStore } from "@/store/store";
-import PriceFormat from "@/utils/PriceFormat";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function CarPurchasedTable() {
@@ -49,7 +47,7 @@ export default function CarPurchasedTable() {
           </th>
         </tr>
       </thead>
-      <tbody>
+      {/* <tbody>
         {data?.map((item: StockCars) => {
           return (
             <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
@@ -72,18 +70,11 @@ export default function CarPurchasedTable() {
                     View
                   </p>
                 </Link>
-                {/* <p className="font-medium text-red-500  hover:underline ml-3 cursor-pointer" onClick={async () => {
-                                await removeFavourite({
-                                    customerId: user.customerId,
-                                    stockId: item.stockId,
-                                })
-                                setFetch(!fetch);
-                            }} >Remove</p> */}
               </td>
             </tr>
           );
         })}
-      </tbody>
+      </tbody> */}
     </table>
   );
 }

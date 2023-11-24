@@ -1,4 +1,5 @@
 import agent from "@/api/agent";
+import CheckIsLogin from "@/components/CheckIsLogin";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import SidebarItems from "@/components/sidebarItems";
@@ -50,43 +51,48 @@ export default async function RootLayout({
   const portList = await GetAllPorts();
   const portMapping = await GetPortMapping();
   const stockCount = await GetStockCount();
+
+
   return (
     <>
-      <Header
-        ports={portList}
-        portMapping={portMapping}
-        stockCount={stockCount.data}
-        locations={locations}
-      />
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
-      {/* <FrontSlider /> */}
-      <section>
-        <div className="w-[99%]">
-          <div className="row">
-            {/* <Sidebar locations={inventoryLocation} makes={makes.data} /> */}
-            <div className="flex flex-row min-h-screen w-screen m-auto">
-              <SidebarItems />
-              {children}
+      <CheckIsLogin><>
+        <Header
+          ports={portList}
+          portMapping={portMapping}
+          stockCount={stockCount.data}
+          locations={locations}
+        />
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
+        {/* <FrontSlider /> */}
+        <section>
+          <div className="w-[99%]">
+            <div className="row">
+              {/* <Sidebar locations={inventoryLocation} makes={makes.data} /> */}
+              <div className="flex flex-row min-h-screen w-screen m-auto">
+                <SidebarItems />
+                {children}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-      <Footer
-        bodyTypes={bodyTypes.data}
-        locations={inventoryLocation}
-        makes={makes.data}
-      />
+        </section>
+        <Footer
+          bodyTypes={bodyTypes.data}
+          locations={inventoryLocation}
+          makes={makes.data}
+        />
+      </>
+      </CheckIsLogin>
     </>
   );
 }

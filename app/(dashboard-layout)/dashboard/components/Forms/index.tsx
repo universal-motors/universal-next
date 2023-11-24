@@ -31,7 +31,7 @@ export default function Forms() {
     "My Profile",
     // "My Account Info",
     "My Cosignee Details",
-    "My Favorites",
+    // "My Favorites",
     "Inquiry & Bid List",
     "Reserved Vehicles",
     "Purchased Vehicles",
