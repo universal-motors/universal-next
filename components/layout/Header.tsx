@@ -10,9 +10,13 @@ import AuthModal from "@/components/user/Auth/AuthModal";
 import { Country } from "@/models/Master/Country";
 import { PortMapping } from "@/models/Master/PortMapping";
 import { Ports } from "@/models/Master/Ports";
+import { checkEmail } from "@/services/profile";
 import { useUserStore } from "@/store/store";
 import { Dialog, Transition } from "@headlessui/react";
+import { googleLogout, useGoogleLogin } from "@react-oauth/google";
+import axios from "axios";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Fragment, useState } from "react";
 
 interface Props {
@@ -27,11 +31,12 @@ interface Props {
 const currentYear = new Date().getFullYear();
 
 function Header({ locations, ports, portMapping, stockCount }: Props) {
+  const router = useRouter()
   //  const { data: session } = useSession()
   let [isOpen, setIsOpen] = useState(false);
   const [dropdown, setDropdown] = useState(false);
   // const { status, data: session } = useSession();
-  const { deleteData } = useUserStore();
+  const { deleteData, user, setIsUpdate, update: updateData } = useUserStore();
   function closeMobileSearchModal() {
     setIsOpen(false);
   }
@@ -39,6 +44,30 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
   function openMobileSearchModal() {
     setIsOpen(true);
   }
+  const login = useGoogleLogin({
+
+
+    onSuccess: async (tokenResponse: any) => {
+      await axios.get('https://www.googleapis.com/oauth2/v3/userinfo', {
+        headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
+      })
+        .then(res => {
+          checkEmail(
+            res.data.email,
+            res.data?.picture,
+            res.data?.name,
+            setIsUpdate,
+            updateData,
+            router
+          );
+        });
+
+      // const userObject: any = await jwtDecode(tokenResponse.access_token
+      // );
+      // console.log(userObject)
+
+    },
+  });
 
   return (
     <>
@@ -184,8 +213,8 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                   countryList={[]}
                   portList={[]}
                   portMapping={undefined} // countryList={locations}
-                  // portList={ports}
-                  // portMapping={portMapping}
+                // portList={ports}
+                // portMapping={portMapping}
                 />
 
                 {/*<SignInComponentUI/>*/}
@@ -446,47 +475,52 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                     width={25}
                   />
                 </Link>
-                {/* <div className="pt-[6px]">
-                  {status === "unauthenticated" ? (
-                    <img
-                      src="https://img.icons8.com/fluency-systems-regular/2x/user.png"
-                      alt=""
-                      onClick={() => signIn("google")}
-                      width={25}
-                    />
-                  ) : (
-                    <>
+                <div className="pt-[6px]">
+                  {user && user.email ?
+                    (
+                      <>
+                        <img
+                          src={
+                            user.img ??
+                            "https://img.icons8.com/fluency-systems-regular/2x/user.png"
+                          }
+                          alt=""
+                          onClick={() => setDropdown(!dropdown)}
+                          width={25}
+                          className="rounded-full"
+                        />
+                      </>
+                    )
+                    :
+                    (
                       <img
-                        src={
-                          session?.user?.image ??
-                          "https://img.icons8.com/fluency-systems-regular/2x/user.png"
-                        }
+                        src="https://img.icons8.com/fluency-systems-regular/2x/user.png"
                         alt=""
-                        onClick={() => setDropdown(!dropdown)}
+                        onClick={() => {
+                          login()
+                        }}
                         width={25}
-                        className="rounded-full"
                       />
-                    </>
-                  )}
-                </div> */}
+                    )
+                  }
+                </div>
 
                 {/* <Link href="#support"><i class="fa fa-headphones"></i></Link>
                     <Link href="#"><i class="fa fa-heart-o"></i></Link>
                     <Link href="#customer"><i class="fa fa-user-o"></i></Link> */}
-                {/* </div>
-              {status !== "unauthenticated" && (
+              </div>
+              {user && user.email && (
                 <div
                   id="dropdownAvatarName"
-                  className={`${
-                    !dropdown && "hidden"
-                  } z-50 absolute right-0 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}
+                  className={`${!dropdown && "hidden"
+                    } z-50 absolute right-0 top-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}
                 >
                   <div className="px-1 py-3 text-sm !text-gray-900 ">
-                    <div className="font-medium text-center ">
-                      {session?.user?.name}
+                    <div className="font-medium text-center !text-gray-900 ">
+                      {user.name}
                     </div>
-                    <div className="truncate text-center text-[10px]">
-                      {session?.user?.email}
+                    <div className="truncate text-center text-[10px] !text-gray-900">
+                      {user.email}
                     </div>
                   </div>
 
@@ -510,7 +544,8 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                   <div className="py-2 cursor-pointer">
                     <p
                       onClick={() => {
-                        signOut();
+                        router.push("/")
+                        googleLogout()
                         deleteData();
                       }}
                       className="block px-4 py-2  text-center text-sm !text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
@@ -519,12 +554,11 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                     </p>
                   </div>
                 </div>
-              )} */}
-              </div>
+              )}
             </div>
           </div>
         </div>
-      </section>
+      </section >
     </>
   );
 }

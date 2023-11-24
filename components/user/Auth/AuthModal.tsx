@@ -83,8 +83,10 @@ export default function AuthModal({
   //     // return error.response;
   //   }
   // };
+
   const responseGoogle = (response: any) => {
     const userObject: any = jwtDecode(response.credential);
+    console.log(response)
     checkEmail(
       userObject.email,
       userObject?.picture,
