@@ -3,7 +3,6 @@ import LikeComponent from "@/components/ui/LikeComponent";
 import PriceFormat from "@/utils/PriceFormat";
 import Image from "next/image";
 import Link from "next/link";
-
 import agent from "@/api/agent";
 import PaginationComponent from "@/components/ui/PaginationComponent";
 import { Country } from "@/models/Master/Country";
@@ -14,6 +13,7 @@ import { BiSolidColorFill } from "react-icons/bi";
 import { FaGasPump, FaTruckLoading } from "react-icons/fa";
 import { MdAirlineSeatReclineExtra } from "react-icons/md";
 import { PiEngineFill, PiGearFineBold } from "react-icons/pi";
+import { useUserStore } from "@/store/store";
 interface Props {
   locations: Country[];
   params: URLSearchParams;
@@ -70,6 +70,16 @@ export default function TruckSearchResult({ locations, params }: Props) {
       setSearchData(sortedData);
     }
   }, [sort, paginationData]);
+
+  const [fav, setFav] = useState<any>([]);
+  const { user } = useUserStore();
+  useEffect(() => {
+    const getData = async () => {
+      const favorite = await agent.LoadData.favouriteList(user.customerId);
+      setFav(favorite.data);
+    };
+    getData();
+  }, []);
   useEffect(() => {
     // Assuming you have an API function called fetchResults
     const GetStock = async (paramURL: string) => {
@@ -304,9 +314,7 @@ export default function TruckSearchResult({ locations, params }: Props) {
                     <div className="col-md-4 atf">
                       <div className="addfav">
                         <h5>
-                          {/*<Link href="#" scroll={false}>*/}
-                          <LikeComponent />
-                          {/*</Link>*/}
+                          <LikeComponent fav={fav} car={truck.stockId} />
                         </h5>
                       </div>
                     </div>
