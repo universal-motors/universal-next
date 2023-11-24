@@ -33,6 +33,7 @@ export default function CarsSimpleSearch({
   color, transmission, drivetrain, fuel
 }: Props) {
   const router = useRouter();
+  const [isMore, setIsMore] = useState(false)
   const [isLoading, setLoading] = useState(false);
   const [makeId, setMakeId] = useState("0");
   const [mappedModels, setMappedModels] = useState<CarModel[]>([]);
@@ -180,149 +181,161 @@ export default function CarsSimpleSearch({
             ))}
           </SearchSelect>
         </div>
-        <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-          <div className="showcase-Boxselect ">
-            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-              Engine Size:
-            </label>
-            <div className="flex flex-col lg:flex-row flex-wrap justify-between">
-              <div className="w-full lg:w-[49%] h-15 ">
-                <input
-                  placeholder="Engine Size(cc)"
-                  // value={value}
-                  // onChange={onChange}
-                  className=" border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                />
-              </div>
-              <div className="w-full lg:w-[49%]">
-                <input
-                  placeholder="Engine Size(cc)"
-                  // value={value}
-                  // onChange={onChange}
-                  className=" border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-          <div className="showcase-Boxselect">
-            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-              Manufacturing Year:
-            </label>
-            <div className="flex flex-col lg:flex-row flex-wrap justify-between">
-              <div className="flex-none w-full lg:w-[49%] h-15 ">
-                <SearchSelect
-                  placeholder="starting year"
-                  value={fromYear}
-                  onValueChange={setFromYear}
-                >
-                  {yearList.map((year) => (
-                    <SearchSelectItem key={year} value={year.toString()}>
-                      {year}
-                    </SearchSelectItem>
-                  ))}
-                </SearchSelect>
-              </div>
-              <div className="w-full lg:w-[49%] w-30">
-                <SearchSelect
-                  placeholder="ending year"
-                  value={toYear}
-                  onValueChange={setToYear}
-                >
-                  {yearList.map((year) => (
-                    <SearchSelectItem key={year} value={year.toString()}>
-                      {year}
-                    </SearchSelectItem>
-                  ))}
-                </SearchSelect>
+        {isMore &&
+          <>
+
+            <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+              <div className="showcase-Boxselect ">
+                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                  Engine Size:
+                </label>
+                <div className="flex flex-col lg:flex-row flex-wrap justify-between">
+                  <div className="w-full lg:w-[49%] h-15 ">
+                    <input
+                      placeholder="Engine Size(cc)"
+                      // value={value}
+                      // onChange={onChange}
+                      className=" border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    />
+                  </div>
+                  <div className="w-full lg:w-[49%]">
+                    <input
+                      placeholder="Engine Size(cc)"
+                      // value={value}
+                      // onChange={onChange}
+                      className=" border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-          <div className="showcase-Boxselect">
-            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-              Milage:
-            </label>
-            <div className="flex flex-col lg:flex-row flex-wrap justify-between">
-              <div className="w-full lg:w-[49%] h-15 ">
-                <input
-                  placeholder="Milage"
-                  // value={value}
-                  // onChange={onChange}
-                  className=" border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                />
-              </div>
-              <div className="w-full lg:w-[49%] w-30">
-                <input
-                  placeholder="Milage"
-                  // value={value}
-                  // onChange={onChange}
-                  className=" border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                />
+            <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+              <div className="showcase-Boxselect">
+                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                  Manufacturing Year:
+                </label>
+                <div className="flex flex-col lg:flex-row flex-wrap justify-between">
+                  <div className="flex-none w-full lg:w-[49%] h-15 ">
+                    <SearchSelect
+                      placeholder="starting year"
+                      value={fromYear}
+                      onValueChange={setFromYear}
+                    >
+                      {yearList.map((year) => (
+                        <SearchSelectItem key={year} value={year.toString()}>
+                          {year}
+                        </SearchSelectItem>
+                      ))}
+                    </SearchSelect>
+                  </div>
+                  <div className="w-full lg:w-[49%] w-30">
+                    <SearchSelect
+                      placeholder="ending year"
+                      value={toYear}
+                      onValueChange={setToYear}
+                    >
+                      {yearList.map((year) => (
+                        <SearchSelectItem key={year} value={year.toString()}>
+                          {year}
+                        </SearchSelectItem>
+                      ))}
+                    </SearchSelect>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-            Transmission:
-          </label>
-          <SearchSelect value={transmissionId} onValueChange={setTransmissionId}>
-            {transmission.map((trans) => (
-              <SearchSelectItem
-                key={trans.transmissionId}
-                value={trans.transmissionId.toString()}
-              >
-                {trans.transmissionName}
-              </SearchSelectItem>
-            ))}
-          </SearchSelect>
-        </div>
-        <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-            Fuel:
-          </label>
-          <SearchSelect value={fuelId} onValueChange={setFuelId}>
-            {fuel.map((fueltype) => (
-              <SearchSelectItem
-                key={fueltype.fuelTypeId}
-                value={fueltype.fuelTypeId.toString()}
-              >
-                {fueltype.typeOfFuel}
-              </SearchSelectItem>
-            ))}
-          </SearchSelect>
-        </div>
-        <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-            Exterior Color:
-          </label>
-          <SearchSelect value={colorId} onValueChange={setColorId}>
-            {color.map((color) => (
-              <SearchSelectItem
+            <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+              <div className="showcase-Boxselect">
+                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                  Milage:
+                </label>
+                <div className="flex flex-col lg:flex-row flex-wrap justify-between">
+                  <div className="w-full lg:w-[49%] h-15 ">
+                    <input
+                      placeholder="Milage"
+                      // value={value}
+                      // onChange={onChange}
+                      className=" border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    />
+                  </div>
+                  <div className="w-full lg:w-[49%] w-30">
+                    <input
+                      placeholder="Milage"
+                      // value={value}
+                      // onChange={onChange}
+                      className=" border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Transmission:
+              </label>
+              <SearchSelect value={transmissionId} onValueChange={setTransmissionId}>
+                {transmission.map((trans) => (
+                  <SearchSelectItem
+                    key={trans.transmissionId}
+                    value={trans.transmissionId.toString()}
+                  >
+                    {trans.transmissionName}
+                  </SearchSelectItem>
+                ))}
+              </SearchSelect>
+            </div>
+            <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Fuel:
+              </label>
+              <SearchSelect value={fuelId} onValueChange={setFuelId}>
+                {fuel.map((fueltype) => (
+                  <SearchSelectItem
+                    key={fueltype.fuelTypeId}
+                    value={fueltype.fuelTypeId.toString()}
+                  >
+                    {fueltype.typeOfFuel}
+                  </SearchSelectItem>
+                ))}
+              </SearchSelect>
+            </div>
+            <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Exterior Color:
+              </label>
+              <SearchSelect value={colorId} onValueChange={setColorId}>
+                {color.map((color) => (
+                  <SearchSelectItem
 
 
-                key={color.colorId}
-                value={color.colorId.toString()}
-              >
-                {color.colorName}
-              </SearchSelectItem>
-            ))}
-          </SearchSelect>
+                    key={color.colorId}
+                    value={color.colorId.toString()}
+                  >
+                    {color.colorName}
+                  </SearchSelectItem>
+                ))}
+              </SearchSelect>
+            </div>
+            <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Max Loading Capacity:
+              </label>
+              <input
+                placeholder="Max Loading Capacity"
+                // value={value}
+                // onChange={onChange}
+                className=" border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              />
+            </div>
+          </>
+
+        }
+        <div className="col-xl-4 col-lg-4 col-md-8 col-sm-6 col-6 flex items-center">
+          <span className="text-blue-700 cursor-pointer  text-sm underline " onClick={() => {
+            setIsMore(!isMore)
+          }} >{isMore ? 'Show less' : 'Show More'}</span>
         </div>
-        <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-            Max Loading Capacity:
-          </label>
-          <input
-            placeholder="Max Loading Capacity"
-            // value={value}
-            // onChange={onChange}
-            className=" border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
-        </div>
+
         <div className="col-xl-4 col-lg-4 col-md-8 col-sm-6 col-6">
           {/* <div className='showcase-Boxbtn'> */}
           <button className="mt-4 w-full font-semibold bg-slate-500 p-2 rounded-xl text-white hover:border-2 hover:border-slate-500 hover:bg-transparent hover:!text-slate-500 ">
