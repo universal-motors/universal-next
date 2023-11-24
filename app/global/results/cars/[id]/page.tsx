@@ -42,7 +42,6 @@ export default async function CarDetailed({ params }: Props) {
   const inspectionCost = await agent.LoadData.inspectioncost();
 
   if (Stock != null)
-
     return (
       <>
         <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection">

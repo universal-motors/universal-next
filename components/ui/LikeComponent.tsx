@@ -1,19 +1,75 @@
 "use client";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import { useState } from "react";
+import { addFavourite, removeFavourite } from "@/api/agent";
+import { useUserStore } from "@/store/store";
+import PriceFormat from "@/utils/PriceFormat";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { type } from "os";
 
-export default function LikeComponent() {
+type Prop = {
+  car: any;
+  fav?: any;
+};
+export default function LikeComponent({ fav, car }: Prop) {
+  console.log(fav);
+
   const [status, setStatus] = useState(false);
+  const router = useRouter();
+  const isfa = fav.find((itm: any) => itm.stockID === car);
+  console.log(isfa);
+  useEffect(() => {
+    if (isfa) {
+      setStatus(true);
+    }
+  }, [isfa]);
+
+  const { user } = useUserStore();
+  const addToFavourite = () => {
+    if (user && user.customerId) {
+      if (isfa) {
+        removeFavourite({
+          customerId: user.customerId,
+          stockId: car,
+        });
+        setStatus(!status);
+        return;
+      }
+      addFavourite({
+        customerId: user.customerId,
+        stockId: car,
+      });
+      setStatus(!status);
+      return;
+    }
+  };
   const toggle = () => {
-    setStatus(!status);
+    // setStatus(!status);
+    addToFavourite();
     //        onClick();
   };
-  if (status) return <AiFillHeart color="#ff6b81" size={20} onClick={toggle} />;
   return (
     <>
-      <span onClick={toggle} className="inline-flex font-bold fav-text">
-        <AiOutlineHeart size={20} /> Add to Favorites
-      </span>
+      {status ? (
+        <AiFillHeart
+          className="xl:ml-0 2xl:ml-20 cursor-pointer"
+          color="#ff6b81"
+          size={20}
+          onClick={toggle}
+        />
+      ) : (
+        <span
+          onClick={toggle}
+          className="inline-flex font-bold fav-text cursor-pointer"
+        >
+          <AiOutlineHeart
+            className="cursor-pointer"
+            onClick={addToFavourite}
+            size={20}
+          />{" "}
+          Add to Favorites
+        </span>
+      )}
     </>
   );
 }

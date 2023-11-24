@@ -16,15 +16,15 @@ type Prop = {
 export default function CarCard({ car, href, fav }: Prop) {
   const [isfav, setFav] = useState(false);
   const router = useRouter();
-  const isfa = fav?.find(((itm: any) => itm.stockID === car.stockId))
+  const isfa = fav?.find((itm: any) => itm.stockID === car.stockId);
   useEffect(() => {
     if (isfa) {
-      setFav(true)
+      setFav(true);
     }
-  }, [isfa])
+  }, [isfa]);
   const { user } = useUserStore();
   return (
-    <div className="transition duration-300 ease-in-out hover:scale-105 my-10 flex min-w-[220px] w-[230px] flex-col overflow-hidden border border-gray-100 bg-[#F1F5F9] shadow-md p-0 rounded-md">
+    <div className="transition duration-300 ease-in-out hover:scale-105 my-10 flex min-w-[220px] w-[230px] flex-col overflow-hidden border border-gray-100 bg-[#f1f5f9] shadow-md p-0 rounded-md">
       <div className="relative w-full h-48">
         <Image
           alt="img"

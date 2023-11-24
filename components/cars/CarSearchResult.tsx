@@ -3,7 +3,7 @@ import LikeComponent from "@/components/ui/LikeComponent";
 import PriceFormat from "@/utils/PriceFormat";
 import Image from "next/image";
 import Link from "next/link";
-
+import { useRouter } from "next/navigation";
 import agent from "@/api/agent";
 import PaginationComponent from "@/components/ui/PaginationComponent";
 import { Country } from "@/models/Master/Country";
@@ -15,6 +15,8 @@ import { FaGasPump } from "react-icons/fa";
 import { GiCarDoor } from "react-icons/gi";
 import { MdAirlineSeatReclineExtra } from "react-icons/md";
 import { PiEngineFill, PiGearFineBold } from "react-icons/pi";
+import Favorite from "@/app/dashboard/components/Forms/favorite";
+import { useUserStore } from "@/store/store";
 interface Props {
   locations: Country[];
   params: URLSearchParams;
@@ -71,7 +73,15 @@ export default function CarSearchResult({ locations, params }: Props) {
       setSearchData(sortedData);
     }
   }, [sort, paginationData]);
-
+  const [fav, setFav] = useState<any>([]);
+  const { user } = useUserStore();
+  useEffect(() => {
+    const getData = async () => {
+      const favorite = await agent.LoadData.favouriteList(user.customerId);
+      setFav(favorite.data);
+    };
+    getData();
+  }, []);
   useEffect(() => {
     // Assuming you have an API function called fetchResults
     const GetStock = async (paramURL: string) => {
@@ -307,7 +317,8 @@ export default function CarSearchResult({ locations, params }: Props) {
                       <div className="addfav">
                         <h5>
                           {/*<Link href="#" scroll={false}>*/}
-                          <LikeComponent />
+
+                          <LikeComponent fav={fav} car={car.stockId} />
                           {/*</Link>*/}
                         </h5>
                       </div>
