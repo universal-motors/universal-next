@@ -3,9 +3,6 @@
 import Navigation from "@/components/layout/Navigation";
 import TopCountryTimeBar from "@/components/layout/TopCountryTimeBar";
 import SearchBar from "@/components/ui/SearchBar";
-import Image from "next/image";
-import { FcCustomerSupport } from "react-icons/fc";
-
 import AuthModal from "@/components/user/Auth/AuthModal";
 import { Country } from "@/models/Master/Country";
 import { PortMapping } from "@/models/Master/PortMapping";
@@ -15,9 +12,13 @@ import { useUserStore } from "@/store/store";
 import { Dialog, Transition } from "@headlessui/react";
 import { googleLogout, useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Fragment, useState } from "react";
+import { FcCustomerSupport } from "react-icons/fc";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface Props {
   locations: Country[];
@@ -71,6 +72,18 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
 
   return (
     <>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <header className="headerbg">
         <div className="container-fluid">
           {/* Stack the columns on mobile by making one full-width and the other half-width */}

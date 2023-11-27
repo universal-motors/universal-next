@@ -4,8 +4,7 @@ import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import SidebarItems from "@/components/sidebarItems";
 import "react-phone-number-input/style.css";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 export const metadata = {
   title: "Universal Motors - Japanese Used Cars For Sale. Shipping Globally! ",
   description: "Japanese Used Cars For Sale. Shipping Globally! ",
@@ -62,18 +61,7 @@ export default async function RootLayout({
           stockCount={stockCount.data}
           locations={locations}
         />
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
+
         {/* <FrontSlider /> */}
         <section>
           <div className="w-[99%]">
