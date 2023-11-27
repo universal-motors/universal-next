@@ -149,7 +149,7 @@ export default function CarSearchResult({ locations, params }: Props) {
                 </div>
               </div>
 
-              <div className="col-xl-6 col-lg-6 col-md-6 d-md-block d-none">
+              <div className="col-xl-6 col-lg-6 col-md-6 d-lg-block d-none text-xs xl:text-sm 2xl:text-base">
                 <div className="car-details">
                   <div className="row ">
                     <div className="col-lg-6 col-md-6 col-sm-6">
@@ -178,11 +178,11 @@ export default function CarSearchResult({ locations, params }: Props) {
                       </div>
                     </div>
                   </div>
-                  <div className="tabrow row pt-2">
+                  <div className="tabrow row pt-2 ">
                     <div className="row specsrow ">
                       <div className="col-sm specs">
                         <h4>Mileage</h4>
-                        <span className="label-text  p-1  flex items-center rounded-md ml-5">
+                        <span className="label-text  p-1  flex items-center rounded-md ml-0 xl:ml-2">
                           <img
                             decoding="async"
                             src="/assets/images/kmsDriven.svg"
@@ -194,7 +194,7 @@ export default function CarSearchResult({ locations, params }: Props) {
                       </div>
                       <div className="col-sm specs">
                         <h4>YEAR</h4>
-                        <span className="label-text  p-1  flex items-center rounded-md ml-5">
+                        <span className="label-text  p-1  flex items-center rounded-md ml-2">
                           <img
                             decoding="async"
                             src="/assets/images/registrationYear.svg"
@@ -206,7 +206,7 @@ export default function CarSearchResult({ locations, params }: Props) {
                       </div>
                       <div className="col-sm specs">
                         <h4>Engine</h4>
-                        <span className="label-text  p-1 flex items-center rounded-md ml-5">
+                        <span className="label-text  p-1 flex items-center rounded-md ml-4">
                           {/*<img decoding="async" src="/assets/images/engineDisplacement.svg" loading="eager"className="h-6 mr-2"/>*/}
                           <span className="h-auto mr-2">
                             <PiEngineFill />
@@ -216,7 +216,7 @@ export default function CarSearchResult({ locations, params }: Props) {
                       </div>
                       <div className="col-sm specs">
                         <h4>Transmision</h4>
-                        <span className="label-text  p-1 flex items-center rounded-md ml-5">
+                        <span className="label-text  p-1 flex gap-1 items-center rounded-md ml-0">
                           <img
                             decoding="async"
                             src="/assets/images/transmission.svg"
@@ -233,7 +233,7 @@ export default function CarSearchResult({ locations, params }: Props) {
                       {/*        {car.locationName} </span>*/}
                       {/*</div>*/}
                       <div className="col-sm specs">
-                        <h4>Fuel</h4>
+                        <h4 className=" flex items-center rounded-md ml-9">Fuel</h4>
                         <span className="label-text  p-1 flex items-center rounded-md ml-5">
                           <span className="h-auto mr-2">
                             <FaGasPump />
@@ -325,7 +325,7 @@ export default function CarSearchResult({ locations, params }: Props) {
                   </div>
                 </div>
               </div>
-              <div className="col-xl-3 col-lg-3 col-md-3 col-sm-8 col-7">
+              <div className="col-xl-3 col-lg-3 col-md-8 col-sm-8 col-7">
                 <div className="car-inquiry">
                   {/*<Link href={`/global/results/${car.stockId}`}><h6 className="listname">{car.ListingTitle}</h6></Link>*/}
                   <div className="fprice">
