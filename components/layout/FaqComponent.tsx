@@ -268,9 +268,9 @@ export default function FaqComponent() {
                                 No. No fees or hidden charges are required. So
                                 dont hesitate and sign up now.
                               </p>
-                              <p className="text-gray-500 dark:text-gray-400"></p>
                             </Accordion.Content>
                           </Accordion.Panel>
+
                           <Accordion.Panel>
                             <Accordion.Title className="h-[2px]">
                               {" "}
@@ -283,9 +283,9 @@ export default function FaqComponent() {
                                 on the shipping schedule and destination of the
                                 customer.
                               </p>
-                              <p className="text-gray-500 dark:text-gray-400"></p>
                             </Accordion.Content>
                           </Accordion.Panel>
+
                           <Accordion.Panel>
                             <Accordion.Title className="h-[2px]">
                               {" "}
@@ -304,8 +304,7 @@ export default function FaqComponent() {
                               </p>
                             </Accordion.Content>
                           </Accordion.Panel>
-                        </Accordion>
-                        <Accordion>
+
                           <Accordion.Panel>
                             <Accordion.Title className="h-[2px]">
                               Do you have any criteria to become a registered
@@ -325,6 +324,7 @@ export default function FaqComponent() {
                               </p>
                             </Accordion.Content>
                           </Accordion.Panel>
+
                           <Accordion.Panel>
                             <Accordion.Title className="h-[2px]">
                               Do your staffs inspect the cars before bidding?
