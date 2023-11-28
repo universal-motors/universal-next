@@ -140,8 +140,8 @@ export default function CarSearchResult({ locations, params }: Props) {
                     />
                   </Link>
 
-                  <h4 className="ml-5">
-                    STOCK ID :{" "}
+                  <h4 className="ml-5 !text-[10px] sm:!text-[12px] md:!text-[12px] lg:text-[14px]">
+                    STOCK ID  :{" "}
                     <span className="inline-flex items-center gap-x-1.5 rounded-full bg-yellow-400 px-2 py-1 text-l font-medium text-blue-950">
                       {car.stockCode}
                     </span>
@@ -329,12 +329,12 @@ export default function CarSearchResult({ locations, params }: Props) {
                 <div className="car-inquiry">
                   {/*<Link href={`/global/results/${car.stockId}`}><h6 className="listname">{car.ListingTitle}</h6></Link>*/}
                   <div className="fprice">
-                    <h6 className="listname font-bold text-[20px] lg:text-[12px] xl:text-[20px]  uppercase">
+                    <h6 className="listname font-bold text-[12px] sm:text-[20px] lg:text-[12px] xl:text-[20px]  uppercase">
                       {car.listingTitle}
                     </h6>
-                    <h6 className="font-bold  lg:text-[12px] xl:text-[20px] ">
+                    <h6 className="font-bold text-[12px] sm:text-[20px]  lg:text-[12px] xl:text-[20px] ">
                       FOB Price:
-                      <span className="mb-5 text-[20px] lg:text-[12px] xl:text-[20px] ">
+                      <span className="mb-5 text-[12px] sm:text-[20px] lg:text-[12px] xl:text-[20px] ">
                         <PriceFormat carPrice={car.price} />
                       </span>
                     </h6>
@@ -363,7 +363,7 @@ export default function CarSearchResult({ locations, params }: Props) {
                   {/*        </h6>*/}
                   {/*</div>*/}
                   <div className="askprice">
-                    <h6 className="text-[20px] lg:text-[12px] xl:text-[20px]">
+                    <h6 className="text-[12px] sm:text-[20px] lg:text-[12px] xl:text-[20px]">
                       TOTAL Price:
                       <span>ASK</span>
                     </h6>
@@ -371,7 +371,7 @@ export default function CarSearchResult({ locations, params }: Props) {
                   <h4 />
 
                   <Link href={`/global/results/cars/${car.stockId}`}>
-                    <button className="offerbtn">
+                    <button className="offerbtn ">
                       <span className="font-bold"> Send Offer</span>
                     </button>
                   </Link>

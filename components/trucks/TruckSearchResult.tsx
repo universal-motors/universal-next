@@ -313,7 +313,7 @@ export default function TruckSearchResult({ locations, params }: Props) {
                     </div>
                     <div className="col-md-4 atf">
                       <div className="addfav">
-                        <h5>
+                        <h5 >
                           <LikeComponent fav={fav} car={truck.stockId} />
                         </h5>
                       </div>
