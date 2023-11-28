@@ -478,8 +478,6 @@ export default function FaqComponent() {
                         <p className="text-gray-500 dark:text-gray-400"></p>
                       </Accordion.Content>
                     </Accordion.Panel>
-                  </Accordion>
-                  <Accordion>
                     <Accordion.Panel>
                       <Accordion.Title className="h-[2px]">
                         Is there any way to know an indicative bidding price for
