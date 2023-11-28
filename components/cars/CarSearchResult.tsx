@@ -329,12 +329,12 @@ export default function CarSearchResult({ locations, params }: Props) {
                 <div className="car-inquiry">
                   {/*<Link href={`/global/results/${car.stockId}`}><h6 className="listname">{car.ListingTitle}</h6></Link>*/}
                   <div className="fprice">
-                    <h6 className="listname font-bold text-[20px]  uppercase">
+                    <h6 className="listname font-bold text-[20px] lg:text-[12px] xl:text-[20px]  uppercase">
                       {car.listingTitle}
                     </h6>
-                    <h6 className="font-bold">
+                    <h6 className="font-bold  lg:text-[12px] xl:text-[20px] ">
                       FOB Price:
-                      <span className="mb-5 text-[20px] ">
+                      <span className="mb-5 text-[20px] lg:text-[12px] xl:text-[20px] ">
                         <PriceFormat carPrice={car.price} />
                       </span>
                     </h6>
@@ -363,7 +363,7 @@ export default function CarSearchResult({ locations, params }: Props) {
                   {/*        </h6>*/}
                   {/*</div>*/}
                   <div className="askprice">
-                    <h6>
+                    <h6 className="text-[20px] lg:text-[12px] xl:text-[20px]">
                       TOTAL Price:
                       <span>ASK</span>
                     </h6>
