@@ -1,6 +1,6 @@
 "use client";
-import { Accordion, Tab, Tabs } from "react-bootstrap";
-
+import { Tab, Tabs } from "react-bootstrap";
+import { Accordion } from "flowbite-react";
 export default function FaqComponent() {
   return (
     <>
@@ -15,11 +15,11 @@ export default function FaqComponent() {
           <Tab eventKey="all" title="ALL">
             <div className="tab-pane active" id="tabs-all" role="tabpanel">
               <div className="row">
-                <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div className=" col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12  ">
                   <div className="accordion faqExample" id="faqExampleall">
                     <div className="row">
-                      <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                        <Accordion>
+                      <div className="text-sm  col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 ">
+                        {/* <Accordion>
                           <Accordion.Item eventKey="0">
                             <Accordion.Header className="card-header">
                               <span> What do I have to do to buy a car?</span>
@@ -147,113 +147,213 @@ export default function FaqComponent() {
                               </span>
                             </Accordion.Body>
                           </Accordion.Item>
-                        </Accordion>
-                      </div>
-                      <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                        </Accordion> */}
                         <Accordion>
-                          <Accordion.Item eventKey="0">
-                            <Accordion.Header className="card-header">
-                              <span>
-                                {" "}
-                                Can I purchase LHD cars from Universal Motors?
-                              </span>
-                            </Accordion.Header>
-                            <Accordion.Body className="card-body">
-                              <span>
-                                {" "}
+                          <Accordion.Panel>
+                            <Accordion.Title className="!h-1">
+                              Can I purchase LHD cars from Universal Motors?
+                            </Accordion.Title>
+                            <Accordion.Content>
+                              <p className="flex justify-center items-center text-sm text-gray-500 dark:text-gray-400 h-6">
                                 LHD cars are usually imported from countries
                                 like UAE, US, Europe and South Korea. However,
                                 you can search for an LHD car in a fair amount
                                 of South Korean and American Inventory.
-                              </span>
-                            </Accordion.Body>
-                          </Accordion.Item>
-                          <Accordion.Item eventKey="1">
-                            <Accordion.Header className="card-header">
+                              </p>
+                            </Accordion.Content>
+                          </Accordion.Panel>
+
+                          <Accordion.Panel>
+                            <Accordion.Title className="h-[2px]">
+                              Is there any way to know an indicative bidding
+                              price for a vehicle I am interested in at an
+                              auction?
+                            </Accordion.Title>
+                            <Accordion.Content>
+                              <p className="flex justify-center items-center text-sm text-gray-500 dark:text-gray-400 h-6">
+                                Yes, the data from recent auctions will be a
+                                good source of information. It indicates the
+                                prices of vehicles that have been sold over the
+                                last 3 months.
+                              </p>
+                              <p className="text-gray-500 dark:text-gray-400"></p>
+                            </Accordion.Content>
+                          </Accordion.Panel>
+                          <Accordion.Panel>
+                            <Accordion.Title className="h-[2px]">
                               {" "}
-                              <span> Can I cancel my purchase order?</span>
-                            </Accordion.Header>
-                            <Accordion.Body className="card-body">
-                              <span>
-                                {" "}
+                              How many used cars are normally available in your
+                              Inventory and in auction?
+                            </Accordion.Title>
+                            <Accordion.Content>
+                              <p className="flex justify-center items-center text-sm text-gray-500 dark:text-gray-400 h-6">
+                                Usually, we have more than a thousand cars in
+                                our regular inventory. In addition, you can have
+                                access to about 150,000 cars a week available at
+                                different online auctions we cover. Usually we
+                                have 2 to 3 RORO Ships and 4 to 5 Container
+                                Shipments in a month.
+                              </p>
+                              <p className="text-gray-500 dark:text-gray-400"></p>
+                            </Accordion.Content>
+                          </Accordion.Panel>
+                          <Accordion.Panel>
+                            <Accordion.Title className="h-[2px]">
+                              Do you inspect the cars before shipping?
+                            </Accordion.Title>
+                            <Accordion.Content>
+                              <p className="flex justify-center items-center text-sm text-gray-500 dark:text-gray-400 h-6">
+                                All the cars are thoroughly inspected to confirm
+                                that there is no difference between the actual
+                                specifications and those on the specification
+                                sheet.
+                              </p>
+                              <p className="text-gray-500 dark:text-gray-400"></p>
+                            </Accordion.Content>
+                          </Accordion.Panel>
+
+                          <Accordion.Panel>
+                            <Accordion.Title className="h-[2px]">
+                              What do I have to do to buy a car?
+                            </Accordion.Title>
+                            <Accordion.Content>
+                              <p className="flex justify-center items-center text-sm text-gray-500 dark:text-gray-400 h-6">
+                                Registration is required. After registration is
+                                completed, you can buy any car that you want.
+                              </p>
+                              <p className="text-gray-500 dark:text-gray-400"></p>
+                            </Accordion.Content>
+                          </Accordion.Panel>
+
+                          <Accordion.Panel>
+                            <Accordion.Title className="h-[2px]">
+                              {" "}
+                              Can I cancel my purchase order?
+                            </Accordion.Title>
+                            <Accordion.Content>
+                              <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 h-6 ">
                                 When you cancel an order, we may have to resell
                                 that car in an auction or in any other way.
                                 Therefore, if you cancel the order, you have to
                                 pay the balance in addition to the costs that
                                 may incur.
-                              </span>
-                            </Accordion.Body>
-                          </Accordion.Item>
-                          <Accordion.Item eventKey="2">
-                            <Accordion.Header className="card-header">
+                              </p>
+                              <p className="text-gray-500 dark:text-gray-400"></p>
+                            </Accordion.Content>
+                          </Accordion.Panel>
+                          <Accordion.Panel>
+                            <Accordion.Title className="h-[2px]">
+                              When can I use online auction service?
+                            </Accordion.Title>
+                            <Accordion.Content>
+                              <p className="flex justify-center items-center text-gray-500 dark:text-gray-400">
+                                You can use it every day.
+                              </p>
+                              <p className="mb-2 text-gray-500 dark:text-gray-400">
+                                {" "}
+                              </p>
+                            </Accordion.Content>
+                          </Accordion.Panel>
+                        </Accordion>
+                      </div>
+
+                      <div className="text-sm  col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                        <Accordion>
+                          <Accordion.Panel>
+                            <Accordion.Title className="h-[2px]">
+                              Is there any membership fee?
+                            </Accordion.Title>
+                            <Accordion.Content>
+                              <p className="flex justify-center items-center text-gray-500 dark:text-gray-400">
+                                No. No fees or hidden charges are required. So
+                                dont hesitate and sign up now.
+                              </p>
+                              <p className="text-gray-500 dark:text-gray-400"></p>
+                            </Accordion.Content>
+                          </Accordion.Panel>
+                          <Accordion.Panel>
+                            <Accordion.Title className="h-[2px]">
                               {" "}
-                              <span>
-                                {" "}
-                                Do you inspect the cars before shipping?
-                              </span>
-                            </Accordion.Header>
-                            <Accordion.Body className="card-body">
-                              <span>
-                                {" "}
-                                All the cars are thoroughly inspected to confirm
-                                that there is no difference between the actual
-                                specifications and those on the specification
-                                sheet.
-                              </span>
-                            </Accordion.Body>
-                          </Accordion.Item>
-                          <Accordion.Item eventKey="3">
-                            <Accordion.Header className="card-header">
+                              How long does it take me to receive my car?
+                            </Accordion.Title>
+                            <Accordion.Content>
+                              <p className="flex justify-center items-center text-gray-500 dark:text-gray-400">
+                                We cannot tell you the exact time for your car
+                                to be delivered to you as it completely depends
+                                on the shipping schedule and destination of the
+                                customer.
+                              </p>
+                              <p className="text-gray-500 dark:text-gray-400"></p>
+                            </Accordion.Content>
+                          </Accordion.Panel>
+                          <Accordion.Panel>
+                            <Accordion.Title className="h-[2px]">
                               {" "}
-                              <span>
-                                {" "}
-                                When can I use online auction service?
-                              </span>
-                            </Accordion.Header>
-                            <Accordion.Body className="card-body">
-                              <span>You can use it every day.</span>
-                            </Accordion.Body>
-                          </Accordion.Item>
-                          <Accordion.Item eventKey="4">
-                            <Accordion.Header className="card-header">
-                              {" "}
-                              <span>
-                                {" "}
-                                Is there any way to know an indicative bidding
-                                price for a vehicle I am interested in at an
-                                auction?
-                              </span>
-                            </Accordion.Header>
-                            <Accordion.Body className="card-body">
-                              <span>
-                                {" "}
-                                Yes, the data from recent auctions will be a
-                                good source of information. It indicates the
-                                prices of vehicles that have been sold over the
-                                last 3 months.
-                              </span>
-                            </Accordion.Body>
-                          </Accordion.Item>
-                          <Accordion.Item eventKey="5" className="danger">
-                            <Accordion.Header className="card-header">
-                              {" "}
-                              <span>
-                                {" "}
-                                Do your staffs inspect the cars before bidding?
-                              </span>
-                            </Accordion.Header>
-                            <Accordion.Body className="card-body">
-                              <span>
-                                {" "}
+                              If I purchase a vehicle at $ 2,000, how much will
+                              I have to pay as extra charges?
+                            </Accordion.Title>
+                            <Accordion.Content>
+                              <p className="flex justify-center items-center text-gray-500 dark:text-gray-400">
+                                If the price is in FOB, you will have to pay
+                                Freight charge, Clearance fee, Import duty,
+                                Registration fee, Compliance fee, and any other
+                                fee which may occur according to the import
+                                regulations of your country.If the price is in
+                                C&amp;F, you can omit Freight charge from the
+                                above charges.
+                              </p>
+                            </Accordion.Content>
+                          </Accordion.Panel>
+                        </Accordion>
+                        <Accordion>
+                          <Accordion.Panel>
+                            <Accordion.Title className="h-[2px]">
+                              Do you have any criteria to become a registered
+                              member of Universal Motors?
+                            </Accordion.Title>
+                            <Accordion.Content>
+                              <p className="flex justify-center items-center text-gray-500 dark:text-gray-400">
+                                Anyone who is an automobile dealer or an
+                                individual buyer can apply for the membership.
+                                However, for an individual car buyer, we
+                                encourage you to check your countrys regulations
+                                before purchase. We are not familiar with the
+                                laws of your country. We are not able to offer
+                                you any advice, or to introduce you to any car
+                                importer or customs clearing agent in your
+                                country.
+                              </p>
+                            </Accordion.Content>
+                          </Accordion.Panel>
+                          <Accordion.Panel>
+                            <Accordion.Title className="h-[2px]">
+                              Do your staffs inspect the cars before bidding?
+                            </Accordion.Title>
+                            <Accordion.Content>
+                              <p className="flex justify-center items-center text-gray-500 dark:text-gray-400">
                                 We have highly skilled professionals who
                                 carefully inspect the cars. Before the
                                 professionals decide to bid a car, they confirm
                                 that the actual specification and condition of
                                 the car matches the information provided by the
                                 auction house.
-                              </span>
-                            </Accordion.Body>
-                          </Accordion.Item>
+                              </p>
+                            </Accordion.Content>
+                          </Accordion.Panel>
+
+                          <Accordion.Panel>
+                            <Accordion.Title className="h-[2px]">
+                              What payment methods can be accepted by Universal
+                              Motors?
+                            </Accordion.Title>
+                            <Accordion.Content>
+                              <p className="flex justify-center items-center text-gray-500 dark:text-gray-400">
+                                Normally we do accept payment by telegraphic
+                                transfer to our designated bank account from
+                                your bank.
+                              </p>
+                            </Accordion.Content>
+                          </Accordion.Panel>
                         </Accordion>
                       </div>
                     </div>
@@ -267,6 +367,36 @@ export default function FaqComponent() {
               <div className="row">
                 <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                   <Accordion>
+                    <Accordion.Panel>
+                      <Accordion.Title className="h-[2px]">
+                        How many used cars are normally available in your
+                        Inventory and in auction?
+                      </Accordion.Title>
+                      <Accordion.Content>
+                        <p className="flex justify-center items-center text-gray-500 dark:text-gray-400">
+                          Usually, we have more than a thousand cars in our
+                          regular inventory. In addition, you can have access to
+                          about 150,000 cars a week available at different
+                          online auctions we cover. Usually we have 2 to 3 RORO
+                          Ships and 4 to 5 Container Shipments in a month.
+                        </p>
+                      </Accordion.Content>
+                    </Accordion.Panel>
+                    <Accordion.Panel>
+                      <Accordion.Title className="h-[2px]">
+                        Can I cancel my purchase order?
+                      </Accordion.Title>
+                      <Accordion.Content>
+                        <p className="flex justify-center items-center text-gray-500 dark:text-gray-400">
+                          When you cancel an order, we may have to resell that
+                          car in an auction or in any other way. Therefore, if
+                          you cancel the order, you have to pay the balance in
+                          addition to the costs that may incur.
+                        </p>
+                      </Accordion.Content>
+                    </Accordion.Panel>
+                  </Accordion>
+                  {/* <Accordion>
                     <Accordion.Item eventKey="0">
                       <Accordion.Header className="card-header">
                         {" "}
@@ -302,10 +432,86 @@ export default function FaqComponent() {
                         </span>
                       </Accordion.Body>
                     </Accordion.Item>
-                  </Accordion>
+                  </Accordion> */}
+
+                  {/* <Accordion.Panel>
+                    <Accordion.Title className="h-[2px]" >How many used cars are normally available in your
+                      Inventory and in auction?</Accordion.Title>
+                    <Accordion.Content>
+                      <p className="mb-2 text-gray-500 dark:text-gray-400">
+                        Usually, we have more than a thousand cars in our
+                        regular inventory. In addition, you can have access to
+                        about 150,000 cars a week available at different
+                        online auctions we cover. Usually we have 2 to 3 RORO
+                        Ships and 4 to 5 Container Shipments in a month.
+                      </p>
+                      <p className="text-gray-500 dark:text-gray-400">
+
+                      </p>
+                    </Accordion.Content>
+                  </Accordion.Panel> */}
+                  {/* <Accordion.Panel>
+                    <Accordion.Title className="h-[2px]" > Can I cancel my purchase order?</Accordion.Title>
+                    <Accordion.Content>
+                      <p className="mb-2 text-gray-500 dark:text-gray-400">
+                        When you cancel an order, we may have to resell that
+                        car in an auction or in any other way. Therefore, if
+                        you cancel the order, you have to pay the balance in
+                        addition to the costs that may incur.
+                      </p>
+                      <p className="text-gray-500 dark:text-gray-400">
+
+                      </p>
+                    </Accordion.Content>
+                  </Accordion.Panel> */}
                 </div>
                 <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                   <Accordion>
+                    <Accordion.Panel>
+                      <Accordion.Title className="h-[2px]">
+                        When can I use online auction service?
+                      </Accordion.Title>
+                      <Accordion.Content>
+                        <p className="flex justify-center items-center text-gray-500 dark:text-gray-400">
+                          You can use it every day.
+                        </p>
+                        <p className="text-gray-500 dark:text-gray-400"></p>
+                      </Accordion.Content>
+                    </Accordion.Panel>
+                  </Accordion>
+                  <Accordion>
+                    <Accordion.Panel>
+                      <Accordion.Title className="h-[2px]">
+                        Is there any way to know an indicative bidding price for
+                        a vehicle I am interested in at an auction?
+                      </Accordion.Title>
+                      <Accordion.Content>
+                        <p className="flex justify-center items-center text-gray-500 dark:text-gray-400">
+                          Yes, the data from recent auctions will be a good
+                          source of information. It indicates the prices of
+                          vehicles that have been sold over the last 3 months.
+                        </p>
+                        <p className="text-gray-500 dark:text-gray-400"></p>
+                      </Accordion.Content>
+                    </Accordion.Panel>
+                  </Accordion>
+
+                  {/* <Accordion.Panel>
+                    <Accordion.Title className="h-[2px]" > Can I cancel my purchase order?</Accordion.Title>
+                    <Accordion.Content>
+                      <p className="mb-2 text-gray-500 dark:text-gray-400">
+                        When you cancel an order, we may have to resell that
+                        car in an auction or in any other way. Therefore, if
+                        you cancel the order, you have to pay the balance in
+                        addition to the costs that may incur.
+                      </p>
+                      <p className="text-gray-500 dark:text-gray-400">
+
+                      </p>
+                    </Accordion.Content>
+                  </Accordion.Panel> */}
+
+                  {/* <Accordion>
                     <Accordion.Item eventKey="0">
                       <Accordion.Header className="card-header">
                         {" "}
@@ -333,7 +539,38 @@ export default function FaqComponent() {
                         </span>
                       </Accordion.Body>
                     </Accordion.Item>
-                  </Accordion>
+                  </Accordion> */}
+                  {/* <Accordion>
+                    <Accordion.Panel>
+                      <Accordion.Title className="h-[2px]" >When can I use online auction service?</Accordion.Title>
+                      <Accordion.Content>
+                        <p className="mb-2 text-gray-500 dark:text-gray-400">
+                          You can use it every day.
+                        </p>
+                        <p className="text-gray-500 dark:text-gray-400">
+
+
+                        </p>
+                      </Accordion.Content>
+                    </Accordion.Panel>
+                    <Accordion.Panel>
+                      <Accordion.Title className="h-[2px] !py-2" > Is there any way to know an indicative bidding price
+                        for a vehicle I am interested in at an auction?</Accordion.Title>
+                      <Accordion.Content>
+                        <p className="mb-2 text-gray-500 dark:text-gray-400">
+                          Yes, the data from recent auctions will be a good
+                          source of information. It indicates the prices of
+                          vehicles that have been sold over the last 3 months.
+                        </p>
+                        <p className="text-gray-500 dark:text-gray-400">
+
+
+                        </p>
+                      </Accordion.Content>
+                    </Accordion.Panel>
+
+
+                  </Accordion> */}
                 </div>
               </div>
             </div>
@@ -342,6 +579,23 @@ export default function FaqComponent() {
             <div className="accordion faqExample" id="faqExampleall">
               <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                 <Accordion>
+                  <Accordion.Panel>
+                    <Accordion.Title className="h-[2px]">
+                      Can I purchase LHD cars from Universal Motors?
+                    </Accordion.Title>
+                    <Accordion.Content>
+                      <p className="mb-2 text-gray-500 dark:text-gray-400">
+                        LHD cars are usually imported from countries like UAE,
+                        US, Europe and South Korea. However, you can search for
+                        an LHD car in a fair amount of South Korean and American
+                        Inventory.
+                      </p>
+                      <p className="text-gray-500 dark:text-gray-400"></p>
+                    </Accordion.Content>
+                  </Accordion.Panel>
+                </Accordion>
+
+                {/* <Accordion>
                   <Accordion.Item eventKey="0">
                     <Accordion.Header className="card-header">
                       <span>
@@ -359,7 +613,7 @@ export default function FaqComponent() {
                       </span>
                     </Accordion.Body>
                   </Accordion.Item>
-                </Accordion>
+                </Accordion> */}
               </div>
             </div>
           </Tab>
@@ -367,6 +621,27 @@ export default function FaqComponent() {
             <div className="accordion faqExample" id="faqExampleall">
               <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                 <Accordion>
+                  <Accordion.Panel>
+                    <Accordion.Title className="h-[2px]">
+                      {" "}
+                      If I purchase a vehicle at $ 2,000, how much will I have
+                      to pay as extra charges?
+                    </Accordion.Title>
+                    <Accordion.Content>
+                      <p className="mb-2 text-gray-500 dark:text-gray-400">
+                        If the price is in FOB, you will have to pay Freight
+                        charge, Clearance fee, Import duty, Registration fee,
+                        Compliance fee, and any other fee which may occur
+                        according to the import regulations of your country.If
+                        the price is in C&amp;F, you can omit Freight charge
+                        from the above charges.
+                      </p>
+                      <p className="text-gray-500 dark:text-gray-400"></p>
+                    </Accordion.Content>
+                  </Accordion.Panel>
+                </Accordion>
+
+                {/* <Accordion>
                   <Accordion.Item eventKey="0">
                     <Accordion.Header className="card-header">
                       {" "}
@@ -387,15 +662,31 @@ export default function FaqComponent() {
                       </span>
                     </Accordion.Body>
                   </Accordion.Item>
-                </Accordion>
+                </Accordion> */}
               </div>
             </div>
           </Tab>
-          <Tab eventKey="payment_buy" title="Payment &amp; How to Buy">
+          <Tab eventKey="payment_buy" title="Payment & How to Buy">
             <div className="accordion faqExample" id="faqExampleall">
               <div className="row">
                 <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                   <Accordion>
+                    <Accordion.Panel>
+                      <Accordion.Title className="h-[2px]">
+                        {" "}
+                        What do I have to do to buy a car?
+                      </Accordion.Title>
+                      <Accordion.Content>
+                        <p className="mb-2 text-gray-500 dark:text-gray-400">
+                          Registration is required. After registration is
+                          completed, you can buy any car that you want.
+                        </p>
+                        <p className="text-gray-500 dark:text-gray-400"></p>
+                      </Accordion.Content>
+                    </Accordion.Panel>
+                  </Accordion>
+
+                  {/* <Accordion>
                     <Accordion.Item eventKey="0">
                       <Accordion.Header className="card-header">
                         <span> What do I have to do to buy a car?</span>
@@ -408,10 +699,27 @@ export default function FaqComponent() {
                         </span>
                       </Accordion.Body>
                     </Accordion.Item>
-                  </Accordion>
+                  </Accordion> */}
                 </div>
                 <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                   <Accordion>
+                    <Accordion.Panel>
+                      <Accordion.Title className="h-[2px]">
+                        {" "}
+                        What payment methods can be accepted by Universal
+                        Motors?
+                      </Accordion.Title>
+                      <Accordion.Content>
+                        <p className="mb-2 text-gray-500 dark:text-gray-400">
+                          Normally we do accept payment by telegraphic transfer
+                          to our designated bank account from your bank.
+                        </p>
+                        <p className="text-gray-500 dark:text-gray-400"></p>
+                      </Accordion.Content>
+                    </Accordion.Panel>
+                  </Accordion>
+
+                  {/* <Accordion>
                     <Accordion.Item eventKey="0">
                       <Accordion.Header className="card-header">
                         {" "}
@@ -429,7 +737,7 @@ export default function FaqComponent() {
                         </span>
                       </Accordion.Body>
                     </Accordion.Item>
-                  </Accordion>
+                  </Accordion> */}
                 </div>
               </div>
             </div>
@@ -439,6 +747,29 @@ export default function FaqComponent() {
               <div className="row">
                 <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                   <Accordion>
+                    <Accordion.Panel>
+                      <Accordion.Title className="h-[2px]">
+                        {" "}
+                        Do you have any criteria to become a registered member
+                        of Universal Motors?
+                      </Accordion.Title>
+                      <Accordion.Content>
+                        <p className="mb-2 text-gray-500 dark:text-gray-400">
+                          Anyone who is an automobile dealer or an individual
+                          buyer can apply for the membership. However, for an
+                          individual car buyer, we encourage you to check your
+                          countrys regulations before purchase. We are not
+                          familiar with the laws of your country. We are not
+                          able to offer you any advice, or to introduce you to
+                          any car importer or customs clearing agent in your
+                          country.
+                        </p>
+                        <p className="text-gray-500 dark:text-gray-400"></p>
+                      </Accordion.Content>
+                    </Accordion.Panel>
+                  </Accordion>
+
+                  {/* <Accordion>
                     <Accordion.Item eventKey="0">
                       <Accordion.Header className="card-header">
                         <span>
@@ -461,10 +792,24 @@ export default function FaqComponent() {
                         </span>
                       </Accordion.Body>
                     </Accordion.Item>
-                  </Accordion>
+                  </Accordion> */}
                 </div>
                 <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                   <Accordion>
+                    <Accordion.Panel>
+                      <Accordion.Title className="h-[2px]">
+                        Is there any membership fee?
+                      </Accordion.Title>
+                      <Accordion.Content>
+                        <p className="mb-2 text-gray-500 dark:text-gray-400">
+                          No. No fees or hidden charges are required. So dont
+                          hesitate and sign up now.
+                        </p>
+                        <p className="text-gray-500 dark:text-gray-400"></p>
+                      </Accordion.Content>
+                    </Accordion.Panel>
+                  </Accordion>
+                  {/* <Accordion>
                     <Accordion.Item eventKey="0">
                       <Accordion.Header className="card-header">
                         {" "}
@@ -478,7 +823,7 @@ export default function FaqComponent() {
                         </span>
                       </Accordion.Body>
                     </Accordion.Item>
-                  </Accordion>
+                  </Accordion> */}
                 </div>
               </div>
             </div>
@@ -488,6 +833,22 @@ export default function FaqComponent() {
               <div className="row">
                 <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                   <Accordion>
+                    <Accordion.Panel>
+                      <Accordion.Title className="h-[2px]">
+                        How long does it take me to receive my car?
+                      </Accordion.Title>
+                      <Accordion.Content>
+                        <p className="mb-2 text-gray-500 dark:text-gray-400">
+                          We cannot tell you the exact time for your car to be
+                          delivered to you as it completely depends on the
+                          shipping schedule and destination of the customer.
+                        </p>
+                        <p className="text-gray-500 dark:text-gray-400"></p>
+                      </Accordion.Content>
+                    </Accordion.Panel>
+                  </Accordion>
+
+                  {/* <Accordion>
                     <Accordion.Item eventKey="0">
                       <Accordion.Header className="card-header">
                         <span>
@@ -504,7 +865,7 @@ export default function FaqComponent() {
                         </span>
                       </Accordion.Body>
                     </Accordion.Item>
-                  </Accordion>
+                  </Accordion> */}
                 </div>
               </div>
             </div>
@@ -514,6 +875,25 @@ export default function FaqComponent() {
               <div className="row">
                 <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                   <Accordion>
+                    <Accordion.Panel>
+                      <Accordion.Title className="h-[2px]">
+                        {" "}
+                        Do your staffs inspect the cars before bidding?
+                      </Accordion.Title>
+                      <Accordion.Content>
+                        <p className="mb-2 text-gray-500 dark:text-gray-400">
+                          We have highly skilled professionals who carefully
+                          inspect the cars. Before the professionals decide to
+                          bid a car, they confirm that the actual specification
+                          and condition of the car matches the information
+                          provided by the auction house.
+                        </p>
+                        <p className="text-gray-500 dark:text-gray-400"></p>
+                      </Accordion.Content>
+                    </Accordion.Panel>
+                  </Accordion>
+
+                  {/* <Accordion>
                     <Accordion.Item eventKey="0">
                       <Accordion.Header className="card-header">
                         <span>
@@ -532,10 +912,26 @@ export default function FaqComponent() {
                         </span>
                       </Accordion.Body>
                     </Accordion.Item>
-                  </Accordion>
+                  </Accordion> */}
                 </div>
                 <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                   <Accordion>
+                    <Accordion.Panel>
+                      <Accordion.Title className="h-[2px]">
+                        {" "}
+                        Do you inspect the cars before shipping?
+                      </Accordion.Title>
+                      <Accordion.Content>
+                        <p className="mb-2 text-gray-500 dark:text-gray-400">
+                          All the cars are thoroughly inspected to confirm that
+                          there is no difference between the actual
+                          specifications and those on the specification sheet.
+                        </p>
+                        <p className="text-gray-500 dark:text-gray-400"></p>
+                      </Accordion.Content>
+                    </Accordion.Panel>
+                  </Accordion>
+                  {/* <Accordion>
                     <Accordion.Item eventKey="0">
                       <Accordion.Header className="card-header ">
                         {" "}
@@ -550,7 +946,7 @@ export default function FaqComponent() {
                         </span>
                       </Accordion.Body>
                     </Accordion.Item>
-                  </Accordion>
+                  </Accordion> */}
                 </div>
               </div>
             </div>
