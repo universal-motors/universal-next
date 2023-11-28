@@ -149,7 +149,7 @@ export default function CarSearchResult({ locations, params }: Props) {
                 </div>
               </div>
 
-              <div className="col-xl-6 col-lg-6 col-md-6 d-lg-block d-none text-[8px] xl:text-sm 2xl:text-base">
+              <div className="col-xl-6 col-lg-6 col-md-6 d-lg-block d-none text-[10px] xl:text-[15px] 2xl:text-base">
                 <div className="car-details">
                   <div className="row ">
                     <div className="col-lg-6 col-md-6 col-sm-6">
@@ -181,8 +181,8 @@ export default function CarSearchResult({ locations, params }: Props) {
                   <div className="tabrow row pt-2 ">
                     <div className="row specsrow ">
                       <div className="col-sm specs">
-                        <h4 className="!text-[8px] xl:!text-sm 2xl:!text-base">Mileage</h4>
-                        <span className="label-text  p-1  flex items-center rounded-md ml-0 xl:ml-0 2xl:ml-0">
+                        <h4 className="!text-[10px]  xl:!text-[15px] 2xl:!text-base">Mileage</h4>
+                        <span className="label-text  p-1  flex items-center rounded-md mr-2 lg:mr-0 ml-0 xl:ml-0 2xl:ml-0">
                           <img
                             decoding="async"
                             src="/assets/images/kmsDriven.svg"
@@ -193,8 +193,8 @@ export default function CarSearchResult({ locations, params }: Props) {
                         </span>
                       </div>
                       <div className="col-sm specs">
-                        <h4 className="!text-[8px] xl:!text-sm 2xl:!text-base">YEAR</h4>
-                        <span className="label-text  p-1  flex items-center rounded-md ml-0 lg:ml-2">
+                        <h4 className="!text-[10px]  xl:!text-[15px] 2xl:!text-base">YEAR</h4>
+                        <span className="label-text  p-1  flex items-center rounded-md mr-2 lg:mr-0 lg:ml-2">
                           <img
                             decoding="async"
                             src="/assets/images/registrationYear.svg"
@@ -205,7 +205,7 @@ export default function CarSearchResult({ locations, params }: Props) {
                         </span>
                       </div>
                       <div className="col-sm specs">
-                        <h4 className="!text-[8px] xl:!text-sm 2xl:!text-base">Engine</h4>
+                        <h4 className="!text-[10px]  xl:!text-[15px] 2xl:!text-base">Engine</h4>
                         <span className="label-text  p-1 flex items-center rounded-md ml-4">
                           {/*<img decoding="async" src="/assets/images/engineDisplacement.svg" loading="eager"className="h-6 mr-2"/>*/}
                           <span className="h-auto mr-2">
@@ -215,7 +215,7 @@ export default function CarSearchResult({ locations, params }: Props) {
                         </span>
                       </div>
                       <div className="col-sm specs">
-                        <h4 className="!text-[8px] xl:!text-sm 2xl:!text-base">Transmision</h4>
+                        <h4 className="!text-[10px]  xl:!text-[15px] 2xl:!text-base">Transmision</h4>
                         <span className="label-text  p-1 flex gap-1 items-center rounded-md ml-0">
                           <img
                             decoding="async"
@@ -233,8 +233,8 @@ export default function CarSearchResult({ locations, params }: Props) {
                       {/*        {car.locationName} </span>*/}
                       {/*</div>*/}
                       <div className="col-sm specs">
-                        <h4 className=" flex items-center rounded-md ml-9 !text-[8px] xl:!text-sm 2xl:!text-base">Fuel</h4>
-                        <span className="label-text  p-1 flex items-center rounded-md ml-5">
+                        <h4 className=" flex items-center rounded-md  !text-[8px] xl:!text-[15px] 2xl:!text-base ">Fuel</h4>
+                        <span className="label-text  p-1 flex items-center rounded-md">
                           <span className="h-auto mr-2">
                             <FaGasPump />
                           </span>
@@ -244,7 +244,7 @@ export default function CarSearchResult({ locations, params }: Props) {
                     </div>
                     <div className="row specsrow ">
                       <div className="col-sm specs">
-                        <h4 className="!text-[8px] xl:!text-sm 2xl:!text-base">Drivetrain</h4>
+                        <h4 className="!text-[10px]  xl:!text-[15px] 2xl:!text-base">Drivetrain</h4>
                         <span className="label-text  p-1 flex items-center rounded-md ml-5">
                           <span className="h-auto mr-2">
                             <PiGearFineBold />
@@ -253,7 +253,7 @@ export default function CarSearchResult({ locations, params }: Props) {
                         </span>
                       </div>
                       <div className="col-sm specs">
-                        <h4 className="!text-[8px] xl:!text-sm 2xl:!text-base">Doors</h4>
+                        <h4 className="!text-[10px] xl:!text-[15px] 2xl:!text-base">Doors</h4>
                         <span className="label-text  p-1 flex items-center rounded-md ml-5">
                           <span className="h-auto mr-2">
                             <GiCarDoor />
@@ -262,7 +262,7 @@ export default function CarSearchResult({ locations, params }: Props) {
                         </span>
                       </div>
                       <div className="col-sm specs">
-                        <h4 className="!text-[8px] xl:!text-sm 2xl:!text-base">Seats</h4>
+                        <h4 className="!text-[10px]  xl:!text-[15px] 2xl:!text-base">Seats</h4>
                         <span className="label-text  p-1 flex items-center rounded-md ml-5">
                           <span className="h-auto mr-2">
                             <MdAirlineSeatReclineExtra />
@@ -271,7 +271,7 @@ export default function CarSearchResult({ locations, params }: Props) {
                         </span>
                       </div>
                       <div className="col-sm specs">
-                        <h4 className="!text-[8px] xl:!text-sm 2xl:!text-base">Color</h4>
+                        <h4 className="!text-[10px]  xl:!text-[15px] 2xl:!text-base">Color</h4>
                         <span className="label-text  p-1 flex items-center rounded-md ml-5">
                           <span className="h-auto mr-2">
                             <BiSolidColorFill />
@@ -280,7 +280,7 @@ export default function CarSearchResult({ locations, params }: Props) {
                         </span>
                       </div>
                       <div className="col-sm specs">
-                        <h4 className="!text-[8px] xl:!text-sm 2xl:!text-base">Model Code</h4>
+                        <h4 className="!text-[10px]  xl:!text-[15px] 2xl:!text-base">Model Code</h4>
                         <span className="label-text p-1 flex items-center rounded-md ml-5">
                           {/*<span className="h-6 mr-2"><AiOutlineBarcode /></span>*/}
                           {car.modelCode}
