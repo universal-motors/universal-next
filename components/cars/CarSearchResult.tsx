@@ -332,7 +332,7 @@ export default function CarSearchResult({ locations, params }: Props) {
                     <h6 className="listname font-bold text-[12px] sm:text-[20px] lg:text-[12px] xl:text-[20px]  uppercase">
                       {car.listingTitle}
                     </h6>
-                    <h6 className="font-bold text-[12px] sm:text-[20px]  lg:text-[12px] xl:text-[20px] mt-0 mb-0 2xl:!mt-2 2xl:!mb-2" >
+                    <h6 className="font-bold text-[12px] sm:text-[20px]  lg:text-[12px] xl:text-[16px] mt-0 mb-0 2xl:!mt-2 2xl:!mb-2" >
                       FOB Price:
                       <span className="mb-5 text-[12px] sm:text-[20px] lg:text-[12px] xl:text-[20px] ">
                         <PriceFormat carPrice={car.price} />
