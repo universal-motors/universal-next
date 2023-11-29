@@ -56,10 +56,10 @@ export default function LikeComponent({ fav, car }: Prop) {
       ) : (
         <span
           onClick={toggle}
-          className="inline-flex font-bold fav-text cursor-pointer"
+          className="inline-flex font-bold fav-text cursor-pointer !text-[12px] xl:!text-[16px]"
         >
           <AiOutlineHeart
-            className="cursor-pointer"
+            className="cursor-pointer !pb-1 xl:!pb-0 !w-3 xl:!w-5"
             onClick={addToFavourite}
             size={20}
           />{" "}
