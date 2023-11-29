@@ -66,7 +66,7 @@ export default function AboutUs() {
                 </div>
               </div>
               <div className="buy-stBox-right">
-                <div className="row">
+                <div className="row items-center">
                   <div className="col-md-5 col-12">
                     <div className="buy-stepimg ">
                       <img
@@ -101,9 +101,9 @@ export default function AboutUs() {
                 </div>
               </div>
               <div className="buy-stBox-right">
-                <div className="row">
+                <div className="row flex justify-center items-center">
                   <div className="col-md-7 col-12 pr-5">
-                    <div className="buy-steptxt">
+                    <div className="buy-steptxt flex flex-col ">
                       <p>
                         <b>Interminable Customer Support</b>
                       </p>
@@ -135,7 +135,7 @@ export default function AboutUs() {
                 </div>
               </div>
               <div className="buy-stBox-right">
-                <div className="row">
+                <div className="row items-center">
                   <div className="col-md-5 col-12 pr-5">
                     <div className="buy-stepimg">
                       <img
@@ -170,7 +170,7 @@ export default function AboutUs() {
                 </div>
               </div>
               <div className="buy-stBox-right">
-                <div className="row">
+                <div className="row items-center">
                   <div className="col-md-7 col-12 pr-5">
                     <div className="buy-steptxt">
                       <p>
