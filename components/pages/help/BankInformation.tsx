@@ -26,13 +26,13 @@ export default function BankInformation() {
           </div>
           <div className="gceCountry-Local exp-Information bankinfo">
             <div className="flex items-center justify-center  px-4 sm:px-0 ">
-              <h1>
+              <h1 className="text-[40px]">
                 <CiBank
-                  className=" mr-2 text-gray-800"
+                  className=" mr-2 text-gray-800 "
                   aria-hidden="true"
                 />
               </h1>
-              <h3 className="font-semibold leading-7 text-blue-950">
+              <h3 className="font-semibold leading-7 !text-4xl text-blue-950">
                 Bank Details{" "}
               </h3>
             </div>
