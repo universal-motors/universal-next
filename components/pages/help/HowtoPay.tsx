@@ -41,7 +41,7 @@ export default function HowtoPay() {
                 Scanned TT copy will be required after payment in order to avoid
                 any delay of shipping or document preparation.
               </p>
-              <h5 className="text-2xl font-medium leading-normal mt-0 mb-2 text-orange-400">
+              <h5 className="text-2xl font-medium leading-normal mt-0 mb-2 text-blue-950">
                 {" "}
                 Shipping Terms
               </h5>
