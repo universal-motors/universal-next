@@ -140,7 +140,7 @@ export default function CarSearchResult({ locations, params }: Props) {
                     />
                   </Link>
 
-                  <h4 className="ml-5 !text-[10px] sm:!text-[12px] md:!text-[12px] lg:text-[14px]">
+                  <h4 className="ml-5 !text-[10px] sm:!text-[12px] md:!text-[12px] lg:text-[14px] xl:!text-[16px]">
                     STOCK ID  :{" "}
                     <span className="inline-flex items-center gap-x-1.5 rounded-full bg-yellow-400 px-2 py-1 text-l font-medium text-blue-950">
                       {car.stockCode}
