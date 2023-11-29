@@ -153,8 +153,8 @@ export default function FaqComponent() {
                             <Accordion.Title className="h-[4px] !py-8">
                               Can I purchase LHD cars from Universal Motors?
                             </Accordion.Title>
-                            <Accordion.Content>
-                              <p className="flex justify-center items-center text-sm text-gray-500 dark:text-gray-400 h-6">
+                            <Accordion.Content className="py-3">
+                              <p className="flex justify-center items-center text-sm text-gray-500 dark:text-gray-400 ">
                                 LHD cars are usually imported from countries
                                 like UAE, US, Europe and South Korea. However,
                                 you can search for an LHD car in a fair amount
@@ -169,14 +169,13 @@ export default function FaqComponent() {
                               price for a vehicle I am interested in at an
                               auction?
                             </Accordion.Title>
-                            <Accordion.Content>
-                              <p className="flex justify-center items-center text-sm text-gray-500 dark:text-gray-400 h-6">
+                            <Accordion.Content className="py-3">
+                              <p className="flex justify-center items-center text-sm text-gray-500 dark:text-gray-400 ">
                                 Yes, the data from recent auctions will be a
                                 good source of information. It indicates the
                                 prices of vehicles that have been sold over the
                                 last 3 months.
                               </p>
-                              <p className="text-gray-500 dark:text-gray-400"></p>
                             </Accordion.Content>
                           </Accordion.Panel>
                           <Accordion.Panel>
@@ -186,7 +185,7 @@ export default function FaqComponent() {
                               Inventory and in auction?
                             </Accordion.Title>
                             <Accordion.Content>
-                              <p className="flex justify-center items-center text-sm text-gray-500 dark:text-gray-400 h-6">
+                              <p className="flex justify-center items-center text-sm text-gray-500 dark:text-gray-400 h-2">
                                 Usually, we have more than a thousand cars in
                                 our regular inventory. In addition, you can have
                                 access to about 150,000 cars a week available at
@@ -194,21 +193,19 @@ export default function FaqComponent() {
                                 have 2 to 3 RORO Ships and 4 to 5 Container
                                 Shipments in a month.
                               </p>
-                              <p className="text-gray-500 dark:text-gray-400"></p>
                             </Accordion.Content>
                           </Accordion.Panel>
                           <Accordion.Panel>
                             <Accordion.Title className="h-[4px]  !py-8">
                               Do you inspect the cars before shipping?
                             </Accordion.Title>
-                            <Accordion.Content>
-                              <p className="flex justify-center items-center text-sm text-gray-500 dark:text-gray-400 h-6">
+                            <Accordion.Content className="py-3">
+                              <p className="flex justify-center items-center text-sm text-gray-500 dark:text-gray-400 ">
                                 All the cars are thoroughly inspected to confirm
                                 that there is no difference between the actual
                                 specifications and those on the specification
                                 sheet.
                               </p>
-                              <p className="text-gray-500 dark:text-gray-400"></p>
                             </Accordion.Content>
                           </Accordion.Panel>
 
@@ -216,12 +213,11 @@ export default function FaqComponent() {
                             <Accordion.Title className="h-[4px]  !py-8">
                               What do I have to do to buy a car?
                             </Accordion.Title>
-                            <Accordion.Content>
-                              <p className="flex justify-center items-center text-sm text-gray-500 dark:text-gray-400 h-6">
+                            <Accordion.Content className="py-3">
+                              <p className="flex justify-center items-center text-sm text-gray-500 dark:text-gray-400">
                                 Registration is required. After registration is
                                 completed, you can buy any car that you want.
                               </p>
-                              <p className="text-gray-500 dark:text-gray-400"></p>
                             </Accordion.Content>
                           </Accordion.Panel>
 
@@ -230,27 +226,23 @@ export default function FaqComponent() {
                               {" "}
                               Can I cancel my purchase order?
                             </Accordion.Title>
-                            <Accordion.Content>
-                              <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 h-6 ">
+                            <Accordion.Content className="py-3">
+                              <p className="flex justify-center items-center text-gray-500 dark:text-gray-400  ">
                                 When you cancel an order, we may have to resell
                                 that car in an auction or in any other way.
                                 Therefore, if you cancel the order, you have to
                                 pay the balance in addition to the costs that
                                 may incur.
                               </p>
-
                             </Accordion.Content>
                           </Accordion.Panel>
                           <Accordion.Panel>
-                            <Accordion.Title className="h-[4px] !py-8">
+                            <Accordion.Title className="h-[2px] !py-8">
                               When can I use online auction service?
                             </Accordion.Title>
-                            <Accordion.Content>
-                              <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 h-6">
+                            <Accordion.Content className=" py-4">
+                              <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 ">
                                 You can use it every day.
-                              </p>
-                              <p className="mb-2 text-gray-500 dark:text-gray-400">
-                                {" "}
                               </p>
                             </Accordion.Content>
                           </Accordion.Panel>
@@ -263,8 +255,8 @@ export default function FaqComponent() {
                             <Accordion.Title className="h-[4px] !py-8">
                               Is there any membership fee?
                             </Accordion.Title>
-                            <Accordion.Content>
-                              <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 h-6">
+                            <Accordion.Content className="py-3">
+                              <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 ">
                                 No. No fees or hidden charges are required. So
                                 dont hesitate and sign up now.
                               </p>
@@ -276,8 +268,8 @@ export default function FaqComponent() {
                               {" "}
                               How long does it take me to receive my car?
                             </Accordion.Title>
-                            <Accordion.Content>
-                              <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 h-6">
+                            <Accordion.Content className="py-3">
+                              <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 ">
                                 We cannot tell you the exact time for your car
                                 to be delivered to you as it completely depends
                                 on the shipping schedule and destination of the
@@ -292,8 +284,8 @@ export default function FaqComponent() {
                               If I purchase a vehicle at $ 2,000, how much will
                               I have to pay as extra charges?
                             </Accordion.Title>
-                            <Accordion.Content>
-                              <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 h-6">
+                            <Accordion.Content className="py-3">
+                              <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 ">
                                 If the price is in FOB, you will have to pay
                                 Freight charge, Clearance fee, Import duty,
                                 Registration fee, Compliance fee, and any other
@@ -310,8 +302,8 @@ export default function FaqComponent() {
                               Do you have any criteria to become a registered
                               member of Universal Motors?
                             </Accordion.Title>
-                            <Accordion.Content>
-                              <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 h-10">
+                            <Accordion.Content className="py-3">
+                              <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 ">
                                 Anyone who is an automobile dealer or an
                                 individual buyer can apply for the membership.
                                 However, for an individual car buyer, we
@@ -329,8 +321,8 @@ export default function FaqComponent() {
                             <Accordion.Title className="h-[4px] !py-8">
                               Do your staffs inspect the cars before bidding?
                             </Accordion.Title>
-                            <Accordion.Content>
-                              <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 h-6">
+                            <Accordion.Content className="py-3">
+                              <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 ">
                                 We have highly skilled professionals who
                                 carefully inspect the cars. Before the
                                 professionals decide to bid a car, they confirm
@@ -346,8 +338,9 @@ export default function FaqComponent() {
                               What payment methods can be accepted by Universal
                               Motors?
                             </Accordion.Title>
-                            <Accordion.Content>
-                              <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 h-6">
+
+                            <Accordion.Content className="py-3">
+                              <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 ">
                                 Normally we do accept payment by telegraphic
                                 transfer to our designated bank account from
                                 your bank.
@@ -387,7 +380,7 @@ export default function FaqComponent() {
                         Can I cancel my purchase order?
                       </Accordion.Title>
                       <Accordion.Content>
-                        <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 h-6">
+                        <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 h-2">
                           When you cancel an order, we may have to resell that
                           car in an auction or in any other way. Therefore, if
                           you cancel the order, you have to pay the balance in
@@ -471,8 +464,8 @@ export default function FaqComponent() {
                       <Accordion.Title className="h-[4px] !py-8">
                         When can I use online auction service?
                       </Accordion.Title>
-                      <Accordion.Content>
-                        <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 h-6">
+                      <Accordion.Content className="py-4">
+                        <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 ">
                           You can use it every day.
                         </p>
                         <p className="text-gray-500 dark:text-gray-400"></p>
@@ -484,7 +477,7 @@ export default function FaqComponent() {
                         a vehicle I am interested in at an auction?
                       </Accordion.Title>
                       <Accordion.Content>
-                        <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 h-6">
+                        <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 h-2">
                           Yes, the data from recent auctions will be a good
                           source of information. It indicates the prices of
                           vehicles that have been sold over the last 3 months.
@@ -582,13 +575,12 @@ export default function FaqComponent() {
                       Can I purchase LHD cars from Universal Motors?
                     </Accordion.Title>
                     <Accordion.Content>
-                      <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 h-6">
+                      <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 h-2">
                         LHD cars are usually imported from countries like UAE,
                         US, Europe and South Korea. However, you can search for
                         an LHD car in a fair amount of South Korean and American
                         Inventory.
                       </p>
-
                     </Accordion.Content>
                   </Accordion.Panel>
                 </Accordion>
@@ -634,7 +626,6 @@ export default function FaqComponent() {
                         the price is in C&amp;F, you can omit Freight charge
                         from the above charges.
                       </p>
-
                     </Accordion.Content>
                   </Accordion.Panel>
                 </Accordion>
@@ -671,11 +662,10 @@ export default function FaqComponent() {
                   <Accordion>
                     <Accordion.Panel>
                       <Accordion.Title className="h-[4px] !py-8">
-                        {" "}
                         What do I have to do to buy a car?
                       </Accordion.Title>
-                      <Accordion.Content>
-                        <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 h-6">
+                      <Accordion.Content className="py-3">
+                        <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 ">
                           Registration is required. After registration is
                           completed, you can buy any car that you want.
                         </p>
@@ -706,8 +696,8 @@ export default function FaqComponent() {
                         What payment methods can be accepted by Universal
                         Motors?
                       </Accordion.Title>
-                      <Accordion.Content>
-                        <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 h-6">
+                      <Accordion.Content className="py-3">
+                        <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 ">
                           Normally we do accept payment by telegraphic transfer
                           to our designated bank account from your bank.
                         </p>
@@ -751,7 +741,7 @@ export default function FaqComponent() {
                         of Universal Motors?
                       </Accordion.Title>
                       <Accordion.Content>
-                        <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 h-8">
+                        <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 h-14">
                           Anyone who is an automobile dealer or an individual
                           buyer can apply for the membership. However, for an
                           individual car buyer, we encourage you to check your
@@ -796,12 +786,11 @@ export default function FaqComponent() {
                       <Accordion.Title className="h-[4px] !py-8">
                         Is there any membership fee?
                       </Accordion.Title>
-                      <Accordion.Content>
-                        <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 h-6">
+                      <Accordion.Content className="py-3">
+                        <p className="flex justify-center items-center text-gray-500 dark:text-gray-400">
                           No. No fees or hidden charges are required. So dont
                           hesitate and sign up now.
                         </p>
-
                       </Accordion.Content>
                     </Accordion.Panel>
                   </Accordion>
@@ -833,8 +822,8 @@ export default function FaqComponent() {
                       <Accordion.Title className="h-[4px] !py-8">
                         How long does it take me to receive my car?
                       </Accordion.Title>
-                      <Accordion.Content>
-                        <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 h-6">
+                      <Accordion.Content className="py-3">
+                        <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 ">
                           We cannot tell you the exact time for your car to be
                           delivered to you as it completely depends on the
                           shipping schedule and destination of the customer.
@@ -883,7 +872,6 @@ export default function FaqComponent() {
                           and condition of the car matches the information
                           provided by the auction house.
                         </p>
-
                       </Accordion.Content>
                     </Accordion.Panel>
                   </Accordion>
@@ -913,16 +901,14 @@ export default function FaqComponent() {
                   <Accordion>
                     <Accordion.Panel>
                       <Accordion.Title className="h-[4px] !py-8">
-                        {" "}
                         Do you inspect the cars before shipping?
                       </Accordion.Title>
                       <Accordion.Content>
-                        <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 h-6">
+                        <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 h-2">
                           All the cars are thoroughly inspected to confirm that
                           there is no difference between the actual
                           specifications and those on the specification sheet.
                         </p>
-
                       </Accordion.Content>
                     </Accordion.Panel>
                   </Accordion>
