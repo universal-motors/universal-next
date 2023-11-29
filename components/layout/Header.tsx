@@ -14,7 +14,7 @@ import { googleLogout, useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Fragment, useState } from "react";
 import { FcCustomerSupport } from "react-icons/fc";
 import { ToastContainer } from "react-toastify";
@@ -32,7 +32,8 @@ interface Props {
 const currentYear = new Date().getFullYear();
 
 function Header({ locations, ports, portMapping, stockCount }: Props) {
-  const router = useRouter()
+  const pathname = usePathname();
+  const router = useRouter();
   //  const { data: session } = useSession()
   let [isOpen, setIsOpen] = useState(false);
   const [dropdown, setDropdown] = useState(false);
@@ -45,14 +46,14 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
   function openMobileSearchModal() {
     setIsOpen(true);
   }
+
   const login = useGoogleLogin({
-
-
     onSuccess: async (tokenResponse: any) => {
-      await axios.get('https://www.googleapis.com/oauth2/v3/userinfo', {
-        headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
-      })
-        .then(res => {
+      await axios
+        .get("https://www.googleapis.com/oauth2/v3/userinfo", {
+          headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
+        })
+        .then((res) => {
           checkEmail(
             res.data.email,
             res.data?.picture,
@@ -66,7 +67,6 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
       // const userObject: any = await jwtDecode(tokenResponse.access_token
       // );
       // console.log(userObject)
-
     },
   });
 
@@ -226,8 +226,8 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                   countryList={[]}
                   portList={[]}
                   portMapping={undefined} // countryList={locations}
-                // portList={ports}
-                // portMapping={portMapping}
+                  // portList={ports}
+                  // portMapping={portMapping}
                 />
 
                 {/*<SignInComponentUI/>*/}
@@ -481,7 +481,13 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                     width={25}
                   />
                 </Link>
-                <Link href="#customer">
+
+                <Link
+                  className={`${
+                    pathname === "#customer" ? "/favorite" : "#customer "
+                  }`}
+                  href="/favorite"
+                >
                   <img
                     src="https://img.icons8.com/ios/2x/hearts.png"
                     alt=""
@@ -489,33 +495,29 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                   />
                 </Link>
                 <div className="pt-[6px]">
-                  {user && user.email ?
-                    (
-                      <>
-                        <img
-                          src={
-                            user.img ??
-                            "https://img.icons8.com/fluency-systems-regular/2x/user.png"
-                          }
-                          alt=""
-                          onClick={() => setDropdown(!dropdown)}
-                          width={25}
-                          className="rounded-full"
-                        />
-                      </>
-                    )
-                    :
-                    (
+                  {user && user.email ? (
+                    <>
                       <img
-                        src="https://img.icons8.com/fluency-systems-regular/2x/user.png"
+                        src={
+                          user.img ??
+                          "https://img.icons8.com/fluency-systems-regular/2x/user.png"
+                        }
                         alt=""
-                        onClick={() => {
-                          login()
-                        }}
+                        onClick={() => setDropdown(!dropdown)}
                         width={25}
+                        className="rounded-full"
                       />
-                    )
-                  }
+                    </>
+                  ) : (
+                    <img
+                      src="https://img.icons8.com/fluency-systems-regular/2x/user.png"
+                      alt=""
+                      onClick={() => {
+                        login();
+                      }}
+                      width={25}
+                    />
+                  )}
                 </div>
 
                 {/* <Link href="#support"><i class="fa fa-headphones"></i></Link>
@@ -525,8 +527,9 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
               {user && user.email && (
                 <div
                   id="dropdownAvatarName"
-                  className={`${!dropdown && "hidden"
-                    } z-50 absolute right-0 top-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}
+                  className={`${
+                    !dropdown && "hidden"
+                  } z-50 absolute right-0 top-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}
                 >
                   <div className="px-1 py-3 text-sm !text-gray-900 ">
                     <div className="font-medium text-center !text-gray-900 ">
@@ -557,8 +560,8 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                   <div className="py-2 cursor-pointer">
                     <p
                       onClick={() => {
-                        router.push("/")
-                        googleLogout()
+                        router.push("/");
+                        googleLogout();
                         deleteData();
                       }}
                       className="block px-4 py-2  text-center text-sm !text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
@@ -571,7 +574,7 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
             </div>
           </div>
         </div>
-      </section >
+      </section>
     </>
   );
 }

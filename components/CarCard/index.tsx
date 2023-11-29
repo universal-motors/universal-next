@@ -28,10 +28,11 @@ export default function CarCard({ car, href, fav }: Prop) {
 
   const login = useGoogleLogin({
     onSuccess: async (tokenResponse: any) => {
-      await axios.get('https://www.googleapis.com/oauth2/v3/userinfo', {
-        headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
-      })
-        .then(res => {
+      await axios
+        .get("https://www.googleapis.com/oauth2/v3/userinfo", {
+          headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
+        })
+        .then((res) => {
           checkEmail(
             res.data.email,
             res.data?.picture,
@@ -41,7 +42,6 @@ export default function CarCard({ car, href, fav }: Prop) {
             router
           );
         });
-
     },
   });
   return (
@@ -79,7 +79,7 @@ export default function CarCard({ car, href, fav }: Prop) {
               setFav(!isfav);
               return;
             }
-            login()
+            login();
             console.log("Not Logged In");
           }}
           size={"24px"}
