@@ -37,8 +37,8 @@ export default function BankInformation() {
               </h3>
             </div>
             <div className="mt-6">
-              <dl className="grid grid-cols-1 sm:grid-cols-2">
-                <div className="border-t border-gray-100 px-4 py-6 sm:col-span-1 sm:px-0">
+              <dl className="grid gap-3 grid-cols-1 sm:grid-cols-2">
+                <div className="border rounded-lg bg-[#F9FAFB] border-gray-100 px-4 py-6 sm:col-span-1 sm:px-0">
                   <h5 className="text-2xl font-semibold underline underline-offset-4 leading-normal mt-0 mb-2 text-blue-950">
                     {" "}
                     UNIVERSAL GLOBAL CONSORTIUM AED ACCOUNT
@@ -74,7 +74,7 @@ export default function BankInformation() {
                     </span>
                   </p>
                 </div>
-                <div className="border-t border-gray-100 px-4 py-6 sm:col-span-1 sm:px-0">
+                <div className="border rounded-lg bg-[#F9FAFB]  border-gray-100 px-4 py-6 sm:col-span-1 sm:px-0">
                   <h5 className="text-2xl underline underline-offset-4 leading-normal font-semibold mt-0 mb-2 text-blue-950">
                     {" "}
                     UNIVERSAL GLOBAL CONSORTIUM USD ACCOUNT
@@ -110,7 +110,7 @@ export default function BankInformation() {
                     </span>
                   </p>
                 </div>
-                <div className="border-t border-gray-100 px-4 py-6 sm:col-span-1 sm:px-0">
+                <div className="border rounded-lg bg-[#F9FAFB] border-gray-100 px-4 py-6 sm:col-span-1 sm:px-0">
                   <h5 className="text-2xl font-semibold underline underline-offset-4 leading-normal mt-0 mb-2 text-blue-950">
                     {" "}
                     BLUE RHINE OVER SEASEAS USD ACCOUNT
@@ -146,7 +146,7 @@ export default function BankInformation() {
                     </span>
                   </p>
                 </div>
-                <div className="border-t border-gray-100 px-4 py-6 sm:col-span-1 sm:px-0">
+                <div className="border rounded-lg bg-[#F9FAFB] border-gray-100 px-4 py-6 sm:col-span-1 sm:px-0">
                   <h5 className="text-2xl font-semibold underline underline-offset-4 leading-normal mt-0 mb-2 text-blue-950">
                     {" "}
                     RIZUBI TRADING JAPAN ACCOUNT
