@@ -1,8 +1,10 @@
 "use client";
 import { addFavourite, removeFavourite } from "@/api/agent";
+import { checkEmail } from "@/services/profile";
 import { useUserStore } from "@/store/store";
 import PriceFormat from "@/utils/PriceFormat";
-import { signIn } from "next-auth/react";
+import { useGoogleLogin } from "@react-oauth/google";
+import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -22,9 +24,28 @@ export default function CarCard({ car, href, fav }: Prop) {
       setFav(true);
     }
   }, [isfa]);
-  const { user } = useUserStore();
+  const { user, setIsUpdate, update: updateData } = useUserStore();
+
+  const login = useGoogleLogin({
+    onSuccess: async (tokenResponse: any) => {
+      await axios.get('https://www.googleapis.com/oauth2/v3/userinfo', {
+        headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
+      })
+        .then(res => {
+          checkEmail(
+            res.data.email,
+            res.data?.picture,
+            res.data?.name,
+            setIsUpdate,
+            updateData,
+            router
+          );
+        });
+
+    },
+  });
   return (
-    <div className="transition duration-300 ease-in-out hover:scale-105 my-10 flex min-w-[220px] w-[230px] flex-col overflow-hidden border border-gray-100 bg-[#F1F5F9] shadow-md p-0 rounded-md">
+    <div className="transition duration-300 ease-in-out hover:scale-105 my-10 flex min-w-[220px] w-[230px] flex-col overflow-hidden border border-gray-100 bg-[#f1f5f9] shadow-md p-0 rounded-md">
       <div className="relative w-full h-48">
         <Image
           alt="img"
@@ -58,7 +79,7 @@ export default function CarCard({ car, href, fav }: Prop) {
               setFav(!isfav);
               return;
             }
-            signIn("google");
+            login()
             console.log("Not Logged In");
           }}
           size={"24px"}

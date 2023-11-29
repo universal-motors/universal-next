@@ -147,7 +147,7 @@ export default function CarsSimpleSearch({
             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               Manufacturing Year:
             </label>
-            <div className="flex flex-row gap-2">
+            <div className="flex flex-col md:flex-row  gap-2">
               <div className="flex-none w-30 h-15 ">
                 <SearchSelect
                   placeholder="starting year"

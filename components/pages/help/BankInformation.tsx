@@ -25,21 +25,21 @@ export default function BankInformation() {
             </ul>
           </div>
           <div className="gceCountry-Local exp-Information bankinfo">
-            <div className="flex inline-flex px-4 sm:px-0 ">
-              <h1>
+            <div className="flex items-center justify-center  px-4 sm:px-0 ">
+              <h1 className="text-[40px]">
                 <CiBank
-                  className="mt-3 mr-2 text-gray-800"
+                  className=" mr-2 text-gray-800 "
                   aria-hidden="true"
                 />
               </h1>
-              <h3 className="font-semibold leading-7 text-blue-950">
+              <h3 className="font-semibold leading-7 !text-4xl text-blue-950">
                 Bank Details{" "}
               </h3>
             </div>
             <div className="mt-6">
-              <dl className="grid grid-cols-1 sm:grid-cols-2">
-                <div className="border-t border-gray-100 px-4 py-6 sm:col-span-1 sm:px-0">
-                  <h5 className="text-2xl font-normal leading-normal mt-0 mb-2 text-orange-400">
+              <dl className="grid gap-3 grid-cols-1 sm:grid-cols-2">
+                <div className="border rounded-2xl bg-[#F9FAFB] border-gray-100 px-4 py-6 sm:col-span-1 sm:px-0">
+                  <h5 className="text-2xl font-semibold underline underline-offset-4 leading-normal mt-0 mb-2 text-blue-950">
                     {" "}
                     UNIVERSAL GLOBAL CONSORTIUM AED ACCOUNT
                   </h5>
@@ -74,8 +74,8 @@ export default function BankInformation() {
                     </span>
                   </p>
                 </div>
-                <div className="border-t border-gray-100 px-4 py-6 sm:col-span-1 sm:px-0">
-                  <h5 className="text-2xl font-normal leading-normal mt-0 mb-2 text-orange-400">
+                <div className="border rounded-2xl bg-[#F9FAFB]  border-gray-100 px-4 py-6 sm:col-span-1 sm:px-0">
+                  <h5 className="text-2xl underline underline-offset-4 leading-normal font-semibold mt-0 mb-2 text-blue-950">
                     {" "}
                     UNIVERSAL GLOBAL CONSORTIUM USD ACCOUNT
                   </h5>
@@ -110,8 +110,8 @@ export default function BankInformation() {
                     </span>
                   </p>
                 </div>
-                <div className="border-t border-gray-100 px-4 py-6 sm:col-span-1 sm:px-0">
-                  <h5 className="text-2xl font-normal leading-normal mt-0 mb-2 text-orange-400">
+                <div className="border rounded-2xl bg-[#F9FAFB] border-gray-100 px-4 py-6 sm:col-span-1 sm:px-0">
+                  <h5 className="text-2xl font-semibold underline underline-offset-4 leading-normal mt-0 mb-2 text-blue-950">
                     {" "}
                     BLUE RHINE OVER SEASEAS USD ACCOUNT
                   </h5>
@@ -146,8 +146,8 @@ export default function BankInformation() {
                     </span>
                   </p>
                 </div>
-                <div className="border-t border-gray-100 px-4 py-6 sm:col-span-1 sm:px-0">
-                  <h5 className="text-2xl font-normal leading-normal mt-0 mb-2 text-orange-400">
+                <div className="border rounded-2xl bg-[#F9FAFB] border-gray-100 px-4 py-6 sm:col-span-1 sm:px-0">
+                  <h5 className="text-2xl font-semibold underline underline-offset-4 leading-normal mt-0 mb-2 text-blue-950">
                     {" "}
                     RIZUBI TRADING JAPAN ACCOUNT
                   </h5>
