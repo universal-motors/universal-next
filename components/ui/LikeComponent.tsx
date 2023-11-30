@@ -22,22 +22,6 @@ export default function LikeComponent({ fav, car }: Prop) {
 
   const { user } = useUserStore();
   const addToFavourite = () => {
-    // if (user && user.customerId) {
-    //   if (isfa) {
-    //     removeFavourite({
-    //       customerId: user.customerId,
-    //       stockId: car,
-    //     });
-    //     setStatus(!status);
-    //     return;
-    //   }
-    //   addFavourite({
-    //     customerId: user.customerId,
-    //     stockId: car,
-    //   });
-    //   setStatus(!status);
-    //   return;
-    // }
     if (user && user.customerId) {
       if (isfav) {
         removeFavourite({
@@ -63,7 +47,7 @@ export default function LikeComponent({ fav, car }: Prop) {
     // setStatus(!status);
     addToFavourite();
     //        onClick();
-  }; ``
+  };
   return (
     <>
       {isfav ? (
