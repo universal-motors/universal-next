@@ -7,7 +7,7 @@ export default function VisionMission() {
       <div className="w-[90%] sm:w-[50%]">
         <Image
           className="shadow-none w-[200px] h-[200px] sm:w-[300px!important] sm:h-[300px!important] rounded-[50%!important]"
-          src="/assets/images/HD-wallpaper-modern-buildings-bottom-view-bottom-view-of-modern-skyscrapers-modern-architecture-blue-sky-business-centers-facades.jpg"
+          src="/assets/images/cars cover.jpg"
           alt="building"
           width={200}
           height={200}
