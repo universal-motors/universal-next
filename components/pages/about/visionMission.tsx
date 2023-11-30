@@ -7,7 +7,7 @@ export default function VisionMission() {
       <div className="w-[90%] sm:w-[50%]">
         <Image
           className="shadow-none w-[200px] h-[200px] sm:w-[300px!important] sm:h-[300px!important] rounded-[50%!important]"
-          src="/assets/images/cars cover.jpg"
+          src="/assets/images/vision&mission.webp"
           alt="building"
           width={200}
           height={200}
