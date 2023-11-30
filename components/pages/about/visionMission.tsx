@@ -6,7 +6,7 @@ export default function VisionMission() {
     <div className="flex flex-col sm:flex-row justify-center items-center mt-10">
       <div className="w-[90%] sm:w-[50%]">
         <Image
-          className="shadow-none w-[200px] h-[200px] sm:w-[300px!important] sm:h-[300px!important] rounded-[50%!important]"
+          className="shadow-none w-[200px] h-[200px] sm:w-[300px!important] sm:h-[300px!important] "
           src="/assets/images/vision&mission.webp"
           alt="building"
           width={200}
