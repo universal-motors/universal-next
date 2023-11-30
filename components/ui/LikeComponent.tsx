@@ -5,7 +5,6 @@ import { useUserStore } from "@/store/store";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-
 type Prop = {
   car: any;
   fav?: any;

@@ -109,9 +109,9 @@ export default function ProfileForm() {
   const removePhone = (index: number) => {
     const updatedPhones = [...Phones];
     updatedPhones.splice(index, 1);
-    const updatedErrors = [...phoneError]
-    updatedErrors.splice(index, 1)
-    setError(updatedErrors)
+    const updatedErrors = [...phoneError];
+    updatedErrors.splice(index, 1);
+    setError(updatedErrors);
     setPhones(updatedPhones);
   };
   type TProfile = {
@@ -197,7 +197,7 @@ export default function ProfileForm() {
       <form
         onSubmit={handleSubmit(async (data) => {
           if (phoneError.includes(false)) {
-            return
+            return;
           }
           if (isUpdate) {
             return toast.info(
@@ -410,22 +410,20 @@ export default function ProfileForm() {
                     htmlFor={"Phone" + i}
                   /> */}
                   <PhoneNumberInput
-                    setError={
-                      (error: boolean) => {
-
-                        const errors = phoneError
-                        errors[i] = error
-                        setError(errors)
-                      }}
+                    setError={(error: boolean) => {
+                      const errors = phoneError;
+                      errors[i] = error;
+                      setError(errors);
+                    }}
                     label={i >= 1 ? "Phone " + (i + 1) : "Phone"}
                     value={Phones[i]}
                     setValue={(e: any) => {
                       console.log(e);
                       updatePhone(i, e);
                     }}
-                  //  setValue={(e: any) => {
-                  //   updatePhone(i, e.target.value);
-                  // }}
+                    //  setValue={(e: any) => {
+                    //   updatePhone(i, e.target.value);
+                    // }}
                   />
                   {i >= 1 && (
                     <AiFillDelete
