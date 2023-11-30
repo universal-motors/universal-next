@@ -482,12 +482,7 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                   />
                 </Link>
 
-                <Link
-                  className={`${
-                    pathname === "#customer" ? "/favorite" : "#customer "
-                  }`}
-                  href="/favorite"
-                >
+                <Link href="/favorite">
                   <img
                     src="https://img.icons8.com/ios/2x/hearts.png"
                     alt=""
