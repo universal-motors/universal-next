@@ -481,14 +481,18 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                     width={25}
                   />
                 </Link>
+                {user && user.email && (
+                  <>
+                    <Link href="/favorite">
+                      <img
+                        src="https://img.icons8.com/ios/2x/hearts.png"
+                        alt=""
+                        width={25}
+                      />
+                    </Link>
+                  </>
+                )}
 
-                <Link href="/favorite">
-                  <img
-                    src="https://img.icons8.com/ios/2x/hearts.png"
-                    alt=""
-                    width={25}
-                  />
-                </Link>
                 <div className="pt-[6px]">
                   {user && user.email ? (
                     <>
