@@ -11,42 +11,62 @@ type Prop = {
   fav?: any;
 };
 export default function LikeComponent({ fav, car }: Prop) {
-  const [status, setStatus] = useState(false);
+  const [isfav, setFav] = useState(false);
   const router = useRouter();
   const isfa = fav.find((itm: any) => itm.stockID === car);
   useEffect(() => {
     if (isfa) {
-      setStatus(true);
+      setFav(true);
     }
   }, [isfa]);
 
   const { user } = useUserStore();
   const addToFavourite = () => {
+    // if (user && user.customerId) {
+    //   if (isfa) {
+    //     removeFavourite({
+    //       customerId: user.customerId,
+    //       stockId: car,
+    //     });
+    //     setStatus(!status);
+    //     return;
+    //   }
+    //   addFavourite({
+    //     customerId: user.customerId,
+    //     stockId: car,
+    //   });
+    //   setStatus(!status);
+    //   return;
+    // }
     if (user && user.customerId) {
-      if (isfa) {
+      if (isfav) {
         removeFavourite({
           customerId: user.customerId,
           stockId: car,
         });
-        setStatus(!status);
+        setFav(!isfav);
         return;
       }
       addFavourite({
         customerId: user.customerId,
         stockId: car,
       });
-      setStatus(!status);
+      setFav(!isfav);
       return;
     }
-  };
+    // login()
+    console.log("Not Logged In");
+  }
+
+
   const toggle = () => {
     // setStatus(!status);
     addToFavourite();
     //        onClick();
-  };
+  }; ``
   return (
     <>
-      {status ? (
+      {isfav ? (
         <AiFillHeart
           className="xl:ml-0 2xl:ml-20 cursor-pointer"
           color="#ff6b81"
