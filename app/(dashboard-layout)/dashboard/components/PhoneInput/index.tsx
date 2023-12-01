@@ -5,19 +5,26 @@ type Prop = {
   value: any;
   setValue?: any;
   label: string;
-  // setError: any
+  setError: any;
 };
 
-export default function PhoneNumberInput({ value, setValue, label }: Prop) {
+export default function PhoneNumberInput({
+  value,
+  setValue,
+  label,
+  setError,
+}: Prop) {
   const [phoneInputValue, setPhoneInputValue] = useState(value);
   const isValid = phoneInputValue
     ? phoneInputValue && isValidPhoneNumber(phoneInputValue)
       ? true
       : false
     : true;
-  // useEffect(() => {
-  //     setError(phoneInputValue && isValidPhoneNumber(phoneInputValue) ? true : false)
-  // }, [phoneInputValue])
+  useEffect(() => {
+    setError(
+      phoneInputValue && isValidPhoneNumber(phoneInputValue) ? true : false
+    );
+  }, [phoneInputValue]);
   useEffect(() => {
     setPhoneInputValue(value);
   }, [value]);

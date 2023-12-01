@@ -30,10 +30,13 @@ export default function CarsSimpleSearch({
   bodyTypes,
   makes,
   yearList,
-  color, transmission, drivetrain, fuel
+  color,
+  transmission,
+  drivetrain,
+  fuel,
 }: Props) {
   const router = useRouter();
-  const [isMore, setIsMore] = useState(false)
+  const [isMore, setIsMore] = useState(false);
   const [isLoading, setLoading] = useState(false);
   const [makeId, setMakeId] = useState("0");
   const [mappedModels, setMappedModels] = useState<CarModel[]>([]);
@@ -97,7 +100,7 @@ export default function CarsSimpleSearch({
   return (
     // <div className='showcase-Box carform mb-5'>
     <form onSubmit={handleSubmit} autoComplete="off">
-      <div className="row !h-[60vh] lg:!h-auto overflow-y-auto lg:overflow-y-visible  mt-4 gap-y-2  border border-gray-200 mx-2 bg-slate-100 rounded-2xl py-3 shadow-md">
+      <div className="row  mt-4 gap-y-2  border border-gray-200 mx-2 bg-slate-100 rounded-2xl py-3 shadow-md">
         <div className="col-lg-4 col-md-6 col-sm-6 col-12">
           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             Make:
@@ -181,9 +184,8 @@ export default function CarsSimpleSearch({
             ))}
           </SearchSelect>
         </div>
-        {isMore &&
+        {isMore && (
           <>
-
             <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
               <div className="showcase-Boxselect ">
                 <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -192,6 +194,7 @@ export default function CarsSimpleSearch({
                 <div className="flex flex-col lg:flex-row flex-wrap justify-between">
                   <div className="w-full lg:w-[49%] h-15 ">
                     <input
+                      type="number"
                       placeholder="Engine Size(cc)"
                       // value={value}
                       // onChange={onChange}
@@ -200,6 +203,7 @@ export default function CarsSimpleSearch({
                   </div>
                   <div className="w-full lg:w-[49%]">
                     <input
+                      type="number"
                       placeholder="Engine Size(cc)"
                       // value={value}
                       // onChange={onChange}
@@ -253,6 +257,7 @@ export default function CarsSimpleSearch({
                   <div className="w-full lg:w-[49%] h-15 ">
                     <input
                       placeholder="Milage"
+                      type="number"
                       // value={value}
                       // onChange={onChange}
                       className=" border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -260,6 +265,7 @@ export default function CarsSimpleSearch({
                   </div>
                   <div className="w-full lg:w-[49%] w-30">
                     <input
+                      type="number"
                       placeholder="Milage"
                       // value={value}
                       // onChange={onChange}
@@ -273,7 +279,10 @@ export default function CarsSimpleSearch({
               <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                 Transmission:
               </label>
-              <SearchSelect value={transmissionId} onValueChange={setTransmissionId}>
+              <SearchSelect
+                value={transmissionId}
+                onValueChange={setTransmissionId}
+              >
                 {transmission.map((trans) => (
                   <SearchSelectItem
                     key={trans.transmissionId}
@@ -306,8 +315,6 @@ export default function CarsSimpleSearch({
               <SearchSelect value={colorId} onValueChange={setColorId}>
                 {color.map((color) => (
                   <SearchSelectItem
-
-
                     key={color.colorId}
                     value={color.colorId.toString()}
                   >
@@ -322,18 +329,23 @@ export default function CarsSimpleSearch({
               </label>
               <input
                 placeholder="Max Loading Capacity"
+                type="number"
                 // value={value}
                 // onChange={onChange}
                 className=" border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
             </div>
           </>
-
-        }
+        )}
         <div className="col-xl-4 col-lg-4 col-md-8 col-sm-6 col-6 flex items-center">
-          <span className="text-blue-700 cursor-pointer  text-sm underline " onClick={() => {
-            setIsMore(!isMore)
-          }} >{isMore ? 'Show less' : 'Show More'}</span>
+          <span
+            className="text-blue-700 cursor-pointer  text-sm underline "
+            onClick={() => {
+              setIsMore(!isMore);
+            }}
+          >
+            {isMore ? "Show less" : "Show More"}
+          </span>
         </div>
 
         <div className="col-xl-4 col-lg-4 col-md-8 col-sm-6 col-6">

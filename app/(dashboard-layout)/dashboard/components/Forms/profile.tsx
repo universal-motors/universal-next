@@ -42,7 +42,6 @@ export default function ProfileForm() {
     setValue("phoneNumber", [user.phone]);
     setCountryID(user.countryId);
     setPortID(user.preferredPortId);
-    console.log(user.phone, "use");
     setPhones([String(user.phone)]);
     countryChange(user.countryId);
     setEmails([String(user?.email)]);
@@ -110,6 +109,9 @@ export default function ProfileForm() {
   const removePhone = (index: number) => {
     const updatedPhones = [...Phones];
     updatedPhones.splice(index, 1);
+    const updatedErrors = [...phoneError];
+    updatedErrors.splice(index, 1);
+    setError(updatedErrors);
     setPhones(updatedPhones);
   };
   type TProfile = {
@@ -194,6 +196,9 @@ export default function ProfileForm() {
     <div className="w-[90%] mx-auto mt-7">
       <form
         onSubmit={handleSubmit(async (data) => {
+          if (phoneError.includes(false)) {
+            return;
+          }
           if (isUpdate) {
             return toast.info(
               "Sorry, the update feature is currently unavailable."
@@ -405,13 +410,11 @@ export default function ProfileForm() {
                     htmlFor={"Phone" + i}
                   /> */}
                   <PhoneNumberInput
-                    // setError={
-                    //   (error: boolean) => {
-
-                    //     const errors = phoneError
-                    //     errors[i] = error
-                    //     setError(errors)
-                    //   }}
+                    setError={(error: boolean) => {
+                      const errors = phoneError;
+                      errors[i] = error;
+                      setError(errors);
+                    }}
                     label={i >= 1 ? "Phone " + (i + 1) : "Phone"}
                     value={Phones[i]}
                     setValue={(e: any) => {

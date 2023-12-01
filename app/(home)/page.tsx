@@ -55,7 +55,14 @@ export default async function Home() {
   return (
     <>
       <div className="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
-        <HomeUI drivetrain={drivetrain} color={color} transmission={transmission} fuel={fuel} bodyTlist={bodyTypes} makeList={makes} />
+        <HomeUI
+          drivetrain={drivetrain}
+          color={color}
+          transmission={transmission}
+          fuel={fuel}
+          bodyTlist={bodyTypes}
+          makeList={makes}
+        />
         <div className="carboxes mt-3 ">
           <HomePageCarListings stockcars={stocks} trucks={topTrucks} />
         </div>

@@ -47,7 +47,6 @@ const GetFuel = async () => {
 };
 
 export default async function ResultPage({ searchParams }: Props) {
-
   const params = new URLSearchParams();
 
   if (searchParams.makeID) params.set("MakeID", searchParams.makeID.toString());
@@ -72,11 +71,17 @@ export default async function ResultPage({ searchParams }: Props) {
   const transmission = await GetTransmission();
   const fuel = await GetFuel();
 
-
   return (
     <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 p-0 second-searchform">
       {/*<DetailedSearchBox />*/}
-      <HomeUI drivetrain={drivetrain} color={color} transmission={transmission} fuel={fuel} makeList={carMake} bodyTlist={bodyTypes} />
+      <HomeUI
+        drivetrain={drivetrain}
+        color={color}
+        transmission={transmission}
+        fuel={fuel}
+        makeList={carMake}
+        bodyTlist={bodyTypes}
+      />
       {/*<SearchingCriteria resultCount={cars.length} locations={locations} />*/}
       <TruckSearchResult params={params} locations={locations} />
     </div>

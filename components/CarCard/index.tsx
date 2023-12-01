@@ -28,10 +28,11 @@ export default function CarCard({ car, href, fav }: Prop) {
 
   const login = useGoogleLogin({
     onSuccess: async (tokenResponse: any) => {
-      await axios.get('https://www.googleapis.com/oauth2/v3/userinfo', {
-        headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
-      })
-        .then(res => {
+      await axios
+        .get("https://www.googleapis.com/oauth2/v3/userinfo", {
+          headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
+        })
+        .then((res) => {
           checkEmail(
             res.data.email,
             res.data?.picture,
@@ -41,11 +42,10 @@ export default function CarCard({ car, href, fav }: Prop) {
             router
           );
         });
-
     },
   });
   return (
-    <div className="transition duration-300 ease-in-out hover:scale-105 my-10 flex min-w-[220px] w-[230px] flex-col overflow-hidden border border-gray-100 bg-[#F1F5F9] shadow-md p-0 rounded-md">
+    <div className="transition duration-300 ease-in-out hover:scale-105 my-10 flex min-w-[220px] w-[230px] flex-col overflow-hidden border border-gray-100 bg-[#f1f5f9] shadow-md p-0 rounded-md">
       <div className="relative w-full h-48">
         <Image
           alt="img"
@@ -79,7 +79,7 @@ export default function CarCard({ car, href, fav }: Prop) {
               setFav(!isfav);
               return;
             }
-            login()
+            login();
             console.log("Not Logged In");
           }}
           size={"24px"}

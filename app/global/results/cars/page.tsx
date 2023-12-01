@@ -54,7 +54,7 @@ const GetTransmission = async () => {
 const GetFuel = async () => {
   const result = await agent.LoadData.fuelTypeList(); //db.tblMakes.findMany({where: {isActive:true}} );
   return result.data;
-}
+};
 export default async function ResultPage({ searchParams }: Props) {
   const params = new URLSearchParams();
   if (searchParams.bodyTypeID)
@@ -92,7 +92,14 @@ export default async function ResultPage({ searchParams }: Props) {
   return (
     <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 p-0 second-searchform">
       {/*<DetailedSearchBox />*/}
-      <HomeUI drivetrain={drivetrain} color={color} transmission={transmission} fuel={fuel} bodyTlist={bodyTypes} makeList={makes} />
+      <HomeUI
+        drivetrain={drivetrain}
+        color={color}
+        transmission={transmission}
+        fuel={fuel}
+        bodyTlist={bodyTypes}
+        makeList={makes}
+      />
       {/*<SearchingCriteria resultCount={cars.length} locations={locations} />*/}
       <CarSearchResult params={params} locations={locations} />
     </div>
