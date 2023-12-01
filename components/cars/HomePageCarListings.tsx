@@ -53,6 +53,8 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
               </div>
             </div>
           </div>
+          <br />
+          <br />
           <div>
             {/*<h2 className="text-blue-800">Most Popular in <span>your Country</span></h2>*/}
             <div className="flex inline">
