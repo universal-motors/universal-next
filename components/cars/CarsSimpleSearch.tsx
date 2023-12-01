@@ -100,7 +100,7 @@ export default function CarsSimpleSearch({
   return (
     // <div className='showcase-Box carform mb-5'>
     <form onSubmit={handleSubmit} autoComplete="off">
-      <div className="row  mt-4 gap-y-2 overflow-scroll sm:overflow-auto h-[350px] sm:h-auto   border border-gray-200 mx-2   bg-slate-100 rounded-2xl py-3 shadow-md">
+      <div className="row  mt-4 gap-y-2 !overflow-scroll sm:!overflow-hidden  h-[350px] sm:h-auto  border border-gray-200 mx-2   bg-slate-100 rounded-2xl py-3 shadow-md" style={{ overflowY: 'hidden' }}>
         <div className="col-lg-4 col-md-6 col-sm-6 col-12">
           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             Make:
