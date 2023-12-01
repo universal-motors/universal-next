@@ -26,7 +26,14 @@ const initialState = {
   toYear: 0,
 };
 
-export default async function HomeUI({ makeList, bodyTlist, color, transmission, drivetrain, fuel }: Props) {
+export default async function HomeUI({
+  makeList,
+  bodyTlist,
+  color,
+  transmission,
+  drivetrain,
+  fuel,
+}: Props) {
   const [isOpen, setIsOpen] = useState(false);
   function closeMobileSearchModal() {
     setIsOpen(false);
@@ -39,7 +46,14 @@ export default async function HomeUI({ makeList, bodyTlist, color, transmission,
     <>
       <div>
         <div className="hidden sm:block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500">
-          <HomeUITabGroup drivetrain={drivetrain} color={color} transmission={transmission} fuel={fuel} makes={makeList} bodyTypes={bodyTlist} />
+          <HomeUITabGroup
+            drivetrain={drivetrain}
+            color={color}
+            transmission={transmission}
+            fuel={fuel}
+            makes={makeList}
+            bodyTypes={bodyTlist}
+          />
         </div>
         <div className="block sm:hidden w-full ">
           <button
@@ -78,7 +92,14 @@ export default async function HomeUI({ makeList, bodyTlist, color, transmission,
                     leaveTo="opacity-0 scale-95"
                   >
                     <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                      <HomeUITabGroup drivetrain={drivetrain} color={color} transmission={transmission} fuel={fuel} makes={makeList} bodyTypes={bodyTlist} />
+                      <HomeUITabGroup
+                        drivetrain={drivetrain}
+                        color={color}
+                        transmission={transmission}
+                        fuel={fuel}
+                        makes={makeList}
+                        bodyTypes={bodyTlist}
+                      />
                       {/* <Dialog.Title
                         as="h3"
                         className="text-lg font-medium leading-6 text-white"

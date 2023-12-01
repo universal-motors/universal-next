@@ -37,7 +37,14 @@ const tabs: TabType[] = [
   { name: "Heavy Machinery", href: "#", current: false },
 ];
 
-export default function HomeUITabGroup({ bodyTypes, makes, color, transmission, drivetrain, fuel }: Props) {
+export default function HomeUITabGroup({
+  bodyTypes,
+  makes,
+  color,
+  transmission,
+  drivetrain,
+  fuel,
+}: Props) {
   const [currentForm, setCurrentForm] = useState("Cars");
   const currentYear = new Date().getFullYear();
   const fromYear = 1970;
