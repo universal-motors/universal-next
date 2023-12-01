@@ -268,7 +268,6 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                       <i className="fa fa-search" />
                       Search
                     </li>
-
                     <li>
                       {" "}
                       <Link href="/global/results/cars?makeID=5">
@@ -294,30 +293,37 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                       </Link>
                     </li>
                     <li className="last">Search by Inventory Location</li>
-                    <li className="highlighted">
-                      Dashboard
-                    </li>
-                    <Link href={"/dashboard"}>
-                      <li>Account Information</li>
-                    </Link>
+                    {
+                      user && user.email && (
+                        <>
+                          <li className="highlighted">
+                            Dashboard
+                          </li>
+                          <Link href={"/dashboard"}>
+                            <li>Account Information</li>
+                          </Link>
+                          <Link href={"/favorite"}>
+                            <li>
+                              My Favorite
+                            </li>
+                          </Link>
+                          <Link href={"/contact-information"}>
+                            <li>Contact Information</li>
+                          </Link>
+                          <Link href={"/connect-accounts"}>
+                            <li>Connect Accounts</li>
+                          </Link>
+                          <Link href={"/Preferences"}>
+                            <li>Preferences</li>
+                          </Link>
+                          <Link href={"/account activity"}>
+                            <li className="last">Account Activity</li>
+                          </Link>
+                        </>
+                      )
+                    }
 
-                    <Link href={"/favorite"}>
-                      <li>
-                        My Favorite
-                      </li>
-                    </Link>
-                    <Link href={"/contact-information"}>
-                      <li>Contact Information</li>
-                    </Link>
-                    <Link href={"/connect-accounts"}>
-                      <li>Connect Accounts</li>
-                    </Link>
-                    <Link href={"/Preferences"}>
-                      <li>Preferences</li>
-                    </Link>
-                    <Link href={"/account activity"}>
-                      <li className="last">Account Activity</li>
-                    </Link>
+
                     <li className="highlighted">
                       <i className="fa fa-globe" />
                       Local Service
