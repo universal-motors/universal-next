@@ -65,7 +65,6 @@ export default async function Home() {
           <br />
           <p className="text-[12px]">
             Universal Motors is the ultimate destination for quality, affordable, used Japanese cars, trucks, and heavy machinery. Explore our vast inventory sourced directly from auctions, ensuring you get the best selection. We offer customers a full warranty on the features and condition of our used cars for sale price to ensure the best car-buying experience. With our focus on LHD and RHD cars, we prioritize safety and ease for our clients. Trust our expert team to provide comprehensive details, making your purchasing journey seamless and informed. At Universal Motors, we are not just selling vehicles but delivering trust, reliability, and unmatched value in every transaction. Our services are available in multiple countries like Japan, Canada, the USA, the UK, UAE, Thailand etc.
-
           </p>
         </div>
         <div className="showcase-Make rightsidebar">
