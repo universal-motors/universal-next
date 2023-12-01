@@ -22,7 +22,6 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
       setFav(favorite.data);
     };
     getData();
-
   }, []);
   return (
     <>
