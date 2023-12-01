@@ -226,8 +226,8 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                   countryList={[]}
                   portList={[]}
                   portMapping={undefined} // countryList={locations}
-                  // portList={ports}
-                  // portMapping={portMapping}
+                // portList={ports}
+                // portMapping={portMapping}
                 />
 
                 {/*<SignInComponentUI/>*/}
@@ -294,6 +294,30 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                       </Link>
                     </li>
                     <li className="last">Search by Inventory Location</li>
+                    <li className="highlighted">
+                      Dashboard
+                    </li>
+                    <Link href={"/dashboard"}>
+                      <li>Account Information</li>
+                    </Link>
+
+                    <Link href={"/favorite"}>
+                      <li>
+                        My Favorite
+                      </li>
+                    </Link>
+                    <Link href={"/contact-information"}>
+                      <li>Contact Information</li>
+                    </Link>
+                    <Link href={"/connect-accounts"}>
+                      <li>Connect Accounts</li>
+                    </Link>
+                    <Link href={"/Preferences"}>
+                      <li>Preferences</li>
+                    </Link>
+                    <Link href={"/account activity"}>
+                      <li className="last">Account Activity</li>
+                    </Link>
                     <li className="highlighted">
                       <i className="fa fa-globe" />
                       Local Service
@@ -526,9 +550,8 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
               {user && user.email && (
                 <div
                   id="dropdownAvatarName"
-                  className={`${
-                    !dropdown && "hidden"
-                  } z-50 absolute right-0 top-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}
+                  className={`${!dropdown && "hidden"
+                    } z-50 absolute right-0 top-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}
                 >
                   <div className="px-1 py-3 text-sm !text-gray-900 ">
                     <div className="font-medium text-center !text-gray-900 ">
