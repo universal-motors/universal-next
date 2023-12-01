@@ -5,10 +5,15 @@ type Prop = {
   value: any;
   setValue?: any;
   label: string;
-  setError: any
+  setError: any;
 };
 
-export default function PhoneNumberInput({ value, setValue, label, setError }: Prop) {
+export default function PhoneNumberInput({
+  value,
+  setValue,
+  label,
+  setError,
+}: Prop) {
   const [phoneInputValue, setPhoneInputValue] = useState(value);
   const isValid = phoneInputValue
     ? phoneInputValue && isValidPhoneNumber(phoneInputValue)
@@ -16,8 +21,10 @@ export default function PhoneNumberInput({ value, setValue, label, setError }: P
       : false
     : true;
   useEffect(() => {
-    setError(phoneInputValue && isValidPhoneNumber(phoneInputValue) ? true : false)
-  }, [phoneInputValue])
+    setError(
+      phoneInputValue && isValidPhoneNumber(phoneInputValue) ? true : false
+    );
+  }, [phoneInputValue]);
   useEffect(() => {
     setPhoneInputValue(value);
   }, [value]);
@@ -34,8 +41,9 @@ export default function PhoneNumberInput({ value, setValue, label, setError }: P
       </label>
       <PhoneInput
         id="phone-input"
-        className={`bg-gray-50 border ${isValid ? "!border-gray-300" : "!border-red-500"
-          } text-gray-900 text-sm rounded-lg h-11  focus:ring-blue-500 focus:border-blue-500 block !w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
+        className={`bg-gray-50 border ${
+          isValid ? "!border-gray-300" : "!border-red-500"
+        } text-gray-900 text-sm rounded-lg h-11  focus:ring-blue-500 focus:border-blue-500 block !w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
         placeholder="Enter phone number"
         value={phoneInputValue}
         onChange={setPhoneInputValue}

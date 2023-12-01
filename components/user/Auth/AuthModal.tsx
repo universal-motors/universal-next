@@ -87,7 +87,7 @@ export default function AuthModal({
 
   const responseGoogle = (response: any) => {
     const userObject: any = jwtDecode(response.credential);
-    console.log(response)
+    console.log(response);
     checkEmail(
       userObject.email,
       userObject?.picture,
@@ -98,13 +98,12 @@ export default function AuthModal({
     );
   };
   const login = useGoogleLogin({
-
-
     onSuccess: async (tokenResponse: any) => {
-      await axios.get('https://www.googleapis.com/oauth2/v3/userinfo', {
-        headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
-      })
-        .then(res => {
+      await axios
+        .get("https://www.googleapis.com/oauth2/v3/userinfo", {
+          headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
+        })
+        .then((res) => {
           checkEmail(
             res.data.email,
             res.data?.picture,
@@ -118,10 +117,8 @@ export default function AuthModal({
       // const userObject: any = await jwtDecode(tokenResponse.access_token
       // );
       // console.log(userObject)
-
     },
   });
-
 
   return (
     <>
@@ -166,8 +163,9 @@ export default function AuthModal({
 
                   <div
                     id="dropdownAvatarName"
-                    className={`${!dropdown && "hidden"
-                      } z-50 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}
+                    className={`${
+                      !dropdown && "hidden"
+                    } z-50 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}
                   >
                     <div className="px-1 py-3 text-sm text-gray-900 dark:text-white">
                       <div className="font-medium ">{user?.name}</div>
@@ -199,11 +197,9 @@ export default function AuthModal({
 
                         // }}
                         onClick={() => {
-                          router.push("/")
-                          googleLogout()
-                          deleteData()
-
-
+                          router.push("/");
+                          googleLogout();
+                          deleteData();
                         }}
                         className="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                       >
@@ -224,18 +220,20 @@ export default function AuthModal({
               //   // onFailure={responseGoogle}
               //   // cookiePolicy="single_host_origin"
               // />
-              <button
-                className="text-[10px] 2xl:text-sm px:1 py-1 2xl:px-4 2xl:py-2 border flex justify-center items-center gap-2 border-slate-200 dark:border-slate-700 rounded-lg text-slate-200 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-400 dark:hover:text-slate-300 hover:shadow transition duration-150"
-              >
+              <button className="text-[10px] 2xl:text-sm px:1 py-1 2xl:px-4 2xl:py-2 border flex justify-center items-center gap-2 border-slate-200 dark:border-slate-700 rounded-lg text-slate-200 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-400 dark:hover:text-slate-300 hover:shadow transition duration-150">
                 <img
                   className="w-6 h-6"
                   src="https://www.svgrepo.com/show/475656/google-color.svg"
                   loading="lazy"
                   alt="google logo"
                 />
-                <span onClick={() => {
-                  login()
-                }}>Login with Google</span>
+                <span
+                  onClick={() => {
+                    login();
+                  }}
+                >
+                  Login with Google
+                </span>
               </button>
             )}
             {/* {

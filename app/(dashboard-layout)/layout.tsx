@@ -51,35 +51,35 @@ export default async function RootLayout({
   const portMapping = await GetPortMapping();
   const stockCount = await GetStockCount();
 
-
   return (
     <>
-      <CheckIsLogin><>
-        <Header
-          ports={portList}
-          portMapping={portMapping}
-          stockCount={stockCount.data}
-          locations={locations}
-        />
+      <CheckIsLogin>
+        <>
+          <Header
+            ports={portList}
+            portMapping={portMapping}
+            stockCount={stockCount.data}
+            locations={locations}
+          />
 
-        {/* <FrontSlider /> */}
-        <section>
-          <div className="w-[99%]">
-            <div className="row">
-              {/* <Sidebar locations={inventoryLocation} makes={makes.data} /> */}
-              <div className="flex flex-row min-h-screen w-screen m-auto">
-                <SidebarItems />
-                {children}
+          {/* <FrontSlider /> */}
+          <section>
+            <div className="w-[99%]">
+              <div className="row">
+                {/* <Sidebar locations={inventoryLocation} makes={makes.data} /> */}
+                <div className="flex flex-row min-h-screen w-screen m-auto">
+                  <SidebarItems />
+                  {children}
+                </div>
               </div>
             </div>
-          </div>
-        </section>
-        <Footer
-          bodyTypes={bodyTypes.data}
-          locations={inventoryLocation}
-          makes={makes.data}
-        />
-      </>
+          </section>
+          <Footer
+            bodyTypes={bodyTypes.data}
+            locations={inventoryLocation}
+            makes={makes.data}
+          />
+        </>
       </CheckIsLogin>
     </>
   );
