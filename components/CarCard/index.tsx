@@ -60,37 +60,43 @@ export default function CarCard({ car, href, fav }: Prop) {
           height={400}
           src={car.imageUrl}
         />
+        {
+          user && user.email && (
+            <>
+              <FaHeart
+                onClick={() => {
+                  if (user && user.customerId) {
+                    if (isfav) {
+                      removeFavourite({
+                        customerId: user.customerId,
+                        stockId: car.stockId,
+                      });
+                      setFav(!isfav);
+                      return;
+                    }
+                    addFavourite({
+                      customerId: user.customerId,
+                      stockId: car.stockId,
+                    });
+                    setFav(!isfav);
+                    return;
+                  }
+                  login();
+                  console.log("Not Logged In");
+                }}
+                size={"24px"}
+                style={{
+                  position: "absolute",
+                  top: "4px",
+                  right: "4px",
+                  color: !isfav ? "white" : "#F44336",
+                  cursor: "pointer",
+                }}
+              />
+            </>
+          )
+        }
 
-        <FaHeart
-          onClick={() => {
-            if (user && user.customerId) {
-              if (isfav) {
-                removeFavourite({
-                  customerId: user.customerId,
-                  stockId: car.stockId,
-                });
-                setFav(!isfav);
-                return;
-              }
-              addFavourite({
-                customerId: user.customerId,
-                stockId: car.stockId,
-              });
-              setFav(!isfav);
-              return;
-            }
-            login();
-            console.log("Not Logged In");
-          }}
-          size={"24px"}
-          style={{
-            position: "absolute",
-            top: "4px",
-            right: "4px",
-            color: !isfav ? "white" : "#F44336",
-            cursor: "pointer",
-          }}
-        />
       </div>
       <div
         onClick={() => {
