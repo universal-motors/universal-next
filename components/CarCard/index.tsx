@@ -5,7 +5,6 @@ import { useUserStore } from "@/store/store";
 import PriceFormat from "@/utils/PriceFormat";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
-import { profile } from "console";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -72,16 +71,13 @@ export default function CarCard({ car, href, fav }: Prop) {
                 setFav(!isfav);
                 return;
               }
-              {
-                user.email && user.phone &&
+              user.phone &&
                 addFavourite({
                   customerId: user.customerId,
                   stockId: car.stockId,
                 });
-                setFav(!isfav);
-                return;
-              }
-
+              setFav(!isfav);
+              return;
             }
             login();
             console.log("Not Logged In");

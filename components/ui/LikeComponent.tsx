@@ -30,16 +30,13 @@ export default function LikeComponent({ fav, car }: Prop) {
         setFav(!isfav);
         return;
       }
-      {
-        user.email && user.phone &&
+      user.phone &&
         addFavourite({
           customerId: user.customerId,
           stockId: car,
         });
-        setFav(!isfav);
-        return;
-      }
-
+      setFav(!isfav);
+      return;
     }
     // login()
     console.log("Not Logged In");
