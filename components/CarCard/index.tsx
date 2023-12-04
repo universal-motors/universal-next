@@ -5,6 +5,7 @@ import { useUserStore } from "@/store/store";
 import PriceFormat from "@/utils/PriceFormat";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
+import { profile } from "console";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -60,43 +61,40 @@ export default function CarCard({ car, href, fav }: Prop) {
           height={400}
           src={car.imageUrl}
         />
-        {
-          user && user.email && (
-            <>
-              <FaHeart
-                onClick={() => {
-                  if (user && user.customerId) {
-                    if (isfav) {
-                      removeFavourite({
-                        customerId: user.customerId,
-                        stockId: car.stockId,
-                      });
-                      setFav(!isfav);
-                      return;
-                    }
-                    addFavourite({
-                      customerId: user.customerId,
-                      stockId: car.stockId,
-                    });
-                    setFav(!isfav);
-                    return;
-                  }
-                  login();
-                  console.log("Not Logged In");
-                }}
-                size={"24px"}
-                style={{
-                  position: "absolute",
-                  top: "4px",
-                  right: "4px",
-                  color: !isfav ? "white" : "#F44336",
-                  cursor: "pointer",
-                }}
-              />
-            </>
-          )
-        }
+        <FaHeart
+          onClick={() => {
+            if (user && user.customerId) {
+              if (isfav) {
+                removeFavourite({
+                  customerId: user.customerId,
+                  stockId: car.stockId,
+                });
+                setFav(!isfav);
+                return;
+              }
+              {
+                user.email && user.phone &&
+                addFavourite({
+                  customerId: user.customerId,
+                  stockId: car.stockId,
+                });
+                setFav(!isfav);
+                return;
+              }
 
+            }
+            login();
+            console.log("Not Logged In");
+          }}
+          size={"24px"}
+          style={{
+            position: "absolute",
+            top: "4px",
+            right: "4px",
+            color: !isfav ? "white" : "#F44336",
+            cursor: "pointer",
+          }}
+        />
       </div>
       <div
         onClick={() => {
