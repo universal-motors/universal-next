@@ -20,11 +20,11 @@ export default function SearchBar() {
 
     switch (searchCategory) {
       case "1":
-        router.push(`/global/results/cars/?searchTerm=${searchKey}`);
+        router.push(`/global/results/search/cars/?searchTerm=${searchKey}`);
         break;
 
       case "2":
-        router.push(`/global/results/trucks/?searchTerm=${searchKey}`);
+        router.push(`/global/results/search/trucks/?searchTerm=${searchKey}`);
         break;
 
       case "3":

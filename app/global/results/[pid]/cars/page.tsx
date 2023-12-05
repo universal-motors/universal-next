@@ -1,7 +1,5 @@
-import SearchingCriteria from "@/components/ui/SearchingCriteria";
-import CarSearchResult from "@/components/cars/CarSearchResult";
-import { StockCars } from "@/models/StockCars";
 import agent from "@/api/agent";
+import CarSearchResult from "@/components/cars/CarSearchResult";
 import HomeUI from "@/components/ui/HomeUI";
 
 interface Props {

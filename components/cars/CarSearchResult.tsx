@@ -1,21 +1,20 @@
 "use client";
-import LikeComponent from "@/components/ui/LikeComponent";
-import PriceFormat from "@/utils/PriceFormat";
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 import agent from "@/api/agent";
+import LikeComponent from "@/components/ui/LikeComponent";
 import PaginationComponent from "@/components/ui/PaginationComponent";
 import { Country } from "@/models/Master/Country";
 import { PaginationHeader } from "@/models/Master/Pagination";
 import { StockCars } from "@/models/StockCars";
+import { useUserStore } from "@/store/store";
+import PriceFormat from "@/utils/PriceFormat";
+import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { BiSolidColorFill } from "react-icons/bi";
 import { FaGasPump } from "react-icons/fa";
 import { GiCarDoor } from "react-icons/gi";
 import { MdAirlineSeatReclineExtra } from "react-icons/md";
 import { PiEngineFill, PiGearFineBold } from "react-icons/pi";
-import { useUserStore } from "@/store/store";
 interface Props {
   locations: Country[];
   params: URLSearchParams;
@@ -130,7 +129,12 @@ export default function CarSearchResult({ locations, params }: Props) {
             <div className="row my-5 ">
               <div className="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-5">
                 <div className="searched-carimage ">
-                  <Link href={`/global/results/cars/${car.stockId}`}>
+                  <Link
+                    href={`/global/results/${car.makeName.replace(
+                      " ",
+                      "-"
+                    )}/cars/${car.stockId}`}
+                  >
                     <Image
                       src={car.imageUrl ?? ""}
                       className="mb-4"
@@ -140,9 +144,8 @@ export default function CarSearchResult({ locations, params }: Props) {
                     />
                   </Link>
 
-
                   <h4 className="ml-5 !text-[10px] sm:!text-[12px] md:!text-[12px] lg:text-[14px] xl:!text-[16px]">
-                    STOCK ID  :{" "}
+                    STOCK ID :{" "}
                     <span className="inline-flex items-center gap-x-1.5 rounded-full bg-yellow-400 px-2 py-1 text-l font-medium text-blue-950">
                       {car.stockCode}
                     </span>
@@ -154,7 +157,12 @@ export default function CarSearchResult({ locations, params }: Props) {
                 <div className="car-details">
                   <div className="row ">
                     <div className="col-lg-6 col-md-6 col-sm-6">
-                      <Link href={`/global/results/cars/${car.stockId}`}>
+                      <Link
+                        href={`/global/results/${car.makeName.replace(
+                          " ",
+                          "-"
+                        )}/cars/${car.stockId}`}
+                      >
                         <h6 className="listname font-bold uppercase">
                           {car.listingTitle}
                         </h6>
@@ -353,7 +361,7 @@ export default function CarSearchResult({ locations, params }: Props) {
                     <h6 className="listname font-bold text-[12px] sm:text-[20px] lg:text-[12px] xl:text-[20px]  uppercase">
                       {car.listingTitle}
                     </h6>
-                    <h6 className="font-bold text-[12px] sm:text-[20px]  lg:text-[12px] xl:text-[16px] mt-0 mb-0 2xl:!mt-2 2xl:!mb-2" >
+                    <h6 className="font-bold text-[12px] sm:text-[20px]  lg:text-[12px] xl:text-[16px] mt-0 mb-0 2xl:!mt-2 2xl:!mb-2">
                       FOB Price:
                       <span className="mb-5 text-[12px] sm:text-[20px] lg:text-[12px] xl:text-[20px] ">
                         <PriceFormat carPrice={car.price} />
@@ -391,7 +399,12 @@ export default function CarSearchResult({ locations, params }: Props) {
                   </div>
                   <h4 />
 
-                  <Link href={`/global/results/cars/${car.stockId}`}>
+                  <Link
+                    href={`/global/results/${car.makeName.replace(
+                      " ",
+                      "-"
+                    )}/cars/${car.stockId}`}
+                  >
                     <button className="offerbtn ">
                       <span className="font-bold"> Send Offer</span>
                     </button>

@@ -4,8 +4,6 @@ import { Accordion } from "flowbite-react";
 export default function FaqComponent() {
   return (
     <>
-
-
       <div className="gceFaq-tabs faqSec">
         <h3>FAQs</h3>
         <Tabs

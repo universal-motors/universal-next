@@ -72,8 +72,14 @@ export default function Favorite() {
                     <Link
                       href={
                         item?.vehicleTypeId == 2
-                          ? `/global/results/trucks/${item.stockID}`
-                          : `/global/results/cars/${item.stockID}`
+                          ? `/global/results/${item.makeName.replace(
+                              " ",
+                              "-"
+                            )}/trucks/${item.stockID}`
+                          : `/global/results/${item.makeName.replace(
+                              " ",
+                              "-"
+                            )}/cars/${item.stockID}`
                       }
                     >
                       <button className="bg-[#221C63] hover:bg-[#857de0] text-white font-bold py-2 px-4 rounded">

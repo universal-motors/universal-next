@@ -226,8 +226,8 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                   countryList={[]}
                   portList={[]}
                   portMapping={undefined} // countryList={locations}
-                // portList={ports}
-                // portMapping={portMapping}
+                  // portList={ports}
+                  // portMapping={portMapping}
                 />
 
                 {/*<SignInComponentUI/>*/}
@@ -270,59 +270,52 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                     </li>
                     <li>
                       {" "}
-                      <Link href="/global/results/cars?makeID=5">
+                      <Link href="/global/results/search-by-make/cars?makeID=5">
                         {" "}
                         Search by Make
                       </Link>
                     </li>
                     <li>
-                      <Link href="/global/results/cars?bodyTypeID=3">
+                      <Link href="/global/results/search-by-type/cars?bodyTypeID=3">
                         Search by Type
                       </Link>
                     </li>
                     <li>
-                      <Link href="/global/results/cars?price=25000">
+                      <Link href="/global/results/search-by-price/cars?price=25000">
                         Search by Price
                       </Link>
                     </li>
                     <li>
                       <Link
-                        href={`/global/results/cars?year=${new Date().getFullYear()}`}
+                        href={`/global/results/search-by-year/cars?year=${new Date().getFullYear()}`}
                       >
                         Search by Year
                       </Link>
                     </li>
                     <li className="last">Search by Inventory Location</li>
-                    {
-                      user && user.email && (
-                        <>
-                          <li className="highlighted">
-                            Dashboard
-                          </li>
-                          <Link href={"/dashboard"}>
-                            <li>Account Information</li>
-                          </Link>
-                          <Link href={"/favorite"}>
-                            <li>
-                              My Favorite
-                            </li>
-                          </Link>
-                          <Link href={"/contact-information"}>
-                            <li>Contact Information</li>
-                          </Link>
-                          <Link href={"/connect-accounts"}>
-                            <li>Connect Accounts</li>
-                          </Link>
-                          <Link href={"/Preferences"}>
-                            <li>Preferences</li>
-                          </Link>
-                          <Link href={"/account activity"}>
-                            <li className="last">Account Activity</li>
-                          </Link>
-                        </>
-                      )
-                    }
-
+                    {user && user.email && (
+                      <>
+                        <li className="highlighted">Dashboard</li>
+                        <Link href={"/dashboard"}>
+                          <li>Account Information</li>
+                        </Link>
+                        <Link href={"/favorite"}>
+                          <li>My Favorite</li>
+                        </Link>
+                        <Link href={"/contact-information"}>
+                          <li>Contact Information</li>
+                        </Link>
+                        <Link href={"/connect-accounts"}>
+                          <li>Connect Accounts</li>
+                        </Link>
+                        <Link href={"/Preferences"}>
+                          <li>Preferences</li>
+                        </Link>
+                        <Link href={"/account activity"}>
+                          <li className="last">Account Activity</li>
+                        </Link>
+                      </>
+                    )}
 
                     <li className="highlighted">
                       <i className="fa fa-globe" />
@@ -334,7 +327,10 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                         <li key={location.countryId}>
                           <Link
                             href={{
-                              pathname: "/global/results/cars",
+                              pathname: `/global/results/${location.countryName.replaceAll(
+                                " ",
+                                "-"
+                              )}/cars`,
                               query: {
                                 countryID: location.countryId,
                               },
@@ -556,8 +552,9 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
               {user && user.email && (
                 <div
                   id="dropdownAvatarName"
-                  className={`${!dropdown && "hidden"
-                    } z-50 absolute right-0 top-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}
+                  className={`${
+                    !dropdown && "hidden"
+                  } z-50 absolute right-0 top-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}
                 >
                   <div className="px-1 py-3 text-sm !text-gray-900 ">
                     <div className="font-medium text-center !text-gray-900 ">

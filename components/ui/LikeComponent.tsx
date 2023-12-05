@@ -39,8 +39,7 @@ export default function LikeComponent({ fav, car }: Prop) {
     }
     // login()
     console.log("Not Logged In");
-  }
-
+  };
 
   const toggle = () => {
     // setStatus(!status);
