@@ -1,9 +1,13 @@
 "use client";
-import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { addFavourite, removeFavourite } from "@/api/agent";
+import { checkEmail } from "@/services/profile";
 import { useUserStore } from "@/store/store";
+import { useGoogleLogin } from "@react-oauth/google";
+import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import { toast } from "react-toastify";
 
 type Prop = {
   car: any;
@@ -19,7 +23,26 @@ export default function LikeComponent({ fav, car }: Prop) {
     }
   }, [isfa]);
 
-  const { user } = useUserStore();
+  const { user, setIsUpdate, update: updateData } = useUserStore();
+
+  const login = useGoogleLogin({
+    onSuccess: async (tokenResponse: any) => {
+      await axios
+        .get("https://www.googleapis.com/oauth2/v3/userinfo", {
+          headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
+        })
+        .then((res) => {
+          checkEmail(
+            res.data.email,
+            res.data?.picture,
+            res.data?.name,
+            setIsUpdate,
+            updateData,
+            router
+          );
+        });
+    },
+  });
   const addToFavourite = () => {
     if (user && user.customerId) {
       if (isfav) {
@@ -30,14 +53,18 @@ export default function LikeComponent({ fav, car }: Prop) {
         setFav(!isfav);
         return;
       }
-      addFavourite({
-        customerId: user.customerId,
-        stockId: car,
-      });
-      setFav(!isfav);
-      return;
+      if (user.phone) {
+        addFavourite({
+          customerId: user.customerId,
+          stockId: car,
+        });
+        setFav(!isfav);
+        return;
+      }
+      toast.info('Make a profile to add to your favorites!')
+      return
     }
-    // login()
+    login();
     console.log("Not Logged In");
   }
 
@@ -69,6 +96,8 @@ export default function LikeComponent({ fav, car }: Prop) {
           Add to Favorites
         </span>
       )}
+
+
     </>
   );
 }
