@@ -9,6 +9,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaHeart } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 type Prop = {
   car: any;
@@ -60,7 +61,6 @@ export default function CarCard({ car, href, fav }: Prop) {
           height={400}
           src={car.imageUrl}
         />
-
         <FaHeart
           onClick={() => {
             if (user && user.customerId) {
@@ -72,12 +72,17 @@ export default function CarCard({ car, href, fav }: Prop) {
                 setFav(!isfav);
                 return;
               }
-              addFavourite({
-                customerId: user.customerId,
-                stockId: car.stockId,
-              });
-              setFav(!isfav);
-              return;
+              if (user.phone) {
+                addFavourite({
+                  customerId: user.customerId,
+                  stockId: car.stockId,
+                });
+                setFav(!isfav);
+                return;
+              }
+              toast.info('Make a profile to add to your favorites!')
+              return
+
             }
             login();
             console.log("Not Logged In");
