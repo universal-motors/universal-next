@@ -38,7 +38,6 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default async function CarDetailed({ params }: Props) {
-  console.log(params);
   const Stock = await agent.LoadData.stock(params.id);
   const Countries = await agent.LoadData.countryList(); //db.tblMasterCountry.findMany({where: {IsActive:true}});
   const PortMapping = await agent.LoadData.portmapping();

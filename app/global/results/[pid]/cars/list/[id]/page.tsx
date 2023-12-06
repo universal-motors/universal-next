@@ -2,9 +2,9 @@
 import agent from "@/api/agent";
 import CarSearchResult from "@/components/cars/CarSearchResult";
 import HomeUI from "@/components/ui/HomeUI";
+import content from "@/utils/categoryContent.json";
 import { useParams } from "next/navigation";
 import { GetBodyTypes, GetCarMakes, GetLocations } from "./components/loadData";
-
 interface Props {
   searchParams: {
     makeID: number;
@@ -46,7 +46,7 @@ const GetFilteredCars = async (filter: string) => {
 export default async function ResultPage({ searchParams }: Props) {
   // const router = useRouter()
 
-  const { id } = useParams();
+  const { id, pid } = useParams();
   const params = new URLSearchParams();
   // console.log("search", searchParams)
   // if (!searchParams) {
@@ -82,7 +82,7 @@ export default async function ResultPage({ searchParams }: Props) {
   const bodyTypes = await GetBodyTypes();
   const makes = await GetCarMakes();
   const locations = await GetLocations();
-
+  const categoryContent = content.find(itm => itm.tag === pid)
   //console.log(filter)
   return (
     // <ClientWrap searchParams={searchParams}>
@@ -91,6 +91,13 @@ export default async function ResultPage({ searchParams }: Props) {
       <HomeUI makeList={makes} bodyTlist={bodyTypes} />
       {/*<SearchingCriteria resultCount={cars.length} locations={locations} />*/}
       <CarSearchResult params={params} locations={locations} />
+      {categoryContent && categoryContent?.tag &&
+        <div className="py-3 px-6" >
+          <h1 className="mb-2">{categoryContent?.heading}</h1>
+          <p>{categoryContent?.paragraph}</p>
+        </div>
+
+      }
     </div>
     // </ClientWrap>
   );
