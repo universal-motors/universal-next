@@ -288,7 +288,12 @@ export default function Testimonial() {
           <div className="w-[80%] m-auto h-[500px] flex flex-col lg:flex-row  items-center justify-center ">
             <div className="h-full w-[90%] lg:w-[50%] flex justify-center flex-col">
               <p className="text-base text-gray-500 lg:text-lg dark:text-gray-400">
-                “ I recently made my first purchase from Universal Motors, and I'm thoroughly impressed. The customer service was impeccable; they patiently walked me through the process, addressing all my concerns and helping me find the perfect Japanese car. My experience was beyond satisfactory, and I'd gladly refer Universal Motors to friends and family ”
+                “ I recently made my first purchase from Universal Motors, and
+                I'm thoroughly impressed. The customer service was impeccable;
+                they patiently walked me through the process, addressing all my
+                concerns and helping me find the perfect Japanese car. My
+                experience was beyond satisfactory, and I'd gladly refer
+                Universal Motors to friends and family ”
               </p>
               <p className="font-bold text-lg lg:text-2xl mt-3 text-gray-600">
                 Mr. Malinga

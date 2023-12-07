@@ -1,11 +1,3 @@
-import SearchingCriteria from "@/components/ui/SearchingCriteria";
-import CarSearchResult from "@/components/cars/CarSearchResult";
-import CarDetailedSlideshow from "@/app/global/results/cars/[id]/CarDetailedSlideshow";
-import StockSpecification from "@/app/global/results/cars/[id]/StockSpecification";
-import StockKeyInformation from "@/app/global/results/cars/[id]/StockKeyInformation";
-import PriceCalculator from "@/app/global/results/cars/[id]/PriceCalculator";
-import InquiryForm from "@/app/global/results/cars/[id]/InquiryForm";
-
 export default function Loading() {
   return (
     <>

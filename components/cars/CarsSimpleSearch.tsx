@@ -78,7 +78,7 @@ export default function CarsSimpleSearch({
     if (toYear != "0") params.set("toYear", toYear);
 
     setLoading(true);
-    router.push(`/global/results/cars?${params.toString()}`);
+    router.push(`/global/results/search/cars?${params.toString()}`);
   }
 
   return (
