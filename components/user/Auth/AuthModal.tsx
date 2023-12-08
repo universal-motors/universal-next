@@ -5,6 +5,7 @@ import { useUserStore } from "@/store/store";
 import { UserButton, useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { toast } from "react-toastify";
 // import { signOut, useSession } from "next-auth/react";
 // import jwt_decode from "jwt-decode";
 // const jwt_decode = require('jwt-decode');
@@ -219,11 +220,16 @@ export default function AuthModal({
             </button>}
             <div className="flex gap-2 items-center mt-2">
               <UserButton afterSignOutUrl="/" />
-              {user && user.name &&
-                <div className="text-white">
-                  {user.name}
+              {isSignedIn &&
+                <div className="text-white border-2 border-white rounded-lg font-semibold text-[11px] p-2 cursor-pointer" onClick={() => {
+                  if (!isSignedIn)
+                    return toast.info("Create Profile First")
+                  router.push('/dashboard')
+                }} >
+                  Dashboard
                 </div>
               }
+
 
             </div>
 

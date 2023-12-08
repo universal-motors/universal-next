@@ -49,6 +49,7 @@ export default async function RootLayout({
 
 
   return (
+    // <CheckIsLogin>
     <>
       <Header
         ports={portList}
@@ -71,5 +72,6 @@ export default async function RootLayout({
         makes={makes.data}
       />
     </>
+    // </CheckIsLogin>
   );
 }
