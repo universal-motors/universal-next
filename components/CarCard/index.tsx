@@ -1,10 +1,7 @@
 "use client";
 import { addFavourite, removeFavourite } from "@/api/agent";
-import { checkEmail } from "@/services/profile";
 import { useUserStore } from "@/store/store";
 import PriceFormat from "@/utils/PriceFormat";
-import { useGoogleLogin } from "@react-oauth/google";
-import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -27,24 +24,24 @@ export default function CarCard({ car, href, fav }: Prop) {
   }, [isfa]);
   const { user, setIsUpdate, update: updateData } = useUserStore();
 
-  const login = useGoogleLogin({
-    onSuccess: async (tokenResponse: any) => {
-      await axios
-        .get("https://www.googleapis.com/oauth2/v3/userinfo", {
-          headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
-        })
-        .then((res) => {
-          checkEmail(
-            res.data.email,
-            res.data?.picture,
-            res.data?.name,
-            setIsUpdate,
-            updateData,
-            router
-          );
-        });
-    },
-  });
+  // const login = useGoogleLogin({
+  //   onSuccess: async (tokenResponse: any) => {
+  //     await axios
+  //       .get("https://www.googleapis.com/oauth2/v3/userinfo", {
+  //         headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
+  //       })
+  //       .then((res) => {
+  //         checkEmail(
+  //           res.data.email,
+  //           res.data?.picture,
+  //           res.data?.name,
+  //           setIsUpdate,
+  //           updateData,
+  //           router
+  //         );
+  //       });
+  //   },
+  // });
   return (
     <div className="transition duration-300 ease-in-out hover:scale-105 my-10 flex min-w-[220px] w-[230px] flex-col overflow-hidden border border-gray-100 bg-[#f1f5f9] shadow-md p-0 rounded-md">
       <div className="relative w-full h-48">
@@ -84,7 +81,8 @@ export default function CarCard({ car, href, fav }: Prop) {
               return
 
             }
-            login();
+            // login();
+            router.push("/sign-in")
             console.log("Not Logged In");
           }}
           size={"24px"}

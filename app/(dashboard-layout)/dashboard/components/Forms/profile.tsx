@@ -128,64 +128,7 @@ export default function ProfileForm() {
   const form = useForm<TProfile>();
   const { register, control, formState, setValue, handleSubmit } = form;
   const { isSubmitting } = formState;
-  // useEffect(() => {
-  //   if (session && session?.user) {
-  //     setValue("name", String(session.user?.name));
-  //     setEmails([String(session.user?.email)]);
-  //     // checkEmail(String(session.user?.email));
-  //   }
-  // }, [status]);
 
-  // const checkEmail = async (email: string) => {
-  //   try {
-  //     let res = await axios({
-  //       method: "get",
-  //       url: `https://api20230805195433.azurewebsites.net/api/customers/Exists/${email}`,
-  //       // data: reqBody
-  //     });
-  //     if (res && res.data) {
-  //       setUpdate(true);
-  //       try {
-  //         let res = await axios({
-  //           method: "get",
-  //           url: `https://api20230805195433.azurewebsites.net/api/customers/ByEmail/${email}/`,
-  //           // data: reqBody
-  //         });
-  //         updateData(res.data);
-  // setValue("name", String(res.data.name));
-  // setValue("companyName", String(res.data.companyName));
-  // setValue("lastname", String(res.data.lastName));
-  // setValue("preferredPortId", res.data.preferredPortId);
-  // setValue("countryID", res.data.countryId);
-  // setValue("address", res.data.address);
-  // setValue("phoneNumber", res.data.phone);
-  // setCountryID(res.data.countryId);
-  // setPortID(res.data.preferredPortId);
-  // setPhones([res.data.phone]);
-  // countryChange(res.data.countryId);
-  //         // let data = res.data;
-  //         // return data;
-  //       } catch (error: any) {
-  //         if (
-  //           error &&
-  //           error.message === "Request failed with status code 404"
-  //         ) {
-  //           console.log(error.message);
-  //         } // this is the main part. Use the response property from the error object
-  //         // return error.response;
-  //       }
-  //     }
-  //     // let data = res.data;
-  //     // return data;
-  //   } catch (error: any) {
-  //     if (error && error.message === "Request failed with status code 404") {
-  //       console.log(error.message);
-  //       setUpdate(false);
-  //     } // this is the main part. Use the response property from the error object
-
-  //     // return error.response;
-  //   }
-  // };
   useEffect(() => {
     setValue("email", Emails);
   }, [Emails]);
@@ -421,9 +364,9 @@ export default function ProfileForm() {
                       console.log(e);
                       updatePhone(i, e);
                     }}
-                    //  setValue={(e: any) => {
-                    //   updatePhone(i, e.target.value);
-                    // }}
+                  //  setValue={(e: any) => {
+                  //   updatePhone(i, e.target.value);
+                  // }}
                   />
                   {i >= 1 && (
                     <AiFillDelete
