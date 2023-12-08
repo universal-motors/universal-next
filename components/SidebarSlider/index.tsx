@@ -31,6 +31,20 @@ export default function SidebarSlider() {
           ></iframe>
         </div>
       </SwiperSlide>
+
+      <SwiperSlide>
+        <div className="w-full h-80 ">
+          <iframe
+            width="100%"
+            height="85%"
+            src="https://www.youtube.com/embed/0PzLhiMo2wE"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; mute;clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+        </div>
+      </SwiperSlide>
       <SwiperSlide>
         <div className="w-full h-80 ">
           <iframe

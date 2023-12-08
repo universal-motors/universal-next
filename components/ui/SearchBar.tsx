@@ -1,6 +1,8 @@
 "use client";
+import { useUserStore } from "@/store/store";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
+import { toast } from "react-toastify";
 
 const vehicleTypes = [
   { id: "1", title: "Cars" },
@@ -13,18 +15,21 @@ export default function SearchBar() {
   const [searchCategory, setSearchCategory] = useState("1");
   const [searchKey, setSearchKey] = useState("");
   const [dropdown, setDropdown] = useState(false);
-
+  const { isUpdate, user } = useUserStore();
   const onHandleSubmit = (event: FormEvent) => {
+    if (user?.email && !isUpdate) {
+      return toast.info("Create Profile First")
+    }
     event.preventDefault();
     if (searchKey === "") return;
 
     switch (searchCategory) {
       case "1":
-        router.push(`/global/results/cars/?searchTerm=${searchKey}`);
+        router.push(`/global/results/search/cars/?searchTerm=${searchKey}`);
         break;
 
       case "2":
-        router.push(`/global/results/trucks/?searchTerm=${searchKey}`);
+        router.push(`/global/results/search/trucks/?searchTerm=${searchKey}`);
         break;
 
       case "3":
@@ -96,9 +101,8 @@ export default function SearchBar() {
           </button>
           <div
             id="dropdown"
-            className={` ${
-              !dropdown && "hidden"
-            } absolute z-50  bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700`}
+            className={` ${!dropdown && "hidden"
+              } absolute z-50  bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700`}
           >
             {vehicleTypes.map((item) => {
               return (

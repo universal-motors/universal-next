@@ -47,7 +47,9 @@ export default async function RootLayout({
   const portMapping = await GetPortMapping();
   const stockCount = await GetStockCount();
 
+
   return (
+    // <CheckIsLogin>
     <>
       <Header
         ports={portList}
@@ -70,5 +72,6 @@ export default async function RootLayout({
         makes={makes.data}
       />
     </>
+    // </CheckIsLogin>
   );
 }

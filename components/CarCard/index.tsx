@@ -2,11 +2,11 @@
 import { addFavourite, removeFavourite } from "@/api/agent";
 import { useUserStore } from "@/store/store";
 import PriceFormat from "@/utils/PriceFormat";
-import { signIn } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaHeart } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 type Prop = {
   car: any;
@@ -22,9 +22,28 @@ export default function CarCard({ car, href, fav }: Prop) {
       setFav(true);
     }
   }, [isfa]);
-  const { user } = useUserStore();
+  const { user, setIsUpdate, update: updateData } = useUserStore();
+
+  // const login = useGoogleLogin({
+  //   onSuccess: async (tokenResponse: any) => {
+  //     await axios
+  //       .get("https://www.googleapis.com/oauth2/v3/userinfo", {
+  //         headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
+  //       })
+  //       .then((res) => {
+  //         checkEmail(
+  //           res.data.email,
+  //           res.data?.picture,
+  //           res.data?.name,
+  //           setIsUpdate,
+  //           updateData,
+  //           router
+  //         );
+  //       });
+  //   },
+  // });
   return (
-    <div className="transition duration-300 ease-in-out hover:scale-105 my-10 flex min-w-[220px] w-[230px] flex-col overflow-hidden border border-gray-100 bg-[#F1F5F9] shadow-md p-0 rounded-md">
+    <div className="transition duration-300 ease-in-out hover:scale-105 my-10 flex min-w-[220px] w-[230px] flex-col overflow-hidden border border-gray-100 bg-[#f1f5f9] shadow-md p-0 rounded-md">
       <div className="relative w-full h-48">
         <Image
           alt="img"
@@ -39,7 +58,6 @@ export default function CarCard({ car, href, fav }: Prop) {
           height={400}
           src={car.imageUrl}
         />
-
         <FaHeart
           onClick={() => {
             if (user && user.customerId) {
@@ -51,14 +69,20 @@ export default function CarCard({ car, href, fav }: Prop) {
                 setFav(!isfav);
                 return;
               }
-              addFavourite({
-                customerId: user.customerId,
-                stockId: car.stockId,
-              });
-              setFav(!isfav);
-              return;
+              if (user.phone) {
+                addFavourite({
+                  customerId: user.customerId,
+                  stockId: car.stockId,
+                });
+                setFav(!isfav);
+                return;
+              }
+              toast.info('Make a profile to add to your favorites!')
+              return
+
             }
-            signIn("google");
+            // login();
+            router.push("/sign-in")
             console.log("Not Logged In");
           }}
           size={"24px"}

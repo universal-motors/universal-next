@@ -1,10 +1,10 @@
 import agent from "@/api/agent";
-import CarDetailedSlideshow from "@/app/global/results/cars/[id]/CarDetailedSlideshow";
-import PriceCalculator from "@/app/global/results/cars/[id]/PriceCalculator";
-import StockKeyInformation from "@/app/global/results/cars/[id]/StockKeyInformation";
-import StockSpecification from "@/app/global/results/cars/[id]/StockSpecification";
 import ContactUs from "@/components/pages/contact/ContactUs";
 import DescriptionUI from "@/components/ui/DescriptionUI";
+import CarDetailedSlideshow from "../../cars/[id]/CarDetailedSlideshow";
+import PriceCalculator from "../../cars/[id]/PriceCalculator";
+import TruckKeyInformation from "./TruckKeyInformation";
+import TruckSpecification from "./TruckSpecification";
 
 interface Props {
   params: {
@@ -12,36 +12,44 @@ interface Props {
   };
 }
 
+const GetTruck = async (stockID: number) => {
+  // const result = await agent.LoadData.truck(stockID);
+  // return result.data;
+};
+
 export async function generateMetadata({ params }: Props) {
-  const stockitem = await agent.LoadData.stock(params.id);
+  const data = await agent.LoadData.truck(params.id);
+  const stockItem = data.data;
+
   return {
-    title: stockitem.data.stockCode + " - " + stockitem.data.listingTitle,
+    title: stockItem.stockCode + " - " + stockItem.listingTitle,
     description:
-      stockitem.data.stockCode +
+      stockItem.stockCode +
       " - " +
-      stockitem.data.listingTitle +
+      stockItem.listingTitle +
       " - " +
-      stockitem.data.locationName +
-      " Stock on Universal Motors Ltd",
+      stockItem.locationName +
+      " Trucks on Universal Motors Ltd",
 
     openGraph: {
-      images: [stockitem.data.imageUrl],
+      images: [stockItem.imageUrl],
     },
   };
 }
 
 export default async function CarDetailed({ params }: Props) {
-  const Stock = await agent.LoadData.stock(params.id);
+  const Stock = await agent.LoadData.truck(params.id);
+  //const Truck  = await GetTruck(params.id);
   const Countries = await agent.LoadData.countryList(); //db.tblMasterCountry.findMany({where: {IsActive:true}});
   const PortMapping = await agent.LoadData.portmapping();
   const Ports = await agent.LoadData.portsList();
   const InventoryLocation = Countries.data.find(
-    (x) => x.countryId == Stock.data.locationId
+    (x) => x.countryId == Stock.data?.locationId
   );
   const freightChargeMaster = await agent.LoadData.freightcost();
   const inspectionCost = await agent.LoadData.inspectioncost();
 
-  if (Stock != null)
+  if (Stock.data != null)
     return (
       <>
         <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection">
@@ -51,32 +59,32 @@ export default async function CarDetailed({ params }: Props) {
                 <div id="productslider" className="carousel slide">
                   <div className="row">
                     <h1 className="mobicar carname">
-                      {Stock.data.listingTitle}
+                      {Stock.data?.listingTitle}
                     </h1>
                     <div className="col-lg-6  detail-leftsection">
                       <div className="row">
                         <div id="wrap" className="container-fluid">
                           <div className="row">
                             <CarDetailedSlideshow
-                              mainPic={Stock.data.imageUrl}
-                              stockID={Stock.data.stockId}
+                              mainPic={Stock.data?.imageUrl}
+                              stockID={Stock.data?.stockId}
                             />
                           </div>
                         </div>
                       </div>
                       <hr />
                       <div className="shipping-details">
-                        <StockSpecification
+                        <TruckSpecification
                           car={Stock.data}
                           location={InventoryLocation}
                         />
-                        <StockKeyInformation car={Stock.data} />
+                        <TruckKeyInformation car={Stock.data} />
                         <DescriptionUI description={Stock.data.description} />
                       </div>
                     </div>
                     <div className="col-lg-6 ">
                       <h1 className="pccar carname">
-                        {Stock.data.listingTitle}
+                        {Stock.data?.listingTitle}
                       </h1>
                       <div className="col-12">
                         <div className="stock w-56">
@@ -91,6 +99,7 @@ export default async function CarDetailed({ params }: Props) {
                           </span>
                         </div>
                       </div>
+
                       <hr />
 
                       <h4>

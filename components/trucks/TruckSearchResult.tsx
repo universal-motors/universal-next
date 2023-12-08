@@ -1,14 +1,14 @@
 "use client";
-import LikeComponent from "@/components/ui/LikeComponent";
-import PriceFormat from "@/utils/PriceFormat";
-import Image from "next/image";
-import Link from "next/link";
-
 import agent from "@/api/agent";
+import LikeComponent from "@/components/ui/LikeComponent";
 import PaginationComponent from "@/components/ui/PaginationComponent";
 import { Country } from "@/models/Master/Country";
 import { PaginationHeader } from "@/models/Master/Pagination";
 import { Trucks } from "@/models/Trucks";
+import { useUserStore } from "@/store/store";
+import PriceFormat from "@/utils/PriceFormat";
+import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { BiSolidColorFill } from "react-icons/bi";
 import { FaGasPump, FaTruckLoading } from "react-icons/fa";
@@ -70,6 +70,16 @@ export default function TruckSearchResult({ locations, params }: Props) {
       setSearchData(sortedData);
     }
   }, [sort, paginationData]);
+
+  const [fav, setFav] = useState<any>([]);
+  const { user } = useUserStore();
+  useEffect(() => {
+    const getData = async () => {
+      const favorite = await agent.LoadData.favouriteList(user.customerId);
+      setFav(favorite.data);
+    };
+    getData();
+  }, []);
   useEffect(() => {
     // Assuming you have an API function called fetchResults
     const GetStock = async (paramURL: string) => {
@@ -119,7 +129,12 @@ export default function TruckSearchResult({ locations, params }: Props) {
             <div className="row my-5 ">
               <div className="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-5">
                 <div className="searched-carimage ">
-                  <Link href={`/global/results/trucks/${truck.stockId}`}>
+                  <Link
+                    href={`/global/results/${truck.makeName.replaceAll(
+                      " ",
+                      "-"
+                    )}/trucks/${truck.stockId}`}
+                  >
                     <Image
                       src={truck.imageUrl ?? ""}
                       className="mb-4"
@@ -142,7 +157,12 @@ export default function TruckSearchResult({ locations, params }: Props) {
                 <div className="truck-details">
                   <div className="row ">
                     <div className="col-lg-6 col-md-6 col-sm-6">
-                      <Link href={`/global/results/trucks/${truck.stockId}`}>
+                      <Link
+                        href={`/global/results/${truck.makeName.replaceAll(
+                          " ",
+                          "-"
+                        )}/${truck.stockId}`}
+                      >
                         <h6 className="listname font-bold uppercase">
                           {truck.listingTitle}
                         </h6>
@@ -304,9 +324,7 @@ export default function TruckSearchResult({ locations, params }: Props) {
                     <div className="col-md-4 atf">
                       <div className="addfav">
                         <h5>
-                          {/*<Link href="#" scroll={false}>*/}
-                          <LikeComponent />
-                          {/*</Link>*/}
+                          <LikeComponent fav={fav} car={truck.stockId} />
                         </h5>
                       </div>
                     </div>

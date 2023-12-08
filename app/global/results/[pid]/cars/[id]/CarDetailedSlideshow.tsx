@@ -1,11 +1,8 @@
-import { StockCars } from "@/models/StockCars";
-
 import agent from "@/api/agent";
-import CarouselStock from "@/app/global/results/cars/[id]/CarouselStock";
-import ShareDownloadComponent from "@/app/global/results/cars/[id]/ShareDownloadComponent";
-import { main } from "@popperjs/core";
-import { ErrorBoundary } from "next/dist/client/components/error-boundary";
-import Error from "@/app/(home)/error";
+// import CarouselStock from "@/app/global/results/cars/[id]/CarouselStock";
+// import ShareDownloadComponent from "@/app/global/results/cars/[id]/ShareDownloadComponent";
+import CarouselStock from "./CarouselStock";
+import ShareDownloadComponent from "./ShareDownloadComponent";
 
 interface Props {
   stockID: number;
