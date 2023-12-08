@@ -47,6 +47,7 @@ export default async function RootLayout({
   const portMapping = await GetPortMapping();
   const stockCount = await GetStockCount();
 
+
   return (
     <>
       <Header

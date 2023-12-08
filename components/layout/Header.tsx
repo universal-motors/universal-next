@@ -9,13 +9,13 @@ import { PortMapping } from "@/models/Master/PortMapping";
 import { Ports } from "@/models/Master/Ports";
 import { checkEmail } from "@/services/profile";
 import { useUserStore } from "@/store/store";
+import { useUser } from "@clerk/nextjs";
 import { Dialog, Transition } from "@headlessui/react";
-import { googleLogout, useGoogleLogin } from "@react-oauth/google";
-import axios from "axios";
+import { googleLogout } from "@react-oauth/google";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { FcCustomerSupport } from "react-icons/fc";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -34,8 +34,10 @@ const currentYear = new Date().getFullYear();
 function Header({ locations, ports, portMapping, stockCount }: Props) {
   const pathname = usePathname();
   const router = useRouter();
+
   //  const { data: session } = useSession()
   let [isOpen, setIsOpen] = useState(false);
+  const { user: clerkUser, isSignedIn } = useUser();
   const [dropdown, setDropdown] = useState(false);
   // const { status, data: session } = useSession();
   const { deleteData, user, setIsUpdate, update: updateData } = useUserStore();
@@ -46,29 +48,47 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
   function openMobileSearchModal() {
     setIsOpen(true);
   }
+  useEffect(() => {
+    if (!user?.email && clerkUser && clerkUser?.primaryEmailAddress?.emailAddress) {
+      // customFunction();
+      checkEmail(
+        clerkUser?.primaryEmailAddress?.emailAddress,
+        clerkUser?.imageUrl,
+        clerkUser?.fullName ?? "",
+        setIsUpdate,
+        updateData,
+        router
+      );
+    }
+  }, [clerkUser]);
+  useEffect(() => {
+    if (!isSignedIn) {
+      deleteData()
+    }
+  }, [isSignedIn])
 
-  const login = useGoogleLogin({
-    onSuccess: async (tokenResponse: any) => {
-      await axios
-        .get("https://www.googleapis.com/oauth2/v3/userinfo", {
-          headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
-        })
-        .then((res) => {
-          checkEmail(
-            res.data.email,
-            res.data?.picture,
-            res.data?.name,
-            setIsUpdate,
-            updateData,
-            router
-          );
-        });
+  // const login = useGoogleLogin({
+  //   onSuccess: async (tokenResponse: any) => {
+  //     await axios
+  //       .get("https://www.googleapis.com/oauth2/v3/userinfo", {
+  //         headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
+  //       })
+  //       .then((res) => {
+  //         checkEmail(
+  //           res.data.email,
+  //           res.data?.picture,
+  //           res.data?.name,
+  //           setIsUpdate,
+  //           updateData,
+  //           router
+  //         );
+  //       });
 
-      // const userObject: any = await jwtDecode(tokenResponse.access_token
-      // );
-      // console.log(userObject)
-    },
-  });
+  //     // const userObject: any = await jwtDecode(tokenResponse.access_token
+  //     // );
+  //     // console.log(userObject)
+  //   },
+  // });
 
   return (
     <>
@@ -226,8 +246,8 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                   countryList={[]}
                   portList={[]}
                   portMapping={undefined} // countryList={locations}
-                  // portList={ports}
-                  // portMapping={portMapping}
+                // portList={ports}
+                // portMapping={portMapping}
                 />
 
                 {/*<SignInComponentUI/>*/}
@@ -538,7 +558,8 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                       src="https://img.icons8.com/fluency-systems-regular/2x/user.png"
                       alt=""
                       onClick={() => {
-                        login();
+                        // login();
+                        router.push("/sign-in")
                       }}
                       width={25}
                     />
@@ -552,9 +573,8 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
               {user && user.email && (
                 <div
                   id="dropdownAvatarName"
-                  className={`${
-                    !dropdown && "hidden"
-                  } z-50 absolute right-0 top-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}
+                  className={`${!dropdown && "hidden"
+                    } z-50 absolute right-0 top-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}
                 >
                   <div className="px-1 py-3 text-sm !text-gray-900 ">
                     <div className="font-medium text-center !text-gray-900 ">
