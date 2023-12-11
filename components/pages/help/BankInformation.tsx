@@ -6,7 +6,6 @@ export default function BankInformation() {
     <>
       <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12">
         <div className="gceCountry-landing">
-          {/* The breadcrumb Begins*/}
           <div className="breadcrumbs">
             <ul>
               <li>
