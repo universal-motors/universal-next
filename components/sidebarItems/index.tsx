@@ -1,6 +1,5 @@
 "use client";
 import { useUserStore } from "@/store/store";
-import { googleLogout } from "@react-oauth/google";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { toast } from "react-toastify";
@@ -92,7 +91,7 @@ export default function SidebarItems() {
           Account Activity
         </Link>
       </nav>
-      <div className="w-full h-12 px-[46px] py-2 bg-[#474747] bg-opacity-20 rounded-lg justify-start items-center gap-3 inline-flex">
+      {/* <div className="w-full h-12 px-[46px] py-2 bg-[#474747] bg-opacity-20 rounded-lg justify-start items-center gap-3 inline-flex">
         <div className="justify-start items-center gap-3 flex">
           <div className="w-5 h-5 relative">
             <svg
@@ -122,7 +121,7 @@ export default function SidebarItems() {
         >
           Logout
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
