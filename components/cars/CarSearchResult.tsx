@@ -130,10 +130,13 @@ export default function CarSearchResult({ locations, params }: Props) {
               <div className="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-5">
                 <div className="searched-carimage ">
                   <Link
-                    href={`/global/results/${car.makeName.replace(
+                    href={`/global/results/${car.makeName.replaceAll(
                       " ",
                       "-"
-                    )}/cars/${car.stockId}`}
+                    )
+                      + "-" +
+                      car.modelName.replaceAll(" ", "-") + "-" + car.year
+                      }/cars/${car.stockId}`}
                   >
                     <Image
                       src={car.imageUrl ?? ""}
@@ -158,10 +161,13 @@ export default function CarSearchResult({ locations, params }: Props) {
                   <div className="row ">
                     <div className="col-lg-6 col-md-6 col-sm-6">
                       <Link
-                        href={`/global/results/${car.makeName.replace(
+                        href={`/global/results/${car.makeName.replaceAll(
                           " ",
                           "-"
-                        )}/cars/${car.stockId}`}
+                        )
+                          + "-" +
+                          car.modelName.replaceAll(" ", "-") + "-" + car.year
+                          }/cars/${car.stockId}`}
                       >
                         <h6 className="listname font-bold uppercase">
                           {car.listingTitle}
@@ -400,10 +406,13 @@ export default function CarSearchResult({ locations, params }: Props) {
                   <h4 />
 
                   <Link
-                    href={`/global/results/${car.makeName.replace(
+                    href={`/global/results/${car.makeName.replaceAll(
                       " ",
                       "-"
-                    )}/cars/${car.stockId}`}
+                    )
+                      + "-" +
+                      car.modelName.replaceAll(" ", "-") + "-" + car.year
+                      }/cars/${car.stockId}`}
                   >
                     <button className="offerbtn ">
                       <span className="font-bold"> Send Offer</span>
