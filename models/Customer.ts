@@ -84,7 +84,15 @@ export interface TransactionInfo {
 }
 
 export interface SalesOrderDetail {
-
+  PaidPercent: number,
+  BalancePercent:number,
+  AllocatedAmount:number,
+  BalanceAmount: number,
+  TotalCnf: number,
+  AfterDue: number,
+  ReleaseDate: string,
+  ReleaseOk: boolean,
+  Release: boolean,   
   ListingTitle: string,
   ConsigneeName:  string,
   ConsigneePhone: string,
