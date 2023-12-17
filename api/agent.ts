@@ -25,7 +25,8 @@ import {
   ConsigneeCourier,
   CourierDispatch,
   Customer,
-  CustomerSignUp,
+  CustomerSignUp, SalesOrderDetail, TransactionInfo
+
 } from "@/models/Customer";
 import { GetFavorite, TFavorite } from "@/models/Master/AddFav";
 import { PaginationHeader } from "@/models/Master/Pagination";
@@ -223,6 +224,14 @@ const LoadData = {
   moneyAllocationByCustomerIDStockID: (customerId: number, stockId: number) =>
     request.get<Trucks[]>(
       `customers/money_allocation/${customerId}/${stockId}`
+    ),
+  getSalesOrderDetailPerStock: (customerId: number, stockId: number) =>
+    request.get<TransactionInfo[]>(
+      `transactions/${customerId}`
+    ),
+  getTransactionsHistory: (customerId: number, stockId: number) =>
+    request.get<SalesOrderDetail[]>(
+      `salesdetail/${stockId}/${customerId}`
     ),
 };
 //
