@@ -29,6 +29,9 @@ export default function CarReservedTable() {
             Year
           </th>
           <th scope="col" className="px-6 py-3">
+            Reserve Days
+          </th>
+          <th scope="col" className="px-6 py-3">
             Price
           </th>
           <th scope="col" className="px-6 py-3">

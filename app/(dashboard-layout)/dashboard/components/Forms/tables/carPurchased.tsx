@@ -27,7 +27,7 @@ export default function CarPurchasedTable() {
             Year
           </th>
           <th scope="col" className="px-6 py-3">
-            Price
+            Total CNF
           </th>
           <th scope="col" className="px-6 py-3">
             ETD

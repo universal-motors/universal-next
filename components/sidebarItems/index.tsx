@@ -32,7 +32,7 @@ export default function SidebarItems() {
         >
           My Favorite
         </Link>
-
+        {/* 
         <Link
           onClick={() => {
             if (user?.email && !isUpdate) {
@@ -46,9 +46,9 @@ export default function SidebarItems() {
           href={user?.email && !isUpdate ? "" : "/contact-information"}
         >
           Contact Information
-        </Link>
+        </Link> */}
 
-        <Link
+        {/* <Link
           onClick={() => {
             if (user?.email && !isUpdate) {
               toast.info("Create Profile First")
@@ -61,7 +61,7 @@ export default function SidebarItems() {
           href={user?.email && !isUpdate ? "" : "/connect-accounts"}
         >
           Connect Accounts
-        </Link>
+        </Link> */}
 
         <Link
           onClick={() => {
@@ -69,11 +69,11 @@ export default function SidebarItems() {
               toast.info("Create Profile First")
             }
           }}
-          className={`block px-6 py-2 hover:bg-[#006aff] transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14] ${pathname === "/preferences" ? "bg-[#006aff]" : "hover:bg-[#006aff]"
+          className={`block px-6 py-2 hover:bg-[#006aff] transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14] ${pathname === "/payment-history" ? "bg-[#006aff]" : "hover:bg-[#006aff]"
             }`}
-          href={user?.email && !isUpdate ? "" : "/Preferences"}
+          href={user?.email && !isUpdate ? "" : "/payment-history"}
         >
-          Preferences
+          Payment History
         </Link>
 
         <Link
@@ -86,7 +86,7 @@ export default function SidebarItems() {
             ? "bg-[#006aff]"
             : "hover:bg-[#006aff]"
             }`}
-          href={user?.email && !isUpdate ? "" : "/account activity"}
+          href={user?.email && !isUpdate ? "" : "/account-activity"}
         >
           Account Activity
         </Link>
