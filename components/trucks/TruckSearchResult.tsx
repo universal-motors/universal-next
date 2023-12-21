@@ -230,7 +230,7 @@ export default function TruckSearchResult({ locations, params }: Props) {
                         </span>
                       </div>
                       <div className="col-sm specs">
-                        <h4>Transmision</h4>
+                        <h4>Transmission</h4>
                         <span className="label-text  p-1 flex items-center rounded-md ml-5">
                           <img
                             decoding="async"

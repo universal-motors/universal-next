@@ -237,7 +237,7 @@ export default function CarSearchResult({ locations, params }: Props) {
                       </div>
                       <div className="col-sm specs">
                         <h4 className="!text-[10px]  xl:!text-[15px] 2xl:!text-base">
-                          Transmision
+                          Transmission
                         </h4>
                         <span className="label-text  p-1 flex gap-1 items-center rounded-md ml-0">
                           <img

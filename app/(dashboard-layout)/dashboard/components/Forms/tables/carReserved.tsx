@@ -1,22 +1,14 @@
-import agent from "@/api/agent";
+import { Machinery } from "@/models/Machinery";
 import { StockCars } from "@/models/StockCars";
-import { useUserStore } from "@/store/store";
+import { Trucks } from "@/models/Trucks";
 import PriceFormat from "@/utils/PriceFormat";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
-export default function CarReservedTable() {
-  const { user } = useUserStore();
-  const [data, setData] = useState<StockCars[]>();
-  useEffect(() => {
-    const getData = async () => {
-      const { data } = await agent.LoadData.reservedCarsByCustomerID(
-        user.customerId
-      );
-      setData(data);
-    };
-    getData();
-  }, [fetch]);
+type Prop = {
+  data: StockCars[] | Trucks[] | Machinery[]
+}
+export default function CarReservedTable({ data }: Prop) {
+
   return (
     <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
       <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -29,9 +21,6 @@ export default function CarReservedTable() {
             Year
           </th>
           <th scope="col" className="px-6 py-3">
-            Reserve Days
-          </th>
-          <th scope="col" className="px-6 py-3">
             Price
           </th>
           <th scope="col" className="px-6 py-3">
@@ -40,7 +29,7 @@ export default function CarReservedTable() {
         </tr>
       </thead>
       <tbody>
-        {data?.map((item: StockCars) => {
+        {data?.map((item: StockCars | Trucks | Machinery) => {
           return (
             <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
               <th
@@ -57,18 +46,11 @@ export default function CarReservedTable() {
                 <PriceFormat carPrice={item.price} />
               </td>
               <td className="px-6 py-4 flex">
-                <Link href={`/global/results/cars/${item.stockId}`}>
+                <Link href={`/dashboard/details/reserved/${item.stockId}`}>
                   <p className="font-medium text-blue-600 dark:text-blue-500 hover:underline">
                     View
                   </p>
                 </Link>
-                {/* <p className="font-medium text-red-500  hover:underline ml-3 cursor-pointer" onClick={async () => {
-                                await removeFavourite({
-                                    customerId: user.customerId,
-                                    stockId: item.stockId,
-                                })
-                                setFetch(!fetch);
-                            }} >Remove</p> */}
               </td>
             </tr>
           );

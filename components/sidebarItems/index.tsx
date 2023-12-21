@@ -10,10 +10,10 @@ export default function SidebarItems() {
   const router = useRouter();
 
   return (
-    <div className=" col-lg-2 bg-[#221C63] hidden md:flex flex-none flex-col justify-between p-6 text-white border-y-[1px] border-[#ffff14]">
+    <div className=" col-lg-2 bg-[#221C63] hidden lg:flex flex-none flex-col justify-between p-6 text-white border-y-[1px] border-[#ffff14]">
       <nav className="space-y-2">
         <Link
-          className={`block px-6 py-2 hover:/dashboard transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14] ${pathname === "/dashboard" ? "bg-[#006aff]" : "hover:bg-[#006aff]"
+          className={`block px-6 py-2 hover:/dashboard transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14] ${pathname === "/dashboard" || pathname.includes('/reserved') || pathname.includes('/purchased') ? "bg-[#006aff]" : "hover:bg-[#006aff]"
             }`}
 
           href={"/dashboard"}

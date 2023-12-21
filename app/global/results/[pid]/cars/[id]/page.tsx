@@ -17,7 +17,6 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props) {
-  console.log(params);
   if (params && params?.id) {
     const stockitem = await agent.LoadData.stock(params.id);
     return {

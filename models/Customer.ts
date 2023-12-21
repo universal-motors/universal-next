@@ -74,37 +74,37 @@ export interface CourierDispatch {
 }
 
 export interface TransactionInfo {
-  VoucherCode: string;
-  StockCode: string;
-  ListingName: string;
-  Reference: string;
-  Amount: string;
-  RunningBalance: string;
+  voucherCode: string;
+  stockCode: string;
+  listingName: string;
+  reference: string;
+  amount: string;
+  runningBalance: string;
 
 }
 
 export interface SalesOrderDetail {
-  PaidPercent: number,
-  BalancePercent:number,
-  AllocatedAmount:number,
-  BalanceAmount: number,
-  TotalCnf: number,
-  AfterDue: number,
-  ReleaseDate: string,
-  ReleaseOk: boolean,
-  Release: boolean,   
-  ListingTitle: string,
-  ConsigneeName:  string,
-  ConsigneePhone: string,
-  CourierPersonName: string,
-  CourierPersonPhone: string,
-  CourierAddress:string,
-  ShipName:string,
-  VoyageNumber: string,
-  ETD:string,
-  ETA:string,
-  ShipOk:boolean,
-  ShipOkDate: string,
-  CreatedOn: string
+  paidPercent: number,
+  balancePercent: number,
+  allocatedAmount: number,
+  balanceAmount: number,
+  totalCnf: number,
+  afterDue: number,
+  releaseDate: string,
+  releaseOk: boolean,
+  release: boolean,
+  listingTitle: string,
+  consigneeName: string,
+  consigneePhone: string,
+  courierPersonName: string,
+  courierPersonPhone: string,
+  courierAddress: string,
+  shipName: string,
+  voyageNumber: string,
+  etd: string,
+  eta: string,
+  shipOk: boolean,
+  shipOkDate: string,
+  createdOn: string
 
 }
