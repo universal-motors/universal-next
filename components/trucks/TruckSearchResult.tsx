@@ -133,7 +133,10 @@ export default function TruckSearchResult({ locations, params }: Props) {
                     href={`/global/results/${truck.makeName.replaceAll(
                       " ",
                       "-"
-                    )}/trucks/${truck.stockId}`}
+                    )
+                      + "-" +
+                      truck.modelName.replaceAll(" ", "-") + "-" + truck.year
+                      }/trucks/${truck.stockId}`}
                   >
                     <Image
                       src={truck.imageUrl ?? ""}
@@ -161,7 +164,10 @@ export default function TruckSearchResult({ locations, params }: Props) {
                         href={`/global/results/${truck.makeName.replaceAll(
                           " ",
                           "-"
-                        )}/${truck.stockId}`}
+                        )
+                          + "-" +
+                          truck.modelName.replaceAll(" ", "-") + "-" + truck.year
+                          }/${truck.stockId}`}
                       >
                         <h6 className="listname font-bold uppercase">
                           {truck.listingTitle}
@@ -224,7 +230,7 @@ export default function TruckSearchResult({ locations, params }: Props) {
                         </span>
                       </div>
                       <div className="col-sm specs">
-                        <h4>Transmision</h4>
+                        <h4>Transmission</h4>
                         <span className="label-text  p-1 flex items-center rounded-md ml-5">
                           <img
                             decoding="async"
@@ -376,7 +382,13 @@ export default function TruckSearchResult({ locations, params }: Props) {
                   </div>
                   <h4 />
 
-                  <Link href={`/global/results/trucks/${truck.stockId}`}>
+                  <Link href={`/global/results/${truck.makeName.replaceAll(
+                    " ",
+                    "-"
+                  )
+                    + "-" +
+                    truck.modelName.replaceAll(" ", "-") + "-" + truck.year
+                    }/${truck.stockId}`}>
                     <button className="offerbtn">
                       <span className="font-bold"> Send Offer</span>
                     </button>

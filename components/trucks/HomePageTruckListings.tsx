@@ -35,7 +35,10 @@ export default function HomePageTruckListings({ trucks }: Props) {
                     href={`/global/results/${car.makeName.replaceAll(
                       " ",
                       "-"
-                    )}/${car.stockId}`}
+                    )
+                      + "-" +
+                      car.modelName.replaceAll(" ", "-") + "-" + car.year
+                      }/${car.stockId}`}
                   >
                     <div className="col-sm transition duration-300 ease-in-out hover:scale-110">
                       <div className="cardimage">
@@ -84,7 +87,10 @@ export default function HomePageTruckListings({ trucks }: Props) {
                         href={`/global/results/${car.makeName.replaceAll(
                           " ",
                           "-"
-                        )}/${car.stockId}`}
+                        )
+                          + "-" +
+                          car.modelName.replaceAll(" ", "-") + "-" + car.year
+                          }/${car.stockId}`}
                       >
                         <div className="col-sm transition duration-300 ease-in-out hover:scale-110">
                           <div className="cardimage">

@@ -10,10 +10,10 @@ export default function SidebarItems() {
   const router = useRouter();
 
   return (
-    <div className=" col-lg-2 bg-[#221C63] hidden md:flex flex-none flex-col justify-between p-6 text-white border-y-[1px] border-[#ffff14]">
+    <div className=" col-lg-2 bg-[#221C63] hidden lg:flex flex-none flex-col justify-between p-6 text-white border-y-[1px] border-[#ffff14]">
       <nav className="space-y-2">
         <Link
-          className={`block px-6 py-2 hover:/dashboard transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14] ${pathname === "/dashboard" ? "bg-[#006aff]" : "hover:bg-[#006aff]"
+          className={`block px-6 py-2 hover:/dashboard transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14] ${pathname === "/dashboard" || pathname.includes('/reserved') || pathname.includes('/purchased') ? "bg-[#006aff]" : "hover:bg-[#006aff]"
             }`}
 
           href={"/dashboard"}
@@ -32,7 +32,7 @@ export default function SidebarItems() {
         >
           My Favorite
         </Link>
-
+        {/* 
         <Link
           onClick={() => {
             if (user?.email && !isUpdate) {
@@ -46,9 +46,9 @@ export default function SidebarItems() {
           href={user?.email && !isUpdate ? "" : "/contact-information"}
         >
           Contact Information
-        </Link>
+        </Link> */}
 
-        <Link
+        {/* <Link
           onClick={() => {
             if (user?.email && !isUpdate) {
               toast.info("Create Profile First")
@@ -61,7 +61,7 @@ export default function SidebarItems() {
           href={user?.email && !isUpdate ? "" : "/connect-accounts"}
         >
           Connect Accounts
-        </Link>
+        </Link> */}
 
         <Link
           onClick={() => {
@@ -69,11 +69,11 @@ export default function SidebarItems() {
               toast.info("Create Profile First")
             }
           }}
-          className={`block px-6 py-2 hover:bg-[#006aff] transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14] ${pathname === "/preferences" ? "bg-[#006aff]" : "hover:bg-[#006aff]"
+          className={`block px-6 py-2 hover:bg-[#006aff] transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14] ${pathname === "/payment-history" ? "bg-[#006aff]" : "hover:bg-[#006aff]"
             }`}
-          href={user?.email && !isUpdate ? "" : "/Preferences"}
+          href={user?.email && !isUpdate ? "" : "/payment-history"}
         >
-          Preferences
+          Payment History
         </Link>
 
         <Link
@@ -86,7 +86,7 @@ export default function SidebarItems() {
             ? "bg-[#006aff]"
             : "hover:bg-[#006aff]"
             }`}
-          href={user?.email && !isUpdate ? "" : "/account activity"}
+          href={user?.email && !isUpdate ? "" : "/account-activity"}
         >
           Account Activity
         </Link>

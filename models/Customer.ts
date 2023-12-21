@@ -72,3 +72,39 @@ export interface CourierDispatch {
   isActive: boolean;
   CreatedOn: string;
 }
+
+export interface TransactionInfo {
+  voucherCode: string;
+  stockCode: string;
+  listingName: string;
+  reference: string;
+  amount: string;
+  runningBalance: string;
+
+}
+
+export interface SalesOrderDetail {
+  paidPercent: number,
+  balancePercent: number,
+  allocatedAmount: number,
+  balanceAmount: number,
+  totalCnf: number,
+  afterDue: number,
+  releaseDate: string,
+  releaseOk: boolean,
+  release: boolean,
+  listingTitle: string,
+  consigneeName: string,
+  consigneePhone: string,
+  courierPersonName: string,
+  courierPersonPhone: string,
+  courierAddress: string,
+  shipName: string,
+  voyageNumber: string,
+  etd: string,
+  eta: string,
+  shipOk: boolean,
+  shipOkDate: string,
+  createdOn: string
+
+}

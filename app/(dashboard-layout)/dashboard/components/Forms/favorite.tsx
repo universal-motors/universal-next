@@ -73,13 +73,19 @@ export default function Favorite() {
                       href={
                         item?.vehicleTypeId == 2
                           ? `/global/results/${item.makeName.replace(
-                              " ",
-                              "-"
-                            )}/trucks/${item.stockID}`
+                            " ",
+                            "-"
+                          )
+                          + "-" +
+                          item.modelName.replaceAll(" ", "-") + "-" + item.year
+                          }/trucks/${item.stockID}`
                           : `/global/results/${item.makeName.replace(
-                              " ",
-                              "-"
-                            )}/cars/${item.stockID}`
+                            " ",
+                            "-"
+                          )
+                          + "-" +
+                          item.modelName.replaceAll(" ", "-") + "-" + item.year
+                          }/cars/${item.stockID}`
                       }
                     >
                       <button className="bg-[#221C63] hover:bg-[#857de0] text-white font-bold py-2 px-4 rounded">

@@ -23,6 +23,7 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
     };
     getData();
   }, []);
+
   return (
     <>
       <div className="row ">
@@ -49,7 +50,10 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
                       href={`/global/results/${car.makeName.replaceAll(
                         " ",
                         "-"
-                      )}/cars/${car.stockId}`}
+                      )
+                        + "-" +
+                        car.modelName.replaceAll(" ", "-") + "-" + car.year
+                        }/cars/${car.stockId}`}
                     />
                   ))}
               </div>
@@ -72,10 +76,13 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
                   <CarCard
                     fav={fav}
                     car={car}
-                    href={`/global/results/${car.makeName.replace(
+                    href={`/global/results/${car.makeName.replaceAll(
                       " ",
                       "-"
-                    )}/trucks/${car.stockId}`}
+                    )
+                      + "-" +
+                      car.modelName.replaceAll(" ", "-") + "-" + car.year
+                      }/trucks/${car.stockId}`}
                   />
                 ))}
               </div>
@@ -107,7 +114,10 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
                           href={`/global/results/${car.makeName.replace(
                             " ",
                             "-"
-                          )}/cars/${car.stockId}`}
+                          )
+                            + "-" +
+                            car.modelName.replaceAll(" ", "-") + "-" + car.year
+                            }/cars/${car.stockId}`}
                         />
                       ))}
                   </div>
@@ -145,7 +155,10 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
                           href={`/global/results/${car.makeName.replace(
                             " ",
                             "-"
-                          )}/cars/${car.stockId}`}
+                          )
+                            + "-" +
+                            car.modelName.replaceAll(" ", "-") + "-" + car.year
+                            }/cars/${car.stockId}`}
                         />
                       ))}
                   </div>

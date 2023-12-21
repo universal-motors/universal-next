@@ -1,9 +1,13 @@
-"use client";
+"use client"
 import agent from "@/api/agent";
 import CarSearchResult from "@/components/cars/CarSearchResult";
 import HomeUI from "@/components/ui/HomeUI";
+import { BodyType } from "@/models/Master/BodyType";
+import { Country } from "@/models/Master/Country";
+import { Make } from "@/models/Master/Make";
 import content from "@/utils/categoryContent.json";
 import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import { GetBodyTypes, GetCarMakes, GetLocations } from "./components/loadData";
 interface Props {
   searchParams: {
@@ -43,9 +47,11 @@ const GetFilteredCars = async (filter: string) => {
 //     return result.data;
 // };
 
-export default async function ResultPage({ searchParams }: Props) {
+export default function ResultPage({ searchParams }: Props) {
   // const router = useRouter()
-
+  const [bodyTypes, setbodytypes] = useState<BodyType[]>([])
+  const [makes, setmakes] = useState<Make[]>([])
+  const [locations, setlocations] = useState<Country[]>([])
   const { id, pid } = useParams();
   const params = new URLSearchParams();
   // console.log("search", searchParams)
@@ -79,13 +85,23 @@ export default async function ResultPage({ searchParams }: Props) {
   if (id) params.set("MakeID", id.toString());
   params.set("OrderBy", "stockid%20desc");
 
-  const bodyTypes = await GetBodyTypes();
-  const makes = await GetCarMakes();
-  const locations = await GetLocations();
+  useEffect(() => {
+    const getData = async () => {
+      const bodyTypes = await GetBodyTypes();
+      const makes = await GetCarMakes();
+      const locations = await GetLocations();
+      setbodytypes(bodyTypes)
+      setmakes(makes)
+      setlocations(locations)
+
+    }
+    getData()
+  }, [])
+
   const categoryContent = content.find(itm => itm.tag === pid)
-  //console.log(filter)
+  // console.log(filter)
   return (
-    // <ClientWrap searchParams={searchParams}>
+
     <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 p-0 second-searchform">
       {/*<DetailedSearchBox />*/}
       <HomeUI makeList={makes} bodyTlist={bodyTypes} />
@@ -96,9 +112,8 @@ export default async function ResultPage({ searchParams }: Props) {
           <h1 className="mb-2">{categoryContent?.heading}</h1>
           <p>{categoryContent?.paragraph}</p>
         </div>
-
       }
     </div>
-    // </ClientWrap>
+
   );
 }

@@ -1,8 +1,9 @@
 "use client";
+import agent from "@/api/agent";
 import Input from "@/components/Input";
 import { ConsigneeCourier } from "@/models/Customer";
 import { useUserStore } from "@/store/store";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 export default function CosigneeForm() {
@@ -13,30 +14,30 @@ export default function CosigneeForm() {
   const { user, update: updateData, isUpdate, setIsUpdate } = useUserStore();
   const { register, control, formState, setValue, handleSubmit } = form;
   const { isSubmitting } = formState;
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     const countries = await agent.LoadData.countryList();
-  //     const { data } = await agent.LoadData.consigneeCourierByCustomer(
-  //       user.customerId
-  //     );
-  //     if (data && data.length) {
-  //       setValue("consigneeName", String(data[0]?.consigneeName));
-  //       setValue("notifyPartyName", String(data[0]?.notifyPartyName));
-  //       setValue("consigneeCity", String(data[0]?.consigneeCity));
-  //       setValue("notifyPartyCity", String(data[0]?.notifyPartyCity));
-  //       setValue("consigneeAddress", String(data[0]?.consigneeAddress));
-  //       setValue("notifyPartyAddress", String(data[0]?.notifyPartyAddress));
-  //       setValue("consigneeEmail", String(data[0]?.consigneeEmail));
-  //       setValue("notifyPartyEmail", String(data[0]?.notifyPartyEmail));
-  //       setValue("consigneePhone", String(data[0]?.consigneePhone));
-  //       setValue("notifyPartyPhone", String(data[0]?.notifyPartyPhone));
-  //       setConsigneeCountryID(data[0]?.consigneeCountryId);
-  //       setNotifyCountryID(data[0]?.notifyPartyCountryId);
-  //     }
-  //     setCounties(countries.data);
-  //   };
-  //   getData();
-  // }, []);
+  useEffect(() => {
+    const getData = async () => {
+      const countries = await agent.LoadData.countryList();
+      const { data } = await agent.LoadData.consigneeCourierByCustomer(
+        user.customerId
+      );
+      if (data && data.length) {
+        setValue("consigneeName", String(data[0]?.consigneeName));
+        setValue("notifyPartyName", String(data[0]?.notifyPartyName));
+        setValue("consigneeCity", String(data[0]?.consigneeCity));
+        setValue("notifyPartyCity", String(data[0]?.notifyPartyCity));
+        setValue("consigneeAddress", String(data[0]?.consigneeAddress));
+        setValue("notifyPartyAddress", String(data[0]?.notifyPartyAddress));
+        setValue("consigneeEmail", String(data[0]?.consigneeEmail));
+        setValue("notifyPartyEmail", String(data[0]?.notifyPartyEmail));
+        setValue("consigneePhone", String(data[0]?.consigneePhone));
+        setValue("notifyPartyPhone", String(data[0]?.notifyPartyPhone));
+        setConsigneeCountryID(data[0]?.consigneeCountryId);
+        setNotifyCountryID(data[0]?.notifyPartyCountryId);
+      }
+      setCounties(countries.data);
+    };
+    getData();
+  }, []);
   const handleCountryChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const destinationID = parseInt(event.target.value);
     setConsigneeCountryID(destinationID);

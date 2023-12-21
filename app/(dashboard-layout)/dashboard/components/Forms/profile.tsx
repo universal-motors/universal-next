@@ -184,9 +184,18 @@ export default function ProfileForm() {
           }
         })}
       >
+        {user && user?.customerId && <div className="w-full flex ">
+          <div onClick={() => {
+            navigator.clipboard.writeText(String(user?.customerId));
+          }} className=" cursor-pointer bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg font-medium  px-3 py-2 inline-block mb-3 ">
+            Customer ID :- {user?.customerId}
+            <svg className="inline ml-2 js-clipboard-default w-4 h-4 group-hover:rotate-6 transition" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1" /><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /></svg>
+          </div>
+        </div>}
+
         <div className="grid gap-6 mb-6 md:grid-cols-2">
           <Input
-            label={"First name"}
+            label={"First name *"}
             type="text"
             placeholder="John"
             htmlFor="name"
@@ -197,7 +206,7 @@ export default function ProfileForm() {
             }}
           />
           <Input
-            label={"Last name"}
+            label={"Last name *"}
             type="text"
             placeholder="Doe"
             htmlFor="lastname"
@@ -212,9 +221,7 @@ export default function ProfileForm() {
             type="text"
             placeholder="Company Name"
             register={{
-              ...register("companyName", {
-                required: " required",
-              }),
+              ...register("companyName"),
             }}
             htmlFor="companyName"
           />
@@ -223,9 +230,7 @@ export default function ProfileForm() {
             type="text"
             placeholder="Address"
             register={{
-              ...register("address", {
-                required: " required",
-              }),
+              ...register("address"),
             }}
             htmlFor="address"
           />
@@ -241,7 +246,7 @@ export default function ProfileForm() {
               htmlFor={"Country"}
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
-              Country
+              Country *
             </label>
             <select
               disabled={isUpdate ? true : false}
@@ -265,7 +270,7 @@ export default function ProfileForm() {
               htmlFor={"Port"}
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
-              Port
+              Port *
             </label>
             <select
               disabled={isUpdate ? true : false}
@@ -304,7 +309,7 @@ export default function ProfileForm() {
                   <Input
                     value={Emails[i]}
                     disabled={true}
-                    label={i >= 1 ? "Email " + (i + 1) : "Email"}
+                    label={i >= 1 ? "Email " + (i + 1) : "Email *"}
                     onChange={(e: any) => {
                       updateEmail(i, e.target.value);
                     }}
@@ -358,7 +363,7 @@ export default function ProfileForm() {
                       errors[i] = error;
                       setError(errors);
                     }}
-                    label={i >= 1 ? "Phone " + (i + 1) : "Phone"}
+                    label={i >= 1 ? "Phone " + (i + 1) : "Phone *"}
                     value={Phones[i]}
                     setValue={(e: any) => {
                       console.log(e);

@@ -54,7 +54,7 @@ export default function StockSpecification({ car, location }: Props) {
         )}
 
         <div className="col-sm specs">
-          <h4 className="!text-[9px] sm:!text-base">Transmision</h4>
+          <h4 className="!text-[9px] sm:!text-base">Transmission</h4>
           <span className="label-text !text-[9px] sm:!text-base items-center rounded-md ml-5">
             <img
               decoding="async"

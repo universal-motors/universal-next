@@ -15,8 +15,6 @@ export default function SidebarSlider() {
       }}
       // navigation={true}
       modules={[Autoplay, Pagination, Navigation]}
-      onSlideChange={() => console.log("slide change")}
-      onSwiper={(swiper) => console.log(swiper)}
     >
       <SwiperSlide>
         <div className="w-full h-80 ">
