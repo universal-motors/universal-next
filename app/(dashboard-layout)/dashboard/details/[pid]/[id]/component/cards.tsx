@@ -15,7 +15,7 @@ export default async function Cards({ stockID }: Prop) {
     const { user } = useUserStore();
     useEffect(() => {
         const getData = async () => {
-            const Stock = await agent.LoadData.getTransactionsHistory(stockID, user?.customerId);
+            const Stock = await agent.LoadData.getTransactionsHistory(user?.customerId, stockID);
             if (Stock && Stock?.data)
                 setStock(Stock?.data)
         }
