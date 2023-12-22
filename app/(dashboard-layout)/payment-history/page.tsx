@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import agent from "@/api/agent";
 import { TransactionInfo } from "@/models/Customer";
@@ -7,17 +7,21 @@ import { useEffect, useState } from "react";
 import HistoryTable from "./components/historyTable";
 
 export default function Page() {
-    const [historyData, setHistoryData] = useState<TransactionInfo[]>([])
+    const [historyData, setHistoryData] = useState<TransactionInfo[]>([]);
     const { user } = useUserStore();
     useEffect(() => {
         const getData = async () => {
             // 36
-            const details = await agent.LoadData.getSalesOrderDetailPerStock(user.customerId);
-            setHistoryData(details.data)
-        }
-        getData()
-    }, [])
-    console.log(historyData)
+            const details = await agent.LoadData.getSalesOrderDetailPerStock(
+                user.customerId
+            );
+            let data = details.data.filter(
+                (itm: TransactionInfo) => itm.isVoucher === false
+            );
+            setHistoryData(data);
+        };
+        getData();
+    }, []);
 
     return (
         <div className="w-full">
@@ -26,5 +30,5 @@ export default function Page() {
             </p>
             <HistoryTable data={historyData} />
         </div>
-    )
+    );
 }

@@ -154,7 +154,6 @@ export default function FaqComponent() {
                               <p className=" text-[14px]">
                                 Can I purchase LHD cars from Universal Motors?
                               </p>
-
                             </Accordion.Title>
                             <Accordion.Content className="py-3">
                               <p className="flex justify-center items-center text-sm text-gray-500 dark:text-gray-400 ">
@@ -173,7 +172,6 @@ export default function FaqComponent() {
                                 price for a vehicle I am interested in at an
                                 auction?
                               </p>
-
                             </Accordion.Title>
                             <Accordion.Content className="py-3">
                               <p className="flex justify-center items-center text-sm text-gray-500 dark:text-gray-400 ">
@@ -188,10 +186,9 @@ export default function FaqComponent() {
                             <Accordion.Title className="h-[2px] !py-12 ">
                               {" "}
                               <p className="text-[14px]  ">
-                                How many used cars are normally available in your
-                                Inventory and in auction?
+                                How many used cars are normally available in
+                                your Inventory and in auction?
                               </p>
-
                             </Accordion.Title>
                             <Accordion.Content>
                               <p className="flex justify-center items-center text-sm text-gray-500 dark:text-gray-400 !py-14 h-16">
@@ -207,7 +204,8 @@ export default function FaqComponent() {
                           <Accordion.Panel>
                             <Accordion.Title className="h-[2px] !py-10 ">
                               <p className="text-[14px] ">
-                                Do you inspect the cars before shipping? </p>
+                                Do you inspect the cars before shipping?{" "}
+                              </p>
                             </Accordion.Title>
                             <Accordion.Content className="py-3">
                               <p className="flex justify-center items-center text-sm text-gray-500 dark:text-gray-400 ">
@@ -224,7 +222,6 @@ export default function FaqComponent() {
                               <p className="text-[14px] ">
                                 What do I have to do to buy a car?
                               </p>
-
                             </Accordion.Title>
                             <Accordion.Content className="py-3">
                               <p className="flex justify-center items-center text-sm text-gray-500 dark:text-gray-400">
@@ -240,7 +237,6 @@ export default function FaqComponent() {
                               <p className="text-[14px] ">
                                 Can I cancel my purchase order?
                               </p>
-
                             </Accordion.Title>
                             <Accordion.Content className="py-3">
                               <p className="flex justify-center items-center text-gray-500 dark:text-gray-400  ">
@@ -255,7 +251,8 @@ export default function FaqComponent() {
                           <Accordion.Panel>
                             <Accordion.Title className="h-[2px] !py-8 md:!py-10 md:h-[4px]">
                               <p className="text-[14px] ">
-                                When can I use online auction service? </p>
+                                When can I use online auction service?{" "}
+                              </p>
                             </Accordion.Title>
                             <Accordion.Content className=" py-4">
                               <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 ">
@@ -266,13 +263,13 @@ export default function FaqComponent() {
                         </Accordion>
                       </div>
 
-
                       <div className="text-sm mt-10 lg:mt-1  col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                         <Accordion>
                           <Accordion.Panel>
                             <Accordion.Title className="h-[2px] !py-8 md:!py-10 md:h-[4px]">
                               <p className="text-[14px]">
-                                Is there any membership fee? </p>
+                                Is there any membership fee?{" "}
+                              </p>
                             </Accordion.Title>
                             <Accordion.Content className="py-3">
                               <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 ">
@@ -288,7 +285,6 @@ export default function FaqComponent() {
                               <p className="text-[14px] ">
                                 How long does it take me to receive my car?
                               </p>
-
                             </Accordion.Title>
                             <Accordion.Content className="py-3">
                               <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 ">
@@ -304,10 +300,9 @@ export default function FaqComponent() {
                             <Accordion.Title className="h-[4px] !py-10  ">
                               {" "}
                               <p className="text-[14px]">
-                                If I purchase a vehicle at $ 2,000, how much will
-                                I have to pay as extra charges?
+                                If I purchase a vehicle at $ 2,000, how much
+                                will I have to pay as extra charges?
                               </p>
-
                             </Accordion.Title>
                             <Accordion.Content className="py-3">
                               <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 ">
@@ -326,7 +321,8 @@ export default function FaqComponent() {
                             <Accordion.Title className="h-[4px] !py-10 ">
                               <p className="text-[14px] ">
                                 Do you have any criteria to become a registered
-                                member of Universal Motors? </p>
+                                member of Universal Motors?{" "}
+                              </p>
                             </Accordion.Title>
                             <Accordion.Content className="py-3">
                               <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 ">
@@ -348,7 +344,6 @@ export default function FaqComponent() {
                               <p className="text-[14px] ">
                                 Do your staffs inspect the cars before bidding?
                               </p>
-
                             </Accordion.Title>
                             <Accordion.Content className="py-3">
                               <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 ">
@@ -365,10 +360,9 @@ export default function FaqComponent() {
                           <Accordion.Panel>
                             <Accordion.Title className="h-[2px] !py-8 md:!py-10 md:h-[4px]">
                               <p className="text-[14px]">
-                                What payment methods can be accepted by Universal
-                                Motors?
+                                What payment methods can be accepted by
+                                Universal Motors?
                               </p>
-
                             </Accordion.Title>
 
                             <Accordion.Content className="py-3">
@@ -398,7 +392,6 @@ export default function FaqComponent() {
                           How many used cars are normally available in your
                           Inventory and in auction?
                         </p>
-
                       </Accordion.Title>
                       <Accordion.Content className="py-3">
                         <p className="flex  justify-center items-center text-gray-500 dark:text-gray-400   text-[16px]">
@@ -415,7 +408,6 @@ export default function FaqComponent() {
                         <p className="text-[14px]">
                           Can I cancel my purchase order?
                         </p>
-
                       </Accordion.Title>
                       <Accordion.Content className="py-3">
                         <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 text-[16px]">
@@ -503,7 +495,6 @@ export default function FaqComponent() {
                         <p className="text-[14px]">
                           When can I use online auction service?
                         </p>
-
                       </Accordion.Title>
                       <Accordion.Content className="py-4">
                         <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 ">
@@ -515,10 +506,9 @@ export default function FaqComponent() {
                     <Accordion.Panel>
                       <Accordion.Title className="h-[4px] !py-12">
                         <p className="text-[14px]">
-                          Is there any way to know an indicative bidding price for
-                          a vehicle I am interested in at an auction?
+                          Is there any way to know an indicative bidding price
+                          for a vehicle I am interested in at an auction?
                         </p>
-
                       </Accordion.Title>
                       <Accordion.Content className="py-3">
                         <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 text-[16px]">
@@ -526,7 +516,6 @@ export default function FaqComponent() {
                           source of information. It indicates the prices of
                           vehicles that have been sold over the last 3 months.
                         </p>
-
                       </Accordion.Content>
                     </Accordion.Panel>
                   </Accordion>
@@ -619,7 +608,6 @@ export default function FaqComponent() {
                       <p className="text-[14px]">
                         Can I purchase LHD cars from Universal Motors?
                       </p>
-
                     </Accordion.Title>
                     <Accordion.Content>
                       <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 text-[14px] h-16">
@@ -665,7 +653,6 @@ export default function FaqComponent() {
                         If I purchase a vehicle at $ 2,000, how much will I have
                         to pay as extra charges?
                       </p>
-
                     </Accordion.Title>
                     <Accordion.Content className="py-3">
                       <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 text-[14px] 2xl:h-20 ">
@@ -715,7 +702,6 @@ export default function FaqComponent() {
                         <p className="text-[14px]">
                           What do I have to do to buy a car?
                         </p>
-
                       </Accordion.Title>
                       <Accordion.Content className="py-3">
                         <p className="flex justify-center items-center text-gray-500 dark:text-gray-400  ">
@@ -750,7 +736,6 @@ export default function FaqComponent() {
                           What payment methods can be accepted by Universal
                           Motors?
                         </p>
-
                       </Accordion.Title>
                       <Accordion.Content className="py-3">
                         <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 ">
@@ -797,7 +782,6 @@ export default function FaqComponent() {
                           Do you have any criteria to become a registered member
                           of Universal Motors?
                         </p>
-
                       </Accordion.Title>
                       <Accordion.Content className="py-3">
                         <p className="flex justify-center items-center text-gray-500 dark:text-gray-400  text-[14px] ">
@@ -846,7 +830,6 @@ export default function FaqComponent() {
                         <p className="text-[14px]">
                           Is there any membership fee?
                         </p>
-
                       </Accordion.Title>
                       <Accordion.Content className="py-3">
                         <p className="flex justify-center items-center text-gray-500 dark:text-gray-400">
@@ -885,7 +868,6 @@ export default function FaqComponent() {
                         <p className="text-[14px]">
                           How long does it take me to receive my car?
                         </p>
-
                       </Accordion.Title>
                       <Accordion.Content className="py-3">
                         <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 ">
@@ -930,7 +912,6 @@ export default function FaqComponent() {
                         <p className="text-[14px]">
                           Do your staffs inspect the cars before bidding?
                         </p>
-
                       </Accordion.Title>
                       <Accordion.Content className="py-3">
                         <p className="flex justify-center items-center text-gray-500 dark:text-gray-400  text-[14px]">
@@ -972,7 +953,6 @@ export default function FaqComponent() {
                         <p className="text-[14px]">
                           Do you inspect the cars before shipping?
                         </p>
-
                       </Accordion.Title>
                       <Accordion.Content>
                         <p className="flex justify-center items-center text-gray-500 dark:text-gray-400 h-8">

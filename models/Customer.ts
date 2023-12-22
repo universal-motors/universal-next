@@ -77,34 +77,38 @@ export interface TransactionInfo {
   voucherCode: string;
   stockCode: string;
   listingName: string;
-  reference: string;
-  amount: string;
   runningBalance: string;
-
+  currency: String;
+  payerName: String;
+  amount: String;
+  reference: String;
+  TTDocumentPath: String;
+  bankName: String;
+  transactionDate: String;
+  isVoucher: Boolean;
 }
 
 export interface SalesOrderDetail {
-  paidPercent: number,
-  balancePercent: number,
-  allocatedAmount: number,
-  balanceAmount: number,
-  totalCnf: number,
-  afterDue: number,
-  releaseDate: string,
-  releaseOk: boolean,
-  release: boolean,
-  listingTitle: string,
-  consigneeName: string,
-  consigneePhone: string,
-  courierPersonName: string,
-  courierPersonPhone: string,
-  courierAddress: string,
-  shipName: string,
-  voyageNumber: string,
-  etd: string,
-  eta: string,
-  shipOk: boolean,
-  shipOkDate: string,
-  createdOn: string
-
+  paidPercent: number;
+  balancePercent: number;
+  allocatedAmount: number;
+  balanceAmount: number;
+  totalCnf: number;
+  afterDue: number;
+  releaseDate: string;
+  releaseOk: boolean;
+  release: boolean;
+  listingTitle: string;
+  consigneeName: string;
+  consigneePhone: string;
+  courierPersonName: string;
+  courierPersonPhone: string;
+  courierAddress: string;
+  shipName: string;
+  voyageNumber: string;
+  etd: string;
+  eta: string;
+  shipOk: boolean;
+  shipOkDate: string;
+  createdOn: string;
 }

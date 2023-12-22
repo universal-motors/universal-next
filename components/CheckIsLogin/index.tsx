@@ -10,13 +10,13 @@ type Prop = {
 
 export default function CheckIsLogin({ children }: Prop) {
   const { user, isUpdate } = useUserStore();
-  const route = usePathname()
+  const route = usePathname();
   useEffect(() => {
     if (user?.email && !isUpdate && route !== "/dashboard") {
-      toast.info("Create Profile First")
-      redirect('/dashboard')
+      toast.info("Create Profile First");
+      redirect("/dashboard");
     }
-  }, [user, isUpdate])
+  }, [user, isUpdate]);
   useEffect(() => {
     if (!user.email) return redirect("/");
   }, []);

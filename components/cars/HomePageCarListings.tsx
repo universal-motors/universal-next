@@ -47,13 +47,13 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
                     <CarCard
                       fav={fav}
                       car={car}
-                      href={`/global/results/${car.makeName.replaceAll(
-                        " ",
-                        "-"
-                      )
-                        + "-" +
-                        car.modelName.replaceAll(" ", "-") + "-" + car.year
-                        }/cars/${car.stockId}`}
+                      href={`/global/results/${
+                        car.makeName.replaceAll(" ", "-") +
+                        "-" +
+                        car.modelName.replaceAll(" ", "-") +
+                        "-" +
+                        car.year
+                      }/cars/${car.stockId}`}
                     />
                   ))}
               </div>
@@ -76,13 +76,13 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
                   <CarCard
                     fav={fav}
                     car={car}
-                    href={`/global/results/${car.makeName.replaceAll(
-                      " ",
-                      "-"
-                    )
-                      + "-" +
-                      car.modelName.replaceAll(" ", "-") + "-" + car.year
-                      }/trucks/${car.stockId}`}
+                    href={`/global/results/${
+                      car.makeName.replaceAll(" ", "-") +
+                      "-" +
+                      car.modelName.replaceAll(" ", "-") +
+                      "-" +
+                      car.year
+                    }/trucks/${car.stockId}`}
                   />
                 ))}
               </div>
@@ -111,13 +111,13 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
                         <CarCard
                           fav={fav}
                           car={car}
-                          href={`/global/results/${car.makeName.replace(
-                            " ",
-                            "-"
-                          )
-                            + "-" +
-                            car.modelName.replaceAll(" ", "-") + "-" + car.year
-                            }/cars/${car.stockId}`}
+                          href={`/global/results/${
+                            car.makeName.replace(" ", "-") +
+                            "-" +
+                            car.modelName.replaceAll(" ", "-") +
+                            "-" +
+                            car.year
+                          }/cars/${car.stockId}`}
                         />
                       ))}
                   </div>
@@ -152,13 +152,13 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
                         <CarCard
                           fav={fav}
                           car={car}
-                          href={`/global/results/${car.makeName.replace(
-                            " ",
-                            "-"
-                          )
-                            + "-" +
-                            car.modelName.replaceAll(" ", "-") + "-" + car.year
-                            }/cars/${car.stockId}`}
+                          href={`/global/results/${
+                            car.makeName.replace(" ", "-") +
+                            "-" +
+                            car.modelName.replaceAll(" ", "-") +
+                            "-" +
+                            car.year
+                          }/cars/${car.stockId}`}
                         />
                       ))}
                   </div>
