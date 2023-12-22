@@ -39,7 +39,13 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
   const { user: clerkUser, isSignedIn } = useUser();
   const [dropdown, setDropdown] = useState(false);
   // const { status, data: session } = useSession();
-  const { deleteData, user, setIsUpdate, update: updateData, isUpdate } = useUserStore();
+  const {
+    deleteData,
+    user,
+    setIsUpdate,
+    update: updateData,
+    isUpdate,
+  } = useUserStore();
   function closeMobileSearchModal() {
     setIsOpen(false);
   }
@@ -48,7 +54,11 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
     setIsOpen(true);
   }
   useEffect(() => {
-    if (!user?.email && clerkUser && clerkUser?.primaryEmailAddress?.emailAddress) {
+    if (
+      !user?.email &&
+      clerkUser &&
+      clerkUser?.primaryEmailAddress?.emailAddress
+    ) {
       // customFunction();
       checkEmail(
         clerkUser?.primaryEmailAddress?.emailAddress,
@@ -62,9 +72,9 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
   }, [clerkUser]);
   useEffect(() => {
     if (!isSignedIn) {
-      deleteData()
+      deleteData();
     }
-  }, [isSignedIn])
+  }, [isSignedIn]);
 
   // const login = useGoogleLogin({
   //   onSuccess: async (tokenResponse: any) => {
@@ -90,9 +100,9 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
   // });
   const checkUser = () => {
     if (user?.email && !isUpdate) {
-      return toast.info("Create Profile First")
+      return toast.info("Create Profile First");
     }
-  }
+  };
 
   return (
     <>
@@ -122,7 +132,8 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
             <div className="col-xl-1 col-lg-2 col-md-2">
               <Link
                 onClick={checkUser}
-                href={user?.email && !isUpdate ? "" : "/"}>
+                href={user?.email && !isUpdate ? "" : "/"}
+              >
                 <img
                   src="/assets/images/logo.png"
                   alt="logo"
@@ -252,8 +263,8 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                   countryList={[]}
                   portList={[]}
                   portMapping={undefined} // countryList={locations}
-                // portList={ports}
-                // portMapping={portMapping}
+                  // portList={ports}
+                  // portMapping={portMapping}
                 />
 
                 {/*<SignInComponentUI/>*/}
@@ -277,7 +288,10 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                   <span className="fa fa-bars" id="bars" />
                 </label>
                 <div className="sidemenu">
-                  <Link onClick={checkUser} href={user?.email && !isUpdate ? "" : "/"}>
+                  <Link
+                    onClick={checkUser}
+                    href={user?.email && !isUpdate ? "" : "/"}
+                  >
                     <img
                       src="/assets/images/logo.png"
                       className="side-logo"
@@ -296,27 +310,50 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                     </li>
                     <li>
                       {" "}
-                      <Link onClick={checkUser} href={user?.email && !isUpdate ? "" : "/global/results/search-by-make/cars?makeID=5"} >
+                      <Link
+                        onClick={checkUser}
+                        href={
+                          user?.email && !isUpdate
+                            ? ""
+                            : "/global/results/search-by-make/cars?makeID=5"
+                        }
+                      >
                         {" "}
                         Search by Make
                       </Link>
                     </li>
                     <li>
-                      <Link onClick={checkUser} href={user?.email && !isUpdate ? "" : "/global/results/search-by-type/cars?bodyTypeID=3"}>
+                      <Link
+                        onClick={checkUser}
+                        href={
+                          user?.email && !isUpdate
+                            ? ""
+                            : "/global/results/search-by-type/cars?bodyTypeID=3"
+                        }
+                      >
                         Search by Type
                       </Link>
                     </li>
                     <li>
                       <Link
                         onClick={checkUser}
-                        href={user?.email && !isUpdate ? "" : "/global/results/search-by-price/cars?price=25000"}>
+                        href={
+                          user?.email && !isUpdate
+                            ? ""
+                            : "/global/results/search-by-price/cars?price=25000"
+                        }
+                      >
                         Search by Price
                       </Link>
                     </li>
                     <li>
                       <Link
                         onClick={checkUser}
-                        href={user?.email && !isUpdate ? "" : `/global/results/search-by-year/cars?year=${new Date().getFullYear()}`}
+                        href={
+                          user?.email && !isUpdate
+                            ? ""
+                            : `/global/results/search-by-year/cars?year=${new Date().getFullYear()}`
+                        }
                       >
                         Search by Year
                       </Link>
@@ -330,27 +367,40 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                         </Link>
                         <Link
                           onClick={checkUser}
-                          href={user?.email && !isUpdate ? "" : "/favorite"}>
+                          href={user?.email && !isUpdate ? "" : "/favorite"}
+                        >
                           <li>My Favorite</li>
                         </Link>
                         <Link
                           onClick={checkUser}
-                          href={user?.email && !isUpdate ? "" : "/contact-information"}>
+                          href={
+                            user?.email && !isUpdate
+                              ? ""
+                              : "/contact-information"
+                          }
+                        >
                           <li>Contact Information</li>
                         </Link>
                         <Link
                           onClick={checkUser}
-                          href={user?.email && !isUpdate ? "" : "/connect-accounts"}>
+                          href={
+                            user?.email && !isUpdate ? "" : "/connect-accounts"
+                          }
+                        >
                           <li>Connect Accounts</li>
                         </Link>
                         <Link
                           onClick={checkUser}
-                          href={user?.email && !isUpdate ? "" : "/Preferences"}>
+                          href={user?.email && !isUpdate ? "" : "/Preferences"}
+                        >
                           <li>Preferences</li>
                         </Link>
                         <Link
                           onClick={checkUser}
-                          href={user?.email && !isUpdate ? "" : "/account activity"}>
+                          href={
+                            user?.email && !isUpdate ? "" : "/account activity"
+                          }
+                        >
                           <li className="last">Account Activity</li>
                         </Link>
                       </>
@@ -366,15 +416,19 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                         <li key={location.countryId}>
                           <Link
                             onClick={checkUser}
-                            href={user?.email && !isUpdate ? "" : {
-                              pathname: `/global/results/${location.countryName.replaceAll(
-                                " ",
-                                "-"
-                              )}/cars`,
-                              query: {
-                                countryID: location.countryId,
-                              },
-                            }}
+                            href={
+                              user?.email && !isUpdate
+                                ? ""
+                                : {
+                                    pathname: `/global/results/${location.countryName.replaceAll(
+                                      " ",
+                                      "-"
+                                    )}/cars`,
+                                    query: {
+                                      countryID: location.countryId,
+                                    },
+                                  }
+                            }
                           >
                             <span className=" inline-flex items-center rounded-md">
                               <Image
@@ -404,33 +458,60 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                     <li>
                       <Link
                         onClick={checkUser}
-                        href={user?.email && !isUpdate ? "" : "/global/information?page=why-choose-universal-motors"}>
+                        href={
+                          user?.email && !isUpdate
+                            ? ""
+                            : "/global/information?page=why-choose-universal-motors"
+                        }
+                      >
                         Why Choose UM?
                       </Link>
                     </li>
                     <li>
                       <Link
                         onClick={checkUser}
-                        href={user?.email && !isUpdate ? "" : "/global/information?page=how-to-buy"}>
+                        href={
+                          user?.email && !isUpdate
+                            ? ""
+                            : "/global/information?page=how-to-buy"
+                        }
+                      >
                         How To Buy
                       </Link>
                     </li>
                     <li>
                       <Link
                         onClick={checkUser}
-                        href={user?.email && !isUpdate ? "" : "/global/information?page=how-to-pay"}>
+                        href={
+                          user?.email && !isUpdate
+                            ? ""
+                            : "/global/information?page=how-to-pay"
+                        }
+                      >
                         How to Pay?
                       </Link>
                     </li>
                     <li>
                       <Link
                         onClick={checkUser}
-                        href={user?.email && !isUpdate ? "" : "/global/information?page=faqs"}>FAQs</Link>
+                        href={
+                          user?.email && !isUpdate
+                            ? ""
+                            : "/global/information?page=faqs"
+                        }
+                      >
+                        FAQs
+                      </Link>
                     </li>
                     <li className="last">
                       <Link
                         onClick={checkUser}
-                        href={user?.email && !isUpdate ? "" : "/global/information?page=export-information"}>
+                        href={
+                          user?.email && !isUpdate
+                            ? ""
+                            : "/global/information?page=export-information"
+                        }
+                      >
                         Exports Information
                       </Link>
                     </li>
@@ -438,49 +519,84 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                       <i className="fa fa-info" />
                       <Link
                         onClick={checkUser}
-                        href={user?.email && !isUpdate ? "" : "/global/information?page=about-universal-motors"}>
+                        href={
+                          user?.email && !isUpdate
+                            ? ""
+                            : "/global/information?page=about-universal-motors"
+                        }
+                      >
                         About UM
                       </Link>
                     </li>
                     <li>
                       <Link
                         onClick={checkUser}
-                        href={user?.email && !isUpdate ? "" : "/global/about-universal-motors?page=company-profile"}>
+                        href={
+                          user?.email && !isUpdate
+                            ? ""
+                            : "/global/about-universal-motors?page=company-profile"
+                        }
+                      >
                         Company Profile
                       </Link>
                     </li>
                     <li>
                       <Link
                         onClick={checkUser}
-                        href={user?.email && !isUpdate ? "" : "/global/about-universal-motors?page=global-offices"}>
+                        href={
+                          user?.email && !isUpdate
+                            ? ""
+                            : "/global/about-universal-motors?page=global-offices"
+                        }
+                      >
                         Global Offices
                       </Link>
                     </li>
                     <li>
                       <Link
                         onClick={checkUser}
-                        href={user?.email && !isUpdate ? "" : "/global/about-universal-motors?page=terms-of-service"}>
+                        href={
+                          user?.email && !isUpdate
+                            ? ""
+                            : "/global/about-universal-motors?page=terms-of-service"
+                        }
+                      >
                         Terms Of Services
                       </Link>
                     </li>
                     <li>
                       <Link
                         onClick={checkUser}
-                        href={user?.email && !isUpdate ? "" : "/global/about-universal-motors?page=privacy-policy"}>
+                        href={
+                          user?.email && !isUpdate
+                            ? ""
+                            : "/global/about-universal-motors?page=privacy-policy"
+                        }
+                      >
                         Privacy Policy
                       </Link>
                     </li>
                     <li>
                       <Link
                         onClick={checkUser}
-                        href={user?.email && !isUpdate ? "" : "/global/about-universal-motors?page=security-export-control"}>
+                        href={
+                          user?.email && !isUpdate
+                            ? ""
+                            : "/global/about-universal-motors?page=security-export-control"
+                        }
+                      >
                         Secutiy Export Control
                       </Link>
                     </li>
                     <li className="last">
                       <Link
                         onClick={checkUser}
-                        href={user?.email && !isUpdate ? "" : "/global/about-universal-motors?page=policy-against-anti-social"}>
+                        href={
+                          user?.email && !isUpdate
+                            ? ""
+                            : "/global/about-universal-motors?page=policy-against-anti-social"
+                        }
+                      >
                         Basic Policy Against Anti-Social Forces
                       </Link>
                     </li>
@@ -491,7 +607,8 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
             <div className="col-3">
               <Link
                 onClick={checkUser}
-                href={user?.email && !isUpdate ? "" : "/"}>
+                href={user?.email && !isUpdate ? "" : "/"}
+              >
                 <img
                   src="/assets/images/logo.png"
                   alt="logo"
@@ -566,14 +683,39 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                     </div>
                   </Dialog>
                 </Transition>
-                <Link onClick={checkUser} href={user?.email && !isUpdate ? "" : "/dashboard"}>
-                  <svg id="SvgjsSvg1001" width={25} height={25} xmlns="http://www.w3.org/2000/svg" version="1.1"
-                    xmlnsXlink="http://www.w3.org/1999/xlink" >
-                    <defs id="SvgjsDefs1002"></defs><g id="SvgjsG1008"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><path d="M8.5 3h-3a2.5 2.5 0 0 0 0 5h3a2.5 2.5 0 0 0 0-5zm0 4h-3a1.5 1.5 0 0 1 0-3h3a1.5 1.5 0 0 1 0 3zm0 3h-3A2.5 2.5 0 0 0 3 12.5v6A2.5 2.5 0 0 0 5.5 21h3a2.5 2.5 0 0 0 2.5-2.5v-6A2.5 2.5 0 0 0 8.5 10zm1.5 8.5A1.5 1.5 0 0 1 8.5 20h-3A1.5 1.5 0 0 1 4 18.5v-6A1.5 1.5 0 0 1 5.5 11h3a1.5 1.5 0 0 1 1.5 1.5zm8.5-2.5h-3a2.5 2.5 0 0 0 0 5h3a2.5 2.5 0 0 0 0-5zm0 4h-3a1.5 1.5 0 0 1 0-3h3a1.5 1.5 0 0 1 0 3zm0-17h-3A2.5 2.5 0 0 0 13 5.5v6a2.5 2.5 0 0 0 2.5 2.5h3a2.5 2.5 0 0 0 2.5-2.5v-6A2.5 2.5 0 0 0 18.5 3zm1.5 8.5a1.5 1.5 0 0 1-1.5 1.5h-3a1.5 1.5 0 0 1-1.5-1.5v-6A1.5 1.5 0 0 1 15.5 4h3A1.5 1.5 0 0 1 20 5.5z" fill="#FFFFFF" className="color000 svgShape"></path></svg></g></svg>
+                <Link
+                  onClick={checkUser}
+                  href={user?.email && !isUpdate ? "" : "/dashboard"}
+                >
+                  <svg
+                    id="SvgjsSvg1001"
+                    width={25}
+                    height={25}
+                    xmlns="http://www.w3.org/2000/svg"
+                    version="1.1"
+                    xmlnsXlink="http://www.w3.org/1999/xlink"
+                  >
+                    <defs id="SvgjsDefs1002"></defs>
+                    <g id="SvgjsG1008">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M8.5 3h-3a2.5 2.5 0 0 0 0 5h3a2.5 2.5 0 0 0 0-5zm0 4h-3a1.5 1.5 0 0 1 0-3h3a1.5 1.5 0 0 1 0 3zm0 3h-3A2.5 2.5 0 0 0 3 12.5v6A2.5 2.5 0 0 0 5.5 21h3a2.5 2.5 0 0 0 2.5-2.5v-6A2.5 2.5 0 0 0 8.5 10zm1.5 8.5A1.5 1.5 0 0 1 8.5 20h-3A1.5 1.5 0 0 1 4 18.5v-6A1.5 1.5 0 0 1 5.5 11h3a1.5 1.5 0 0 1 1.5 1.5zm8.5-2.5h-3a2.5 2.5 0 0 0 0 5h3a2.5 2.5 0 0 0 0-5zm0 4h-3a1.5 1.5 0 0 1 0-3h3a1.5 1.5 0 0 1 0 3zm0-17h-3A2.5 2.5 0 0 0 13 5.5v6a2.5 2.5 0 0 0 2.5 2.5h3a2.5 2.5 0 0 0 2.5-2.5v-6A2.5 2.5 0 0 0 18.5 3zm1.5 8.5a1.5 1.5 0 0 1-1.5 1.5h-3a1.5 1.5 0 0 1-1.5-1.5v-6A1.5 1.5 0 0 1 15.5 4h3A1.5 1.5 0 0 1 20 5.5z"
+                          fill="#FFFFFF"
+                          className="color000 svgShape"
+                        ></path>
+                      </svg>
+                    </g>
+                  </svg>
                 </Link>
                 {user && user.email && (
                   <>
-                    <Link onClick={checkUser} href={user?.email && !isUpdate ? "" : "/favorite"}>
+                    <Link
+                      onClick={checkUser}
+                      href={user?.email && !isUpdate ? "" : "/favorite"}
+                    >
                       <img
                         src="https://img.icons8.com/ios/2x/hearts.png"
                         alt=""
@@ -594,7 +736,7 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                       alt=""
                       onClick={() => {
                         // login();
-                        router.push("/sign-in")
+                        router.push("/sign-in");
                       }}
                       width={25}
                     />
@@ -654,7 +796,7 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
             </div>
           </div>
         </div>
-      </section >
+      </section>
     </>
   );
 }

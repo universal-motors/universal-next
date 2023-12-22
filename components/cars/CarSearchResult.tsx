@@ -5,6 +5,7 @@ import PaginationComponent from "@/components/ui/PaginationComponent";
 import { Country } from "@/models/Master/Country";
 import { PaginationHeader } from "@/models/Master/Pagination";
 import { StockCars } from "@/models/StockCars";
+import reservedimg from "@/public/assets/images/reserved.png";
 import { useUserStore } from "@/store/store";
 import PriceFormat from "@/utils/PriceFormat";
 import Image from "next/image";
@@ -128,23 +129,58 @@ export default function CarSearchResult({ locations, params }: Props) {
           >
             <div className="row my-5 ">
               <div className="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-5">
-                <div className="searched-carimage ">
+                <div className="searched-carimage  ">
                   <Link
-                    href={`/global/results/${car.makeName.replaceAll(
-                      " ",
-                      "-"
-                    )
-                      + "-" +
-                      car.modelName.replaceAll(" ", "-") + "-" + car.year
-                      }/cars/${car.stockId}`}
+                    href={`/global/results/${
+                      car.makeName.replaceAll(" ", "-") +
+                      "-" +
+                      car.modelName.replaceAll(" ", "-") +
+                      "-" +
+                      car.year
+                    }/cars/${car.stockId}`}
                   >
-                    <Image
-                      src={car.imageUrl ?? ""}
-                      className="mb-4"
-                      alt=""
-                      height={150}
-                      width={150}
-                    />
+                    <div className="relative min-w-[150px] min-h-[150px]  md:h-[250px] overflow-hidden ">
+                      <Image
+                        src={car.imageUrl ?? ""}
+                        className="mb-4"
+                        width={150}
+                        height={150}
+                        style={{
+                          objectFit: "cover",
+                          width: "100%",
+                          height: "100%",
+                          position: "absolute",
+                          top: "0px",
+                        }}
+                        alt=""
+                      />
+                      {
+                        car?.isReserved && (
+                          <Image
+                            src={reservedimg}
+                            className="mb-4 opacity-60"
+                            width={150}
+                            height={150}
+                            style={{
+                              objectFit: "cover",
+                              width: "100%",
+                              height: "100%",
+                              position: "absolute",
+                              top: "0px",
+                            }}
+                            alt=""
+                          />
+                        )
+                        // <div className="absolute top-0 w-full h-full">
+                        //   <div className="bg-[#221C63]  relative  opacity-75 top-10 right-14 w-full h-7 -rotate-[50deg]">
+                        //     <h1 className="text-white text-[12px] md:text-[16px] text-center">
+                        //       Reserved
+                        //     </h1>
+
+                        //   </div>
+                        // </div>
+                      }
+                    </div>
                   </Link>
 
                   <h4 className="ml-5 !text-[10px] sm:!text-[12px] md:!text-[12px] lg:text-[14px] xl:!text-[16px]">
@@ -161,13 +197,13 @@ export default function CarSearchResult({ locations, params }: Props) {
                   <div className="row ">
                     <div className="col-lg-6 col-md-6 col-sm-6">
                       <Link
-                        href={`/global/results/${car.makeName.replaceAll(
-                          " ",
-                          "-"
-                        )
-                          + "-" +
-                          car.modelName.replaceAll(" ", "-") + "-" + car.year
-                          }/cars/${car.stockId}`}
+                        href={`/global/results/${
+                          car.makeName.replaceAll(" ", "-") +
+                          "-" +
+                          car.modelName.replaceAll(" ", "-") +
+                          "-" +
+                          car.year
+                        }/cars/${car.stockId}`}
                       >
                         <h6 className="listname font-bold uppercase">
                           {car.listingTitle}
@@ -406,13 +442,13 @@ export default function CarSearchResult({ locations, params }: Props) {
                   <h4 />
 
                   <Link
-                    href={`/global/results/${car.makeName.replaceAll(
-                      " ",
-                      "-"
-                    )
-                      + "-" +
-                      car.modelName.replaceAll(" ", "-") + "-" + car.year
-                      }/cars/${car.stockId}`}
+                    href={`/global/results/${
+                      car.makeName.replaceAll(" ", "-") +
+                      "-" +
+                      car.modelName.replaceAll(" ", "-") +
+                      "-" +
+                      car.year
+                    }/cars/${car.stockId}`}
                   >
                     <button className="offerbtn ">
                       <span className="font-bold"> Send Offer</span>

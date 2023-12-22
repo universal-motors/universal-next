@@ -3,12 +3,12 @@ import agent from "@/api/agent";
 // import PriceCalculator from "@/app/global/results/cars/[id]/PriceCalculator";
 // import StockKeyInformation from "@/app/global/results/cars/[id]/StockKeyInformation";
 // import StockSpecification from "@/app/global/results/cars/[id]/StockSpecification";
-import ContactUs from "@/components/pages/contact/ContactUs";
 import DescriptionUI from "@/components/ui/DescriptionUI";
 import CarDetailedSlideshow from "./CarDetailedSlideshow";
 import PriceCalculator from "./PriceCalculator";
 import StockKeyInformation from "./StockKeyInformation";
 import StockSpecification from "./StockSpecification";
+import CountdownTimer from "./counter";
 
 interface Props {
   params: {
@@ -35,7 +35,6 @@ export async function generateMetadata({ params }: Props) {
     };
   }
 }
-
 export default async function CarDetailed({ params }: Props) {
   const Stock = await agent.LoadData.stock(params.id);
   const Countries = await agent.LoadData.countryList(); //db.tblMasterCountry.findMany({where: {IsActive:true}});
@@ -96,6 +95,16 @@ export default async function CarDetailed({ params }: Props) {
                             {Stock.data.stockCode}
                           </span>
                         </div>
+                        {/* <Countdown date={Date.now() + 10000} /> */}
+                        {Stock.data.isReserved ? (
+                          <div className="stock w-full">
+                            <span className="flex items-center gap-x-1 bg-[#f1f5f9] px-2 py-1 font-medium text-[#221C63] border-[1px] border-[#221C63] rounded-xl my-2">
+                              <CountdownTimer date={Stock.data.isReservedOn} />
+                            </span>
+                          </div>
+                        ) : (
+                          ""
+                        )}
                       </div>
                       <hr />
 
@@ -144,9 +153,10 @@ export default async function CarDetailed({ params }: Props) {
                         portMapping={PortMapping.data}
                         freightCharges={freightChargeMaster.data}
                         inspectionCost={inspectionCost.data}
+                        reservedBy={Stock.data.reservedBy}
+                        stockCode={Stock.data.stockCode}
+                        isReserved={Stock.data.isReserved}
                       />
-                      {/*<InquiryForm/>*/}
-                      <ContactUs stockcode={Stock.data.stockCode} />
                     </div>
                   </div>
                 </div>

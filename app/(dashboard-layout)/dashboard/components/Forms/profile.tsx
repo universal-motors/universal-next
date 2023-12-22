@@ -184,14 +184,35 @@ export default function ProfileForm() {
           }
         })}
       >
-        {user && user?.customerId && <div className="w-full flex ">
-          <div onClick={() => {
-            navigator.clipboard.writeText(String(user?.customerId));
-          }} className=" cursor-pointer bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg font-medium  px-3 py-2 inline-block mb-3 ">
-            Customer ID :- {user?.customerId}
-            <svg className="inline ml-2 js-clipboard-default w-4 h-4 group-hover:rotate-6 transition" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1" /><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /></svg>
+        {user && user?.customerCode ? (
+          <div className="w-full flex ">
+            <div
+              onClick={() => {
+                navigator.clipboard.writeText(String(user?.customerCode));
+              }}
+              className=" cursor-pointer bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg font-medium  px-3 py-2 inline-block mb-3 "
+            >
+              Customer ID :- {user?.customerCode}
+              <svg
+                className="inline ml-2 js-clipboard-default w-4 h-4 group-hover:rotate-6 transition"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+              </svg>
+            </div>
           </div>
-        </div>}
+        ) : (
+          ""
+        )}
 
         <div className="grid gap-6 mb-6 md:grid-cols-2">
           <Input
@@ -369,9 +390,9 @@ export default function ProfileForm() {
                       console.log(e);
                       updatePhone(i, e);
                     }}
-                  //  setValue={(e: any) => {
-                  //   updatePhone(i, e.target.value);
-                  // }}
+                    //  setValue={(e: any) => {
+                    //   updatePhone(i, e.target.value);
+                    // }}
                   />
                   {i >= 1 && (
                     <AiFillDelete

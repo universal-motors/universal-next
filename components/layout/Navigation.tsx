@@ -15,9 +15,9 @@ export default function Navigation() {
   const { user, isUpdate } = useUserStore();
   const checkUser = () => {
     if (user?.email && !isUpdate) {
-      return toast.info("Create Profile First")
+      return toast.info("Create Profile First");
     }
-  }
+  };
   return (
     <>
       <div style={{ display: "flex", justifyContent: "center" }} id="min-1">
@@ -56,8 +56,13 @@ export default function Navigation() {
                               <div className="py-1">
                                 <Menu.Item>
                                   {({ active }) => (
-                                    <Link onClick={checkUser}
-                                      href={user?.email && !isUpdate ? "" : "/global/information?page=why-choose-universal-motors"}
+                                    <Link
+                                      onClick={checkUser}
+                                      href={
+                                        user?.email && !isUpdate
+                                          ? ""
+                                          : "/global/information?page=why-choose-universal-motors"
+                                      }
                                       className={classNames(
                                         active
                                           ? "bg-gray-100 text-gray-900"
@@ -73,7 +78,11 @@ export default function Navigation() {
                                   {({ active }) => (
                                     <Link
                                       onClick={checkUser}
-                                      href={user?.email && !isUpdate ? "" : "/global/information?page=how-to-buy"}
+                                      href={
+                                        user?.email && !isUpdate
+                                          ? ""
+                                          : "/global/information?page=how-to-buy"
+                                      }
                                       className={classNames(
                                         active
                                           ? "bg-gray-100 text-gray-900"
@@ -91,7 +100,11 @@ export default function Navigation() {
                                   {({ active }) => (
                                     <Link
                                       onClick={checkUser}
-                                      href={user?.email && !isUpdate ? "" : "/global/information?page=export-information"}
+                                      href={
+                                        user?.email && !isUpdate
+                                          ? ""
+                                          : "/global/information?page=export-information"
+                                      }
                                       className={classNames(
                                         active
                                           ? "bg-gray-100 text-gray-900"
@@ -109,7 +122,11 @@ export default function Navigation() {
                                   {({ active }) => (
                                     <Link
                                       onClick={checkUser}
-                                      href={user?.email && !isUpdate ? "" : "/global/information?page=vehicle-shipment-condition"}
+                                      href={
+                                        user?.email && !isUpdate
+                                          ? ""
+                                          : "/global/information?page=vehicle-shipment-condition"
+                                      }
                                       className={classNames(
                                         active
                                           ? "bg-gray-100 text-gray-900"
@@ -125,7 +142,11 @@ export default function Navigation() {
                                   {({ active }) => (
                                     <Link
                                       onClick={checkUser}
-                                      href={user?.email && !isUpdate ? "" : "/global/information?page=export-import-services"}
+                                      href={
+                                        user?.email && !isUpdate
+                                          ? ""
+                                          : "/global/information?page=export-import-services"
+                                      }
                                       className={classNames(
                                         active
                                           ? "bg-gray-100 text-gray-900"
@@ -172,7 +193,11 @@ export default function Navigation() {
                                   {({ active }) => (
                                     <Link
                                       onClick={checkUser}
-                                      href={user?.email && !isUpdate ? "" : "/global/about-universal-motors/"}
+                                      href={
+                                        user?.email && !isUpdate
+                                          ? ""
+                                          : "/global/about-universal-motors/"
+                                      }
                                       className={classNames(
                                         active
                                           ? "bg-gray-100 text-gray-900"
@@ -188,7 +213,11 @@ export default function Navigation() {
                                   {({ active }) => (
                                     <Link
                                       onClick={checkUser}
-                                      href={user?.email && !isUpdate ? "" : "/global/testimonial"}
+                                      href={
+                                        user?.email && !isUpdate
+                                          ? ""
+                                          : "/global/testimonial"
+                                      }
                                       className={classNames(
                                         active
                                           ? "bg-gray-100 text-gray-900"
@@ -204,7 +233,11 @@ export default function Navigation() {
                                   {({ active }) => (
                                     <Link
                                       onClick={checkUser}
-                                      href={user?.email && !isUpdate ? "" : "/global/about-universal-motors?page=sustainability-fundamental-policy"}
+                                      href={
+                                        user?.email && !isUpdate
+                                          ? ""
+                                          : "/global/about-universal-motors?page=sustainability-fundamental-policy"
+                                      }
                                       className={classNames(
                                         active
                                           ? "bg-gray-100 text-gray-900"
@@ -224,7 +257,11 @@ export default function Navigation() {
                                   {({ active }) => (
                                     <Link
                                       onClick={checkUser}
-                                      href={user?.email && !isUpdate ? "" : "/global/about-universal-motors?page=company-profile"}
+                                      href={
+                                        user?.email && !isUpdate
+                                          ? ""
+                                          : "/global/about-universal-motors?page=company-profile"
+                                      }
                                       className={classNames(
                                         active
                                           ? "bg-gray-100 text-gray-900"
@@ -240,7 +277,11 @@ export default function Navigation() {
                                   {({ active }) => (
                                     <Link
                                       onClick={checkUser}
-                                      href={user?.email && !isUpdate ? "" : "/global/about-universal-motors?page=global-offices"}
+                                      href={
+                                        user?.email && !isUpdate
+                                          ? ""
+                                          : "/global/about-universal-motors?page=global-offices"
+                                      }
                                       className={classNames(
                                         active
                                           ? "bg-gray-100 text-gray-900"
@@ -258,7 +299,11 @@ export default function Navigation() {
                                   {({ active }) => (
                                     <Link
                                       onClick={checkUser}
-                                      href={user?.email && !isUpdate ? "" : "/global/about-universal-motors?page=terms-of-service"}
+                                      href={
+                                        user?.email && !isUpdate
+                                          ? ""
+                                          : "/global/about-universal-motors?page=terms-of-service"
+                                      }
                                       className={classNames(
                                         active
                                           ? "bg-gray-100 text-gray-900"
@@ -274,7 +319,11 @@ export default function Navigation() {
                                   {({ active }) => (
                                     <Link
                                       onClick={checkUser}
-                                      href={user?.email && !isUpdate ? "" : "/global/about-universal-motors?page=privacy-policy"}
+                                      href={
+                                        user?.email && !isUpdate
+                                          ? ""
+                                          : "/global/about-universal-motors?page=privacy-policy"
+                                      }
                                       className={classNames(
                                         active
                                           ? "bg-gray-100 text-gray-900"
@@ -290,7 +339,11 @@ export default function Navigation() {
                                   {({ active }) => (
                                     <Link
                                       onClick={checkUser}
-                                      href={user?.email && !isUpdate ? "" : "/global/about-universal-motors?page=security-export-control"}
+                                      href={
+                                        user?.email && !isUpdate
+                                          ? ""
+                                          : "/global/about-universal-motors?page=security-export-control"
+                                      }
                                       className={classNames(
                                         active
                                           ? "bg-gray-100 text-gray-900"
@@ -306,7 +359,11 @@ export default function Navigation() {
                                   {({ active }) => (
                                     <Link
                                       onClick={checkUser}
-                                      href={user?.email && !isUpdate ? "" : "/global/about-universal-motors?page=policy-against-anti-social"}
+                                      href={
+                                        user?.email && !isUpdate
+                                          ? ""
+                                          : "/global/about-universal-motors?page=policy-against-anti-social"
+                                      }
                                       className={classNames(
                                         active
                                           ? "bg-gray-100 text-gray-900"
@@ -324,7 +381,11 @@ export default function Navigation() {
                                   {({ active }) => (
                                     <Link
                                       onClick={checkUser}
-                                      href={user?.email && !isUpdate ? "" : "/global/about-universal-motors?page=disclaimer-policy"}
+                                      href={
+                                        user?.email && !isUpdate
+                                          ? ""
+                                          : "/global/about-universal-motors?page=disclaimer-policy"
+                                      }
                                       className={classNames(
                                         active
                                           ? "bg-gray-100 text-gray-900"
@@ -370,7 +431,11 @@ export default function Navigation() {
                                 {({ active }) => (
                                   <Link
                                     onClick={checkUser}
-                                    href={user?.email && !isUpdate ? "" : "/global/information/import-protocols?page=chile"}
+                                    href={
+                                      user?.email && !isUpdate
+                                        ? ""
+                                        : "/global/information/import-protocols?page=chile"
+                                    }
                                     className={classNames(
                                       active
                                         ? "bg-gray-100 text-gray-900"
@@ -393,7 +458,11 @@ export default function Navigation() {
                                 {({ active }) => (
                                   <Link
                                     onClick={checkUser}
-                                    href={user?.email && !isUpdate ? "" : "/global/information/import-protocols?page=congo"}
+                                    href={
+                                      user?.email && !isUpdate
+                                        ? ""
+                                        : "/global/information/import-protocols?page=congo"
+                                    }
                                     className={classNames(
                                       active
                                         ? "bg-gray-100 text-gray-900"
@@ -417,7 +486,11 @@ export default function Navigation() {
                                 {({ active }) => (
                                   <Link
                                     onClick={checkUser}
-                                    href={user?.email && !isUpdate ? "" : "/global/information/import-protocols?page=guyana"}
+                                    href={
+                                      user?.email && !isUpdate
+                                        ? ""
+                                        : "/global/information/import-protocols?page=guyana"
+                                    }
                                     className={classNames(
                                       active
                                         ? "bg-gray-100 text-gray-900"
@@ -440,7 +513,11 @@ export default function Navigation() {
                                 {({ active }) => (
                                   <Link
                                     onClick={checkUser}
-                                    href={user?.email && !isUpdate ? "" : "/global/information/import-protocols?page=jamaica"}
+                                    href={
+                                      user?.email && !isUpdate
+                                        ? ""
+                                        : "/global/information/import-protocols?page=jamaica"
+                                    }
                                     className={classNames(
                                       active
                                         ? "bg-gray-100 text-gray-900"
@@ -464,7 +541,11 @@ export default function Navigation() {
                                 {({ active }) => (
                                   <Link
                                     onClick={checkUser}
-                                    href={user?.email && !isUpdate ? "" : "/global/information/import-protocols?page=kenya"}
+                                    href={
+                                      user?.email && !isUpdate
+                                        ? ""
+                                        : "/global/information/import-protocols?page=kenya"
+                                    }
                                     className={classNames(
                                       active
                                         ? "bg-gray-100 text-gray-900"
@@ -487,7 +568,11 @@ export default function Navigation() {
                                 {({ active }) => (
                                   <Link
                                     onClick={checkUser}
-                                    href={user?.email && !isUpdate ? "" : "/global/information/import-protocols?page=malawi"}
+                                    href={
+                                      user?.email && !isUpdate
+                                        ? ""
+                                        : "/global/information/import-protocols?page=malawi"
+                                    }
                                     className={classNames(
                                       active
                                         ? "bg-gray-100 text-gray-900"
@@ -510,7 +595,11 @@ export default function Navigation() {
                                 {({ active }) => (
                                   <Link
                                     onClick={checkUser}
-                                    href={user?.email && !isUpdate ? "" : "/global/information/import-protocols?page=pakistan"}
+                                    href={
+                                      user?.email && !isUpdate
+                                        ? ""
+                                        : "/global/information/import-protocols?page=pakistan"
+                                    }
                                     className={classNames(
                                       active
                                         ? "bg-gray-100 text-gray-900"
@@ -533,7 +622,11 @@ export default function Navigation() {
                                 {({ active }) => (
                                   <Link
                                     onClick={checkUser}
-                                    href={user?.email && !isUpdate ? "" : "/global/information/import-protocols?page=paraguay"}
+                                    href={
+                                      user?.email && !isUpdate
+                                        ? ""
+                                        : "/global/information/import-protocols?page=paraguay"
+                                    }
                                     className={classNames(
                                       active
                                         ? "bg-gray-100 text-gray-900"
@@ -556,7 +649,11 @@ export default function Navigation() {
                                 {({ active }) => (
                                   <Link
                                     onClick={checkUser}
-                                    href={user?.email && !isUpdate ? "" : "/global/information/import-protocols?page=russia"}
+                                    href={
+                                      user?.email && !isUpdate
+                                        ? ""
+                                        : "/global/information/import-protocols?page=russia"
+                                    }
                                     className={classNames(
                                       active
                                         ? "bg-gray-100 text-gray-900"
@@ -580,7 +677,11 @@ export default function Navigation() {
                                 {({ active }) => (
                                   <Link
                                     onClick={checkUser}
-                                    href={user?.email && !isUpdate ? "" : "/global/information/import-protocols?page=sudan"}
+                                    href={
+                                      user?.email && !isUpdate
+                                        ? ""
+                                        : "/global/information/import-protocols?page=sudan"
+                                    }
                                     className={classNames(
                                       active
                                         ? "bg-gray-100 text-gray-900"
@@ -604,7 +705,11 @@ export default function Navigation() {
                                 {({ active }) => (
                                   <Link
                                     onClick={checkUser}
-                                    href={user?.email && !isUpdate ? "" : "/global/information/import-protocols?page=tanzania"}
+                                    href={
+                                      user?.email && !isUpdate
+                                        ? ""
+                                        : "/global/information/import-protocols?page=tanzania"
+                                    }
                                     className={classNames(
                                       active
                                         ? "bg-gray-100 text-gray-900"
@@ -627,7 +732,11 @@ export default function Navigation() {
                                 {({ active }) => (
                                   <Link
                                     onClick={checkUser}
-                                    href={user?.email && !isUpdate ? "" : "/global/information/import-protocols?page=uganda"}
+                                    href={
+                                      user?.email && !isUpdate
+                                        ? ""
+                                        : "/global/information/import-protocols?page=uganda"
+                                    }
                                     className={classNames(
                                       active
                                         ? "bg-gray-100 text-gray-900"
@@ -650,7 +759,11 @@ export default function Navigation() {
                                 {({ active }) => (
                                   <Link
                                     onClick={checkUser}
-                                    href={user?.email && !isUpdate ? "" : "/global/information/import-protocols?page=zambia"}
+                                    href={
+                                      user?.email && !isUpdate
+                                        ? ""
+                                        : "/global/information/import-protocols?page=zambia"
+                                    }
                                     className={classNames(
                                       active
                                         ? "bg-gray-100 text-gray-900"
@@ -673,7 +786,11 @@ export default function Navigation() {
                                 {({ active }) => (
                                   <Link
                                     onClick={checkUser}
-                                    href={user?.email && !isUpdate ? "" : "/global/information/import-protocols?page=zimbabwe"}
+                                    href={
+                                      user?.email && !isUpdate
+                                        ? ""
+                                        : "/global/information/import-protocols?page=zimbabwe"
+                                    }
                                     className={classNames(
                                       active
                                         ? "bg-gray-100 text-gray-900"
@@ -696,7 +813,11 @@ export default function Navigation() {
                                 {({ active }) => (
                                   <Link
                                     onClick={checkUser}
-                                    href={user?.email && !isUpdate ? "" : "/global/information/import-protocols?page=ghana"}
+                                    href={
+                                      user?.email && !isUpdate
+                                        ? ""
+                                        : "/global/information/import-protocols?page=ghana"
+                                    }
                                     className={classNames(
                                       active
                                         ? "bg-gray-100 text-gray-900"
@@ -723,7 +844,11 @@ export default function Navigation() {
                         <Button className="transition duration-300 ease-in-out hover:scale-105 inline-flex w-full  justify-center gap-x-1.5 rounded-md bg-transparent  px-1 xl:!px-3 py-1 xl:!py-2 !text-xs  font-semibold !text-white border-2 !border-white hover:!border-[#9CA3AF] hover:!text-[#9CA3AF] shadow-sm ring-1 ring-inset ">
                           <Link
                             onClick={checkUser}
-                            href={user?.email && !isUpdate ? "" : "/global/information?page=how-to-pay"}
+                            href={
+                              user?.email && !isUpdate
+                                ? ""
+                                : "/global/information?page=how-to-pay"
+                            }
                             className=" "
                           >
                             <span className="flex inline !text-[10px] xl:!text-xs">
@@ -747,8 +872,12 @@ export default function Navigation() {
                       <li className="p-4">
                         <Button className="transition duration-300 ease-in-out hover:scale-110 inline-flex w-full justify-center gap-x-1.5 bg-transparent rounded-md px-1 xl:!px-3 py-1 xl:!py-2 text-xs  font-semibold !text-white border-2 !border-white hover:!border-[#9CA3AF] hover:!text-[#9CA3AF] shadow-sm ring-1 ring-inset ">
                           <Link
-
-                            onClick={checkUser} href={user?.email && !isUpdate ? "" : "/global/information?page=bank-information"}
+                            onClick={checkUser}
+                            href={
+                              user?.email && !isUpdate
+                                ? ""
+                                : "/global/information?page=bank-information"
+                            }
                             className=""
                           >
                             <span className="flex inline !text-[10px] xl:!text-xs">

@@ -9,33 +9,43 @@ import { useEffect, useState } from "react";
 import CarReservedTable from "./tables/carReserved";
 
 export default function Reserved() {
-  const [sort, setSort] = useState('Cars')
+  const [sort, setSort] = useState("Cars");
   const { user } = useUserStore();
-  const [reservedData, setReservedData] = useState<StockCars[] | Trucks[] | Machinery[]>([])
+  const [reservedData, setReservedData] = useState<
+    StockCars[] | Trucks[] | Machinery[]
+  >([]);
   useEffect(() => {
     const getData = async () => {
       switch (sort) {
-        case 'Trucks':
-          const TruckReserved = await agent.LoadData.reservedTrucksByCustomerID(user?.customerId);
-          setReservedData(TruckReserved.data)
-          return
-        case 'Machinery':
-          const machineReserved = await agent.LoadData.reservedMachineryByCustomerID(user?.customerId);
-          setReservedData(machineReserved.data)
-          return
+        case "Trucks":
+          const TruckReserved = await agent.LoadData.reservedTrucksByCustomerID(
+            user?.customerId
+          );
+          setReservedData(TruckReserved.data);
+          return;
+        case "Machinery":
+          const machineReserved =
+            await agent.LoadData.reservedMachineryByCustomerID(
+              user?.customerId
+            );
+          setReservedData(machineReserved.data);
+          return;
 
         default:
-          const carReserved = await agent.LoadData.reservedCarsByCustomerID(user?.customerId);
-          setReservedData(carReserved.data)
+          // 36
+          const carReserved = await agent.LoadData.reservedCarsByCustomerID(
+            user?.customerId
+          );
+          setReservedData(carReserved.data);
       }
-    }
-    getData()
-
-  }, [sort])
+    };
+    getData();
+  }, [sort]);
   return (
     <div>
       <p className="text-lg text-[#221C63] text-end mt-3 mb-2">
-        Reserved {" "}    <select
+        Reserved{" "}
+        <select
           className="w-auto rounded-md bg-white px-6 py-2 !text-[9px] sm:!text-sm font-semibold text-blue-900 hover:bg-blue-100"
           aria-expanded="true"
           aria-haspopup="true"
@@ -43,9 +53,9 @@ export default function Reserved() {
             setSort(e.target.value);
           }}
         >
-          <option value={'Cars'}> Car</option>
-          <option value={'Trucks'}>Truck</option>
-          <option value={'Machinery'}>Machinery</option>
+          <option value={"Cars"}> Car</option>
+          <option value={"Trucks"}>Truck</option>
+          <option value={"Machinery"}>Machinery</option>
         </select>
       </p>
       <CarReservedTable data={reservedData} />

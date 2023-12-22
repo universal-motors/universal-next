@@ -42,9 +42,9 @@ interface Props {
 export default async function ResultPage({ searchParams }: Props) {
   const { id } = useParams();
   const params = new URLSearchParams();
-  const [bodyTypes, setbodytypes] = useState<BodyType[]>([])
-  const [carMake, setmakes] = useState<Make[]>([])
-  const [locations, setlocations] = useState<any>([])
+  const [bodyTypes, setbodytypes] = useState<BodyType[]>([]);
+  const [carMake, setmakes] = useState<Make[]>([]);
+  const [locations, setlocations] = useState<any>([]);
 
   if (searchParams.makeID) params.set("MakeID", searchParams.makeID.toString());
   if (searchParams.modelID)
@@ -58,19 +58,17 @@ export default async function ResultPage({ searchParams }: Props) {
   if (id) params.set("MakeID", id.toString());
   params.set("OrderBy", "stockid%20desc");
 
-
   useEffect(() => {
     const getData = async () => {
       const bodyTypes = await GetBodyTypes();
       const carMake = await GetCarMakes();
       const locations = await GetLocations();
-      setbodytypes(bodyTypes)
-      setmakes(carMake)
-      setlocations(locations)
-
-    }
-    getData()
-  }, [])
+      setbodytypes(bodyTypes);
+      setmakes(carMake);
+      setlocations(locations);
+    };
+    getData();
+  }, []);
   return (
     <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 p-0 second-searchform">
       {/*<DetailedSearchBox />*/}

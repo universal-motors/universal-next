@@ -140,8 +140,11 @@ export default function HowToBuy() {
                       </p>
                       <br />
                       <p>
-                        You can proceed with payments; account details will be printed on the invoice. Once funds are transferred, please email or fax us with TT Copy / Payment proof. Upon permit, we will reply to you confirming the receipt of payment.
-
+                        You can proceed with payments; account details will be
+                        printed on the invoice. Once funds are transferred,
+                        please email or fax us with TT Copy / Payment proof.
+                        Upon permit, we will reply to you confirming the receipt
+                        of payment.
                       </p>
                     </div>
                   </div>
@@ -275,10 +278,19 @@ export default function HowToBuy() {
                       </p>
                       <br />
                       <p>
-
-                        Shipping company will send us Original Bill of Ladings in 3 to 4 days after the ship’s departure. We will email you scan copy of all documents for reference. Originals will then be couriered using first class courier service. Our office will email you with track and trace number of parcel for easy online tracking.
+                        Shipping company will send us Original Bill of Ladings
+                        in 3 to 4 days after the ship’s departure. We will email
+                        you scan copy of all documents for reference. Originals
+                        will then be couriered using first class courier
+                        service. Our office will email you with track and trace
+                        number of parcel for easy online tracking.
                         <br />
-                        Telex Release: In addition to these services, we are pleased to provide you with the option of a Telex Release. The Telex Release is a safe and efficient electronic release of the Bill of Lading that eliminates the need for physical papers and speeds up customs processing.
+                        Telex Release: In addition to these services, we are
+                        pleased to provide you with the option of a Telex
+                        Release. The Telex Release is a safe and efficient
+                        electronic release of the Bill of Lading that eliminates
+                        the need for physical papers and speeds up customs
+                        processing.
                       </p>
                     </div>
                   </div>

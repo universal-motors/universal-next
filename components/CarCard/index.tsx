@@ -7,7 +7,6 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import { toast } from "react-toastify";
-
 type Prop = {
   car: any;
   href: string;
@@ -23,7 +22,6 @@ export default function CarCard({ car, href, fav }: Prop) {
     }
   }, [isfa]);
   const { user, setIsUpdate, update: updateData } = useUserStore();
-
   // const login = useGoogleLogin({
   //   onSuccess: async (tokenResponse: any) => {
   //     await axios
@@ -58,6 +56,14 @@ export default function CarCard({ car, href, fav }: Prop) {
           height={400}
           src={car.imageUrl}
         />
+        {car?.isReserved && (
+          <div className="absolute top-0 w-full h-full">
+            <div className="bg-[#221C63] mt-3 relative opacity-75 top-10 right-14 w-full h-7 -rotate-[50deg]">
+              <p className="text-white text-center">Reserved</p>
+            </div>
+          </div>
+        )}
+
         <FaHeart
           onClick={() => {
             if (user && user.customerId) {
@@ -77,12 +83,11 @@ export default function CarCard({ car, href, fav }: Prop) {
                 setFav(!isfav);
                 return;
               }
-              toast.info('Make a profile to add to your favorites!')
-              return
-
+              toast.info("Make a profile to add to your favorites!");
+              return;
             }
             // login();
-            router.push("/sign-in")
+            router.push("/sign-in");
             console.log("Not Logged In");
           }}
           size={"24px"}

@@ -1,8 +1,8 @@
 import agent from "@/api/agent";
-import ContactUs from "@/components/pages/contact/ContactUs";
 import DescriptionUI from "@/components/ui/DescriptionUI";
 import CarDetailedSlideshow from "../../cars/[id]/CarDetailedSlideshow";
 import PriceCalculator from "../../cars/[id]/PriceCalculator";
+import CountdownTimer from "../../cars/[id]/counter";
 import TruckKeyInformation from "./TruckKeyInformation";
 import TruckSpecification from "./TruckSpecification";
 
@@ -98,6 +98,15 @@ export default async function CarDetailed({ params }: Props) {
                             {Stock.data.stockCode}
                           </span>
                         </div>
+                        {Stock.data.isReserved ? (
+                          <div className="stock w-full">
+                            <span className="flex items-center gap-x-1 bg-[#f1f5f9] px-2 py-1 font-medium text-[#221C63] border-[1px] border-[#221C63] rounded-xl my-2">
+                              <CountdownTimer date={Stock.data.isReservedOn} />
+                            </span>
+                          </div>
+                        ) : (
+                          ""
+                        )}
                       </div>
 
                       <hr />
@@ -147,9 +156,12 @@ export default async function CarDetailed({ params }: Props) {
                         portMapping={PortMapping.data}
                         freightCharges={freightChargeMaster.data}
                         inspectionCost={inspectionCost.data}
+                        stockCode={Stock.data.stockCode}
+                        reservedBy={Stock.data.reservedBy}
+                        isReserved={Stock.data.isReserved}
                       />
                       {/*<InquiryForm/>*/}
-                      <ContactUs stockcode={Stock.data.stockCode} />
+                      {/* <ContactUs stockcode={Stock.data.stockCode} /> */}
                     </div>
                   </div>
                 </div>

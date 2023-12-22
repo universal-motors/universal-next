@@ -137,8 +137,7 @@ export default function BankInformation() {
                   <p style={{ marginBottom: "0rem !important" }}>
                     <span className="mr-3">Branch Name :</span>
                     <span className="color-span">
-                      <b> Etihad Airways Center, 5TH Floor - Abu Dhabi - UAE
-                      </b>
+                      <b> Etihad Airways Center, 5TH Floor - Abu Dhabi - UAE</b>
                     </span>
                   </p>
                 </div>
@@ -211,8 +210,7 @@ export default function BankInformation() {
                   <p style={{ marginBottom: "0rem !important" }}>
                     <span className="mr-3">Branch Name :</span>
                     <span className="color-span">
-                      <b>Etihad Airways Center, 5TH Floor - Abu Dhabi - UAE
-                      </b>
+                      <b>Etihad Airways Center, 5TH Floor - Abu Dhabi - UAE</b>
                     </span>
                   </p>
                 </div>
@@ -248,8 +246,7 @@ export default function BankInformation() {
                   <p style={{ marginBottom: "0rem !important" }}>
                     <span className="mr-3">Branch Name :</span>
                     <span className="color-span">
-                      <b>BLGD of Ahmed Khalifa Salem Al Darm
-                      </b>
+                      <b>BLGD of Ahmed Khalifa Salem Al Darm</b>
                     </span>
                   </p>
                 </div>

@@ -18,7 +18,7 @@ export default function SearchBar() {
   const { isUpdate, user } = useUserStore();
   const onHandleSubmit = (event: FormEvent) => {
     if (user?.email && !isUpdate) {
-      return toast.info("Create Profile First")
+      return toast.info("Create Profile First");
     }
     event.preventDefault();
     if (searchKey === "") return;
@@ -101,8 +101,9 @@ export default function SearchBar() {
           </button>
           <div
             id="dropdown"
-            className={` ${!dropdown && "hidden"
-              } absolute z-50  bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700`}
+            className={` ${
+              !dropdown && "hidden"
+            } absolute z-50  bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700`}
           >
             {vehicleTypes.map((item) => {
               return (

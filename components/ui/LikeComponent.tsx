@@ -58,11 +58,11 @@ export default function LikeComponent({ fav, car }: Prop) {
         setFav(!isfav);
         return;
       }
-      toast.info('Make a profile to add to your favorites!')
-      return
+      toast.info("Make a profile to add to your favorites!");
+      return;
     }
     // login();
-    router.push('/sign-in')
+    router.push("/sign-in");
     console.log("Not Logged In");
   };
 
@@ -93,8 +93,6 @@ export default function LikeComponent({ fav, car }: Prop) {
           Add to Favorites
         </span>
       )}
-
-
     </>
   );
 }

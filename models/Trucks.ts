@@ -29,7 +29,8 @@ export interface Trucks {
 
   engineSize: string;
   year: number;
-
+  reservedBy: number;
+  isReservedOn: Date;
   modelCode: string;
   price: number;
   auctionGrade: string;

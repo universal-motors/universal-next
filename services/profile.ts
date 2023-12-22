@@ -9,7 +9,6 @@ export const checkEmail = async (
   updateData: any,
   router: any
 ) => {
-
   try {
     updateData({ ...initialUserData, email: email, name: name, img: img });
     let res = await axios({
@@ -18,7 +17,7 @@ export const checkEmail = async (
       // data: reqBody
     });
     if (res && res?.data === false) {
-      router.push('/dashboard')
+      router.push("/dashboard");
     }
     if (res && res.data) {
       // setUpdate(true);
@@ -39,7 +38,6 @@ export const checkEmail = async (
     }
   } catch (error: any) {
     if (error && error.message === "Request failed with status code 404") {
-
       updateData({ ...initialUserData, email: email, name: name });
 
       setIsUpdate(false);
