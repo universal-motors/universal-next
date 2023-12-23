@@ -16,7 +16,7 @@ export default function Page() {
                 user.customerId
             );
             let data = details.data.filter(
-                (itm: TransactionInfo) => itm.isVoucher === false
+                (itm: TransactionInfo) => itm.isVoucher === true
             );
             setHistoryData(data);
         };
