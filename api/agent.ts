@@ -230,7 +230,7 @@ const LoadData = {
     request.get<TransactionInfo[]>(`customers/transactions/${customerId}`),
   getTransactionsHistory: (customerId: number, stockId: number) =>
     request.get<SalesOrderDetail>(
-      `customers/salesdetail/${stockId}/${customerId}`
+      `customers/salesdetail/${customerId}/${stockId}`
     ),
 };
 //
