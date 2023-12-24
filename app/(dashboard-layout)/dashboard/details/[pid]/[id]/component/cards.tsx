@@ -54,7 +54,7 @@ export default async function Cards({ stockID }: Prop) {
           )}
           {(stock?.releaseOk || stock?.releaseDate) && (
             <div className="w-[240px] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
-              <h5 className="text-[#A3AED0] text-[14px]">Ship Ok Date</h5>
+              <h5 className="text-[#A3AED0] text-[14px]">Release Date</h5>
               <p className="text-[24px] font-bold text-center">
                 {stock?.releaseDate}
               </p>
@@ -66,15 +66,15 @@ export default async function Cards({ stockID }: Prop) {
             <p className="text-[24px] font-bold text-center">{stock?.eta}</p>
           </div>
           <div className="w-[240px] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
-            <h5 className="text-[#A3AED0] text-[14px]">ETA</h5>
-            <p className="text-[24px] font-bold text-center">{stock?.eta}</p>
+            <h5 className="text-[#A3AED0] text-[14px]">ETD</h5>
+            <p className="text-[24px] font-bold text-center">{stock?.etd}</p>
           </div>
-          <div className="w-[240px] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
+          {/* <div className="w-[240px] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
             <h5 className="text-[#A3AED0] text-[14px]">Release Date</h5>
             <p className="text-[24px] font-bold text-center">
               {stock?.releaseDate}
             </p>
-          </div>
+          </div> */}
           <div className="w-[240px] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
             <h5 className="text-[#A3AED0] text-[14px]">Ship Name</h5>
             <p className="text-[24px] font-bold text-center">
@@ -176,6 +176,6 @@ export default async function Cards({ stockID }: Prop) {
             </div>
           </div>
         </div>
-      </div>
+      </div >
     );
 }
