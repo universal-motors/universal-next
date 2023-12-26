@@ -226,9 +226,11 @@ const LoadData = {
     request.get<Trucks[]>(
       `customers/money_allocation/${customerId}/${stockId}`
     ),
-  getSalesOrderDetailPerStock: (customerId: number) =>
+  getTransactionsHistory: (customerId: number) =>
     request.get<TransactionInfo[]>(`customers/transactions/${customerId}`),
-  getTransactionsHistory: (customerId: number, stockId: number) =>
+  getSalesOrderDepositInformation: (customerId: number) =>
+    request.get<TransactionInfo[]>(`customers/depositinformation/${customerId}`),
+  getSalesOrderDetailPerStock: (customerId: number, stockId: number) =>
     request.get<SalesOrderDetail>(
       `customers/salesdetail/${customerId}/${stockId}`
     ),

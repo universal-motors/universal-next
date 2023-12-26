@@ -12,13 +12,10 @@ export default function Page() {
     useEffect(() => {
         const getData = async () => {
             // 36
-            const details = await agent.LoadData.getSalesOrderDetailPerStock(
-                user.customerId
+            const details = await agent.LoadData.getTransactionsHistory(
+                10
             );
-            let data = details.data.filter(
-                (itm: TransactionInfo) => itm.isVoucher === false
-            );
-            setHistoryData(data);
+            setHistoryData(details.data);
         };
         getData();
     }, []);

@@ -17,7 +17,7 @@ export default function HistoryTable({ data }: Prop) {
                         Amount
                     </th>
                     <th scope="col" className="px-6 py-3">
-                        Reference
+                        Voucher Code
                     </th>
                     <th scope="col" className="px-6 py-3">
                         Bank
@@ -28,9 +28,9 @@ export default function HistoryTable({ data }: Prop) {
                     <th scope="col" className="px-6 py-3">
                         Currency
                     </th>
-                    <th scope="col" className="px-6 py-3">
+                    {/* <th scope="col" className="px-6 py-3">
                         Running Balance
-                    </th>
+                    </th> */}
                     {/* <th scope="col" className="px-6 py-3">
                 ETA
             </th>
@@ -55,11 +55,11 @@ export default function HistoryTable({ data }: Prop) {
                         >
                             <td className="px-6 py-4">{item.payerName}</td>
                             <td className="px-6 py-4">{item.amount}</td>
-                            <td className="px-6 py-4">{item.reference}</td>
+                            <td className="px-6 py-4">{item.voucherCode}</td>
                             <td className="px-6 py-4">{item.bankName}</td>
                             <td className="px-6 py-4">{getFormatedDate(item.transactionDate)}</td>
                             <td className="px-6 py-4">{item.currency}</td>
-                            <td className="px-6 py-4">{item.runningBalance}</td>
+                            {/* <td className="px-6 py-4">{item.runningBalance}</td> */}
                             {/* <td className="px-6 py-4 flex">
                         <Link href={`/global/results/cars/${item.}`}>
                             <p className="font-medium text-blue-600 dark:text-blue-500 hover:underline">
