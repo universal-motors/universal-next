@@ -13,7 +13,7 @@ export default function Page() {
         const getData = async () => {
             // 36
             const details = await agent.LoadData.getTransactionsHistory(
-                10
+                user.customerId
             );
             setHistoryData(details.data);
         };

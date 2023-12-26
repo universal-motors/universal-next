@@ -18,7 +18,7 @@ export default async function Cards({ stockID }: Prop) {
   useEffect(() => {
     const getData = async () => {
       // 33, 17260
-      const Stock = await agent.LoadData.getTransactionsHistory(
+      const Stock = await agent.LoadData.getSalesOrderDetailPerStock(
         user?.customerId,
         stockID
       );

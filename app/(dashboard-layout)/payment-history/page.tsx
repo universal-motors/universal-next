@@ -13,7 +13,7 @@ export default function Page() {
         const getData = async () => {
             // 36
             const details = await agent.LoadData.getSalesOrderDepositInformation(
-                10
+                user.customerId
             );
             // let data = details.data.filter(
             //     (itm: TransactionInfo) => itm.isVoucher === true
