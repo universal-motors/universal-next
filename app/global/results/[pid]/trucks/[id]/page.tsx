@@ -66,6 +66,7 @@ export default async function CarDetailed({ params }: Props) {
                         <div id="wrap" className="container-fluid">
                           <div className="row">
                             <CarDetailedSlideshow
+                              isReserved={Stock.data?.isReserved}
                               mainPic={Stock.data?.imageUrl}
                               stockID={Stock.data?.stockId}
                             />

@@ -86,6 +86,8 @@ export interface TransactionInfo {
   bankName: String;
   transactionDate: String;
   isVoucher: Boolean;
+  createdOn: Date;
+
 }
 
 export interface SalesOrderDetail {

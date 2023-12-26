@@ -12,13 +12,13 @@ export default function Page() {
     useEffect(() => {
         const getData = async () => {
             // 36
-            const details = await agent.LoadData.getSalesOrderDetailPerStock(
+            const details = await agent.LoadData.getSalesOrderDepositInformation(
                 user.customerId
             );
-            let data = details.data.filter(
-                (itm: TransactionInfo) => itm.isVoucher === true
-            );
-            setHistoryData(data);
+            // let data = details.data.filter(
+            //     (itm: TransactionInfo) => itm.isVoucher === true
+            // );
+            setHistoryData(details.data);
         };
         getData();
     }, []);

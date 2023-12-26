@@ -3,6 +3,7 @@
 import agent from "@/api/agent";
 import { SalesOrderDetail } from "@/models/Customer";
 import { useUserStore } from "@/store/store";
+import { getFormatedDate } from "@/utils/dateFormat";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { PieChart } from "react-minimal-pie-chart";
@@ -17,11 +18,13 @@ export default async function Cards({ stockID }: Prop) {
   useEffect(() => {
     const getData = async () => {
       // 33, 17260
-      const Stock = await agent.LoadData.getTransactionsHistory(
+      const Stock = await agent.LoadData.getSalesOrderDetailPerStock(
         user?.customerId,
         stockID
       );
-      if (Stock) setStock(Stock?.data);
+      if (Stock) {
+        setStock(Stock.data);
+      }
     };
     getData();
   }, []);
@@ -29,64 +32,68 @@ export default async function Cards({ stockID }: Prop) {
     return (
       <div>
         <h2 className="!text-[14px] sm:!text-[24px] capitalize text-center font-semibold leading-6 text-gray-900 mb-3">
-          {pid} Information
+          {pid === "reserved" ? "Reserve" : "Purchase"} Information
         </h2>
         <div className="w-full flex flex-wrap items-center justify-center gap-8">
-          <div className="w-[240px] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50  ">
+          <div className="w-[180px] border-l-2 border-r-2 border-[#221C63] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50  ">
             <h5 className="text-[#A3AED0] text-[14px]">Total CNF</h5>
-            <p className="text-[24px] font-bold">${stock?.totalCnf}</p>
+            <p className="text-[18px] text-[#676d7e] font-semibold">${stock?.totalCnf}</p>
           </div>
-          <div className="w-[240px] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
+          <div className="w-[180px] h-[120px] border-l-2 border-r-2 border-[#221C63] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
             <h5 className="text-[#A3AED0] text-[14px]">Allocated Amount</h5>
-            <p className="text-[24px] font-bold">${stock?.allocatedAmount}</p>
+            <p className="text-[18px] text-[#676d7e] font-semibold">${stock?.allocatedAmount}</p>
           </div>
-          <div className="w-[240px] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
+          <div className="w-[180px] h-[120px] border-l-2 border-r-2 border-[#221C63] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
             <h5 className="text-[#A3AED0] text-[14px]">Balance Amount</h5>
-            <p className="text-[24px] font-bold">${stock?.balanceAmount}</p>
+            <p className="text-[18px] text-[#676d7e] font-semibold">${stock?.balanceAmount}</p>
           </div>
-          {(stock?.shipOk || stock?.shipOkDate) && (
-            <div className="w-[240px] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
-              <h5 className="text-[#A3AED0] text-[14px]">Ship Ok Date</h5>
-              <p className="text-[24px] font-bold text-center">
-                {stock?.shipOkDate}
-              </p>
-            </div>
-          )}
-          {(stock?.releaseOk || stock?.releaseDate) && (
-            <div className="w-[240px] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
-              <h5 className="text-[#A3AED0] text-[14px]">Ship Ok Date</h5>
-              <p className="text-[24px] font-bold text-center">
-                {stock?.releaseDate}
-              </p>
-            </div>
-          )}
+          {(stock?.shipOk && stock?.shipOkDate) && (
+            <div className="w-[180px] h-[120px] border-l-2 border-r-2 border-[#221C63] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
+              <h5 className="text-[#A3AED0] text-[14px]"> OK to Book </h5>
+              <p className="text-[18px] text-[#676d7e] font-semibold text-center">
 
-          <div className="w-[240px] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
+                {stock.shipOk ? stock?.shipOkDate : ''}
+              </p>
+            </div>
+          )}
+          {!stock.eta.includes('1900-01-01') && <div className="w-[180px] h-[120px] border-l-2 border-r-2 border-[#221C63] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
             <h5 className="text-[#A3AED0] text-[14px]">ETA</h5>
-            <p className="text-[24px] font-bold text-center">{stock?.eta}</p>
+            <p className="text-[18px] text-[#676d7e] font-semibold text-center">{getFormatedDate(stock?.eta)}</p>
+          </div>}
+          {!stock.etd.includes('1900-01-01') && <div className="w-[180px] h-[120px] border-l-2 border-r-2 border-[#221C63] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
+            <h5 className="text-[#A3AED0] text-[14px]">ETD</h5>
+            <p className="text-[18px] text-[#676d7e] font-semibold text-center">{getFormatedDate(stock?.eta)}</p>
+          </div>}
+          {(stock?.releaseOk && stock?.releaseDate) && (
+            <div className="w-[180px] h-[120px] border-l-2 border-r-2 border-[#221C63] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
+              <h5 className="text-[#A3AED0] text-center text-[14px]"> OK to Release Documents</h5>
+              <p className="text-[18px] text-[#676d7e] font-semibold text-center">
+                {stock.releaseOk ? stock?.releaseDate : ''}
+              </p>
+            </div>
+          )}
+          <div className="w-[180px] h-[120px] border-l-2 border-r-2 border-[#221C63] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
+            <h5 className="text-[#A3AED0] text-[14px]">Documents <br /> Dispatched</h5>
+            <p className="text-[18px] text-[#676d7e] font-semibold text-center">{stock?.release ? "✔️" : "❌"}</p>
           </div>
-          <div className="w-[240px] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
-            <h5 className="text-[#A3AED0] text-[14px]">ETA</h5>
-            <p className="text-[24px] font-bold text-center">{stock?.eta}</p>
-          </div>
-          <div className="w-[240px] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
+          {/* <div className="w-[180px] h-[120px] border-l-2 border-r-2 border-[#221C63] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
             <h5 className="text-[#A3AED0] text-[14px]">Release Date</h5>
-            <p className="text-[24px] font-bold text-center">
+            <p className="text-[18px] text-[#676d7e] font-semibold text-center">
               {stock?.releaseDate}
             </p>
-          </div>
-          <div className="w-[240px] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
+          </div> */}
+          {stock?.shipName && <div className="w-[180px] h-[120px] border-l-2 border-r-2 border-[#221C63] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
             <h5 className="text-[#A3AED0] text-[14px]">Ship Name</h5>
-            <p className="text-[24px] font-bold text-center">
+            <p className="text-[18px] text-[#676d7e] font-semibold text-center">
               {stock?.shipName}
             </p>
-          </div>
-          <div className="w-[240px] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
-            <h5 className="text-[#A3AED0] text-[14px]">Invoice No</h5>
-            <p className="text-[24px] font-bold text-center">
+          </div>}
+          {stock?.voyageNumber.replaceAll(" ", '') && <div className="w-[180px] h-[120px] border-l-2 border-r-2 border-[#221C63] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
+            <h5 className="text-[#A3AED0] text-[14px]">Voyage No</h5>
+            <p className="text-[18px] text-[#676d7e] font-semibold text-center">
               {stock?.voyageNumber}
             </p>
-          </div>
+          </div>}
           {/* ------------------------------------------------------------------------- */}
           <div className="w-full px-6">
             <div className="border-b border-gray-200 bg-white px-2 py-5 sm:px-6">
@@ -176,6 +183,6 @@ export default async function Cards({ stockID }: Prop) {
             </div>
           </div>
         </div>
-      </div>
+      </div >
     );
 }
