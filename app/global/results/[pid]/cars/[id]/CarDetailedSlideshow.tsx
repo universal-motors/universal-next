@@ -7,11 +7,13 @@ import ShareDownloadComponent from "./ShareDownloadComponent";
 interface Props {
   stockID: number;
   mainPic: string;
+  isReserved: Boolean;
 }
 
 export default async function CarDetailedSlideshow({
   stockID,
   mainPic,
+  isReserved,
 }: Props) {
   const stockPicture = await agent.LoadData.stockSliderList(stockID);
   const images = stockPicture.data?.map((pic) => ({
@@ -21,7 +23,9 @@ export default async function CarDetailedSlideshow({
 
   return (
     <>
-      <CarouselStock imageURLs={images} />
+      <CarouselStock
+        isReserved={isReserved}
+        imageURLs={images} />
       <ShareDownloadComponent imageList={stockPicture?.data} />
     </>
   );

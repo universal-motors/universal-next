@@ -45,8 +45,8 @@ export default async function CarDetailed({ params }: Props) {
   );
   const freightChargeMaster = await agent.LoadData.freightcost();
   const inspectionCost = await agent.LoadData.inspectioncost();
-
   if (Stock != null)
+
     return (
       <>
         <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection">
@@ -63,6 +63,7 @@ export default async function CarDetailed({ params }: Props) {
                         <div id="wrap" className="container-fluid">
                           <div className="row">
                             <CarDetailedSlideshow
+                              isReserved={Stock.data.isReserved}
                               mainPic={Stock.data.imageUrl}
                               stockID={Stock.data.stockId}
                             />

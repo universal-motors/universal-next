@@ -16,28 +16,29 @@ export default function Reserved() {
   >([]);
   useEffect(() => {
     const getData = async () => {
-      switch (sort) {
-        case "Trucks":
-          const TruckReserved = await agent.LoadData.reservedTrucksByCustomerID(
-            user?.customerId
-          );
-          setReservedData(TruckReserved.data);
-          return;
-        case "Machinery":
-          const machineReserved =
-            await agent.LoadData.reservedMachineryByCustomerID(
+      if (user && user?.customerId)
+        switch (sort) {
+          case "Trucks":
+            const TruckReserved = await agent.LoadData.reservedTrucksByCustomerID(
               user?.customerId
             );
-          setReservedData(machineReserved.data);
-          return;
+            setReservedData(TruckReserved.data);
+            return;
+          case "Machinery":
+            const machineReserved =
+              await agent.LoadData.reservedMachineryByCustomerID(
+                user?.customerId
+              );
+            setReservedData(machineReserved.data);
+            return;
 
-        default:
-          // 36
-          const carReserved = await agent.LoadData.reservedCarsByCustomerID(
-            user?.customerId
-          );
-          setReservedData(carReserved.data);
-      }
+          default:
+            // 36
+            const carReserved = await agent.LoadData.reservedCarsByCustomerID(
+              user?.customerId
+            );
+            setReservedData(carReserved.data);
+        }
     };
     getData();
   }, [sort]);

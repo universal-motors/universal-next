@@ -32,58 +32,58 @@ export default async function Cards({ stockID }: Prop) {
           {pid} Information
         </h2>
         <div className="w-full flex flex-wrap items-center justify-center gap-8">
-          <div className="w-[240px] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50  ">
+          <div className="w-[180px] border-l-2 border-r-2 border-[#221C63] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50  ">
             <h5 className="text-[#A3AED0] text-[14px]">Total CNF</h5>
-            <p className="text-[24px] font-bold">${stock?.totalCnf}</p>
+            <p className="text-[18px] text-[#676d7e] font-semibold">${stock?.totalCnf}</p>
           </div>
-          <div className="w-[240px] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
+          <div className="w-[180px] h-[120px] border-l-2 border-r-2 border-[#221C63] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
             <h5 className="text-[#A3AED0] text-[14px]">Allocated Amount</h5>
-            <p className="text-[24px] font-bold">${stock?.allocatedAmount}</p>
+            <p className="text-[18px] text-[#676d7e] font-semibold">${stock?.allocatedAmount}</p>
           </div>
-          <div className="w-[240px] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
+          <div className="w-[180px] h-[120px] border-l-2 border-r-2 border-[#221C63] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
             <h5 className="text-[#A3AED0] text-[14px]">Balance Amount</h5>
-            <p className="text-[24px] font-bold">${stock?.balanceAmount}</p>
+            <p className="text-[18px] text-[#676d7e] font-semibold">${stock?.balanceAmount}</p>
           </div>
           {(stock?.shipOk || stock?.shipOkDate) && (
-            <div className="w-[240px] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
+            <div className="w-[180px] h-[120px] border-l-2 border-r-2 border-[#221C63] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
               <h5 className="text-[#A3AED0] text-[14px]">Ship Ok Date</h5>
-              <p className="text-[24px] font-bold text-center">
+              <p className="text-[18px] text-[#676d7e] font-semibold text-center">
                 {stock?.shipOkDate}
               </p>
             </div>
           )}
           {(stock?.releaseOk || stock?.releaseDate) && (
-            <div className="w-[240px] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
+            <div className="w-[180px] h-[120px] border-l-2 border-r-2 border-[#221C63] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
               <h5 className="text-[#A3AED0] text-[14px]">Release Date</h5>
-              <p className="text-[24px] font-bold text-center">
+              <p className="text-[18px] text-[#676d7e] font-semibold text-center">
                 {stock?.releaseDate}
               </p>
             </div>
           )}
 
-          <div className="w-[240px] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
+          <div className="w-[180px] h-[120px] border-l-2 border-r-2 border-[#221C63] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
             <h5 className="text-[#A3AED0] text-[14px]">ETA</h5>
-            <p className="text-[24px] font-bold text-center">{stock?.eta}</p>
+            <p className="text-[18px] text-[#676d7e] font-semibold text-center">{stock?.eta}</p>
           </div>
-          <div className="w-[240px] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
+          <div className="w-[180px] h-[120px] border-l-2 border-r-2 border-[#221C63] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
             <h5 className="text-[#A3AED0] text-[14px]">ETD</h5>
-            <p className="text-[24px] font-bold text-center">{stock?.etd}</p>
+            <p className="text-[18px] text-[#676d7e] font-semibold text-center">{stock?.etd}</p>
           </div>
-          {/* <div className="w-[240px] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
+          {/* <div className="w-[180px] h-[120px] border-l-2 border-r-2 border-[#221C63] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
             <h5 className="text-[#A3AED0] text-[14px]">Release Date</h5>
-            <p className="text-[24px] font-bold text-center">
+            <p className="text-[18px] text-[#676d7e] font-semibold text-center">
               {stock?.releaseDate}
             </p>
           </div> */}
-          <div className="w-[240px] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
+          <div className="w-[180px] h-[120px] border-l-2 border-r-2 border-[#221C63] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
             <h5 className="text-[#A3AED0] text-[14px]">Ship Name</h5>
-            <p className="text-[24px] font-bold text-center">
+            <p className="text-[18px] text-[#676d7e] font-semibold text-center">
               {stock?.shipName}
             </p>
           </div>
-          <div className="w-[240px] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
+          <div className="w-[180px] h-[120px] border-l-2 border-r-2 border-[#221C63] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-slate-50 ">
             <h5 className="text-[#A3AED0] text-[14px]">Invoice No</h5>
-            <p className="text-[24px] font-bold text-center">
+            <p className="text-[18px] text-[#676d7e] font-semibold text-center">
               {stock?.voyageNumber}
             </p>
           </div>

@@ -18,27 +18,28 @@ export default function Purchased() {
 
   useEffect(() => {
     const getData = async () => {
-      switch (sort) {
-        case "Trucks":
-          const TruckPurchased =
-            await agent.LoadData.purchasedTrucksByCustomerID(user?.customerId);
-          setPurchasedData(TruckPurchased.data);
-          return;
-        case "Machinery":
-          const machinePurchased =
-            await agent.LoadData.purchasedMachineryByCustomerID(
+      if (user && user?.customerId)
+        switch (sort) {
+          case "Trucks":
+            const TruckPurchased =
+              await agent.LoadData.purchasedTrucksByCustomerID(user?.customerId);
+            setPurchasedData(TruckPurchased.data);
+            return;
+          case "Machinery":
+            const machinePurchased =
+              await agent.LoadData.purchasedMachineryByCustomerID(
+                user?.customerId
+              );
+            setPurchasedData(machinePurchased.data);
+            return;
+
+          default:
+            // 5
+            const carPurchased = await agent.LoadData.purchasedCarsByCustomerID(
               user?.customerId
             );
-          setPurchasedData(machinePurchased.data);
-          return;
-
-        default:
-          // 5
-          const carPurchased = await agent.LoadData.purchasedCarsByCustomerID(
-            user?.customerId
-          );
-          setPurchasedData(carPurchased.data);
-      }
+            setPurchasedData(carPurchased.data);
+        }
     };
     getData();
   }, [sort]);
