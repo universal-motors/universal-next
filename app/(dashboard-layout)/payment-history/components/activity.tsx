@@ -1,4 +1,5 @@
 import { TransactionInfo } from "@/models/Customer";
+import { getFormatedDate } from "@/utils/dateFormat";
 
 type Prop = {
     data: TransactionInfo[];
@@ -43,7 +44,7 @@ export default function ActivityTable({ data }: Prop) {
                             key={i}
                             className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
                         >
-                            <td className="px-6 py-4">{item.transactionDate}</td>
+                            <td className="px-6 py-4">{getFormatedDate(item.transactionDate)}</td>
                             <td className="px-6 py-4">{item.reference}</td>
                             <td className="px-6 py-4">{item.amount}</td>
                             <td className="px-6 py-4">{item.runningBalance}</td>

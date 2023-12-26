@@ -68,8 +68,7 @@ export default async function ReservedDetail({ params }: Props) {
                           <div className="row">
                             <CarDetailedSlideshow
                               mainPic={Stock.data.imageUrl}
-                              stockID={Stock.data.stockId}
-                            />
+                              stockID={Stock.data.stockId} isReserved={false} />
                           </div>
                         </div>
                       </div>

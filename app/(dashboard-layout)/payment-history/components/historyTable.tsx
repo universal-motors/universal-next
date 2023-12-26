@@ -1,4 +1,5 @@
 import { TransactionInfo } from "@/models/Customer";
+import { getFormatedDate } from "@/utils/dateFormat";
 
 type Prop = {
     data: TransactionInfo[];
@@ -56,7 +57,7 @@ export default function HistoryTable({ data }: Prop) {
                             <td className="px-6 py-4">{item.amount}</td>
                             <td className="px-6 py-4">{item.reference}</td>
                             <td className="px-6 py-4">{item.bankName}</td>
-                            <td className="px-6 py-4">{item.transactionDate}</td>
+                            <td className="px-6 py-4">{getFormatedDate(item.transactionDate)}</td>
                             <td className="px-6 py-4">{item.currency}</td>
                             <td className="px-6 py-4">{item.runningBalance}</td>
                             {/* <td className="px-6 py-4 flex">

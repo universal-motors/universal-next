@@ -50,7 +50,7 @@ export default function CarReservedTable({ data }: Prop) {
                   <PriceFormat carPrice={item.price} />
                 </td>
                 <td className="px-6 py-4 flex">
-                  <Link href={`/dashboard/details/reserved/${item.stockId}`}>
+                  <Link href={`/dashboard/details/reserve/${item.stockId}`}>
                     <p className="font-medium text-blue-600 dark:text-blue-500 hover:underline">
                       View
                     </p>

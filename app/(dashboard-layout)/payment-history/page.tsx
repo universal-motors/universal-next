@@ -15,10 +15,10 @@ export default function Page() {
             const details = await agent.LoadData.getSalesOrderDetailPerStock(
                 user.customerId
             );
-            let data = details.data.filter(
-                (itm: TransactionInfo) => itm.isVoucher === true
-            );
-            setHistoryData(data);
+            // let data = details.data.filter(
+            //     (itm: TransactionInfo) => itm.isVoucher === true
+            // );
+            setHistoryData(details.data);
         };
         getData();
     }, []);
