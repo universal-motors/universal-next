@@ -5,7 +5,6 @@ type Prop = {
   date: Date;
 };
 const CountdownTimer = ({ date }: Prop) => {
-  console.log(date);
   // Set your target date (year, month (0-11), day, hour, minute, second)
   const targetDate = new Date(date).getTime(); // Replace with your target date
 
