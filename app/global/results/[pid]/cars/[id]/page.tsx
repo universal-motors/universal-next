@@ -61,7 +61,7 @@ export default async function CarDetailed({ params }: Props) {
                     <div className="col-lg-6  detail-leftsection">
                       <div className="row">
                         <div id="wrap" className="container-fluid">
-                          <div className="row">
+                          <div className="row overflow-hidden">
                             <CarDetailedSlideshow
                               isReserved={Stock.data.isReserved}
                               mainPic={Stock.data.imageUrl}
