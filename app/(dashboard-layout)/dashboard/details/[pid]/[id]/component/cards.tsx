@@ -62,7 +62,7 @@ export default async function Cards({ stockID }: Prop) {
           </div>
           <div className="w-[180px] border-l-4 border-r-0 border-[#FFB703] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-[#0078d491] ">
             <h5 className="text-[#4c5263] text-[14px]">ETD</h5>
-            <p className="text-[18px] text-[#676d7e] font-semibold text-center">{!stock.etd.includes('1900-01-01') ? getFormatedDate(stock?.eta) : <span className="text-red-800 text-[14px]">not Available</span>}</p>
+            <p className="text-[18px] text-[#676d7e] font-semibold text-center">{!stock.etd.includes('1900-01-01') ? getFormatedDate(stock?.etd) : <span className="text-red-800 text-[14px]">not Available</span>}</p>
           </div>
 
           {/* <div className="w-[180px] border-l-4 border-r-0 border-[#FFB703] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-[#0078d491] ">
