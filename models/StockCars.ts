@@ -45,6 +45,7 @@ export interface StockCars {
   isReserved: boolean;
   reservedBy: number;
   isReservedOn: Date;
+  reservedTill: Date;
   modelCode: string;
   price: number;
   auctionGrade: string;

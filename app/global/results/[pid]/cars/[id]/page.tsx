@@ -46,7 +46,6 @@ export default async function CarDetailed({ params }: Props) {
   const freightChargeMaster = await agent.LoadData.freightcost();
   const inspectionCost = await agent.LoadData.inspectioncost();
   if (Stock != null)
-
     return (
       <>
         <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection">
@@ -100,7 +99,7 @@ export default async function CarDetailed({ params }: Props) {
                         {Stock.data.isReserved ? (
                           <div className="stock w-full">
                             <span className="flex items-center gap-x-1 bg-[#f1f5f9] px-2 py-1 font-medium text-[#221C63] border-[1px] border-[#221C63] rounded-xl my-2">
-                              <CountdownTimer date={Stock.data.isReservedOn} />
+                              <CountdownTimer date={Stock.data.reservedTill} />
                             </span>
                           </div>
                         ) : (

@@ -27,7 +27,7 @@ export default function Documents({ stock }: Prop) {
                 <table className="keyinfo !w-[50%]">
                     <thead>
                         <tr>
-                            <td colSpan={2} className="first !text-[12px] sm:!text-[16px]">Consignee / Notify Party</td>
+                            <td colSpan={2} className="first !text-[12px] sm:!text-[16px]">Consignee</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -56,6 +56,9 @@ export default function Documents({ stock }: Prop) {
                             <td className="!text-[12px] sm:!text-[16px]">{stock?.consigneeEmail}</td>
                         </tr>
                         {/* -------------------------------------------------------------------- */}
+                        <tr>
+                            <td colSpan={2} className="first !text-[12px] sm:!text-[16px]">Notify Party</td>
+                        </tr>
                         <tr>
                             <td className="!text-[12px] sm:!text-[16px]">Notify Party Name </td>
                             <td className="!text-[12px] sm:!text-[16px]">{stock?.notifyPartyName}</td>

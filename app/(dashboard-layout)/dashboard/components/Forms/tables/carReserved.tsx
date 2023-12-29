@@ -121,7 +121,7 @@ export default function CarReservedTable({ data }: Prop) {
               </div>
             </div>
             <div className="w-72 ">
-              <p className="font-semibold text-xl mb-14">Total Price: <PriceFormat carPrice={item.price} /></p>
+              <p className="font-semibold text-xl mb-14">Vehicle Price: <PriceFormat carPrice={item.price} /></p>
 
               <Link className="w-full !no-underline" href={`/dashboard/details/reserve/${item.stockId}`}>
                 <div className="w-full bg-[#221C63] py-3 rounded-xl">
