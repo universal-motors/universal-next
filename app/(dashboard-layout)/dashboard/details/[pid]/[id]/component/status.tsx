@@ -40,12 +40,10 @@ export default function Status({ stock }: Prop) {
                         </tr>
                         <tr>
                             <td className=" !text-[12px] sm:!text-[16px]">
-
                                 Consignee
-
                             </td>
                             <td className="!text-[12px] sm:!text-[16px]">
-                                {stock?.shipOk ? "✔️" : "❌"}
+                                {stock?.consigneeName ? "✔️" : "❌"}
                             </td>
                         </tr>
                         <tr>
@@ -53,7 +51,7 @@ export default function Status({ stock }: Prop) {
                                 Notify Party
                             </td>
                             <td className="!text-[12px] sm:!text-[16px]">
-                                {stock?.shipOk ? "✔️" : "❌"}
+                                {stock?.notifyPartyName ? "✔️" : "❌"}
                             </td>
                         </tr>
                         <tr>
@@ -61,7 +59,7 @@ export default function Status({ stock }: Prop) {
                                 Courier Address Updated
                             </td>
                             <td className="!text-[12px] sm:!text-[16px]">
-                                {stock?.shipOk ? "✔️" : "❌"}
+                                {stock?.courierPersonName ? "✔️" : "❌"}
                             </td>
                         </tr>
                     </tbody>

@@ -113,7 +113,7 @@ export interface SalesOrderDetail {
   courierCode: string,
   courierPersonName: string,
   courierPersonCity: string,
-  CourierPersonAddress: string,
+  courierPersonAddress: string,
   courierPersonCountryID: number,
   courierPersonEmail: string,
   courierPersonPhone: number,

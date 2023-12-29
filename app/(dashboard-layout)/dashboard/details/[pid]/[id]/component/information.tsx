@@ -36,10 +36,10 @@ export default function Information({ stock }: Prop) {
                             <td className="!text-[12px] sm:!text-[16px]">ETD</td>
                             <td className="!text-[12px] sm:!text-[16px]">{!stock?.eta.includes('1900-01-01') ? getFormatedDate(stock?.eta) : <span className="text-red-800 text-[14px]">not Available</span>}</td>
                         </tr>
-                        <tr>
+                        {/* <tr>
                             <td className="!text-[12px] sm:!text-[16px]"> </td>
                             <td className="!text-[12px] sm:!text-[16px]"></td>
-                        </tr>
+                        </tr> */}
                     </tbody>
                 </table>
                 <table className="keyinfo !w-[45%]">
