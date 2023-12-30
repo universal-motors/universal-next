@@ -135,20 +135,19 @@ export default function CarsSimpleSearch({
           >
             <SearchSelectItem
               value="1"
-              style={{ borderBottom: "1px solid black" }}
             >
               Right Hand
             </SearchSelectItem>
             <SearchSelectItem value="2">Left Hand</SearchSelectItem>
           </SearchSelect>
         </div>
-        <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-          <div className="showcase-Boxselect">
+        <div className="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
+          <div className="showcase-Boxselect w-full">
             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               Manufacturing Year:
             </label>
-            <div className="flex flex-col md:flex-row  gap-2">
-              <div className="flex-none w-30 h-15 ">
+            <div className="w-full flex flex-col sm:flex-row  gap-2">
+              <div className="flex-auto w-full  ">
                 <SearchSelect
                   placeholder="starting year"
                   value={fromYear}
@@ -161,7 +160,7 @@ export default function CarsSimpleSearch({
                   ))}
                 </SearchSelect>
               </div>
-              <div className="flex-auto w-30">
+              <div className="flex-auto w-full">
                 <SearchSelect
                   placeholder="ending year"
                   value={toYear}

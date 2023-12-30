@@ -187,7 +187,7 @@ const LoadData = {
   consigneeCourierByCustomer: (customerID: number) =>
     request.get<ConsigneeCourier[]>(`customers/Consignee/${customerID}`),
   consigneeCourierByID: (id: number) =>
-    request.get<ConsigneeCourier[]>(`customers/Consignee/id/${id}`),
+    request.get<ConsigneeCourier>(`customers/Consignee/id/${id}`),
   courierDispatchByCustomer: (customerID: number) =>
     request.get<CourierDispatch[]>(`customers/CourierDispatch/${customerID}`),
   courierDispatchByID: (id: number) =>

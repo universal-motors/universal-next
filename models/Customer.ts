@@ -101,10 +101,6 @@ export interface SalesOrderDetail {
   releaseOk: boolean;
   release: boolean;
   listingTitle: string;
-  consigneeName: string;
-  consigneePhone: string;
-  courierPersonName: string;
-  courierPersonPhone: string;
   courierAddress: string;
   shipName: string;
   voyageNumber: string;
@@ -113,4 +109,27 @@ export interface SalesOrderDetail {
   shipOk: boolean;
   shipOkDate: string;
   createdOn: string;
+
+  courierCode: string,
+  courierPersonName: string,
+  courierPersonCity: string,
+  courierPersonAddress: string,
+  courierPersonCountryID: number,
+  courierPersonEmail: string,
+  courierPersonPhone: number,
+  shippingNote: string,
+
+  consigneeName: string,
+  consigneePhone: number,
+  consigneeCity: string,
+  consigneeAddress: string,
+  consigneeCountryID: number,
+  consigneeEmail: string,
+
+  notifyPartyName: string,
+  notifyPartyCity: string,
+  notifyPartyAddress: string,
+  notifyPartyCountryID: number,
+  notifyPartyEmail: string,
+  notifyPartyPhone: number,
 }
