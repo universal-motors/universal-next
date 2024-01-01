@@ -80,11 +80,9 @@ type Prop = {
 export default function CarPurchasedTable({ data }: Prop) {
   return (
     <div className="w-[90%] m-auto overflow-x-auto shadow-md sm:rounded-lg">
-
       {data?.map((item: StockCars | Trucks | Machinery) => {
         return (
           <div className="mt-3 min-w-[1200px] flex gap-3 odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-
             <div className="!min-w-60">
               <img src={item?.imageUrl} className="!w-60 !h-36" alt="" />
               <p className="text-center text-[14px] py-2">Ref No. BP0384</p>
@@ -92,42 +90,37 @@ export default function CarPurchasedTable({ data }: Prop) {
             <div className="w-[60%]">
               <p className="font-semibold text-xl">{item.listingTitle}</p>
               <div className="w-full mt-5">
-                <table >
-                  <tr >
+                <table>
+                  <tr>
                     <td className="w-36 font-semibold bg-slate-100 p-1 mr-1">
                       Invoice No
                     </td>
-                    <td className="w-36 bg-slate-50 p-1"  >
-                      562662
-                    </td>
-                    <td className="w-36 font-semibold bg-slate-100 p-1" >
+                    <td className="w-36 bg-slate-50 p-1">562662</td>
+                    <td className="w-36 font-semibold bg-slate-100 p-1">
                       Payment
                     </td>
-                    <td className="w-36 bg-slate-50 p-1" >
-                      17 Nov, 2023
-                    </td>
+                    <td className="w-36 bg-slate-50 p-1">17 Nov, 2023</td>
                   </tr>
                   <tr>
-                    <td className="w-36 font-semibold bg-slate-100 p-1" >
+                    <td className="w-36 font-semibold bg-slate-100 p-1">
                       Order Date
                     </td>
-                    <td className="w-36 bg-slate-50 p-1" >
-                      14 Nov, 2023
-                    </td>
-                    <td className="w-36 font-semibold bg-slate-100 p-1" >
-                      ETD
-                    </td>
-                    <td className="w-36 bg-slate-50 p-1" >
-                      20 Nov, 2023
-                    </td>
+                    <td className="w-36 bg-slate-50 p-1">14 Nov, 2023</td>
+                    <td className="w-36 font-semibold bg-slate-100 p-1">ETD</td>
+                    <td className="w-36 bg-slate-50 p-1">20 Nov, 2023</td>
                   </tr>
                 </table>
               </div>
             </div>
             <div className="w-72 ">
-              <p className="font-semibold text-xl mb-14">Vehicle Price: <PriceFormat carPrice={item.price} /></p>
+              <p className="font-semibold text-xl mb-14">
+                Vehicle Price: <PriceFormat carPrice={item.price} />
+              </p>
 
-              <Link className="w-full !no-underline" href={`/dashboard/details/purchase/${item.stockId}`}>
+              <Link
+                className="w-full !no-underline"
+                href={`/dashboard/details/purchase/${item.stockId}`}
+              >
                 <div className="w-full bg-[#221C63] py-3 rounded-xl">
                   <p className="font-medium text-center text-white dark:text-blue-500 hover:underline">
                     CAP (Tracking)
@@ -135,7 +128,6 @@ export default function CarPurchasedTable({ data }: Prop) {
                 </div>
               </Link>
             </div>
-
           </div>
         );
       })}

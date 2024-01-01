@@ -23,9 +23,7 @@ export default async function CarDetailedSlideshow({
 
   return (
     <>
-      <CarouselStock
-        isReserved={isReserved}
-        imageURLs={images} />
+      <CarouselStock isReserved={isReserved} imageURLs={images} />
       <ShareDownloadComponent imageList={stockPicture?.data} />
     </>
   );

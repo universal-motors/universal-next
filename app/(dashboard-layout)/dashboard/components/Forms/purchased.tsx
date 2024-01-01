@@ -22,7 +22,9 @@ export default function Purchased() {
         switch (sort) {
           case "Trucks":
             const TruckPurchased =
-              await agent.LoadData.purchasedTrucksByCustomerID(user?.customerId);
+              await agent.LoadData.purchasedTrucksByCustomerID(
+                user?.customerId
+              );
             setPurchasedData(TruckPurchased.data);
             return;
           case "Machinery":
