@@ -1,8 +1,6 @@
-import React from "react";
 import agent from "@/api/agent";
 import Input from "@/components/Input";
 import { CourierDispatch } from "@/models/Customer";
-import { useParams } from "next/navigation";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 type Prop = {
@@ -20,8 +18,8 @@ export default function Courierform({ id }: Prop) {
       setCounties(countries.data);
 
       const { data } = await agent.LoadData.courierDispatchByID(
-        // id
-        13
+        id
+        // 13
       );
       if (data) {
         setValue("personName", String(data?.personName));
@@ -29,6 +27,7 @@ export default function Courierform({ id }: Prop) {
         setValue("courierPersonAddress", String(data?.courierPersonAddress));
         setValue("courierPersonPhone", String(data?.courierPersonPhone));
         setValue("courierPersonEmail", String(data?.courierPersonEmail));
+        setValue("shippingNote", String(data?.shippingNote));
         setConsigneeCountryID(data?.courierPersonCountryId);
       }
     };
@@ -43,7 +42,7 @@ export default function Courierform({ id }: Prop) {
   return (
     <div className="w-[90%] mx-auto mt-7">
       <h1 className="text-center mb-6 font-bold text-lg">
-        Courier Information
+        Courier Person Information
       </h1>
       <form>
         <div className="grid gap-6 mb-6 md:grid-cols-2">
@@ -89,6 +88,17 @@ export default function Courierform({ id }: Prop) {
             label=" City"
             register={{
               ...register("courierPersonCity", {
+                required: " required",
+              }),
+            }}
+          />
+          <Input
+            type="text"
+            placeholder={" Shipping Note"}
+            htmlFor={"shippingNote"}
+            label=" Shipping Note"
+            register={{
+              ...register("shippingNote", {
                 required: " required",
               }),
             }}

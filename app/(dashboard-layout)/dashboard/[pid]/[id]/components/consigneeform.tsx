@@ -1,8 +1,7 @@
 import agent from "@/api/agent";
 import Input from "@/components/Input";
 import { ConsigneeCourier } from "@/models/Customer";
-import { useParams } from "next/navigation";
-import React, { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 type Prop = {
@@ -49,7 +48,7 @@ export default function Consigneeform({ id }: Prop) {
   return (
     <div className="w-[90%] mx-auto mt-7">
       <h1 className="text-center mb-6 font-bold text-lg">
-        Consignee Information
+        Consignee / Notify Information
       </h1>
       <form>
         <div className="grid gap-6 mb-6 md:grid-cols-2">

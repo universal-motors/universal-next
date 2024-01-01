@@ -1,8 +1,8 @@
 "use client";
-import Link from "next/link";
 import agent from "@/api/agent";
 import { ConsigneeCourier, CourierDispatch } from "@/models/Customer";
 import { useUserStore } from "@/store/store";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function CosigneeForm() {
@@ -29,7 +29,7 @@ export default function CosigneeForm() {
   return (
     <div className="w-[95%] mx-auto flex flex-col gap-5 my-5">
       <div>
-        <h1 className="text-xl font-bold text-center pb-8">Cosignee</h1>
+        <h1 className="text-xl font-bold text-center pb-8">Cosignee / Notify</h1>
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
