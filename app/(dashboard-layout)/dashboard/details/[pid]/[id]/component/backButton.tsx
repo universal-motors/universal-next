@@ -4,14 +4,20 @@ import { useParams } from "next/navigation";
 
 export default function BackButton() {
   const { pid } = useParams();
+  const getLink = () => {
+    switch (pid) {
+      case "reserve":
+        return "/dashboard?tabs=Reserved-Vehicles";
+      case "purchase":
+        return "/dashboard?tabs=Purchased-Vehicles";
+      case "cosignee":
+        return "/dashboard?tabs=My-Cosignee-Details";
+      case "courier":
+        return "/dashboard?tabs=My-Cosignee-Details";
+    }
+  };
   return (
-    <Link
-      href={
-        pid === "reserve"
-          ? "/dashboard?tabs=Reserved-Vehicles"
-          : "/dashboard?tabs=Purchased-Vehicles"
-      }
-    >
+    <Link href={String(getLink())}>
       <div className="flex items-center gap-2">
         <svg
           width="8"
