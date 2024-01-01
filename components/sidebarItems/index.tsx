@@ -15,7 +15,7 @@ export default function SidebarItems() {
         <Link
           className={`block px-6 py-2 hover:/dashboard transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14] ${pathname === "/dashboard" ||
             pathname.includes("/reserve") ||
-            pathname.includes("/purchased")
+            pathname.includes("/purchase")
             ? "bg-[#006aff]"
             : "hover:bg-[#006aff]"
             }`}
