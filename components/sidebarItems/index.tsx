@@ -14,10 +14,12 @@ export default function SidebarItems() {
       <nav className="space-y-2">
         <Link
           className={`block px-6 py-2 hover:/dashboard transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14] ${pathname === "/dashboard" ||
-            pathname.includes("/reserve") ||
-            pathname.includes("/purchase")
-            ? "bg-[#006aff]"
-            : "hover:bg-[#006aff]"
+              pathname.includes("/reserve") ||
+              pathname.includes("/purchase") ||
+              pathname.includes("cosignee") ||
+              pathname.includes("courier")
+              ? "bg-[#006aff]"
+              : "hover:bg-[#006aff]"
             }`}
           href={"/dashboard"}
         >
@@ -73,8 +75,8 @@ export default function SidebarItems() {
             }
           }}
           className={`block px-6 py-2 hover:bg-[#006aff] transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14] ${pathname === "/payment-history"
-            ? "bg-[#006aff]"
-            : "hover:bg-[#006aff]"
+              ? "bg-[#006aff]"
+              : "hover:bg-[#006aff]"
             }`}
           href={user?.email && !isUpdate ? "" : "/payment-history"}
         >
@@ -88,8 +90,8 @@ export default function SidebarItems() {
             }
           }}
           className={`block px-6 py-2 hover:bg-[#006aff] transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14]  ${pathname === "/account-activity"
-            ? "bg-[#006aff]"
-            : "hover:bg-[#006aff]"
+              ? "bg-[#006aff]"
+              : "hover:bg-[#006aff]"
             }`}
           href={user?.email && !isUpdate ? "" : "/account-activity"}
         >

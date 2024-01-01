@@ -37,32 +37,53 @@ export default async function Cards({ stockID }: Prop) {
         <div className="w-full flex flex-wrap items-center justify-center gap-8">
           <div className="w-[180px] border-l-4 border-r-0 border-[#FFB703] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-[#0078d491]  ">
             <h5 className="text-[#4c5263] text-[14px]">Total CNF</h5>
-            <p className="text-[18px] text-[#676d7e] font-semibold">${stock?.totalCnf}</p>
+            <p className="text-[18px] text-[#676d7e] font-semibold">
+              ${stock?.totalCnf}
+            </p>
           </div>
           <div className="w-[180px] border-l-4 border-r-0 border-[#FFB703] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-[#0078d491] ">
             <h5 className="text-[#4c5263] text-[14px]">Allocated Amount</h5>
-            <p className="text-[18px] text-[#676d7e] font-semibold">${stock?.allocatedAmount}</p>
+            <p className="text-[18px] text-[#676d7e] font-semibold">
+              ${stock?.allocatedAmount}
+            </p>
           </div>
           <div className="w-[180px] border-l-4 border-r-0 border-[#FFB703] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-[#0078d491] ">
             <h5 className="text-[#4c5263] text-[14px]">Balance Amount</h5>
-            <p className="text-[18px] text-[#676d7e] font-semibold">${stock?.balanceAmount}</p>
+            <p className="text-[18px] text-[#676d7e] font-semibold">
+              ${stock?.balanceAmount}
+            </p>
           </div>
 
           <div className="w-[180px] border-l-4 border-r-0 border-[#FFB703] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-[#0078d491] ">
             <h5 className="text-[#4c5263] text-[14px]"> OK to Book </h5>
             <p className="text-[18px] text-[#676d7e] font-semibold text-center">
-
-              {stock.shipOk ? getFormatedDate(stock?.shipOkDate) : <span className="text-red-800 text-[14px]">not Available</span>}
+              {stock.shipOk ? (
+                getFormatedDate(stock?.shipOkDate)
+              ) : (
+                <span className="text-red-800 text-[14px]">not Available</span>
+              )}
             </p>
           </div>
 
           <div className="w-[180px] border-l-4 border-r-0 border-[#FFB703] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-[#0078d491] ">
             <h5 className="text-[#4c5263] text-[14px]">ETA</h5>
-            <p className="text-[18px] text-[#676d7e] font-semibold text-center">{!stock.eta.includes('1900-01-01') ? getFormatedDate(stock?.eta) : <span className="text-red-800 text-[14px]">not Available</span>}</p>
+            <p className="text-[18px] text-[#676d7e] font-semibold text-center">
+              {!stock.eta.includes("1900-01-01") ? (
+                getFormatedDate(stock?.eta)
+              ) : (
+                <span className="text-red-800 text-[14px]">not Available</span>
+              )}
+            </p>
           </div>
           <div className="w-[180px] border-l-4 border-r-0 border-[#FFB703] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-[#0078d491] ">
             <h5 className="text-[#4c5263] text-[14px]">ETD</h5>
-            <p className="text-[18px] text-[#676d7e] font-semibold text-center">{!stock.etd.includes('1900-01-01') ? getFormatedDate(stock?.etd) : <span className="text-red-800 text-[14px]">not Available</span>}</p>
+            <p className="text-[18px] text-[#676d7e] font-semibold text-center">
+              {!stock.etd.includes("1900-01-01") ? (
+                getFormatedDate(stock?.etd)
+              ) : (
+                <span className="text-red-800 text-[14px]">not Available</span>
+              )}
+            </p>
           </div>
 
           {/* <div className="w-[180px] border-l-4 border-r-0 border-[#FFB703] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-[#0078d491] ">
@@ -74,24 +95,43 @@ export default async function Cards({ stockID }: Prop) {
           <div className="w-[180px] border-l-4 border-r-0 border-[#FFB703] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-[#0078d491] ">
             <h5 className="text-[#4c5263] text-[14px]">Ship Name</h5>
             <p className="text-[18px] text-[#676d7e] font-semibold text-center">
-              {stock?.shipName ? stock?.shipName : <span className="text-red-800 text-[14px]">not Available</span>}
+              {stock?.shipName ? (
+                stock?.shipName
+              ) : (
+                <span className="text-red-800 text-[14px]">not Available</span>
+              )}
             </p>
           </div>
           <div className="w-[180px] border-l-4 border-r-0 border-[#FFB703] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-[#0078d491] ">
             <h5 className="text-[#4c5263] text-[14px]">Voyage No</h5>
             <p className="text-[18px] text-[#676d7e] font-semibold text-center">
-              {stock?.voyageNumber.replaceAll(" ", '') ? stock?.voyageNumber : <span className="text-red-800 text-[14px]">not Available</span>}
+              {stock?.voyageNumber.replaceAll(" ", "") ? (
+                stock?.voyageNumber
+              ) : (
+                <span className="text-red-800 text-[14px]">not Available</span>
+              )}
             </p>
           </div>
           <div className="w-[180px] border-l-4 border-r-0 border-[#FFB703] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-[#0078d491] ">
-            <h5 className="text-[#4c5263] text-center text-[14px]"> OK to Release Documents</h5>
+            <h5 className="text-[#4c5263] text-center text-[14px]">
+              {" "}
+              OK to Release Documents
+            </h5>
             <p className="text-[18px] text-[#676d7e] font-semibold text-center">
-              {stock.releaseOk ? stock?.releaseDate : <span className="text-red-800 text-[14px]">not Available</span>}
+              {stock.releaseOk ? (
+                stock?.releaseDate
+              ) : (
+                <span className="text-red-800 text-[14px]">not Available</span>
+              )}
             </p>
           </div>
           <div className="w-[180px] border-l-4 border-r-0 border-[#FFB703] h-[120px] flex flex-col justify-center items-center gap-2 rounded-[20px] bg-[#0078d491] ">
-            <h5 className="text-[#4c5263] text-[14px]">Documents <br /> Dispatched</h5>
-            <p className="text-[18px] text-[#676d7e] font-semibold text-center">{stock?.release ? "✔️" : "❌"}</p>
+            <h5 className="text-[#4c5263] text-[14px]">
+              Documents <br /> Dispatched
+            </h5>
+            <p className="text-[18px] text-[#676d7e] font-semibold text-center">
+              {stock?.release ? "✔️" : "❌"}
+            </p>
           </div>
           {/* ------------------------------------------------------------------------- */}
           <div className="w-full px-6">
@@ -182,6 +222,6 @@ export default async function Cards({ stockID }: Prop) {
             </div>
           </div>
         </div>
-      </div >
+      </div>
     );
 }

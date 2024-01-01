@@ -191,7 +191,7 @@ const LoadData = {
   courierDispatchByCustomer: (customerID: number) =>
     request.get<CourierDispatch[]>(`customers/CourierDispatch/${customerID}`),
   courierDispatchByID: (id: number) =>
-    request.get<CourierDispatch[]>(`customers/CourierDispatch/id/${id}`),
+    request.get<CourierDispatch>(`customers/CourierDispatch/id/${id}`),
 
   /*Added on 15th November -------------------------------Start ----------*/
   purchasedCarsByCustomerID: (customerId: number) =>
@@ -229,7 +229,9 @@ const LoadData = {
   getTransactionsHistory: (customerId: number) =>
     request.get<TransactionInfo[]>(`customers/transactions/${customerId}`),
   getSalesOrderDepositInformation: (customerId: number) =>
-    request.get<TransactionInfo[]>(`customers/depositinformation/${customerId}`),
+    request.get<TransactionInfo[]>(
+      `customers/depositinformation/${customerId}`
+    ),
   getSalesOrderDetailPerStock: (customerId: number, stockId: number) =>
     request.get<SalesOrderDetail>(
       `customers/salesdetail/${stockId}/${customerId}`

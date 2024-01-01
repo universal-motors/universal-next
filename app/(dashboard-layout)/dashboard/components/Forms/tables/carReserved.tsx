@@ -9,7 +9,6 @@ type Prop = {
 export default function CarReservedTable({ data }: Prop) {
   return (
     <div className="w-[90%] m-auto overflow-x-auto shadow-md sm:rounded-lg">
-
       {data?.map((item: StockCars | Trucks | Machinery) => {
         return (
           <CarTableItem item={item} />

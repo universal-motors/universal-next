@@ -9,4 +9,3 @@ const formatter = new Intl.NumberFormat("en-US", {
 export default function PriceFormat({ carPrice }: Props) {
   return formatter.format(carPrice).replace(/\.?0+$/, "");
 }
-

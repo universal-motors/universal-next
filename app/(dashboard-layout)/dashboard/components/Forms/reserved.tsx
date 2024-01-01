@@ -19,9 +19,8 @@ export default function Reserved() {
       if (user && user?.customerId)
         switch (sort) {
           case "Trucks":
-            const TruckReserved = await agent.LoadData.reservedTrucksByCustomerID(
-              user?.customerId
-            );
+            const TruckReserved =
+              await agent.LoadData.reservedTrucksByCustomerID(user?.customerId);
             setReservedData(TruckReserved.data);
             return;
           case "Machinery":

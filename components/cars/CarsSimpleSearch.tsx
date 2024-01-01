@@ -133,11 +133,7 @@ export default function CarsSimpleSearch({
             value={steeringTypeId}
             onValueChange={setSteeringTypeId}
           >
-            <SearchSelectItem
-              value="1"
-            >
-              Right Hand
-            </SearchSelectItem>
+            <SearchSelectItem value="1">Right Hand</SearchSelectItem>
             <SearchSelectItem value="2">Left Hand</SearchSelectItem>
           </SearchSelect>
         </div>

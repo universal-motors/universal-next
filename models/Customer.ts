@@ -60,17 +60,17 @@ export interface ConsigneeCourier {
 }
 
 export interface CourierDispatch {
-  Id: number;
-  CustomerID: number;
-  PersonName: string;
-  CourierPersonCity: string;
-  CourierPersonAddress: string;
-  CourierPersonCountryId: number;
-  CourierPersonEmail: string;
-  CourierPersonPhone: string;
-  ShippingNote: string;
+  id: number;
+  customerID: number;
+  personName: string;
+  courierPersonCity: string;
+  courierPersonAddress: string;
+  courierPersonCountryId: number;
+  courierPersonEmail: string;
+  courierPersonPhone: string;
+  shippingNote: string;
   isActive: boolean;
-  CreatedOn: string;
+  createdOn: string;
 }
 
 export interface TransactionInfo {
@@ -87,7 +87,6 @@ export interface TransactionInfo {
   transactionDate: String;
   isVoucher: Boolean;
   createdOn: Date;
-
 }
 
 export interface SalesOrderDetail {
@@ -110,26 +109,26 @@ export interface SalesOrderDetail {
   shipOkDate: string;
   createdOn: string;
 
-  courierCode: string,
-  courierPersonName: string,
-  courierPersonCity: string,
-  courierPersonAddress: string,
-  courierPersonCountryID: number,
-  courierPersonEmail: string,
-  courierPersonPhone: number,
-  shippingNote: string,
+  courierCode: string;
+  courierPersonName: string;
+  courierPersonCity: string;
+  courierPersonAddress: string;
+  courierPersonCountryID: number;
+  courierPersonEmail: string;
+  courierPersonPhone: number;
+  shippingNote: string;
 
-  consigneeName: string,
-  consigneePhone: number,
-  consigneeCity: string,
-  consigneeAddress: string,
-  consigneeCountryID: number,
-  consigneeEmail: string,
+  consigneeName: string;
+  consigneePhone: number;
+  consigneeCity: string;
+  consigneeAddress: string;
+  consigneeCountryID: number;
+  consigneeEmail: string;
 
-  notifyPartyName: string,
-  notifyPartyCity: string,
-  notifyPartyAddress: string,
-  notifyPartyCountryID: number,
-  notifyPartyEmail: string,
-  notifyPartyPhone: number,
+  notifyPartyName: string;
+  notifyPartyCity: string;
+  notifyPartyAddress: string;
+  notifyPartyCountryID: number;
+  notifyPartyEmail: string;
+  notifyPartyPhone: number;
 }

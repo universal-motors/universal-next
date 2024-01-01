@@ -69,7 +69,9 @@ export default async function ReservedDetail({ params }: Props) {
                         <div className="row">
                           <CarDetailedSlideshow
                             mainPic={Stock.data.imageUrl}
-                            stockID={Stock.data.stockId} isReserved={false} />
+                            stockID={Stock.data.stockId}
+                            isReserved={false}
+                          />
                         </div>
                       </div>
                     </div>
@@ -79,7 +81,6 @@ export default async function ReservedDetail({ params }: Props) {
                         car={Stock.data}
                         location={InventoryLocation}
                       />
-
                     </div>
                   </div>
                   <div className="col-md-6 ">
@@ -91,7 +92,7 @@ export default async function ReservedDetail({ params }: Props) {
               </div>
             </div>
           </section>
-        </div >
+        </div>
       </>
     );
 }
