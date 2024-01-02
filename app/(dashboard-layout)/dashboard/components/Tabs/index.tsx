@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 import { Dispatch, SetStateAction } from "react";
 import { toast } from "react-toastify";
+import { idText } from "typescript";
 
 type Prop = {
   currentForm?: string;
@@ -39,8 +40,10 @@ export default function Tabs({ currentForm, setCurrentForm, list }: Prop) {
                     item.split(" ")[0].toLowerCase().slice(0, -1) ===
                       String(pid) ||
                     item.toLocaleLowerCase().includes(String(pid)) ||
-                    (pid === "courier" && item === "My Cosignee Details")
-                      ? "text-[#221C63]  !border-[#221C63] "
+                    (pid === "courier" && item === "My Cosignee Details") ||
+                    (pid === "addcosignee" && item === "My Cosignee Details") ||
+                    (pid === "addcourier" && item === "My Cosignee Details")
+                      ? "text-[#221C63]  !border-[#221C63]"
                       : ""
                   } cursor-pointer inline-block !p-2 sm:!p-4 border-b-2  border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 deco !no-underline`}
                 >

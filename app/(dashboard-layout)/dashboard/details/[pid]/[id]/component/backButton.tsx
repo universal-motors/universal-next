@@ -14,6 +14,10 @@ export default function BackButton() {
         return "/dashboard?tabs=My-Cosignee-Details";
       case "courier":
         return "/dashboard?tabs=My-Cosignee-Details";
+      case "addcourier":
+        return "/dashboard?tabs=My-Cosignee-Details";
+      case "addcosignee":
+        return "/dashboard?tabs=My-Cosignee-Details";
     }
   };
   return (

@@ -14,9 +14,7 @@ export default function Status({ stock }: Prop) {
         </div>
         <div className="w-1/2">
           <p className="text-white font-semibold ">STATUS</p>
-
         </div>
-
       </div>
       <div className="w-full flex flex-wrap">
         <div className="w-1/2 ">
@@ -34,7 +32,11 @@ export default function Status({ stock }: Prop) {
             <PieChart
               animate
               data={[
-                { title: "Paid", value: stock?.paidPercent ?? 0, color: "#221C63" },
+                {
+                  title: "Paid",
+                  value: stock?.paidPercent ?? 0,
+                  color: "#221C63",
+                },
                 {
                   title: "unpaid",
                   value: stock?.balancePercent ?? 0,
@@ -44,44 +46,40 @@ export default function Status({ stock }: Prop) {
             />
           </div>
           <div className="flex gap-3  font-bold items-center">
-            Total Price:  <PriceFormat carPrice={stock?.totalCnf ?? 0} />
+            Total Price: <PriceFormat carPrice={stock?.totalCnf ?? 0} />
           </div>
         </div>
         <table className="keyinfo !w-1/2">
           <thead>
             <tr>
               {/* <td className="first !text-[12px] sm:!text-[16px]">Stage</td> */}
-              <td className="first !text-[12px] sm:!text-[16px]">Action Tracker</td>
+              <td className="first !text-[12px] sm:!text-[16px]">
+                Action Tracker
+              </td>
               <td className="first !text-[12px] sm:!text-[16px]">Status</td>
               {/* <td className="first !text-[12px] sm:!text-[16px]">Action</td> */}
             </tr>
           </thead>
           <tbody>
-
             <tr>
-              <td className=" !text-[12px] sm:!text-[16px]">
-                OK to Book
-              </td>
-              <td className="!text-[12px] sm:!text-[16px]">
-                {stock?.shipOk ? "✔️" : "❌"}
-              </td>
-            </tr>
-            <tr>
-              <td className=" !text-[12px] sm:!text-[16px]">
-                Consignee
-              </td>
+              <td className=" !text-[12px] sm:!text-[16px]">Consignee</td>
               <td className="!text-[12px] sm:!text-[16px]">
                 {stock?.consigneeName ? "✔️" : "❌"}
               </td>
             </tr>
             <tr>
-              <td className=" !text-[12px] sm:!text-[16px]">
-                Notify Party
-              </td>
+              <td className=" !text-[12px] sm:!text-[16px]">Notify Party</td>
               <td className="!text-[12px] sm:!text-[16px]">
                 {stock?.notifyPartyName ? "✔️" : "❌"}
               </td>
             </tr>
+            <tr>
+              <td className=" !text-[12px] sm:!text-[16px]">OK to Book</td>
+              <td className="!text-[12px] sm:!text-[16px]">
+                {stock?.shipOk ? "✔️" : "❌"}
+              </td>
+            </tr>
+
             <tr>
               <td className=" !text-[12px] sm:!text-[16px]">
                 Courier Address Updated
@@ -91,7 +89,6 @@ export default function Status({ stock }: Prop) {
               </td>
             </tr>
             <tr>
-
               <td className=" !text-[12px] sm:!text-[16px]">
                 Documents Dispatched
               </td>
