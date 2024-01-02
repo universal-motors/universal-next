@@ -40,7 +40,7 @@ export default function CosigneeForm() {
             <div>
               <Link href={"/dashboard/addcosignee/" + 0}>
                 <button className="bg-[#221C63] hover:bg-[#857de0] text-white font-bold py-2 px-4 rounded">
-                  add{" "}
+                  Add{" "}
                 </button>
               </Link>
             </div>
@@ -73,7 +73,7 @@ export default function CosigneeForm() {
                     <td className="px-6 py-4">{item.consigneePhone}</td>
                     <td className="px-6 py-4 flex gap-1">
                       <Link href={"/dashboard/cosignee/" + item.id}>
-                        <button className="bg-[#221C63] hover:bg-[#857de0] text-white font-bold py-2 px-4 rounded">
+                        <button className="border-3 border-[#221C63]  text-[#221C63] font-bold py-2 px-4 rounded">
                           view{" "}
                         </button>
                       </Link>
@@ -129,7 +129,7 @@ export default function CosigneeForm() {
                     <td className="px-6 py-4">{item.courierPersonPhone}</td>
                     <td className="px-6 py-4 flex gap-1">
                       <Link href={"/dashboard/courier/" + item.id}>
-                        <button className="bg-[#221C63] hover:bg-[#857de0] text-white font-bold py-2 px-4 rounded">
+                        <button className="border-3 border-[#221C63]  text-[#221C63] font-bold py-2 px-4 rounded">
                           view{" "}
                         </button>
                       </Link>

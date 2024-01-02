@@ -7,7 +7,7 @@ import { useUserStore } from "@/store/store";
 import PriceFormat from "@/utils/PriceFormat";
 import { getFormatedDate } from "@/utils/dateFormat";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 type Prop = {
@@ -16,7 +16,8 @@ type Prop = {
 export default function CarTableItem({ item }: Prop) {
   const [stock, setStock] = useState<SalesOrderDetail>();
   const { user } = useUserStore();
-  const url = usePathname();
+  const param = useSearchParams();
+
   useEffect(() => {
     const getData = async () => {
       // 33, 17260
@@ -91,11 +92,10 @@ export default function CarTableItem({ item }: Prop) {
         <p className="font-semibold text-xl mb-14">
           Vehicle Price: <PriceFormat carPrice={item.price} />
         </p>
-
         <Link
           className="w-full !no-underline"
           href={
-            url.includes("reserve")
+            param?.get("tabs") == "Reserved-Vehicles"
               ? `/dashboard/details/reserve/${item.stockId}`
               : `/dashboard/details/purchase/${item.stockId}`
           }
