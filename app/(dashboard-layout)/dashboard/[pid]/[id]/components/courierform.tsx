@@ -31,8 +31,7 @@ export default function Courierform({ id }: Prop) {
         setConsigneeCountryID(data?.courierPersonCountryId);
       }
     };
-
-    getData();
+    if (id != 0) getData();
   }, []);
   const handleCountryChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const destinationID = parseInt(event.target.value);
@@ -142,7 +141,7 @@ export default function Courierform({ id }: Prop) {
             type="submit"
             className=" text-white bg-[#221C63] hover:bg-[#857de0] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
-            Update
+            {id == 0 ? " Add" : "Update"}
           </button>
         </div>
       </form>

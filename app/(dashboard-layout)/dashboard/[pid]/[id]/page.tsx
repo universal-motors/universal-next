@@ -28,7 +28,7 @@ export default function page({ params }: Props) {
       <div className="ml-7 mt-2">
         <BackButton />
       </div>
-      {pid === "cosignee" ? (
+      {pid === "cosignee" || pid === "addcosignee" ? (
         <Consigneeform id={params?.id} />
       ) : (
         <Courierform id={params?.id} />

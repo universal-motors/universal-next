@@ -29,7 +29,23 @@ export default function CosigneeForm() {
   return (
     <div className="w-[95%] mx-auto flex flex-col gap-5 my-5">
       <div>
-        <h1 className="text-xl font-bold text-center pb-8">Cosignee / Notify</h1>
+        <div className="flex justify-between">
+          <div></div>
+          <div className="flex  justify-between w-[800px]">
+            <div>
+              <h1 className="text-xl font-bold text-center pb-8">
+                Cosignee / Notify
+              </h1>
+            </div>
+            <div>
+              <Link href={"/dashboard/addcosignee/" + 0}>
+                <button className="bg-[#221C63] hover:bg-[#857de0] text-white font-bold py-2 px-4 rounded">
+                  Add{" "}
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -57,7 +73,7 @@ export default function CosigneeForm() {
                     <td className="px-6 py-4">{item.consigneePhone}</td>
                     <td className="px-6 py-4 flex gap-1">
                       <Link href={"/dashboard/cosignee/" + item.id}>
-                        <button className="bg-[#221C63] hover:bg-[#857de0] text-white font-bold py-2 px-4 rounded">
+                        <button className="border-3 border-[#221C63]  text-[#221C63] font-bold py-2 px-4 rounded">
                           view{" "}
                         </button>
                       </Link>
@@ -70,7 +86,22 @@ export default function CosigneeForm() {
         </div>
       </div>
       <div>
-        <h1 className="text-xl font-bold text-center pb-8">Courier</h1>
+        <div className="flex justify-between">
+          <div></div>
+          <div className="flex  justify-between w-[800px]">
+            <div>
+              <h1 className="text-xl font-bold text-center pb-8">Courier</h1>
+            </div>
+            <div>
+              <Link href={"/dashboard/addcourier/" + 0}>
+                <button className="bg-[#221C63] hover:bg-[#857de0] text-white font-bold py-2 px-4 rounded">
+                  Add{" "}
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
+
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -98,7 +129,7 @@ export default function CosigneeForm() {
                     <td className="px-6 py-4">{item.courierPersonPhone}</td>
                     <td className="px-6 py-4 flex gap-1">
                       <Link href={"/dashboard/courier/" + item.id}>
-                        <button className="bg-[#221C63] hover:bg-[#857de0] text-white font-bold py-2 px-4 rounded">
+                        <button className="border-3 border-[#221C63]  text-[#221C63] font-bold py-2 px-4 rounded">
                           view{" "}
                         </button>
                       </Link>
