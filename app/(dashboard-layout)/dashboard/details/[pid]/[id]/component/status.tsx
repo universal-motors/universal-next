@@ -56,7 +56,7 @@ export default function Status({ stock }: Prop) {
               <td className="first !text-[12px] sm:!text-[16px]">
                 Action Tracker
               </td>
-              <td className="first !text-[12px] sm:!text-[16px]">date</td>
+              <td className="first !text-[12px] sm:!text-[16px]">Date</td>
               <td className="first !text-[12px] sm:!text-[16px]">Status</td>
 
               {/* <td className="first !text-[12px] sm:!text-[16px]">Action</td> */}
