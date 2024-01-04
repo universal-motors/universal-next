@@ -85,14 +85,14 @@ export default function PaginationComponent({
               Next
             </a>
           </div>
-          <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+          <div className="hidden whitespace-nowrap sm:flex sm:flex-1 sm:items-center sm:justify-between">
             <div className="flex items-center gap-3">
               <p className="text-sm text-gray-700">
                 Showing <span className="font-medium">Page {currentPage}</span>{" "}
                 of <span className="font-medium"></span> {totalPages}
                 <span className="font-medium"> for {totalPost}</span> results
               </p>
-              <div className="!hiddden lg:!flex  w-[800px] justify-center gap-2">
+              <div className="!hiddden lg:!flex  w-[610px] justify-center gap-2">
                 <div className="w-[38px] cursor-pointer">
                   <p className="text-[7px] text-center">Convertible</p>
                   <Image
