@@ -4,16 +4,16 @@ import { currentUser } from "@clerk/nextjs";
 import { values } from "mobx";
 import { Dispatch, SetStateAction } from "react";
 import Image from "next/image";
-import Convertible from "@/public/assets/images/Convertible.png"
-import Coupe from "@/public/assets/images/Coupe.webp"
-import Hatchback from "@/public/assets/images/Hatchback.png"
-import MiniVan from "@/public/assets/images/Mini Van.png"
-import Sedan from "@/public/assets/images/Sedan.png"
-import StationWagon from "@/public/assets/images/Station Wagon.png"
-import SUV from "@/public/assets/images/SUV.png"
-import Truck from "@/public/assets/images/Truck.png"
-import Van from "@/public/assets/images/Van.jpg"
-import Wagon from "@/public/assets/images/wagan.png"
+import Convertible from "@/public/assets/images/Convertible.png";
+import Coupe from "@/public/assets/images/Coupe.webp";
+import Hatchback from "@/public/assets/images/Hatchback.png";
+import MiniVan from "@/public/assets/images/MiniVan.png";
+import Sedan from "@/public/assets/images/Sedan.png";
+import StationWagon from "@/public/assets/images/StationWagon.png";
+import SUV from "@/public/assets/images/SUV.png";
+import Truck from "@/public/assets/images/Truck.png";
+import Van from "@/public/assets/images/Van.jpg";
+import Wagon from "@/public/assets/images/wagan.png";
 
 interface Props {
   totalPost: number;
@@ -70,7 +70,6 @@ export default function PaginationComponent({
   } else {
     return (
       <>
-
         <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
           <div className="flex flex-1 justify-between sm:hidden">
             <a
@@ -93,16 +92,98 @@ export default function PaginationComponent({
                 of <span className="font-medium"></span> {totalPages}
                 <span className="font-medium"> for {totalPost}</span> results
               </p>
-              <Image className="w-[40px] h-[50px]" style={{ objectFit: "cover" }} src={Convertible} alt="" />
-              <Image className="w-[40px] h-[50px]" style={{ objectFit: "cover" }} src={Coupe} alt="" />
-              <Image className="w-[40px] h-[40px]" style={{ objectFit: "cover" }} src={Hatchback} alt="" />
-              <Image className="w-[40px] h-[40px]" style={{ objectFit: "cover" }} src={MiniVan} alt="" />
-              <Image className="w-[40px] h-[50px]" style={{ objectFit: "cover" }} src={Sedan} alt="" />
-              <Image className="w-[40px] h-[40px]" style={{ objectFit: "cover" }} src={StationWagon} alt="" />
-              <Image className="w-[40px] h-[50px]" style={{ objectFit: "cover" }} src={SUV} alt="" />
-              <Image className="w-[40px] h-[40px] mt-4" style={{ objectFit: "cover" }} src={Truck} alt="" />
-              <Image className="w-[40px] h-[20px]" style={{ objectFit: "cover" }} src={Van} alt="" />
-              <Image className="w-[40px] h-[40px] mr-4" style={{ objectFit: "cover" }} src={Wagon} alt="" />
+              <div className="!hiddden lg:!flex  w-[800px] justify-center gap-2">
+                <div className="w-[38px] cursor-pointer">
+                  <p className="text-[7px] text-center">Convertible</p>
+                  <Image
+                    className="w-[35px] h-[15px] "
+                    style={{ objectFit: "cover" }}
+                    src={Convertible}
+                    alt=""
+                  />
+                </div>
+                <div className="cursor-pointer">
+                  <p className="text-[7px] p-0 text-center">Coupe</p>
+                  <Image
+                    className="w-[30px] h-[20px] "
+                    style={{ objectFit: "cover" }}
+                    src={Coupe}
+                    alt=""
+                  />
+                </div>
+                <div className="cursor-pointer">
+                  <p className="text-[7px] text-center">Hatchback</p>
+                  <Image
+                    className="w-[30px] h-[20px] "
+                    style={{ objectFit: "cover" }}
+                    src={Hatchback}
+                    alt=""
+                  />
+                </div>
+                <div className="cursor-pointer">
+                  <p className="text-[7px] text-center">MiniVan</p>
+                  <Image
+                    className="w-[30px] h-[20px] "
+                    style={{ objectFit: "cover" }}
+                    src={MiniVan}
+                    alt=""
+                  />
+                </div>
+                <div className="cursor-pointer">
+                  <p className="text-[7px] text-center">Sedan</p>
+                  <Image
+                    className="w-[30px] h-[20px] "
+                    style={{ objectFit: "cover" }}
+                    src={Sedan}
+                    alt=""
+                  />
+                </div>
+                <div className="cursor-pointer">
+                  <p className="text-[7px] text-center">StationWagon</p>
+                  <Image
+                    className="w-[40px] h-[20px]"
+                    style={{ objectFit: "cover" }}
+                    src={StationWagon}
+                    alt=""
+                  />
+                </div>
+                <div className="cursor-pointer">
+                  <p className="text-[7px] text-center">SUV</p>
+                  <Image
+                    className="w-[30px] h-[20px] "
+                    style={{ objectFit: "cover" }}
+                    src={SUV}
+                    alt=""
+                  />
+                </div>
+                <div className="cursor-pointer">
+                  <p className="text-[7px] text-center">Truck</p>
+                  <Image
+                    className="w-[30px] h-[30px] "
+                    style={{ objectFit: "cover" }}
+                    src={Truck}
+                    alt=""
+                  />
+                </div>
+                <div className="cursor-pointer">
+                  <p className="text-[7px] text-center">Van</p>
+                  <Image
+                    className="w-[30px] h-[20px] "
+                    style={{ objectFit: "cover" }}
+                    src={Van}
+                    alt=""
+                  />
+                </div>
+                <div className="cursor-pointer">
+                  <p className="text-[7px] text-center">Wagon</p>
+                  <Image
+                    className="w-[40px] h-[20px] "
+                    style={{ objectFit: "cover" }}
+                    src={Wagon}
+                    alt=""
+                  />
+                </div>
+              </div>
             </div>
             <div className="flex gap-5">
               <div className="flex gap-4 items-center">
@@ -141,8 +222,10 @@ export default function PaginationComponent({
                   <>
                     <a
                       href="#"
-                      className={`relative inline-flex items-center rounded-l-md px-2 py-2  text-white ${pageNumbers === currentPage ? "bg-indigo-600 " : ""
-                        } bg-indigo-600 ring-1 ring-inset ring-gray-300 hover:bg-indigo-400 focus:z-20 focus:outline-offset-0`}
+                      className={`relative inline-flex items-center rounded-l-md px-2 py-2  text-white
+                       ${
+                         pageNumbers === currentPage ? "bg-indigo-600 " : ""
+                       } bg-indigo-600 ring-1 ring-inset ring-gray-300 hover:bg-indigo-400 focus:z-20 focus:outline-offset-0`}
                       onClick={(event) => {
                         event.preventDefault();
                         setCurrentPage(currentPage - 1);
@@ -173,10 +256,11 @@ export default function PaginationComponent({
                   <a
                     href="#"
                     key={page}
-                    className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold ${page === currentPage
+                    className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold ${
+                      page === currentPage
                         ? "bg-indigo-600 text-white "
-                        : "text-gray-900 ring-1 ring-inset ring-gray-300 "
-                      }    hover:bg-gray-50 focus:z-20 focus:outline-offset-0`}
+                        : "text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                    }     focus:z-20 focus:outline-offset-0`}
                     onClick={(event) => {
                       event.preventDefault();
                       setCurrentPage(page);
