@@ -287,7 +287,7 @@ async function registerUser(user: CustomerSignUp) {
     if (!response.ok) {
       throw new Error(`Server responded with an error: ${response.statusText}`);
     }
-    console.log("Account created successfully");
+    // console.log("Account created successfully");
 
     // Continue processing for successful registration
   } catch (error: any) {
@@ -323,7 +323,7 @@ export async function addFavourite(fav: TFavorite) {
     //   password: user.password,
     // });
 
-    console.log("Fav added Successfully");
+    // console.log("Fav added Successfully");
     toast.success("Favorite Added Successfully");
   } catch (e) {
     console.log(e);
@@ -353,7 +353,7 @@ export async function removeFavourite(fav: TFavorite) {
     //   password: user.password,
     // });
 
-    console.log("Fav removed Successfully");
+    // console.log("Fav removed Successfully");
   } catch (e) {
     console.log(e);
   }

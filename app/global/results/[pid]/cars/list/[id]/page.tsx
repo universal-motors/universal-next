@@ -106,9 +106,11 @@ export default function ResultPage({ searchParams }: Props) {
       {/*<SearchingCriteria resultCount={cars.length} locations={locations} />*/}
       <CarSearchResult params={params} locations={locations} />
       {categoryContent && categoryContent?.tag && (
-        <div className="py-3 px-6">
+        <div className="py-3 px-6 bg-[#F1F5F9] rounded-lg ml-2 mb-4">
           <h1 className="mb-2">{categoryContent?.heading}</h1>
-          <p>{categoryContent?.paragraph}</p>
+          <p className="text-[#212529] text-[12px] ">
+            {categoryContent?.paragraph}
+          </p>
         </div>
       )}
     </div>
