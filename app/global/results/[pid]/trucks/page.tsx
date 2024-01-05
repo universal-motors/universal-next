@@ -35,7 +35,7 @@ const GetCarMakes = async () => {
 };
 
 export default async function ResultPage({ searchParams }: Props) {
-  console.log(searchParams);
+  // console.log(searchParams);
   const params = new URLSearchParams();
 
   if (searchParams.makeID) params.set("MakeID", searchParams.makeID.toString());

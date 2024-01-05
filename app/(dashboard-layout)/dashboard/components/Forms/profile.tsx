@@ -387,7 +387,7 @@ export default function ProfileForm() {
                     label={i >= 1 ? "Phone " + (i + 1) : "Phone *"}
                     value={Phones[i]}
                     setValue={(e: any) => {
-                      console.log(e);
+                      // console.log(e);
                       updatePhone(i, e);
                     }}
                     //  setValue={(e: any) => {
